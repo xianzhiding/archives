@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://xianzhiding.github.io/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xianzhiding.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-color-scheme" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/color-scheme/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T01:40:38.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/color-scheme/">适配深色模式方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-声明-color-scheme"><a href="#1-声明-color-scheme" class="headerlink" title="1.声明 color-scheme"></a>1.声明 color-scheme</h2><p>有两种方式。</p>
+<h3 id="1-1-meta"><a href="#1-1-meta" class="headerlink" title="1.1 meta"></a>1.1 meta</h3><p>在head中声明 meta，声明当前页面支持 light 和 dark 两种模式，系统切换到深色模式时，浏览器默认样式也会切换到深色；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">&quot;color-scheme&quot;</span> content=<span class="string">&quot;light dark&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-CSS"><a href="#1-2-CSS" class="headerlink" title="1.2 CSS"></a>1.2 CSS</h3><p>下面的 css 同样可以实现上面 meta 声明的效果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    color-scheme: light dark;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：此声明并非为页面做自动适配，只影响浏览器默认样式</p>
+<p>更多信息可查阅：<br>    W3C文档：<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-color-adjust-1/"> CSS Color Adjustment Module Level 1</a><br>    微信开放文档：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/DarkMode.html">DarkMode 适配指南</a></p>
+<h2 id="2-通过-CSS-媒体查询"><a href="#2-通过-CSS-媒体查询" class="headerlink" title="2.通过 CSS 媒体查询"></a>2.通过 CSS 媒体查询</h2><p>prefers-color-scheme CSS 媒体特性用于检测用户是否有将系统的主题色设置为亮色或者暗色。</p>
+<p>no-preference<br>表示系统未得知用户在这方面的选项。在布尔值上下文中，其执行结果为 false。</p>
+<p>light<br>表示用户已告知系统他们选择使用浅色主题的界面。</p>
+<p>dark<br>表示用户已告知系统他们选择使用暗色主题的界面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    color-scheme: light dark;</span><br><span class="line">    background: white;</span><br><span class="line">    color: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (prefers-color-scheme: dark) &#123;</span><br><span class="line">    :root &#123;</span><br><span class="line">        background: black;</span><br><span class="line">        color: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>颜色较多的情况，建议使用CSS变量对颜色值进行管理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    color-scheme: light dark;</span><br><span class="line">    --nav-bg-color: <span class="comment">#F7F7F7;</span></span><br><span class="line">    --content-bg-color: <span class="comment">#FFFFFF;</span></span><br><span class="line">    --font-color: rgba(0,0,0,.9);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (prefers-color-scheme: dark) &#123;</span><br><span class="line">    :root &#123;</span><br><span class="line">        --nav-bg-color: <span class="comment">#2F2F2F;</span></span><br><span class="line">        --content-bg-color: <span class="comment">#2C2C2C;</span></span><br><span class="line">        --font-color: rgba(255, 255, 255, .8);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">:root &#123;</span><br><span class="line">    color: var(--font-color)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.header &#123;</span><br><span class="line">    background-color: var(--nav-bg-color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.content &#123;</span><br><span class="line">    background-color: var(--content-bg-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-图片适配"><a href="#3-图片适配" class="headerlink" title="3.图片适配"></a>3.图片适配</h2><p>利用picture+source标签，设置不同模式下的图片 url。</p>
+<p>HTML <picture>元素通过包含零或多个 <source> 元素和一个 <img> 元素来为不同的显示/设备场景提供图像版本。浏览器会选择最匹配的子 <source> 元素，如果没有匹配的，就选择 <img> 元素的 src 属性中的URL。然后，所选图像呈现在<img>元素占据的空间中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;picture&gt;</span><br><span class="line">    &lt;!-- 深色模式下的图片 --&gt;</span><br><span class="line">    &lt;<span class="built_in">source</span> srcset=<span class="string">&quot;dark.jpg&quot;</span> media=<span class="string">&quot;(prefers-color-scheme: dark)&quot;</span> /&gt;</span><br><span class="line">    &lt;!-- 默认模式下的图片 --&gt;</span><br><span class="line">    &lt;img src=<span class="string">&quot;light.jpg&quot;</span>/&gt;</span><br><span class="line">&lt;/picture&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-JavaScript中判断当前模式-amp-监听模式变化"><a href="#4-JavaScript中判断当前模式-amp-监听模式变化" class="headerlink" title="4. JavaScript中判断当前模式&amp;监听模式变化"></a>4. JavaScript中判断当前模式&amp;监听模式变化</h2><h3 id="4-1-matchMedia"><a href="#4-1-matchMedia" class="headerlink" title="4.1 matchMedia"></a>4.1 matchMedia</h3><p>Window 的matchMedia() 方法返回一个新的MediaQueryList 对象，表示指定的媒体查询 (en-US)字符串解析后的结果。返回的MediaQueryList 可被用于判定Document是否匹配媒体查询，或者监控一个document 来判定它匹配了或者停止匹配了此媒体查询。</p>
+<h3 id="4-2-addListener"><a href="#4-2-addListener" class="headerlink" title="4.2 addListener()"></a>4.2 addListener()</h3><p>MediaQueryList接口的addListener()方法向MediaQueryListener添加一个侦听器，该侦听器将运行自定义回调函数以响应媒体查询状态的更改。</p>
+<p>具体用法参考以下例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const mediaQuery = window.matchMedia(<span class="string">&#x27;(prefers-color-scheme: dark)&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">darkModeHandler</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> (mediaQuery.matches) &#123;</span><br><span class="line">        console.log(<span class="string">&#x27;现在是深色模式&#x27;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        console.log(<span class="string">&#x27;现在是浅色模式&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 判断当前模式</span><br><span class="line">darkModeHandler()</span><br><span class="line">// 监听模式变化</span><br><span class="line">mediaQuery.addListener(darkModeHandler)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xianzhiding.github.io/2021/04/19/color-scheme/" data-id="cknpfuam300014gw5auk62soh" data-title="适配深色模式方案" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2-color-scheme/" rel="tag">适配深色, color-scheme</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-QR-code-plug-in" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/QR-code-plug-in/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T06:07:06.000Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/02/QR-code-plug-in/">分享一个生成二维码的插件–QRCode.js</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>随着移动设备的普及，日常生活中随处可见二维码，大有一码走天下之势。那么前端如何来生成二维码？</p>
+<p>通过QRCode.js我们可以快速生成二维码啦，一起来看看怎么使用吧。</p>
+<h3 id="1、引入插件"><a href="#1、引入插件" class="headerlink" title="1、引入插件"></a>1、引入插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*html*/</span><br><span class="line">&lt;div id=<span class="string">&quot;qrcode&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">/*js*/</span><br><span class="line">&lt;script src=<span class="string">&quot;qrcode.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、基本用法"><a href="#2、基本用法" class="headerlink" title="2、基本用法"></a>2、基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var qrcode = document.getElementById(<span class="string">&#x27;qrcode&#x27;</span>)</span><br><span class="line"></span><br><span class="line">/*直接生成二维码*/</span><br><span class="line">new QRCode(qrcode, <span class="string">&#x27;http://www.daqianduan.com&#x27;</span>)</span><br><span class="line"></span><br><span class="line">/*也可以配置二维码的宽高等*/</span><br><span class="line">var qrcodeObj = new QRCode(<span class="string">&#x27;qrcode&#x27;</span>, &#123;</span><br><span class="line">    text: <span class="string">&#x27;http://www.daqianduan.com&#x27;</span>,</span><br><span class="line">    width: 256,</span><br><span class="line">    height: 256,</span><br><span class="line">    colorDark : <span class="string">&#x27;#000000&#x27;</span>, //前景色</span><br><span class="line">    colorLight : <span class="string">&#x27;#ffffff&#x27;</span>  //背景色</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、API"><a href="#3、API" class="headerlink" title="3、API"></a>3、API</h3><p>设置二维码内容–makeCode</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcodeObj.makeCode(<span class="string">&#x27;http://www.daqianduan.com/?p=6518&amp;preview=true&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>清除二维码–clear</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcodeObj.clear()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xianzhiding.github.io/2021/04/02/QR-code-plug-in/" data-id="cknpfualy00004gw5bx6h28ea" data-title="分享一个生成二维码的插件–QRCode.js" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/19/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2020-04-19T01:40:38.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/04/19/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xianzhiding.github.io/2020/04/19/hello-world/" data-id="cknpfuamc00044gw50cgm1zsq" data-title="Hello World" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2-color-scheme/" rel="tag">适配深色, color-scheme</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" style="font-size: 10px;">二维码</a> <a href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2-color-scheme/" style="font-size: 10px;">适配深色, color-scheme</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/color-scheme/">适配深色模式方案</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/QR-code-plug-in/">分享一个生成二维码的插件–QRCode.js</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
