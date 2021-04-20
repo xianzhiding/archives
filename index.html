@@ -119,7 +119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xianzhiding.github.io/2021/04/19/color-scheme/" data-id="cknpg8sfh0003ocw5ansi094l" data-title="适配深色模式方案" class="article-share-link">Share</a>
+      <a data-url="https://xianzhiding.github.io/2021/04/19/color-scheme/" data-id="cknpjow7h000188w59f8b0oxv" data-title="适配深色模式方案" class="article-share-link">Share</a>
       
       
       
@@ -168,11 +168,143 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xianzhiding.github.io/2021/04/02/QR-code-plug-in/" data-id="cknpg8sf30000ocw5hz8cbdgt" data-title="分享一个生成二维码的插件–QRCode.js" class="article-share-link">Share</a>
+      <a data-url="https://xianzhiding.github.io/2021/04/02/QR-code-plug-in/" data-id="cknpjow7k000388w5hxsrb5kh" data-title="分享一个生成二维码的插件–QRCode.js" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CSS变量创建网页响应布局" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/" class="article-date">
+  <time class="dt-published" datetime="2019-01-14T07:40:38.000Z" itemprop="datePublished">2019-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/">CSS变量创建网页响应布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站</p>
+<p>如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。</p>
+<p>从本质上讲，CSS变量可以让你摆脱老式的样式设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">navbar&gt;a &#123;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>…而是主张这样写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    --base-font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line">h1 &#123;</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">&#125;</span><br><span class="line">navbar&gt;a &#123;</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的语法看起来的确有点怪怪的，但有没有觉得它和less、sass中的变量有点类似呢，但如此一来，只要更改–base-font-size 变量，就能在整个应用中改变字号了。</p>
+<p>如果你想把CSS变量学明白，可以在Scrimba网站 这里有免费互动CSS变量课程，该课程包含8个互动截屏。</p>
+<h2 id="今天来讲一下如何用CSS变量创建响应布局"><a href="#今天来讲一下如何用CSS变量创建响应布局" class="headerlink" title="今天来讲一下如何用CSS变量创建响应布局"></a>今天来讲一下如何用CSS变量创建响应布局</h2><p>这是一段html</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=<span class="string">&quot;item&quot;</span>&gt;</span><br><span class="line">    &lt;li&gt;item 1&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 4&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="老方法："><a href="#老方法：" class="headerlink" title="老方法："></a>老方法：</h3><p>在以前即使不使用CSS变量也可以把这些事情搞定。只是需要把要改变的属性在重新重置一下，需要在媒体查询中拥有自己的选择器，但会招致额外的大量代码，像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">    flex-wrap: wrap;</span><br><span class="line">    justify-content: space-around;</span><br><span class="line">    padding: 10px;</span><br><span class="line"></span><br><span class="line">    li &#123;</span><br><span class="line">        background-color: <span class="comment">#ff6f69;</span></span><br><span class="line">        border: 1px solid <span class="comment">#fff;</span></span><br><span class="line">        font-size: 20px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        list-style-type: none;</span><br><span class="line">        width: 100%;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (min-width: 768px) &#123;</span><br><span class="line">    .item &#123;</span><br><span class="line">        flex-direction: row;</span><br><span class="line">        li &#123;</span><br><span class="line">            background-color: <span class="comment">#ffcc5c;</span></span><br><span class="line">            font-size: 50px;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 50%;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (min-width: 992px) &#123;</span><br><span class="line">    .item &#123;</span><br><span class="line">        flex-wrap: nowrap;</span><br><span class="line">        li &#123;</span><br><span class="line">            background-color: <span class="comment">#ffeead;</span></span><br><span class="line">            font-size: 100px;</span><br><span class="line">            height: 500px;</span><br><span class="line">            width: calc(100% / 4);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h3><p>下面让我们来看如何使用CSS变量来解决这个问题。首先，要把我们将重复利用和更改的数值存储在变量的内部：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">--base-color: <span class="comment">#ff6f69;</span></span><br><span class="line">--base-font-size: 20px;</span><br><span class="line">--direction: column;</span><br><span class="line">--width: 100%;</span><br><span class="line">--height: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，在整个页面中简单地使用这些变量就行了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  padding: 10px;</span><br><span class="line">  justify-content: space-around;</span><br><span class="line">  flex-direction: var(--direction);</span><br><span class="line">  flex-wrap: var(--wrap);</span><br><span class="line">  li&#123;</span><br><span class="line">    list-style-type: none;</span><br><span class="line">    border: 1px solid <span class="comment">#fff;</span></span><br><span class="line">    height: var(--height);</span><br><span class="line">    width: var(--width);</span><br><span class="line">    background-color: var(--base-color);</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一旦进行了这样的设置之后，我们只要在媒体查询中简单地更改变量值就行了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@media (min-width: 768px) &#123;</span><br><span class="line">  :root &#123;</span><br><span class="line">    --base-font-size: 60px;</span><br><span class="line">    --base-color: <span class="comment">#ffcc5c;</span></span><br><span class="line">    --direction: row;</span><br><span class="line">    --height: 300px;</span><br><span class="line">    --width: 50%;</span><br><span class="line">    --wrap:wrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-width: 992px) &#123;</span><br><span class="line">  :root &#123;</span><br><span class="line">    --base-font-size: 100px;</span><br><span class="line">    --base-color: <span class="comment">#ffeead;</span></span><br><span class="line">    --direction: row;</span><br><span class="line">    --height: 500px;</span><br><span class="line">    --width: calc(100% / 4);</span><br><span class="line">    --wrap:nowrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这比我们以往的方法简便多了。只需盯住 :root，而不必为所有的选择器指定值了。</p>
+<p>这只是一个简单的例子。设想成熟的网站会是什么样子吧，例如，用 –base-margin 来控制APP四周的多数自由空间。想翻转其值也是很容易的事情，不必用复杂的选择器来填充媒体查询了。</p>
+<p>总之，CSS变量绝对是提高响应速度时，所代表的未来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xianzhiding.github.io/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/" data-id="cknpjow7b000088w5dclacznp" data-title="CSS变量创建网页响应布局" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css-var/" rel="tag">css var()</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-你真的需要了解一下CSS变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2018-11-13T16:00:00.000Z" itemprop="datePublished">2018-11-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/">你真的需要了解一下CSS变量 var()</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>当Web项目变得越来越大时，他的CSS会变得像天文数字那么大而且还变得混乱。为了帮助我们解决这个问题，新的CSS变量很快就会出现在主流浏览器中，它让开发人员能够重用并轻松编辑重复出现的CSS属性。用过SASS或Less的人应该知道他的变量功能有多棒，但这些变量是预处理器，需要在使用前进行编译。现在变量在vanilla CSS中可用，您可以立即在浏览器中使用它们！</p>
+<h2 id="定义和使用CSS变量"><a href="#定义和使用CSS变量" class="headerlink" title="定义和使用CSS变量"></a>定义和使用CSS变量</h2><p>与任何其他CSS定义一样，变量遵循相同的范围和继承规则。使用它们的最简单方法是通过将声明添加到:root伪类来使它们全局可用，以便所有其他选择器都可以继承它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">  --awesome-blue：＃2196F3; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要访问变量中的值，我们可以使用var(…)语法。请注意，名称区分大小写，因此–foo != –FOO。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.element &#123;</span><br><span class="line">    background-color:var(--awesome-blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>常用的浏览器除了IE都完美支持，您可以在此处获取更多详细信息 - 我可以使用CSS变量。下面是几个例子，展示了CSS变量的典型用法。为确保它们正常工作，请尝试在我们上面提到的其中一个浏览器上查看它们。</p>
+<h4 id="示例1-主题颜色"><a href="#示例1-主题颜色" class="headerlink" title="示例1 - 主题颜色"></a>示例1 - 主题颜色</h4><p>当我们需要对多个元素一遍又一遍地应用相同的规则时，CSS中的变量是最有用的，例如主题中的重复颜色。我们不是每次想要重复使用相同颜色时进行复制和粘贴，而是将其放在变量中并从那里访问它。</p>
+<p>现在，如果我们的客户不喜欢我们选择的蓝色阴影，我们可以在一个地方（变量的定义）改变样式来改变整个主题的颜色。没有变量，我们必须手动搜索和替换每一次出现。</p>
+<p>可将代码复制下来在你的编辑器里面测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">* &#123;margin: 0;padding: 0;box-sizing: border-box;&#125;html &#123;padding: 30px;font: normal 13px&#x2F;1.5 sans-serif;color: #546567;background-color: var(--primary-color);&#125;.container &#123;background: #fff;padding: 20px;&#125;h3 &#123;padding-bottom: 10px;margin-bottom: 15px;&#125;p &#123;background-color: #fff;margin: 15px 0;&#125;button &#123;font-size: 13px;padding: 8px 12px;background-color: #fff;border-radius: 3px;box-shadow: none;text-transform: uppercase;font-weight: bold;cursor: pointer;opacity: 0.8;outline: 0;&#125;button:hover &#123;opacity: 1;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">:root &#123;</span><br><span class="line">    --primary-color: #B1D7DC;</span><br><span class="line">    --accent-color: #FF3F90;</span><br><span class="line">&#125;</span><br><span class="line">html &#123;</span><br><span class="line">    background-color: var(--primary-color);</span><br><span class="line">&#125;</span><br><span class="line">h3 &#123;</span><br><span class="line">    border-bottom: 2px solid var(--primary-color);</span><br><span class="line">&#125;</span><br><span class="line">button &#123;</span><br><span class="line">    color: var(--accent-color);</span><br><span class="line">    border: 1px solid var(--accent-color);</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">&lt;h3&gt;对话框窗口&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;p&gt;过放荡不羁的生活，容易得像顺水推舟，但是要结识良朋益友，却难如登天。&lt;&#x2F;p&gt;</span><br><span class="line">&lt;button&gt;确认&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="xmLvoV" data-default-tab="result" data-user="w3cbest" data-pen-title="示例1 – 主题颜色">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/xmLvoV/">示例1 – 主题颜色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
+
+<h4 id="示例2-属性类名可读性"><a href="#示例2-属性类名可读性" class="headerlink" title="示例2 - 属性类名可读性"></a>示例2 - 属性类名可读性</h4><p>变量的另一个重要用途是当我们想要保存更复杂的属性值时，我们不必记住它。最好的例子就是有多个参数，如CSS规则box-shadow，transform和font。</p>
+<p>通过将属性放在变量中，我们可以使用语义可读的名称来访问它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">html&#123;background-color: #F9F9F9;&#125;</span><br><span class="line">ul&#123;padding: 20px;list-style: none;width: 300px;&#125;</span><br><span class="line">li&#123;font: normal 18px sans-serif;padding: 20px;transition: 0.4s;margin: 10px;color: #444;background-color: #fff;cursor: pointer;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">:root&#123;</span><br><span class="line">    --tiny-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);</span><br><span class="line">    --animate-right: translateX(20px);</span><br><span class="line">&#125;</span><br><span class="line">li&#123;</span><br><span class="line">    box-shadow: var(--tiny-shadow);</span><br><span class="line">&#125;</span><br><span class="line">li:hover&#123;</span><br><span class="line">    transform: var(--animate-right);</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="LMjwKb" data-default-tab="result" data-user="w3cbest" data-pen-title="示例2 – 属性类名可读性">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/LMjwKb/">示例2 – 属性类名可读性</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
+
+<h4 id="示例3-动态更改变量"><a href="#示例3-动态更改变量" class="headerlink" title="示例3 - 动态更改变量"></a>示例3 - 动态更改变量</h4><p>当多次声明自定义属性时，标准规则有助于解决冲突，样式表中最后定义的会覆盖上面定义的。</p>
+<p>下面的示例演示了用户动态操作改变属性是多么容易，同时仍然保持代码清晰简洁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">*&#123;margin: 0;padding: 0;box-sizing: border-box;&#125;</span><br><span class="line">html&#123;background: #eee;padding: 30px;font: 500 14px sans-serif;color: #333;line-height: 1.5;&#125;</span><br><span class="line">.blue-container&#123;background: #64B5F6;padding-left: 50px;&#125;</span><br><span class="line">.green-container&#123;background: #AED581;padding-left: 50px;&#125;</span><br><span class="line">.container&#123;background: #fff;padding: 20px;&#125;</span><br><span class="line">p&#123;transition: 0.4s;&#125;</span><br><span class="line">.title&#123;font-weight: bold;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">.blue-container&#123;</span><br><span class="line">    --title-text: 18px;</span><br><span class="line">    --main-text: 14px;</span><br><span class="line">&#125;</span><br><span class="line">.blue-container:hover&#123;</span><br><span class="line">    --title-text: 24px;</span><br><span class="line">    --main-text: 16px;</span><br><span class="line">&#125;</span><br><span class="line">.green-container:hover&#123;</span><br><span class="line">    --title-text: 30px;</span><br><span class="line">    --main-text: 18px;</span><br><span class="line">&#125;</span><br><span class="line">.title&#123;</span><br><span class="line">    font-size: var(--title-text);</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    font-size: var(--main-text);</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;blue-container&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;green-container&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;p class&#x3D;&quot;title&quot;&gt;这是个标题&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p class&#x3D;&quot;content&quot;&gt;将鼠标悬停在不同的颜色区域上可以更改此文本和标题的大小。&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="OrxLLE" data-default-tab="result" data-user="w3cbest" data-pen-title="示例3 – 动态更改变量">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/OrxLLE/">示例3 – 动态更改变量</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
+<p><script async="" src="https://static.codepen.io/assets/embed/ei.js"></script></p>
+
+<p>正如您所看到的，CSS变量非常简单易用，开发人员不必花费太多时间在各处开始应用它们。以下是扩展内容：</p>
+<p>var()函数有两个参数，如果自定义属性失败，它可用于提供回退值：<br>    width: var(–custom-width, 20%);<br>    可以嵌套自定义属性：<br>    –base-color: #f93ce9;<br>    –background-gradient: linear-gradient(to top, var(–base-color), #444);<br>    变量可以与CSS的另一个新增功能- calc() 函数结合使用。<br>    –container-width: 1000px;<br>    max-width: calc(var(–container-width) / 2);</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xianzhiding.github.io/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/" data-id="cknpjow7l000488w583br60lo" data-title="你真的需要了解一下CSS变量 var()" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css-var/" rel="tag">css var()</a></li></ul>
 
     </footer>
   </div>
@@ -195,7 +327,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" rel="tag">适配深色</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-var/" rel="tag">css var()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" rel="tag">适配深色</a></li></ul>
     </div>
   </div>
 
@@ -205,7 +337,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" style="font-size: 10px;">二维码</a> <a href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" style="font-size: 10px;">适配深色</a>
+      <a href="/tags/css-var/" style="font-size: 20px;">css var()</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" style="font-size: 10px;">二维码</a> <a href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" style="font-size: 10px;">适配深色</a>
     </div>
   </div>
 
@@ -214,7 +346,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -232,6 +364,14 @@
         
           <li>
             <a href="/2021/04/02/QR-code-plug-in/">分享一个生成二维码的插件–QRCode.js</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/">CSS变量创建网页响应布局</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/">你真的需要了解一下CSS变量 var()</a>
           </li>
         
       </ul>
