@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://xianzhiding.github.io/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站 如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。 从本质上讲，CSS变量可以让你摆脱老式的样式设置： 1234567h1 &amp;#123;    font-size: 30px;&amp;#125;navbar&gt;a &amp;#123;    font">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-14T07:40:38.000Z">
 <meta property="article:modified_time" content="2021-04-20T04:30:40.877Z">
 <meta property="article:author" content="Tom">
@@ -22,7 +22,7 @@
     <link rel="alternate" href="/atom.xml" title="前端开发 大前端 W3Cbest" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/css/images/favicon.png">
   
   
     
@@ -33,19 +33,22 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
     <div id="wrap">
-      <header id="header">
+      <!--
+ * @Description: 
+ * @Author: dingxianzhi
+ * @Email: dingxz@moofen.cn
+ * @Date: 2021-04-20 14:26:03
+ * @LastEditTime: 2021-04-20 14:52:21
+-->
+<header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
+    <div id="header-title" class="inner" style="display: none;">
       <h1 id="logo-wrap">
         <a href="/" id="logo">前端开发 大前端 W3Cbest</a>
       </h1>
@@ -66,12 +69,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xianzhiding.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xianzhiding.github.io"></form>
       </div>
     </div>
   </div>
@@ -131,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xianzhiding.github.io/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/" data-id="cknpmkyp600018ow51wca8vcl" data-title="CSS变量创建网页响应布局" class="article-share-link">Share</a>
+      <a data-url="https://xianzhiding.github.io/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/" data-id="cknpoi3du0003x8w503u9bpn3" data-title="CSS变量创建网页响应布局" class="article-share-link">分享</a>
       
       
       
@@ -144,7 +147,7 @@
 <nav id="article-nav">
   
     <a href="/2021/04/02/QR-code-plug-in/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
           分享一个生成二维码的插件–QRCode.js
@@ -154,7 +157,7 @@
   
   
     <a href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">你真的需要了解一下CSS变量 var()</div>
     </a>
   
@@ -173,7 +176,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
       <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-var/" rel="tag">css var()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" rel="tag">适配深色</a></li></ul>
     </div>
@@ -183,18 +186,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/css-var/" style="font-size: 20px;">css var()</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" style="font-size: 10px;">二维码</a> <a href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" style="font-size: 10px;">适配深色</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul>
     </div>
   </div>
 
@@ -202,7 +196,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
@@ -238,8 +232,10 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
+      &copy; 2021 Tom
       
-      &copy; 2021 Tom<br>
+        W3Cbest前端开发
+      
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -258,10 +254,6 @@
 
 <script src="/js/jquery-3.4.1.min.js"></script>
 
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
