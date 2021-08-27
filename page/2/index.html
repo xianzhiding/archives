@@ -1,23 +1,275 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>前端开发 大前端 W3Cbest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端开发 大前端 W3Cbest">
+<meta property="og:url" content="https://xianzhiding.github.io/page/2/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="前端开发,es5,es6,es10,css,javascript,html,flexbox,grid,echarts">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="前端开发 大前端 W3Cbest" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/css/images/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <!--
+ * @Description: 
+ * @Author: dingxianzhi
+ * @Email: dingxz@moofen.cn
+ * @Date: 2021-04-20 14:26:03
+ * @LastEditTime: 2021-04-20 14:52:21
+-->
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner" style="display: none;">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">前端开发 大前端 W3Cbest</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个专注 WEB 开发的技术博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xianzhiding.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Hexo搭建Github个人博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/04/19/Hexo%E6%90%AD%E5%BB%BAGithub%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2017-04-19T01:40:38.000Z" itemprop="datePublished">2017-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/04/19/Hexo%E6%90%AD%E5%BB%BAGithub%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hexo搭建Github个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="建立自己的github-io"><a href="#建立自己的github-io" class="headerlink" title="建立自己的github.io"></a>建立自己的github.io</h2><p>建立自己的github.io，这个跟创建普通的github仓库一样，只是仓库的名字叫xxx.github.io。</p>
+<h2 id="配置git账号"><a href="#配置git账号" class="headerlink" title="配置git账号"></a>配置git账号</h2><p>如果本地已安装<a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">SourceTree</a>并已使用github账号下载过项目，则请忽略。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your name&quot;</span><br><span class="line">$ git config --global user.email xxx@email.com&#96;&#96;</span><br></pre></td></tr></table></figure>
+<h2 id="配置github账号的SSH-key"><a href="#配置github账号的SSH-key" class="headerlink" title="配置github账号的SSH key"></a>配置github账号的SSH key</h2><p>如果本地已安装<a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">SourceTree</a>并已使用github账号下载过项目，则请忽略。</p>
+<h4 id="生成ssh公钥"><a href="#生成ssh公钥" class="headerlink" title="生成ssh公钥"></a>生成ssh公钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -c &quot;xxx@xxx.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>三次回车即可生成ssh key，对于存放目录，可以使用默认，也可在默认的基础上添加自定义目录。个人倾向于自定义目录。</p>
+<h4 id="查看public-key，并把它添加到github公钥中"><a href="#查看public-key，并把它添加到github公钥中" class="headerlink" title="查看public key，并把它添加到github公钥中"></a>查看public key，并把它添加到github公钥中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>将#号后的内容拷贝到 <code>Github</code> 公钥中并保存即可。</p>
+<p>具体可参考<a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="noopener">Github</a>官网的配置，或参考<a href="http://git.mydoc.io/?t=154712" target="_blank" rel="noopener">码云</a>关于ssh key的配置</p>
+<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+<p>由于hexo的运行，依赖于<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">Node.js</a>，所以在安装hexo前，请先安装<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">Node.js</a>。</p>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>Hexo的具体安装可参见其<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官网</a>。</p>
+<h2 id="hexo简单使用"><a href="#hexo简单使用" class="headerlink" title="hexo简单使用"></a>hexo简单使用</h2><h4 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init myblog</span><br></pre></td></tr></table></figure>
+<p>创建新工程，名字就叫 <code>myblog</code> 。</p>
+<p>创建新工程后，里面会有一堆的文件。其中(<code>_config.yml</code>)文件为工程配置文件，这里面包含了整个工程的运行配置，我们待会会对其进行修改。</p>
+<h4 id="修改配置-amp-amp-git绑定"><a href="#修改配置-amp-amp-git绑定" class="headerlink" title="修改配置 &amp;&amp; git绑定"></a>修改配置 &amp;&amp; git绑定</h4><p>对(<code>_config.yml</code>)文件进行修改， 主要更改点为 <code>title</code> 、 <code>author</code> 、 <code>url</code>、<code>deploy</code> 等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: myblog</span><br><span class="line">author: Tom</span><br><span class="line">url: https:&#x2F;&#x2F;xianzhiding.github.io</span><br><span class="line">...</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:xianzhiding&#x2F;xianzhiding.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建博文"><a href="#创建博文" class="headerlink" title="创建博文"></a>创建博文</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new myblog</span><br></pre></td></tr></table></figure>
+<p>新建一个名叫myblog的博文。</p>
+<h4 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>该命令可简写为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<p>此命令执行后，会在工程里生成一个<code>public</code>文件夹，这个文件夹里的文件，包含了整个静态网站运行的所有文件。这些文件，会在我们部署网站的时候，提交到我们创建的<code>github.io</code>仓库里。</p>
+<h4 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>可简写为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>启动本地服务环境后，可在浏览器中输入<code>http://localhost:4000/</code>预览工程的运行。</p>
+<h4 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>可简写为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>若前面已配置过<code>_config.yml</code>中的Deployment，则执行部署后，会将<code>public</code>里的内容提交到我们的<code>github.io</code>中。大约5~10分钟，就可以通过<code>github.io</code>访问到自己的静态网站了。</p>
+<h4 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<p>在某些情况下（尤其是更改主题后），肯能出现站点运行异常，可执行此命令。</p>
+<p>需要注意的是：若清空了缓存，则站点需要重新生成静态文件并发布。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xianzhiding.github.io/2017/04/19/Hexo%E6%90%AD%E5%BB%BAGithub%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ckstyv9hx0001m0w55gq62906" data-title="Hexo搭建Github个人博客" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/" rel="tag">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-var/" rel="tag">css var()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-SCSS%E7%BC%96%E8%AF%91/" rel="tag">微信开发工具 SCSS编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" rel="tag">适配深色</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E6%8A%96-%E8%8A%82%E6%B5%81/" rel="tag">防抖, 节流</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/25/%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/">前端缓存技术</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/25/%E5%B0%81%E8%A3%85Promise%E8%AF%B7%E6%B1%82request/">封装Promise请求</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/">什么是防抖和节流？有什么区别？如何实现？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/13/window.parent%20,window.top,window.self%20%E8%AF%A6%E8%A7%A3/">Js 中的 window.parent ,window.top,window.self 详解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Tom
+      
+        W3Cbest前端开发
+      
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

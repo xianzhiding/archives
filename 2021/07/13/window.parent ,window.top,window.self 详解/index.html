@@ -1,37 +1,275 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Js 中的 window.parent ,window.top,window.self 详解 | 前端开发 大前端 W3Cbest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="在应用有 frameset 或者 iframe 的页面时，parent 是父窗口，top 是最顶级父窗口（有的窗口中套了好几层 frameset 或者 iframe），self 是当前窗口， opener 是用 open 方法打开当前窗口的那个窗口。 window.self功能：是对当前窗口自身的引用。它和 window 属性是等价的。 语法：window.self 注：window、self、w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Js 中的 window.parent ,window.top,window.self 详解">
+<meta property="og:url" content="https://xianzhiding.github.io/2021/07/13/window.parent%20,window.top,window.self%20%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="在应用有 frameset 或者 iframe 的页面时，parent 是父窗口，top 是最顶级父窗口（有的窗口中套了好几层 frameset 或者 iframe），self 是当前窗口， opener 是用 open 方法打开当前窗口的那个窗口。 window.self功能：是对当前窗口自身的引用。它和 window 属性是等价的。 语法：window.self 注：window、self、w">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-13T02:11:31.000Z">
+<meta property="article:modified_time" content="2021-07-13T02:18:25.079Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="window">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="前端开发 大前端 W3Cbest" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/css/images/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <!--
+ * @Description: 
+ * @Author: dingxianzhi
+ * @Email: dingxz@moofen.cn
+ * @Date: 2021-04-20 14:26:03
+ * @LastEditTime: 2021-04-20 14:52:21
+-->
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner" style="display: none;">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">前端开发 大前端 W3Cbest</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个专注 WEB 开发的技术博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xianzhiding.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-window.parent ,window.top,window.self 详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/13/window.parent%20,window.top,window.self%20%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T02:11:31.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Js 中的 window.parent ,window.top,window.self 详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在应用有 frameset 或者 iframe 的页面时，parent 是父窗口，top 是最顶级父窗口（有的窗口中套了好几层 frameset 或者 iframe），self 是当前窗口， opener 是用 open 方法打开当前窗口的那个窗口。</p>
+<h3 id="window-self"><a href="#window-self" class="headerlink" title="window.self"></a>window.self</h3><p>功能：是对当前窗口自身的引用。它和 window 属性是等价的。</p>
+<p>语法：window.self</p>
+<p>注：window、self、window.self 是等价的。</p>
+<h3 id="window-top"><a href="#window-top" class="headerlink" title="window.top"></a>window.top</h3><p>功能：返回顶层窗口，即浏览器窗口。</p>
+<p>语法：window.top</p>
+<p>注：如果窗口本身就是顶层窗口，top 属性返回的是对自身的引用。</p>
+<h3 id="window-parent"><a href="#window-parent" class="headerlink" title="window.parent"></a>window.parent</h3><p>功能：返回父窗口。</p>
+<p>语法：window.parent</p>
+<p>注：如果窗口本身是顶层窗口，parent 属性返回的是对自身的引用。</p>
+<p>在框架网页中，一般父窗口就是顶层窗口，但如果框架中还有框架，父窗口和顶层窗口就不一定相同了。</p>
+<p>判断当前窗口是否在一个框架中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">var b &#x3D; window.top!&#x3D;window.self;</span><br><span class="line">document.write( &quot;当前窗口是否在一个框架中：&quot;+b );</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>你应当将框架视为窗口中的不同区域，框架是浏览器窗口中特定的部分。一个浏览器窗口可以根据你的需要分成任意多的框架，一个单个的框架也可以分成其它多个框架，即所谓的嵌套框架。</p>
+<p>举个栗子：</p>
+<p>parent.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">　  &lt;iframe src&#x3D;&quot;child.html&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">          window.methods &#x3D; &#123;</span><br><span class="line">              workOrderCallback() &#123;</span><br><span class="line">                  console.log(arguments);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line">  </span><br><span class="line">     &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>child.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    window.parent.methods.workOrderCallback(111);</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><pre><code>首先要保证同域
+这里用的 window.parent 找的是父级 window,区别于 window.top
+</code></pre>
+<h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/parent" target="_blank" rel="noopener">window.parent</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/top" target="_blank" rel="noopener">window.top</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/self" target="_blank" rel="noopener">window.self</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/frameElement" target="_blank" rel="noopener">window.frameElement</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xianzhiding.github.io/2021/07/13/window.parent%20,window.top,window.self%20%E8%AF%A6%E8%A7%A3/" data-id="ckstyv9i30008m0w5gbze8iq2" data-title="Js 中的 window.parent ,window.top,window.self 详解" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/window/" rel="tag">window</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          什么是防抖和节流？有什么区别？如何实现？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/19/color-scheme/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">适配深色模式方案</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+</section>
+        
+          <aside id="sidebar">
+  
+    
 
-{% block page_class %}page-post-detail{% endblock %}
-
-
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/" rel="tag">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-var/" rel="tag">css var()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="tag">二维码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-SCSS%E7%BC%96%E8%AF%91/" rel="tag">微信开发工具 SCSS编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2/" rel="tag">适配深色</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E6%8A%96-%E8%8A%82%E6%B5%81/" rel="tag">防抖, 节流</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/25/%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/">前端缓存技术</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/25/%E5%B0%81%E8%A3%85Promise%E8%AF%B7%E6%B1%82request/">封装Promise请求</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/">什么是防抖和节流？有什么区别？如何实现？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/13/window.parent%20,window.top,window.self%20%E8%AF%A6%E8%A7%A3/">Js 中的 window.parent ,window.top,window.self 详解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Tom
+      
+        W3Cbest前端开发
+      
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
