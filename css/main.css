@@ -401,6 +401,14 @@ code {
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+.highlight {
+  background-image: url("data:image/svg+xml;base64,ICA8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjQ1MHB4IiBoZWlnaHQ9IjEzMHB4Ij4KICAgPGVsbGlwc2UgY3g9IjY1IiBjeT0iNjUiIHJ4PSI1MCIgcnk9IjUyIiBzdHJva2U9InJnYigyMjAsNjAsNTQpIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9InJnYigyMzcsMTA4LDk2KSI+CiAgIDwvZWxsaXBzZT4KICAgPGVsbGlwc2UgY3g9IjIyNSIgY3k9IjY1IiByeD0iNTAiIHJ5PSI1MiIgc3Ryb2tlPSJyZ2IoMjE4LDE1MSwzMykiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0icmdiKDI0NywxOTMsODEpIj4KICAgPC9lbGxpcHNlPgogICA8ZWxsaXBzZSBjeD0iMzg1IiBjeT0iNjUiIHJ4PSI1MCIgcnk9IjUyIiBzdHJva2U9InJnYigyNywxNjEsMzcpIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9InJnYigxMDAsMjAwLDg2KSI+CiAgIDwvZWxsaXBzZT4KICA8L3N2Zz4K");
+  background-repeat: no-repeat;
+  padding-top: 36px;
+  background-size: 55px;
+  background-position: 10px 10px;
+  border-radius: 5px;
+}
 .highlight *::selection {
   background: #515151;
 }
@@ -1168,7 +1176,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0aff9f;
+  background: #cd771f;
   border-radius: 50%;
   content: ' ';
   display: inline-block;

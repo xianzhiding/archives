@@ -302,89 +302,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2021/07/13/window.parent%20,window.top,window.self%20%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/13/window.parent%20,window.top,window.self%20%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">Js 中的 window.parent ,window.top,window.self 详解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-07-13 10:11:31 / 修改时间：10:18:25" itemprop="dateCreated datePublished" datetime="2021-07-13T10:11:31+08:00">2021-07-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在应用有 frameset 或者 iframe 的页面时，parent 是父窗口，top 是最顶级父窗口（有的窗口中套了好几层 frameset 或者 iframe），self 是当前窗口， opener 是用 open 方法打开当前窗口的那个窗口。</p>
-<h3 id="window-self"><a href="#window-self" class="headerlink" title="window.self"></a>window.self</h3><p>功能：是对当前窗口自身的引用。它和 window 属性是等价的。</p>
-<p>语法：window.self</p>
-<p>注：window、self、window.self 是等价的。</p>
-<h3 id="window-top"><a href="#window-top" class="headerlink" title="window.top"></a>window.top</h3><p>功能：返回顶层窗口，即浏览器窗口。</p>
-<p>语法：window.top</p>
-<p>注：如果窗口本身就是顶层窗口，top 属性返回的是对自身的引用。</p>
-<h3 id="window-parent"><a href="#window-parent" class="headerlink" title="window.parent"></a>window.parent</h3><p>功能：返回父窗口。</p>
-<p>语法：window.parent</p>
-<p>注：如果窗口本身是顶层窗口，parent 属性返回的是对自身的引用。</p>
-<p>在框架网页中，一般父窗口就是顶层窗口，但如果框架中还有框架，父窗口和顶层窗口就不一定相同了。</p>
-<p>判断当前窗口是否在一个框架中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">var b &#x3D; window.top!&#x3D;window.self;</span><br><span class="line">document.write( &quot;当前窗口是否在一个框架中：&quot;+b );</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>你应当将框架视为窗口中的不同区域，框架是浏览器窗口中特定的部分。一个浏览器窗口可以根据你的需要分成任意多的框架，一个单个的框架也可以分成其它多个框架，即所谓的嵌套框架。</p>
-<p>举个栗子：</p>
-<p>parent.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">　  &lt;iframe src&#x3D;&quot;child.html&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">          window.methods &#x3D; &#123;</span><br><span class="line">              workOrderCallback() &#123;</span><br><span class="line">                  console.log(arguments);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line">  </span><br><span class="line">     &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-
-<p>child.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    window.parent.methods.workOrderCallback(111);</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><pre><code>首先要保证同域
-这里用的 window.parent 找的是父级 window,区别于 window.top
-</code></pre>
-<h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/parent" target="_blank" rel="noopener">window.parent</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/top" target="_blank" rel="noopener">window.top</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/self" target="_blank" rel="noopener">window.self</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/frameElement" target="_blank" rel="noopener">window.frameElement</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2021/04/19/color-scheme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -942,6 +859,98 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/07/20/get%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E9%95%BF%E5%BA%A6%E7%9A%84%E8%AF%AF%E5%8C%BA%E3%80%81get%E5%92%8Cpost%E8%AF%B7%E6%B1%82%E5%9C%A8%E7%BC%93%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/20/get%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E9%95%BF%E5%BA%A6%E7%9A%84%E8%AF%AF%E5%8C%BA%E3%80%81get%E5%92%8Cpost%E8%AF%B7%E6%B1%82%E5%9C%A8%E7%BC%93%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">http和https的区别, get和post的区别, cookie、sessionStorage、localStorage的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-20 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-20T00:00:00+08:00">2018-07-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 09:48:51" itemprop="dateModified" datetime="2021-08-30T09:48:51+08:00">2021-08-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1，http和https的区别"><a href="#1，http和https的区别" class="headerlink" title="1，http和https的区别"></a>1，http和https的区别</h2><p>http传输的数据都是未加密的，也就是明文的，网景公司设置了SSL协议来对http协议传输的数据进行加密处理，简单来说https协议是由http和ssl协议构建的可进行加密传输和身份认证的网络协议，比http协议的安全性更高。主要的区别如下：</p>
+<ul>
+<li>Https协议需要ca证书，费用较高。</li>
+<li>http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。</li>
+<li>使用不同的链接方式，端口也不同，一般而言，http协议的端口为80，https的端口为443</li>
+<li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</li>
+</ul>
+<h2 id="2，get请求传参长度的误区、get和post请求在缓存方面的区别"><a href="#2，get请求传参长度的误区、get和post请求在缓存方面的区别" class="headerlink" title="2，get请求传参长度的误区、get和post请求在缓存方面的区别"></a>2，get请求传参长度的误区、get和post请求在缓存方面的区别</h2><p>误区：我们经常说get请求参数的大小存在限制，而post请求的参数大小是无限制的。</p>
+<p>实际上HTTP 协议从未规定 GET/POST 的请求长度限制是多少。对get请求参数的限制是来源与浏览器或web服务器，浏览器或web服务器限制了url的长度。为了明确这个概念，我们必须再次强调下面几点:</p>
+<ul>
+<li>HTTP 协议 未规定 GET 和POST的长度限制</li>
+<li>GET的最大长度显示是因为 浏览器和 web服务器限制了 URI的长度</li>
+<li>不同的浏览器和WEB服务器，限制的最大长度不一样</li>
+<li>要支持IE，则最大长度为2083byte，若只支持Chrome，则最大长度 8182byte</li>
+</ul>
+<h4 id="补充补充一个get和post在缓存方面的区别："><a href="#补充补充一个get和post在缓存方面的区别：" class="headerlink" title="补充补充一个get和post在缓存方面的区别："></a>补充补充一个get和post在缓存方面的区别：</h4><ul>
+<li>get请求类似于查找的过程，用户获取数据，可以不用每次都与数据库连接，所以可以使用缓存。</li>
+<li>post不同，post做的一般是修改和删除的工作，所以必须与数据库交互，所以不能使用缓存。因此get请求适合于请求缓存。</li>
+</ul>
+<h2 id="3-cookie、sessionStorage、localStorage的区别"><a href="#3-cookie、sessionStorage、localStorage的区别" class="headerlink" title="3,cookie、sessionStorage、localStorage的区别"></a>3,cookie、sessionStorage、localStorage的区别</h2><p>共同点：都是保存在浏览器端，并且是同源的</p>
+<ul>
+<li>Cookie：cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下,存储的大小很小只有4K左右。（key：可以在浏览器和服务器端来回传递，存储容量小，只有大约4K左右）</li>
+<li>sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持，localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。（key：本身就是一个回话过程，关闭浏览器后消失，session为一个回话，当页面不同即使是同一页面打开两次，也被视为同一次回话）</li>
+<li>localStorage：localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。（key：同源窗口都会共享，并且不会失效，不管窗口或者浏览器关闭与否都会始终生效）</li>
+</ul>
+<h4 id="补充说明一下cookie的作用："><a href="#补充说明一下cookie的作用：" class="headerlink" title="补充说明一下cookie的作用："></a>补充说明一下cookie的作用：</h4><p>保存用户登录状态。例如将用户id存储于一个cookie内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都提供这样的功能。cookie还可以设置过期时间，当超过时间期限后，cookie就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项有一个月、三个 月、一年等。</p>
+<p>跟踪用户行为。例如一个天气预报网站，能够根据用户选择的地区显示当地的天气情况。如果每次都需要选择所在地是烦琐的，当利用了 cookie后就会显得很人性化了，系统能够记住上一次访问的地区，当下次再打开该页面时，它就会自动显示上次用户所在地区的天气情况。因为一切都是在后 台完成，所以这样的页面就像为某个用户所定制的一样，使用起来非常方便</p>
+<p>定制页面。如果网站提供了换肤或更换布局的功能，那么可以使用cookie来记录用户的选项，例如：背景色、分辨率等。当用户下次访问时，仍然可以保存上一次访问的界面风格。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1011,12 +1020,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
