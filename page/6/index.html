@@ -177,6 +177,117 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/02/18/%E5%A6%82%E4%BD%95%E5%9C%A8javascript%E4%B8%AD%E8%8E%B7%E5%8F%96css%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/18/%E5%A6%82%E4%BD%95%E5%9C%A8javascript%E4%B8%AD%E8%8E%B7%E5%8F%96css%E5%80%BC/" class="post-title-link" itemprop="url">如何在JavaScript中获取CSS值</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-18 11:44:24" itemprop="dateCreated datePublished" datetime="2019-02-18T11:44:24+08:00">2019-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有时候单独的使用CSS是不够的。您可能需要使用JavaScript控制CSS值。但是你如何在JavaScript中获得CSS值？ 有两种可能的方式，取决于您是尝试获取内联样式还是计算样式。</p>
+<h2 id="获取内联样式"><a href="#获取内联样式" class="headerlink" title="获取内联样式"></a>获取内联样式</h2><p>内联样式是存在于 HTML style 属性(attribute)中的样式。</p>
+<div class="element" style="font-size: 2em; color: red;">Red hot chili pepper!</div>
+
+<p>要获取内联样式，可以使用 style 属性(property)。</p>
+<p>const element = document.querySelector(‘.element’)</p>
+<p>const fontSize = element.style.fontSize<br>console.log(fontSize) // 2em</p>
+<p>const color = element.style.color<br>console.log(color) // red</p>
+<h2 id="获取计算样式"><a href="#获取计算样式" class="headerlink" title="获取计算样式"></a>获取计算样式</h2><p>如果您的样式是在CSS文件中编写的，则需要获取计算出的样式。为此，您可以使用 getComputedStyle 。 它有两个值：</p>
+<p>const style = getComputedStyle(Element, );</p>
+<p>这里的Element是指您使用 querySelector 选择的元素。 这里的 pseudoElement 指的是你想要获取的伪类元素的字符串（如果有的话）。如果您没有选择伪元素，则可以省略这个值。 让我们通过一个例子来帮助理解。假设您有以下HTML和CSS：</p>
+<div class="element"> This is my element </div>
+.element { background-color: red }
+
+<p>首先，您需要使用 querySelector 选择元素。然后，使用 getComputedStyle 获取元素的样式。</p>
+<p>const element = document.querySelector(‘.element’)<br>const style = getComputedStyle(element)</p>
+<p>如果你用 console.log(style) 打印，您应该看到一个包含每个CSS属性及其各自值的对象。 <img src="http://file.w3cbest.com/file/images/all-properties.png"></p>
+<p>图注：getComputedStyle 返回一个包含每个CSS属性及其各自值的对象</p>
+<p>您还可以在Chrome和Firefox的开发工具中看到此对象。 对于Firefox开发工具，请查看 “Inspector”，“Computed”。 <img src="http://file.w3cbest.com/file/images/firefox.png"></p>
+<p>图注：Firefox dev工具计算样式选项卡</p>
+<p>对于Chrome开发工具，请查看“Elements” 面板。 如果开发工具窗口很大，您可以在右侧面板上看到计算出的样式。 如果开发工具窗口很小，您可以在“Computed”选项卡下查看。 <img src="http://file.w3cbest.com/file/images/chrome.png"></p>
+<p>图注：Chrome dev工具计算样式选项卡</p>
+<p>要获取CSS属性的值，请以驼峰形式编写属性。</p>
+<p>const style = getComputedStyle(element)</p>
+<p>const backgroundColor = style.backgroundColor<br>console.log(backgroundColor) // rgb(0, 0, 0)</p>
+<p>注意：getComputedStyle 是只读的。您无法使用 getComputedStyle 设置CSS值。 注意2：getComputedStyle 获取计算出的CSS值。你将从 getComputedStyle 获得 px 单位值，而不是像 em 和 rem 这样的相对单位。</p>
+<h3 id="从伪类元素中获取样式"><a href="#从伪类元素中获取样式" class="headerlink" title="从伪类元素中获取样式"></a>从伪类元素中获取样式</h3><p>要从伪类元素获取样式，您需要将伪类元素的字符串作为第二个参数传递给 getComputedStyle 。</p>
+<div class="element"> This is my element </div>
+
+<p>element { background-color: red }<br>.element::before { content: “Before pseudo element”; }</p>
+<p>const element = document.querySelector(‘.element’)<br>pseudoElementStyle = getComputedStyle(element, ‘::before’)</p>
+<p>console.log(pseudoElementStyle.content) // Before pseudo element</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>您可以通过两种方法在JavaScript中获取CSS值：</p>
+<ul>
+<li>  style 属性(property)</li>
+<li>  getComputedStyle 。</li>
+</ul>
+<p>style 属性仅检索内联CSS值，而 getComputedStyle 样式检索计算的CSS值。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/02/12/%E8%81%8A%E4%B8%80%E8%81%8A-css-position-sticky%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1274,108 +1385,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/" class="post-title-link" itemprop="url">一些很酷的chorem开发工具的提示和技巧的列表</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-03 17:45:01" itemprop="dateCreated datePublished" datetime="2019-01-03T17:45:01+08:00">2019-01-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Chrome开发工具提供了一套非常棒的工具，可以帮助您在Web平台上进行开发。以下是一些你可能还不知道的建议</p>
-<h3 id="在ELEMENTS面板中拖放"><a href="#在ELEMENTS面板中拖放" class="headerlink" title="在ELEMENTS面板中拖放"></a>在ELEMENTS面板中拖放</h3><p>在Elements面板中，您可以拖放任何HTML元素并更改其在页面上的位置 <img src="http://file.w3cbest.com/file/images/reference-elements.gif"></p>
-<h3 id="引用控制台中当前选择的元素"><a href="#引用控制台中当前选择的元素" class="headerlink" title="引用控制台中当前选择的元素"></a>引用控制台中当前选择的元素</h3><p>在Elements面板中选择一个节点，并在控制台中键入$0来引用它。 <img src="http://file.w3cbest.com/file/images/drag-and-drop.gif"></p>
-<blockquote>
-<p>提示:如果使用jQuery，可以输入$($0)来访问这个元素上的jQuery API。</p>
-</blockquote>
-<h3 id="使用控制台中最后一个操作的值"><a href="#使用控制台中最后一个操作的值" class="headerlink" title="使用控制台中最后一个操作的值"></a>使用控制台中最后一个操作的值</h3><p>使用$_引用在控制台中执行的前一个操作的返回值 <img src="http://file.w3cbest.com/file/images/use-last-result.gif"></p>
-<h3 id="添加CSS并编辑元素状态"><a href="#添加CSS并编辑元素状态" class="headerlink" title="添加CSS并编辑元素状态"></a>添加CSS并编辑元素状态</h3><p>在元素面板中有两个超级有用的按钮。 第一个选项允许您添加一个新的CSS属性，使用您想要的任何选择器，但要预先填充当前选定的元素: <img src="http://file.w3cbest.com/file/images/add-css.gif"> 第二个选项允许您为所选元素触发一个状态，这样您就可以看到当它处于活动状态、悬停状态、焦点状态时应用的样式。 <img src="http://file.w3cbest.com/file/images/element-state.png"></p>
-<h3 id="找到定义CSS属性的位置"><a href="#找到定义CSS属性的位置" class="headerlink" title="找到定义CSS属性的位置"></a>找到定义CSS属性的位置</h3><p>在元素面板中的CSS属性，DevTools将指向定义该属性的地方，即源面板</p>
-<p><img src="http://file.w3cbest.com/file/images/find-where-css-defined.gif">  </p>
-<h3 id="保存并归档修改后的CSS"><a href="#保存并归档修改后的CSS" class="headerlink" title="保存并归档修改后的CSS"></a>保存并归档修改后的CSS</h3><p>单击您编辑的CSS文件的名称。检查器将它打开到Sources窗格中，然后您可以在应用的实时编辑中保存它。 这个技巧不适用于使用+或元素添加的新选择器。样式属性，但仅适用于已修改的现有属性。 <img src="http://file.w3cbest.com/file/images/save-modified-css.gif"></p>
-<h3 id="屏幕截图一个元素"><a href="#屏幕截图一个元素" class="headerlink" title="屏幕截图一个元素"></a>屏幕截图一个元素</h3><p>选择一个元素并按下cmd-shift-p(或在Windows中按ctrl-shift-p)打开命令菜单，然后选择Capture node截图 <img src="http://file.w3cbest.com/file/images/screenshot-node.gif"></p>
-<h3 id="使用CSS选择器查找元素"><a href="#使用CSS选择器查找元素" class="headerlink" title="使用CSS选择器查找元素"></a>使用CSS选择器查找元素</h3><p>按下cmd-f(在Windows中ctrl-f)将在Elements面板中打开搜索框。 你可以在里面输入任何字符串来匹配源代码，或者你也可以使用CSS选择器让Chrome为你生成一个图像: <img src="http://file.w3cbest.com/file/images/find-elements-css-selectors.gif"></p>
-<h3 id="在控制台中SHIFT-ENTER"><a href="#在控制台中SHIFT-ENTER" class="headerlink" title="在控制台中SHIFT-ENTER"></a>在控制台中SHIFT-ENTER</h3><p>要在控制台中编写跨越多行代码的命令，请按shift-enter。 一旦你准备好了，按下回车在脚本的最后，以执行它: <img src="http://file.w3cbest.com/file/images/multiple-lines-commands.gif"></p>
-<h3 id="清除控制台"><a href="#清除控制台" class="headerlink" title="清除控制台"></a>清除控制台</h3><p>您可以使用控制台左上角的clear按钮清除控制台，或者按ctrl-l或cmd-k。</p>
-<h3 id="GO-TO…"><a href="#GO-TO…" class="headerlink" title="GO TO…"></a>GO TO…</h3><p>在资源面板:</p>
-<ul>
-<li>  显示页面加载的所有文件。</li>
-<li>  显示当前文件中的符号(属性、函数、类)。</li>
-<li>  ctrl-g转到特定的行。</li>
-</ul>
-<p><img src="http://file.w3cbest.com/file/images/files-list.png"></p>
-<h3 id="监视表达式"><a href="#监视表达式" class="headerlink" title="监视表达式"></a>监视表达式</h3><p>在调试过程中，您将多次检查变量名或表达式，而不是一次又一次地编写变量名或表达式，而是将其添加到监视表达式列表中。 <img src="http://file.w3cbest.com/file/images/watch-expressions.gif"></p>
-<h3 id="XHR-获取调试"><a href="#XHR-获取调试" class="headerlink" title="XHR /获取调试"></a>XHR /获取调试</h3><p>从调试器中打开XHR/Fetch断点面板。 您可以将它设置为在发送XHR / Fetch调用时断开，或者仅在特定的调用上: <img src="http://file.w3cbest.com/file/images/xhr-fetch-breakpoints.png"></p>
-<h3 id="对DOM修改的调试"><a href="#对DOM修改的调试" class="headerlink" title="对DOM修改的调试"></a>对DOM修改的调试</h3><p>右键单击元素并在子树修改上启用Break:每当脚本遍历该元素的子元素并修改它们时，调试器都会自动停止，以便让您检查发生了什么。 <img src="http://file.w3cbest.com/file/images/break-subtree-modifications.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1445,7 +1454,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

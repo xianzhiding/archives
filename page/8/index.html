@@ -177,6 +177,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">JavaScript中Array方法的正确打开方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-08 07:00:26" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:26+08:00">2018-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>在过去的几个月，我发现我的拉取请求中存在四个完全相同的 JavaScript 错误。于是我写了这篇文章，总结了如何在 JavaScript 中正确使用地使用 Array 的方法！</p>
+</blockquote>
+<h3 id="用-Array-includes-代替-Array-indexOf"><a href="#用-Array-includes-代替-Array-indexOf" class="headerlink" title="用 Array.includes 代替 Array.indexOf"></a>用 <code>Array.includes</code> 代替 <code>Array.indexOf</code></h3><p>“如果你要在数组中查找元素，请使用 Array.indexOf”。我记得在学习 JavaScript 的时候，在教材中读到这样的一句话。毫无疑问，这句话是真的！ MDN 文档写道，<code>Array.indexOf</code> 将“返回第一次出现给定元素的索引”。因此，如果我们稍后要在代码中使用这个返回的索引，那么使用 <code>Array.indexOf</code> 找到索引就对了。 但是，如果我们只想知道数组是否包含某个值，该怎么办？这似乎是一个是与否的问题，或者说是一个布尔值问题。对于这种情况，我建议使用返回布尔值的 <code>Array.includes</code>。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>‘ironman’,<br>‘black_widow’,<br>‘hulk’,<br>‘captain_america’,<br>‘hulk’,<br>‘thor’,<br>];</p>
+<p>console.log(characters.indexOf(‘hulk’));<br>// 2<br>console.log(characters.indexOf(‘batman’));<br>// -1</p>
+<p>console.log(characters.includes(‘hulk’));<br>// true<br>console.log(characters.includes(‘batman’));<br>// false</p>
+<h3 id="使用-Array-find-而不是-Array-filter"><a href="#使用-Array-find-而不是-Array-filter" class="headerlink" title="使用 Array.find 而不是 Array.filter"></a>使用 <code>Array.find</code> 而不是 <code>Array.filter</code></h3><p><code>Array.filter</code> 是一个非常有用的方法。它接受一个回调函数作为参数，基于一个包含所有元素的数组创建出一个新的数组。正如它的名字一样，我们使用这个方法来过滤元素，获得更短的数组。 但是，如果回调函数只能返回一个元素，那么我就不推荐使用这个方法，例如使用回调函数来过滤唯一 ID。在这种情况下，<code>Array.includes</code> 将返回一个只包含一个元素的新数组。我们的意图可能是通过查找特定的 ID 找到数组中包含的唯一值。 我们来看看这个方法的性能。要返回与回调函数匹配的所有元素，<code>Array.filter</code> 必须遍历整个数组。此外，我们假设有数百个元素可以满足回调参数，那么过滤后的数组会非常大。 为了避免这种情况，我建议使用 <code>Array.find</code>。它需要一个像 <code>Array.filter</code> 一样的回调函数作为参数，并返回满足回调函数的第一个元素的值。此外，只要找到第一个满足回调函数的元素，<code>Array.find</code> 就会停止，无需遍历整个数组。通过 <code>Array.find</code> 来查找元素，我们可以更好地理解我们的意图。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ id: 1, name: ‘ironman’ },<br>{ id: 2, name: ‘black_widow’ },<br>{ id: 3, name: ‘captain_america’ },<br>{ id: 4, name: ‘captain_america’ },<br>];</p>
+<p>function getCharacter(name) {<br>return character =&gt; character.name === name;<br>}</p>
+<p>console.log(characters.filter(getCharacter(‘captain_america’)));<br>// [<br>// { id: 3, name: ‘captain_america’ },<br>// { id: 4, name: ‘captain_america’ },<br>// ]</p>
+<p>console.log(characters.find(getCharacter(‘captain_america’)));<br>// { id: 3, name: ‘captain_america’ }</p>
+<h3 id="用-Array-some-代替-Array-find"><a href="#用-Array-some-代替-Array-find" class="headerlink" title="用 Array.some 代替 Array.find"></a>用 <code>Array.some</code> 代替 <code>Array.find</code></h3><p>我承认这个错误我犯了很多次。然后，一位善良的朋友告诉我，最好可以先参考 MDN 文档。这与上面的 <code>Array.indexOf</code>/<code>Array.includes</code> 非常相似。 在前面的例子中，我们看到 <code>Array.find</code> 需要一个回调函数作为参数，并返回一个元素。如果我们想要知道数组是否包含某个值，<code>Array.find</code> 是最好的解决方案吗？可能不是，因为它返回的是一个元素值，而不是一个布尔值。 对于这种情况，我建议使用 <code>Array.some</code>，它返回所需的布尔值。另外，从语义上看，<code>Array.some</code> 表示我们只想知道某个元素是否存在，而不需要得到这个元素。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ id: 1, name: ‘ironman’, env: ‘marvel’ },<br>{ id: 2, name: ‘black_widow’, env: ‘marvel’ },<br>{ id: 3, name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
+<p>function hasCharacterFrom(env) {<br>return character =&gt; character.env === env;<br>}</p>
+<p>console.log(characters.find(hasCharacterFrom(‘marvel’)));<br>// { id: 1, name: ‘ironman’, env: ‘marvel’ }</p>
+<p>console.log(characters.some(hasCharacterFrom(‘marvel’)));<br>// true</p>
+<h3 id="使用-Array-reduce-而不是链接-Array-filter-和-Array-map"><a href="#使用-Array-reduce-而不是链接-Array-filter-和-Array-map" class="headerlink" title="使用 Array.reduce 而不是链接 Array.filter 和 Array.map"></a>使用 <code>Array.reduce</code> 而不是链接 <code>Array.filter</code> 和 <code>Array.map</code></h3><p>让我们面对现实吧，<code>Array.reduce</code> 不容易理解。事实确实如此！但是，如果我们使用 <code>Array.filter</code> 和 Array.map的组合，感觉缺少了什么，对吧？ 我的意思是，我们遍历了两次数组。第一次过滤数组并创建一个较短的数组，第二次又基于 <code>Array.filter</code> 获得数组创建一个包含新值的数组。为了获得我们想要的新数组，我们使用了两个 Array 方法。每个方法都有自己的回调函数和一个用不到的数组——由 <code>Array.filter</code> 创建的那个数组。 为了避免这种性能损耗，我的建议是使用 <code>Array.reduce</code>。结果是一样的，代码却更简单！ 我们可以使用 <code>Array.reduce</code> 进行过滤，并将目标元素添加到累加器中。累加器可以是递增的数字、要填充的对象、要连接的字符串或数组。 在我们的例子中，因为之前使用了 <code>Array.map</code>，所以我建议使用 <code>Array.reduce</code> 将满足条件的数组元素加入到累加器中。在下面的示例中，根据 env 值的具体情况，我们将它添加到累加器中或保持累加器不变。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ name: ‘ironman’, env: ‘marvel’ },<br>{ name: ‘black_widow’, env: ‘marvel’ },<br>{ name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
+<p>console.log(<br>characters<br>.filter(character =&gt; character.env === ‘marvel’)<br>.map(character =&gt; Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))<br>);<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</p>
+<dl><dt>console.log(<br>characters<br>.reduce((acc, character) =&gt; {<br>return character.env === ‘marvel’<br>? acc.concat(Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))</dt><dd>acc;<br>}, [])<br>)<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</dd></dl><p>英文原文 <a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c">https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1344,95 +1446,6 @@ add\_action( 'admin\_enqueue\_scripts', 'dui\_theme\_scripts' );
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">你真的需要了解一下CSS变量 var()</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-14 00:00:00" itemprop="dateCreated datePublished" datetime="2018-11-14T00:00:00+08:00">2018-11-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-21 10:25:12" itemprop="dateModified" datetime="2021-04-21T10:25:12+08:00">2021-04-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>当Web项目变得越来越大时，他的CSS会变得像天文数字那么大而且还变得混乱。为了帮助我们解决这个问题，新的CSS变量很快就会出现在主流浏览器中，它让开发人员能够重用并轻松编辑重复出现的CSS属性。用过SASS或Less的人应该知道他的变量功能有多棒，但这些变量是预处理器，需要在使用前进行编译。现在变量在vanilla CSS中可用，您可以立即在浏览器中使用它们！</p>
-<h2 id="定义和使用CSS变量"><a href="#定义和使用CSS变量" class="headerlink" title="定义和使用CSS变量"></a>定义和使用CSS变量</h2><p>与任何其他CSS定义一样，变量遵循相同的范围和继承规则。使用它们的最简单方法是通过将声明添加到:root伪类来使它们全局可用，以便所有其他选择器都可以继承它。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">  --awesome-blue：＃2196F3; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>要访问变量中的值，我们可以使用var(…)语法。请注意，名称区分大小写，因此–foo != –FOO。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.element &#123;</span><br><span class="line">    background-color:var(--awesome-blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>常用的浏览器除了IE都完美支持，您可以在此处获取更多详细信息 - 我可以使用CSS变量。下面是几个例子，展示了CSS变量的典型用法。为确保它们正常工作，请尝试在我们上面提到的其中一个浏览器上查看它们。</p>
-<h4 id="示例1-主题颜色"><a href="#示例1-主题颜色" class="headerlink" title="示例1 - 主题颜色"></a>示例1 - 主题颜色</h4><p>当我们需要对多个元素一遍又一遍地应用相同的规则时，CSS中的变量是最有用的，例如主题中的重复颜色。我们不是每次想要重复使用相同颜色时进行复制和粘贴，而是将其放在变量中并从那里访问它。</p>
-<p>现在，如果我们的客户不喜欢我们选择的蓝色阴影，我们可以在一个地方（变量的定义）改变样式来改变整个主题的颜色。没有变量，我们必须手动搜索和替换每一次出现。</p>
-<p>可将代码复制下来在你的编辑器里面测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">* &#123;margin: 0;padding: 0;box-sizing: border-box;&#125;html &#123;padding: 30px;font: normal 13px&#x2F;1.5 sans-serif;color: #546567;background-color: var(--primary-color);&#125;.container &#123;background: #fff;padding: 20px;&#125;h3 &#123;padding-bottom: 10px;margin-bottom: 15px;&#125;p &#123;background-color: #fff;margin: 15px 0;&#125;button &#123;font-size: 13px;padding: 8px 12px;background-color: #fff;border-radius: 3px;box-shadow: none;text-transform: uppercase;font-weight: bold;cursor: pointer;opacity: 0.8;outline: 0;&#125;button:hover &#123;opacity: 1;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">:root &#123;</span><br><span class="line">    --primary-color: #B1D7DC;</span><br><span class="line">    --accent-color: #FF3F90;</span><br><span class="line">&#125;</span><br><span class="line">html &#123;</span><br><span class="line">    background-color: var(--primary-color);</span><br><span class="line">&#125;</span><br><span class="line">h3 &#123;</span><br><span class="line">    border-bottom: 2px solid var(--primary-color);</span><br><span class="line">&#125;</span><br><span class="line">button &#123;</span><br><span class="line">    color: var(--accent-color);</span><br><span class="line">    border: 1px solid var(--accent-color);</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">&lt;h3&gt;对话框窗口&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;p&gt;过放荡不羁的生活，容易得像顺水推舟，但是要结识良朋益友，却难如登天。&lt;&#x2F;p&gt;</span><br><span class="line">&lt;button&gt;确认&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="xmLvoV" data-default-tab="result" data-user="w3cbest" data-pen-title="示例1 – 主题颜色">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/xmLvoV/">示例1 – 主题颜色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
-
-<h4 id="示例2-属性类名可读性"><a href="#示例2-属性类名可读性" class="headerlink" title="示例2 - 属性类名可读性"></a>示例2 - 属性类名可读性</h4><p>变量的另一个重要用途是当我们想要保存更复杂的属性值时，我们不必记住它。最好的例子就是有多个参数，如CSS规则box-shadow，transform和font。</p>
-<p>通过将属性放在变量中，我们可以使用语义可读的名称来访问它。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">html&#123;background-color: #F9F9F9;&#125;</span><br><span class="line">ul&#123;padding: 20px;list-style: none;width: 300px;&#125;</span><br><span class="line">li&#123;font: normal 18px sans-serif;padding: 20px;transition: 0.4s;margin: 10px;color: #444;background-color: #fff;cursor: pointer;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">:root&#123;</span><br><span class="line">    --tiny-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);</span><br><span class="line">    --animate-right: translateX(20px);</span><br><span class="line">&#125;</span><br><span class="line">li&#123;</span><br><span class="line">    box-shadow: var(--tiny-shadow);</span><br><span class="line">&#125;</span><br><span class="line">li:hover&#123;</span><br><span class="line">    transform: var(--animate-right);</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="LMjwKb" data-default-tab="result" data-user="w3cbest" data-pen-title="示例2 – 属性类名可读性">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/LMjwKb/">示例2 – 属性类名可读性</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
-
-<h4 id="示例3-动态更改变量"><a href="#示例3-动态更改变量" class="headerlink" title="示例3 - 动态更改变量"></a>示例3 - 动态更改变量</h4><p>当多次声明自定义属性时，标准规则有助于解决冲突，样式表中最后定义的会覆盖上面定义的。</p>
-<p>下面的示例演示了用户动态操作改变属性是多么容易，同时仍然保持代码清晰简洁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">*&#123;margin: 0;padding: 0;box-sizing: border-box;&#125;</span><br><span class="line">html&#123;background: #eee;padding: 30px;font: 500 14px sans-serif;color: #333;line-height: 1.5;&#125;</span><br><span class="line">.blue-container&#123;background: #64B5F6;padding-left: 50px;&#125;</span><br><span class="line">.green-container&#123;background: #AED581;padding-left: 50px;&#125;</span><br><span class="line">.container&#123;background: #fff;padding: 20px;&#125;</span><br><span class="line">p&#123;transition: 0.4s;&#125;</span><br><span class="line">.title&#123;font-weight: bold;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">.blue-container&#123;</span><br><span class="line">    --title-text: 18px;</span><br><span class="line">    --main-text: 14px;</span><br><span class="line">&#125;</span><br><span class="line">.blue-container:hover&#123;</span><br><span class="line">    --title-text: 24px;</span><br><span class="line">    --main-text: 16px;</span><br><span class="line">&#125;</span><br><span class="line">.green-container:hover&#123;</span><br><span class="line">    --title-text: 30px;</span><br><span class="line">    --main-text: 18px;</span><br><span class="line">&#125;</span><br><span class="line">.title&#123;</span><br><span class="line">    font-size: var(--title-text);</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    font-size: var(--main-text);</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;blue-container&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;green-container&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;p class&#x3D;&quot;title&quot;&gt;这是个标题&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p class&#x3D;&quot;content&quot;&gt;将鼠标悬停在不同的颜色区域上可以更改此文本和标题的大小。&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="OrxLLE" data-default-tab="result" data-user="w3cbest" data-pen-title="示例3 – 动态更改变量">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/OrxLLE/">示例3 – 动态更改变量</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
-<p><script async="" src="https://static.codepen.io/assets/embed/ei.js"></script></p>
-
-<p>正如您所看到的，CSS变量非常简单易用，开发人员不必花费太多时间在各处开始应用它们。以下是扩展内容：</p>
-<p>var()函数有两个参数，如果自定义属性失败，它可用于提供回退值：<br>    width: var(–custom-width, 20%);<br>    可以嵌套自定义属性：<br>    –base-color: #f93ce9;<br>    –background-gradient: linear-gradient(to top, var(–base-color), #444);<br>    变量可以与CSS的另一个新增功能- calc() 函数结合使用。<br>    –container-width: 1000px;<br>    max-width: calc(var(–container-width) / 2);</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1502,7 +1515,7 @@ add\_action( 'admin\_enqueue\_scripts', 'dui\_theme\_scripts' );
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

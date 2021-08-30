@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="径向渐变由它的中心定义。 为了创建一个径向渐变，你也必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。 语法 background: radial-gradient">
+  <meta name="description" content="径向渐变由它的中心定义。 为了创建一个径向渐变，你也必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。 语法 1background: radial-gradien">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS3 径向渐变（Radial Gradients）">
 <meta property="og:url" content="https://xianzhiding.github.io/2019/07/19/css3-%E5%BE%84%E5%90%91%E6%B8%90%E5%8F%98%EF%BC%88radial-gradients%EF%BC%89/index.html">
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
-<meta property="og:description" content="径向渐变由它的中心定义。 为了创建一个径向渐变，你也必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。 语法 background: radial-gradient">
+<meta property="og:description" content="径向渐变由它的中心定义。 为了创建一个径向渐变，你也必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。 语法 1background: radial-gradien">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-19T06:50:35.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.125Z">
+<meta property="article:modified_time" content="2021-08-30T04:00:12.450Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="css3教程">
 <meta property="article:tag" content="css3渐变">
@@ -212,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 12:00:12" itemprop="dateModified" datetime="2021-08-30T12:00:12+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,13 +236,21 @@
 
       
         <p>径向渐变由它的中心定义。 为了创建一个径向渐变，你也必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。 <strong>语法</strong></p>
-<p>background: radial-gradient(center, shape size, start-color, …, last-color);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(center, shape size, start-color, ..., last-color);</span><br></pre></td></tr></table></figure>
+
+
 <p>径向渐变 - 颜色结点均匀分布</p>
-<p>background: radial-gradient(red, green, blue); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(red, green, blue); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <p>径向渐变 - 颜色结点不均匀分布</p>
-<p>background: radial-gradient(red 5%, green 15%, blue 60%); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(red 5%, green 15%, blue 60%); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="设置形状"><a href="#设置形状" class="headerlink" title="设置形状"></a>设置形状</h2><p>shape 参数定义了形状。它可以是值 circle 或 ellipse。其中，circle 表示圆形，ellipse 表示椭圆形。默认值是 ellipse。</p>
-<p>background: radial-gradient(circle, red, yellow, green); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(circle, red, yellow, green); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="不同尺寸大小关键字的使用"><a href="#不同尺寸大小关键字的使用" class="headerlink" title="不同尺寸大小关键字的使用"></a>不同尺寸大小关键字的使用</h3><p>size 参数定义了渐变的大小。它可以是以下四个值：</p>
 <ul>
 <li>  closest-side</li>
@@ -251,11 +259,11 @@
 <li>  farthest-corner</li>
 </ul>
 <p>带有不同尺寸大小关键字的径向渐变</p>
-<p>background: radial-gradient(60% 55%, closest-side,blue,green,yellow,black);</p>
-<p>background: radial-gradient(60% 55%, farthest-side,blue,green,yellow,black);</p>
-<h2 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h2><p>repeating-radial-gradient() 函数用于重复径向渐变</p>
-<p>background: repeating-radial-gradient(red, yellow 10%, green 15%);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(60% 55%, closest-side,blue,green,yellow,black);</span><br><span class="line"></span><br><span class="line">background: radial-gradient(60% 55%, farthest-side,blue,green,yellow,black);</span><br></pre></td></tr></table></figure>
 
+
+<h2 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h2><p>repeating-radial-gradient() 函数用于重复径向渐变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: repeating-radial-gradient(red, yellow 10%, green 15%);</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -275,11 +283,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/07/19/css3-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/" rel="prev" title="CSS3 线性渐变（Linear Gradients）">
-      <i class="fa fa-chevron-left"></i> CSS3 线性渐变（Linear Gradients）
+    <a href="/2019/07/18/css3-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/" rel="prev" title="CSS3线性渐变（Linear Gradients）">
+      <i class="fa fa-chevron-left"></i> CSS3线性渐变（Linear Gradients）
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/07/19/CSS3%20%E6%96%87%E6%9C%AC%E6%B8%90%E5%8F%98%EF%BC%88Gradient%20Text%EF%BC%89/" rel="next" title="CSS3 文本渐变（Gradient Text）">
+    <a href="/2019/07/20/CSS3%20%E6%96%87%E6%9C%AC%E6%B8%90%E5%8F%98%EF%BC%88Gradient%20Text%EF%BC%89/" rel="next" title="CSS3 文本渐变（Gradient Text）">
       CSS3 文本渐变（Gradient Text） <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -354,7 +362,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -177,6 +177,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/" class="post-title-link" itemprop="url">一些很酷的chorem开发工具的提示和技巧的列表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-03 17:45:01" itemprop="dateCreated datePublished" datetime="2019-01-03T17:45:01+08:00">2019-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Chrome开发工具提供了一套非常棒的工具，可以帮助您在Web平台上进行开发。以下是一些你可能还不知道的建议</p>
+<h3 id="在ELEMENTS面板中拖放"><a href="#在ELEMENTS面板中拖放" class="headerlink" title="在ELEMENTS面板中拖放"></a>在ELEMENTS面板中拖放</h3><p>在Elements面板中，您可以拖放任何HTML元素并更改其在页面上的位置 <img src="http://file.w3cbest.com/file/images/reference-elements.gif"></p>
+<h3 id="引用控制台中当前选择的元素"><a href="#引用控制台中当前选择的元素" class="headerlink" title="引用控制台中当前选择的元素"></a>引用控制台中当前选择的元素</h3><p>在Elements面板中选择一个节点，并在控制台中键入$0来引用它。 <img src="http://file.w3cbest.com/file/images/drag-and-drop.gif"></p>
+<blockquote>
+<p>提示:如果使用jQuery，可以输入$($0)来访问这个元素上的jQuery API。</p>
+</blockquote>
+<h3 id="使用控制台中最后一个操作的值"><a href="#使用控制台中最后一个操作的值" class="headerlink" title="使用控制台中最后一个操作的值"></a>使用控制台中最后一个操作的值</h3><p>使用$_引用在控制台中执行的前一个操作的返回值 <img src="http://file.w3cbest.com/file/images/use-last-result.gif"></p>
+<h3 id="添加CSS并编辑元素状态"><a href="#添加CSS并编辑元素状态" class="headerlink" title="添加CSS并编辑元素状态"></a>添加CSS并编辑元素状态</h3><p>在元素面板中有两个超级有用的按钮。 第一个选项允许您添加一个新的CSS属性，使用您想要的任何选择器，但要预先填充当前选定的元素: <img src="http://file.w3cbest.com/file/images/add-css.gif"> 第二个选项允许您为所选元素触发一个状态，这样您就可以看到当它处于活动状态、悬停状态、焦点状态时应用的样式。 <img src="http://file.w3cbest.com/file/images/element-state.png"></p>
+<h3 id="找到定义CSS属性的位置"><a href="#找到定义CSS属性的位置" class="headerlink" title="找到定义CSS属性的位置"></a>找到定义CSS属性的位置</h3><p>在元素面板中的CSS属性，DevTools将指向定义该属性的地方，即源面板</p>
+<p><img src="http://file.w3cbest.com/file/images/find-where-css-defined.gif">  </p>
+<h3 id="保存并归档修改后的CSS"><a href="#保存并归档修改后的CSS" class="headerlink" title="保存并归档修改后的CSS"></a>保存并归档修改后的CSS</h3><p>单击您编辑的CSS文件的名称。检查器将它打开到Sources窗格中，然后您可以在应用的实时编辑中保存它。 这个技巧不适用于使用+或元素添加的新选择器。样式属性，但仅适用于已修改的现有属性。 <img src="http://file.w3cbest.com/file/images/save-modified-css.gif"></p>
+<h3 id="屏幕截图一个元素"><a href="#屏幕截图一个元素" class="headerlink" title="屏幕截图一个元素"></a>屏幕截图一个元素</h3><p>选择一个元素并按下cmd-shift-p(或在Windows中按ctrl-shift-p)打开命令菜单，然后选择Capture node截图 <img src="http://file.w3cbest.com/file/images/screenshot-node.gif"></p>
+<h3 id="使用CSS选择器查找元素"><a href="#使用CSS选择器查找元素" class="headerlink" title="使用CSS选择器查找元素"></a>使用CSS选择器查找元素</h3><p>按下cmd-f(在Windows中ctrl-f)将在Elements面板中打开搜索框。 你可以在里面输入任何字符串来匹配源代码，或者你也可以使用CSS选择器让Chrome为你生成一个图像: <img src="http://file.w3cbest.com/file/images/find-elements-css-selectors.gif"></p>
+<h3 id="在控制台中SHIFT-ENTER"><a href="#在控制台中SHIFT-ENTER" class="headerlink" title="在控制台中SHIFT-ENTER"></a>在控制台中SHIFT-ENTER</h3><p>要在控制台中编写跨越多行代码的命令，请按shift-enter。 一旦你准备好了，按下回车在脚本的最后，以执行它: <img src="http://file.w3cbest.com/file/images/multiple-lines-commands.gif"></p>
+<h3 id="清除控制台"><a href="#清除控制台" class="headerlink" title="清除控制台"></a>清除控制台</h3><p>您可以使用控制台左上角的clear按钮清除控制台，或者按ctrl-l或cmd-k。</p>
+<h3 id="GO-TO…"><a href="#GO-TO…" class="headerlink" title="GO TO…"></a>GO TO…</h3><p>在资源面板:</p>
+<ul>
+<li>  显示页面加载的所有文件。</li>
+<li>  显示当前文件中的符号(属性、函数、类)。</li>
+<li>  ctrl-g转到特定的行。</li>
+</ul>
+<p><img src="http://file.w3cbest.com/file/images/files-list.png"></p>
+<h3 id="监视表达式"><a href="#监视表达式" class="headerlink" title="监视表达式"></a>监视表达式</h3><p>在调试过程中，您将多次检查变量名或表达式，而不是一次又一次地编写变量名或表达式，而是将其添加到监视表达式列表中。 <img src="http://file.w3cbest.com/file/images/watch-expressions.gif"></p>
+<h3 id="XHR-获取调试"><a href="#XHR-获取调试" class="headerlink" title="XHR /获取调试"></a>XHR /获取调试</h3><p>从调试器中打开XHR/Fetch断点面板。 您可以将它设置为在发送XHR / Fetch调用时断开，或者仅在特定的调用上: <img src="http://file.w3cbest.com/file/images/xhr-fetch-breakpoints.png"></p>
+<h3 id="对DOM修改的调试"><a href="#对DOM修改的调试" class="headerlink" title="对DOM修改的调试"></a>对DOM修改的调试</h3><p>右键单击元素并在子树修改上启用Break:每当脚本遍历该元素的子元素并修改它们时，调试器都会自动停止，以便让您检查发生了什么。 <img src="http://file.w3cbest.com/file/images/break-subtree-modifications.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%BB%8B%E7%BB%8Dcss%E5%BD%A2%E7%8A%B6-css-shapes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1102,108 +1204,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">JavaScript中Array方法的正确打开方式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-08 07:00:26" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:26+08:00">2018-12-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>在过去的几个月，我发现我的拉取请求中存在四个完全相同的 JavaScript 错误。于是我写了这篇文章，总结了如何在 JavaScript 中正确使用地使用 Array 的方法！</p>
-</blockquote>
-<h3 id="用-Array-includes-代替-Array-indexOf"><a href="#用-Array-includes-代替-Array-indexOf" class="headerlink" title="用 Array.includes 代替 Array.indexOf"></a>用 <code>Array.includes</code> 代替 <code>Array.indexOf</code></h3><p>“如果你要在数组中查找元素，请使用 Array.indexOf”。我记得在学习 JavaScript 的时候，在教材中读到这样的一句话。毫无疑问，这句话是真的！ MDN 文档写道，<code>Array.indexOf</code> 将“返回第一次出现给定元素的索引”。因此，如果我们稍后要在代码中使用这个返回的索引，那么使用 <code>Array.indexOf</code> 找到索引就对了。 但是，如果我们只想知道数组是否包含某个值，该怎么办？这似乎是一个是与否的问题，或者说是一个布尔值问题。对于这种情况，我建议使用返回布尔值的 <code>Array.includes</code>。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>‘ironman’,<br>‘black_widow’,<br>‘hulk’,<br>‘captain_america’,<br>‘hulk’,<br>‘thor’,<br>];</p>
-<p>console.log(characters.indexOf(‘hulk’));<br>// 2<br>console.log(characters.indexOf(‘batman’));<br>// -1</p>
-<p>console.log(characters.includes(‘hulk’));<br>// true<br>console.log(characters.includes(‘batman’));<br>// false</p>
-<h3 id="使用-Array-find-而不是-Array-filter"><a href="#使用-Array-find-而不是-Array-filter" class="headerlink" title="使用 Array.find 而不是 Array.filter"></a>使用 <code>Array.find</code> 而不是 <code>Array.filter</code></h3><p><code>Array.filter</code> 是一个非常有用的方法。它接受一个回调函数作为参数，基于一个包含所有元素的数组创建出一个新的数组。正如它的名字一样，我们使用这个方法来过滤元素，获得更短的数组。 但是，如果回调函数只能返回一个元素，那么我就不推荐使用这个方法，例如使用回调函数来过滤唯一 ID。在这种情况下，<code>Array.includes</code> 将返回一个只包含一个元素的新数组。我们的意图可能是通过查找特定的 ID 找到数组中包含的唯一值。 我们来看看这个方法的性能。要返回与回调函数匹配的所有元素，<code>Array.filter</code> 必须遍历整个数组。此外，我们假设有数百个元素可以满足回调参数，那么过滤后的数组会非常大。 为了避免这种情况，我建议使用 <code>Array.find</code>。它需要一个像 <code>Array.filter</code> 一样的回调函数作为参数，并返回满足回调函数的第一个元素的值。此外，只要找到第一个满足回调函数的元素，<code>Array.find</code> 就会停止，无需遍历整个数组。通过 <code>Array.find</code> 来查找元素，我们可以更好地理解我们的意图。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>{ id: 1, name: ‘ironman’ },<br>{ id: 2, name: ‘black_widow’ },<br>{ id: 3, name: ‘captain_america’ },<br>{ id: 4, name: ‘captain_america’ },<br>];</p>
-<p>function getCharacter(name) {<br>return character =&gt; character.name === name;<br>}</p>
-<p>console.log(characters.filter(getCharacter(‘captain_america’)));<br>// [<br>// { id: 3, name: ‘captain_america’ },<br>// { id: 4, name: ‘captain_america’ },<br>// ]</p>
-<p>console.log(characters.find(getCharacter(‘captain_america’)));<br>// { id: 3, name: ‘captain_america’ }</p>
-<h3 id="用-Array-some-代替-Array-find"><a href="#用-Array-some-代替-Array-find" class="headerlink" title="用 Array.some 代替 Array.find"></a>用 <code>Array.some</code> 代替 <code>Array.find</code></h3><p>我承认这个错误我犯了很多次。然后，一位善良的朋友告诉我，最好可以先参考 MDN 文档。这与上面的 <code>Array.indexOf</code>/<code>Array.includes</code> 非常相似。 在前面的例子中，我们看到 <code>Array.find</code> 需要一个回调函数作为参数，并返回一个元素。如果我们想要知道数组是否包含某个值，<code>Array.find</code> 是最好的解决方案吗？可能不是，因为它返回的是一个元素值，而不是一个布尔值。 对于这种情况，我建议使用 <code>Array.some</code>，它返回所需的布尔值。另外，从语义上看，<code>Array.some</code> 表示我们只想知道某个元素是否存在，而不需要得到这个元素。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>{ id: 1, name: ‘ironman’, env: ‘marvel’ },<br>{ id: 2, name: ‘black_widow’, env: ‘marvel’ },<br>{ id: 3, name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
-<p>function hasCharacterFrom(env) {<br>return character =&gt; character.env === env;<br>}</p>
-<p>console.log(characters.find(hasCharacterFrom(‘marvel’)));<br>// { id: 1, name: ‘ironman’, env: ‘marvel’ }</p>
-<p>console.log(characters.some(hasCharacterFrom(‘marvel’)));<br>// true</p>
-<h3 id="使用-Array-reduce-而不是链接-Array-filter-和-Array-map"><a href="#使用-Array-reduce-而不是链接-Array-filter-和-Array-map" class="headerlink" title="使用 Array.reduce 而不是链接 Array.filter 和 Array.map"></a>使用 <code>Array.reduce</code> 而不是链接 <code>Array.filter</code> 和 <code>Array.map</code></h3><p>让我们面对现实吧，<code>Array.reduce</code> 不容易理解。事实确实如此！但是，如果我们使用 <code>Array.filter</code> 和 Array.map的组合，感觉缺少了什么，对吧？ 我的意思是，我们遍历了两次数组。第一次过滤数组并创建一个较短的数组，第二次又基于 <code>Array.filter</code> 获得数组创建一个包含新值的数组。为了获得我们想要的新数组，我们使用了两个 Array 方法。每个方法都有自己的回调函数和一个用不到的数组——由 <code>Array.filter</code> 创建的那个数组。 为了避免这种性能损耗，我的建议是使用 <code>Array.reduce</code>。结果是一样的，代码却更简单！ 我们可以使用 <code>Array.reduce</code> 进行过滤，并将目标元素添加到累加器中。累加器可以是递增的数字、要填充的对象、要连接的字符串或数组。 在我们的例子中，因为之前使用了 <code>Array.map</code>，所以我建议使用 <code>Array.reduce</code> 将满足条件的数组元素加入到累加器中。在下面的示例中，根据 env 值的具体情况，我们将它添加到累加器中或保持累加器不变。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>{ name: ‘ironman’, env: ‘marvel’ },<br>{ name: ‘black_widow’, env: ‘marvel’ },<br>{ name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
-<p>console.log(<br>characters<br>.filter(character =&gt; character.env === ‘marvel’)<br>.map(character =&gt; Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))<br>);<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</p>
-<dl><dt>console.log(<br>characters<br>.reduce((acc, character) =&gt; {<br>return character.env === ‘marvel’<br>? acc.concat(Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))</dt><dd>acc;<br>}, [])<br>)<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</dd></dl><p>英文原文 <a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c">https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1273,7 +1273,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

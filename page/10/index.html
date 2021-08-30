@@ -1056,7 +1056,7 @@ this.energy = energy
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 11:38:47" itemprop="dateModified" datetime="2021-08-30T11:38:47+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1087,7 +1087,18 @@ this.energy = energy
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>对于密码的可见性切换经常会在移动端见到，由于移动端输入体验不是很好，经常会输入密码的时候出现错误，反正我是有这样的体验，所以衍生出了密码的显示和隐藏的切换，那么在pc端会出现这种问题吗？答案是会的，特别是在重置密码的时候要输入两次，就会出现输入错误的问题，我是程序员我的解决方法是查看源码。把input的type类型的password改变成text或置空，就显示密码了，这是我经常使用的惯例，所以你在使用浏览器的时候千万不要让浏览器记住密码，很危险的。 那么我们的用户是否也可以看到密码呢，答案是有的，实现原理就是通过js将input 标签 type=”password”改变为type=”text”，在 Chrome、FireFox 等浏览器中通过修改 input 标签的 type 属性轻松实现该效果，但是 IE 下就会报错。如果你需要兼容IE，就必须考虑其他方案。下面看例子： 例子一：用复选框作为介质来切换显示隐藏 最常见的实现是位于密码输入框下的复选框和标签。切换复选框后，密码变为可见。 对于上面提到的安全问题，我已经在密码输入上禁用了自动完成功能。交互非常简单，JavaScript将监听复选框输入的更改。切换后，密码字段将从type属性更改password为text。 在功能方面，这种实现很好。但是有个问题是，“显示密码”复选框文本乍一看就像登录表单更常见的“记住我”选项，不可取。 例子二：用一个按钮实现 实现密码可见性切换的另一种方法是在密码字段本身上设置一个按钮。你也可以用图标来表示。 实现与复选框示例没有太大差别，主要区别在于文本根据密码字段的状态而变化。 我更喜欢这种方法的原因是因为像按钮的作用，至少它看起来不像是“记住我”复选框，它仍然有相同的安全问题。</p>
+          <p>对于密码的可见性切换经常会在移动端见到，由于移动端输入体验不是很好，经常会输入密码的时候出现错误，反正我是有这样的体验，所以衍生出了密码的显示和隐藏的切换，那么在pc端会出现这种问题吗？答案是会的，特别是在重置密码的时候要输入两次，就会出现输入错误的问题，我是程序员我的解决方法是查看源码。把input的type类型的password改变成text或置空，就显示密码了，这是我经常使用的惯例，所以你在使用浏览器的时候千万不要让浏览器记住密码，很危险的。</p>
+<p>那么我们的用户是否也可以看到密码呢，答案是有的，实现原理就是通过js将input 标签 type=”password”改变为type=”text”，在 Chrome、FireFox 等浏览器中通过修改 input 标签的 type 属性轻松实现该效果，但是 IE 下就会报错。如果你需要兼容IE，就必须考虑其他方案。下面看例子：</p>
+<h2 id="例子一：用复选框作为介质来切换显示隐藏"><a href="#例子一：用复选框作为介质来切换显示隐藏" class="headerlink" title="例子一：用复选框作为介质来切换显示隐藏"></a>例子一：用复选框作为介质来切换显示隐藏</h2><p>最常见的实现是位于密码输入框下的复选框和标签。切换复选框后，密码变为可见。</p>
+<iframe src="https://code.hcharts.cn/temp/ZBh1b7/share/result,js,html,css" width="100%" height="450" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+<p>对于上面提到的安全问题，我已经在密码输入上禁用了自动完成功能。交互非常简单，JavaScript将监听复选框输入的更改。切换后，密码字段将从type属性更改password为text。</p>
+<p>在功能方面，这种实现很好。但是有个问题是，“显示密码”复选框文本乍一看就像登录表单更常见的“记住我”选项，不可取。</p>
+<h2 id="例子二：用一个按钮实现"><a href="#例子二：用一个按钮实现" class="headerlink" title="例子二：用一个按钮实现"></a>例子二：用一个按钮实现</h2><p>实现密码可见性切换的另一种方法是在密码字段本身上设置一个按钮。你也可以用图标来表示。</p>
+<iframe src="https://code.hcharts.cn/temp/FeMwrG/share/result,js,html,css" width="100%" height="450" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+<p>实现与复选框示例没有太大差别，主要区别在于文本根据密码字段的状态而变化。</p>
+<p>我更喜欢这种方法的原因是因为像按钮的作用，至少它看起来不像是“记住我”复选框，它仍然有相同的安全问题。</p>
 
       
     </div>
@@ -1607,7 +1618,7 @@ this.energy = energy
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

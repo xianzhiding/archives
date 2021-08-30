@@ -177,6 +177,299 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/09/17/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BD%A0%E7%9A%84-js-%E5%86%99%E5%BE%97%E6%9B%B4%E6%BC%82%E4%BA%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/17/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BD%A0%E7%9A%84-js-%E5%86%99%E5%BE%97%E6%9B%B4%E6%BC%82%E4%BA%AE/" class="post-title-link" itemprop="url">如何让你的 JS 写得更漂亮</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-17 09:02:48" itemprop="dateCreated datePublished" datetime="2019-09-17T09:02:48+08:00">2019-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:13:35" itemprop="dateModified" datetime="2021-08-30T11:13:35+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-按强类型风格写代码"><a href="#1-按强类型风格写代码" class="headerlink" title="1. 按强类型风格写代码"></a>1. 按强类型风格写代码</h2><p>JS是弱类型的，但是写代码的时候不能太随意，写得太随意也体现了编码风格不好。下面分点说明：</p>
+<h3 id="（1）定义变量的时候要指明类型，告诉JS解释器这个变量是什么数据类型的，而不要让解释器去猜，例如不好的写法："><a href="#（1）定义变量的时候要指明类型，告诉JS解释器这个变量是什么数据类型的，而不要让解释器去猜，例如不好的写法：" class="headerlink" title="（1）定义变量的时候要指明类型，告诉JS解释器这个变量是什么数据类型的，而不要让解释器去猜，例如不好的写法："></a>（1）定义变量的时候要指明类型，告诉JS解释器这个变量是什么数据类型的，而不要让解释器去猜，例如不好的写法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num,</span><br><span class="line">    str,</span><br><span class="line">    obj;</span><br></pre></td></tr></table></figure>
+
+<p>声明了三个变量，但其实没什么用，因为解释器不知道它们是什么类型的，好的写法应该是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num &#x3D; 0,</span><br><span class="line">    str &#x3D; &#39;&#39;,</span><br><span class="line">    obj &#x3D; null;</span><br></pre></td></tr></table></figure>
+
+<p>定义变量的时候就给他一个默认值，这样不仅方便了解释器，也方便了阅读代码的人，他会在心里有数——知道这些变量可能会当作什么用。</p>
+<h3 id="（2）不要随意地改变变量的类型，例如下面代码："><a href="#（2）不要随意地改变变量的类型，例如下面代码：" class="headerlink" title="（2）不要随意地改变变量的类型，例如下面代码："></a>（2）不要随意地改变变量的类型，例如下面代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num &#x3D; 5; </span><br><span class="line">    num &#x3D; &quot;-&quot; + num;</span><br></pre></td></tr></table></figure>
+<p>第1行它是一个整型，第2行它变成了一个字符串。因为JS最终都会被解释成汇编的语言，汇编语言变量的类型肯定是要确定的，你把一个整型的改成了字符串，那解释器就得做一些额外的处理。并且这种编码风格是不提倡的，有一个变量第1行是一个整型，第10行变成了一个字符串，第20行又变成了一个object，这样就让阅读代码的人比较困惑，上面明明是一个整数，怎么突然又变成一个字符串了。好的写法应该是再定义一个字符串的变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num &#x3D; 5;</span><br><span class="line">var sign &#x3D; &quot;-&quot; + num;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）函数的返回类型应该是要确定的，例如下面不确定的写法："><a href="#（3）函数的返回类型应该是要确定的，例如下面不确定的写法：" class="headerlink" title="（3）函数的返回类型应该是要确定的，例如下面不确定的写法："></a>（3）函数的返回类型应该是要确定的，例如下面不确定的写法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function getPrice(count)&#123;</span><br><span class="line">    if(count &lt; 0) return &quot;&quot;;</span><br><span class="line">    else return count \* 100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>getPrice这个函数有可能返回一个整数，也有可能返回一个空的字符串。这样写也不太好，虽然它是符合JS语法的，但这种编码风格是不好的。使用你这个函数的人会有点无所适从，不敢直接进行加减乘除，因为如果返回字符串进行运算的话值就是NaN了。函数的返回类型应该是要确定的，如下面是返回整型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function getPrice(count)&#123;</span><br><span class="line">    if(count &lt; 0) return -1;</span><br><span class="line">    else return count \* 100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后告诉使用者，如果返回-1就表示不合法。如果类型确定，解释器也不用去做一些额外的工作，可以加快运行速度。</p>
+<h2 id="2-减少作用域查找"><a href="#2-减少作用域查找" class="headerlink" title="2. 减少作用域查找"></a>2. 减少作用域查找</h2><h3 id="（1）不要让代码暴露在全局作用域下"><a href="#（1）不要让代码暴露在全局作用域下" class="headerlink" title="（1）不要让代码暴露在全局作用域下"></a>（1）不要让代码暴露在全局作用域下</h3><p>例如以下运行在全局作用域的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var map &#x3D; document.querySelector(&quot;#my-map&quot;);</span><br><span class="line">    map.style.height &#x3D; &quot;600px&quot;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>有时候你需要在页面直接写一个script，要注意在一个script标签里面，代码的上下文都是全局作用域的，由于全局作用域比较复杂，查找比较慢。例如上面的map变量，第二行在使用的时候，需要在全局作用域查找一下这个变量，假设map是在一个循环里面使用，那可能就会有效率问题了。所以应该要把它搞成一个局部的作用域：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">!function()&#123;</span><br><span class="line">    var map &#x3D; document.querySelector(&quot;#my-map&quot;);</span><br><span class="line">    map.style.height &#x3D; &quot;600px&quot;;</span><br><span class="line">&#125;()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面用了一个function制造一个局部作用域，也可以用ES6的块级作用域。由于map这个变量直接在当前的局部作用域命中了，所以就不用再往上一级的作用域（这里是全局作用域）查找了，而局部作用域的查找是很快的。同时直接在全局作用域定义变量，会污染window对象。</p>
+<h3 id="（2）不要滥用闭包"><a href="#（2）不要滥用闭包" class="headerlink" title="（2）不要滥用闭包"></a>（2）不要滥用闭包</h3><p>闭包的作用在于可以让子级作用域使用它父级作用域的变量，同时这些变量在不同的闭包是不可见的。这样就导致了在查找某个变量的时候，如果当前作用域找不到，就得往它的父级作用域查找，一级一级地往上直到找到了，或者到了全局作用域还没找到。因此如果闭包嵌套得越深，那么变量查找的时间就越长。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function getResult(count)&#123;</span><br><span class="line">    count++;</span><br><span class="line">    function process()&#123;</span><br><span class="line">        var factor &#x3D; 2;</span><br><span class="line">        return count \* factor - 5;</span><br><span class="line">    &#125;</span><br><span class="line">    return process();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码定义了一个process函数，在这个函数里面count变量的查找时间要高于局部的factor变量。其实这里不太适合用闭包，可以直接把count传给process：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function getResult(count)&#123;</span><br><span class="line">    count++;</span><br><span class="line">    function process(count)&#123;</span><br><span class="line">        var factor &#x3D; 2;</span><br><span class="line">        return count \* factor - 5;</span><br><span class="line">    &#125;</span><br><span class="line">    return process(count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样count的查找时间就和factor一样，都是在当前作用域直接命中。这个就启示我们如果某个全局变量需要频繁地被使用的时候，可以用一个局部变量缓存一下，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var url &#x3D; &quot;&quot;;</span><br><span class="line">if(window.location.protocal &#x3D;&#x3D;&#x3D; &quot;https:&quot;)&#123;</span><br><span class="line">    url &#x3D; &quot;wss:&#x2F;&#x2F;xxx.com&quot; + window.location.pathname + window.location.search;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>频繁地使用了window.location对象，所以可以先把它缓存一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var url &#x3D; &quot;&quot;;</span><br><span class="line">var location &#x3D; window.location;</span><br><span class="line">if(location.protocal &#x3D;&#x3D;&#x3D; &quot;https:&quot;)&#123;</span><br><span class="line">    url &#x3D; &quot;wss:&#x2F;&#x2F;xxx.com&quot; + location.pathname + location.search;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>搞成了一个局变变量，这样查找就会明显快于全局的查找，代码也可以写少一点。</p>
+<h2 id="3-避免-的使用"><a href="#3-避免-的使用" class="headerlink" title="3. 避免==的使用"></a>3. 避免==的使用</h2><p>这里你可能会有疑问了，有些人喜欢用==，有些人喜欢用===，大家的风格不一样，你为什么要强制别人用===呢？习惯用==的人，不能仅仅是因为==比===少敲了一次键盘。为什么不提倡用==呢？</p>
+<h3 id="（1）如果你确定了变量的类型，那么就没必要使用-了，如下："><a href="#（1）如果你确定了变量的类型，那么就没必要使用-了，如下：" class="headerlink" title="（1）如果你确定了变量的类型，那么就没必要使用==了，如下："></a>（1）如果你确定了变量的类型，那么就没必要使用==了，如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(typeof num !&#x3D; &quot;undefined&quot;)&#123; &#125; </span><br><span class="line">var num &#x3D; parseInt(value);</span><br><span class="line">if(num &#x3D;&#x3D; 10)&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>上面的两个例子都是确定类型的，一个是字符串，一个是整数。就没必要使用==了，直接用===就可以了。</p>
+<h3 id="（2）如果类型不确定，那么应该手动做一下类型转换，而不是让别人或者以后的你去猜这里面有类型转换，如下："><a href="#（2）如果类型不确定，那么应该手动做一下类型转换，而不是让别人或者以后的你去猜这里面有类型转换，如下：" class="headerlink" title="（2）如果类型不确定，那么应该手动做一下类型转换，而不是让别人或者以后的你去猜这里面有类型转换，如下："></a>（2）如果类型不确定，那么应该手动做一下类型转换，而不是让别人或者以后的你去猜这里面有类型转换，如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var totalPage &#x3D; &quot;5&quot;;</span><br><span class="line">if(parseInt(totalPage) &#x3D;&#x3D;&#x3D; 1)&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）使用-在JSLint检查的时候是不通过的："><a href="#（3）使用-在JSLint检查的时候是不通过的：" class="headerlink" title="（3）使用==在JSLint检查的时候是不通过的："></a>（3）使用==在JSLint检查的时候是不通过的：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(a &#x3D;&#x3D; b)&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如下JSLint的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Expected ‘&#x3D;&#x3D;&#x3D;’ and instead saw ‘&#x3D;&#x3D;’. </span><br><span class="line">if(a &#x3D;&#x3D; b)&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="（4）并且使用-可能会出现一些奇怪的现象，这些奇怪的现象可能会给代码埋入隐患："><a href="#（4）并且使用-可能会出现一些奇怪的现象，这些奇怪的现象可能会给代码埋入隐患：" class="headerlink" title="（4）并且使用==可能会出现一些奇怪的现象，这些奇怪的现象可能会给代码埋入隐患："></a>（4）并且使用==可能会出现一些奇怪的现象，这些奇怪的现象可能会给代码埋入隐患：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">null &#x3D;&#x3D; undefined        &#x2F;&#x2F;true</span><br><span class="line">&#39;&#39; &#x3D;&#x3D; &#39;0&#39;&#x2F;&#x2F;false</span><br><span class="line">0  &#x3D;&#x3D; &#39;&#39;&#x2F;&#x2F;true</span><br><span class="line">0  &#x3D;&#x3D; &#39;0&#39;&#x2F;&#x2F;true</span><br><span class="line">&#39;&#39; &#x3D;&#x3D; 0&#x2F;&#x2F;true</span><br><span class="line">new String(&quot;abc&quot;) &#x3D;&#x3D; &quot;abc&quot;                      &#x2F;&#x2F;true</span><br><span class="line">new Boolean(true) &#x3D;&#x3D; true                       &#x2F;&#x2F;true</span><br><span class="line">true &#x3D;&#x3D; 1&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+<p>上面的比较在用===的时候都是false，这样才是比较合理的。例如第一点null居然会等于undefined，就特别地奇怪，因为null和undefined是两个毫无关系的值，null应该是作为初始化空值使用，而undefined是用于检验某个变量是否未定义。 这和第1点介绍强类型的思想是相通的。</p>
+<h2 id="4-合并表达式"><a href="#4-合并表达式" class="headerlink" title="4. 合并表达式"></a>4. 合并表达式</h2><p>如果用1句代码就可以实现5句代码的功能，那往往1句代码的执行效率会比较高，并且可读性可能会更好</p>
+<h3 id="（1）用三目运算符取代简单的if-else"><a href="#（1）用三目运算符取代简单的if-else" class="headerlink" title="（1）用三目运算符取代简单的if-else"></a>（1）用三目运算符取代简单的if-else</h3><p>如上面的getPrice函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function getPrice(count)&#123;</span><br><span class="line">    if(count &lt; 0) return -1;</span><br><span class="line">    else return count \* 100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以改成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function getPrice(count)&#123;</span><br><span class="line">    return count &lt; 0 ? return -1 : count \* 100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个比写一个if-else看起来清爽多了。当然，如果你写了if-else，压缩工具也会帮你把它改三目运算符的形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function getPrice(e)&#123;return 0&gt;e?-1:100\*e&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）连等"><a href="#（2）连等" class="headerlink" title="（2）连等"></a>（2）连等</h3><p>连等是利用赋值运算表达式会返回所赋的值，并且执行顺序是从右到左的，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overtime &#x3D; favhouse &#x3D; listingDetail &#x3D; &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有时候你会看到有人这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var age &#x3D; 0;</span><br><span class="line">if((age &#x3D; +form.age.value) &gt;&#x3D; 18)&#123;</span><br><span class="line">    console.log(&quot;你是成年人&quot;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    consoe.log(&quot;小朋友，你还有&quot; + (18 - age) + &quot;就成年了&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也是利用了赋值表达式会返回一个值，在if里面赋值的同时用它的返回值做判断，然后else里面就已经有值了。上面的+号把字符串转成了整数。</p>
+<h3 id="（3）自增"><a href="#（3）自增" class="headerlink" title="（3）自增"></a>（3）自增</h3><p>利用自增也可以简化代码。如下，每发出一条消息，localMsgId就自增1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chatService.sendMessage(localMsgId++, msgContent);</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-减少魔数"><a href="#5-减少魔数" class="headerlink" title="5. 减少魔数"></a>5. 减少魔数</h2><p>例如，在某个文件的第800行，冒出来了一句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dialogHandler.showQuestionNaire（&quot;seller&quot;, &quot;sell&quot;, 5, true);</span><br></pre></td></tr></table></figure>
+
+<p>就会让人很困惑了，上面的四个常量分别代表什么呢，如果我不去查一个那个函数的变量说明就不能够很快地意会到这些常量分别有什么用。这些意义不明的常量就叫“魔数”。 所以最好还是给这些常量取一个名字，特别是在一些比较关键的地方。例如上面的代码可改成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var naireType &#x3D; &quot;seller&quot;,</span><br><span class="line">dialogType &#x3D; &quot;sell&quot;,</span><br><span class="line">questionsCount &#x3D; 5,</span><br><span class="line">reloadWindow &#x3D; true;</span><br><span class="line"></span><br><span class="line">naireHandler.showNaire(naireType, dialogType, questionsCount, reloadWindow);</span><br></pre></td></tr></table></figure>
+
+<p>这样意义就很明显了。</p>
+<h2 id="6-使用ES6简化代码"><a href="#6-使用ES6简化代码" class="headerlink" title="6. 使用ES6简化代码"></a>6. 使用ES6简化代码</h2><p>ES6已经发展很多年了，兼容性也已经很好了。恰当地使用，可以让代码更加地简洁优雅。</p>
+<h3 id="（1）使用箭头函数取代小函数"><a href="#（1）使用箭头函数取代小函数" class="headerlink" title="（1）使用箭头函数取代小函数"></a>（1）使用箭头函数取代小函数</h3><p>有很多使用小函数的场景，如果写个function，代码起码得写3行，但是用箭头函数一行就搞定了，例如实现数组从大到小排序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var nums &#x3D; [4, 8, 1, 9, 0];</span><br><span class="line">nums.sort(function(a, b)&#123;</span><br><span class="line">    return b - a;</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F;输出[9, 8, 4, 1, 0]</span><br></pre></td></tr></table></figure>
+
+<p>如果用箭头函数，排序只要一行就搞定了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var nums &#x3D; [4, 8, 1, 9, 0];</span><br><span class="line"></span><br><span class="line">nums.sort(a, b &#x3D;&gt; b - a);</span><br></pre></td></tr></table></figure>
+
+<p>代码看起来简洁多了，还有setTimeout里面经常会遇到只要执行一行代码就好了，写个function总感觉有点麻烦，用字符串的方式又不太好，所以这种情况用箭头函数也很方便：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() &#x3D;&gt; console.log(&quot;hi&quot;), 3000)</span><br></pre></td></tr></table></figure>
+
+<p>箭头函数在C++/Java等其它语言里面叫做Lambda表达式，Ruby比较早就有这种语法形式了，后来C++/Java也实现了这种语法。 当然箭头函数或者Lambda表达式不仅适用于这种一行的，多行代码也可以，不过在一行的时候它的优点才比较明显。</p>
+<h3 id="（2）使用ES6的class"><a href="#（2）使用ES6的class" class="headerlink" title="（2）使用ES6的class"></a>（2）使用ES6的class</h3><p>虽然ES6的class和使用function的prototype本质上是一样的，都是用的原型。但是用class可以减少代码量，同时让代码看起来更加地高大上，使用function要写这么多：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age)&#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.addAge &#x3D; function()&#123;</span><br><span class="line">    this.age++;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Person.prototype.setName &#x3D; function(name)&#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用class代码看加地简洁易懂：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    constructor(name, age)&#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line">    addAge()&#123;</span><br><span class="line">        this.age++;</span><br><span class="line">    &#125;</span><br><span class="line">    setName(name)&#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并且class还可以很方便地实现继承、静态的成员函数，就不需要自己再去通过一些技巧去实现了。</p>
+<h3 id="（3）字符串拼接"><a href="#（3）字符串拼接" class="headerlink" title="（3）字符串拼接"></a>（3）字符串拼接</h3><p>以前要用+号拼接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var tpl &#x3D; </span><br><span class="line">    &#39;&lt;div&gt;&#39; + </span><br><span class="line">    &#39;    &lt;span&gt;1&lt;&#x2F;span&gt;&#39; +</span><br><span class="line">    &#39;&lt;&#x2F;div&gt;&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>现在只要用两个反引号“`”就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var tpl &#x3D; </span><br><span class="line">    &#96;&lt;div&gt;</span><br><span class="line">        &lt;span&gt;1&lt;&#x2F;span&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &#96;;</span><br></pre></td></tr></table></figure>
+
+<p>另外反引号还支持占位替换，原本你需要：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var page &#x3D; 5,</span><br><span class="line">type &#x3D; encodeURIComponet(&quot;#js&quot;);</span><br><span class="line">var url &#x3D; &quot;&#x2F;list?page&#x3D;&quot; + page + &quot;&amp;type&#x3D;&quot; + type;</span><br></pre></td></tr></table></figure>
+
+<p>现在只需要： <code>var url = `/list?page=$&#123;page&#125;&amp;type=$&#123;type&#125;`;</code> 就不用使用+号把字符串拆散了。</p>
+<h3 id="（4）块级作用域变量"><a href="#（4）块级作用域变量" class="headerlink" title="（4）块级作用域变量"></a>（4）块级作用域变量</h3><p>块级作用域变量也是ES6的一个特色，下面的代码是一个任务队列的模型抽象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var tasks &#x3D; [];</span><br><span class="line">for(var i &#x3D; 0; i &lt; 4; i++)&#123;</span><br><span class="line">    tasks.push(function()&#123;</span><br><span class="line">        console.log(&quot;i is &quot; + i);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">for(var j &#x3D; 0; j &lt; tasks.length; j++)&#123;</span><br><span class="line">    tasks[j]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是上面代码的执行输出是4，4，4，4，并且不是想要输出：0，1，2，3，所以每个task就不能取到它的index了，这是因为闭包都是用的同一个i变量，i已经变成4了，所以执行闭包的时候就都是4了。那怎么办呢？可以这样解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var tasks &#x3D; [];</span><br><span class="line">for(var i &#x3D; 0; i &lt; 4; i++)&#123;</span><br><span class="line">    !function(k)&#123;</span><br><span class="line">        tasks.push(function()&#123;</span><br><span class="line">            console.log(&quot;i is &quot; + k);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;(i);</span><br><span class="line">&#125;</span><br><span class="line">for(var j &#x3D; 0; j &lt; tasks.length; j++)&#123;</span><br><span class="line">    tasks[j]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把i赋值给了k，由于k它是一个function的一个参数，每次执行函数的时候，肯定会实例化新的k，所以每次的k都是不同的变量，这样就输出就正常了。 但是代码看起来有点别扭，如果用ES6，只要把var改成let就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var tasks &#x3D; [];</span><br><span class="line">for(let i &#x3D; 0; i &lt;&#x3D; 4; i++)&#123;</span><br><span class="line">    tasks.push(function()&#123;</span><br><span class="line">        console.log(&quot;i is &quot; + i);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">for(var j &#x3D; 0; j &lt; tasks.length; j++)&#123;</span><br><span class="line">    tasks[j]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只改动了3个字符就达到了目的。因为for循环里面有个大括号，大括号就是一个独立的作用域，let定义的变量在独立的作用域里面它的值也是独立的。当然即使没写大括号for循环执行也是独立的。 除了以上几点，ES6还有其它一些比较好用的功能，如Object的assign，Promise等，也是可以帮助写出简洁高效的代码。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/09/04/js%E4%B8%AD%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9Fnull-%E6%98%AF%E5%AF%B9%E8%B1%A1%E5%90%97%EF%BC%9F%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/04/js%E4%B8%AD%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9Fnull-%E6%98%AF%E5%AF%B9%E8%B1%A1%E5%90%97%EF%BC%9F%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">JS中原始类型有哪几种？null 是对象吗？原始数据类型和复杂数据类型有什么区别？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-04 07:35:02" itemprop="dateCreated datePublished" datetime="2019-09-04T07:35:02+08:00">2019-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:50:18" itemprop="dateModified" datetime="2021-08-30T11:50:18+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>目前，JS原始类型有六种，分别为:</p>
+<ul>
+<li>  Boolean</li>
+<li>  String</li>
+<li>  Number</li>
+<li>  Undefined</li>
+<li>  Null</li>
+<li>  Symbol(ES6新增)</li>
+<li>  ES10新增了一种基本数据类型：BigInt</li>
+</ul>
+<h2 id="复杂数据类型只有一种-Object"><a href="#复杂数据类型只有一种-Object" class="headerlink" title="复杂数据类型只有一种: Object"></a>复杂数据类型只有一种: Object</h2><p>null 不是一个对象，尽管 typeof null 输出的是 object，这是一个历史遗留问题，JS 的最初版本中使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，000 开头代表是对象，null 表示为全零，所以将它错误的判断为 object 。 基本数据类型和复杂数据类型的区别为: 1、内存的分配不同</p>
+<ul>
+<li>  基本数据类型存储在栈中。</li>
+<li>  复杂数据类型存储在堆中，栈中存储的变量，是指向堆中的引用地址。</li>
+</ul>
+<p>2、访问机制不同</p>
+<ul>
+<li>  基本数据类型是按值访问</li>
+<li>  复杂数据类型按引用访问，JS不允许直接访问保存在堆内存中的对象，在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值。</li>
+</ul>
+<p>3、复制变量时不同(a=b)</p>
+<ul>
+<li>  基本数据类型：a=b;是将b中保存的原始值的副本赋值给新变量a，a和b完全独立，互不影响</li>
+<li>  复杂数据类型：a=b;将b保存的对象内存的引用地址赋值给了新变量a;a和b指向了同一个堆内存地址，其中一个值发生了改变，另一个也会改变。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let b &#x3D; &#123;</span><br><span class="line">age: 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let a &#x3D; b;</span><br><span class="line">a.age &#x3D; 20;</span><br><span class="line">console.log(a); &#x2F;&#x2F;&#123; age: 20 &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数传递的不同-实参-形参"><a href="#参数传递的不同-实参-形参" class="headerlink" title="参数传递的不同(实参/形参)"></a>参数传递的不同(实参/形参)</h2><p>函数传参都是按值传递(栈中的存储的内容)：基本数据类型，拷贝的是值；复杂数据类型，拷贝的是引用地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;基本数据类型</span><br><span class="line">let b &#x3D; 10</span><br><span class="line"></span><br><span class="line">function change(info) &#123;</span><br><span class="line">info&#x3D;20;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;info&#x3D;b;基本数据类型，拷贝的是值得副本，二者互不干扰</span><br><span class="line">change(b);</span><br><span class="line">console.log(b);&#x2F;&#x2F;10</span><br><span class="line">&#x2F;&#x2F;复杂数据类型</span><br><span class="line">let b &#x3D; &#123;</span><br><span class="line">age: 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function change(info) &#123;</span><br><span class="line">info.age &#x3D; 20;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;info&#x3D;b;根据第三条差异，可以看出，拷贝的是地址的引用，修改互相影响。</span><br><span class="line">change(b);</span><br><span class="line">console.log(b);&#x2F;&#x2F;&#123; age: 20 &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/09/03/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%88%A4%E6%96%ADthis%E7%9A%84%E6%8C%87%E5%90%91%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +501,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 11:52:10" itemprop="dateModified" datetime="2021-08-30T11:52:10+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,27 +527,31 @@
           <p>如果用一句话说明 this 的指向，那么即是: 谁调用它，this 就指向谁。 但是仅通过这句话，我们很多时候并不能准确判断 this 的指向。因此我们需要借助一些规则去帮助自己： this 的指向可以按照以下顺序判断:</p>
 <h2 id="1-全局环境中的-this"><a href="#1-全局环境中的-this" class="headerlink" title="1. 全局环境中的 this"></a>1. 全局环境中的 this</h2><p>浏览器环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部）this 都指向全局对象 window; node 环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部），this 都是空对象 {};</p>
 <h2 id="2-是否是-new-绑定"><a href="#2-是否是-new-绑定" class="headerlink" title="2. 是否是 new 绑定"></a>2. 是否是 new 绑定</h2><p>如果是 new 绑定，并且构造函数中没有返回 function 或者是 object，那么 this 指向这个新对象。如下: 构造函数返回值不是 function 或 object。</p>
-<p>function Super(age) {<br>    this.age = age;<br>}<br>let instance = new Super(‘26’);<br>console.log(instance.age); //26</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function Super(age) &#123;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">&#125;</span><br><span class="line">let instance &#x3D; new Super(&#39;26&#39;);</span><br><span class="line">console.log(instance.age); &#x2F;&#x2F;26</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>构造函数返回值是 function 或 object，这种情况下 this 指向的是返回的对象。</p>
-<p>function Super(age) {<br>    this.age = age;<br>    let obj = {a: ‘2’};<br>    return obj;<br>}<br>let instance = new Super(‘hello’);<br>console.log(instance.age); //undefined</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function Super(age) &#123;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    let obj &#x3D; &#123;a: &#39;2&#39;&#125;;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br><span class="line">let instance &#x3D; new Super(&#39;hello&#39;);</span><br><span class="line">console.log(instance.age); &#x2F;&#x2F;undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>你可以想知道为什么会这样？我们来看一下 new 的实现原理:</p>
 <ol>
 <li> 创建一个新对象。</li>
-<li> 这个新对象会被执行 [[原型]] 连接。</li>
+<li> 这个新对象会被执行 <code>[原型]</code> 连接。</li>
 <li> 属性和方法被加入到 this 引用的对象中。并执行了构造函数中的方法.</li>
 <li> 如果函数没有返回其他对象，那么 this 指向这个新对象，否则 this 指向构造函数中返回的对象。</li>
 </ol>
-<p>function new(func) {<br>    let target = {};<br>    target.__proto__ = func.prototype;<br>    let res = func.call(target);<br>    //排除 null 的情况<br>    if (res &amp;&amp; typeof(res) == “object”  typeof(res) == “function”) {<br>    return res;<br>    }<br>    return target;<br>}</p>
-<h2 id="3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"><a href="#3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。" class="headerlink" title="3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"></a>3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。</h2><p>function info(){<br>    console.log(this.age);<br>}<br>var person = {<br>    age: 20,<br>    info<br>}<br>var age = 28;<br>var info = person.info;<br>info.call(person);   //20<br>info.apply(person);  //20<br>info.bind(person)(); //20</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function new(func) &#123;</span><br><span class="line">    let target &#x3D; &#123;&#125;;</span><br><span class="line">    target.__proto__ &#x3D; func.prototype;</span><br><span class="line">    let res &#x3D; func.call(target);</span><br><span class="line">    &#x2F;&#x2F;排除 null 的情况</span><br><span class="line">    if (res &amp;&amp; typeof(res) &#x3D;&#x3D; &quot;object&quot;  typeof(res) &#x3D;&#x3D; &quot;function&quot;) &#123;</span><br><span class="line">    return res;</span><br><span class="line">    &#125;</span><br><span class="line">    return target;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"><a href="#3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。" class="headerlink" title="3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"></a>3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">var info &#x3D; person.info;</span><br><span class="line">info.call(person);   &#x2F;&#x2F;20</span><br><span class="line">info.apply(person);  &#x2F;&#x2F;20</span><br><span class="line">info.bind(person)(); &#x2F;&#x2F;20</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>这里同样需要注意一种特殊情况，如果 call,apply 或者 bind 传入的第一个参数值是 undefined 或者 null，严格模式下 this 的值为传入的值 null /undefined。非严格模式下，实际应用的默认绑定规则，this 指向全局对象(node环境为global，浏览器环境为window)</p>
-<p>function info(){<br>    //node环境中:非严格模式 global，严格模式为null<br>    //浏览器环境中:非严格模式 window，严格模式为null<br>    console.log(this);<br>    console.log(this.age);<br>}<br>var person = {<br>    age: 20,<br>    info<br>}<br>var age = 28;<br>var info = person.info;<br>//严格模式抛出错误；<br>//非严格模式，node下输出undefined（因为全局的age不会挂在 global 上）<br>//非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）<br>info.call(null);</p>
-<h2 id="4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn"><a href="#4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn" class="headerlink" title="4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()"></a>4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()</h2><p>function info(){<br>    console.log(this.age);<br>}<br>var person = {<br>    age: 20,<br>    info<br>}<br>var age = 28;<br>person.info(); //20;执行的是隐式绑定</p>
-<h2 id="5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"><a href="#5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。" class="headerlink" title="5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"></a>5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。</h2><p>非严格模式： node环境，执行全局对象 global，浏览器环境，执行全局对象 window。 严格模式：执行 undefined</p>
-<p>function info(){<br>    console.log(this.age);<br>}<br>var age = 28;<br>//严格模式；抛错<br>//非严格模式，node下输出 undefined（因为全局的age不会挂在 global 上）<br>//非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）<br>//严格模式抛出，因为 this 此时是 undefined<br>info();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    &#x2F;&#x2F;node环境中:非严格模式 global，严格模式为null</span><br><span class="line">    &#x2F;&#x2F;浏览器环境中:非严格模式 window，严格模式为null</span><br><span class="line">    console.log(this);</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">var info &#x3D; person.info;</span><br><span class="line">&#x2F;&#x2F;严格模式抛出错误；</span><br><span class="line">&#x2F;&#x2F;非严格模式，node下输出undefined（因为全局的age不会挂在 global 上）</span><br><span class="line">&#x2F;&#x2F;非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）</span><br><span class="line">info.call(null);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn"><a href="#4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn" class="headerlink" title="4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()"></a>4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">person.info(); &#x2F;&#x2F;20;执行的是隐式绑定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"><a href="#5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。" class="headerlink" title="5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"></a>5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">非严格模式： node环境，执行全局对象 global，浏览器环境，执行全局对象 window。 严格模式：执行 undefined</span><br><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">&#x2F;&#x2F;严格模式；抛错</span><br><span class="line">&#x2F;&#x2F;非严格模式，node下输出 undefined（因为全局的age不会挂在 global 上）</span><br><span class="line">&#x2F;&#x2F;非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）</span><br><span class="line">&#x2F;&#x2F;严格模式抛出，因为 this 此时是 undefined</span><br><span class="line">info();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h2 id="6-箭头函数的情况："><a href="#6-箭头函数的情况：" class="headerlink" title="6. 箭头函数的情况："></a>6. 箭头函数的情况：</h2><p>箭头函数没有自己的this，继承外层上下文绑定的this。</p>
-<p>let obj = {<br>    age: 20,<br>    info: function() {<br>        return () =&gt; {<br>            console.log(this.age); //this继承的是外层上下文绑定的this<br>        }<br>    }<br>}</p>
-<p>let person = {age: 28};<br>let info = obj.info();<br>info(); //20</p>
-<p>let info2 = obj.info.call(person);<br>info2(); //28</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let obj &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info: function() &#123;</span><br><span class="line">        return () &#x3D;&gt; &#123;</span><br><span class="line">            console.log(this.age); &#x2F;&#x2F;this继承的是外层上下文绑定的this</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let person &#x3D; &#123;age: 28&#125;;</span><br><span class="line">let info &#x3D; obj.info();</span><br><span class="line">info(); &#x2F;&#x2F;20</span><br><span class="line"></span><br><span class="line">let info2 &#x3D; obj.info.call(person);</span><br><span class="line">info2(); &#x2F;&#x2F;28</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -305,7 +602,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 11:54:34" itemprop="dateModified" datetime="2021-08-30T11:54:34+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -334,113 +631,57 @@
 <p>Array.from(arrayLike[, mapFunction[, thisArg]])</p>
 </blockquote>
 <p>arrayLike：必传参数，想要转换成数组的伪数组对象或可迭代对象。 mapFunction：可选参数，mapFunction(item，index){…} 是在集合中的每个项目上调用的函数。返回的值将插入到新集合中。 thisArg：可选参数，执行回调函数 mapFunction 时 this 对象。这个参数很少使用。 例如，让我们将类数组的每一项乘以2：</p>
-<p>const someNumbers = { ‘0’: 10, ‘1’: 15, length: 2 };</p>
-<p>Array.from(someNumbers, value =&gt; value * 2); // =&gt; [20, 30]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const someNumbers &#x3D; &#123; &#39;0&#39;: 10, &#39;1&#39;: 15, length: 2 &#125;;</span><br><span class="line"></span><br><span class="line">Array.from(someNumbers, value &#x3D;&gt; value * 2); &#x2F;&#x2F; &#x3D;&gt; [20, 30]</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="2-将类数组转换成数组"><a href="#2-将类数组转换成数组" class="headerlink" title="2.将类数组转换成数组"></a>2.将类数组转换成数组</h2><p>Array.from() 第一个用途：将类数组对象转换成数组。 通常，你会碰到的类数组对象有：函数中的 arguments 关键字，或者是一个 DOM 集合。 在下面的示例中，让我们对函数的参数求和：</p>
-<p>function sumArguments() {<br>return Array.from(arguments).reduce((sum, num) =&gt; sum + num);<br>}</p>
-<p>sumArguments(1, 2, 3); // =&gt; 6</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function sumArguments() &#123;</span><br><span class="line">return Array.from(arguments).reduce((sum, num) &#x3D;&gt; sum + num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumArguments(1, 2, 3); &#x2F;&#x2F; &#x3D;&gt; 6</span><br></pre></td></tr></table></figure>
+
+
 <p>Array.from(arguments) 将类数组对象 arguments 转换成一个数组，然后使用数组的 reduce 方法求和。 此外，Array.from() 的第一个参数可以是任意一个可迭代对象，我们继续看一些例子:</p>
-<p>Array.from(‘Hey’); // =&gt; [‘H’, ‘e’, ‘y’]<br>Array.from(new Set([‘one’, ‘two’])); // =&gt; [‘one’, ‘two’]</p>
-<p>const map = new Map();<br>map.set(‘one’, 1)<br>map.set(‘two’, 2);<br>Array.from(map); // =&gt; [[‘one’, 1], [‘two’, 2]]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Array.from(&#39;Hey&#39;); &#x2F;&#x2F; &#x3D;&gt; [&#39;H&#39;, &#39;e&#39;, &#39;y&#39;]</span><br><span class="line">Array.from(new Set([&#39;one&#39;, &#39;two&#39;])); &#x2F;&#x2F; &#x3D;&gt; [&#39;one&#39;, &#39;two&#39;]</span><br><span class="line"></span><br><span class="line">const map &#x3D; new Map();</span><br><span class="line">map.set(&#39;one&#39;, 1)</span><br><span class="line">map.set(&#39;two&#39;, 2);</span><br><span class="line">Array.from(map); &#x2F;&#x2F; &#x3D;&gt; [[&#39;one&#39;, 1], [&#39;two&#39;, 2]]</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="3-克隆一个数组"><a href="#3-克隆一个数组" class="headerlink" title="3.克隆一个数组"></a>3.克隆一个数组</h2><p>在 JavaScript 中有很多克隆数组的方法。正如你所想，Array.from() 可以很容易的实现数组的浅拷贝。</p>
-<p>const numbers = [3, 6, 9];<br>const numbersCopy = Array.from(numbers);</p>
-<p>numbers === numbersCopy; // =&gt; false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numbers &#x3D; [3, 6, 9];</span><br><span class="line">const numbersCopy &#x3D; Array.from(numbers);</span><br><span class="line"></span><br><span class="line">numbers &#x3D;&#x3D;&#x3D; numbersCopy; &#x2F;&#x2F; &#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+
+
 <p>Array.from(numbers) 创建了对 numbers 数组的浅拷贝，numbers === numbersCopy 的结果是 false，意味着虽然 numbers 和 numbersCopy有着相同的项，但是它们是不同的数组对象。 是否可以使用 Array.from() 创建数组的克隆，包括所有嵌套的？挑战一下！</p>
-<p>function recursiveClone(val) {<br>return Array.isArray(val) ? Array.from(val, recursiveClone) : val;<br>}<br>const numbers = [[0, 1, 2], [‘one’, ‘two’, ‘three’]];<br>const numbersClone = recursiveClone(numbers);<br>numbersClone; // =&gt; [[0, 1, 2], [‘one’, ‘two’, ‘three’]]<br>numbers[0] === numbersClone[0] // =&gt; false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function recursiveClone(val) &#123;</span><br><span class="line">return Array.isArray(val) ? Array.from(val, recursiveClone) : val;</span><br><span class="line">&#125;</span><br><span class="line">const numbers &#x3D; [[0, 1, 2], [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;]];</span><br><span class="line">const numbersClone &#x3D; recursiveClone(numbers);</span><br><span class="line">numbersClone; &#x2F;&#x2F; &#x3D;&gt; [[0, 1, 2], [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;]]</span><br><span class="line">numbers[0] &#x3D;&#x3D;&#x3D; numbersClone[0] &#x2F;&#x2F; &#x3D;&gt; false</span><br></pre></td></tr></table></figure>
+
+
 <p>recursiveClone() 能够对数组的深拷贝，通过判断 数组的 item 是否是一个数组，如果是数组，就继续调用 recursiveClone() 来实现了对数组的深拷贝。 你能编写一个比使用 Array.from() 递归拷贝更简短的数组深拷贝吗？如果可以的话，请写在下面的评论区。</p>
 <h2 id="4-使用值填充数组"><a href="#4-使用值填充数组" class="headerlink" title="4. 使用值填充数组"></a>4. 使用值填充数组</h2><p>如果你需要使用相同的值来初始化数组，那么 Array.from() 将是不错的选择。 我们来定义一个函数，创建一个填充相同默认值的数组：</p>
-<p>const length = 3;<br>const init = 0;<br>const result = Array.from({ length }, () =&gt; init);<br>result; // =&gt; [0, 0, 0]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const length &#x3D; 3;</span><br><span class="line">const init &#x3D; 0;</span><br><span class="line">const result &#x3D; Array.from(&#123; length &#125;, () &#x3D;&gt; init);</span><br><span class="line">result; &#x2F;&#x2F; &#x3D;&gt; [0, 0, 0]</span><br></pre></td></tr></table></figure>
+
+
 <p>result 是一个新的数组，它的长度为3，数组的每一项都是0。调用 Array.from() 方法，传入一个类数组对象 { length } 和 返回初始化值的 mapFunction 函数。 但是，有一个替代方法 array.fill() 可以实现同样的功能。</p>
-<p>const length = 3;<br>const init = 0;<br>const result = Array(length).fill(init);<br>fillArray2(0, 3); // =&gt; [0, 0, 0]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const length &#x3D; 3;</span><br><span class="line">const init &#x3D; 0;</span><br><span class="line">const result &#x3D; Array(length).fill(init);</span><br><span class="line">fillArray2(0, 3); &#x2F;&#x2F; &#x3D;&gt; [0, 0, 0]</span><br></pre></td></tr></table></figure>
+
+
 <p>fill() 使用初始值正确填充数组。</p>
 <h3 id="4-1-使用对象填充数组"><a href="#4-1-使用对象填充数组" class="headerlink" title="4.1 使用对象填充数组"></a>4.1 使用对象填充数组</h3><p>当初始化数组的每个项都应该是一个新对象时，Array.from() 是一个更好的解决方案：</p>
-<p>const length = 3;<br>const resultA = Array.from({ length }, () =&gt; ({}));<br>const resultB = Array(length).fill({});</p>
-<p>resultA; // =&gt; [{}, {}, {}]<br>resultB; // =&gt; [{}, {}, {}]</p>
-<p>resultA[0] === resultA[1]; // =&gt; false<br>resultB[0] === resultB[1]; // =&gt; true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const length &#x3D; 3;</span><br><span class="line">const resultA &#x3D; Array.from(&#123; length &#125;, () &#x3D;&gt; (&#123;&#125;));</span><br><span class="line">const resultB &#x3D; Array(length).fill(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">resultA; &#x2F;&#x2F; &#x3D;&gt; [&#123;&#125;, &#123;&#125;, &#123;&#125;]</span><br><span class="line">resultB; &#x2F;&#x2F; &#x3D;&gt; [&#123;&#125;, &#123;&#125;, &#123;&#125;]</span><br><span class="line"></span><br><span class="line">resultA[0] &#x3D;&#x3D;&#x3D; resultA[1]; &#x2F;&#x2F; &#x3D;&gt; false</span><br><span class="line">resultB[0] &#x3D;&#x3D;&#x3D; resultB[1]; &#x2F;&#x2F; &#x3D;&gt; true</span><br></pre></td></tr></table></figure>
+
+
 <p>由 Array.from 返回的 resultA 使用不同空对象实例进行初始化。之所以发生这种情况是因为每次调用时，mapFunction，即此处的 () =&gt; ({}) 都会返回一个新的对象。 然后，fill() 方法创建的 resultB 使用相同的空对象实例进行初始化。不会跳过空项。</p>
 <h3 id="4-2-使用-array-map-怎么样？"><a href="#4-2-使用-array-map-怎么样？" class="headerlink" title="4.2 使用 array.map 怎么样？"></a>4.2 使用 array.map 怎么样？</h3><p>是不是可以使用 array.map() 方法来实现？我们来试一下:</p>
-<p>const length = 3;<br>const init = 0;<br>const result = Array(length).map(() =&gt; init);</p>
-<p>result; // =&gt; [undefined, undefined, undefined]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const length &#x3D; 3;</span><br><span class="line">const init &#x3D; 0;</span><br><span class="line">const result &#x3D; Array(length).map(() &#x3D;&gt; init);</span><br><span class="line"></span><br><span class="line">result; &#x2F;&#x2F; &#x3D;&gt; [undefined, undefined, undefined]</span><br></pre></td></tr></table></figure>
+
+
 <p>map() 方法似乎不正常，创建出来的数组不是预期的 [0, 0, 0]，而是一个有3个空项的数组。 这是因为 Array(length) 创建了一个有3个空项的数组(也称为稀疏数组)，但是 map() 方法会跳过空项。</p>
 <h2 id="5-生成数字范围"><a href="#5-生成数字范围" class="headerlink" title="5. 生成数字范围"></a>5. 生成数字范围</h2><p>你可以使用 Array.from() 生成值范围。例如，下面的 range 函数生成一个数组，从0开始到 end - 1。</p>
-<p>function range(end) {<br>return Array.from({ length: end }, (_, index) =&gt; index);<br>}<br>range(4); // =&gt; [0, 1, 2, 3]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function range(end) &#123;</span><br><span class="line">return Array.from(&#123; length: end &#125;, (_, index) &#x3D;&gt; index);</span><br><span class="line">&#125;</span><br><span class="line">range(4); &#x2F;&#x2F; &#x3D;&gt; [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+
 <p>在 range() 函数中，Array.from() 提供了类似数组的 {length：end} ，以及一个简单地返回当前索引的 map 函数 。这样你就可以生成值范围。</p>
 <h2 id="6-数组去重"><a href="#6-数组去重" class="headerlink" title="6.数组去重"></a>6.数组去重</h2><p>由于 Array.from() 的入参是可迭代对象，因而我们可以利用其与 Set 结合来实现快速从数组中删除重复项。</p>
-<p>function unique(array) {<br>return Array.from(new Set(array));<br>}</p>
-<p>unique([1, 1, 2, 3, 3]); // =&gt; [1, 2, 3]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function unique(array) &#123;</span><br><span class="line">return Array.from(new Set(array));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unique([1, 1, 2, 3, 3]); &#x2F;&#x2F; &#x3D;&gt; [1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+
 <p>首先，new Set(array) 创建了一个包含数组的集合，Set 集合会删除重复项。 因为 Set 集合是可迭代的，所以可以使用 Array.from() 将其转换为一个新的数组。 这样，我们就实现了数组去重。</p>
 <h2 id="7-结论"><a href="#7-结论" class="headerlink" title="7.结论"></a>7.结论</h2><p>Array.from() 方法接受类数组对象以及可迭代对象，它可以接受一个 map 函数，并且，这个 map 函数不会跳过值为 undefined 的数值项。这些特性给 Array.from() 提供了很多可能。 如上所述，你可以轻松的将类数组对象转换为数组，克隆一个数组，使用初始化填充数组，生成一个范围，实现数组去重。 实际上，Array.from() 是非常好的设计，灵活的配置，允许很多集合转换。 你知道 Array.from() 的其他有趣用例吗？可以写在评论区。</p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/" class="post-title-link" itemprop="url">什么是防抖和节流？有什么区别？如何实现？</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-14T00:00:00+08:00">2019-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:11:29" itemprop="dateModified" datetime="2021-08-30T10:11:29+08:00">2021-08-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h2><p>触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间</p>
-<p>思路：</p>
-<p>每次触发事件时都取消之前的延时调用方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn) &#123;</span><br><span class="line">    let timeout &#x3D; null; &#x2F;&#x2F; 创建一个标记用来存放定时器的返回值</span><br><span class="line">    return function () &#123;</span><br><span class="line">    clearTimeout(timeout); &#x2F;&#x2F; 每当用户输入的时候把前一个 setTimeout clear 掉</span><br><span class="line">    timeout &#x3D; setTimeout(() &#x3D;&gt; &#123; &#x2F;&#x2F; 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数</span><br><span class="line">        fn.apply(this, arguments);</span><br><span class="line">    &#125;, 500);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">function sayHi() &#123;</span><br><span class="line">    console.log(&#39;防抖成功&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var inp &#x3D; document.getElementById(&#39;inp&#39;);</span><br><span class="line">inp.addEventListener(&#39;input&#39;, debounce(sayHi)); &#x2F;&#x2F; 防抖</span><br></pre></td></tr></table></figure>
-<h3 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h3><p>高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率</p>
-<p>思路：<br>每次触发事件时都判断当前是否有等待执行的延时函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn) &#123;</span><br><span class="line">    let canRun &#x3D; true; &#x2F;&#x2F; 通过闭包保存一个标记</span><br><span class="line">    return function () &#123;</span><br><span class="line">    if (!canRun) return; &#x2F;&#x2F; 在函数开头判断标记是否为true，不为true则return</span><br><span class="line">    canRun &#x3D; false; &#x2F;&#x2F; 立即设置为false</span><br><span class="line">    setTimeout(() &#x3D;&gt; &#123; &#x2F;&#x2F; 将外部传入的函数的执行放在setTimeout中</span><br><span class="line">        fn.apply(this, arguments);</span><br><span class="line">        &#x2F;&#x2F; 最后在setTimeout执行完毕后再把标记设置为true(关键)表示可以执行下一次循环了。当定时器没有执行的时候标记永远是false，在开头被return掉</span><br><span class="line">        canRun &#x3D; true;</span><br><span class="line">    &#125;, 500);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">function sayHi(e) &#123;</span><br><span class="line">    console.log(e.target.innerWidth, e.target.innerHeight);</span><br><span class="line">&#125;</span><br><span class="line">window.addEventListener(&#39;resize&#39;, throttle(sayHi));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -490,7 +731,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 11:55:38" itemprop="dateModified" datetime="2021-08-30T11:55:38+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -513,17 +754,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>var str=”123abc456”;<br>var i=3;</p>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str&#x3D;&quot;123abc456&quot;;</span><br><span class="line">var i&#x3D;3;</span><br></pre></td></tr></table></figure>
+
+
 <p>1 取字符串的前i个字符：（不操作原字符）</p>
-<p>str=str.substring(0,i);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;str.substring(0,i);</span><br></pre></td></tr></table></figure>
+
+
 <p>2 从右边开始取i个字符：（不操作原字符）</p>
-<p>str=str.substring(str.Length-i);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;str.substring(str.Length-i);</span><br></pre></td></tr></table></figure>
+
+
 <p>3 从右边开始去掉i个字符：（不操作原字符）</p>
-<p>str=str.substring(0,str.Length-i);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;str.substring(0,str.Length-i);</span><br></pre></td></tr></table></figure>
+
+
 <p>4 如果字符串中有”abc”则替换成”ABC”：（操作原字符）</p>
-<p>str=str.replace(“abc”,”ABC”);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;str.replace(&quot;abc&quot;,&quot;ABC&quot;);</span><br></pre></td></tr></table></figure>
+
+
 <p>5 如果想从某一个字符的下标开始：（不操作原字符）</p>
-<p>str=str.substr(str.indexOf(‘a’),3);// 从‘a’下标开始(包括‘a’)截取3个元素，不操作原字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;str.substr(str.indexOf(&#39;a&#39;),3);&#x2F;&#x2F; 从‘a’下标开始(包括‘a’)截取3个元素，不操作原字符</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -543,7 +794,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/19/CSS3%20%E6%96%87%E6%9C%AC%E6%B8%90%E5%8F%98%EF%BC%88Gradient%20Text%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/20/CSS3%20%E6%96%87%E6%9C%AC%E6%B8%90%E5%8F%98%EF%BC%88Gradient%20Text%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -557,7 +808,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/07/19/CSS3%20%E6%96%87%E6%9C%AC%E6%B8%90%E5%8F%98%EF%BC%88Gradient%20Text%EF%BC%89/" class="post-title-link" itemprop="url">CSS3 文本渐变（Gradient Text）</a>
+            <a href="/2019/07/20/CSS3%20%E6%96%87%E6%9C%AC%E6%B8%90%E5%8F%98%EF%BC%88Gradient%20Text%EF%BC%89/" class="post-title-link" itemprop="url">CSS3 文本渐变（Gradient Text）</a>
         </h2>
 
         <div class="post-meta">
@@ -567,14 +818,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-07-19 14:56:36" itemprop="dateCreated datePublished" datetime="2019-07-19T14:56:36+08:00">2019-07-19</time>
+              <time title="创建时间：2019-07-20 14:56:36" itemprop="dateCreated datePublished" datetime="2019-07-20T14:56:36+08:00">2019-07-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 11:22:37" itemprop="dateModified" datetime="2021-08-30T11:22:37+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 11:57:29" itemprop="dateModified" datetime="2021-08-30T11:57:29+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -597,9 +848,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>如果你现在刚刚熟悉渐变是什么，我们会在你深入研究更强硬的东西之前为你画画。渐变是具有起点和终点的颜色的渐变 - 因此，线性渐变以一种颜色（如红色）开始，并逐渐沿直线过渡到另一种颜色（如蓝色）。就像我们在线性渐变文章中所说的那样，将日落视为线性渐变的最佳示例，以及每种颜色如何精美无缝地进入下一个。 h2 {text-align: center;font-size: 48px !important;font-weight: 800;background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;margin: 0;}</p>
-<h2 id="文字渐变"><a href="#文字渐变" class="headerlink" title="文字渐变"></a>文字渐变</h2><p>h1 {<br>font-size：72px;<br>background：-webkit-linear-gradient（#eee，＃333）;<br>-webkit-background-clip：text;<br>-webkit-text-fill-color：transparent;<br>}</p>
+          <p>如果你现在刚刚熟悉渐变是什么，我们会在你深入研究更强硬的东西之前为你画画。渐变是具有起点和终点的颜色的渐变 - 因此，线性渐变以一种颜色（如红色）开始，并逐渐沿直线过渡到另一种颜色（如蓝色）。就像我们在线性渐变文章中所说的那样，将日落视为线性渐变的最佳示例，以及每种颜色如何精美无缝地进入下一个。</p>
+<style>h2 {text-align: center;font-size: 48px !important;font-weight: 800;background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;margin: 0;}</style>
 
+<h2 id="文字渐变"><a href="#文字渐变" class="headerlink" title="文字渐变"></a>文字渐变</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">  font-size：72px;</span><br><span class="line">  background：-webkit-linear-gradient（#eee，＃333）;</span><br><span class="line">  -webkit-background-clip：text;</span><br><span class="line">  -webkit-text-fill-color：transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -649,7 +901,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 12:00:12" itemprop="dateModified" datetime="2021-08-30T12:00:12+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -673,13 +925,21 @@
 
       
           <p>径向渐变由它的中心定义。 为了创建一个径向渐变，你也必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。 <strong>语法</strong></p>
-<p>background: radial-gradient(center, shape size, start-color, …, last-color);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(center, shape size, start-color, ..., last-color);</span><br></pre></td></tr></table></figure>
+
+
 <p>径向渐变 - 颜色结点均匀分布</p>
-<p>background: radial-gradient(red, green, blue); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(red, green, blue); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <p>径向渐变 - 颜色结点不均匀分布</p>
-<p>background: radial-gradient(red 5%, green 15%, blue 60%); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(red 5%, green 15%, blue 60%); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="设置形状"><a href="#设置形状" class="headerlink" title="设置形状"></a>设置形状</h2><p>shape 参数定义了形状。它可以是值 circle 或 ellipse。其中，circle 表示圆形，ellipse 表示椭圆形。默认值是 ellipse。</p>
-<p>background: radial-gradient(circle, red, yellow, green); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(circle, red, yellow, green); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="不同尺寸大小关键字的使用"><a href="#不同尺寸大小关键字的使用" class="headerlink" title="不同尺寸大小关键字的使用"></a>不同尺寸大小关键字的使用</h3><p>size 参数定义了渐变的大小。它可以是以下四个值：</p>
 <ul>
 <li>  closest-side</li>
@@ -688,11 +948,11 @@
 <li>  farthest-corner</li>
 </ul>
 <p>带有不同尺寸大小关键字的径向渐变</p>
-<p>background: radial-gradient(60% 55%, closest-side,blue,green,yellow,black);</p>
-<p>background: radial-gradient(60% 55%, farthest-side,blue,green,yellow,black);</p>
-<h2 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h2><p>repeating-radial-gradient() 函数用于重复径向渐变</p>
-<p>background: repeating-radial-gradient(red, yellow 10%, green 15%);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(60% 55%, closest-side,blue,green,yellow,black);</span><br><span class="line"></span><br><span class="line">background: radial-gradient(60% 55%, farthest-side,blue,green,yellow,black);</span><br></pre></td></tr></table></figure>
 
+
+<h2 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h2><p>repeating-radial-gradient() 函数用于重复径向渐变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: repeating-radial-gradient(red, yellow 10%, green 15%);</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -711,7 +971,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/19/css3-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/18/css3-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -725,7 +985,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/07/19/css3-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/" class="post-title-link" itemprop="url">CSS3 线性渐变（Linear Gradients）</a>
+            <a href="/2019/07/18/css3-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/" class="post-title-link" itemprop="url">CSS3线性渐变（Linear Gradients）</a>
         </h2>
 
         <div class="post-meta">
@@ -735,14 +995,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-07-19 14:42:27" itemprop="dateCreated datePublished" datetime="2019-07-19T14:42:27+08:00">2019-07-19</time>
+              <time title="创建时间：2019-07-18 14:42:27" itemprop="dateCreated datePublished" datetime="2019-07-18T14:42:27+08:00">2019-07-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 12:04:10" itemprop="dateModified" datetime="2021-08-30T12:04:10+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -771,25 +1031,43 @@
 <li>  径向渐变（Radial Gradients）- 由它们的中心定义</li>
 </ul>
 <h2 id="CSS3-线性渐变"><a href="#CSS3-线性渐变" class="headerlink" title="CSS3 线性渐变"></a>CSS3 线性渐变</h2><p>为了创建一个线性渐变，你必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以设置一个起点和一个方向（或一个角度）。 <strong>语法</strong></p>
-<p>background: linear-gradient(direction, color-stop1, color-stop2, …);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(direction, color-stop1, color-stop2, ...);</span><br></pre></td></tr></table></figure>
+
+
 <p><strong>线性渐变 - 从上到下（默认情况下）</strong></p>
-<p>background: linear-gradient(red, blue); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(red, blue); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <p><strong>线性渐变 - 从左到右</strong></p>
-<p>background: linear-gradient(to right, red , blue); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(to right, red , blue); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <p><strong>线性渐变 - 对角</strong></p>
-<p>background: linear-gradient(to bottom right, red , blue); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(to bottom right, red , blue); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="使用角度"><a href="#使用角度" class="headerlink" title="使用角度"></a>使用角度</h3><p>如果你想要在渐变的方向上做更多的控制，你可以定义一个角度，而不用预定义方向（to bottom、to top、to right、to left、to bottom right，等等）。 <strong>语法</strong></p>
-<p>background: linear-gradient(angle, color-stop1, color-stop2);</p>
-<p>角度是指水平线和渐变线之间的角度，逆时针方向计算。换句话说，0deg 将创建一个从下到上的渐变，90deg 将创建一个从左到右的渐变。 <img src="http://www.w3cbest.com/wp-content/uploads/2019/07/7B0CC41A-86DC-4E1B-8A69-A410E6764B91.jpg"> 但是，请注意很多浏览器(Chrome,Safari,fiefox等)的使用了旧的标准，即 0deg 将创建一个从左到右的渐变，90deg 将创建一个从下到上的渐变。换算公式 90 - x = y 其中 x 为标准角度，y为非标准角度。 <strong>带有指定的角度的线性渐变</strong></p>
-<p>background: linear-gradient(180deg, red, blue); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(angle, color-stop1, color-stop2);</span><br></pre></td></tr></table></figure>
+
+
+<p>角度是指水平线和渐变线之间的角度，逆时针方向计算。换句话说，0deg 将创建一个从下到上的渐变，90deg 将创建一个从左到右的渐变。 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/wp-content/uploads/2019/07/7B0CC41A-86DC-4E1B-8A69-A410E6764B91.jpg">http://www.w3cbest.com/wp-content/uploads/2019/07/7B0CC41A-86DC-4E1B-8A69-A410E6764B91.jpg</a> 但是，请注意很多浏览器(Chrome,Safari,fiefox等)的使用了旧的标准，即 0deg 将创建一个从左到右的渐变，90deg 将创建一个从下到上的渐变。换算公式 90 - x = y 其中 x 为标准角度，y为非标准角度。 <strong>带有指定的角度的线性渐变</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(180deg, red, blue); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <p><strong>使用多个颜色结点</strong> 带有多个颜色结点的从上到下的线性渐变</p>
-<p>background: linear-gradient(red, green, blue); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(red, green, blue); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <p>带有多个颜色结点的从左到右的线性渐变</p>
-<p>background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="使用透明度（transparent）"><a href="#使用透明度（transparent）" class="headerlink" title="使用透明度（transparent）"></a>使用透明度（transparent）</h2><p>CSS3 渐变也支持透明度（transparent），可用于创建减弱变淡的效果。 为了添加透明度，我们使用 rgba() 函数来定义颜色结点。rgba() 函数中的最后一个参数可以是从 0 到 1 的值，它定义了颜色的透明度：0 表示完全透明，1 表示完全不透明。</p>
-<p>background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /* 标准的语法 */</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); &#x2F;* 标准的语法 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="重复的线性渐变"><a href="#重复的线性渐变" class="headerlink" title="重复的线性渐变"></a>重复的线性渐变</h2><p>repeating-linear-gradient() 函数用于重复线性渐变：</p>
-<p>background: repeating-linear-gradient(red, yellow 10%, green 20%);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: repeating-linear-gradient(red, yellow 10%, green 20%);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -840,7 +1118,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+                <time title="修改时间：2021-08-30 12:06:52" itemprop="dateModified" datetime="2021-08-30T12:06:52+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -863,10 +1141,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>ECharts 雷达图可以使用 <code>series[i]-radar</code>设置 ，雷达图主要用于表现多变量的数据，例如玩”和平精英”战况的各个属性分析，雷达图依赖<code>radar</code>组件。 关于雷达图其他的一些属性自行去查看官网，我们在这里讲的是在雷达图上设置极坐标。 首先要了解极坐标系，因为实现极坐标需要一个系列三个属性完成，分别是<code>polar:&#123;&#125;</code>极坐标系、<code>radiusAxis:&#123;&#125;</code>极坐标系的径向轴、<code>angleAxis:&#123;&#125;</code>极坐标系的角度轴完成，<a target="_blank" rel="noopener" href="https://www.echartsjs.com/gallery/editor.html?c=doc-example/polar-start-angle">查看示例</a> 如何把极坐标系和雷达图合并呢，下面我们就来说说如何设置，还是需要用到<code>radar</code>组件，<code>radar</code>组件下面有一个<code>indicator</code>属性， 它是雷达图的指示器，用来指定雷达图中的多个变量（维度）。 然后我们它的最大值radar.indicator[i].max和最小值radar.indicator[i].min 设为统一的值，要注意它的这里的最大值要大于或等于你的数据的最大值，最小值要小于或等于你的数据的最小值。 下面是用雷达图表现的示例。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zVLxKV/">echarts 雷达图设置极坐标</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>var max = 4, min = -4;<br>option = {<br>    …<br>    radar: {<br>        …<br>        indicator: [{<br>                name: ‘销售’,<br>                max: max,<br>                min: min<br>            },<br>            {<br>                name: ‘管理’,<br>                max: max,<br>                min: min<br>            },<br>            {<br>                name: ‘技术’,<br>                max: max,<br>                min: min<br>            }<br>        ],<br>        splitArea: {<br>            show: false<br>        },<br>        splitLine: {<br>            show: false<br>        }<br>    },<br>    polar: {},<br>    angleAxis: {<br>        min: 0,<br>        max: 360,<br>        interval: 5,<br>        clockwise: false,<br>        axisTick: {<br>            show: false<br>        },<br>        axisLabel: {<br>            show: false<br>        },<br>        axisLine: {<br>            show: false<br>        },<br>        splitLine: {<br>            show: false<br>        }<br>    },<br>    radiusAxis: {<br>        min: min,<br>        max: max,<br>        interval: 2,<br>        splitArea: {<br>            show: true<br>        }<br>    },<br>    series: [{<br>        …<br>        data: [{<br>            value: [4, -4, 1]<br>        }]<br>    }]<br>};</p>
+          <p>ECharts 雷达图可以使用 <code>series[i]-radar</code>设置 ，雷达图主要用于表现多变量的数据，例如玩”和平精英”战况的各个属性分析，雷达图依赖<code>radar</code>组件。 关于雷达图其他的一些属性自行去查看官网，我们在这里讲的是在雷达图上设置极坐标。 首先要了解极坐标系，因为实现极坐标需要一个系列三个属性完成，分别是<code>polar:&#123;&#125;</code>极坐标系、<code>radiusAxis:&#123;&#125;</code>极坐标系的径向轴、<code>angleAxis:&#123;&#125;</code>极坐标系的角度轴完成，<a target="_blank" rel="noopener" href="https://www.echartsjs.com/gallery/editor.html?c=doc-example/polar-start-angle">查看示例</a> 如何把极坐标系和雷达图合并呢，下面我们就来说说如何设置，还是需要用到<code>radar</code>组件，<code>radar</code>组件下面有一个<code>indicator</code>属性， 它是雷达图的指示器，用来指定雷达图中的多个变量（维度）。 然后我们它的最大值<code>radar.indicator[i].max</code>和最小值<code>radar.indicator[i].min</code>设为统一的值，要注意它的这里的最大值要大于或等于你的数据的最大值，最小值要小于或等于你的数据的最小值。 下面是用雷达图表现的示例。</p>
+<p class="codepen" data-height="460" data-theme-id="0" data-default-tab="result" data-user="w3cbest" data-slug-hash="zVLxKV" style="height: 456px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="echarts 雷达图设置极坐标">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zVLxKV/">
+  echarts 雷达图设置极坐标</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">var max &#x3D; 4, min &#x3D; -4;</span><br><span class="line">option &#x3D; &#123;</span><br><span class="line">    ...</span><br><span class="line">    radar: &#123;</span><br><span class="line">        ...</span><br><span class="line">        indicator: [&#123;</span><br><span class="line">                name: &#39;销售&#39;,</span><br><span class="line">                max: max,</span><br><span class="line">                min: min</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: &#39;管理&#39;,</span><br><span class="line">                max: max,</span><br><span class="line">                min: min</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: &#39;技术&#39;,</span><br><span class="line">                max: max,</span><br><span class="line">                min: min</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        splitArea: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    polar: &#123;&#125;,</span><br><span class="line">    angleAxis: &#123;</span><br><span class="line">        min: 0,</span><br><span class="line">        max: 360,</span><br><span class="line">        interval: 5,</span><br><span class="line">        clockwise: false,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    radiusAxis: &#123;</span><br><span class="line">        min: min,</span><br><span class="line">        max: max,</span><br><span class="line">        interval: 2,</span><br><span class="line">        splitArea: &#123;</span><br><span class="line">            show: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        ...</span><br><span class="line">        data: [&#123;</span><br><span class="line">            value: [4, -4, 1]</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -957,434 +1239,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/06/20/html5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/20/html5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">HTML5语义化开发指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-20 09:45:16" itemprop="dateCreated datePublished" datetime="2019-06-20T09:45:16+08:00">2019-06-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="为什么要做-HTML5-语义化"><a href="#为什么要做-HTML5-语义化" class="headerlink" title="为什么要做 HTML5 语义化"></a>为什么要做 HTML5 语义化</h2><p>HTML5的主要进步之一是引入了一组标准化的语义元素。 ”语义元素“是用于以更有意义的方式标记文档结构的元素，这种方式可以清楚地表明它们的用途和目的是什么。而且重要的是，由于它们是标准化的，定义文档的这些元素可以被每个人使用并理解，包括机器人。 在web无障碍开发领域，给视障用户使用的屏幕阅读器是视障群体访问网络的必备工具，合理的 HTML5 语义化元素，会让屏幕阅读器正确的理解网页的内容，从而以最为合适的方式朗读。 站在开发者的角度，写出符合 HTML5 语义化的结构，也是显示我们职业素养的一种方式，最为重要的是这样的代码自带翻译，比如下面的div结构，为了让开发者明白div的含义，我们必须在class命名上下功夫。</p>
-<div class="header">
-    <h1>Super duper best blog ever</h1> ...
-</div>
-<div class="main">
-    <h2>Why you should buy more cheeses than you currently do</h2> ...
-</div>
-<div class="footer">
-Contact us! 
-<div class="contact-info">this.is.us@example.com</div>
-</div>
-
-<p>而如果采用语义化元素，结构一目了然，不管是日后维护还是交接给他人，都是件轻松的事情。</p>
-<header>
-    <h1>Super duper best blog ever</h1> ...
-</header>
-<main>
-    <h2>Why you should buy more cheeses than you currently do</h2> ...
-</main>
-<footer>
-Contact us! 
-<div class="contact-info">this.is.us@example.com</div>
-</footer>
-
-<p>先来回顾一下 HTML5 有哪些元素（根据 MDN 资料整理）</p>
-<h2 id="HTML5-元素大全"><a href="#HTML5-元素大全" class="headerlink" title="HTML5 元素大全"></a>HTML5 元素大全</h2><h3 id="文档元素"><a href="#文档元素" class="headerlink" title="文档元素"></a>文档元素</h3><p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html">html</a></p>
-<p>HTML 文档中最外层的元素，也可称为根元素。</p>
-<h3 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head">head</a></p>
-<p>表示文档的头部</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/title">title</a></p>
-<p>用来定义文档的标题</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base">base</a></p>
-<p>为页面上的所有的相对链接规定默认 URL 或默认目标</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link">link</a></p>
-<p>定义文档与外部资源的关系</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta">meta</a></p>
-<p>提供了 HTML 文档的元数据</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/style">style</a></p>
-<p>用于表示文档所使用的样式</p>
-<h3 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body">body</a></p>
-<p>表示文档的内容</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/article">article</a></p>
-<p>表示文档、页面、应用或网站中的独立结构</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/section">section</a></p>
-<p>表示文档中的一个区域（或节）</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/nav">nav</a></p>
-<p>描绘一个含有多个超链接的导航栏区域</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/aside">aside</a></p>
-<p>表示一个和其余页面内容几乎无关的部分</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Heading_Elements">h1-h6</a></p>
-<p>标题(Heading)元素呈现了六个不同的级别的标题，<code>&lt;h1&gt;</code> 级别最高，而 <code>&lt;h6&gt;</code> 级别最低</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/footer">footer</a></p>
-<p>表示最近一个章节内容或者根节点（sectioning root ）元素的页脚</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header">header</a></p>
-<p>用于展示介绍性内容</p>
-<h3 id="内容分组"><a href="#内容分组" class="headerlink" title="内容分组"></a>内容分组</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/p">p</a></p>
-<p>表示文本的一个段落</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/address">address</a></p>
-<p>表示其中的内容提供了某个人或某个组织（等等）的联系信息</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr">hr</a></p>
-<p>表示段落级元素之间的主题转换</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/pre">pre</a></p>
-<p>表示预定义格式文本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/blockquote">blockquote</a></p>
-<p>表示其中的文字是引用内容</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ol">ol</a></p>
-<p>表示多个元素的有序列表</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ul">ul</a></p>
-<p>表示多个元素的无序列表</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/li">li</a></p>
-<p>表示列表里的条目</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl">dl</a></p>
-<p>表示一个包含术语定义以及描述的列表</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dt">dt</a></p>
-<p>用于在一个定义列表中声明一个术语</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dd">dd</a></p>
-<p>用来指明一个描述列表元素中一个术语的描述</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/figure">figure</a></p>
-<p>代表一段独立的内容</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/figcaption">figcaption</a></p>
-<p>与其相关联的图片的说明/标题</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/main">main</a></p>
-<p>呈现了文档的 <code>&lt;body&gt;</code> 或应用的主体部分</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/div">div</a></p>
-<p>通用型的流内容容器，它应该在没有任何其它语义元素可用时才使用</p>
-<h3 id="文本级语义"><a href="#文本级语义" class="headerlink" title="文本级语义"></a>文本级语义</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a">a</a></p>
-<p>定义超链接，用于从一个页面链接到另一个页面</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/em">em</a></p>
-<p>标记出需要用户着重阅读的内容</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/strong">strong</a></p>
-<p>表示文本十分重要</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/small">small</a></p>
-<p>表示边注释和附属细则，包括版权和法律文本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/s">s</a></p>
-<p>表示不再相关，或者不再准确的事情</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/cite">cite</a></p>
-<p>表示一个作品的引用</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/q">q</a></p>
-<p>表示一个封闭的并且是短的行内引用的文本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn">dfn</a></p>
-<p>表示术语的一个定义</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/abbr">abbr</a></p>
-<p>用于展示缩写</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ruby">ruby</a></p>
-<p>用来展示东亚文字注音或字符注释</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rb">rb</a></p>
-<p>用于分隔<code>&lt;ruby&gt;</code>注释的基本文本组件</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rt">rt</a></p>
-<p>包含字符的发音</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rtc">rtc</a></p>
-<p>包含 <code>&lt;ruby&gt;</code> 元素中文字的语义注解</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rp">rp</a></p>
-<p>用于为那些不能使用 <code>&lt;ruby&gt;</code> 元素展示 ruby 注解的浏览器</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/data">data</a></p>
-<p>将一个指定内容和机器可读的翻译联系在一起</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time">time</a></p>
-<p>用来表示24小时制时间或者公历日期</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/code">code</a></p>
-<p>呈现一段计算机代码</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/var">var</a></p>
-<p>表示变量的名称，或者由用户提供的值</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/samp">samp</a></p>
-<p>用于标识计算机程序输出</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/kbd">kbd</a></p>
-<p>表示用户输入</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sub">sub</a></p>
-<p>定义了一个下标文本区域</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sup">sup</a></p>
-<p>定义了一个上标文本区域</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/i">i</a></p>
-<p>用于表现因某些原因需要区分普通文本的一系列文本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/b">b</a></p>
-<p>用于吸引读者的注意到该元素的内容上</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/u">u</a></p>
-<p>表示具有未标注的文本跨度，显示渲染，非文本注释</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/mark">mark</a></p>
-<p>用来表示上下文的关联性的而突出显示的文字</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdi">bdi</a></p>
-<p>隔离可能以不同方向进行格式化的外部文本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdo">bdo</a></p>
-<p>用于覆盖当前文本的朝向</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/span">span</a></p>
-<p>短语内容的通用行内容器，并没有任何特殊语义</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br">br</a></p>
-<p>在文本中生成一个换行（回车）符号</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr">wbr</a></p>
-<p>一个文本中的位置，其中浏览器可以选择来换行</p>
-<h3 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ins">ins</a></p>
-<p>定义已经被插入文档中的文本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/del">del</a></p>
-<p>表示一些被从文档中删除的文字内容</p>
-<h3 id="嵌入内容"><a href="#嵌入内容" class="headerlink" title="嵌入内容"></a>嵌入内容</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/picture">picture</a></p>
-<p>通过包含零或多个 <code>&lt;source&gt;</code> 元素和一个 <code>&lt;img&gt;</code> 元素来为不同的显示/设备场景提供图像版本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source">source</a></p>
-<p>为 <code>&lt;picture&gt;</code>, <code>&lt;audio&gt;</code> 或者 <code>&lt;video&gt;</code> 元素指定多个媒体资源</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img">img</a></p>
-<p>代表文档中的一个图像</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">iframe</a></p>
-<p>表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed">embed</a></p>
-<p>将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件）提供</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object">object</a></p>
-<p>表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param">param</a></p>
-<p>为<code>&lt;object&gt;</code>元素定义参数</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video">video</a></p>
-<p>用于支持文档内的视频播放</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio">audio</a></p>
-<p>用于在文档中表示音频内容</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track">track</a></p>
-<p>指定计时字幕（或者基于时间的数据）</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/map">map</a></p>
-<p>与 <code>&lt;area&gt;</code>属性一起使用来定义一个图像映射(一个可点击的链接区域)</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area">area</a></p>
-<p>在图片上定义一个热点区域，可以关联一个超链接</p>
-<h3 id="表格数据"><a href="#表格数据" class="headerlink" title="表格数据"></a>表格数据</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/table">table</a></p>
-<p>表示表格数据</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/caption">caption</a></p>
-<p>展示一个表格的标题</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup">colgroup</a></p>
-<p>用来定义表中的一组列表</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col">col</a></p>
-<p>定义表格中的列，并用于定义所有公共单元格上的公共语义</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/tbody">tbody</a></p>
-<p>表示它们包含表的主体</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/thead">thead</a></p>
-<p>定义了一组定义表格的列头的行</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/tfoot">tfoot</a></p>
-<p>定义了一组表格中各列的汇总行</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/tr">tr</a></p>
-<p>定义表格中的行</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/td">td</a></p>
-<p>定义包含数据的表格的单元格</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/th">th</a></p>
-<p>定义表格内的表头单元格</p>
-<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form">form</a></p>
-<p>示了文档中的一个区域，这个区域包含有交互控制元件</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label">label</a></p>
-<p>表示用户界面中某个元素的说明</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input">input</a></p>
-<p>用于为基于Web的表单创建交互式控件，以便接受来自用户的数据</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button">button</a></p>
-<p>表示一个可点击的按钮</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select">select</a></p>
-<p>表示一个控件，提供一个选项菜单</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/datalist">datalist</a></p>
-<p>包含了一组<code>&lt;option&gt;</code>元素，这些元素表示其它表单控件可选值</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/optgroup">optgroup</a></p>
-<p>创建包含在一个 <code>&lt;select&gt;</code>元素中的一组选项</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option">option</a></p>
-<p>用于定义在<code>&lt;select&gt;</code>, <code>&lt;optgroup&gt;</code> 或<code>&lt;datalist&gt;</code> 元素中包含的项</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea">textarea</a></p>
-<p>表示一个多行纯文本编辑控件</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/output">output</a></p>
-<p>表示计算或用户操作的结果</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress">progress</a></p>
-<p>用来显示一项任务的完成进度</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meter">meter</a></p>
-<p>用来显示已知范围的标量值或者分数值</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/fieldset">fieldset</a></p>
-<p>用来对表单中的控制元素进行分组</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/legend">legend</a></p>
-<p>用于表示它的父元素<code>&lt;fieldset&gt;</code>的内容的标题</p>
-<h3 id="交互元素"><a href="#交互元素" class="headerlink" title="交互元素"></a>交互元素</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/details">details</a></p>
-<p>可创建一个挂件，仅在被切换成展开状态时，它才会显示内含的信息</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/summary">summary</a></p>
-<p>用作 一个<code>&lt;details&gt;</code>元素的一个内容的摘要，标题或图例</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog">dialog</a></p>
-<p>表示一个对话框或其他交互式组件</p>
-<h3 id="脚本元素"><a href="#脚本元素" class="headerlink" title="脚本元素"></a>脚本元素</h3><p>元素</p>
-<p>元素</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script">script</a></p>
-<p>用于嵌入或引用可执行脚本</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/noscript">noscript</a></p>
-<p>定义脚本未被执行时的替代内容</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template">template</a></p>
-<p>用于保存客户端内容机制，该内容在加载页面时不会呈现</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas">canvas</a></p>
-<p>用来通过脚本（通常是JavaScript）绘制图形</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/slot">slot</a></p>
-<p>是 Web Components 技术套件的一部分，是Web组件内的一个占位符</p>
-<h2 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h2><html>
-<head>
-    <title>示例页面</title>
-</head>
-<body>
-    <div>
-        <header>
-            <h1>我的网站</h1>
-            <nav> <a href="">首页</a> <a href="">文章</a> <a href="">留言</a> </nav>
-            <aside> <img src="https://via.placeholder.com/30.png/09f/fff" alt="用户头像"> </aside>
-        </header>
-        <div>
-            <main>
-                <article>
-                    <section>
-                        <h2>文章标题11111</h2>
-                        <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
-                    </section>
-                    <section>
-                        <h2>文章标题2222</h2>
-                        <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
-                    </section>
-                    <section>
-                        <h2>文章标题3333</h2>
-                        <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
-                    </section>
-                </article>
-                <ul> <a href="" title="第1页">1</a> <a href="" title="第2页">2</a> <a href="" title="第3页">3</a> </ul>
-            </main>
-            <aside>
-                <section>
-                    <h2>作者介绍</h2>
-                    <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
-                </section>
-                <nav> <a href="">HTML</a> <a href="">JS</a> <a href="">CSS</a> </nav>
-            </aside>
-        </div>
-    </div>
-    <footer> <address> xxxx@xxx.com <br /> <a href="">https://www.w3cbest.com</a> </address> </footer>
-</body>
-</html>
-
-<p><a target="_blank" rel="noopener" href="http://gafish.github.io/demo/basicLayout.html">查看示例</a></p>
-<h2 id="header-、footer-不止表示页头页尾"><a href="#header-、footer-不止表示页头页尾" class="headerlink" title="header 、footer 不止表示页头页尾"></a>header 、footer 不止表示页头页尾</h2><p>通常的用法都是把一个页面的页头用header，页尾用footer来表示，但这并不是它们的唯一用法，根据元素的定义，它们表示的是章节或区块的头和尾，严格来说一个<code>&lt;article&gt;</code> 元素的头部需要用 header 来表示，如：</p>
-<article>
-    <header>
-        <h2>我们是相亲相爱的一家人</h2>
-    </header>
-    <p>.....</p>
-</article>
-
-<p>但以上这种 header 中只有一个 h2 的场景中 header 是可以忽略的。 MacOs VoiceOver 读屏软件对 div 中的 header 会说“横幅”，而对 article 、section 中的 header 会忽略，直接读内部的内容。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/headerFooter.html">查看示例</a></p>
-<h2 id="section-、-figure-的用法区别"><a href="#section-、-figure-的用法区别" class="headerlink" title="section 、 figure 的用法区别"></a>section 、 figure 的用法区别</h2><p>section 和 figure 有相似的地方，都可以表示一个区域，结构上也相似，都可以有标题和内容，但两个元素的用法是完全不一样的。</p>
-<ul>
-<li>  section 的内容跟上下文结构存在关联关系，figure 的内容是独立存在的一部分，把 figure 移除不影响主体内容的表达；</li>
-<li>  section 中存在标题只能在开始的位置，figure 中的标题可以在开头也可以在结尾；</li>
-</ul>
-<p>MacOs VoiceOver 读屏软件会把 section 的标题说成“标题”，但对 figure 的标题会说成“文本”。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/sectionFigure.html">查看示例</a></p>
-<h2 id="article-、-section-、-div-的用法区别"><a href="#article-、-section-、-div-的用法区别" class="headerlink" title="article 、 section 、 div 的用法区别"></a>article 、 section 、 div 的用法区别</h2><ul>
-<li>  如果元素内容可以分为几个部分的话，应该使用 <code>&lt;article&gt;</code> 而不是 <code>&lt;section&gt;</code>。</li>
-<li>  如果内容中的几个部分是互相独立的，应该使用 <code>&lt;article&gt;</code> 嵌套，几个部分的内容之间是关联的应该使用 <code>&lt;section&gt;</code>。</li>
-<li>  不要把 <code>&lt;section&gt;</code> 元素作为一个普通的容器来使用，这是本应该是<code>&lt;div&gt;</code>的用法（特别是当片段仅仅是为了美化样式的时候）。</li>
-</ul>
-<p>MacOs VoiceOver 读屏软件对3个元素的朗读方式没有区别，都是直接读取内部的内容。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/articleSectionDiv.html">查看示例</a></p>
-<h2 id="不是所有的导航链接都需要-nav"><a href="#不是所有的导航链接都需要-nav" class="headerlink" title="不是所有的导航链接都需要 nav"></a>不是所有的导航链接都需要 nav</h2><p>只用来将一些热门的链接放入 <code>&lt;nav&gt;</code> 导航栏，建议这些链接应该是跟当前页面或站点有较强的关联性。例如 <code>&lt;footer&gt;</code> 元素就常用来在页面底部包含一个不常用到，没必要加入 <code>&lt;nav&gt;</code> 的链接列表。 MacOs VoiceOver 读屏软件遇到 nav 时会先说“导航“，下一步读取内部的内容，最后会说”导航的结尾“。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/nav.html">查看示例</a></p>
-<h2 id="address-的内容不只是地址"><a href="#address-的内容不只是地址" class="headerlink" title="address 的内容不只是地址"></a>address 的内容不只是地址</h2><p>HTML <code>&lt;address&gt;</code> 元素 表示其中的内容提供了某个人或某个组织的联系信息，包括真实地址、URL、电子邮箱、电话号码、社交媒体账号、地理坐标等等，通过它会被放到 footer 里，但这并不是唯一的用法，在页头 header 中，article 或其它区块中需要显示联系信息的地方都可以使用 address。 MacOs VoiceOver 读屏软件遇到 address 只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/address.html">查看示例</a></p>
-<h2 id="em-、-strong-、-b-、-i-、-mark-的用法区别"><a href="#em-、-strong-、-b-、-i-、-mark-的用法区别" class="headerlink" title="em 、 strong 、 b 、 i 、 mark 的用法区别"></a>em 、 strong 、 b 、 i 、 mark 的用法区别</h2><p>这几个元素表示的都是对文本内容的强调，但强调的含义是不一样的</p>
-<ul>
-<li>  em 强调的是语句的重心，如“我<code>&lt;em&gt;</code>今天<code>&lt;/em&gt;</code>吃薯条了”、“我今天吃<code>&lt;em&gt;</code>薯条<code>&lt;/em&gt;</code>了”；</li>
-<li>  strong 强调的是一句话中重要的一定要看的部分，如”每天早上9点打卡，<code>&lt;strong</code>迟到者罚款1000元<code>&lt;/strong&gt;</code>“；</li>
-<li>  b 强调的是视觉上需要吸引用户来看的内容，类似广告语，对用户来说并不一定很重要；</li>
-<li>  i 强调的是一段文本中，某些部分需要跟周边的文本做一些视觉上区别，但不一定是吸引人的；</li>
-<li>  mark 强调的是上下文的关联性，如搜索关键字；</li>
-</ul>
-<p>MacOs VoiceOver 读屏软件遇到这5个元素时只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/emStrongBIMark.html">查看示例</a></p>
-<h2 id="small-、-s-、-u-还能用吗"><a href="#small-、-s-、-u-还能用吗" class="headerlink" title="small 、 s 、 u 还能用吗"></a>small 、 s 、 u 还能用吗</h2><p>这三个元素在 HTML5 之前，都是为了表示明显的排版视觉效果，HTML5 中保留下来并添加了新的语义</p>
-<ul>
-<li>  small 用来描述对内容的注释，如版权和法律文本等；</li>
-<li>  s 用来表示不再相关或不再准确的事，如之前对某句话的解释，很多年之后已经不适用，但要保留在内容中的时候；</li>
-<li>  u 用来标记中文文本中的专有名称，或将文本标记为拼写错误；</li>
-</ul>
-<p>建议在除了上面提到的几个特殊用途之外，不再使用这三个元素； MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/smallSU.html">查看示例</a></p>
-<h2 id="blockquote-、-q-、-cite-都表示引用，如何区分"><a href="#blockquote-、-q-、-cite-都表示引用，如何区分" class="headerlink" title="blockquote 、 q 、 cite 都表示引用，如何区分"></a>blockquote 、 q 、 cite 都表示引用，如何区分</h2><ul>
-<li>  blockquote 引用的是长文本；</li>
-<li>  q 引用的是短文本；</li>
-<li>  cite 引用的是一个作品的名称或链接；</li>
-</ul>
-<p>MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/blockquoteQCite.html">查看示例</a></p>
-<h2 id="什么时候使用-div"><a href="#什么时候使用-div" class="headerlink" title="什么时候使用 div"></a>什么时候使用 div</h2><p>根据元素的定义，只有在所有 html5 标签都不适用于你想表达的语义时，这时候才使用终极大法 div，从这个角度来说，目前对 div 元素的滥用其实是程序员偷懒的一种表现，反正有 div 兜底，也就懒得去思考那些语义元素的区别。 在追求开发效率和做不完的需求面前，使用 div 兜底也是很多人无奈的选择，我觉得这个是可以理解，某种程度上也可以接受的，但进一步去想一想，你的产品面向的用户也有可能会是存在各种行为障碍的视障、残障人群，他们无法像正常人那样使用你开发的功能，而需要借助类似于屏幕阅读器这样的辅助工具，这时候才是真正考验你的产品是否合格的时候。 我们做语义化开发，很大程度上就是在帮助更多人的人正常的使用我们的产品，同时也会让你离专业的程序员更进一步。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/TR/html53/">https://www.w3.org/TR/html53/</a></li>
-<li>  <a target="_blank" rel="noopener" href="https://www.w3cschool.cn/html5/">https://www.w3cschool.cn/html5/</a></li>
-<li>  <a target="_blank" rel="noopener" href="https://juejin.im/post/5cb1a7af5188251b0c653736">https://juejin.im/post/5cb1a7af5188251b0c653736</a></li>
-</ul>
-<p>来源：<a target="_blank" rel="noopener" href="http://gafish.github.io/">http://gafish.github.io</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1454,7 +1308,7 @@ Contact us!
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
