@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="javascript 是一门复杂的语言。如果你是一名 javascript 开发者，理解它的一些基础概念是很重要的。本文选取了 12 个 JS 开发者应该掌握的概念，但不代表 JS 开发者需要了解的全部内容。 注意：我会在 github 仓库JS Tips &amp; Tidbits上持续更新这个列表，如果有兴趣欢迎 star。 1. 值 VS 引用理解 javascript 中如何分配变量的值是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12个可以提升JavaScript技能的概念">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/04/08/12%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87javascript%E6%8A%80%E8%83%BD%E7%9A%84%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="javascript 是一门复杂的语言。如果你是一名 javascript 开发者，理解它的一些基础概念是很重要的。本文选取了 12 个 JS 开发者应该掌握的概念，但不代表 JS 开发者需要了解的全部内容。 注意：我会在 github 仓库JS Tips &amp; Tidbits上持续更新这个列表，如果有兴趣欢迎 star。 1. 值 VS 引用理解 javascript 中如何分配变量的值是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-08T09:47:32.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.048Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="Array.filter">
+<meta property="article:tag" content="Array.find">
+<meta property="article:tag" content="Array.includes">
+<meta property="article:tag" content="Array.indexOf">
+<meta property="article:tag" content="Array.map">
+<meta property="article:tag" content="array()">
+<meta property="article:tag" content="Promise">
+<meta property="article:tag" content="slice()">
+<meta property="article:tag" content="splice()">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/04/08/12%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87javascript%E6%8A%80%E8%83%BD%E7%9A%84%E6%A6%82%E5%BF%B5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>12个可以提升JavaScript技能的概念 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/08/12%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87javascript%E6%8A%80%E8%83%BD%E7%9A%84%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          12个可以提升JavaScript技能的概念
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-08 17:47:32" itemprop="dateCreated datePublished" datetime="2019-04-08T17:47:32+08:00">2019-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>javascript 是一门复杂的语言。如果你是一名 javascript 开发者，理解它的一些基础概念是很重要的。本文选取了 12 个 JS 开发者应该掌握的概念，但不代表 JS 开发者需要了解的全部内容。 <strong>注意：</strong>我会在 github 仓库<a href="https://link.juejin.im/?target=https://github.com/nas5w/javascript-tips-and-tidbits">JS Tips &amp; Tidbits</a>上持续更新这个列表，如果有兴趣欢迎 star。</p>
+<h2 id="1-值-VS-引用"><a href="#1-值-VS-引用" class="headerlink" title="1. 值 VS 引用"></a>1. 值 VS 引用</h2><p>理解 javascript 中如何分配变量的值是写好代码的基础。如果你还不了解这些，你可能很容易写出无意中修改值的代码。 javascript 总是按值分配变量。但是请特别注意：当分配的值是 javascript 的 5 种原始类型（boolean null undefined string number）时，是分配的真正的值。而如果分配的值是 Array Function Object时，只会分配该对象在内存中的一个引用。 举个例子。在下面的代码中，var2 被赋值为 var1。因为 var1 是原始类型（string），var2 的值就是 var1 的 值，并且与 var1 是完全独立的两个值，只是它们都是同样的字符串。或者说，重新给 var2 赋值对 var1 没有影响。</p>
+<p>let var1 = ‘My string’;<br>let var2 = var1;<br>var2 = ‘My new string’;<br>console.log(var1);<br>// ‘My string’<br>console.log(var2);<br>// ‘My new string’</p>
+<p>和赋值对象进行比较：</p>
+<p>let var1 = { name: ‘Jim’ };<br>let var2 = var1;<br>var2.name = ‘John’;<br>console.log(var1);<br>// { name: ‘John’ }<br>console.log(var2);<br>// { name: ‘John’ }</p>
+<p>如果你期望像分配原始类型那样的结果，这里就会出现问题，修改 var2 同样会影响到 var1。如果你创建了一个无意中修改对象的函数，就可能有难以预料的错误。</p>
+<h2 id="2-闭包"><a href="#2-闭包" class="headerlink" title="2. 闭包"></a>2. 闭包</h2><p>闭包是 javascript 中很重要的特性，可以实现变量的私有访问。在下面的例子中，createGreeter 返回了一个匿名函数，函数可以访问外层函数的 greeting 参数。</p>
+<p>function createGreeter(greeting) {<br>    return function(name) {<br>        console.log(greeting + ‘, ‘ + name);<br>    };<br>}<br>const sayHello = createGreeter(‘Hello’);<br>sayHello(‘Joe’);<br>// Hello, Joe</p>
+<p>在实际编码中，你可能希望有一个初始化函数 apiConnect(apiKey) 能够返回某些方法会用到的 apiKey。这种情况下，apiKey 只需要提供一次即可。</p>
+<p>function apiConnect(apiKey) {<br>    function get(route) {<br>        return fetch(`${route}?key=${apiKey}`);<br>    }<br>    function post(route, params) {<br>        return fetch(route, {<br>            method: ‘POST’,<br>            body: JSON.stringify(params),<br>            headers: {<br>                Authorization: `Bearer ${apiKey}`,<br>            },<br>        });<br>    }<br>    return { get, post };<br>}<br>const api = apiConnect(‘my-secret-key’);<br>// No need to include the apiKey anymore<br>api.get(‘<a target="_blank" rel="noopener" href="http://www.example.com/get-endpoint&#39;">http://www.example.com/get-endpoint&#39;</a>);<br>api.post(‘<a target="_blank" rel="noopener" href="http://www.example.com/post-endpoint&#39;">http://www.example.com/post-endpoint&#39;</a>, { name: ‘Joe’ });</p>
+<h2 id="3-解构"><a href="#3-解构" class="headerlink" title="3. 解构"></a>3. 解构</h2><p>不要忽略 javascript 的参数解构！这是从对象中干净地提取属性的常用方法。</p>
+<p>const obj = {<br>    name: ‘Joe’,<br>    food: ‘cake’,<br>};<br>const { name, food } = obj;<br>console.log(name, food);<br>// ‘Joe’ ‘cake’</p>
+<p>如果你想将属性解构成不同的名称，参考下面的语法：</p>
+<p>const obj = {<br>    name: ‘Joe’,<br>    food: ‘cake’,<br>};<br>const { name: myName, food: myFood } = obj;<br>console.log(myName, myFood);<br>// ‘Joe’ ‘cake’</p>
+<p>下面的例子中，解构用来干净地将 person 对象传递给 introduce 函数。或者说，解构可以（经常）用来提取传递给函数的参数的属性。如果你熟悉 React，你可能见过下面的代码。</p>
+<p>const person = {<br>    name: ‘Eddie’,<br>    age: 24,<br>};<br>function introduce({ name, age }) {<br>    console.log(`I’m ${name} and I’m ${age} years old!`);<br>}<br>console.log(introduce(person));<br>// “I’m Eddie and I’m 24 years old!”</p>
+<h2 id="4-展开运算符"><a href="#4-展开运算符" class="headerlink" title="4. 展开运算符"></a>4. 展开运算符</h2><p>一个相对简单的 javascript 概念。下面的例子中，Math.max 不能接收一个数组，而是接收单个值作为参数。展开运算符…就是用来把数组里的元素一个一个拉出来。</p>
+<p>const arr = [4, 6, -1, 3, 10, 4];<br>const max = Math.max(…arr);<br>console.log(max);<br>// 10</p>
+<h2 id="5-剩余运算符"><a href="#5-剩余运算符" class="headerlink" title="5. 剩余运算符"></a>5. 剩余运算符</h2><p>说一下 javascript 的剩余运算符。你可以用它将任意数量的参数放入一个数组再传递给函数。</p>
+<p>function myFunc(…args) {<br>    console.log(args[0] + args[1]);<br>}<br>myFunc(1, 2, 3, 4);<br>// 3</p>
+<h2 id="6-数组方法"><a href="#6-数组方法" class="headerlink" title="6. 数组方法"></a>6. 数组方法</h2><p>javascript 的数组方法经常能让你很优雅、便捷地转换你想要的数据。我经常看到有关如何以某种方式操纵对象数组的问题。这正是数组方法的可用之处。 我将在这里介绍一些不同的数组方法，以类似的可能会混淆的方法来分类。这个列表并不全面，我鼓励你们在 MDN 上反复复习并练习这些方法。</p>
+<h3 id="map-filter-reduce"><a href="#map-filter-reduce" class="headerlink" title="map, filter, reduce"></a>map, filter, reduce</h3><p>有人可能对这 3 个方法有些混乱。但这些都是转换数组或返回聚合值的有用方法。 <strong>map：</strong>返回一个新的数组，其中每个元素按指定函数进行转换。</p>
+<p>const arr = [1, 2, 3, 4, 5, 6];<br>const mapped = arr.map(el =&gt; el + 20);<br>console.log(mapped);<br>// [21, 22, 23, 24, 25, 26]</p>
+<p><strong>filter：</strong>返回一个新的数组，其中只包括回调函数返回 true 的元素。</p>
+<p>const arr = [1, 2, 3, 4, 5, 6];<br>const filtered = arr.filter(el =&gt; el === 2  el === 4);<br>console.log(filtered);<br>// [2, 4]</p>
+<p><strong>reduce：</strong>累加函数中指定的值。</p>
+<p>const arr = [1, 2, 3, 4, 5, 6];<br>const reduced = arr.reduce((total, current) =&gt; total + current);<br>console.log(reduced);<br>// 21</p>
+<h3 id="find-findIndex-indexOf"><a href="#find-findIndex-indexOf" class="headerlink" title="find, findIndex, indexOf"></a>find, findIndex, indexOf</h3><p>这三个方法通常会被混为一谈，下面是使用方法： <strong>find：</strong>返回与指定条件匹配的第一个元素。不会再寻找其他匹配的元素。</p>
+<p>const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];<br>const found = arr.find(el =&gt; el &gt; 5);<br>console.log(found);<br>// 6</p>
+<p>注意，虽然 5 之后的元素都满足条件，但只会返回第一个匹配元素。 <strong>findIndex：</strong>和 find 的机制基本一样，只是会返回第一个匹配元素的索引值而不是返回该元素。来看下面的例子：</p>
+<p>const arr = [‘Nick’, ‘Frank’, ‘Joe’, ‘Frank’];<br>const foundIndex = arr.findIndex(el =&gt; el === ‘Frank’);<br>console.log(foundIndex);<br>// 1</p>
+<p>indexOf：和 findIndex 的机制基本一样，但它接收一个值而不是一个函数作为参数。你可以在只需要简单的逻辑，不需要使用函数来判断匹配元素时使用它。</p>
+<p>const arr = [‘Nick’, ‘Frank’, ‘Joe’, ‘Frank’];<br>const foundIndex = arr.indexOf(‘Frank’);<br>console.log(foundIndex);<br>// 1</p>
+<h3 id="push-pop-shift-unshift"><a href="#push-pop-shift-unshift" class="headerlink" title="push, pop, shift, unshift"></a>push, pop, shift, unshift</h3><p>这是一组很棒的数组方法，可以让你有针对性地添加或删除数组中的元素。 <strong>push：</strong>在数组尾部添加一个元素。会修改原数组，返回添加到数组的元素。</p>
+<p>let arr = [1, 2, 3, 4];<br>const pushed = arr.push(5);<br>console.log(arr);<br>// [1, 2, 3, 4, 5]<br>console.log(pushed);<br>// 5</p>
+<p><strong>pop：</strong>删除数组的最后一个元素。会修改原数组，返回被删除的元素。</p>
+<p>let arr = [1, 2, 3, 4];<br>const popped = arr.pop();<br>console.log(arr);<br>// [1, 2, 3]<br>console.log(popped);<br>// 4</p>
+<p><strong>shift：</strong>删除数组的第一个元素。会修改原数组，返回被删除的元素。</p>
+<p>let arr = [1, 2, 3, 4];<br>const shifted = arr.shift();<br>console.log(arr);<br>// [2, 3, 4]<br>console.log(shifted);<br>// 1</p>
+<p><strong>unshift：</strong>在数组头部添加一个元素。会修改原数组，不同于其他几个方法，这个方法返回数组的新的长度。</p>
+<p>let arr = [1, 2, 3, 4];<br>const unshifted = arr.unshift(5, 6, 7);<br>console.log(arr);<br>// [5, 6, 7, 1, 2, 3, 4]<br>console.log(unshifted);<br>// 7</p>
+<h3 id="splice-slice"><a href="#splice-slice" class="headerlink" title="splice, slice"></a>splice, slice</h3><p>这 2 个方法会修改数组或返回一个子数组。 splice：通过删除或替换已存在的元素或插入新的元素来修改原数组的内容。会修改原数组。 下面的例子可以理解为：在索引为 1 的位置移除 0 个元素并插入了元素 b。</p>
+<p>let arr = [‘a’, ‘c’, ‘d’, ‘e’];<br>arr.splice(1, 0, ‘b’);</p>
+<p><strong>slice</strong>：从指定的开始和结束位置返回数组的浅复制副本。如果没有指定结束位置，返回数组的剩余部分。重要的是，此方法不修改原数组而是返回所需要的子数组。</p>
+<p>let arr = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’];<br>const sliced = arr.slice(2, 4);<br>console.log(sliced);<br>// [‘c’, ‘d’]<br>console.log(arr);<br>// [‘a’, ‘b’, ‘c’, ‘d’, ‘e’]</p>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><p><strong>sort：</strong>基于提供的函数对数组进行排序，该函数接收 2 个参数，代表需要排序的 2 个数组元素。会修改原数组。如果函数返回负值或 0，元素顺序保持不变，返回正值，对调元素位置。</p>
+<p>let arr = [1, 7, 3, -1, 5, 7, 2];<br>const sorter = (firstEl, secondEl) =&gt; firstEl - secondEl;<br>arr.sort(sorter);<br>console.log(arr);<br>// [-1, 1, 2, 3, 5, 7, 7]</p>
+<p>你是否已经全部理解了呢？我还没有。事实上，我在写这篇文章的时候也经常参考 MDN 文档——没关系！只要知道有什么样的方法就可以了。</p>
+<h2 id="7-Generators"><a href="#7-Generators" class="headerlink" title="7. Generators"></a>7. Generators</h2><p>不要害怕*。生成器函数指定了下次调用next()时会迭代什么值。可以进行有限次数的迭代，也可以在循环中进行无限次数的迭代。</p>
+<p>function* greeter() {<br>    yield ‘Hi’;<br>    yield ‘How are you?’;<br>    yield ‘Bye’;<br>}<br>const greet = greeter();<br>console.log(greet.next().value);<br>// ‘Hi’<br>console.log(greet.next().value);<br>// ‘How are you?’<br>console.log(greet.next().value);<br>// ‘Bye’<br>console.log(greet.next().value);<br>// undefined</p>
+<p>无限迭代：</p>
+<p>function* idCreator() {<br>    let i = 0;<br>    while (true) yield i++;<br>}<br>const ids = idCreator();<br>console.log(ids.next().value);<br>// 0<br>console.log(ids.next().value);<br>// 1<br>console.log(ids.next().value);<br>// 2<br>// etc…</p>
+<h2 id="8-VS"><a href="#8-VS" class="headerlink" title="8. === VS =="></a>8. === VS ==</h2><p>确信你已经了解了===与==的差异。在进行比较时，==会进行类型转换，===则不会。</p>
+<p>console.log(0 == ‘0’);<br>// true<br>console.log(0 === ‘0’);<br>// false</p>
+<h2 id="9-比较对象"><a href="#9-比较对象" class="headerlink" title="9. 比较对象"></a>9. 比较对象</h2><p>一个 javascript 新手常犯的错误就是直接比较对象。变量指向对象在内存中的引用，而不是对象本身。比较变量的一个方法是将它们转换为 JSON 字符串。当然这样会有缺点：不能保证对象属性的顺序。更安全的方式是使用第三方库中专用的比较方法来比较（lodash.isEqual）。 下面的对象看着是一样的，但其实它们指向不同的引用。</p>
+<p>const joe1 = { name: ‘Joe’ };<br>const joe2 = { name: ‘Joe’ };<br>console.log(joe1 === joe2);<br>// false</p>
+<p>反过来说，下面的比较结果为 true，因为变量被直接赋值为相同的值，都指向同一个引用（在内存中只有一个对象）。</p>
+<p>const joe1 = { name: ‘Joe’ };<br>const joe2 = joe1;<br>console.log(joe1 === joe2);<br>// true</p>
+<p>复习下之前的值 VS 引用章节，保证能完全理解将一个引用变量赋值给其他变量时，其实是赋值了内存中同一对象的相同引用给其他变量。</p>
+<h2 id="10-回调函数"><a href="#10-回调函数" class="headerlink" title="10. 回调函数"></a>10. 回调函数</h2><p>许多人都会被 javascript 的回调函数吓到！其他它们很简单，来看例子。console.log作为回调函数传递给了myFunc。当计时器就绪时执行。</p>
+<p>function myFunc(text, callback) {<br>    setTimeout(function() {<br>        callback(text);<br>    }, 2000);<br>}<br>myFunc(‘Hello world!’, console.log);<br>// ‘Hello world!’</p>
+<h2 id="11-Promises"><a href="#11-Promises" class="headerlink" title="11. Promises"></a>11. Promises</h2><p>一旦你理解的回调函数，你就会陷入回调地狱。然后 Promises 解决了问题。在 Promise 中包裹你的异步逻辑，成功时调用 resolve，失败时调用 reject。使用 then 来处理成功状态，使用 catch 来处理异常状态。</p>
+<p>const myPromise = new Promise(function(res, rej) {<br>    setTimeout(function() {<br>        if (Math.random() &lt; 0.9) {<br>            return res(‘Hooray!’);<br>        }<br>        return rej(‘Oh no!’);<br>    }, 1000);<br>});</p>
+<p>myPromise<br>    .then(function(data) {<br>        console.log(‘Success: ‘ + data);<br>    })<br>    .catch(function(err) {<br>        console.log(‘Error: ‘ + err);<br>    });</p>
+<p>// If Math.random() returns less than 0.9 the following is logged:<br>// “Success: Hooray!”<br>// If Math.random() returns 0.9 or greater the following is logged:<br>// “Error: On no!”</p>
+<h2 id="12-Async-Await"><a href="#12-Async-Await" class="headerlink" title="12. Async Await"></a>12. Async Await</h2><p>一旦你掌握了 Promises，你就会喜欢async/await，它是基于 promises 的语法糖。下面的例子中我们使用了 async 函数，在函数里使用了 await 来处理greeter。</p>
+<p>const greeter = new Promise((res, rej) =&gt; {<br>    setTimeout(() =&gt; res(‘Hello world!’), 2000);<br>});<br>async function myFunc() {<br>    const greeting = await greeter;<br>    console.log(greeting);<br>}<br>myFunc();<br>// ‘Hello world!’</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>如果你还不了解这 12 个概念，你可能已经至少增长了一些 javascript 的知识。如果你已经了解了这些，希望这是你练习和加强知识的机会。 文章来源：<a target="_blank" rel="noopener" href="https://hackernoon.com/12-javascript-concepts-that-will-level-up-your-development-skills-b37d16ad7104">12 Concepts That Will Level Up Your JavaScript Skills</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Array-filter/" rel="tag"># Array.filter</a>
+              <a href="/tags/Array-find/" rel="tag"># Array.find</a>
+              <a href="/tags/Array-includes/" rel="tag"># Array.includes</a>
+              <a href="/tags/Array-indexOf/" rel="tag"># Array.indexOf</a>
+              <a href="/tags/Array-map/" rel="tag"># Array.map</a>
+              <a href="/tags/array/" rel="tag"># array()</a>
+              <a href="/tags/Promise/" rel="tag"># Promise</a>
+              <a href="/tags/slice/" rel="tag"># slice()</a>
+              <a href="/tags/splice/" rel="tag"># splice()</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/04/echarts%E8%AE%BE%E7%BD%AE%E5%9D%90%E6%A0%87%E8%BD%B4%E5%8C%BA%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%88%86%E9%9A%94%E7%BA%BF%E9%A2%9C%E8%89%B2/" rel="prev" title="echarts设置坐标轴区域中的分隔线颜色">
+      <i class="fa fa-chevron-left"></i> echarts设置坐标轴区域中的分隔线颜色
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/09/%E7%90%86%E8%A7%A3-css-%E5%B8%83%E5%B1%80%E5%92%8C-bfc/" rel="next" title="理解 CSS 布局和 BFC">
+      理解 CSS 布局和 BFC <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%80%BC-VS-%E5%BC%95%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">1. 值 VS 引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%97%AD%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">2. 闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%A7%A3%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">3. 解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%B1%95%E5%BC%80%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">4.</span> <span class="nav-text">4. 展开运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%89%A9%E4%BD%99%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">5. 剩余运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">6. 数组方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map-filter-reduce"><span class="nav-number">6.1.</span> <span class="nav-text">map, filter, reduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-findIndex-indexOf"><span class="nav-number">6.2.</span> <span class="nav-text">find, findIndex, indexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push-pop-shift-unshift"><span class="nav-number">6.3.</span> <span class="nav-text">push, pop, shift, unshift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice-slice"><span class="nav-number">6.4.</span> <span class="nav-text">splice, slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort"><span class="nav-number">6.5.</span> <span class="nav-text">sort</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Generators"><span class="nav-number">7.</span> <span class="nav-text">7. Generators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-VS"><span class="nav-number">8.</span> <span class="nav-text">8. &#x3D;&#x3D;&#x3D; VS &#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E6%AF%94%E8%BE%83%E5%AF%B9%E8%B1%A1"><span class="nav-number">9.</span> <span class="nav-text">9. 比较对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">10.</span> <span class="nav-text">10. 回调函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Promises"><span class="nav-number">11.</span> <span class="nav-text">11. Promises</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Async-Await"><span class="nav-number">12.</span> <span class="nav-text">12. Async Await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">13.</span> <span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

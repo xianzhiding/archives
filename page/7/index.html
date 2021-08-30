@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端开发 大前端 W3Cbest">
+<meta property="og:url" content="https://xianzhiding.github.io/page/7/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="前端开发,es5,es6,es10,css,javascript,html,flexbox,grid,echarts">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/page/7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%BB%8B%E7%BB%8Dcss%E5%BD%A2%E7%8A%B6-css-shapes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/03/%E4%BB%8B%E7%BB%8Dcss%E5%BD%A2%E7%8A%B6-css-shapes/" class="post-title-link" itemprop="url">CSS形状入门--自定义路径周围的内容包装（CSS Shapes）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-03 17:13:24" itemprop="dateCreated datePublished" datetime="2019-01-03T17:13:24+08:00">2019-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="CSS-Shapes-简介"><a href="#CSS-Shapes-简介" class="headerlink" title="CSS Shapes 简介"></a>CSS Shapes 简介</h2><p>CSS Shapes 允许我们通过定义文本内容可以环绕的几何形状、图像和渐变，来创建有趣且独特的布局。本次教程会教你如何使用它们。 在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Shapes">CSS Shapes</a> 问世之前，为网页设计文本自由环绕的杂志式布局几乎是不可能的。相反，网页设计布局传统上一直用网格、盒子和直线构造。 CSS Shapes 允许我们定义文本环绕的几何形状。这些形状可以是圆、椭圆、简单或复杂的多边形，甚至图像和渐变。Shapes 的一些实际设计应用可能是圆形头像周围显示圆形环绕文本，全屏背景图片的简单部位上面展示文本，以及在文章中显示首字下沉。 现在 CSS Shapes 已经获得了现代浏览器的广泛支持，值得一看的是它们提供的灵活性和功能，以确定它们在你的下一个设计项目中是否能派上用场。</p>
+<blockquote>
+<p>注意：截至攥写本文时，CSS Shapes 支持 Firefox、Chrome、Safari 和 Opera，以及 iOS Safari 和 Chrome for Android 等移动浏览器。Shapes 不支持 IE，对 Microsoft Edge 的支持<a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/microsoft-edge/platform/status/shapes/">正在考虑中</a>。</p>
+</blockquote>
+<h2 id="CSS-Shapes-初探"><a href="#CSS-Shapes-初探" class="headerlink" title="CSS Shapes 初探"></a>CSS Shapes 初探</h2><p>CSS Shapes 的当前实现是 <a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-shapes/">CSS Shapes Module Level 1</a>，它主要包含 [shape-outside]属性。<a target="_blank" rel="noopener" href="https://tympanus.net/codrops/css_reference/shape-outside/">shape-outside</a> 定义了文本环绕的形状。 考虑到有 shape-outside 属性，你可能会想到还有一个相应的 shape-inside 属性，它包含形状内的文本。shape-inside 属性可能会在将来实现，目前它只是 <a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-shapes-2/">CSS Shapes Module Level 2</a>里面的一个草案，并没有被任何浏览器实现。 在本文中，我们将演示如何使用&lt;<a target="_blank" rel="noopener" href="https://tympanus.net/codrops/css_reference/basic-shape/">basic-shape</a>&gt;数据类型并使用形状函数值设置它，以及使用半透明URL或渐变设置形状。  </p>
+<h3 id="基本形状函数"><a href="#基本形状函数" class="headerlink" title="基本形状函数"></a>基本形状函数</h3><p>我们可以通过对shape-outside属性应用以下函数值来定义CSS中的各种基本形状:</p>
+<ul>
+<li>  circle()</li>
+<li>  ellipse()</li>
+<li>  inset()</li>
+<li>  polygon()</li>
+</ul>
+<p>为了将shape-outside属性应用到元素上，元素必须是浮动的，并且具有定义的高度和宽度。让我们逐一介绍这四个基本形状，并演示如何使用它们。</p>
+<h2 id="circle"><a href="#circle" class="headerlink" title="circle"></a>circle</h2><p>我们将从 circle() 函数开始。设想如下场景，有一个圆形的作者头像，我们想让头像左浮动并且作者的描述文本环绕它。仅对头像元素使用 border-radius: 50% 不足以使文本呈圆形；文本仍将把头像当成矩形元素。 通过圆形，我们可以演示文本如何按圆形环绕。 首先我们在一个普通的 div 上创建 circle 样式，并且写几段文字（我使用 Bob Ross 语录作为 Lorem Ipsum 文本）。</p>
+<div class="circle"></div>
+<p>Example text...</p>
+
+<p>在circle 样式中，我们将元素浮动到左边，给它一个相等的高度和宽度，并将shape-outside设置为circle()。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>}</p>
+<p>如果我们访问页面，会看到如下场景。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle1.jpg"> 正如你所看到的，文字围绕着圆形流动，但我们实际上看不到任何形状。将鼠标悬停在Developer Tools中的元素上，将向我们显示正在设置的实际形状。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle2.jpg"> 此时，你可能会认为可以给元素 background 设置颜色或者图片就能看到形状了。我们来试一下。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
+<p>不幸的是，给 circle 设置 background 后会显示一个矩形，这是我们一直试图避免的事情。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle3.jpg"> 我们可以清晰地看到文本在它周围环绕，但是元素本身并没有形状。如果我们想要真实地显示形状函数，就必须使用 clip-path 属性。clip-path 采用许多和 shape-outside 相同的值，所以我们可以给它相同的circle()值。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>    clip-path: circle();<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
+<p>  <img src="http://file.w3cbest.com/file/images/cssshapes_circle4.jpg"></p>
+<blockquote>
+<p>在本文剩下的部分，我将使用 clip-path 帮助我们辨认形状。</p>
+</blockquote>
+<p>circle() 函数接收可选的 radius 参数。在我们的例子中，默认 radius 是 50% 或者 100px。使用 circle(50%) 或者 circle(100px) 都将产生和我们已经完成样例的同样结果。 你可能会注意到文本刚好和形状贴合。我们可以使用 shape-margin 属性给形状添加 margin，它可以设置为px、em、% 和任何其他标准的 CSS 测量单位。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle(25%);<br>    shape-margin: 1rem;<br>    clip-path: circle(25%);<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
+<p>下面是一个circle radius 设置 25% 并且使用 shape-margin 的例子。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle5.jpg"> 除了 radius，形状函数可以使用 at 定位。默认位置是圆的中心，因此 circle() 也可以被显式设置为 circle(50% at 50% 50%) 或 circle(100px at 100px 100px)，这两个值分别是水平和垂直位置。 为了搞清楚 position 的作用，我们可以设置水平位置值为 0 来创造一个完美的半圆。</p>
+<p>circle(50% at 0 50%);</p>
+<p>这种坐标定位系统称为参考框。</p>
+<p><img src="http://file.w3cbest.com/file/images/cssshapes_circle6.jpg"></p>
+<p>稍后我们将学习如何使用图像代替形状或者渐变。现在我们将继续进行下一个形状函数。</p>
+<h2 id="Ellipse"><a href="#Ellipse" class="headerlink" title="Ellipse"></a>Ellipse</h2><p>ellipse() 和 circle() 函数类似，只是它会创造椭圆。为了演示，我们创建一个 ellipse 元素和样式。</p>
+<div class="ellipse"></div>
+<p>Example text...</p>
+
+<p>.ellipse {<br>    float: left;<br>    shape-outside: ellipse();<br>    clip-path: ellipse();<br>    width: 150px;<br>    height: 300px;<br>    background: linear-gradient(to top right, #F17BB7, #AD84E3);<br>}</p>
+<p>这次，我们设置不同的 height 和 width 创建一个垂直拉长的椭圆。 <img src="http://file.w3cbest.com/file/images/cssshapes_ellipse1.jpg"> ellipse() 和 circle()的区别在于，ellipse有两个半径rx和ry，即x轴半径和y轴半径。因此，上述例子也可以写成:</p>
+<p>ellipse(75px 150px);</p>
+<p>circles 和 ellipses 的位置参数是一样的。除了是测量单位，半径也包括 farthest-side 和 closest-side 的选项。 closest-side 是指从参考框的中心到最近边的长度，相反，farthest-side 是指从参考框的中心到最远边的长度。这意味着如果未设置默认值以外的位置，这两个值将无效。 下面演示了在 ellipse() 上翻转 closest-side 和 farthest-side 的区别，在X轴和Y轴上偏移25%。</p>
+<p>ellipse(farthest-side closest-side at 25% 25%)</p>
+<p><img src="http://file.w3cbest.com/file/images/cssshapes_ellipse2.jpg"></p>
+<p>ellipse(farthest-side closest-side at 25% 25%)</p>
+<p><img src="http://file.w3cbest.com/file/images/cssshapes_ellipse3.jpg">  </p>
+<h2 id="Inset"><a href="#Inset" class="headerlink" title="Inset"></a>Inset</h2><p>到目前为止我们只处理了圆形的形状，但是我们可以使用 inset() 函数定义内嵌矩形。</p>
+<div class="inset"></div>
+<p>Example text...</p>
+
+<p>.inset {<br>    float: left;<br>    shape-outside: inset(75px);<br>    clip-path: inset(75px);<br>    width: 300px;<br>    height: 300px;<br>    background: linear-gradient(#58C2ED, #1B85DC);<br>}</p>
+<p>在本例中，我们将创建一个300px×300px的矩形，并在所有边内嵌75px。这样我们就得到了150px×150px的图像周围有75px的空间。 <img src="http://file.w3cbest.com/file/images/cssshapes_inset1.jpg"> 我们可以看到矩形是内嵌的，文本忽略了内嵌区域。 <img src="http://file.w3cbest.com/file/images/cssshapes_inset2.jpg"> inset() 形状也可以使用 round 参数接收 border-radius，并且文本会识别圆角，就像本例中所有边都是 25px 内嵌和 75px 圆角。</p>
+<p>inset(25px round 75px)</p>
+<p><img src="http://file.w3cbest.com/file/images/cssshapes_inset3.jpg"> 像 padding 或 margin 简写，inset 值以顺时针方式（inset(25px 25px 25px 25px)）接收 top right bottom left，并且只传一个值将使四条边都相同（inset(25px)）。  </p>
+<h2 id="Polygon"><a href="#Polygon" class="headerlink" title="Polygon"></a>Polygon</h2><p>形状函数中最有趣和最灵活的是 polygon()，它可以采用一系列 x 和 y 点来制作任何复杂形状。数组里的每个元素代表 _x_i _y_i，将被写成 polygon(x1 y1, x2 y2, x3 y3…) 等等。 我们可以为多边形设置的点集数量最少为 3，这将创建一个三角形。</p>
+<div class="polygon"></div>
+<p>Example text...</p>
+
+<p>.polygon {<br>    float: left;<br>    shape-outside: polygon(0 0, 0 300px, 200px 300px);<br>    clip-path: polygon(0 0, 0 300px, 200px 300px);<br>    height: 300px;<br>    width: 300px;<br>    background: linear-gradient(to top right, #86F7CC, #67D7F5);<br>}</p>
+<p>  在这个形状中，第一个点是 0 0，div 中最左上角的点。第二个点是 0 300px，它是 div 中最左下角的点。第三个也就是最后一个点是 200px 300px，它在 X 轴的 2/3 处并且也在底部。最终的形状是这样： <img src="http://file.w3cbest.com/file/images/cssshapes_polygon1.jpg"> polygon() 形状函数的一个有趣用法是文本内容可以在两个或以上形状中环绕。因为 polygon() 形状是如此灵活和动态，这给我们制作真正独特的杂志式布局提供了一个最好机会。在本例中，我们将把文本放在两个多边形中。</p>
+<div class="left"></div>
+<div class="right"></div>
+<p>Example text...</p>
+
+<p>.left {<br>    float: left;<br>    shape-outside: polygon(0 0, 0 300px, 200px 300px);<br>    clip-path: polygon(0 0, 0 300px, 200px 300px);<br>    background: linear-gradient(to top right, #67D7F5, #86F7CC);<br>    height: 300px;<br>    width: 300px;<br>}<br>.right {<br>    float: right;<br>    shape-outside: polygon(200px 300px, 300px 300px, 300px 0, 0 0);<br>    clip-path: polygon(200px 300px, 300px 300px, 300px 0, 0 0);<br>    background: linear-gradient(to bottom left, #67D7F5, #86F7CC);<br>    height: 300px;<br>    width: 300px;<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/cssshapes_polygon2.jpg"> 显然，想要手动创造你自己的复杂形状是非常困难的。幸运的是，你可以用一些工具来创建多边形。Firefox 有一个内置的形状编辑器，你可以在 Inspector 中通过点击多边形使用。 <img src="http://file.w3cbest.com/file/images/cssshapes_polygon3.jpg"> 目前，Chrome有一些可以使用的扩展，比如<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/css-shapes-editor/nenndldnbcncjmeacmnondmkkfedmgmp?hl=en-US">CSS shape Editor</a>。 多边形可以用来剪切图像或其他元素周围的形状。在另一个例子中，我们可以通过在大字母周围绘制多边形来创建首字下沉。</p>
+<div class="letter">R</div>
+<p>Example text...</p>
+
+<p>.letter {<br>    float: left;<br>    font-size: 400px;<br>    font-family: Georgia;<br>    line-height: .8;<br>    margin-top: 20px;<br>    margin-right: 20px;<br>    shape-outside: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px) content-box;<br>    clip-path: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px);<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/cssshapes_polygon4.jpg"></p>
+<h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>CSS Shapes 一个令人激动的特性是你不必每次都通过形状函数明确定义；你也可以使用半透明图像的 url 来定义形状，这样文本就会自动环绕它。 需要注意的是，所使用的图像必须与CORS兼容，否则您将得到如下所示的错误。</p>
+<p>Access to image at ‘file:///users/tania/star.png’ from origin ‘null’<br>has been blocked by CORS policy: The response is invalid.</p>
+<p>  在同一个服务器上提供图像将会保证你不会遇到上面的错误。 与其他示例不同，我们将使用 img 代替 div。这次的 CSS 很简单——只需将url()放到shape-outside属性中，就像使用 background-image 一样。</p>
+<img src="./star.png" class="star">
+<p>Example text...</p>
+
+<p>.star {<br>float: left;<br>height: 350px;<br>width: 350px;<br>shape-outside: url(‘./star.png’)<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/cssshapes_image1.jpg"> 因为我使用了透明背景的星星图像，所以文本知道哪些区域是透明的，哪些区域是不透明的，并相应地对自己进行自适应布局。</p>
+<h3 id="Gradients"><a href="#Gradients" class="headerlink" title="Gradients"></a>Gradients</h3><p>最后，渐变也可以用来当成形状。渐变和图像一样，就像我们上面使用的图像示例一样，文本也将知道在透明部分环绕。 我们将使用渐变的一个新属性 —— shape-image-threshold。shape-image-threshold 定义形状的 alpha 通道阈值，或者图像透明的百分比值。 我们将制作一个渐变例子，它是 50％/50％ 的颜色和透明分割，并且设置 shape-image-threshold 为 .5，意味着超过 50％ 不透明的所有像素都应被视为图像的一部分。</p>
+<div class="gradient"></div>
+<p>Example text...</p>
+
+<p>.gradient {<br>    float: left;<br>    height: 300px;<br>    width: 100%;<br>    background: linear-gradient(to bottom right, #86F7CC, transparent);<br>    shape-outside: linear-gradient(to bottom right, #86F7CC, transparent);<br>    shape-image-threshold: .5;<br>}</p>
+<p>  <img src="http://file.w3cbest.com/file/images/cssshapes_gradient1.jpg"> 我们可以看到渐变在不透明和透明的中心完美地对角线分割。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在这篇文章中，我们学习了 CSS Shapes 的三个属性 shape-outside、shape-margin 和 shape-image-threshold。我们也了解到如何使用函数值创建可供文本环绕的圆、椭圆、内嵌矩形以及复杂的多边形，并且演示了形状如何检测图像和渐变的透明部分。 <strong>你可以在如下 <a target="_blank" rel="noopener" href="http://tympanus.net/Tutorials/CSSShapes/">demo</a> 中找到本文中用到的所有例子，也可以<a target="_blank" rel="noopener" href="http://tympanus.net/Tutorials/CSSShapes/CSSShapes.zip">下载源文件</a>。</strong></p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/JwpjzM/">CSS Shapes Examples</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>文章来源： <a target="_blank" rel="noopener" href="https://tympanus.net/codrops/2018/11/29/an-introduction-to-css-shapes/">https://tympanus.net/codrops/2018/11/29/an-introduction-to-css-shapes/</a> 相关阅读参考：<a target="_blank" rel="noopener" href="https://alistapart.com/article/css-shapes-101">https://alistapart.com/article/css-shapes-101</a> 相关阅读参考：<a target="_blank" rel="noopener" href="https://www.html5rocks.com/en/tutorials/shapes/getting-started/#toc-manual-shapes">https://www.html5rocks.com/en/tutorials/shapes/getting-started/#toc-manual-shapes</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%BB%8E%E7%BD%91%E7%AB%99%E5%8F%91%E9%80%81http%EF%BC%8C%E4%BD%A0%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%BF%BD%E7%95%A5%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/03/%E4%BB%8E%E7%BD%91%E7%AB%99%E5%8F%91%E9%80%81http%EF%BC%8C%E4%BD%A0%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%BF%BD%E7%95%A5%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">从网站发送HTTP，你可能会忽略的一个安全问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-03 16:31:36" itemprop="dateCreated datePublished" datetime="2019-01-03T16:31:36+08:00">2019-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在一个新窗口中打开链接是前端开发中一个很常见的逻辑，它可以将用户引导到一个新的域名。我们可以用 target=”_blank”来实现这个功能。我敢肯定，每个人都会在他的某个项目中使用过 target=”_blank”，但是我不确定是否每个人都知道这种用法的缺陷。 当一个外部链接使用了 target=”_blank”的方式，这个外部链接会打开一个新的浏览器tab。此时，新页面会打开，并且和原始页面占用同一个进程。这也意味着，如果这个新页面有任何性能上的问题，比如有一个很长的加载时间，这也将会影响到原始页面的表现。如果你打开的是一个同域的页面，那么你将可以在新页面访问到原始页面的所有内容，包括 document对象( window.opener.document)。如果你打开的是一个跨域的页面，你虽然无法访问到 document，但是你依然可以访问到 location对象。 这意味着，如果你在你的站点或者文章中，嵌入了通过新窗口打开一个新页面的链接，这个新页面可以使用 window.opener，在一定程度上来修改原始页面。</p>
+<blockquote>
+<p>可以参考这个例子，请导航到此<a target="_blank" rel="noopener" href="https://s.codepen.io/adamlaki/debug/dd4475e9a73052ad37d3e5f19f4bcb92">链接</a></p>
+</blockquote>
+<p><img src="http://file.w3cbest.com/file/images/640.gif"> 我们来看看上面例子发生了什么？当你点击了链接(在打开的 document中)，浏览器会打开这个页面。而这个页面中运行了一段 JavaScript代码：通过 window.opener来修改原始页面(你来自的那个页面)。有点乏味但是这可能是有害的。 那么问题来了：我们如何阻止这种情况的发生呢？在所有使用 target=”_blank”打开新页面的链接上，加上 rel=”noopener”。</p>
+<p> <a target="_blank" href="https://niteshsoni.info" rel="noopener noopener"></a></p>
+<p>使用了 rel=”noreferrer”以后，当一个新页面通过一个链接打开后，新页面中的恶意 JavaScript代码将无法通过 window.opener 来访问到原始页面。这将保证新页面运行在一个单独的进程里。 在老浏览器中，你可以使用 rel=”noreferrer”属性，具有同样的效果。但是，这样也会阻止 Refererheader被发送到新页面。</p>
+<p><a target="_blank" href="https://niteshsoni.info" rel="noopener noreferrer noopener"></a></p>
+<p>在上面的例子中，使用了 rel=”noreferrer” ，当一个用户点击了这个超链接进入到新页面后，新页面拿不到 referrer信息。这将意味着，新页面不知道用户是从哪里来的。 如果你通过 JavaScript中的 window.open打开一个页面的话，上文所说的都适用，因为你也是打开了一个新的窗口。在这种情况下，你不得不清楚掉 opener对象：</p>
+<p>var newWindow = window.open();<br>newWindow.opener = null;</p>
+<p>在我看来，使用第一种解决方案(在每一个 target=”_blank”的链接中加上 rel=”noopener”)是没有什么明显的坏处的。这个问题表明，在你的网页安全性中找到漏洞是多么的容易。 本文主要介绍了在使用 &lt;atarget=”_blank”&gt;标签打开一个新窗口过程中的安全问题。新页面中可以使用 window.opener来控制原始页面。如果新老页面同域，那么在新页面中可以任意操作原始页面。如果是不同域，新页面中依然可以通过 window.opener.location，访问到原始页面的 location对象。 试想一下，你在自己的a页面中，通过 <a target="\_blank" href="http://b.com">打开新窗口，跳转到了b页面，此刻b页面中有一段代码 window.opener.location=”http://c.com”。这是，a页面就会自动跳转到c页面。如果这个c页面是一个和a页面长得一样的钓鱼网站，那么用户可能就中招了。 解决方法就是：在带有 target=”_blank”的 标签中，加上 rel=”noopener”属性。如果使用 window.open的方式打开页面，将 opener对象置为空。这样的副作用是：在某些低版本浏览器中，新页面中拿不到 referer信息。 原文地址：<a target="_blank" rel="noopener" href="https://medium.com/front-end-weekly/prevent-sending-http-referer-headers-from-your-website-e30eecfe813a">https://medium.com/front-end-weekly/prevent-sending-http-referer-headers-from-your-website-e30eecfe813a</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/28/wordpress%E7%A6%81%E7%94%A85-0-2%E7%89%88%E6%9C%AC%E8%87%AA%E5%B8%A6%E7%BC%96%E8%BE%91%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/28/wordpress%E7%A6%81%E7%94%A85-0-2%E7%89%88%E6%9C%AC%E8%87%AA%E5%B8%A6%E7%BC%96%E8%BE%91%E5%99%A8/" class="post-title-link" itemprop="url">wordpress禁用5.0.2版本自带的Gutenberg编辑器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-28 18:01:13" itemprop="dateCreated datePublished" datetime="2018-12-28T18:01:13+08:00">2018-12-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>禁用方法，在function.php文件里面加入这句就可以禁用新版编辑器</p>
+<p>add_filter(‘use_block_editor_for_post’, ‘__return_false’);</p>
+<p>后台禁用block editor编辑器后，前端还是会加载相关的的样式文件，还需要加上一句：</p>
+<p>remove_action( ‘wp_enqueue_scripts’, ‘wp_common_block_scripts_and_styles’ );</p>
+<p>禁止前端加载样式文件。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/28/css%E5%9C%A8%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E5%BC%80%E5%A4%B4%E6%B7%BB%E5%8A%A0%E7%9C%81%E7%95%A5%E5%8F%B7%E5%AD%97%E7%AC%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/28/css%E5%9C%A8%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E5%BC%80%E5%A4%B4%E6%B7%BB%E5%8A%A0%E7%9C%81%E7%95%A5%E5%8F%B7%E5%AD%97%E7%AC%A6/" class="post-title-link" itemprop="url">CSS在单行文本开头添加省略号字符</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-28 17:07:38" itemprop="dateCreated datePublished" datetime="2018-12-28T17:07:38+08:00">2018-12-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>css实现单行文本溢出显示省略号的方法大家应该在网上已经得到想要的答案了吧，就是用text-overflow:ellipsis属性来实现，当然还需要加宽度width属来兼容部分浏览。</p>
+<p>实现方法：</p>
+<p>.ellipsize-right{<br>white-space: nowrap;<br>overflow: hidden;<br>text-overflow:ellipsis;<br>width: 200px;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/Bvwyvr/">ellipsize-right</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>css的text-overflow:ellipsis文本溢出显示省略号功能非常棒，但本质上只在文本结尾实现省略字符串，假如我们想在文本的开头实现省略字符串，该怎么办？</p>
+<p>那么今天我们就来实现以下这个疑问</p>
+<p>.ellipsize-left {<br>/* 标准CSS省略号 */<br>white-space: nowrap;<br>overflow: hidden;<br>text-overflow: ellipsis;<br>width: 200px;<br>/* 字符串的开头 */<br>direction: rtl;<br>text-align: left;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/PXJwXE/">ellipsize-left</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>若要在字符串的开头添加省略号，请使用RTL和text-align来剪辑字符串的开头！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/26/%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8table%E8%A1%A8%E6%A0%BCth%E3%80%81td%E5%A1%AB%E5%85%85%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BE%B9%E5%90%8E%E8%AE%BE%E7%BD%AEposition-relative%E8%BE%B9%E6%A1%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/26/%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8table%E8%A1%A8%E6%A0%BCth%E3%80%81td%E5%A1%AB%E5%85%85%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BE%B9%E5%90%8E%E8%AE%BE%E7%BD%AEposition-relative%E8%BE%B9%E6%A1%86/" class="post-title-link" itemprop="url">火狐浏览器table表格th、td填充背景描边后设置position: relative边框失效问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-26 16:26:45" itemprop="dateCreated datePublished" datetime="2018-12-26T16:26:45+08:00">2018-12-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一般在开发管理系统的时候经常会用到表格，在使用表格式时通常会给thead部分的th或td加上背景色然后还有边框颜色，在这种情况下浏览器基本都显示正常的，但是当给th或td加上position: relative时火狐浏览器就会显示th或td的边框被遮盖，只显示一片背景色没有边框，如下请在火狐浏览器查看，</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zyzmdz/">火狐浏览器table边框失效问题1</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>我为什么要在th或td加上position: relative呢，我在开发系统的时候使用bootstrap结合jquery.dataTables，不想使用dataTables自带的图标主题，使用的bootstrap.dataTable 的主题，主题的图标是通过伪类:before和:after实现的，所以加上的position: relative，其实这也是主题的一个小bug，然后导致火狐浏览器只会显示背景色边框完全被遮盖。</p>
+<p>解决方法1：</p>
+<p>去掉th的背景色，把背景色填充在thend 的 tr上，这样就能完全解决这个问题，如下</p>
+<p>.table{<br>    thead{<br>        tr{<br>            background-color: #4587E7;<br>        }<br>        th{<br>            position: relative;<br>            color: #fff;<br>        }<br>    }<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/vvZVeV/">火狐浏览器table边框失效问题2</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>解决方法2：</p>
+<p>给th设置一个z-index-1属性，这样也能完全解决这个问题，如下</p>
+<p>.table{<br>    thead{<br>        th{<br>            position: relative;<br>            z-index: -1;<br>            color: #fff;<br>            background-color: #4587e7;<br>        }<br>    }<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/gZRBoy/">火狐浏览器table边框失效问题3</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>扩展阅读：<a target="_blank" rel="noopener" href="http://www.w3help.org/zh-cn/causes/RE2007">http://www.w3help.org/zh-cn/causes/RE2007</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/21/css%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAtips%E5%B8%A6%E6%9C%89%E6%8F%8F%E8%BE%B9%E7%9A%84%E5%B0%8F%E7%AE%AD%E5%A4%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/21/css%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAtips%E5%B8%A6%E6%9C%89%E6%8F%8F%E8%BE%B9%E7%9A%84%E5%B0%8F%E7%AE%AD%E5%A4%B4/" class="post-title-link" itemprop="url">css多种方法实现一个tips带有描边的小箭头</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-21 17:11:10" itemprop="dateCreated datePublished" datetime="2018-12-21T17:11:10+08:00">2018-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们在网页开发中实现一个tips时会有一个小箭头，实现这种方法的文章网上已经泛滥了，但有时实现这个小箭头不止只有单纯的三角它还有描边，今天我们就借那些现有的文章在深入一点来说说如何给tips小箭头描边，本章不涉及svg/canvas，没必要因为我讲的是css。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/WLOvqR/">第一种border描边双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<div class="dui-tips">
+  <a href="www.w3cbest.com">w3cbest我是一个tips</a>
+</div>
+
+<p>.dui-tips{<br>position: relative;<br>padding: 10px;<br>text-align: center;<br>border: 1px solid #f60;<br>border-radius: 5px;<br>background-color: #fff;<br>}</p>
+<h2 id="第一种border描边双层覆盖："><a href="#第一种border描边双层覆盖：" class="headerlink" title="第一种border描边双层覆盖："></a>第一种border描边双层覆盖：</h2><p>就是大家常用的border，实现原理就是给其中一条边设置颜色宽度及样式，我这里使用了两个伪类进行折叠，将一个白色的覆盖在有颜色的伪类上面，再偏移1px来模拟实现1px的描边效果，代码如下：</p>
+<p>.dui-tips {<br>&amp;:before, &amp;:after {<br>position: absolute;<br>left: 50%;<br>display: table;<br>width: 0;<br>height: 0;<br>content: ‘’;<br>transform: translate(-50%, 0);<br>border-width: 10px 10px 0 10px;<br>border-style: solid;<br>}<br>&amp;:before {<br>z-index: 0;<br>bottom: -10px;<br>border-color: #f60 transparent transparent transparent;<br>}<br>&amp;:after {<br>z-index: 1;<br>bottom: -8px;<br>border-color: #fff transparent transparent transparent;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/WLOvqR/">第一种border描边双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第二种border描边结合滤镜drop-shadow属性："><a href="#第二种border描边结合滤镜drop-shadow属性：" class="headerlink" title="第二种border描边结合滤镜drop-shadow属性："></a>第二种border描边结合滤镜drop-shadow属性：</h2><p>第二种是第一种的延伸，使用滤镜filter的drop-shadow描边来实现，box-shadow和drop-shadow实现不规则投影 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/?p=172">http://www.w3cbest.com/?p=172</a></p>
+<p>.dui-tips {<br>&amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 0;<br>    height: 0;<br>    content: ‘’;<br>    transform: translate(-50%, 0);<br>    border-width: 10px 10px 0 10px;<br>    border-style: solid;<br>}<br>&amp;:after {<br>    bottom: -9px;<br>    border-color: #fff transparent transparent transparent;<br>    filter: drop-shadow(0px 2px 0px #f60);<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/aPwOga/">第二种border描边结合滤镜drop-shadow属性</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第三种通过特殊符号”◆”字体双层覆盖"><a href="#第三种通过特殊符号”◆”字体双层覆盖" class="headerlink" title="第三种通过特殊符号”◆”字体双层覆盖"></a>第三种通过特殊符号”◆”字体双层覆盖</h2><p>第三种方法和第一种类似，通过两层颜色叠加在有层级的偏移来实现</p>
+<p>.dui-tips {<br>&amp;:before, &amp;:after {<br>    font-size: 24px;<br>    line-height: 18px;<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    content: ‘◆’;<br>    transform: translate(-50%, 0);<br>    text-align: center;<br>}<br>&amp;:before {<br>    z-index: 0;<br>    bottom: -10px;<br>    color: #f60;<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -8px;<br>    color: #fff;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/pqwJMr/">第三种通过特殊符号”◆”字体双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第四种通过text-shadow实现"><a href="#第四种通过text-shadow实现" class="headerlink" title="第四种通过text-shadow实现"></a>第四种通过text-shadow实现</h2><p>这种放发通过给文子设置1px的阴影来显描边效果</p>
+<p>.dui-tips {<br>&amp;:after {<br>    font-size: 24px;<br>    line-height: 18px;<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    content: ‘◆’;<br>    transform: translate(-50%, 0);<br>    text-align: center;<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -8px;<br>    color: #fff;<br>    text-shadow: 0 2px 0 #f60;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/vvZOoo/">第四种通过text-shadow实现</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第五种-background双层覆盖"><a href="#第五种-background双层覆盖" class="headerlink" title="第五种 background双层覆盖"></a>第五种 background双层覆盖</h2><p>这种方式设置两个宽度和高度分别为10px的方块背景，再给两层背景分别设置不同的颜色，再通过两层背景颜色叠加，经过层级偏移再有transform的rotate属性旋转角度，来实现箭头的朝向。</p>
+<p>.dui-tips {<br>&amp;:before, &amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-45deg);<br>}<br>&amp;:before {<br>    z-index: 0;<br>    bottom: -6px;<br>    background-color: #f60;<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background-color: #fff;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/KbqdPq/">第五种 background双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第六种background和border背景描边旋转"><a href="#第六种background和border背景描边旋转" class="headerlink" title="第六种background和border背景描边旋转"></a>第六种background和border背景描边旋转</h2><p>此方法就是设置一个宽度和高度分别为10px的方块背景，然后背景相邻的两条边描边再有transform的rotate属性旋转角度，来实现箭头的朝向。</p>
+<p>.dui-tips {<br>&amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    margin-left: -5px;<br>    content: ‘’;<br>    transform: rotate(-45deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -6px;<br>    border-bottom: 1px solid #f60;<br>    border-left: 1px solid #f60;<br>    background-color: #fff;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/YdQyKm/">第六种background和border背景描边旋转</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第七种background和box-shadow"><a href="#第七种background和box-shadow" class="headerlink" title="第七种background和box-shadow"></a>第七种background和box-shadow</h2><p>.dui-tips {<br>&amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-45deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background-color: #fff;<br>    box-shadow: -1px 1px 0 #f60;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/QzgjWv/">第七种background和box-shadow</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第八种linear-gradient"><a href="#第八种linear-gradient" class="headerlink" title="第八种linear-gradient"></a>第八种linear-gradient</h2><p>.dui-tips{<br>&amp;:before, &amp;:after{<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-135deg);<br>}<br>&amp;:before {<br>    z-index: 0;<br>    bottom: -6px;<br>    background: linear-gradient(-45deg, transparent 7px, #f60 0);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background: linear-gradient(-45deg, transparent 7px, #fff 0);<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/EGXVxe/">第八种linear-gradient</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第九种linear-gradient和box-shadow"><a href="#第九种linear-gradient和box-shadow" class="headerlink" title="第九种linear-gradient和box-shadow"></a>第九种linear-gradient和box-shadow</h2><p>.dui-tips{<br>&amp;:after{<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-135deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background: linear-gradient(-45deg, transparent 7px, #fff 0);<br>    box-shadow: -1px -1px 0 #f60<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/REgWNw/">第九种linear-gradient和box-shadow</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第十种linear-gradient和border"><a href="#第十种linear-gradient和border" class="headerlink" title="第十种linear-gradient和border"></a>第十种linear-gradient和border</h2><p>.dui-tips{<br>&amp;:after{<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-135deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -6px;<br>    background: linear-gradient(-45deg, transparent 7px, #fff 0);<br>    border-top: 1px solid #f60;<br>    border-left: 1px solid #f60;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/LMLpEa/">第十种linear-gradient和border</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第十一种ouline"><a href="#第十一种ouline" class="headerlink" title="第十一种ouline"></a>第十一种ouline</h2><p>.dui-tips {<br>  &amp;:before, &amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 0;<br>    height: 0;<br>    content: ‘’;<br>    transform: rotate(45deg);<br>    outline-style: solid;<br>    outline-width: 5px;<br>  }<br>  &amp;:before {<br>    z-index: 0;<br>    bottom: -1px;<br>    outline-color: #f60;<br>  }<br>  &amp;:after {<br>    z-index: 1;<br>    bottom: 0;<br>    outline-color: #fff;<br>  }<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/vvJmXj/">第十一种outline</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/21/%E7%94%A8css3%E5%BC%80%E5%90%AF%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%E6%9D%A5%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E6%80%A7%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/21/%E7%94%A8css3%E5%BC%80%E5%90%AF%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%E6%9D%A5%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E6%80%A7%E8%83%BD/" class="post-title-link" itemprop="url">用CSS3开启硬件加速来提高网站性能</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-21 10:00:23" itemprop="dateCreated datePublished" datetime="2018-12-21T10:00:23+08:00">2018-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>你知道我们可以在浏览器中用css开启硬件加速，使GPU (Graphics Processing Unit) 发挥功能，从而提升性能吗？</p>
+<p>现在大多数电脑的显卡都支持硬件加速。鉴于此，我们可以发挥GPU的力量，从而使我们的网站或应用表现的更为流畅。</p>
+<h3 id="在桌面端和移动端用CSS3开启硬件加速"><a href="#在桌面端和移动端用CSS3开启硬件加速" class="headerlink" title="在桌面端和移动端用CSS3开启硬件加速"></a>在桌面端和移动端用CSS3开启硬件加速</h3><p>CSS animations, transforms 以及 transitions 不会自动开启GPU加速，而是由浏览器的缓慢的软件渲染引擎来执行。那我们怎样才可以切换到GPU模式呢，很多浏览器提供了某些触发的CSS规则。</p>
+<p>现在，像Chrome, FireFox, Safari, IE9+和最新版本的Opera都支持硬件加速，当它们检测到页面中某个DOM元素应用了某些CSS规则时就会开启，最显著的特征的元素的3D变换。</p>
+<p>例如：</p>
+<p>.cube {<br>   -webkit-transform: translate3d(250px,250px,250px)<br>   rotate3d(250px,250px,250px,-120deg)<br>   scale3d(0.5, 0.5, 0.5);<br>}</p>
+<p>可是在一些情况下，我们并不需要对元素应用3D变换的效果，那怎么办呢？这时候我们可以使用个小技巧“欺骗”浏览器来开启硬件加速。</p>
+<p>虽然我们可能不想对元素应用3D变换，可我们一样可以开启3D引擎。例如我们可以用transform: translateZ(0); 来开启硬件加速 。</p>
+<p>.cube {<br>   -webkit-transform: translateZ(0);<br>   -moz-transform: translateZ(0);<br>   -ms-transform: translateZ(0);<br>   -o-transform: translateZ(0);<br>   transform: translateZ(0);<br>   /* Other transform properties here */<br>}</p>
+<p>在 Chrome and Safari中，当我们使用CSS transforms 或者 animations时可能会有页面闪烁的效果，下面的代码可以修复此情况：</p>
+<p>.cube {<br>    -webkit-backface-visibility: hidden;<br>    -moz-backface-visibility: hidden;<br>    -ms-backface-visibility: hidden;<br>    backface-visibility: hidden;<br>    -webkit-perspective: 1000;<br>    -moz-perspective: 1000;<br>    -ms-perspective: 1000;<br>    perspective: 1000;<br>    /* Other transform properties here */<br> }</p>
+<p>在webkit内核的浏览器中，另一个行之有效的方法是</p>
+<p>.cube {<br>   -webkit-transform: translate3d(0, 0, 0);<br>   -moz-transform: translate3d(0, 0, 0);<br>   -ms-transform: translate3d(0, 0, 0);<br>   transform: translate3d(0, 0, 0);<br>  /* Other transform properties here */<br>}</p>
+<p>原生的移动端应用(Native mobile applications)总是可以很好的运用GPU，这是为什么它比网页应用(Web apps)表现更好的原因。硬件加速在移动端尤其有用，因为它可以有效的减少资源的利用(麦时注：移动端本身资源有限)。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>只对我们需要实现动画效果的元素应用以上方法，如果仅仅为了开启硬件加速而随便乱用，那是不明智的。</p>
+<p>小心使用这些方法，如果通过你的测试，结果确是提高了性能，你才可以使用这些方法。使用GPU可能会导致严重的性能问题，因为它增加了内存的使用，而且它会减少移动端设备的电池寿命。</p>
+<p>你有在项目中使用过这些方法吗？如果有，请分享你的精彩案例吧。</p>
+<p>转载：<a target="_blank" rel="noopener" href="https://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css">Increase Your Site’s Performance with Hardware-Accelerated CSS</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/18/%E5%A6%82%E4%BD%95%E4%B8%BA%E5%9B%A2%E9%98%9F%E5%AE%9A%E4%B9%89css%E6%A0%87%E5%87%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/18/%E5%A6%82%E4%BD%95%E4%B8%BA%E5%9B%A2%E9%98%9F%E5%AE%9A%E4%B9%89css%E6%A0%87%E5%87%86/" class="post-title-link" itemprop="url">如何为团队定义CSS标准</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-18 10:15:07" itemprop="dateCreated datePublished" datetime="2018-12-18T10:15:07+08:00">2018-12-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>“我们都经历过重构app,将每个页面分配给团队中的一个人，实现协同开发，但是页面的结构和样式，每个人都会按照自己的方式来实现，这样就很不方便团队的管理，每个人写的都不一样，代码管理困难，您是否有用于创建和实施SASS项目的建议，或者技巧，博客之类的？”</p>
+<p>我曾经也有过这样的苦恼，试图让一大群开发人员在没有现有代码标准或风格指南的情况下达成共识，现在我觉得你最好的选择就是先构建标准框架。但是这样可能和应用程序的当前部分之间存在巨大差异，但是在后续的开发中，无论是修复错误还是重构，你都可以问“这符合我们的CSS标准吗？”</p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>我们必须了解什么是模块化CSS,以及他的好处是什么？不是自己吹嘘。我的这篇演讲可以有助于开发人员更好的理解它的概念。除此之外，我还会向团队推荐SMACSS书籍。 我很幸运能让一位经理开办一个强制性的读书俱乐部，团队中的每个人都必须阅读一本书并参加会议讨论。</p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>一旦围绕模块化CSS的优势达成某种程度的共识，就可以将您团队的代码标准整合在一起。您既可以自己编写，也可以采用其他团队的。 我强烈推荐Harry Robert的CSS指南，或许补充了Hugo Giraudel的Sass指南。<br>我一直在为Tempest制作CSS标准文档，我对此感到非常满意。 这是一个很不情愿的工作，试图记录和标准化几年的现有代码实践。 如果我从头开始，我可能会很难切换到BEM命名约定和StyleLint默认格式规则。 不是因为它们是最好的标准，而是因为它们是既定标准，更容易达成一致。</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>创建模式库，记录您的模式并将其列在中心位置有两个原因：首先，它可以帮助您的设计人员查看已存在的模式并避免重复。 其次，它可以帮助您的开发人员开始考虑可重用模块与独特页面。</p>
+<p><strong>关于通用的Sass技巧：</strong></p>
+<ul>
+<li>  多使用mixins,【Use mixing instead】;</li>
+<li>  尽可能的使用变量，理想情况下，您几乎没有在Sass文件中看到硬编码的数字。 这样可以更容易地避免幻数，并且在代码审查提供方便。</li>
+<li>  将变量保存在中央_variables.scss文件中，以便于查找，并帮助团队记住Sass中的变量是全局变量。</li>
+<li>  使用main.css文件来负责加载其他Sass文件， 这有助于鼓励您的团队编写更小，更好的范围Sass文件并避免膨胀。</li>
+<li>  理性情况下，每个模块都应该独立，不受其他模块的影响。 如果每个模块都有自己的Sass partial，那么强制执行此操作的一种方法是随机更改部分加载的顺序。如果这个规则被打破，那么你模块是有漏洞的。</li>
+</ul>
+<p>这是一个非常广泛的主题，有许多截然不同的观点。 最重要的是让您的团队同意标准，无论标准是什么。 在一天结束时，你不能阻止一个开发者去做一些非团队标准的事，但是团队有了统一的标准后管理团队的代码规范就容易多了。</p>
+<p>译文：<a target="_blank" rel="noopener" href="https://spaceninja.com/2017/02/01/team-css-standards/">How to Define CSS Standards for a Team</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/09/CSS%20%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E5%BE%88%E7%AE%80%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/09/CSS%20%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E5%BE%88%E7%AE%80%E5%8D%95/" class="post-title-link" itemprop="url">CSS 垂直居中方法很简单</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-09 07:00:00" itemprop="dateCreated datePublished" datetime="2018-12-09T07:00:00+08:00">2018-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:22:19" itemprop="dateModified" datetime="2021-08-30T11:22:19+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在 CSS 中对元素进行水平居中是非常简单的：如果它是一个行内元素，就对它的父元素应用 text-align: center；如果它是一个块级元素，就对它自身应用 margin: auto。然而如果要对一个元素进行垂直居中，可能光是想想就令人头皮发麻了。 多年以来，垂直居中已经成为了 CSS 领域的圣杯，它同样也是前端开发圈内广为流传的笑话。原因在于它同时具备以下几条特征。</p>
+<ul>
+<li>  它是极其常见的需求。</li>
+<li>  从理论上来看，它似乎极其简单。</li>
+<li>  在实践中，它往往难如登天，当涉及尺寸不固定的元素时尤其如此。</li>
+</ul>
+<p>长久以来，为了解决这一绝世难题，前端开发者们殚精竭虑，琢磨出了各种解决方法，大多数并不实用。在本篇攻略中，我们将探索现代 CSS 的强大威力，以全新的思路去攻克各种场景下的垂直居中难题。请注意，有几种技巧十分流行，但在这里并不会深入探讨，原因如下。</p>
+<ul>
+<li>  表格布局法（利用表格的显示模式）需要用到一些冗余的 HTML 元素，因此这里不多介绍。</li>
+<li>  行内块法也不作讨论，因为在我看来这种方法 hack 的味道很浓。</li>
+</ul>
+<p>如果你有兴趣，可以去看看 Chris Coyier 写的“不为人知的居中方法”（<a target="_blank" rel="noopener" href="http://css-tricks.com/centering-in-the-unknown%EF%BC%89%E3%80%82%E8%BF%99%E7%AF%87%E5%87%BA%E8%89%B2%E7%9A%84%E6%96%87%E7%AB%A0%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%BF%B0%E4%BA%86%E8%BF%99%E4%B8%A4%E7%A7%8D%E6%8A%80%E5%B7%A7%E3%80%82">http://css-tricks.com/centering-in-the-unknown）。这篇出色的文章详细讲述了这两种技巧。</a> 除非特别注明，我们将一直使用如下所示的结构代码，并直接插入<body> 元素中（但实际上我们将要探索的这些技巧是与容器无关的）：</p>
+<main>
+<h1>我居中了吗?</h1>
+</main>
+
+<p>然后再用一些基本的 CSS 来设置背景、内边距等样式，运行一下就可以看到效果了。我们将以此作为起点。  </p>
+<h2 id="基于绝对定位的解决方案"><a href="#基于绝对定位的解决方案" class="headerlink" title="基于绝对定位的解决方案"></a>基于绝对定位的解决方案</h2><p>我们先来看一个早期的垂直居中方法，它要求元素具有固定的宽度和高度：</p>
+<p>main {<br>position: absolute;<br>top: 50%;<br>left: 50%;<br>margin-top: -3em; /* 6/2 = 3 */<br>margin-left: -9em; /* 18/2 = 9 */<br>width: 18em;<br>height: 6em;<br>}</p>
+<p>这段代码在本质上做了这样几件事情：先把这个元素的左上角放置在视口（或最近的、具有定位属性的祖先元素）的正中心，然后再利用负外边距把它向左、向上移动（移动距离相当于它自身宽高的一半），从而把元素的正中心放置在视口的正中心。借助强大的 calc() 函数，这段代码还可以省掉两行声明：</p>
+<p>main {<br>position: absolute;<br>top: calc(50% - 3em);<br>left: calc(50% - 9em);<br>width: 18em;<br>height: 6em;<br>}</p>
+<p>显然，这个方法最大的局限在于它要求元素的宽高是固定的。在通常情况下，对那些需要居中的元素来说，其尺寸往往是由其内容来决定的。如果能找到一个属性的百分比值以元素自身的宽高作为解析基准，那我们的难题就迎刃而解了！遗憾的是，对于绝大多数 CSS 属性（包括 margin）来说，百分比都是以其父元素的尺寸为基准进行解析的。 CSS 领域有一个很常见的现象，真正的解决方案往往来自于我们最意想不到的地方。在这个例子中，答案来自于 CSS 变形属性。当我们在translate() 变形函数中使用百分比值时，是以这个元素自身的宽度和高度为基准进行换算和移动的，而这正是我们所需要的。接下来，只要换用基于百分比的 CSS 变形来对元素进行偏移，就不需要在偏移量中把元素的尺寸写死了。这样我们就可以彻底解除对固定尺寸的依赖：</p>
+<p>main {<br>position: absolute;<br>top: 50%;<br>left: 50%;<br>transform: translate(-50%, -50%);<br>}</p>
+<p>你可以在下面demo中看到结果：这个容器已经完美居中了，完全满足我们的期望。 当然，没有任何技巧是十全十美的，上面这个方法也有一些需要注意的地方。</p>
+<ul>
+<li>  我们有时不能选用绝对定位，因为它对整个布局的影响太过强烈。</li>
+<li>  如果需要居中的元素已经在高度上超过了视口，那它的顶部会被视口裁切掉。有一些办法可以绕过这个问题，但 hack味道过浓。</li>
+<li>  在某些浏览器中，这个方法可能会导致元素的显示有一些模糊，因为元素可能被放置在半个像素上。这个问题可以用 transformstyle:preserve-3d 来修复，不过这个修复手段也可以认为是一个hack，而且很难保证它在未来不会出问题。</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/QJXewK/">translate居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<blockquote>
+<p>实践证明，想要找到最先提出这个实用技巧的人确实不容易，不过所能挖掘到的最早起源似乎是 Stack Overflow（<a target="_blank" rel="noopener" href="http://stackoverflow.com)的用户“charlie”(http//stackoverflow.com/users/479836/charlie%EF%BC%89%EF%BC%8C%E4%BB%96%E5%9C%A82013%E5%B9%B44%E6%9C%8816%E6%97%A5%E5%9B%9E%E7%AD%94%E4%BA%86%E2%80%9C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8">http://stackoverflow.com）的用户“Charlie”（http://stackoverflow.com/users/479836/charlie），他在2013年4月16日回答了“如何使用</a> CSS3 实现垂直对齐”（<a target="_blank" rel="noopener" href="http://stackoverflow.com/a/16026893/90826%EF%BC%89%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82">http://stackoverflow.com/a/16026893/90826）这个问题。</a></p>
+</blockquote>
+<h2 id="基于视口单位的解决方案"><a href="#基于视口单位的解决方案" class="headerlink" title="基于视口单位的解决方案"></a>基于视口单位的解决方案</h2><p>假设我们不想使用绝对定位，仍然可以采用 translate() 技巧来把这个元素以其自身宽高的一半为距离进行移动；但是在缺少 left 和 top 的情况下，如何把这个元素的左上角放置在容器的正中心呢？ 我们的第一反应很可能是用 margin 属性的百分比值来实现，就像这样：</p>
+<p>main {<br>width: 18em;<br>padding: 1em 1.5em;<br>margin: 50% auto 0;<br>transform: translateY(-50%);<br>}</p>
+<p>不过，这段代码会产生十分离谱的结果。原因在于margin 的百分比值是以父元素的宽度作为解析基准的。没错，即使对于margin-top 和 margin-bottom 来说也是这样！ 不过幸运的是，如果只是想把元素相对于视口进行居中，仍然是有希望 的。CSS 值 与 单 位（ 第 三 版 ）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-values-3/#viewportrelative-lengths%EF%BC%89%E5%AE%9A%E4%B9%89%E4%BA%86%E4%B8%80%E5%A5%97%E6%96%B0%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E7%A7%B0%E4%B8%BA%E8%A7%86%E5%8F%A3%E7%9B%B8%E5%85%B3%E7%9A%84%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D%E3%80%82">http://w3.org/TR/css-values-3/#viewportrelative-lengths）定义了一套新的单位，称为视口相关的长度单位。</a></p>
+<ul>
+<li>  vw 是与视口宽度相关的。与常人的直觉不符的是，1vw 实际上表示视口宽度的 1%，而不是 100%。</li>
+<li>  与 vw 类似，1vh 表示视口高度的 1%。</li>
+<li>  当视口宽度小于高度时，1vmin 等于 1vw，否则等于 1vh。</li>
+<li>  当视口宽度大于高度时，1vmax 等于 1vw，否则等于 1vh。</li>
+</ul>
+<p>在我们的这个例子中，适用于外边距的是 vh 单位：</p>
+<p>main {<br>width: 18em;<br>padding: 1em 1.5em;<br>margin: 50vh auto 0;<br>transform: translateY(-50%);<br>}</p>
+<blockquote>
+<p>“使用视口相关的长度单位，我们还可以生成一个正好铺满视口的区块，无需脚本的辅助。更多细节请参阅“用一行 CSS 实现全屏区块”（<a target="_blank" rel="noopener" href="https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd%EF%BC%89%E3%80%82%E2%80%9D">https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd）。”</a></p>
+</blockquote>
+<p>在下面DEMO中可以看到，其效果堪称完美。当然，这个技巧的实用性是相当有限的，因为它只适用于在视口中居中的场景。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/BGgEYQ/">transform-translateY居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="基于-Flexbox-的解决方案"><a href="#基于-Flexbox-的解决方案" class="headerlink" title="基于 Flexbox 的解决方案"></a>基于 Flexbox 的解决方案</h2><p>这是毋庸置疑的最佳解决方案，因为 Flexbox（伸缩盒）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox%EF%BC%89%E6%98%AF%E4%B8%93%E9%97%A8%E9%92%88%E5%AF%B9%E8%BF%99%E7%B1%BB%E9%9C%80%E6%B1%82%E6%89%80%E8%AE%BE%E8%AE%A1%E7%9A%84%E3%80%82%E6%88%91%E4%BB%AC%E4%B9%8B%E6%89%80%E4%BB%A5%E8%A6%81%E8%AE%A8%E8%AE%BA%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88%EF%BC%8C%E4%BB%85%E4%BB%85%E6%98%AF%E5%9B%A0%E4%B8%BA%E9%82%A3%E4%BA%9B%E6%96%B9%E6%A1%88%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%94%AF%E6%8C%81%E7%A8%8B%E5%BA%A6%E4%B8%8A%E7%A8%8D%E5%BE%AE%E5%A5%BD%E4%B8%80%E4%BA%9B%E8%80%8C%E5%B7%B2%E3%80%82%E5%85%B6%E5%AE%9E%E7%9B%AE%E5%89%8D%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9">http://w3.org/TR/css-flexbox）是专门针对这类需求所设计的。我们之所以要讨论其他方案，仅仅是因为那些方案在浏览器的支持程度上稍微好一些而已。其实目前现代浏览器对</a> Flexbox 的支持度已经相当不错了。 我们只需写两行声明即可：先给这个待居中元素的父元素设置 display:flex（在这个例子中是 <body> 元素），再给这个元素自身设置我们再熟悉不过的 margin: auto（在这个例子中是 <main> 元素）：</p>
+<p>body {<br>display: flex;<br>min-height: 100vh;<br>margin: 0;<br>}<br>main {<br>margin: auto;<br>}</p>
+<p>请注意，当我们使用 Flexbox 时，margin: auto 不仅在水平方向上将元素居中，垂直方向上也是如此。还有一点，我们甚至不需要指定任何宽度（当然，如果需要的话，也是可以指定的）：这个居中元素分配到的宽度等于 maxcontent。（还记得“自适应内部元素”中提到的那些内部尺寸关键字吗？） 如果浏览器不支持 Flexbox，页面渲染结果看起来就跟我们的开篇代码是一样的了（如果设置了宽度的话）。虽然没有垂直居中效果，但也是完全可以接受的。 Flexbox 的另一个好处在于，它还可以将匿名容器（即没有被标签包裹的文本节点）垂直居中。举个例子，假设我们的结构代码是：</p>
+<main>我居中了吗?</main>
+
+<p>我们先给这个 main 元素指定一个固定的尺寸，然后借助 Flexbox 规范所引入的 align-items 和 justify-content 属性，我们可以让它内部的文本也实现居中（参见图 7-22）：</p>
+<p>main {<br>display: flex;<br>align-items: center;<br>justify-content: center;<br>width: 18em;<br>height: 10em;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/RqzOZN/">用 Flexbox 居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<blockquote>
+<p>根据盒对齐模型（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-align-3%EF%BC%89%E7%9A%84%E8%AE%A1%E5%88%92%EF%BC%8C%E5%9C%A8%E6%9C%AA%E6%9D%A5%EF%BC%8C%E5%AF%B9%E4%BA%8E%E7%AE%80%E5%8D%95%E7%9A%84%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%9C%80%E6%B1%82%EF%BC%8C%E6%88%91%E4%BB%AC%E5%AE%8C%E5%85%A8%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8A%A8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%9A%84%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F%E4%BA%86%E3%80%82%E5%9B%A0%E4%B8%BA%E5%8F%AA%E9%9C%80%E8%A6%81%E4%B8%8B%E9%9D%A2%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%90%9E%E5%AE%9A%EF%BC%9A">http://w3.org/TR/css-align-3）的计划，在未来，对于简单的垂直居中需求，我们完全不需要动用特殊的布局模式了。因为只需要下面这行代码就可以搞定：</a> align-self: center; 不管这个元素上还应用了其他什么属性，这样写就够了。这听起来可能如美梦一般令人难以置信，但或许你手边的浏览器很快就会让它成为现实！</p>
+</blockquote>
+<p>相关规范</p>
+<ul>
+<li>  CSS 变形 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-transforms">http://w3.org/TR/css-transforms</a></li>
+<li>  CSS 值与单位 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-values">http://w3.org/TR/css-values</a></li>
+<li>  CSS 伸缩盒布局模型 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox">http://w3.org/TR/css-flexbox</a></li>
+<li>  CSS 盒对齐模型 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-align">http://w3.org/TR/css-align</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">JavaScript中Array方法的正确打开方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-08 07:00:26" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:26+08:00">2018-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>在过去的几个月，我发现我的拉取请求中存在四个完全相同的 JavaScript 错误。于是我写了这篇文章，总结了如何在 JavaScript 中正确使用地使用 Array 的方法！</p>
+</blockquote>
+<h3 id="用-Array-includes-代替-Array-indexOf"><a href="#用-Array-includes-代替-Array-indexOf" class="headerlink" title="用 Array.includes 代替 Array.indexOf"></a>用 <code>Array.includes</code> 代替 <code>Array.indexOf</code></h3><p>“如果你要在数组中查找元素，请使用 Array.indexOf”。我记得在学习 JavaScript 的时候，在教材中读到这样的一句话。毫无疑问，这句话是真的！ MDN 文档写道，<code>Array.indexOf</code> 将“返回第一次出现给定元素的索引”。因此，如果我们稍后要在代码中使用这个返回的索引，那么使用 <code>Array.indexOf</code> 找到索引就对了。 但是，如果我们只想知道数组是否包含某个值，该怎么办？这似乎是一个是与否的问题，或者说是一个布尔值问题。对于这种情况，我建议使用返回布尔值的 <code>Array.includes</code>。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>‘ironman’,<br>‘black_widow’,<br>‘hulk’,<br>‘captain_america’,<br>‘hulk’,<br>‘thor’,<br>];</p>
+<p>console.log(characters.indexOf(‘hulk’));<br>// 2<br>console.log(characters.indexOf(‘batman’));<br>// -1</p>
+<p>console.log(characters.includes(‘hulk’));<br>// true<br>console.log(characters.includes(‘batman’));<br>// false</p>
+<h3 id="使用-Array-find-而不是-Array-filter"><a href="#使用-Array-find-而不是-Array-filter" class="headerlink" title="使用 Array.find 而不是 Array.filter"></a>使用 <code>Array.find</code> 而不是 <code>Array.filter</code></h3><p><code>Array.filter</code> 是一个非常有用的方法。它接受一个回调函数作为参数，基于一个包含所有元素的数组创建出一个新的数组。正如它的名字一样，我们使用这个方法来过滤元素，获得更短的数组。 但是，如果回调函数只能返回一个元素，那么我就不推荐使用这个方法，例如使用回调函数来过滤唯一 ID。在这种情况下，<code>Array.includes</code> 将返回一个只包含一个元素的新数组。我们的意图可能是通过查找特定的 ID 找到数组中包含的唯一值。 我们来看看这个方法的性能。要返回与回调函数匹配的所有元素，<code>Array.filter</code> 必须遍历整个数组。此外，我们假设有数百个元素可以满足回调参数，那么过滤后的数组会非常大。 为了避免这种情况，我建议使用 <code>Array.find</code>。它需要一个像 <code>Array.filter</code> 一样的回调函数作为参数，并返回满足回调函数的第一个元素的值。此外，只要找到第一个满足回调函数的元素，<code>Array.find</code> 就会停止，无需遍历整个数组。通过 <code>Array.find</code> 来查找元素，我们可以更好地理解我们的意图。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ id: 1, name: ‘ironman’ },<br>{ id: 2, name: ‘black_widow’ },<br>{ id: 3, name: ‘captain_america’ },<br>{ id: 4, name: ‘captain_america’ },<br>];</p>
+<p>function getCharacter(name) {<br>return character =&gt; character.name === name;<br>}</p>
+<p>console.log(characters.filter(getCharacter(‘captain_america’)));<br>// [<br>// { id: 3, name: ‘captain_america’ },<br>// { id: 4, name: ‘captain_america’ },<br>// ]</p>
+<p>console.log(characters.find(getCharacter(‘captain_america’)));<br>// { id: 3, name: ‘captain_america’ }</p>
+<h3 id="用-Array-some-代替-Array-find"><a href="#用-Array-some-代替-Array-find" class="headerlink" title="用 Array.some 代替 Array.find"></a>用 <code>Array.some</code> 代替 <code>Array.find</code></h3><p>我承认这个错误我犯了很多次。然后，一位善良的朋友告诉我，最好可以先参考 MDN 文档。这与上面的 <code>Array.indexOf</code>/<code>Array.includes</code> 非常相似。 在前面的例子中，我们看到 <code>Array.find</code> 需要一个回调函数作为参数，并返回一个元素。如果我们想要知道数组是否包含某个值，<code>Array.find</code> 是最好的解决方案吗？可能不是，因为它返回的是一个元素值，而不是一个布尔值。 对于这种情况，我建议使用 <code>Array.some</code>，它返回所需的布尔值。另外，从语义上看，<code>Array.some</code> 表示我们只想知道某个元素是否存在，而不需要得到这个元素。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ id: 1, name: ‘ironman’, env: ‘marvel’ },<br>{ id: 2, name: ‘black_widow’, env: ‘marvel’ },<br>{ id: 3, name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
+<p>function hasCharacterFrom(env) {<br>return character =&gt; character.env === env;<br>}</p>
+<p>console.log(characters.find(hasCharacterFrom(‘marvel’)));<br>// { id: 1, name: ‘ironman’, env: ‘marvel’ }</p>
+<p>console.log(characters.some(hasCharacterFrom(‘marvel’)));<br>// true</p>
+<h3 id="使用-Array-reduce-而不是链接-Array-filter-和-Array-map"><a href="#使用-Array-reduce-而不是链接-Array-filter-和-Array-map" class="headerlink" title="使用 Array.reduce 而不是链接 Array.filter 和 Array.map"></a>使用 <code>Array.reduce</code> 而不是链接 <code>Array.filter</code> 和 <code>Array.map</code></h3><p>让我们面对现实吧，<code>Array.reduce</code> 不容易理解。事实确实如此！但是，如果我们使用 <code>Array.filter</code> 和 Array.map的组合，感觉缺少了什么，对吧？ 我的意思是，我们遍历了两次数组。第一次过滤数组并创建一个较短的数组，第二次又基于 <code>Array.filter</code> 获得数组创建一个包含新值的数组。为了获得我们想要的新数组，我们使用了两个 Array 方法。每个方法都有自己的回调函数和一个用不到的数组——由 <code>Array.filter</code> 创建的那个数组。 为了避免这种性能损耗，我的建议是使用 <code>Array.reduce</code>。结果是一样的，代码却更简单！ 我们可以使用 <code>Array.reduce</code> 进行过滤，并将目标元素添加到累加器中。累加器可以是递增的数字、要填充的对象、要连接的字符串或数组。 在我们的例子中，因为之前使用了 <code>Array.map</code>，所以我建议使用 <code>Array.reduce</code> 将满足条件的数组元素加入到累加器中。在下面的示例中，根据 env 值的具体情况，我们将它添加到累加器中或保持累加器不变。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ name: ‘ironman’, env: ‘marvel’ },<br>{ name: ‘black_widow’, env: ‘marvel’ },<br>{ name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
+<p>console.log(<br>characters<br>.filter(character =&gt; character.env === ‘marvel’)<br>.map(character =&gt; Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))<br>);<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</p>
+<dl><dt>console.log(<br>characters<br>.reduce((acc, character) =&gt; {<br>return character.env === ‘marvel’<br>? acc.concat(Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))</dt><dd>acc;<br>}, [])<br>)<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</dd></dl><p>英文原文 <a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c">https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

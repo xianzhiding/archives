@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端开发 大前端 W3Cbest">
+<meta property="og:url" content="https://xianzhiding.github.io/page/6/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="前端开发,es5,es6,es10,css,javascript,html,flexbox,grid,echarts">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/page/6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/02/12/%E8%81%8A%E4%B8%80%E8%81%8A-css-position-sticky%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/12/%E8%81%8A%E4%B8%80%E8%81%8A-css-position-sticky%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/" class="post-title-link" itemprop="url">聊一聊 CSS position sticky是如何工作的</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-12 13:58:17" itemprop="dateCreated datePublished" datetime="2019-02-12T13:58:17+08:00">2019-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>CSS position sticky具有非常好的浏览器支持，但大多数开发人员都没有使用它。 究其原因有两个：</p>
+<ul>
+<li>  第一，受到浏览器的良好支持需要漫长的等待：浏览器的支持往往需要很长的时间才能完成，到时候它的功能已经被人们遗忘了。</li>
+<li>  第二个原因是很多开发者并不能完全理解其工作原理背后的逻辑，这就是我的切入点。</li>
+</ul>
+<p>我假设你们都知道什么事CSS定位，不过还是先简单回顾一下比较好： 在3年前，有四种 CSS 定位： <code>static</code>、 <code>relative</code>、 <code>absolute</code>和<code>fixed</code>。 <code>static</code>、 <code>relative</code>、 <code>absolute</code>和<code>fixed</code>之间主要的区别在于它们在DOM流中占用的空间。 <code>static</code>和<code>relative</code>会保留它们在文档流中的自然空间，而<code>absolute</code>和<code>fixed</code>则不会 —— 它们的空间被移除而且具有浮动行为。 正如我下面将要解释的那样，新的粘性定位与所有类型都有相似之处。</p>
+<h2 id="我的第一个粘性定位"><a href="#我的第一个粘性定位" class="headerlink" title="我的第一个粘性定位"></a>我的第一个粘性定位</h2><p>可能很多人都玩过粘性定位。我已经接触过一段时间了，直到我意识到自己并不是完全理解它。 在第一个例子中，大家很容易就能看明白 当视口到达定义的位置时，元素会被粘住。 例：</p>
+<p>.some-component{<br>    position: sticky;<br>    top: 0px;<br>}</p>
+<p>但问题是，它有时候能用，而有时却不起作用。 当它工作时，元素会粘住，但在滚动到其他部分，它会停止粘贴。 作为一个靠 CSS 混饭吃的人，我完全不能接受自己对这个问题是不理解的，所以我决定把粘性位置彻底搞清楚。</p>
+<h2 id="探索粘性定位"><a href="#探索粘性定位" class="headerlink" title="探索粘性定位"></a>探索粘性定位</h2><p>在摆弄它的过程中，我很快就注意到了：当一个具有 <code>position:sticky</code> 样式的元素被包装，且它是包装元素中唯一的元素时，这个被定义为 <code>position:sticky</code> 的元素就不会粘住。</p>
+<style>
+    .sticky{
+        position: sticky;
+        top: 0;
+    }
+</style>
+<div class="wrapper">
+   <div class="sticky">
+        SOME CONTENT
+   </div>
+</div>
+
+<p>当我在包装元素中添加更多元素时，它就能开始正常工作了。</p>
+<h3 id="这是为什么？"><a href="#这是为什么？" class="headerlink" title="这是为什么？"></a>这是为什么？</h3><p>这是因为当一个元素被赋予 <code>position: sticky</code> 样式时，粘性项目的容器是它可以粘贴的唯一区域。 粘性元素没有任何要浮动的元素，因为它只能浮动在同级元素上，作为唯一的子元素，它不能浮动。</p>
+<h2 id="怎样才能让-CSS-粘性定位起作用"><a href="#怎样才能让-CSS-粘性定位起作用" class="headerlink" title="怎样才能让 CSS 粘性定位起作用"></a>怎样才能让 CSS 粘性定位起作用</h2><p>CSS 粘性定位有两个主要部分，粘性元素（<code>sticky item</code>）和 粘性容器（<code>sticky container</code>）。 粘性元素 —— 是我们用位置定义的<code>position: sticky</code>样式。 当视口位置与位置定义匹配时，该元素将会浮动，例如：<code>top: 0px</code> 。 例：</p>
+<p>.some-component{<br>    position: sticky;<br>    top: 0px;<br>}</p>
+<p>粘性容器 —— 是包装粘性元素的 HTML 元素。 这是粘性元素可以浮动的最大区域。 当你定义一个具有<code>position:sticky</code>样式的元素时，父元素会被自动定义为粘性容器！ 记住这一点非常重要！ 容器是粘性元素的范围，并且该元素无法离开其所在的粘性容器。 这就是为什么在前面的例子中，粘性元素没有被粘住的原因：这个粘性元素是粘性容器中唯一的子元素。 CSS 粘性定位的示意图： <img src="http://file.w3cbest.com/file/images/342842461-5c601033ed793_articlex.png"></p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/elad2412/pen/QYLEdK/">Positon Sticky</a> by Elad Shechter (<a target="_blank" rel="noopener" href="https://codepen.io/elad2412">@elad2412</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="理解-CSS-的粘性行为"><a href="#理解-CSS-的粘性行为" class="headerlink" title="理解 CSS 的粘性行为"></a>理解 CSS 的粘性行为</h2><p>正如我前面说过的那样，CSS 粘性定位的行为与所有其他 CSS 定位不一样，但从另一个角度来说，它们也有一些相似之处。我来解释一下：</p>
+<ul>
+<li>  <strong>相对</strong>（或静态）—— 粘性定位元素类似于相对和静态位置，因为它保留了<code>DOM</code>中的自然间隙（留在流中）。</li>
+<li>  <strong>固定</strong> —— 当元素被粘住时，它的行为与<code>position: fixed</code>完全相同，浮动在与视口的相同位置，并从流中移除。</li>
+<li>  <strong>绝对</strong> —— 在粘贴区域的末尾，元素会停止，并堆叠在另一个元素的顶部，就像一个绝对定位的元素被放在一个<code>position: relative</code>容器内的行为。</li>
+</ul>
+<h2 id="粘在底部？"><a href="#粘在底部？" class="headerlink" title="粘在底部？"></a>粘在底部？</h2><p>在大多数情况下，您可以使用粘性定位将元素粘贴到顶部，如下所示：</p>
+<p>.component{<br>    position: sticky;<br>    top: 0;<br>}</p>
+<p>这正是它被设计的初衷，而在此之前，只能使用JavaScript完成这个功能。 但你也可以使用它把元素粘到底部。 这意味着你可以把页脚定义为粘性，并且在向下滚动时使它看起来总是被粘在底部。 当到达粘性容器的末端时，元素会停在它的自然位置。 最好是在以粘性容器底部为自然位置的元素上使用它。 完整示例：</p>
+<main class="main-container">
+  <header class="main-header">HEADER</header>
+  <div class="main-content">MAIN CONTENT</div>
+  <footer class="main-footer">FOOTER</footer>
+</main>
+
+<p>.main-footer{<br>     position: sticky;<br>     bottom: 0;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/elad2412/pen/MZZVjw/">Positon Sticky to Bottom</a> by Elad Shechter (<a target="_blank" rel="noopener" href="https://codepen.io/elad2412">@elad2412</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>我在开发中常用它来粘贴摘要表，也会用在粘性页脚导航上，这种方法非常适合。</p>
+<h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><p>除了老 IE 浏览器外，所有流行的现代浏览器都支持粘性定位。 如果用在 Safari 浏览器上，你需要添加 -webkit 前缀。</p>
+<p>position: -webkit-sticky; /* Safari */<br>position: sticky;</p>
+<p>复制代码</p>
+<p>文章来源<a target="_blank" rel="noopener" href="https://medium.com/@elad/css-position-sticky-how-it-really-works-54cd01dc2d46">CSS Position Sticky - How It Really Works!</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/02/12/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/12/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">CSS中的变量:自定义属性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-12 12:30:30" itemprop="dateCreated datePublished" datetime="2019-02-12T12:30:30+08:00">2019-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>多年来，变量一直是最常用的CSS特性之一。变量可以更容易地管理颜色、字体、大小和动画值，并确保它们在代码库中的一致性。 花了数年的时间来研究语法的细节，并决定变量如何适应管理级联和继承的现有规则。现在它们以CSS“自定义属性”的形式提供给开发人员。 在本章中，我们将讨论CSS自定义属性的语法。我们来看看：</p>
+<ul>
+<li>  如何定义属性并为这些属性设置默认值</li>
+<li>  级联和继承的规则如何与自定义属性一起工作</li>
+<li>  如何在媒体查询中使用自定义属性</li>
+</ul>
+<p>最后，您应该很好地掌握了如何在项目中使用自定义属性。 注意:浏览器对自定义变量的支持是健壮的，存在于每个主流浏览器的最新版本中。然而，在较老但最近发布的浏览器版本中还没有支持，这些版本可能仍然被站点的受众广泛使用。微软15之前的Edge版本和9.1之前的Safari版本完全缺乏支持。任何版本的Internet Explorer都是如此。Microsoft Edge 15有支持，但也有一些文档记录的bug。</p>
+<h2 id="定义自定义属性"><a href="#定义自定义属性" class="headerlink" title="定义自定义属性"></a>定义自定义属性</h2><p>要定义自定义属性，请选择一个名称并在其前面加上两个连字符。任何字母数字字符都可以是名称的一部分。也允许使用连字符(-)和下划线(_)字符。广泛的unicode字符可以作为自定义属性名称的一部分，包括表情符号。为了清晰易读，请坚持使用字母数字名称。 这里有一个例子:</p>
+<p>--primarycolor: #0ad0f9ff; /* Using #rrggbbaa color notation */</p>
+<p>--向CSS解析器表明这是一个自定义属性。属性的值将替换作为变量使用的属性。 自定义属性名区分大小写。换句话说，<code>--primaryColor</code>和<code>--primaryColor</code>被认为是两个不同的属性名。这与传统的CSS有所不同，在传统CSS中，属性和值并不重要。然而，它与ECMAScript处理变量的方式是一致的。 与显示或字体等其他属性一样，CSS自定义属性必须在声明块中定义。一个常见的模式是在使用<code>:root</code> <code>psuedo-element</code>作为选择器的规则集中定义自定义属性:</p>
+<p>:root {<br>    –primarycolor: #0ad0f9ff;<br>}</p>
+<p><code>:root</code>是引用文档根元素的伪元素。对于HTML文档，这是HTML元素。对于SVG文档，它是SVG元素。通过使用<code>:root</code>，属性可以立即在整个文档中可用。 使用自定义属性 要使用自定义属性值作为变量，我们需要使用<code>var()</code>函数。例如，如果我们想使用<code>--primarycolor</code>自定义属性作为背景色，我们可以使用以下方法:</p>
+<p>body {<br>    background-color: var(–primarycolor);<br>}</p>
+<p>我们自定义属性的值将成为<code>background-color</code>属性的计算值。 到目前为止，自定义属性只能用作为标准CSS属性设置值的变量。例如，您不能将属性名存储为变量，然后重用它。下面的CSS不工作:</p>
+<p>:root {<br>    –top-border: border-top; /* Can’t set a property as custom property’s value */<br>    var(–top-border): 10px solid #bc84d8 /* Can’t use a variable as a property */<br>}</p>
+<p>您也不能将属性-值对存储为变量并重用它。下面的例子也是无效的:</p>
+<p>:root {<br>   –text-color: ‘color: orange’; /* Invalid property value */<br>}<br>body {<br>  var(–text-color); /* Invalid use of a property */<br>}</p>
+<p>最后，您也不能将变量作为值字符串的一部分连接起来:</p>
+<p>:root {<br>    –base-font-size: 10;<br>}<br>body {<br>    font: var(–base-font-size)px / 1.25 sans-serif; /* Invalid CSS syntax. */<br>}</p>
+<p>定制属性被设计成根据CSS规范解析的属性。如果浏览器厂商采用<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-extensions/#custom-selectors">CSS扩展规范</a>，将来我们可以使用自定义属性来创建自定义选择器组或自定义at规则。但是，目前我们仅限于使用它们作为变量来设置标准属性值。 设置回滚值 <code>var()</code>函数实际上最多接受两个参数。第一个参数应该是自定义属性名。第二个参数是可选的，但应该是一个声明值。如果自定义属性值没有定义，则此声明值作为一种回退值。 让我们看看下面的CSS:</p>
+<p>.btn__call-to-action {<br>    background: var(–accent-color, salmon);<br>}</p>
+<p>如果<code>--accent-color</code>被定义(假设它的值是<code>#f30</code>)那么具有<code>.btn__call-to-action</code>类属性的任何路径的填充颜色都将是红橙色的。如果没有定义，填充色将是橙红色。 声明值也可以嵌套。换句话说，您可以使用一个变量作为var函数的回退值：</p>
+<p>body {<br>    background-color: var(–books-bg, var(–arts-bg));<br>}</p>
+<p>在上面的CSS中，如果<code>--books-bg</code>被定义，背景颜色将被设置为<code>--books-bg</code>属性的值。如果不是，背景颜色将改为指定的任何值<code>--arts-bg</code>。如果它们都没有定义，背景颜色将是属性的初始值——在本例中是<code>transparent</code>。 当自定义属性被赋予一个值，而该值对于它所使用的属性无效时，也会发生类似的情况。考虑以下CSS:</p>
+<p>:root {<br>    –footer-link-hover: #0cg; /* Not a valid color value. */<br>}<br>a:link {<br>     color: blue;<br>}<br>a:hover {<br>    color: red;<br>}<br>footer a:hover {<br>    color: var(–footer-link-hover);<br>}</p>
+<p>在这种情况下，<code>--footer-link-hover</code>属性的值不是有效颜色。在microsoftedge中，页脚链接的悬停状态颜色将从<code>a:hover</code>选择器继承。在大多数其他浏览器中，悬停状态颜色将继承body元素的文本颜色。 自定义属性和级联 自定义属性也遵循级联规则。它们的值可以被后续规则覆盖:</p>
+<p>:root {<br>    –text-color: #190736; /* navy */<br>}<br>body {<br>   –text-color: #333;  /* Dark gray */<br>}<br>body {<br>  color: var(–text-color);<br>}</p>
+<p>在上面的例子中，我们的正文是深灰色的。我们还可以在每个选择器的基础上重置值。让我们添加更多的规则到这个CSS:</p>
+<p>:root {<br>    –text-color: #190736; /* navy */<br>}<br>body {<br>   –text-color: #333;  /* Dark gray */<br>}<br>p {<br>  –text-color: #f60; /* Orange */<br>}<br>body {<br>  color: var(–text-color);<br>}<br>p {<br>  color: var(–text-color)<br>}</p>
+<p>在本例中，包装在p元素标记中的任何文本都是橙色的。但是div或其他元素中的文本仍然是深灰色的。 还可以使用style属性(例如<code>style=&quot;--brand-color: #9a09af&quot;</code>)设置自定义属性的值，这在基于组件的前端体系结构中非常有用。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/29/12%E4%B8%AA%E4%BB%A4%E4%BA%BA%E9%9A%BE%E4%BB%A5%E7%BD%AE%E4%BF%A1%E7%9A%84%E7%BA%AFcss%E5%AE%9E%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/29/12%E4%B8%AA%E4%BB%A4%E4%BA%BA%E9%9A%BE%E4%BB%A5%E7%BD%AE%E4%BF%A1%E7%9A%84%E7%BA%AFcss%E5%AE%9E%E9%AA%8C/" class="post-title-link" itemprop="url">12个令人难以置信的纯CSS实验</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-29 12:57:29" itemprop="dateCreated datePublished" datetime="2019-01-29T12:57:29+08:00">2019-01-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>你可能认为 CSS 只是一种简单地为网页设计样式的语言，但它的功能比你想象的要多得多。 从逼真的图像到甚至是视频游戏，你会惊讶地看到一个优秀的开发者可以用 CSS 做些什么。 这里有各种滤镜和特效，它们都是开源的，可以用在你自己的 web 项目中。 这些模块有的机遇 JavaScript，更多的是HTML。 这意味着它们比你期望的更轻盈。 看看这些惊人的纯CSS实验，也许你自己也可以尝试一下。</p>
+<h2 id="太阳系"><a href="#太阳系" class="headerlink" title="太阳系"></a>太阳系</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/kowlor/pen/ZYYQoy/">Solar System animation - Pure CSS</a> by Malik Dellidj (<a target="_blank" rel="noopener" href="https://codepen.io/kowlor">@kowlor</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>哇！ 如果你喜欢太空，一定会被这个用 CSS 实现的的太阳系动画效果所震撼。 这不仅仅是一个漂亮的动画; 相对于真实的地球年，每个行星都能准确地围绕太阳旋转。</p>
+<h2 id="渐变背景动画"><a href="#渐变背景动画" class="headerlink" title="渐变背景动画"></a>渐变背景动画</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/P1N2O/pen/pyBNzX/">Pure CSS3 Gradient Background Animation</a> by Manuel Pinto (<a target="_blank" rel="noopener" href="https://codepen.io/P1N2O">@P1N2O</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>动画对于网站来说是一个臭名昭着的问题。如果优化不佳，可能会导致速度大服务放缓。这个美丽的动画渐变效果非常轻巧，更不用说它能让你很容易的就能编辑和添加自己的颜色。</p>
+<h2 id="堆叠游戏"><a href="#堆叠游戏" class="headerlink" title="堆叠游戏"></a>堆叠游戏</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/finnhvman/pen/xJRMJp/">Pure CSS Stack</a> by Ben Szabo (<a target="_blank" rel="noopener" href="https://codepen.io/finnhvman">@finnhvman</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>你不需要JavaScript来制作游戏。它可能很简单，但纯CSS堆栈游戏很有趣，而且图形也很漂亮。这可不容易，但它只是展示了一点CSS的能力。</p>
+<h2 id="3D进度条"><a href="#3D进度条" class="headerlink" title="3D进度条"></a>3D进度条</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rgg/pen/QbRyOq/">Pure CSS Progress</a> by Rafael González (<a target="_blank" rel="noopener" href="https://codepen.io/rgg">@rgg</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>漂亮轻便的进度条。易于定制，很容易适应你的项目。 这些条纹使用 3D 技术制作，具有独特的液体外观。 你甚至可以将它们变成迷你 3D 图表！</p>
+<h2 id="Glitched-Text"><a href="#Glitched-Text" class="headerlink" title="Glitched Text"></a>Glitched Text</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/lbebber/pen/ypgql/">CSS Glitched Text</a> by Lucas Bebber (<a target="_blank" rel="noopener" href="https://codepen.io/lbebber">@lbebber</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>Glitched文本看起来总是很酷。这个案例没有使用 GIF，仅用 JavaScript 或 HTML 就实现了生动的特效。 如果你想为你的网站添加小故障效果，请参考它。</p>
+<h2 id="Francine"><a href="#Francine" class="headerlink" title="Francine"></a>Francine</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/NorZmX/">francine</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>你可以用 HTML 和 CSS 制作艺术品！ Francine 是一副18世纪风格的画作，纯粹用代码制作和展示。 然而它看起来与其他传统创作的艺术品没有任何区别。</p>
+<h2 id="Mobile-Phone"><a href="#Mobile-Phone" class="headerlink" title="Mobile Phone"></a>Mobile Phone</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Wujek_Greg/pen/LmrweG/">Photorealistic pure CSS mobile phone</a> by Grzegorz Witczak (<a target="_blank" rel="noopener" href="https://codepen.io/Wujek_Greg">@Wujek_Greg</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>与 Francine 类似，这款手机也是只用 CSS 和 HTML 创造的，但是看上去简直和真的一样！ 如果你有兴趣，可以使用代码并查看如何实现。</p>
+<h2 id="我的世界"><a href="#我的世界" class="headerlink" title="我的世界"></a>我的世界</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/onediv/pen/NrNebj/">Full CSS Map creator</a> by Vincent Durand (<a target="_blank" rel="noopener" href="https://codepen.io/onediv">@onediv</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>你以为要用 JavaScript 来编写这东西？ 再好好想想！ 这个可爱的 3D 地图创作器除了 CSS（还有一点点HTML）之外什么都没有。 难道这不足以令人兴奋吗？</p>
+<h2 id="Instagram-css"><a href="#Instagram-css" class="headerlink" title="Instagram.css"></a>Instagram.css</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/ZwOgQP/">Instagram</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>你的网站需要一些仿 Instagram 风格的过滤器？ 这组缩小文件也附带安装教程。 现在，你可以轻松地将 Instagram 过滤器添加到任何图像中。</p>
+<h2 id="动画渐变重影按钮"><a href="#动画渐变重影按钮" class="headerlink" title="动画渐变重影按钮"></a>动画渐变重影按钮</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/ARS/pen/vEwEPP/">Animated Gradient Ghost Button Concept</a> by Arsen Zbidniakov (<a target="_blank" rel="noopener" href="https://codepen.io/ARS">@ARS</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>令人惊讶的是它是只用 CSS 编写的。 凭借其漂亮的动画和渐变效果，把这个按钮用在任何网站上，看起来都会很棒。</p>
+<h2 id="Devices-css"><a href="#Devices-css" class="headerlink" title="Devices.css"></a><a target="_blank" rel="noopener" href="https://picturepan2.github.io/devices.css/">Devices.css</a></h2><p><a target="_blank" rel="noopener" href="https://picturepan2.github.io/devices.css/"><img src="http://file.w3cbest.com/file/images/css-experiments-devices.jpg"></a> 如果你曾经想在自己的网站上展示手机或电脑，并在屏幕上显示你所选择的图片，请参考此项目。 这些都是以现代设备为蓝本设计的！</p>
+<h2 id="动态图像着色"><a href="#动态图像着色" class="headerlink" title="动态图像着色"></a>动态图像着色</h2><p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/noahblon/pen/ZbjmbK/">Dynamic Image Colorizing with &lt;input type=&quot;color&quot;&rt;</a> by Noah Blon (<a target="_blank" rel="noopener" href="https://codepen.io/noahblon">@noahblon</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>这是一个非常酷的项目：用 CSS 和颜色选择工具更改图片中的颜色。</p>
+<h2 id="小巧、灵敏和美丽"><a href="#小巧、灵敏和美丽" class="headerlink" title="小巧、灵敏和美丽"></a>小巧、灵敏和美丽</h2><p>你在网站上看到的许多惊人的特效都可以说是 JavaScript 的功劳，遗憾的是 JS 并不总是最轻量级的解决方案。 不过你可能会对CSS的功能感到惊讶。 如果做得正确，大多数情况下它对性能的影响要小得多。 无论是哪种方式，可以看到 CSS开发者提出的这些创意都很有趣。这些实验项目是由一些真正的创新开发者做出的，所以请去给他们一些支持，并告诉我你觉得哪个是最酷的！ 文章来源：<a target="_blank" rel="noopener" href="https://1stwebdesigner.com/12-incredible-pure-css-experiments/">https://1stwebdesigner.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/24/html%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/24/html%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">HTML语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-24 14:24:01" itemprop="dateCreated datePublished" datetime="2019-01-24T14:24:01+08:00">2019-01-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="什么是HTML？"><a href="#什么是HTML？" class="headerlink" title="什么是HTML？"></a>什么是HTML？</h2><p>超文本标记语言，标准通用标记语言下的一个应用。是 网页制作必备的编程语言 “超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。 超文本标记语言的结构包括“头”部分（英语：Head）、和“主体”部分（英语：Body），其中“头”部提供关于网页的信息，“主体”部分提供网页的具体内容。 摘自:<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTML">百度百科</a></p>
+<h3 id="简短一点"><a href="#简短一点" class="headerlink" title="简短一点"></a>简短一点</h3><p>HTML 是用来描述网页的一种语言。</p>
+<ul>
+<li>  HTML 指的是超文本标记语言 (Hyper Text Markup Language)</li>
+<li>  HTML 不是一种编程语言，而是一种标记语言 (markup language)</li>
+<li>  标记语言是一套标记标签 (markup tag)</li>
+<li>  HTML 使用标记标签来描述网页</li>
+</ul>
+<p>我们将在本文中学习HTML语法… HTML的构建块称为元素，元素的构建块称为标记。当它们组合在一起时，就形成了一个网站——有点像原子和亚原子粒子（HTML元素当然与科学元素无关，只是我的一个奇怪的比喻）。我们开始吧！</p>
+<h2 id="HTML元素-Elements"><a href="#HTML元素-Elements" class="headerlink" title="HTML元素 (Elements)"></a>HTML元素 (Elements)</h2><p>现在，我将向你们展示一些代码，不要恐慌。你不必理解这一切意味着什么，我将在下面解释:</p>
+<h1>Blog Posts.</h1>
+<div class="controls">
+    <input type="number" id="first" placeholder="First" oninput="inputsChanged()">
+    <input type="number" id="last" placeholder="Last" oninput="inputsChanged()">
+</div>
+<span class="total-word-count"><b>Total Word Count:</b> <span id="word-count">0000</span></span>
+<table>
+    <tbody>
+        <tr>
+            <th>Post number</th>
+            <th>Post Date</th>
+            <th>Post Name</th>
+            <th>Word count</th>
+        </tr>
+        <tr>
+            <td class="post-num">#1</td>
+            <td class="post-date">2019年01月24日(星期四)</td>
+            <td class="post-title"><a href="http://www.w3cbest.com/" target="\_blank">Welcome to W3C前端开发!</a></td>
+            <td class="post-words">1373</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>看到了吗?你活下来了(我希望)。首先，不要担心这些意味着什么——我们现在只关心结构。 元素基本上是一些内容(文本)，由HTML标记包围(稍后我将详细介绍)。标签告诉浏览器里面有什么。例如，<code>&lt;h1&gt;Blog Posts。&lt;/h1&gt;</code>告诉浏览器“Blog Posts”。是h1元素——标题的一种类型。您不需要记住这一点，我将在后面的文章中详细介绍。 元素引用内容和两个标签。这是一个元素的例子:</p>
+<td class="post-num">#1</td>
+
+<p>元素可以彼此嵌套。嵌套元素时，通常最好将元素放在新行上，并正确地缩进。也有一些例外，比如</p>
+<td class="post-title"><a href="http://www.w3cbest.com/" target="\_blank">Welcome to W3C前端开发!</a></td>
+
+<p>请注意，将嵌套元素放在新行中并不是强制的，它们只是我们所谓的良好代码实践。好的代码实践有点像编程的礼仪。好的代码实践的目的是使您的代码更容易阅读，更容易让其他人理解(在大型项目中进行协作时，这一点尤为重要)。 另一个元素中的元素称为子元素。类似地，一个元素的周围元素称为它的父元素。在上面的例子中，<code>&lt;th&gt;Post number&lt;/th&gt;</code>，是<code>&lt;tr&gt;</code>的子元素，<code>tr&gt;</code>是<code>&lt;tbody&gt;</code>的子元素，<code>&lt;tbody&gt;</code>是<code>&lt;table&gt;</code>的子元素。我们可以把它表示为:</p>
+<p>table &gt; tbody &gt; tr &gt; th</p>
+<p>注意，这不是代码。这是一种简单的可视化元素之间嵌套方式。</p>
+<h2 id="HTML标签（Tags）"><a href="#HTML标签（Tags）" class="headerlink" title="HTML标签（Tags）"></a>HTML标签（Tags）</h2><p>如前所述，标签是围绕内容的代码位，例如:</p>
+<p class="test"> ... </p>
+
+<p>标签总是包含<code>&lt;&gt;</code>中。</p>
+<h2 id="类型标签-Type-tags"><a href="#类型标签-Type-tags" class="headerlink" title="类型标签(Type tags)"></a>类型标签(Type tags)</h2><p>标签分为两类:开始标签和结束标签。请看下面的例子: <img src="http://file.w3cbest.com/file/images/tag-structure-1.jpg"> 开始标签总是遵循<code>&lt;x&gt;</code>的基本模式，其中x是元素的类型(例如，<code>&lt;h1&gt;</code>)。开始标签也可以有属性(我们马上会讲到)。每个元素至少必须有一个开始标签。 结束标签是在元素内容之后出现的标签。它们总是遵循<code>&lt;/x&gt;</code>的模式，其中x又是元素的类型。<code>&lt;/h1&gt;</code>)。结束标签看起来总是一样的(当然元素名除外)，不能有属性。 如果元素中没有任何内容，它就不需要关闭标签。举个例子:</p>
+<img src="/file/images/tag-structure-1.jpg">
+
+<p>因为它没有内容(只有属性)，所以不需要<code>&lt;/img&gt;</code>关闭标签。</p>
+<h2 id="属性（Attributes）"><a href="#属性（Attributes）" class="headerlink" title="属性（Attributes）"></a>属性（Attributes）</h2><p>元素除了具有内容外，还可以具有属性。属性存储关于元素的其他数据，并存储在开始标签中。例如:</p>
+<h1>W3C前端开发</h1>
+
+<p>在这里，我们只知道它是一个<code>&lt;h1&gt;</code>元素。现在，当我们添加属性时是这样的:</p>
+<h1 id="code-the-web-title" class="banner-title" onclick="titleClicked()">W3C前端开发</h1>
+
+<p>现在我们知道了更多关于元素的信息。我们知道它是id和class(用于使用CSS对其进行样式化)，还知道在单击它时运行JavaScript函数<code>titleClicked()</code>(我们将在稍后详细讨论)。如您所见，属性可以告诉我们关于元素的更多信息。属性的语法是:</p>
+<h1 attribute="value" otherattribute="othervalue">
+
+<p>引号是非常重要的，所以不要忘记它们!还要注意等号两边都没有空格(但是属性之间必须有空格)。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>让我们把我们所知道的HTML标签和元素整合到这个图表中: <img src="http://file.w3cbest.com/file/images/tag-structure-2.jpg"> 唷。这可能有点令人困惑，但最终你会掌握它的窍门。如果你有什么不明白的地方，你可以在评论中问我。如果你喜欢这篇文章，不要忘记和你的朋友分享，下次我会讲到HTML网站的一般结构。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/19/%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%A7%A3css%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/19/%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%A7%A3css%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC/" class="post-title-link" itemprop="url">学习了解CSS逻辑属性和值（CSS Logical Properties and Values）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-19 13:33:03" itemprop="dateCreated datePublished" datetime="2019-01-19T13:33:03+08:00">2019-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在了解本文时可先查看本博客就是使用的新的语法样式搭建的， 2017年5月18日，W3C的 <a target="_blank" rel="noopener" href="https://www.w3.org/Stlye/CSS/Members/">CSS工作组（CSS Working Group）</a> 发布了 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/2017/WD-css-logical-1-20170518/">CSS逻辑属性和值（CSS Logical Properties and Values Level 1）</a> 的首份工作草案（First Public Working Draft）。不同的书写模式（writing mode）中，可以抽取出共性的抽象概念（如开始位置，或行），这些逻辑抽象概念需要在不同书写模式下映射到左或右、上或下等物理的概念上。一些CSS布局可能依赖这些共性的逻辑概念。该 CSS 模块给出了用于通过逻辑方式（而不是基于物理坐标、书写方向和维映射等）控制布局的逻辑属性和取值（logical properties and values）。这个模块来源于CSS21中关于逻辑属性和值的特性。 在过去，CSS属性运用于物理维度（尺寸）和方向，将元素的位置映射到<code>left</code>、<code>right</code>、<code>top</code>或<code>bottom</code>。使用<code>float</code>可以让一个元素向左或向右浮动，可以使用<code>position</code>的<code>top</code>、<code>right</code>、<code>bottom</code>和<code>left</code>定位元素的偏移量。使用比如<code>margin-top</code>或<code>padding-top</code>来设置<code>margin</code>、<code>padding</code>和<code>border</code>的值。这些特理属性和值在<code>top</code>、<code>right</code>、<code>bottom</code>和left 和书写模式有很大的关系，书写模式可以直接改变其方向。比如： 当书写模式<code>direction</code>是<code>rtl</code>（从右向左）时，<code>margin-left</code>不再是让该元素距其侧元素有多少间距了，而是变成了该元素距右侧元素之间有多少间距 如果你使用垂直书写模式，无论是在整个布局中还是在某些元素中，都没有什么意义。这篇文章中接下来将解释CSS如何改变这些，并且可以支持书写模式。在这个过程中，可以解释清楚一些关于Flexbox和Grid布局中一些令人感到困惑的一些事情。 当第一次开始使用CSS Grid并向大家解释其规范时，我注意到<code>grid-area</code>属性被用于<code>grid-row-start</code>、<code>grid-row-end</code>、<code>grid-column-start</code>和<code>grid-column-end</code>四个属性的简写属性。因此，下面三种书写方式，其达到的效果都是相同的：</p>
+<p>.item {<br>    grid-row-start: 1;<br>    grid-column-start: 2;<br>    grid-row-end: 3;<br>    grid-column-end: 4;<br>}</p>
+<p>.item {<br>    grid-row: 1 / 3;<br>    grid-column: 2 / 4;<br>}</p>
+<p>.item {<br>    grid-area: 1 / 2 / 3 / 4;<br>}</p>
+<p>grid-area对应的顺序如下：</p>
+<ul>
+<li>  grid-row-start</li>
+<li>  grid-column-start</li>
+<li>  grid-row-end</li>
+<li>  grid-column-end</li>
+</ul>
+<p>这里有两个关键词<code>*-start</code>和<code>*-end</code>，而我们以前接触的CSS属性，比如<code>margin</code>、<code>padding</code>和<code>border</code>之类的都是以<code>*-top</code>、<code>*-right</code>、<code>*-bottom</code>和<code>*-left</code>。那么为什么会是如此呢？如果仔细观察，它们实际上是按照相反的顺序排列的：<code>top</code>、<code>left</code>、<code>bottom</code>和<code>right</code>。这样一来，CSS工作组不是把事情变得更为困难了？ 答案是，这些值 已经偏离了一个基本的假设，即Web上的内容映射到屏幕的物理尺寸，一个句子的第一个单词位于其所在框的左上角。如果你从未遇到过我们用简写的属性设置这些值，那么<code>grid-area</code>中的行顺序就变得完全有意义了。我们先设置了两个起始位置（行和列的起始位置），然后设置两个结束位置（行和列的结束位置）。 这意味着，如果书写模式改为垂直模式，那么块的位置仍然相对于文档的书写模式，而不是屏幕的物理属性。这样理解可能有点困惑。咱们来看看@Rachel Andrew在Codepen上给我们提供的一个示例：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/yvGEbZ/">Grid and writing-mode</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>了解了书写模式的这个事实，也就解释清楚了为什么Flexbox和Grid是指开始和结束行，而不是将网格映射到top、right、bottom和left的物理维度上。 了解写入模式的这一事实也解释了为什么CSS Grid和Flexbox引用<code>start</code>和<code>end</code>排列而不是将网格映射到<code>top</code>、<code>right</code>、<code>bottom</code>和<code>left</code>的物理维度上，就像我们使用绝对定位一样。在上面的示例中，第一个项目使用<code>grid-area</code>基于行的定位定位。</p>
+<p>grid-area: 1 / 2 / 3 / 4;</p>
+<p>如果我们使用的是手写是这样的：</p>
+<p>grid-row-start: 1;<br>grid-column-start: 2;<br>grid-row-end: 3;<br>grid-column-end: 4;</p>
+<p>我们设置两个起始行，首先是阻塞轴，然后是第二个内联轴，然后按照相同的模式设置每个维度中的结束行。无论网格布局如何，起始线和结束线都保持相对于网格和文档的写入模式。</p>
+<h2 id="块和内联维度"><a href="#块和内联维度" class="headerlink" title="块和内联维度"></a>块和内联维度</h2><p>我已经提到了一些对于理解新布局，块和内联维度的概念至关重要的东西。当你使用新的CSS时，这些术语将不断涌现。这两个维度在网格布局的上下文中相当容易理解，因为我们在网格布局中工作时总是使用块和内联轴，所以我将使用网格演示来解释。 块维度对应于在页面上布置块的顺序。比如你d的页面中有一大段文本内容。每个段落都是一个在另一段下面排列，这些排列的方向是块的维度，所以在网格布局中，这是块轴。 在CSS网格布局中，块轴也称为行轴，这就是块轴属性为<code>grid-row-start</code>和的原因<code>grid-row-end</code>。 <img src="http://file.w3cbest.com/file/images/block-row-axis.png"> 因此，内联轴将会穿过块轴，沿着词在句子中的方向分布。在英文语句中，这个轴从左到右。在网格布局中，内联轴属性是<code>grid-column-start</code>和<code>grid-column-end</code>。 <img src="http://file.w3cbest.com/file/images/inline-column-axis.png"> 如果我们把书写模式改变<code>vertical-lr</code>（垂直模式），这意味着块轴垂直运行，而内联轴沿着直线从上到下。 <img src="http://file.w3cbest.com/file/images/block-inline-vertical-column-axis.png"> 因此，如果我们谈论块维度，其实对应的是描述文本段落在普通文档流中布局的方向，内联维度是句子运行的方向。</p>
+<h2 id="逻辑属性"><a href="#逻辑属性" class="headerlink" title="逻辑属性"></a>逻辑属性</h2><p>所谓CSS逻辑属性，指的是<code>*-start</code>，<code>*-end</code>以及<code>*-inline-start</code>，<code>*-inline-end</code>，<code>*-block-start</code>，<code>*-block-start</code>这类CSS属性，其最终渲染的方向是有逻辑性在里面的。 例如<code>margin-left</code>方向是固定的，就左侧间距，没有逻辑；但是，<code>margin-start</code>有可能是左间距，也有可能是右间距，例如，对于内联元素，如果<code>direction</code>属性值是<code>rtl</code>，则<code>margin-start</code>的表现等同于<code>margin-right</code>，如果属性值是<code>ltr</code>，则<code>margin-start</code>的表现等同于<code>margin-left</code>，就表现出了逻辑判断在里面，因此，成为CSS逻辑属性。</p>
+<h2 id="逻辑维度"><a href="#逻辑维度" class="headerlink" title="逻辑维度"></a>逻辑维度</h2><p>逻辑属性定义块和内联维度的开始和结束属性。对于高度和宽度属性，我们改为使用<code>block-size</code>和<code>inline-size</code>。我们还可以设置<code>max-block-size</code>、<code>min-block-size</code>、<code>max-inline-size</code>和<code>min-inline-size</code>。如果您使用的是英语，则从上到下的横向语言<code>block-size</code>是指<code>height</code>屏幕上块<code>inline-size</code>的物理特性<code>width</code>，即物品的物理特性。如果您使用的是垂直运行的语言，那么当您查看屏幕时，<code>block-size</code>将会出现控制<code>width</code>和<code>inline-size</code>高度的情况。 您可以在下面的演示中看到这一点。我的块是<code>block-size: 150px</code>和<code>inline-size: 250px</code>组成。更改<code>writing-mode</code>属性以查看布局如何调整。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/paqZvz/">Block and Inline Size demo</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>逻辑边界(border) 我们来回忆一下物理属性边界的工作方式，边界(border)的物理属性是：</p>
+<ul>
+<li>  border-top</li>
+<li>  border-top-width</li>
+<li>  border-top-style</li>
+<li>  border-top-color</li>
+<li>  border-right</li>
+<li>  border-right-width</li>
+<li>  border-right-style</li>
+<li>  border-right-color</li>
+<li>  border-bottom</li>
+<li>  border-bottom-width</li>
+<li>  border-bottom-style</li>
+<li>  border-bottom-color</li>
+<li>  border-left</li>
+<li>  border-left-width</li>
+<li>  border-left-style</li>
+<li>  border-left-color</li>
+</ul>
+<p>现在它们具有逻辑映射，这些映射变得有点冗余：</p>
+<ul>
+<li>  border-block-start</li>
+<li>  border-block-start-width</li>
+<li>  border-block-start-style</li>
+<li>  border-block-start-color</li>
+<li>  border-inline-start</li>
+<li>  border-inline-start-width</li>
+<li>  border-inline-start-style</li>
+<li>  border-inline-start-color</li>
+<li>  border-block-end</li>
+<li>  border-block-end-width</li>
+<li>  border-block-end-style</li>
+<li>  border-block-end-color</li>
+<li>  border-inline-end</li>
+<li>  border-inline-end-width</li>
+<li>  border-inline-end-style</li>
+<li>  border-inline-end-color</li>
+</ul>
+<p>在以下示例中，有两个访客，第一个使用逻辑属性来设置<code>border-block-start-color: green</code>和<code>border-inline-end-style:dotted</code>。第二个使用物理属性<code>border-top-color: green</code>和<code>border-right-style:dotted</code>。我们通过改变<code>write-mode</code>的属性值，来看一下<code>border</code>的物理属性和逻辑属性之间的差异：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/RQEYbm/">Logical borders</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="margin和padding"><a href="#margin和padding" class="headerlink" title="margin和padding"></a>margin和padding</h2><p>margin和padding和border属性一样，其物理属性为：</p>
+<ul>
+<li>  margin-top</li>
+<li>  margin-left</li>
+<li>  margin-bottom</li>
+<li>  margin-right</li>
+<li>  padding-top</li>
+<li>  padding-right</li>
+<li>  padding-bottom</li>
+<li>  padding-left</li>
+</ul>
+<p>它们具有如下逻辑属性：</p>
+<ul>
+<li>  margin-block-start</li>
+<li>  margin-inline-start</li>
+<li>  margin-inline-start</li>
+<li>  margin-inline-end</li>
+<li>  padding-block-start</li>
+<li>  padding-inline-start</li>
+<li>  padding-inline-start</li>
+<li>  padding-inline-end</li>
+</ul>
+<p>在下一个示例中，我已设置<code>padding-block-start</code>第一个块，而<code>padding-top</code>在第二个块中，我们通过改变<code>write-mode</code>的属性值，来看一下物理属性和逻辑属性之间的差异：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/OQrorW/">Logical properties - padding</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="position的位移属性"><a href="#position的位移属性" class="headerlink" title="position的位移属性"></a>position的位移属性</h2><p>使用物理属性的另一个地方是使用属性定位事物<code>position</code>。在设置<code>position: absolute</code>或<code>position</code>除<code>static</code>我们的默认值之外的其他值之后，可以使用偏移来定位项目，无论是来自视口还是来自已创建新定位上下文的父项。 偏移物理属性是：</p>
+<ul>
+<li>  top</li>
+<li>  right</li>
+<li>  bottom</li>
+<li>  left</li>
+</ul>
+<p>按照我们其他逻辑属性的模式，我们得到：</p>
+<ul>
+<li>  offset-block-start</li>
+<li>  offset-inline-start</li>
+<li>  offset-block-end</li>
+<li>  offset-inline-end</li>
+</ul>
+<p>请在下面的示例中尝试这些。带边框的盒子<code>position: relative</code>和小紫色方块<code>position: absolute</code>。在物理示例的正方形被定位<code>top: 50px</code>和<code>right: 20px</code>。逻辑版本有<code>offset-block-start: 50px</code>和<code>offset-inline-end: 20px</code>。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/QQzZwm/">Logical offsets</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>逻辑值 我们习惯使用物理尺寸的另一个地方是我们漂浮或清理东西。因为<code>float</code>，<code>clear</code> 我们有一些left和right值的逻辑版本。</p>
+<ul>
+<li>  inline-start</li>
+<li>  inline-end</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/XZoOGb/">floating with logical values</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>在演示中，我将紫色块浮动到逻辑版本中<code>inline-start</code>。我也使用逻辑属性作为保证金; 这样可以确保边距始终位于块之后，并且在包围它的内容之前。通过选择<code>vertical-rl</code>下拉列表中的值，您可以看到物理示例中的边距如何在块的右侧结束，而不是在<code>-end</code>方向上应用。 <img src="http://file.w3cbest.com/file/images/float-margins-side.png"> 还有<code>start</code>和<code>end</code>值<code>text-align</code>。对齐要启动的内容将使其与内联轴的起点对齐，直到内联轴<code>end</code>的末端，无论写入模式是水平还是垂直。</p>
+<h2 id="今天使用逻辑属性和值"><a href="#今天使用逻辑属性和值" class="headerlink" title="今天使用逻辑属性和值"></a>今天使用逻辑属性和值</h2><p><a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-logical-props">Can I Use css-logical-props?</a> Data on support for the css-logical-props feature across the major browsers from caniuse.com.</p>
+<p>如前所述，目前逻辑属性和值的浏览器支持很少。但是，如果您现在想要开始使用它们，并且选项是使用它们编写CSS，然后使用PostCSS插件将逻辑属性和值转换为它们的物理对应物。<a target="_blank" rel="noopener" href="https://github.com/jonathantneal/postcss-logical-properties">Jonathan Neal的这个插件</a>涵盖了我在本文中描述的所有属性和值。 即使您现在决定不使用这些属性，了解它们的工作方式也是使用新布局的关键理解。将Grid或Flex布局描述为具有起始和结束线，考虑块和内联维度，这些将使得更容易理解布局的工作原理。 进一步阅读</p>
+<ul>
+<li>  MDN Web Docs具有列出的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties">所有逻辑属性和值</a>以及其他示例。</li>
+<li>  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logical_Values_and_Writing_Modes">CSS网格，逻辑值和写入模式</a>，MDN</li>
+<li>  <a target="_blank" rel="noopener" href="https://24ways.org/2016/css-writing-modes/">CSS写作模式</a>，Jen Simmons，24种方式</li>
+</ul>
+<p>文章来源：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/03/understanding-logical-properties-values/">https://www.smashingmagazine.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/16/%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95%E6%9D%A5%E5%8C%BA%E5%88%AB%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/16/%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95%E6%9D%A5%E5%8C%BA%E5%88%AB%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">实现深拷贝的几种方法来区别深拷贝与浅拷贝</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-16 18:11:18" itemprop="dateCreated datePublished" datetime="2019-01-16T18:11:18+08:00">2019-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>以前面试的时候面试官总是会问深拷贝与浅拷贝，那个时候回答不上来，其实是在工作中没涉及到这个问题，基本上都是拿到数据修改一下有还给后端了，没有在本地做过处理停留。 经过时间的积累工作年份的增加，这个深拷贝与浅拷贝问题也就开始涉及到了，如何区分深拷贝与浅拷贝，简单点来说，就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 我们来举一个例子</p>
+<p>var a = [0,1,2,3,4],<br>b = a;<br>a[0] = 6<br>console.log(a, b)</p>
+<p><img src="http://file.w3cbest.com/file/images/deepclone20190116163428.jpg"> 然后看打印结果b复制了a，可是修改了a后b也跟着变化了，为什么呢？那么这里，就得引入基本数据类型与引用数据类型的概念了。</p>
+<h2 id="基本数据类型（存放在栈中）"><a href="#基本数据类型（存放在栈中）" class="headerlink" title="基本数据类型（存放在栈中）"></a>基本数据类型（存放在栈中）</h2><p>基本数据类型(值类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。 基本数据类型是指存放在栈中的简单数据段，数据大小确定，内存空间大小可以分配，它们是直接按值存放的，所以可以直接按值访问</p>
+<p>var a = 10,<br>b = a,<br>b = 20;<br>console.log(a); // 10值<br>console.log(b); // 20值</p>
+<p>下图演示了这种基本数据类型赋值的过程： <img src="http://file.w3cbest.com/file/images/deepclone20190116163429.jpg">  </p>
+<h2 id="引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）"><a href="#引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）" class="headerlink" title="引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）"></a>引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）</h2><p>引用数据类型：对象(Object)、数组(Array)、函数(Function)。 引用类型是存放在堆内存中的对象，变量其实是保存的在栈内存中的一个指针（保存的是堆内存中的引用地址），这个指针指向堆内存。 引用类型数据在栈内存中保存的实际上是对象在堆内存中的引用地址。通过这个引用地址可以快速查找到保存中堆内存中的对象</p>
+<p>var obj1 = new Object();<br>var obj2 = obj1;<br>obj2.name = “我有名字了”;<br>console.log(obj1.name); // 我有名字了</p>
+<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给obj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象，所以修改obj2其实就是修改那个对象，所以通过obj1访问也能访问的到。 <img src="http://file.w3cbest.com/file/images/deepclone20190116163430.jpg"></p>
+<p>var a = [1,2,3,4,5];<br>var b = a;//传址 ,对象中传给变量的数据是引用类型的，会存储在堆中；<br>var c = a[0];//传值，把对象中的属性/数组中的数组项赋值给变量，这时变量C是基本数据类型，存储在栈内存中；改变栈中的数据不会影响堆中的数据<br>alert(b);//1,2,3,4,5<br>alert(c);//1<br>//改变数值<br>b[4] = 6;<br>c = 7;<br>alert(a[4]);//6<br>alert(a[0]);//1</p>
+<p>从上面我们可以得知，当我改变b中的数据时，a中数据也发生了变化；但是当我改变c的数据值时，a却没有发生改变。 这就是传值与传址的区别。因为a是数组，属于引用类型，所以它赋予给b的时候传的是栈中的地址（相当于新建了一个不同名“指针”），而不是堆内存中的对象。而c仅仅是从a堆内存中获取的一个数据值，并保存在栈中。所以b修改的时候，会根据地址回到a堆中修改，c则直接在栈中修改，并且不能指向a堆内存中。 <img src="http://file.w3cbest.com/file/images/deepclone20190116163435.jpg"></p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><h3 id="通过slice方法"><a href="#通过slice方法" class="headerlink" title="通过slice方法"></a>通过slice方法</h3><p>var a = [1,2,3,4],<br>    b = a.slice(0);<br>a[0] = 2;<br>console.log(a,b);</p>
+<p><img src="http://file.w3cbest.com/file/images/deepclone20190116163441.jpg"> 看到打印结果说明slice方法已经进行拷贝了，毕竟b没有受a的影响，我们把a改一下</p>
+<p>var a = [0,1,[2,3],4],<br>    b = a.slice(0);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
+<p><img src="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg"> 看到打印结果说明拷贝的不彻底，b对象的一级属性没有受到影响，但是二级属性还是没能拷贝成功，没有脱离a的控制，说明slice()只能进行浅拷贝。 这里引用知乎问答里面的一张图 <img src="http://file.w3cbest.com/file/images/deepclone20190116163450.jpg"> 第一层的属性确实深拷贝，拥有了独立的内存，但更深的属性却仍然公用了地址，所以才会造成上面的问题。 同理，concat()方法与slice()也存在这样的情况，他们都不是真正的深拷贝，这里需要注意。</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>我们怎么去实现深拷贝呢，这里可以利用递归去复制所有层级属性。我们封装一个深拷贝的函数</p>
+<p>function deepClone(obj){<br>    var objClone = Array.isArray(obj)?[]:{};<br>    if(obj &amp;&amp; typeof obj===”object”){<br>        for(key in obj){<br>            if(obj.hasOwnProperty(key)){<br>                //判断ojb子元素是否为对象，如果是，递归复制<br>                if(obj[key]&amp;&amp;typeof obj[key] ===”object”){<br>                    objClone[key] = deepClone(obj[key]);<br>                }else{<br>                    //如果不是，简单复制<br>                    objClone[key] = obj[key];<br>                }<br>            }<br>        }<br>    }<br>    return objClone;<br>}<br>var a = [1,2,3,4],<br>b = deepClone(a);<br>a[0] = 2;<br>console.log(a,b);</p>
+<p>var a = [0,1,[2,3],4],<br>    b = deepClone(a);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
+<p>可以看到 <img src="http://file.w3cbest.com/file/images/deepclone20190116163440.jpg"> 跟之前想象的一样，现在b脱离了a的控制，不受a影响了。所以说深拷贝就是拷贝对象各个层级的属性</p>
+<h3 id="借用JSON对象的parse和stringify"><a href="#借用JSON对象的parse和stringify" class="headerlink" title="借用JSON对象的parse和stringify"></a>借用JSON对象的parse和stringify</h3><p>function deepClone(obj){<br>    return JSON.parse(JSON.stringify(obj));<br>}<br>var a = [0,1,[2,3],4],<br>    b = deepClone(a);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
+<p><img src="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg"> 可以看到，这下b是完全不受a的影响了。 有可能还不太明白JSON.stringify() 和 JSON.parse() 拷贝的时候是怎么样的一个原理，其实首先得明白JSON.stringify()与JSON.parse()的作用，我们可以这样理解，前者能将一个对象转为json字符串(基本类型)，后者能将json字符串还原成一个对象(引用类型)。 基本类型拷贝是直接在栈内存新开空间，直接复制一份名-值，两者互不影响。 而引用数据类型，比如对象，变量名在栈内存，值在堆内存，拷贝只是拷贝了堆内存提供的指向值的地址，而JSON.stringify()巧就巧在能将一个对象转换成字符串，也就是基本类型，那这里的原理就是先利用JSON.stringify()将对象转变成基本数据类型，然后使用了基本类型的拷贝方式，再利用JSON.parse()将这个字符串还原成一个对象，达到了深拷贝的目的。</p>
+<h3 id="借用JQ的extend方法"><a href="#借用JQ的extend方法" class="headerlink" title="借用JQ的extend方法"></a>借用JQ的extend方法</h3><p>$.extend( [deep ], target, object1 [, objectN ] )</p>
+<p>deep表示是否深拷贝，为true为深拷贝，为false，则为浅拷贝 target Object类型 目标对象，其他对象的成员属性将被附加到该对象上。 object1 objectN可选。 Object类型 第一个以及第N个被合并的对象。</p>
+<p>let a = [0,1,[2,3],4],<br>    b = $.extend(true,[],a);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
+<p>可以看到，效果与上面方法一样，只是需要依赖JQ库。 <img src="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg">   在实际开发中也是非常有用的。例如后台返回了一堆数据，你需要对这堆数据做操作，但多人开发情况下，你是没办法明确这堆数据是否有其它功能也需要使用，直接修改可能会造成隐性问题，深拷贝能帮你更安全安心的去操作数据，根据实际情况来使用深拷贝，大概就是这个意思。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">CSS变量创建网页响应布局</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-14 15:40:38" itemprop="dateCreated datePublished" datetime="2019-01-14T15:40:38+08:00">2019-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-20 12:30:40" itemprop="dateModified" datetime="2021-04-20T12:30:40+08:00">2021-04-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站</p>
+<p>如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。</p>
+<p>从本质上讲，CSS变量可以让你摆脱老式的样式设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">navbar&gt;a &#123;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>…而是主张这样写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    --base-font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line">h1 &#123;</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">&#125;</span><br><span class="line">navbar&gt;a &#123;</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的语法看起来的确有点怪怪的，但有没有觉得它和less、sass中的变量有点类似呢，但如此一来，只要更改–base-font-size 变量，就能在整个应用中改变字号了。</p>
+<p>如果你想把CSS变量学明白，可以在Scrimba网站 这里有免费互动CSS变量课程，该课程包含8个互动截屏。</p>
+<h2 id="今天来讲一下如何用CSS变量创建响应布局"><a href="#今天来讲一下如何用CSS变量创建响应布局" class="headerlink" title="今天来讲一下如何用CSS变量创建响应布局"></a>今天来讲一下如何用CSS变量创建响应布局</h2><p>这是一段html</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=<span class="string">&quot;item&quot;</span>&gt;</span><br><span class="line">    &lt;li&gt;item 1&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 4&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="老方法："><a href="#老方法：" class="headerlink" title="老方法："></a>老方法：</h3><p>在以前即使不使用CSS变量也可以把这些事情搞定。只是需要把要改变的属性在重新重置一下，需要在媒体查询中拥有自己的选择器，但会招致额外的大量代码，像下面这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">    flex-wrap: wrap;</span><br><span class="line">    justify-content: space-around;</span><br><span class="line">    padding: 10px;</span><br><span class="line"></span><br><span class="line">    li &#123;</span><br><span class="line">        background-color: <span class="comment">#ff6f69;</span></span><br><span class="line">        border: 1px solid <span class="comment">#fff;</span></span><br><span class="line">        font-size: 20px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        list-style-type: none;</span><br><span class="line">        width: 100%;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (min-width: 768px) &#123;</span><br><span class="line">    .item &#123;</span><br><span class="line">        flex-direction: row;</span><br><span class="line">        li &#123;</span><br><span class="line">            background-color: <span class="comment">#ffcc5c;</span></span><br><span class="line">            font-size: 50px;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 50%;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (min-width: 992px) &#123;</span><br><span class="line">    .item &#123;</span><br><span class="line">        flex-wrap: nowrap;</span><br><span class="line">        li &#123;</span><br><span class="line">            background-color: <span class="comment">#ffeead;</span></span><br><span class="line">            font-size: 100px;</span><br><span class="line">            height: 500px;</span><br><span class="line">            width: calc(100% / 4);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h3><p>下面让我们来看如何使用CSS变量来解决这个问题。首先，要把我们将重复利用和更改的数值存储在变量的内部：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">--base-color: <span class="comment">#ff6f69;</span></span><br><span class="line">--base-font-size: 20px;</span><br><span class="line">--direction: column;</span><br><span class="line">--width: 100%;</span><br><span class="line">--height: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，在整个页面中简单地使用这些变量就行了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  padding: 10px;</span><br><span class="line">  justify-content: space-around;</span><br><span class="line">  flex-direction: var(--direction);</span><br><span class="line">  flex-wrap: var(--wrap);</span><br><span class="line">  li&#123;</span><br><span class="line">    list-style-type: none;</span><br><span class="line">    border: 1px solid <span class="comment">#fff;</span></span><br><span class="line">    height: var(--height);</span><br><span class="line">    width: var(--width);</span><br><span class="line">    background-color: var(--base-color);</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一旦进行了这样的设置之后，我们只要在媒体查询中简单地更改变量值就行了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@media (min-width: 768px) &#123;</span><br><span class="line">  :root &#123;</span><br><span class="line">    --base-font-size: 60px;</span><br><span class="line">    --base-color: <span class="comment">#ffcc5c;</span></span><br><span class="line">    --direction: row;</span><br><span class="line">    --height: 300px;</span><br><span class="line">    --width: 50%;</span><br><span class="line">    --wrap:wrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-width: 992px) &#123;</span><br><span class="line">  :root &#123;</span><br><span class="line">    --base-font-size: 100px;</span><br><span class="line">    --base-color: <span class="comment">#ffeead;</span></span><br><span class="line">    --direction: row;</span><br><span class="line">    --height: 500px;</span><br><span class="line">    --width: calc(100% / 4);</span><br><span class="line">    --wrap:nowrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这比我们以往的方法简便多了。只需盯住 :root，而不必为所有的选择器指定值了。</p>
+<p>这只是一个简单的例子。设想成熟的网站会是什么样子吧，例如，用 –base-margin 来控制APP四周的多数自由空间。想翻转其值也是很容易的事情，不必用复杂的选择器来填充媒体查询了。</p>
+<p>总之，CSS变量绝对是提高响应速度时，所代表的未来。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/14/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E7%94%A8css%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/14/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E7%94%A8css%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">学习如何用CSS变量创建网页响应布局 — css var()</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-14 15:13:50" itemprop="dateCreated datePublished" datetime="2019-01-14T15:13:50+08:00">2019-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站 如果你未曾听说过<a target="_blank" rel="noopener" href="http://www.w3cbest.com/?p=240">CSS变量</a>，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。 从本质上讲，<a target="_blank" rel="noopener" href="http://www.w3cbest.com/?p=240">CSS变量</a>可以让你摆脱老式的样式设置：</p>
+<p>h1 {<br>    font-size: 30px;<br>}</p>
+<p>navbar&gt;a {<br>    font-size: 30px;<br>}</p>
+<p>…而是主张这样写：</p>
+<p>:root {<br>    –base-font-size: 30px;<br>}<br>h1 {<br>    font-size: var(–base-font-size);<br>}<br>navbar&gt;a {<br>    font-size: var(–base-font-size);<br>}</p>
+<p>这样的语法看起来的确有点怪怪的，但有没有觉得它和less、sass中的变量有点类似呢，但如此一来，只要更改–base-font-size 变量，就能在整个应用中改变字号了。 如果你想把<a target="_blank" rel="noopener" href="http://www.w3cbest.com/?p=240">CSS变量</a>学明白，可以在Scrimba网站 这里有<a target="_blank" rel="noopener" href="https://scrimba.com/g/gcssvariables">免费互动CSS变量课程</a>，该课程包含8个互动截屏。</p>
+<h2 id="今天来讲一下如何用CSS变量创建响应布局"><a href="#今天来讲一下如何用CSS变量创建响应布局" class="headerlink" title="今天来讲一下如何用CSS变量创建响应布局"></a>今天来讲一下如何用CSS变量创建响应布局</h2><p>这是一段html</p>
+<ul class="item">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+    <li>item 4</li>
+</ul>
+
+<p> </p>
+<h3 id="老方法："><a href="#老方法：" class="headerlink" title="老方法："></a>老方法：</h3><p>在以前即使不使用CSS变量也可以把这些事情搞定。只是需要把要改变的属性在重新重置一下，需要在媒体查询中拥有自己的选择器，但会招致额外的大量代码，像下面这样：</p>
+<p>.item {<br>    display: flex;<br>    flex-direction: column;<br>    flex-wrap: wrap;<br>    justify-content: space-around;<br>    padding: 10px;</p>
+<pre><code>li &#123;
+    background-color: #ff6f69;
+    border: 1px solid #fff;
+    font-size: 20px;
+    height: 200px;
+    list-style-type: none;
+    width: 100%;
+&#125;
+</code></pre>
+<p>}</p>
+<p>@media (min-width: 768px) {<br>    .item {<br>        flex-direction: row;<br>        li {<br>            background-color: #ffcc5c;<br>            font-size: 50px;<br>            height: 300px;<br>            width: 50%;<br>        }<br>    }<br>}</p>
+<p>@media (min-width: 992px) {<br>    .item {<br>        flex-wrap: nowrap;<br>        li {<br>            background-color: #ffeead;<br>            font-size: 100px;<br>            height: 500px;<br>            width: calc(100% / 4);<br>        }<br>    }<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/roovdK/">CSS media</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p> </p>
+<h3 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h3><p>下面让我们来看如何使用<a target="_blank" rel="noopener" href="http://www.w3cbest.com/?p=240">CSS变量</a>来解决这个问题。首先，要把我们将重复利用和更改的数值存储在变量的内部：</p>
+<p>:root {<br>–base-color: #ff6f69;<br>–base-font-size: 20px;<br>–direction: column;<br>–width: 100%;<br>–height: 200px;<br>}</p>
+<p>然后，在整个页面中简单地使用这些变量就行了：</p>
+<p>.item {<br>  display: flex;<br>  padding: 10px;<br>  justify-content: space-around;<br>  flex-direction: var(–direction);<br>  flex-wrap: var(–wrap);<br>  li{<br>    list-style-type: none;<br>    border: 1px solid #fff;<br>    height: var(–height);<br>    width: var(–width);<br>    background-color: var(–base-color);<br>    font-size: var(–base-font-size);<br>  }<br>}</p>
+<p>一旦进行了这样的设置之后，我们只要在媒体查询中简单地更改变量值就行了：</p>
+<p>@media (min-width: 768px) {<br>  :root {<br>    –base-font-size: 60px;<br>    –base-color: #ffcc5c;<br>    –direction: row;<br>    –height: 300px;<br>    –width: 50%;<br>    –wrap:wrap;<br>  }<br>}<br>@media (min-width: 992px) {<br>  :root {<br>    –base-font-size: 100px;<br>    –base-color: #ffeead;<br>    –direction: row;<br>    –height: 500px;<br>    –width: calc(100% / 4);<br>    –wrap:nowrap;<br>  }<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/NeeYYK/">CSS Variables</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>  这比我们以往的方法简便多了。只需盯住 :root，而不必为所有的选择器指定值了。 这只是一个简单的例子。设想成熟的网站会是什么样子吧，例如，用 –base-margin 来控制APP四周的多数自由空间。想翻转其值也是很容易的事情，不必用复杂的选择器来填充媒体查询了。 总之，CSS变量绝对是提高响应速度时，所代表的未来。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/07/%E6%96%B0%E7%9A%84css%E9%80%BB%E8%BE%91%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/07/%E6%96%B0%E7%9A%84css%E9%80%BB%E8%BE%91%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">新的css逻辑布局（CSS Logical Properties and Values）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-07 13:48:10" itemprop="dateCreated datePublished" datetime="2019-01-07T13:48:10+08:00">2019-01-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我们中的大多数开发人员用来考虑左和右,顶部和底部。这是因为在早期的互联网,它主要用于上传文档,而不是为我们今天知道的复杂的网站结构。 这是原因,没有人认为多语言网站的需求。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>旧的盒子模型告诉我们左右上下这四个方向，但在新的模型中，请记住 inline-start inline-end block-start block-end: <img src="http://file.w3cbest.com/file/images/4124437802-5c2c0f3b36e51_articlex.png"> （LTR）对应关系如下：</p>
+<ul>
+<li>  左: inline-start</li>
+<li>  右: inline-end</li>
+<li>  上: block-start</li>
+<li>  下: block-end</li>
+</ul>
+<p>这些适用于 margin padding border 修饰，比如 margin-left 中，left -&gt; 左 -&gt; inline-start -&gt; margin-inline-start 这有点像把坐标系概念引入了布局，对于不同国家，inline 与 block 的方向是不同的：</p>
+<ul>
+<li>  在东亚绝大多数国家、英美系国家 padding-inline-start = padding-left</li>
+<li>  在阿拉伯国家 padding-inline-start = padding-right</li>
+<li>  在日本 padding-inline-start = padding-top</li>
+</ul>
+<p>以中国和英美系国家的阅读顺序为基准的话，阿拉伯国家等于把左右颠倒了，而日本是把网页沿顺时针旋转 90 度。</p>
+<blockquote>
+<p>为什么 inline 表示从左右，block 表示上下呢？还记得 display: inline 吗？此时排版是从左到右排布的，而 display: block 的排版是从上到下的。</p>
+</blockquote>
+<h2 id="宽高"><a href="#宽高" class="headerlink" title="宽高"></a>宽高</h2><p>width height 也需要换成 inline-size 与 block-size，（LTR）对应关系如下：</p>
+<ul>
+<li>  width: inline-size</li>
+<li>  min-width: min-inline-size</li>
+<li>  max-width: max-inline-size</li>
+<li>  height: block-size</li>
+<li>  min-height: min-inline-size</li>
+<li>  max-height: max-inline-size</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/rovGPq/">width height</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>下图是 Box Model 与 Logical 的对比： <img src="http://file.w3cbest.com/file/images/748016906-5c2c0f3b52167_articlex.png"></p>
+<h2 id="CSS-Positions"><a href="#CSS-Positions" class="headerlink" title="CSS Positions"></a>CSS Positions</h2><p>之前Positions属性的名称，top/right/left/bottom，先在所有名称都带有前缀inset: inset-block-start / inset-inline-end inset-block-end / inset-inline-start。 （LTR）对应关系如下：</p>
+<ul>
+<li>  top = inset-block-start</li>
+<li>  bottom = inset-block-end</li>
+<li>  left = inset-inline-start</li>
+<li>  right = inset-inline-end</li>
+</ul>
+<p>尽管这样描述起来很复杂：</p>
+<p>.popup {<br>position: fixed;<br>inset-block-start: 0; /*top - in English*/<br>inset-block-end: 0; /*bottom - in English*/<br>inset-inline-start: 0; /*left - in English*/<br>inset-inline-end: 0; /*right - in English*/<br>}</p>
+<p>但是这种属性支持聚合写法：</p>
+<p>.popup {<br>position: fixed;<br>inset: 0 0 0 0; /*top, right, bottom, left - in English*/<br>}</p>
+<h2 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h2><p>对于 float 的两个值 left right，可以很容易推测出来，会被 inline-start 与 inline-end 取代，（LTR）对应关系如下：</p>
+<ul>
+<li>  float: left = float: inline-start</li>
+<li>  float: right = float: inline-end</li>
+</ul>
+<h2 id="Text-align"><a href="#Text-align" class="headerlink" title="Text-align"></a>Text-align</h2><p>text-align 也有 left right 属性，分别取代为 start end，（LTR）对应关系如下:</p>
+<ul>
+<li>  text-align :left = text-align: start</li>
+<li>  text-align :right = text-align: end</li>
+</ul>
+<h2 id="Css-Grid-与-Flexbox"><a href="#Css-Grid-与-Flexbox" class="headerlink" title="Css Grid 与 Flexbox"></a>Css Grid 与 Flexbox</h2><p>使用 css grid 与 flexbox 布局方案的网页，将在支持的浏览器上自动享受国际化布局调整，不需要改变语法。</p>
+<h2 id="Writing-mode"><a href="#Writing-mode" class="headerlink" title="Writing-mode"></a>Writing-mode</h2><p>目前为止，看到的是 Css 对排版含义的规范化，Grid 与 Flexbox 由于 API 比较新，定义的较为规范，所以不用变，而旧的 display, position, width, height, float 等 API 需要进行语义化改造。 现在就要聊到最关键的布局国际化部分，我们至今为止遇到的网页都是从上到下的，但其他文化却不同。可以通过配置 writing-mode 让整个网页布局改变：</p>
+<ul>
+<li>  writing-mode: horizontal-tb = 从上到下</li>
+<li>  writing-mode: vertical-rl = 从右到左 比如日本文化</li>
+<li>  writing-mode: vertical-lr = 从左到右 比如蒙古文化</li>
+</ul>
+<p><img src="http://file.w3cbest.com/file/images/138420463-5c2c0f3b5204b_articlex.png"></p>
+<blockquote>
+<p>至今还没有见过从下到上的网页，也许这证明了从下到上是最不合理的阅读方式。</p>
+</blockquote>
+<h2 id="Direction"><a href="#Direction" class="headerlink" title="Direction"></a>Direction</h2><p>这是一个排版属性，writing-mode 是控制网页方向的，而 direction 是控制文字对齐方向的。 目前只有两个配置：rtl 与 ltr:</p>
+<p>html {<br>direction: rtl;<br>}</p>
+<p>其实 writing-mode 与 direction 结合起来也没什么问题，比如网页布局变成 vertical-rl - 从右到左，那么 direction 的 ltr 就等于是从上到下了。 最后还有一些悬而未决的问题，比如如何开启智能布局？一种方式是：</p>
+<p>html {<br>flow-mode: physical;<br>/*or*/<br>flow-mode: logical;<br>}</p>
+<p>另外，像 @meta 配置中的 max-width 也要替换为 max-inline-size, line-height 需要被替换为 line-size，border-width 需要被替换为 border-size 等等。</p>
+<h2 id="趋势"><a href="#趋势" class="headerlink" title="趋势"></a>趋势</h2><p>整个 Logical Properties 规范看下来是个不可逆的趋势，也代表着 W3C 规范在排版方面的全球化工作。</p>
+<h3 id="为什么要改造语法"><a href="#为什么要改造语法" class="headerlink" title="为什么要改造语法"></a>为什么要改造语法</h3><p>第一个问题就是这个，我们习以为常的 left top right bottom 语法都需要改成 inline-start block-end 等略微晦涩的语法，而且你可以发现，新语法与旧语法是完全一对一对等的，也就是完全可以交给某个转换程序去做！ 可以看出，这是一个习惯问题，W3C 希望重塑国际化布局的语义，而原有的 left top 等无法承担这些语义，所以只好换掉。 新版规范要求开发者做出一个抽象，把自己国家的习惯抽象成习惯无关的描述。但对于每个前端从业者来说，left top 等描述估计已经成为肌肉记忆了，想要改变规范还是挺难的，未来前端社区也许会出现三种解决方案：</p>
+<ul>
+<li>  保守派 - 利用 babel 将原有语法与新语法做一对一映射转换，比如 position: left -&gt; position: inset-inline-start。这种方案 成本最小，且不改变开发者习惯，所以最有可能被国内公司率先采用。在商业环境推动一件事情，最大的阻力无非是 成本 与 共识，这次的布局规范同时触及了这两个点，可能让团队倾向于做保守派。</li>
+<li>  兼容派 - 其实就是两面派，利用 babel 工具做映射这一点与保守派相同，但是新代码推荐用新语法编写，如果团队中有人不遵循新规范，也会被工具自动转换为新规范。这种软要求会导致团队布局代码存在两套，但最终效果却没有问题的神奇效果，长远来说不利于维护，但不失为一种较为妥协的策略。</li>
+<li>  改革派 - 利用脚本，将项目里旧规范替换成新规范，并让团队未来的代码遵循新的布局规范编写。很显然，这派抓住了迁移成本小这个优势，但没有考虑到人这个因素的习惯迁移成本，如何说服其他人理解新规范，并做到让 “未来加入的同事” 也能认同并遵循这套新规范，也许是最大的不确定因素。</li>
+</ul>
+<h3 id="为什么-Flex-Grid-语法不需改造？"><a href="#为什么-Flex-Grid-语法不需改造？" class="headerlink" title="为什么 Flex Grid 语法不需改造？"></a>为什么 Flex Grid 语法不需改造？</h3><p>这次改造是冲着 left right width height 等明显带有文化色彩的语法来的。 然而 Flex 语法已经将方向定义转化为抽象的 start 与 end，而 center 是没有歧义的，所以 FlexBox 语法不用改。 而 Grid 是一种拆分单元格的语法，也不涉及具体上下左右的描述，所以也符合国际化语义。</p>
+<h4 id="扩展阅读："><a href="#扩展阅读：" class="headerlink" title="扩展阅读："></a>扩展阅读：</h4><ul>
+<li>  <a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-logical/">https://drafts.csswg.org/css-logical/</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-logical-1/">https://www.w3.org/TR/css-logical-1/</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/Style/CSS/all-properties.en.html">https://www.w3.org/Style/CSS/all-properties.en.html</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/" class="post-title-link" itemprop="url">一些很酷的chorem开发工具的提示和技巧的列表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-03 17:45:01" itemprop="dateCreated datePublished" datetime="2019-01-03T17:45:01+08:00">2019-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Chrome开发工具提供了一套非常棒的工具，可以帮助您在Web平台上进行开发。以下是一些你可能还不知道的建议</p>
+<h3 id="在ELEMENTS面板中拖放"><a href="#在ELEMENTS面板中拖放" class="headerlink" title="在ELEMENTS面板中拖放"></a>在ELEMENTS面板中拖放</h3><p>在Elements面板中，您可以拖放任何HTML元素并更改其在页面上的位置 <img src="http://file.w3cbest.com/file/images/reference-elements.gif"></p>
+<h3 id="引用控制台中当前选择的元素"><a href="#引用控制台中当前选择的元素" class="headerlink" title="引用控制台中当前选择的元素"></a>引用控制台中当前选择的元素</h3><p>在Elements面板中选择一个节点，并在控制台中键入$0来引用它。 <img src="http://file.w3cbest.com/file/images/drag-and-drop.gif"></p>
+<blockquote>
+<p>提示:如果使用jQuery，可以输入$($0)来访问这个元素上的jQuery API。</p>
+</blockquote>
+<h3 id="使用控制台中最后一个操作的值"><a href="#使用控制台中最后一个操作的值" class="headerlink" title="使用控制台中最后一个操作的值"></a>使用控制台中最后一个操作的值</h3><p>使用$_引用在控制台中执行的前一个操作的返回值 <img src="http://file.w3cbest.com/file/images/use-last-result.gif"></p>
+<h3 id="添加CSS并编辑元素状态"><a href="#添加CSS并编辑元素状态" class="headerlink" title="添加CSS并编辑元素状态"></a>添加CSS并编辑元素状态</h3><p>在元素面板中有两个超级有用的按钮。 第一个选项允许您添加一个新的CSS属性，使用您想要的任何选择器，但要预先填充当前选定的元素: <img src="http://file.w3cbest.com/file/images/add-css.gif"> 第二个选项允许您为所选元素触发一个状态，这样您就可以看到当它处于活动状态、悬停状态、焦点状态时应用的样式。 <img src="http://file.w3cbest.com/file/images/element-state.png"></p>
+<h3 id="找到定义CSS属性的位置"><a href="#找到定义CSS属性的位置" class="headerlink" title="找到定义CSS属性的位置"></a>找到定义CSS属性的位置</h3><p>在元素面板中的CSS属性，DevTools将指向定义该属性的地方，即源面板</p>
+<p><img src="http://file.w3cbest.com/file/images/find-where-css-defined.gif">  </p>
+<h3 id="保存并归档修改后的CSS"><a href="#保存并归档修改后的CSS" class="headerlink" title="保存并归档修改后的CSS"></a>保存并归档修改后的CSS</h3><p>单击您编辑的CSS文件的名称。检查器将它打开到Sources窗格中，然后您可以在应用的实时编辑中保存它。 这个技巧不适用于使用+或元素添加的新选择器。样式属性，但仅适用于已修改的现有属性。 <img src="http://file.w3cbest.com/file/images/save-modified-css.gif"></p>
+<h3 id="屏幕截图一个元素"><a href="#屏幕截图一个元素" class="headerlink" title="屏幕截图一个元素"></a>屏幕截图一个元素</h3><p>选择一个元素并按下cmd-shift-p(或在Windows中按ctrl-shift-p)打开命令菜单，然后选择Capture node截图 <img src="http://file.w3cbest.com/file/images/screenshot-node.gif"></p>
+<h3 id="使用CSS选择器查找元素"><a href="#使用CSS选择器查找元素" class="headerlink" title="使用CSS选择器查找元素"></a>使用CSS选择器查找元素</h3><p>按下cmd-f(在Windows中ctrl-f)将在Elements面板中打开搜索框。 你可以在里面输入任何字符串来匹配源代码，或者你也可以使用CSS选择器让Chrome为你生成一个图像: <img src="http://file.w3cbest.com/file/images/find-elements-css-selectors.gif"></p>
+<h3 id="在控制台中SHIFT-ENTER"><a href="#在控制台中SHIFT-ENTER" class="headerlink" title="在控制台中SHIFT-ENTER"></a>在控制台中SHIFT-ENTER</h3><p>要在控制台中编写跨越多行代码的命令，请按shift-enter。 一旦你准备好了，按下回车在脚本的最后，以执行它: <img src="http://file.w3cbest.com/file/images/multiple-lines-commands.gif"></p>
+<h3 id="清除控制台"><a href="#清除控制台" class="headerlink" title="清除控制台"></a>清除控制台</h3><p>您可以使用控制台左上角的clear按钮清除控制台，或者按ctrl-l或cmd-k。</p>
+<h3 id="GO-TO…"><a href="#GO-TO…" class="headerlink" title="GO TO…"></a>GO TO…</h3><p>在资源面板:</p>
+<ul>
+<li>  显示页面加载的所有文件。</li>
+<li>  显示当前文件中的符号(属性、函数、类)。</li>
+<li>  ctrl-g转到特定的行。</li>
+</ul>
+<p><img src="http://file.w3cbest.com/file/images/files-list.png"></p>
+<h3 id="监视表达式"><a href="#监视表达式" class="headerlink" title="监视表达式"></a>监视表达式</h3><p>在调试过程中，您将多次检查变量名或表达式，而不是一次又一次地编写变量名或表达式，而是将其添加到监视表达式列表中。 <img src="http://file.w3cbest.com/file/images/watch-expressions.gif"></p>
+<h3 id="XHR-获取调试"><a href="#XHR-获取调试" class="headerlink" title="XHR /获取调试"></a>XHR /获取调试</h3><p>从调试器中打开XHR/Fetch断点面板。 您可以将它设置为在发送XHR / Fetch调用时断开，或者仅在特定的调用上: <img src="http://file.w3cbest.com/file/images/xhr-fetch-breakpoints.png"></p>
+<h3 id="对DOM修改的调试"><a href="#对DOM修改的调试" class="headerlink" title="对DOM修改的调试"></a>对DOM修改的调试</h3><p>右键单击元素并在子树修改上启用Break:每当脚本遍历该元素的子元素并修改它们时，调试器都会自动停止，以便让您检查发生了什么。 <img src="http://file.w3cbest.com/file/images/break-subtree-modifications.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

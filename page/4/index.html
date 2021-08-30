@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端开发 大前端 W3Cbest">
+<meta property="og:url" content="https://xianzhiding.github.io/page/4/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="前端开发,es5,es6,es10,css,javascript,html,flexbox,grid,echarts">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/page/4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/01/%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/01/%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">从数组中删除重复的对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-01 07:00:50" itemprop="dateCreated datePublished" datetime="2019-05-01T07:00:50+08:00">2019-05-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>假设我们有一个对象数组，如下所示：</p>
+<p>const books = [<br>    {<br>        name: “My Sister the Serial Killer”,<br>        author: “Oyinkan Braithwaite”<br>    },<br>    {<br>        name: “Educated”,<br>        author: “Tara Westover”<br>    },<br>    {<br>        name: “My Sister the Serial Killer”,<br>        author: “Oyinkan Braithwaite”<br>    }<br>];</p>
+<p>数组中的第一个和最后一个对象是相同的。那么如果我们想从数组中删除这些重复的对象呢？令人惊讶的是，这是一个非常难以解决的问题。为了理解原因，让我们看一下如何从平面项目数组中删除重复项，例如字符串。</p>
+<h2 id="从数组中删除重复的项"><a href="#从数组中删除重复的项" class="headerlink" title="从数组中删除重复的项"></a>从数组中删除重复的项</h2><p>假设我们有一个字符串数组，如下所示：</p>
+<p>const strings = [<br>    “My Sister the Serial Killer”,<br>    “Educated”,<br>    “My Sister the Serial Killer”<br>];</p>
+<p>如果我们想从这个数组中删除任何重复项，我们可以使用该<code>filter()</code>方法以及<code>indexOf()</code>方法来检查任何给定项是否重复。</p>
+<p>const filteredStrings = strings.filter((item, index) =&gt; {<br>    // Return to new array if the index of the current item is the same<br>    // as the first occurence of the item<br>    return strings.indexOf(item) === index;<br>});</p>
+<p>由于<code>strings.indexOf(item)</code>将始终返回第一次出现的索引<code>item</code>，我们可以判断过滤器循环中的当前项是否重复。如果是，我们不会将其返回到由该<code>filter()</code>方法创建的新数组</p>
+<h2 id="对象的工作方式不同"><a href="#对象的工作方式不同" class="headerlink" title="对象的工作方式不同"></a>对象的工作方式不同</h2><p>这个方法不适用于对象的原因是因为任何具有相同属性和值的2个对象实际上并不相同。</p>
+<p>const a = {<br>    name: “My Sister the Serial Killer”,<br>    author: “Oyinkan Braithwaite”<br>};<br>const b = {<br>    name: “My Sister the Serial Killer”,<br>    author: “Oyinkan Braithwaite”<br>};</p>
+<p>a === b // false</p>
+<p>这是因为基于参考而不是结构来比较对象。在比较两个对象时，不考虑两个对象具有相同的orperties和value的事实。因此，即使存在具有完全相同属性和值的另一个对象<code>indexOf(object)</code>，对象数组内也将始终返回精确<code>object</code>传递的索引。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>给定此信息，检查两个对象是否具有相同属性和值的唯一方法是实际检查每个对象的属性和值。我提出的解决方案涉及进行此手动检查，但有一些改进性能并减少不必要的嵌套循环。 需要注意3点：</p>
+<ol>
+<li> 仅检查数组中的每个项目与其后的每个其他项目，以避免多次比较相同的对象</li>
+<li> 仅检查未找到与任何其他项目重复的项目</li>
+<li> 在检查每个属性的值是否相同之前，请检查两个对象是否具有相同的键</li>
+</ol>
+<p>这是最后的功能：</p>
+<p>function removeDuplicates(arr) {</p>
+<pre><code>const result = \[\];
+const duplicatesIndices = \[\];
+
+// Loop through each item in the original array
+arr.forEach((current, index) =&gt; &#123;
+
+    if (duplicatesIndices.includes(index)) return;
+
+    result.push(current);
+
+    // Loop through each other item on array after the current one
+    for (let comparisonIndex = index + 1; comparisonIndex &lt; arr.length; comparisonIndex++) &#123;
+    
+        const comparison = arr\[comparisonIndex\];
+        const currentKeys = Object.keys(current);
+        const comparisonKeys = Object.keys(comparison);
+        
+        // Check number of keys in objects
+        if (currentKeys.length !== comparisonKeys.length) continue;
+        
+        // Check key names
+        const currentKeysString = currentKeys.sort().join(&quot;&quot;).toLowerCase();
+        const comparisonKeysString = comparisonKeys.sort().join(&quot;&quot;).toLowerCase();
+        if (currentKeysString !== comparisonKeysString) continue;
+        
+        // Check values
+        let valuesEqual = true;
+        for (let i = 0; i &lt; currentKeys.length; i++) &#123;
+            const key = currentKeys\[i\];
+            if ( current\[key\] !== comparison\[key\] ) &#123;
+                valuesEqual = false;
+                break;
+            &#125;
+        &#125;
+        if (valuesEqual) duplicatesIndices.push(comparisonIndex);
+        
+    &#125; // end for loop
+
+&#125;); // end arr.forEach()
+return result;
+</code></pre>
+<p>}</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/30/javascript%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8D%95%E8%A1%8C%E7%A8%8B%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/30/javascript%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8D%95%E8%A1%8C%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">JavaScript骚操作之单行程序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-30 09:34:37" itemprop="dateCreated datePublished" datetime="2019-04-30T09:34:37+08:00">2019-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>单行简洁的代码很难维护（有时甚至难以理解），但这并不能阻止广大攻城狮们脑洞，在编写简洁的代码后获得一定的满足感。 以下我最近的一些收藏javascript精简代码集合。它们都可以在你的开发控制台中运行，你可以从控制台中查看运行结果。同时，我希望你能在评论中分享一些自己的藏品</p>
+<h2 id="日历"><a href="#日历" class="headerlink" title="日历"></a>日历</h2><p>创建过去七天的数组，如果将代码中的减号换成加号，你将得到未来7天的数组集合</p>
+<p>// 创建过去七天的数组<br>[…Array(7).keys()].map(days =&gt; new Date(Date.now() - 86400000 * days));</p>
+<p>Array.from(Array(7).keys(),(days) =&gt; new Date(Date.now() - 86400000 * days));</p>
+<p>Array.from({length:7},(_,days) =&gt; new Date(Date.now() - 86400000 * days));</p>
+<h2 id="生成随机ID"><a href="#生成随机ID" class="headerlink" title="生成随机ID"></a>生成随机ID</h2><p>在原型设计时经常使用的创建ID功能。但是我在实际项目中看到有人使用它。其实这并不安全</p>
+<p>// 生成长度为11的随机字母数字字符串<br>Math.random().toString(36).substring(2);</p>
+<h2 id="取URL的查询参数"><a href="#取URL的查询参数" class="headerlink" title="取URL的查询参数"></a>取URL的查询参数</h2><p>这个获取URL的查询参数代码，是我见过最精简的QAQ <code>?foo=bar&amp;baz=bing =&gt; &#123;foo: bar, baz: bing&#125;</code></p>
+<p>// 获取URL的查询参数<br>q={};location.search.replace(/([^?&amp;=]+)=([^&amp;]+)/g,(_,k,v)=&gt;q[k]=v);q;</p>
+<p>Object.fromEntries(new URLSearchParams(‘a=1&amp;b=2’))</p>
+<h2 id="本地时间"><a href="#本地时间" class="headerlink" title="本地时间"></a>本地时间</h2><p>通过一堆HTML，您可以创建一个本地时间，其中包含您可以一口气读出的源代码，它每秒都会用当前时间更新页面</p>
+<p>// 创建本地时间</p>
+<body onload="setInterval(()=>document.body.innerHTML=new Date().toLocaleString().slice(10,19))"></body>
+
+<p>new Date().toLocaleTimeString()</p>
+<h2 id="数组混淆"><a href="#数组混淆" class="headerlink" title="数组混淆"></a>数组混淆</h2><p>随机更改数组元素顺序，混淆数组</p>
+<p>// 随机更改数组元素顺序，混淆数组<br>(arr) =&gt; arr.slice().sort(() =&gt; Math.random() - 0.5)<br>/*<br>let a = (arr) =&gt; arr.slice().sort(() =&gt; Math.random() - 0.5)<br>let b = a([1,2,3,4,5])<br>console.log(b)<br>*/</p>
+<p>或者</p>
+<p>function shuffle(arr) {<br>    const newArr = […arr];<br>    for (let i = 0, len = newArr.length; i &lt; len; i += 1) {<br>const random = Math.floor(Math.random() * (i + 1));<br>    if (i !== random){<br>        [newArr[i], newArr[random]] = [newArr[random], newArr[i]];<br>    }<br>    }<br>    return newArr;<br>}</p>
+<p>或者</p>
+<p>function shuffle(arr) {<br>    let i = arr.length, j;<br>    while (i) {<br>        j = Math.floor(Math.random() * i–);<br>        [arr[i], arr[j]] = [arr[j], arr[i]];<br>    }<br>    return arr;<br>}</p>
+<h2 id="生成随机十六进制代码（生成随机颜色）"><a href="#生成随机十六进制代码（生成随机颜色）" class="headerlink" title="生成随机十六进制代码（生成随机颜色）"></a>生成随机十六进制代码（生成随机颜色）</h2><p>使用JavaScript简洁代码生成随机十六进制代码</p>
+<p>// before<br>‘#’ + Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, ‘0’);</p>
+<p>// after<br>‘#’ + (0x1000000 + Math.random() * 0xffffff).toString(16).slice(1, 6);</p>
+<p>Array.from({ length: 6 }, () =&gt; Math.floor(Math.random() * 16).toString(16)).join(“”)</p>
+<h2 id="一个面试题"><a href="#一个面试题" class="headerlink" title="一个面试题"></a>一个面试题</h2><p>这是一个臭名昭著的面试题，让你写出他的运行结果</p>
+<p>for (i = 0; ++i &lt; 101; console.log(i % 5 ? f  i : f + ‘Buzz’)) f = i % 3 ? ‘’ : ‘Fizz’</p>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><p>这是一个原生的JS函数但是非常简洁，Set接受任何可迭代对象，如数组[1,2,3,3]，并删除重复项</p>
+<p>// 数组去重<br>[…new Set(arr)]<br>// 或者<br>arr.filter((x, index, self) =&gt; self.indexOf(x) === index)</p>
+<h2 id="创建特定大小的数组"><a href="#创建特定大小的数组" class="headerlink" title="创建特定大小的数组"></a>创建特定大小的数组</h2><p>方便快捷创建特定大小的数组</p>
+<p>// 创建一个数组<br>[…Array(3).keys()]</p>
+<p>或者</p>
+<p>Array.from({length: 3}, (val, i) =&gt; i)</p>
+<h2 id="返回一个键盘"><a href="#返回一个键盘" class="headerlink" title="返回一个键盘"></a>返回一个键盘</h2><p>这是一个很难看懂的简洁代码，但是运行后你会惊呆的，他竟然返回一个图形键盘</p>
+<p>// 用字符串返回一个键盘图形<br>(_=&gt;[…”`1234567890-=<del>QWERTYUIOP[]\\~ASDFGHJKL;’</del>ZXCVBNM,./~”].map(x=&gt;(o+=`/${b=’_‘.repeat(w=x&lt;y?2:’ 667699’[x=[“BS”,”TAB”,”CAPS”,”ENTER”][p++]‘SHIFT’,p])}\\`,m+=y+(x+’ ‘).slice(0,w)+y+y,n+=y+b+y+y,l+=’ __‘+b)[73]&amp;&amp;(k.push(l,m,n,o),l=’’,m=n=o=y),m=n=o=y=’’,p=l=k=[])&amp;&amp;k.join`<br>`)()</p>
+<p>参考文章来源：<a target="_blank" rel="noopener" href="https://dev.to/healeycodes/javascript-one-liners-that-make-me-excited-56aj">https://dev.to</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/26/%E4%BD%BF%E7%94%A8javascript-%E8%BF%9B%E8%A1%8C%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/26/%E4%BD%BF%E7%94%A8javascript-%E8%BF%9B%E8%A1%8C%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">使用JavaScript 进行对象拷贝</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-26 07:16:47" itemprop="dateCreated datePublished" datetime="2019-04-26T07:16:47+08:00">2019-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>对象是 JavaScript 的基本块。对象是属性的集合，属性是键值对。JavaScript 中的几乎所有对象都是位于原型链顶部 <code>Object</code> 的实例。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>如你所知，赋值运算符不会创建一个对象的副本，它只分配一个引用，我们来看下面的代码：</p>
+<p>let obj = {<br>    a: 1,<br>    b: 2,<br>};<br>let copy = obj;<br>obj.a = 5;<br>console.log(copy.a);<br>// Result<br>// a = 5;</p>
+<p><code>obj</code> 变量是一个新对象初始化的容器。<code>copy</code> 变量指向同一个对象，是对该对象的引用。所以现在有两种方式可以访问这个 <code>&#123; a: 1, b: 2, &#125;</code> 对象。你必须通过 <code>obj</code> 变量或 <code>copy</code> 变量，无论你是通过何种方式对这个对象进行的任何操作都会影响该对象。 不变性（Immutability）最近被广泛地谈论，这个很重要！上面示例的方法消除了任何形式的不变性，如果原始对象被你的代码的另一部分使用，则可能导致bug。</p>
+<h2 id="复制对象的原始方式"><a href="#复制对象的原始方式" class="headerlink" title="复制对象的原始方式"></a>复制对象的原始方式</h2><p>复制对象的原始方法是循环遍历原始对象，然后一个接一个地复制每个属性。我们来看看这段代码：</p>
+<p>function copy(mainObj) {<br>    let objCopy = {}; // objCopy will store a copy of the mainObj<br>    let key;</p>
+<pre><code>for (key in mainObj) &#123;
+    objCopy\[key\] = mainObj\[key\]; // copies each property to the objCopy object
+&#125;
+return objCopy;
+</code></pre>
+<p>}</p>
+<p>const mainObj = {<br>    a: 2,<br>    b: 5,<br>    c: {<br>        x: 7,<br>        y: 4,<br>    },<br>}</p>
+<p>console.log(copy(mainObj));</p>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><ol>
+<li> <code>objCopy</code> 对象具有一个新的 <code>Object.prototype</code>方法，这与 <code>mainObj</code> 对象的原型方法不同，这不是我们想要的。我们需要精确的拷贝原始对象。</li>
+<li> 属性描述符不能被复制。值为 <code>false</code> 的 “可写(<code>writable</code>)” 描述符在 <code>objCopy</code> 对象中为 <code>true</code> 。</li>
+<li> 上面的代码只复制了 <code>mainObj</code> 的可枚举属性。</li>
+<li> 如果原始对象中的一个属性本身就是一个对象，那么副本和原始对象之间将共享这个对象，从而使其各自的属性指向同一个对象。</li>
+</ol>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>当 <code>writable</code> 设置为<code>false</code>时，表示不可写，也就是说属性不能被修改。</p>
+<p>var o = {}; // Creates a new object</p>
+<p>Object.defineProperty(o, ‘a’, {<br>    value: 37,<br>    writable: false<br>});</p>
+<p>console.log(o.a); // logs 37<br>o.a = 25; // No error thrown<br>// (it would throw in strict mode,<br>// even if the value had been the same)<br>console.log(o.a); // logs 37. The assignment didn’t work.</p>
+<p>// strict mode<br>(function() {<br>    ‘use strict’;<br>    var o = {};<br>    Object.defineProperty(o, ‘b’, {<br>        value: 2,<br>        writable: false<br>    });<br>    o.b = 3; // throws TypeError: “b” is read-only<br>    return o.b; // returns 2 without the line above<br>}());</p>
+<p>正如上例中看到的，修改一个 non-writable 的属性不会改变属性的值，同时也不会报异常。</p>
+<h2 id="浅拷贝对象"><a href="#浅拷贝对象" class="headerlink" title="浅拷贝对象"></a>浅拷贝对象</h2><p>当拷贝源对象的顶级属性被复制而没有任何引用，并且拷贝源对象存在一个值为对象的属性，被复制为一个引用时，那么我说这个对象被浅拷贝。如果拷贝源对象的属性值是对象的引用，则只将该引用值复制到目标对象。 浅层复制将复制顶级属性，但是嵌套对象将在原始（源）对象和副本（目标）对象之间是共享。</p>
+<h3 id="使用-Object-assign-方法"><a href="#使用-Object-assign-方法" class="headerlink" title="使用 Object.assign() 方法"></a>使用 Object.assign() 方法</h3><p>Object.assign() 方法用于将从一个或多个源对象中的所有可枚举的属性值复制到目标对象。</p>
+<p>let obj = {<br>    a: 1,<br>    b: 2,<br>};<br>let objCopy = Object.assign({}, obj);<br>console.log(objCopy);<br>// Result - { a: 1, b: 2 }</p>
+<p>到目前为止。我们创建了一个 <code>obj</code> 的副本。让我们看看是否存在不变性：</p>
+<p>let obj = {<br>    a: 1,<br>    b: 2,<br>};<br>let objCopy = Object.assign({}, obj);</p>
+<p>console.log(objCopy); // result - { a: 1, b: 2 }<br>objCopy.b = 89;<br>console.log(objCopy); // result - { a: 1, b: 89 }<br>console.log(obj); // result - { a: 1, b: 2 }</p>
+<p>在上面的代码中，我们将 <code>objCopy</code> 对象中的属性 <code>b</code> 的值更改为 <code>89</code> ，并且当我们在控制台中 log 修改后的 <code>objCopy</code> 对象时，这些更改仅应用于 <code>objCopy</code> 。我们可以看到最后一行代码检查 <code>obj</code> 对象并没有被修改。这意味着我们已经成功地创建了拷贝源对象的副本，而且它没有引用。</p>
+<h3 id="Object-assign-的陷阱"><a href="#Object-assign-的陷阱" class="headerlink" title="Object.assign()的陷阱"></a>Object.assign()的陷阱</h3><p>不要高兴的太早！ 虽然我们成功地创建了一个副本，一切似乎都正常工作，记得我们讨论了浅拷贝？ 我们来看看这个例子：</p>
+<p>let obj = {<br>    a: 1,<br>    b: {<br>        c: 2,<br>    },<br>}<br>let newObj = Object.assign({}, obj);<br>console.log(newObj); // { a: 1, b: { c: 2} }</p>
+<p>obj.a = 10;<br>console.log(obj); // { a: 10, b: { c: 2} }<br>console.log(newObj); // { a: 1, b: { c: 2} }</p>
+<p>newObj.a = 20;<br>console.log(obj); // { a: 10, b: { c: 2} }<br>console.log(newObj); // { a: 20, b: { c: 2} }</p>
+<p>newObj.b.c = 30;<br>console.log(obj); // { a: 10, b: { c: 30} }<br>console.log(newObj); // { a: 20, b: { c: 30} }</p>
+<p>// Note: newObj.b.c = 30; Read why..</p>
+<h3 id="obj-b-c-30"><a href="#obj-b-c-30" class="headerlink" title="obj.b.c = 30 ?"></a>obj.b.c = 30 ?</h3><p>这就是 <code>Object.assign()</code> 的陷阱。<code>Object.assign</code> 只是浅拷贝。 <code>newObj.b</code> 和 <code>obj.b</code> 都引用同一个对象，没有单独拷贝，而是复制了对该对象的引用。任何对对象属性的更改都适用于使用该对象的所有引用。我们如何解决这个问题？继续阅读…我们会在下一节给出修复方案。 注意：原型链上的属性和不可枚举的属性不能复制。 看这里：</p>
+<p>let someObj = {<br>    a: 2,<br>}</p>
+<p>let obj = Object.create(someObj, {<br>    b: {<br>        value: 2,<br>    },<br>    c: {<br>        value: 3,<br>        enumerable: true,<br>    },<br>});</p>
+<p>let objCopy = Object.assign({}, obj);<br>console.log(objCopy); // { c: 3 }</p>
+<ul>
+<li>  <code>someObj</code> 是在 <code>obj</code> 的原型链，所以它不会被复制。</li>
+<li>  <code>property b</code> 是不可枚举属性。</li>
+<li>  <code>property c</code> 具有 可枚举(enumerable) 属性描述符，所以它可以枚举。 这就是为什么它会被复制。</li>
+</ul>
+<h2 id="深度拷贝对象"><a href="#深度拷贝对象" class="headerlink" title="深度拷贝对象"></a>深度拷贝对象</h2><p>深度拷贝将拷贝遇到的每个对象。副本和原始对象不会共享任何东西，所以它将是原件的副本。以下是使用 <code>Object.assign()</code> 遇到问题的修复方案。让我们探索一下。</p>
+<h3 id="使用-JSON-parse-JSON-stringify-object"><a href="#使用-JSON-parse-JSON-stringify-object" class="headerlink" title="使用 JSON.parse(JSON.stringify(object));"></a>使用 JSON.parse(JSON.stringify(object));</h3><p>这可以修复了我们之前提出的问题。现在 <code>newObj.b</code> 有一个副本而不是一个引用！这是深度拷贝对象的一种方式。 这里有一个例子：</p>
+<p>let obj = {<br>    a: 1,<br>    b: {<br>        c: 2,<br>    },<br>}</p>
+<p>let newObj = JSON.parse(JSON.stringify(obj));</p>
+<p>obj.b.c = 20;<br>console.log(obj); // { a: 1, b: { c: 20 } }<br>console.log(newObj); // { a: 1, b: { c: 2 } } (New Object Intact!)</p>
+<p>不可变性: ?</p>
+<h3 id="陷阱"><a href="#陷阱" class="headerlink" title="陷阱"></a>陷阱</h3><p>不幸的是，此方法不能用于复制用户定义的对象方法。 见下文。</p>
+<h2 id="复制对象方法"><a href="#复制对象方法" class="headerlink" title="复制对象方法"></a>复制对象方法</h2><p>方法是一个对象的属性，它是一个函数。在以上的示例中，我们还没有复制对象的方法。现在让我们尝试一下，使用我们学过的方法来创建副本。</p>
+<p>let obj = {<br>    name: ‘scotch.io’,<br>    exec: function exec() {<br>        return true;<br>    },<br>}</p>
+<p>let method1 = Object.assign({}, obj);<br>let method2 = JSON.parse(JSON.stringify(obj));</p>
+<p>console.log(method1); //Object.assign({}, obj)<br>/* result<br>{<br>  exec: function exec() {<br>    return true;<br>  },<br>  name: “scotch.io”<br>}<br>*/</p>
+<p>console.log(method2); // JSON.parse(JSON.stringify(obj))<br>/* result<br>{<br>  name: “scotch.io”<br>}<br>*/</p>
+<p>结果表明，<code>Object.assign()</code> 可以用于复制对象的方法，而使用 <code>JSON.parse(JSON.stringify(obj))</code> 则不行。</p>
+<h2 id="复制循环引用对象"><a href="#复制循环引用对象" class="headerlink" title="复制循环引用对象"></a>复制循环引用对象</h2><p>循环引用对象是具有引用自身属性的对象。让我们使用已学的复制对象的方法来复制一个循环引用对象的副本，看看它是否有效。</p>
+<h3 id="使用-JSON-parse-JSON-stringify-object-1"><a href="#使用-JSON-parse-JSON-stringify-object-1" class="headerlink" title="使用 JSON.parse(JSON.stringify(object))"></a>使用 JSON.parse(JSON.stringify(object))</h3><p>让我们尝试使用 <code>JSON.parse(JSON.stringify(object))</code>：</p>
+<p>// circular object<br>let obj = {<br>    a: ‘a’,<br>    b: {<br>        c: ‘c’,<br>        d: ‘d’,<br>    },<br>}</p>
+<p>obj.c = obj.b;<br>obj.e = obj.a;<br>obj.b.c = obj.c;<br>obj.b.d = obj.b;<br>obj.b.e = obj.b.c;</p>
+<p>let newObj = JSON.parse(JSON.stringify(obj));</p>
+<p>console.log(newObj);</p>
+<p>结果是： <img src="http://file.w3cbest.com/file/images/circular-object.jpg"> 很明显，<code>JSON.parse(JSON.stringify(object))</code> 不能用于复制循环引用对象。</p>
+<h3 id="使用-Object-assign"><a href="#使用-Object-assign" class="headerlink" title="使用 Object.assign()"></a>使用 Object.assign()</h3><p>让我们尝试使用 <code>Object.assign()</code>：</p>
+<p>// circular object<br>let obj = {<br>    a: ‘a’,<br>    b: {<br>        c: ‘c’,<br>        d: ‘d’,<br>    },<br>}</p>
+<p>obj.c = obj.b;<br>obj.e = obj.a;<br>obj.b.c = obj.c;<br>obj.b.d = obj.b;<br>obj.b.e = obj.b.c;</p>
+<p>let newObj2 = Object.assign({}, obj);</p>
+<p>console.log(newObj2);</p>
+<p>结果是： <img src="http://file.w3cbest.com/file/images/circular-object-tree.jpg"> <code>Object.assign()</code> 适用于浅拷贝循环引用对象，但不适用于深度拷贝。随意浏览浏览器控制台上的循环引用对象树。我相信你会发现很多有趣的工作在那里。</p>
+<h2 id="使用展开操作符-…"><a href="#使用展开操作符-…" class="headerlink" title="使用展开操作符(…)"></a>使用展开操作符(…)</h2><p>ES6已经有了用于数组解构赋值的 rest 元素，和实现的数组字面展开的操作符。看一看这里的数组的展开操作符的实现：</p>
+<p>const array = [<br>    “a”,<br>    “c”,<br>    “d”, {<br>        four: 4<br>    },<br>];<br>const newArray = […array];<br>console.log(newArray);<br>// Result<br>// [“a”, “c”, “d”, { four: 4 }]</p>
+<p>对象字面量的展开操作符目前是<a target="_blank" rel="noopener" href="https://jsbin.com/denadeg/edit?js,console">ECMAScript 的第 3 阶段提案</a>。对象字面量的展开操作符能将源对象中的可枚举的属性复制到目标对象上。下面的例子展示了在提案被接受后复制一个对象是多么的容易。</p>
+<p>let obj = {<br>    one: 1,<br>    two: 2,<br>}</p>
+<p>let newObj = { …z };</p>
+<p>// { one: 1, two: 2 }</p>
+<p>注意：这将只对浅拷贝有效</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在 JavaScript 中复制对象可能是相当艰巨的，特别是如果您刚开始使用 JavaScript 并且不了解该语言的方式。希望本文帮助您了解并避免您可能遇到复制对象的陷阱。如果您有任何库或一段代码可以获得更好的结果，欢迎与社区分享。 文章来源：<a target="_blank" rel="noopener" href="https://scotch.io/bar-talk/copying-objects-in-javascript">https://scotch.io</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/25/10-%E4%B8%AA%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84-javascript-%E9%94%99%E8%AF%AF%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%AE%83%E4%BB%AC%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/25/10-%E4%B8%AA%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84-javascript-%E9%94%99%E8%AF%AF%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%AE%83%E4%BB%AC%EF%BC%89/" class="post-title-link" itemprop="url">10 个最常见的 JavaScript 错误（以及如何避免它们）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-25 14:55:01" itemprop="dateCreated datePublished" datetime="2019-04-25T14:55:01+08:00">2019-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>为了回馈我们的开发者社区，我们查看了数千个项目的数据库，发现了 JavaScript 的 10 大错误。我们将向你展示这些错误的原因，以及如何防止这些错误发生。如果你避免了这些 “陷阱” ，这将使你成为一个更好的开发人员。 由于数据是国王，我们收集，分析并排名前十的 <a target="_blank" rel="noopener" href="https://rollbar.com/error-tracking/javascript/">JavaScript 错误</a>。 Rollbar 会收集每个项目的所有错误，并总结每个项目发生的次数。 我们根据 <a target="_blank" rel="noopener" href="https://rollbar.com/docs/grouping-algorithm/">指纹</a> 对错误进行分组，来做到这一点。基本上，如果第二个错误只是第一个错误的重复，我们会把两个错误分到同一组。 这给用户一个很好的概括，而不是像在日志文件中看到的那些压迫性的一大堆垃圾描述。 我们专注于最有可能影响你和你的用户的错误。 为此，我们通过横跨不同公司的项目数来排列错误。 如果我们只查看每个错误发生的总次数，那么大流量的项目可能会淹没与大多数读者无关的错误的数据集。 以下是排名前 10 的 JavaScript 错误： <img src="http://file.w3cbest.com/file/images/javascript-error-graph.png"> 为了便于阅读，没有花大段的文字来描述每个错误。让我们深入到每一个错误，来确定什么可以导致它，以及如何避免它发生。</p>
+<h2 id="1-Uncaught-TypeError-Cannot-read-property"><a href="#1-Uncaught-TypeError-Cannot-read-property" class="headerlink" title="1.Uncaught TypeError: Cannot read property"></a>1.Uncaught TypeError: Cannot read property</h2><p>如果你是一个 JavaScript 开发人员，你可能已经看到这个错误的次数比你敢承认的要多。当你读取一个属性或调用一个未定义的对象的方法时，这个错误会在 Chrome 中发生。你可以在 Chrome 开发者工具的控制台中轻松测试。 <img src="http://file.w3cbest.com/file/images/cannot-read-property.png" alt="Screenshot of Uncaught TypeError: Cannot read property"> 发生这种情况的原因很多，但常见的一种情况是在渲染UI组件时不恰当地初始化了 state(状态)。 我们来看一个在真实应用程序中如何发生的例子。 我们将选择 React，但不正确初始化的原则也适用于Angular，Vue或任何其他框架。</p>
+<p>class Quiz extends Component {<br>    componentWillMount() {<br>        axios.get(‘/thedata’).then(res =&gt; {<br>            this.setState({ items: res.data });<br>        });<br>    }</p>
+<pre><code>render() &#123;
+    return (
+        &lt;ul&gt;
+    &#123;this.state.items.map(item =&gt;
+      &lt;li key=&#123;item.id&#125;&gt;&#123;item.name&#125;&lt;/li&gt;
+    )&#125;
+  &lt;/ul&gt;
+    );
+&#125;
+</code></pre>
+<p>}</p>
+<p>这里有两件重要的事情要实现：</p>
+<ol>
+<li> 组件的状态（例如 <code>this.state</code>）从 undefined 开始。</li>
+<li> 当您异步获取数据时，组件在数据加载之前至少会渲染一次，而不管它是在构造函数 <code>componentWillMount</code> 还是 <code>componentDidMount</code> 中获取的。 当 Quiz 第一次渲染时，<code>this.state.items</code> 是 <code>undefined</code> 。 这又意味着 <code>ItemList</code> 将 items 定义为 <code>undefined</code> ，并且在控制台中出现错误 – “Uncaught TypeError: Cannot read property ‘map’ of undefined”。</li>
+</ol>
+<p>这个问题很容易解决。最简单的方法：在构造函数中用合理的默认值来初始化 state。</p>
+<p>class Quiz extends Component {<br>    // Added this:<br>    constructor(props) {<br>        super(props);</p>
+<pre><code>    // Assign state itself, and a default value for items
+    this.state = &#123;
+        items: \[\]
+    &#125;;
+&#125;
+
+componentWillMount() &#123;
+    axios.get(&#39;/thedata&#39;).then(res =&gt; &#123;
+        this.setState(&#123; items: res.data &#125;);
+    &#125;);
+&#125;
+
+render() &#123;
+    return (
+        &lt;ul&gt;
+    &#123;this.state.items.map(item =&gt;
+      &lt;li key=&#123;item.id&#125;&gt;&#123;item.name&#125;&lt;/li&gt;
+    )&#125;
+  &lt;/ul&gt;
+    );
+&#125;
+</code></pre>
+<p>}</p>
+<p>你的应用中的确切代码可能会有所不同，但是我们希望我们已经给了你足够的线索，来解决或避免在你的应用程序中出现这个问题。如果你还没有碰到，请继续阅读，因为我们将在下面覆盖更多相关错误的示例。</p>
+<h2 id="2-TypeError-‘undefined’-is-not-an-object-evaluating"><a href="#2-TypeError-‘undefined’-is-not-an-object-evaluating" class="headerlink" title="2.TypeError: ‘undefined’ is not an object (evaluating"></a>2.TypeError: ‘undefined’ is not an object (evaluating</h2><p>这是在 Safari 中读取属性或调用未定义对象上的方法时发生的错误。你可以在 Safari Developer Console 中轻松测试。这与 Chrome 的上述错误基本相同，但 Safari 使用不同的错误消息。 <img src="http://file.w3cbest.com/file/images/undefined-is-not-an-object.png" alt="Screenshot of TypeError: ‘undefined’ is not an object"></p>
+<h2 id="3-TypeError-null-is-not-an-object-evaluating"><a href="#3-TypeError-null-is-not-an-object-evaluating" class="headerlink" title="3.TypeError: null is not an object (evaluating"></a>3.TypeError: null is not an object (evaluating</h2><p>这是在Safari中读取属性或调用 空对象(null) 上的方法时发生的错误。您可以在 Safari Developer Console中轻松测试。 <img src="http://file.w3cbest.com/file/images/null-is-not-an-object.png" alt="Screenshot of TypeError: null is not an object"> 有趣的是，在 JavaScript 中，null 和 undefined 是不一样的，这就是为什么我们看到两个不同的错误信息。 undefined 通常是一个尚未分配的变量，而 null 表示该值为空。 要验证它们不相等，请尝试使用严格相等运算符 === ： <img src="http://file.w3cbest.com/file/images/null-is-not-an-object1.png" alt="Screenshot of TypeError: null is not an object"> 在现实的例子中，这种错误可能发生的一种场景是：如果在加载元素之前尝试在 JavaScript 中使用 DOM 元素。这是因为 DOM API 对于空白的对象引用返回 null 。 任何执行和处理 DOM 元素的 JS 代码都应在 DOM 元素创建后执行。JS 代码按照 HTML 中的规定从上到下进行解析。所以，如果 DOM 元素之前有一个 script 标签， script 标签内的JS代码将在浏览器解析 HTML 页面时执行。如果在加载脚本之前尚未创建 DOM 元素，则会出现此错误。 在这个例子中，我们可以通过添加一个事件监听器来解决这个问题，这个监听器会在页面准备好的时候通知我们。一旦 <code>addEventListener</code> 被触发，<code>init()</code> 方法就可以使用 DOM 元素。</p>
+<script>
+function init() {
+    var myButton = document.getElementById("myButton");
+    var myTextfield = document.getElementById("myTextfield");
+    myButton.onclick = function() {
+        var userName = myTextfield.value;
+    }
+}
+document.addEventListener('readystatechange', function() {
+    if (document.readyState === "complete") {
+        init();
+    }
+});
+</script>
+
+<form>
+<input type="text" id="myTextfield" placeholder="Type your name" />
+<input type="button" id="myButton" value="Go" />
+</form>
+
+<h2 id="4-unknown-Script-error"><a href="#4-unknown-Script-error" class="headerlink" title="4.(unknown): Script error"></a>4.(unknown): Script error</h2><p>当一个未捕获的 JavaScript 错误违反了跨域策略时，就会出现这类脚本错误。例如，如果你将 JavaScript 代码托管在 CDN 上，任何未被捕获的错误（这个会冒泡到 window.onerror 处理程序，而不是在 try-catch 捕获）将被报告为简单的 “脚本错误” ，而不会包含有用的信息。这是一种浏览器安全措施，旨在防止跨域传递数据，否则将不允许进行通信。 如果你要获取到真实的错误消息，请执行以下操作： <strong>1.发送 Access-Control-Allow-Origin 头信息</strong> 将 <code>Access-Control-Allow-Origin</code> 头信息设置为 <code>*</code> ，表示可以从任何域正确访问资源。如有必要，您可以用你的域名替换 <code>*</code>，例如 <code>Access-Control-Allow-Origin: www.example.com</code> 。但是，处理多个域名会有些棘手，如果你使用 CDN ，由此出现的缓存问题可能会让你感觉不值得付出努力。 <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/1653308/access-control-allow-origin-multiple-origin-domains">点击这里</a> 看到更多。 下面是一些如何在不同环境中设置 Access-Control-Allow-Origin 头信息的例子。 <strong>Apache</strong> 在 JavaScript 文件所在的文件夹中，使用以下内容创建一个 <code>.htaccess</code> 文件：</p>
+<p>Header add Access-Control-Allow-Origin “*“</p>
+<p><strong>Nginx</strong> 将 add_header 指令添加到提供 JavaScript 文件的位置块中：</p>
+<p>location~ ^ /assets/ {<br>    add_header Access - Control - Allow - Origin * ;<br>}</p>
+<p><strong>HAProxy</strong> 将以下内容添加到提供资源服务的后端，并提供 JavaScript 文件：</p>
+<p>rspadd Access-Control-Allow-Origin:\ *</p>
+<p><strong>2.在 script 标签上设置 crossorigin=”anonymous” 属性</strong> 在你的 HTML 源代码中，对于你设置的 <code>Access-Control-Allow-Origin</code> 头信息的每个脚本，在 script 标签上设置 <code>crossorigin=&quot;anonymous&quot;</code> 。在添加脚本标记上的 crossorigin 属性之前，请确保验证上述头信息是否正确发送。在 Firefox 中，如果存在 crossorigin 属性，但 <code>Access-Control-Allow-Origin</code> 头信息不存在，则脚本将不会执行。</p>
+<h2 id="5-TypeError-Object-doesn’t-support-property"><a href="#5-TypeError-Object-doesn’t-support-property" class="headerlink" title="5.TypeError: Object doesn’t support property"></a>5.TypeError: Object doesn’t support property</h2><p>这是你在调用未定义方法时发生在IE中的错误。你可以在IE开发者工具的控制台进行测试。 <img src="http://file.w3cbest.com/file/images/object-doesnot-support-property.png" alt="Screenshot of TypeError: Object doesn’t support property"> 这相当于 Chrome 中的错误：”TypeError: ‘undefined’ is not a function” 。是的，对于相同的逻辑错误，不同的浏览器可能会有不同的错误消息。 在使用 JavaScript 命名空间的Web应用程序中，这中错误对于 IE 来说是一个常见问题。在这种情况下，这种问题 99.9％ 是 IE 无法将当前名称空间内的方法绑定到 <code>this</code> 关键字。例如，如果你的 JS 命名空间 <code>Rollbar</code> 中有 <code>isAwesome</code> 方法。通常，如果你在 <code>Rollbar</code> 命名空间内，则可以使用以下语法调用 <code>isAwesome</code> 方法：</p>
+<p>this.isAwesome();</p>
+<p>Chrome，Firefox 和 Opera 会欣然地接受这个语法。 IE 则不会。 因此，使用 JS 命名空间时最安全的选择是始终以实际命名空间作为前缀。</p>
+<p>Rollbar.isAwesome();</p>
+<h2 id="6-TypeError-‘undefined’-is-not-a-function"><a href="#6-TypeError-‘undefined’-is-not-a-function" class="headerlink" title="6.TypeError: ‘undefined’ is not a function"></a>6.TypeError: ‘undefined’ is not a function</h2><p>当你调用未定义的函数时，在 Chrome 中会发生这种错误。 你可以在 Chrome 开发者工具的控制台和 Mozilla Firefox 开发者工具的控制台中对此进行测试。 <img src="http://file.w3cbest.com/file/images/undefined-is-nota-function.png" alt="Screenshot of undefined is not a function"> 随着 JavaScript 编码技术和设计模式在这些年来越来越复杂，回调和闭包内的自引用作用域也相应增加，这是使用 this/that 混乱的一个相当常见的原因。 考虑这个示例代码片段：</p>
+<p>function clearBoard() {<br>    alert(“Cleared”);<br>}<br>document.addEventListener(“click”, function() {<br>    this.clearBoard(); // what is “this” ?<br>});</p>
+<p>如果你执行上面的代码然后点击页面，会导致以下错误： “Uncaught TypeError: this.clearBoard is not a function”。原因是正在执行的匿名函数在 document 上下文中， 而 <code>clearBoard</code> 定义在 window 中。 一个传统的，旧浏览器兼容的解决方案是简单地将你的 <code>this</code> 保存在一个变量，然后该变量可以被闭包继承。 例如：</p>
+<p>var self = this; // save reference to ‘this’, while it’s still this!<br>document.addEventListener(“click”, function() {<br>    self.clearBoard();<br>});</p>
+<p>或者，在较新的浏览器中，可以使用 <code>bind()</code> 方法传递适当的引用：</p>
+<p>document.addEventListener(“click”,this.clearBoard.bind(this));</p>
+<h2 id="7-Uncaught-RangeError-Maximum-call-stack"><a href="#7-Uncaught-RangeError-Maximum-call-stack" class="headerlink" title="7.Uncaught RangeError: Maximum call stack"></a>7.Uncaught RangeError: Maximum call stack</h2><p>这是 Chrome 在一些情况下会发生的错误。一个情况是当你调用一个不终止的递归函数时。你可以在Chrome开发者工具的控制台中进行测试。 <img src="http://file.w3cbest.com/file/images/maximum-call-stack.png" alt="Screenshot of Uncaught RangeError: Maximum call stack"> 如果你将一个值传递给超出范围的函数，也可能会发生这种情况。许多函数只接受其输入值的特定范围的数字。 例如，<code>Number.toExponential(digits)</code> 和 <code>Number.toFixed(digits)</code> 接受0到20之间的数字， 和 <code>Number.toPrecision(digits)</code> 接受从1到21的数字。</p>
+<p>var a = new Array(4294967295); //OK<br>var b = new Array(-1); //range error</p>
+<p>var num = 2.555555;<br>document.writeln(num.toExponential(4)); //OK<br>document.writeln(num.toExponential(-2)); //range error!</p>
+<p>num = 2.9999;<br>document.writeln(num.toFixed(2)); //OK<br>document.writeln(num.toFixed(25)); //range error!</p>
+<p>num = 2.3456;<br>document.writeln(num.toPrecision(1)); //OK<br>document.writeln(num.toPrecision(22)); //range error!</p>
+<h2 id="8-TypeError-Cannot-read-property-‘length’"><a href="#8-TypeError-Cannot-read-property-‘length’" class="headerlink" title="8.TypeError: Cannot read property ‘length’"></a>8.TypeError: Cannot read property ‘length’</h2><p>这是 Chrome 中发生的错误，因为读取未定义变量的长度属性。你可以在Chrome开发者工具的控制台中进行测试。 <img src="http://file.w3cbest.com/file/images/cannot-read-property-length.png" alt="Screenshot of TypeError: Cannot read property ‘length’"> 你通常会在数组中找到定义的长度，但是如果数组未初始化或变量名隐藏在另一个上下文中，则可能会遇到此错误。让我们用下面的例子来理解这个错误。</p>
+<p>var testArray = [“Test”];<br>function testFunction(testArray) {<br>    for (var i = 0; i &lt; testArray.length; i++) {<br>        console.log(testArray[i]);<br>    }<br>}<br>testFunction();</p>
+<p>当你用参数声明一个函数时，这些参数变成了本地参数。这意味着即使你有名称为 testArray 的变量，函数中具有相同名称的参数仍将被视为 本地参数。 你有两种方法可以解决这个问题： 1，删除函数声明语句中的参数（事实证明如果你想访问那些在函数之外声明的变量，你不需要将其作为你函数的参数传入）：</p>
+<p>var testArray = [“Test”];<br>/* Precondition: defined testArray outside of a function */<br>function testFunction( /* No params */ ) {<br>    for (var i = 0; i &lt; testArray.length; i++) {<br>        console.log(testArray[i]);<br>    }<br>}<br>testFunction();</p>
+<p>2，调用函数时，将我们声明的数组传递给它：</p>
+<p>var testArray = [“Test”];<br>function testFunction(testArray) {<br>    for (var i = 0; i &lt; testArray.length; i++) {<br>        console.log(testArray[i]);<br>    }<br>}<br>testFunction(testArray);</p>
+<h2 id="9-Uncaught-TypeError-Cannot-set-property"><a href="#9-Uncaught-TypeError-Cannot-set-property" class="headerlink" title="9.Uncaught TypeError: Cannot set property"></a>9.Uncaught TypeError: Cannot set property</h2><p>当我们尝试访问一个未定义的变量时，它总是返回 undefined ，我们不能获取或设置任何 undefined 的属性。在这种情况下，应用程序将抛出 “Uncaught TypeError cannot set property of undefined.” 错误。 例如，在Chrome浏览器中： <img src="http://file.w3cbest.com/file/images/cannot-set-property.png" alt="Screenshot of Uncaught TypeError: Cannot set property"> 如果 test 对象不存在，错误将会抛出 “Uncaught TypeError cannot set property of undefined.” 。</p>
+<h2 id="10-ReferenceError-event-is-not-defined"><a href="#10-ReferenceError-event-is-not-defined" class="headerlink" title="10.ReferenceError: event is not defined"></a>10.ReferenceError: event is not defined</h2><p>当你尝试访问未定义的变量或超出当前作用域的变量时，会引发此错误。你可以在Chrome浏览器中轻松测试。 <img src="http://file.w3cbest.com/file/images/event-is-not-defined.png" alt="Screenshot of ReferenceError: event is not defined"> 如果你在使用事件处理时遇到这种错误，请确保你使用传入的事件对象作为参数。像IE这样的老浏览器提供了一个全局变量事件， Chrome 会自动将事件变量附加到处理程序。Firefox 不会自动添加它。像jQuery这样的库试图规范化这种行为。不过，最佳实践是使用传递到事件处理程序函数的方法。</p>
+<p>document.addEventListener(“mousemove”, function(event) {<br>    console.log(event);<br>})</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>事实证明很多都是一些 null 或 undefined 错误。如果您使用严格的编译器选项，比如 Typescript 这样的好的静态类型检查系统可以帮助您避免它们。它可以警告你，如果一个类型是预期的，但尚未定义。 我们希望你学到了一些新的东西，并且可以避免将来出现这些错误，或者本指南帮助你解决了头痛的问题。尽管如此，即使有最佳做法，生产环境中还是会出现意想不到的错误。了解影响用户的错误非常重要，并有很好的工具来快速解决它们。 Rollbar 为你提供生产环境 JavaScript 错误的可视性，并为您提供更多上下文来快速解决它们。例如，它提供了额外的调试功能，例如 <a target="_blank" rel="noopener" href="https://rollbar.com/blog/introducing-javascript-telemetry/">遥测功能</a>，可以告诉你用户的浏览器发生了什么导致错误。这可以使在本地开发者工具的控制台之外发现问题。你可以在 Rollbar 的 <a target="_blank" rel="noopener" href="https://rollbar.com/error-tracking/javascript/">JavaScript 应用程序的完整功能列表</a> 中了解更多信息。 文章来源：<a target="_blank" rel="noopener" href="https://rollbar.com/blog/top-10-javascript-errors/">https://rollbar.com/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/25/css-grid-vs-flexbox%EF%BC%9A%E5%AE%9E%E7%94%A8%E6%AF%94%E8%BE%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/25/css-grid-vs-flexbox%EF%BC%9A%E5%AE%9E%E7%94%A8%E6%AF%94%E8%BE%83/" class="post-title-link" itemprop="url">CSS Grid VS Flexbox：实用比较</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-25 08:29:18" itemprop="dateCreated datePublished" datetime="2019-04-25T08:29:18+08:00">2019-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>不久以前，所有 HTML 页面的布局还都是通过 tables、floats 以及其他的 CSS 属性来完成的。面对复杂页面的布局，却没有很好的办法。 然而 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/490.html">Flexbox</a> 的出现，便轻松的解决了复杂的 Web 布局。它是一种专注于创建稳定的响应式页面的布局模式，并可以轻松地正确对齐元素及其内容。如今已是大多数 Web 开发人员首选的 CSS 布局方式。 现在，又出现了一个构建 HTML 最佳布局体系的新竞争者。（霸主地位正在争夺中…）它就是强大的 CSS <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">Grid 布局</a>。直到本月月底，它也将在 Firefox 52 和 Chrome 57 上得到原生支持，相信不久也会得到其他浏览器兼容性的支持。</p>
+<h2 id="基本布局测试"><a href="#基本布局测试" class="headerlink" title="基本布局测试"></a>基本布局测试</h2><p>要了解这两个体系构建布局的方式，我们将通过相同的 HTML 页面，利用不同的布局方式 （即 Flexbox 与 CSS Grid）为大家区分。同时，你也可以通过文章顶部附近的下载按钮，下载演示项目进行对比，或者通过在线演示来察看它们： <a target="_blank" rel="noopener" href="https://demo.tutorialzine.com/2017/03/css-grid-vs-flexbox/"><img src="http://file.w3cbest.com/file/images/html-layout.png"></a> 该页面的设计相对比较简单 – 它是由一个居中的容器组成，在其内部则包含了标头、主要内容部分、侧边栏和页脚。接下来，我们要完成同时保持 CSS 和 HTML 尽可能整洁的挑战事项：</p>
+<ol>
+<li> 在布局中将四个主要的部分进行定位。</li>
+<li> 将页面变为响应式页面；</li>
+<li> 对齐标头：导航朝左对齐，按钮向右对齐。</li>
+</ol>
+<p>如你所见，为了便于比较，我们将所有事项从简处理。那么，让我们从第一个挑战事项开始吧！</p>
+<h2 id="挑战-1：定位页面部分"><a href="#挑战-1：定位页面部分" class="headerlink" title="挑战 1：定位页面部分"></a>挑战 1：定位页面部分</h2><p><strong>Flexbox 解决方案</strong> 我们将从 Flexbox 解决方案开始。我们将为容器添加 display: flex 来指定为 Flex 布局，并指定子元素的垂直方向。</p>
+<p>.container {<br>    display: flex;<br>    flex-direction: column;<br>}</p>
+<p>现在我们需要使主要内容部分和侧边栏彼此相邻。由于 Flex 容器通常是单向的，所以我们需要添加一个包装器元素。</p>
+<header></header>
+<div class="main-and-sidebar-wrapper">
+    <section class="main"></section>
+    <aside class="sidebar"></aside>
+</div>
+<footer></footer>
+
+<p>然后，我们给包装器在反向添加 display: flex 和 flex-direction 属性。</p>
+<p>.main-and-sidebar-wrapper {<br>    display: flex;<br>    flex-direction: row;<br>}</p>
+<p>最后一步，我们将设置主要内容部分与侧边栏的大小。通过 Flex 实现后，主要内容部分会比侧边栏大三倍。</p>
+<p>.main {<br>    flex: 3;<br>    margin-right: 60px;<br>}<br>.sidebar {<br>    flex: 1;<br>}</p>
+<p>如你所见，Flex 将其很好的实现了出来，但是仍需要相当多的 CSS 属性，并借助了额外的 HTML 元素。那么，让我们看看 CSS Grid 如何实现的。 <strong>CSS Grid 解决方案</strong> 针对本项目，有几种不同的 CSS Grid 解决方法，但是我们将使用网格模板区域语法来实现，因为它似乎最适合我们要完成的工作。 首先，我们将定义四个网格区域，所有的页面各一个：</p>
+<header></header>
+<!-- Notice there isn't a wrapper this time -->
+<section class="main"></section>
+<aside class="sidebar"></aside>
+<footer></footer>
+
+<p>header {<br>    grid-area: header;<br>}<br>.main {<br>    grid-area: main;<br>}<br>.sidebar {<br>    grid-area: sidebar;<br>}<br>footer {<br>    grid-area: footer;<br>}</p>
+<p>然后，我们会设置网格并分配每个区域的位置。初次接触 Grid 布局的朋友，可能感觉以下的代码会有些复杂，但当你了解了网格体系，就很容易掌握了。</p>
+<p>.container {<br>    display: grid;</p>
+<pre><code>/\* Define the size and number of columns in our grid. 
+</code></pre>
+<p>The fr unit works similar to flex:<br>fr columns will share the free space in the row in proportion to their value.<br>We will have 2 columns - the first will be 3x the size of the second. */<br>    grid-template-columns: 3fr 1fr;</p>
+<pre><code>/\* Assign the grid areas we did earlier to specific places on the grid. 
+</code></pre>
+<p>First row is all header.<br>Second row is shared between main and sidebar.<br>Last row is all footer. */<br>    grid-template-areas:<br>        “header header”<br>        “main sidebar”<br>        “footer footer”;</p>
+<pre><code>/\* The gutters between each grid cell will be 60 pixels. \*/
+grid-gap: 60px;
+</code></pre>
+<p>}</p>
+<p>就是这样！ 我们现在将遵循上述结构进行布局，甚至不需要我们处理任何的 margins 或 paddings 。</p>
+<h2 id="挑战-2：将页面变为响应式页面"><a href="#挑战-2：将页面变为响应式页面" class="headerlink" title="挑战 2：将页面变为响应式页面"></a>挑战 2：将页面变为响应式页面</h2><p><strong>Flexbox 解决方案</strong> 这一步的执行与上一步密切相关。对于 Flexbox 解决方案，我们将更改包装器的 flex-direction 属性，并调整一些 margins。</p>
+<p>@media (max-width: 600px) {<br>    .main-and-sidebar-wrapper {<br>        flex-direction: column;<br>    }<br>    .main {<br>        margin-right: 0;<br>        margin-bottom: 60px;<br>    }<br>}</p>
+<p>由于网页比较简单，所以我们在媒体查询上不需要太多的重写。但是，如果遇见更为复杂的布局，那么将会重新的定义相当多的内容。 <strong>CSS Grid 解决方案</strong> 由于我们已经定义了网格区域，所以我们只需要在媒体查询中重新排序它们。 我们可以使用相同的列设置。</p>
+<p>@media (max-width: 600px) {<br>    .container {<br>        /* Realign the grid areas for a mobile layout. */<br>        grid-template-areas:<br>            “header header”<br>            “main main”<br>            “sidebar sidebar”<br>            “footer footer”;<br>    }<br>}</p>
+<p>或者，我们可以从头开始重新定义整个布局。</p>
+<p>@media (max-width: 600px) {<br>    .container {<br>        /* Redefine the grid into a single column layout. */<br>        grid-template-columns: 1fr;<br>        grid-template-areas:<br>            “header”<br>            “main”<br>            “sidebar”<br>            “footer”;<br>    }<br>}</p>
+<h2 id="挑战-3：对齐标头组件"><a href="#挑战-3：对齐标头组件" class="headerlink" title="挑战 3：对齐标头组件"></a>挑战 3：对齐标头组件</h2><p><strong>Flexbox 解决方案</strong> 我们的标头包含了导航和一个按钮的相关链接。我们希望导航朝左对齐，按钮向右对齐。而导航中的链接务必正确对齐，且彼此相邻。</p>
+<header>
+    <nav>
+        <li><a href="#">
+                <h1>Logo</h1>
+            </a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+    </nav>
+    <button>Button</button>
+</header>
+
+<p>我们曾在一篇较早的文章中使用 Flexbox 做了类似的布局：响应式标头最简单的制作方法。这个技术很简单：</p>
+<p>header {<br>    display: flex;<br>    justify-content: space-between;<br>}</p>
+<p>现在导航列表和按钮已正确对齐。下来我们将使 内的 items 进行水平移动。这里最简单的方法就是使用 display：inline-block 属性，但目前我们需要使用一个 Flexbox 解决方案：</p>
+<p>header nav {<br>    display: flex;<br>    align-items: baseline;<br>}</p>
+<p>仅两行代码就搞定了！ 还不错吧。接下来让我们看看如何使用 CSS Grid 解决它。 <strong>CSS Grid 解决方案</strong> 为了拆分导航和按钮，我们要为标头定义 display: grid 属性，并设置一个 2 列的网格。同时，我们还需要两行额外的 CSS 代码，将它们定位在相应的边界上。</p>
+<p>header {<br>    display: grid;<br>    grid-template-columns: 1fr 1fr;<br>}<br>header nav {<br>    justify-self: start;<br>}<br>header button {<br>    justify-self: end;<br>}</p>
+<p>至于导航中的内链 – 这是我们使用 CSS grid 最好的布局展示： <img src="http://file.w3cbest.com/file/images/css-grid-header.png"> 虽然链接为内链形式，但它们不能正确的对齐。由于 CSS grid 不具备基线选项（不像 Flexbox 具备的 align-items 属性），所以我们只能再定义一个子网格。</p>
+<p>header nav {<br>    display: grid;<br>    grid-template-columns: auto 1fr 1fr;<br>    align-items: end;<br>}</p>
+<p>CSS grid 在此步骤中，存在一些明显的布局上的缺陷。但你也不必过于惊讶。因为它的目标是对齐容器，而不是内部的内容。所以，用它来处理收尾工作，或许不是很好的选择哦。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>如果你已经浏览完整篇文章，那么结论不会让你感到意外。事实上，并不存在最好的布局方式。Flexbox 和 CSS grid 是两种不同的布局形式，我们应该根据具体的场景将它们搭配使用，而不是相互替代。 对于那些跳过文章只想看结论的朋友（不用担心，我们也这样做），这里是通过实例比较后的总结：</p>
+<ul>
+<li>  CSS Grid 适用于布局整体页面。它们使页面的布局变得非常容易，甚至可以处理一些不规则和非对称的设计。</li>
+<li>  Flexbox 非常适合对齐元素内的内容。你可以使用 Flexbox 来定位设计上一些较小的细节问题。</li>
+<li>  CSS Grid 适用于二维布局（行与列）。</li>
+<li>  Flexbox 适用于一维布局（行或列）。</li>
+<li>  同时学习它们，并配合使用。</li>
+</ul>
+<p>原文地址：<a target="_blank" rel="noopener" href="https://tutorialzine.com/2017/03/css-grid-vs-flexbox">https://tutorialzine.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/" class="post-title-link" itemprop="url">JavaScript高级程序设计——闭包</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-24 08:30:24" itemprop="dateCreated datePublished" datetime="2019-04-24T08:30:24+08:00">2019-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:22:31" itemprop="dateModified" datetime="2021-08-30T11:22:31+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有很多人搞不清匿名函数和闭包这两个概念，经常混用。闭包是指有权访问另一个函数作用域中的变量的函数。匿名函数就是没有实际名字的函数。</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p><strong>概念</strong> 闭包，其实是一种语言特性，它是指的是程序设计语言中，允许将函数看作对象，然后能像在对象中的操作搬在函数中定义实例（局部）变量，而这些变量能在函数中保存到函数的实例对象销毁为止，其它代码块能通过某种方式获取这些实例（局部）变量的值并进行应用扩展。 <strong>条件</strong> 闭包是允许函数访问局部作用域之外的数据。即使外部函数已经退出，外部函数的变量仍可以被内部函数访问到。 因此闭包的实现需要三个条件：</p>
+<ol>
+<li> 内部函数实用了外部函数的变量</li>
+<li> 外部函数已经退出</li>
+<li> 内部函数可以访问</li>
+</ol>
+<p>function a() {<br>    var x = 0;<br>    return function(y) {<br>        x = x + y;<br>        // return x;<br>        console.log(x);<br>    }<br>}<br>var b = a();<br>b(1); //1<br>b(1); //2</p>
+<p>上述代码在执行的时候，<code>b</code>得到的是闭包对象的引用，虽然<code>a</code>执行完毕后，但是<code>a</code>的活动对象由于闭包的存在并没有被销毁，在执行<code>b(1)</code>的时候，仍然访问到了x变量，并将其加1，若再执行<code>b(1)</code>，则<code>x</code>是<code>2</code>，因为闭包的引用<code>b</code>并没有消除。（后面会解释，闭包返回了函数，函数可以创建独立的作用域）</p>
+<blockquote>
+<p>闭包，其实就是指程序语言中能让代码调用已运行的函数中所定义的局部变量。</p>
+</blockquote>
+<p>但是你只需要知道应用的两种情况即可——函数作为返回值，函数作为参数传递。</p>
+<p>function fn() {<br>    var max = 10;<br>    return function bar(x) {<br>        if (x &gt; max) {<br>            console.log(x);<br>        }<br>    };<br>}<br>var f1 = fn();<br>f1(15);</p>
+<p>如上代码，<code>bar</code>函数作为返回值，赋值给<code>f1</code>变量。执行<code>f1(15)</code>时，用到了<code>fn</code>作用域下的<code>max</code>变量的值。至于如何跨作用域取值，可以参考上一篇文章。</p>
+<p>var max = 10,<br>    fn = function(x) {<br>        if (x &gt; max) {<br>            console.log(x); //15<br>        }<br>    };<br>(function(f) {<br>    var max = 100;<br>    f(15);<br>})(fn);</p>
+<p>如上代码中，<code>fn</code>函数作为一个参数被传递进入另一个函数，赋值给f参数。执行<code>f(15)</code>时，max变量的取值是<code>10</code>而不是<code>100</code>。 上一篇讲到自由变量跨作用域取值时，曾经强调过：要去创建这个函数的作用域取值，而不是“父作用域”。理解了这一点，以上两端代码中，自由变量如何取值应该比较简单. 另外，讲到闭包，除了结合着作用域之外，还需要结合着执行上下文栈来说一下。 在前面讲执行上下文栈时，我们提到当一个函数被调用完成之后，其执行上下文环境将被销毁，其中的变量也会被同时销毁。</p>
+<blockquote>
+<p>有些情况下，函数调用完成之后，其执行上下文环境不会接着被销毁。这就是需要理解闭包的核心内容。</p>
+</blockquote>
+<p>可以拿本文的之前代码（只做注释修改）来分析一下。</p>
+<p>1  //全局作用域<br>2  function fn() {<br>3      var max = 10;<br>4      // fn作用域<br>5      return function bar(x) {<br>6          if (x &gt; max) {<br>7              console.log(x);<br>8          }<br>9      }; //bar作用域<br>10 }<br>11 var f1 = fn();<br>12 f1(15);</p>
+<p>全局作用域为：代码1-12行；fn作用域为：代码2-10行；<code>bar</code>作用域为：代码5-9行。 <strong>举例</strong> 第一步，代码执行前生成全局上下文环境，并在执行时对其中的变量进行赋值。此时全局上下文环境是活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-1.jpg"> 第二步，执行第17行代码时，调用fn()，产生fn()执行上下文环境，压栈，并设置为活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-2.jpg"> 第三步，执行完第17行，<code>fn()</code>调用完成。按理说应该销毁掉<code>fn()</code>的执行上下文环境，但是这里不能这么做。注意，重点来了：</p>
+<blockquote>
+<p>因为执行<code>fn()</code>时，返回的是一个函数。函数的特别之处在于可以创建一个独立的作用域。而正巧合的是，返回的这个函数体中，还有一个自由变量<code>max</code>要引用<code>fn</code>作用域下的<code>fn()</code>上下文环境中的max。因此，这个max不能被销毁，销毁了之后bar函数中的max就找不到值了。</p>
+</blockquote>
+<p>因此，这里的fn()上下文环境不能被销毁，还依然存在与执行上下文栈中。 ——即，执行到第18行时，全局上下文环境将变为活动状态，但是<code>fn()</code>上下文环境依然会在执行上下文栈中。另外，执行完第18行，全局上下文环境中的<code>max</code>被赋值为<code>100</code>。如下图： <img src="http://file.w3cbest.com/file/images/js-closure-3.jpg"> 第四步，执行到第20行，执行f1(15)，即执行bar(15)，创建bar(15)上下文环境，并将其设置为活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-4.jpg"> 执行<code>bar(15)</code>时，<code>max</code>是自由变量，需要向创建<code>bar</code>函数的作用域中查找，找到了<code>max</code>的值为10。这个过程在作用域链一节已经讲过。 这里的重点就在于，创建bar函数是在执行<code>fn()</code>时创建的。<code>fn()</code>早就执行结束了，但是fn()执行上下文环境还存在与栈中，因此<code>bar(15)</code>时，<code>max</code>可以查找到。如果<code>fn()</code>上下文环境销毁了，那么<code>max</code>就找不到了。</p>
+<blockquote>
+<p>总结：使用闭包会增加内容开销</p>
+</blockquote>
+<p>第五步，执行完20行就是上下文环境的销毁过程，这里就不再赘述了。</p>
+<h2 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h2><p><strong>概念</strong> 闭包只能取得包含函数中任何变量的最后一个值,闭包所保存的是整个变量对象，而不是某个特殊变量。 例子</p>
+<p>function createFunctions() {<br>    var result = new Array();<br>    for (var i = 0; i &lt; 10; i++) {<br>        result[i] = function() {<br>            return i;<br>        };<br>    }<br>    return result;<br>}<br>var funcs = createFunctions();<br>//每个函数都输出10<br>for (var i = 0; i &lt; funcs.length; i++) {<br>    document.write(funcs[i]() + “<br />“);<br>}</p>
+<blockquote>
+<p>总结：每个函数的作用域链中都保存着createFunctions()函数的活动对象，所以它们引用的都是同一个变量i。当createFunctions()函数返回后，变量i的值为10。</p>
+</blockquote>
+<p>我们可以通过创建另一个匿名函数强制让闭包的行为符合预期。</p>
+<p>function createFunctions() {<br>    var result = new Array();<br>    for (var i = 0; i &lt; 10; i++) {<br>        result[i] = function(x) {<br>            return function() {<br>                return x;<br>            };<br>        }(i);<br>    }<br>    return result;<br>}<br>var funcs = createFunctions();<br>//循环输出0-10<br>for (var i = 0; i &lt; funcs.length; i++) {<br>    document.write(funcs[i]() + “<br />“);<br>}</p>
+<blockquote>
+<p>总结：没有直接把闭包赋值给数组，而是定义了一个匿名函数，并通过立即执行该匿名函数的结果赋值给数组，并带了for循环的参数i进去，让x能找到传入的参数值为0-10，这就解释了函数参数是按值传递的，所以会将变量i的当前值复制给参数x。而这个匿名函数内部又创建并返回了一个访问x的闭包。这样以来result数组中的每个函数都有自己x变量的一个副本，所以会符合我们的预期输出不同的值。</p>
+</blockquote>
+<p>小例子 html结构代码：</p>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+<p>js结构代码:</p>
+<p>// 闭包不符合预期<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);<br>for (var i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = function() {<br>        console.log(i);<br>    };<br>}</p>
+<p>解决方法：</p>
+<p>// 闭包1<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);<br>for (var i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = (function(x) {<br>        return function() {<br>            console.log(x);<br>            return x;<br>        }<br>    })(i);<br>}</p>
+<p>// 闭包2<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);</p>
+<p>function foo(i) {<br>    var onclick = function(e) {<br>        console.log(i);<br>    }<br>    return onclick;<br>}<br>for (var i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = foo(i);<br>}</p>
+<p>// es6语法<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);<br>for (let i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = function() {<br>        console.log(i);<br>    };<br>}</p>
+<p><strong>函数按值传递</strong> 函数传参就两个类型，基本类型和引用类型，大家纠结的都是引用类型的传递。 引用类型作为参数传入函数，传的是个地址值，或者指针值，不是那个引用类型本身，它还好好的呆在堆内存呢。赋值给<code>argument</code>的同样是地址值或者指针。所以说是<code>value</code>值传递一点没错，传的是个地址值。通过两个例子看懂就行了。 例子1：</p>
+<p>function setName(obj) {<br>    obj.name = ‘aaa’;<br>    var obj = new Object(); // 如果是按引用传递的,此处传参进来obj应该被重新引用新的内存单元<br>    obj.name = ‘ccc’;<br>    return obj;<br>}<br>var person = new Object();<br>person.name = ‘bbb’;<br>var newPerson = setName(person);<br>console.log(person.name + ‘  ‘ + newPerson.name); // aaa  ccc</p>
+<p>从结果看，并没有显示两个<code>’ccc’</code>。这里是函数内部重写了<code>obj</code>，重写的<code>obj</code>是一个局部对象。当函数执行完后，立即被销毁。</p>
+<blockquote>
+<p>引用值：对象变量它里面的值是这个对象在堆内存中的内存地址。因此如果按引用传递，它传递的值也就是这个内存地址。那么<code>var obj = new Object();</code>会重新给<code>obj</code>分配一个地址，比如是0x321了，那么它就不在指向有<code>name = ‘aaa’</code>;属性的内存单元了。相当于把实参obj和形参obj的地址都改了，那么最终就是输出两个<code>ccc</code>了。</p>
+</blockquote>
+<p>例子2</p>
+<p>var a = {<br>    num: ‘1’<br>};<br>var b = {<br>    num: ‘2’<br>};</p>
+<p>function change(obj) {<br>    obj.num = ‘3’;<br>    obj = b;<br>    return obj.num;<br>}<br>var result = change(a);<br>console.log(result + ‘  ‘ + a.num); // 2  3</p>
+<ul>
+<li>  首先把a的值传到change函数内，obj.num = ‘3’;后a.name被修改为3;</li>
+<li>  a的地址被换成b的地址;</li>
+<li>  返回此时的a中a.num。</li>
+</ul>
+<h2 id="闭包中使用this对象"><a href="#闭包中使用this对象" class="headerlink" title="闭包中使用this对象"></a>闭包中使用this对象</h2><p><strong>概念</strong> <code>this</code>对象是在运行时基于函数的执行环境绑定的：全局函数中，<code>this</code>等于<code>window</code>;当函数被作用某个对象的方法调用时，<code>this</code>等于那个对象。 但在匿名函数中，由于匿名函数的执行环境具有全局性，因此<code>this</code>对象通常指向<code>window</code>(在通过call或<code>apply</code>函数改变函数执行环境的情况下，会指向其他对象)。</p>
+<p>var name = “The Window”;</p>
+<p>var object = {<br>    name: “My Object”,</p>
+<pre><code>getNameFunc: function() &#123;
+    return function() &#123;
+        return this.name;
+    &#125;;
+&#125;
+</code></pre>
+<p>};</p>
+<p>console.log(object.getNameFunc()()); //“The Window”</p>
+<p>通过修改把作用域中的<code>this</code>对象保存在一个闭包能够访问到的变量里，就可以让闭包访问该对象了。如下代码：</p>
+<p>var name = “The Window”;</p>
+<p>var object = {<br>    name: “My Object”,</p>
+<pre><code>getNameFunc: function() &#123;
+    var that = this;
+    return function() &#123;
+        return that.name;
+    &#125;;
+&#125;
+</code></pre>
+<p>};</p>
+<p>console.log();<br>(object.getNameFunc()()); //“MyObject”</p>
+<p>变量声明提前</p>
+<p>var scope = “global”;</p>
+<p>function scopeTest() {<br>    console.log(scope);<br>    var scope = “local”;<br>}<br>scopeTest(); //undefined</p>
+<p>此处的输出是<code>undefined</code>，并没有报错，这是因为在前面我们提到的函数内的声明在函数体内始终可见，上面的函数等效于：</p>
+<p>var scope = “global”;</p>
+<p>function scopeTest() {<br>    var scope;<br>    console.log(scope);<br>    scope = “local”;<br>}<br>scopeTest(); //undefined</p>
+<p>注意，如果忘记<code>var</code>，那么变量就被声明为全局变量了。结果就是global</p>
+<h2 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h2><p>和其他我们常用的语言不同，在Javascript中没有块级作用域：</p>
+<p>function scopeTest() {<br>    var scope = {};<br>    if (scope instanceof Object) {<br>        var j = 1;<br>        for (var i = 0; i &lt; 10; i++) {<br>            console.log(i); //输出0-9<br>        }<br>        console.log(i); //输出10<br>    }<br>    console.log(j); //输出1<br>}<br>scopeTest();</p>
+<p>在javascript中变量的作用范围是函数级的，即在函数中所有的变量在整个函数中都有定义，这也带来了一些我们稍不注意就会碰到的“潜规则”：</p>
+<p>var scope = “hello”;</p>
+<p>function scopeTest() {<br>    console.log(scope); //①<br>    var scope = “no”;<br>    console.log(scope); //②<br>}</p>
+<p>在①处输出的值竟然是<code>undefined</code>，简直丧心病狂啊，我们已经定义了全局变量的值啊，这地方不应该为hello吗？其实，上面的代码等效于：</p>
+<p>var scope = “hello”;</p>
+<p>function scopeTest() {<br>    var scope;<br>    console.log(scope); //①<br>    scope = “no”;<br>    console.log(scope); //②<br>}</p>
+<p>声明提前、全局变量优先级低于局部变量，根据这两条规则就不难理解为什么输出<code>undefined</code>了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/23/%E8%AE%A9%E4%BD%A0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%BC%96%E5%86%99-javascriptes6-%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%845%E4%B8%AA%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/23/%E8%AE%A9%E4%BD%A0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%BC%96%E5%86%99-javascriptes6-%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%845%E4%B8%AA%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">让你更好的编写 JavaScript(ES6) 中条件语句的5个技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-23 12:21:14" itemprop="dateCreated datePublished" datetime="2019-04-23T12:21:14+08:00">2019-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好/更清晰的条件语句。</p>
+<h2 id="1-使用-Array-includes-来处理多个条件"><a href="#1-使用-Array-includes-来处理多个条件" class="headerlink" title="1.使用 Array.includes 来处理多个条件"></a>1.使用 Array.includes 来处理多个条件</h2><p>我们来看看下面的例子：</p>
+<p>// condition<br>function test(fruit) {<br>    if (fruit == ‘apple’  fruit == ‘strawberry’) {<br>        console.log(‘red’);<br>    }<br>}</p>
+<p>乍一看，上面的例子看起来似乎没什么问题。 但是，如果我们还有更多的红色水果呢？比如樱桃（<code>cherry</code>）和蔓越莓（<code>cranberries</code>）。 我们是否要用更多的 操作符来扩展该语句呢？ 我们可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Array.includes</a> 重写上面的条件语句。</p>
+<p>function test(fruit) {<br>    // 条件提取到数组中<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];<br>    if (redFruits.includes(fruit)) {<br>        console.log(‘red’);<br>    }<br>}</p>
+<p>我们将红色水果（条件）提取到一个数组中。这样做，可以让代码看起来更整洁。</p>
+<h2 id="2-减少嵌套，提前使用-return-语句"><a href="#2-减少嵌套，提前使用-return-语句" class="headerlink" title="2.减少嵌套，提前使用 return 语句"></a>2.减少嵌套，提前使用 return 语句</h2><p>让我们扩展前面的示例，再包含另外两个条件：</p>
+<ul>
+<li>  如果没有提供水果，抛出错误</li>
+<li>  接受水果 <code>quantity</code>（数量）参数，如果超过 <code>10</code>，则并打印相关信息。</li>
+</ul>
+<p>function test(fruit, quantity) {<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];<br>    // 条件 1：fruit 必须有值<br>    if (fruit) {<br>        // 条件 2：必须为红色<br>        if (redFruits.includes(fruit)) {<br>            console.log(‘red’);</p>
+<pre><code>        // 条件 3：数量必须大于 10
+        if (quantity &gt; 10) &#123;
+            console.log(&#39;big quantity&#39;);
+        &#125;
+    &#125;
+&#125; else &#123;
+    throw new Error(&#39;No fruit!&#39;);
+&#125;
+</code></pre>
+<p>}</p>
+<p>// 测试结果<br>test(null); // 抛出错误：No fruits<br>test(‘apple’); // 打印：red<br>test(‘apple’, 20); // 打印：red，big quantity</p>
+<p>看看上面的代码，我们有： – 1 个 <code>if / else</code> 语句过滤掉无效条件 – 3 层 <code>if</code> 语句嵌套（分别是条件1,2和3） 我个人遵循的一般规则是 在发现无效条件时提前 <code>return</code>。</p>
+<p>/* 在发现无效条件时提前 return */<br>function test(fruit, quantity) {<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];</p>
+<pre><code>// 条件 1：提前抛出错误
+if (!fruit) throw new Error(&#39;No fruit!&#39;);
+
+// 条件2：必须为红色
+if (redFruits.includes(fruit)) &#123;
+    console.log(&#39;red&#39;);
+
+    // 条件 3：数量必须大于 10
+    if (quantity &gt; 10) &#123;
+        console.log(&#39;big quantity&#39;);
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>这样做，我们可以减少一个嵌套层级。 这种编码风格很好，特别是当你的 <code>if</code> 语句很长时（想象一下，你需要滚动到最底部才知道那里有一个 <code>else</code> 语句，这样代码的可读性就变得很差了）。 如果通过反转条件并提前 <code>return</code> ，我们可以进一步减少嵌套。 请查看下面的条件 <code>2</code> ，看看我们是如何做到的：</p>
+<p>/* 在发现无效条件时提前 return */<br>function test(fruit, quantity) {<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];</p>
+<pre><code>if (!fruit) throw new Error(&#39;No fruit!&#39;); // 条件 1：提前抛出错误
+if (!redFruits.includes(fruit)) return; // 条件 2：当 fruit 不是红色的时候，提前 return
+
+console.log(&#39;red&#39;);
+
+// 条件 3：必须是大量存在
+if (quantity &gt; 10) &#123;
+    console.log(&#39;big quantity&#39;);
+&#125;
+</code></pre>
+<p>}</p>
+<p>通过反转条件2的条件，我们的代码现在没有嵌套语句了。 当我们有很长的逻辑代码时，这种技巧非常有用，我们希望在条件不满足时停止下一步的处理。 然而，这并不是严格的规定。问问自己，这个版本（没有嵌套）是否要比前一个版本（条件 <code>2</code> 有嵌套）的更好、可具可读性？ 对我来说，我会选择前一个版本（条件 <code>2</code> 有嵌套）。 这是因为：</p>
+<ul>
+<li>  代码简短直接，嵌套 <code>if</code> 更清晰</li>
+<li>  反转条件可能会引发更多的思考过程（增加认知负担）</li>
+</ul>
+<p>因此，始终追求更少的嵌套，提前 <code>return</code>，但是不要过度。但不要过度。如果您感兴趣，这里有一篇文章和 <code>StackOverflow</code> 的讨论， 进一步讨论这个话题：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="http://blog.timoxley.com/post/47041269194/avoid-else-return-early">Avoid Else, Return Early</a> by Tim Oxley</li>
+<li>  <a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/questions/18454/should-i-return-from-a-function-early-or-use-an-if-statement">StackOverflow 上关于 if/else 代码风格的讨论</a></li>
+</ul>
+<h2 id="3-使用函数的默认参数-和-解构"><a href="#3-使用函数的默认参数-和-解构" class="headerlink" title="3.使用函数的默认参数 和 解构"></a>3.使用函数的默认参数 和 解构</h2><p>我想下面的代码可能看起来很熟悉，我们在使用 JavaScript 时总是需要检查 <code>null / undefined</code> 值并分配默认值：</p>
+<p>function test(fruit, quantity) {<br>    if (!fruit) return;<br>    const q = quantity  1; // 如果没有提供 quantity 参数，则默认为 1</p>
+<pre><code>console.log(\`We have $&#123;q&#125; $&#123;fruit&#125;!\`);
+</code></pre>
+<p>}</p>
+<p>// 测试结果<br>test(‘banana’); // We have 1 banana!<br>test(‘apple’, 2); // We have 2 apple!</p>
+<p>实际上，我们可以通过分配默认函数参数来消除变量 <code>q</code> 。</p>
+<p>function test(fruit, quantity = 1) { // i如果没有提供 quantity 参数，则默认为 1<br>    if (!fruit) return;<br>    console.log(`We have ${quantity} ${fruit}!`);<br>}</p>
+<p>// 测试结果<br>test(‘banana’); // We have 1 banana!<br>test(‘apple’, 2); // We have 2 apple!</p>
+<p>更简单直观不是吗？ 请注意，每个函数参数都有自己的默认值。 例如，我们也可以为 <code>fruit</code> 分配一个默认值：<code>function test(fruit = &#39;unknown&#39;, quantity = 1)</code>。 如果我们的 <code>fruit</code> 是一个 <code>Object</code> 对象怎么办？ 我们可以指定默认参数吗？</p>
+<p>function test(fruit) {<br>    // 如果有值，则打印 fruit.name<br>    if (fruit &amp;&amp; fruit.name) {<br>        console.log(fruit.name);<br>    } else {<br>        console.log(‘unknown’);<br>    }<br>}</p>
+<p>//测试结果<br>test(undefined); // unknown<br>test({}); // unknown<br>test({ name: ‘apple’, color: ‘red’ }); // apple</p>
+<p>看看上面的例子，我们想要的是如果 <code>fruit.name</code> 可用则打印水果名称，否则将打印 <code>unknown</code> 。我们可以使用默认函数参数和解构(<code>destructing</code>) 来避免 <code>fruit &amp;&amp; fruit.name</code> 这样的检查。</p>
+<p>// 解构 —— 只获得 name 属性<br>// 参数默认分配空对象 {}<br>function test({ name } = {}) {<br>    console.log(name  ‘unknown’);<br>}</p>
+<p>//测试结果<br>test(undefined); // unknown<br>test({}); // unknown<br>test({ name: ‘apple’, color: ‘red’ }); // apple</p>
+<p>由于我们只需要来自 <code>fruit</code> 的 <code>name</code> 属性，我们可以使用 <code>&#123;name&#125;</code> 来解构参数，然后我们可以在代码中使用 <code>name</code> 作为变量来取代<code>fruit.name</code>。 我们还将空对象 <code>&#123;&#125;</code> 指定为默认值。 如果我们不这样做，你将在执行行测试时遇到<code>test(undefined) – Cannot destructure property name of &#39;undefined&#39; or &#39;null&#39;.</code>(无法解析’undefined’或’null’的属性名称)。 因为 <code>undefined</code>中 没有 <code>name</code> 属性。 如果您不介意使用第三方库，有几种方法可以减少空检查：</p>
+<ul>
+<li>  使用 <a target="_blank" rel="noopener" href="https://lodash.com/docs/4.17.11#get">Lodash get</a> 函数</li>
+<li>  使用 Facebook 开源的 <a target="_blank" rel="noopener" href="https://github.com/facebookincubator/idx">idx</a> 库（需搭配 Babeljs）</li>
+</ul>
+<p>以下是使用Lodash的示例：</p>
+<p>// 引入 lodash 库，我们将获得 _.get()<br>function test(fruit) {<br>console.log(_.get(fruit, ‘name’, ‘unknown’); // 获取 name 属性，如果没有分配，则设为默认值 unknown<br>}</p>
+<p>//测试结果<br>test(undefined); // unknown<br>test({ }); // unknown<br>test({ name: ‘apple’, color: ‘red’ }); // apple</p>
+<p>您可以在这里 <a target="_blank" rel="noopener" href="http://jsbin.com/bopovajiye/edit?js,console">运行演示代码</a> 。此外，如果你喜欢函数式编程（FP），您可以选择使用<a target="_blank" rel="noopener" href="https://github.com/lodash/lodash/wiki/FP-Guide">Lodash fp</a> ，Lodash的函数式能版本（方法名更改为 <code>get</code> 或 <code>getOr</code>）。</p>
+<h2 id="4-选择-Map-Object-字面量，而不是Switch语句"><a href="#4-选择-Map-Object-字面量，而不是Switch语句" class="headerlink" title="4.选择 Map / Object 字面量，而不是Switch语句"></a>4.选择 Map / Object 字面量，而不是Switch语句</h2><p>让我们看看下面的例子，我们想根据颜色打印水果：</p>
+<p>function test(color) {<br>    // 使用 switch case 语句，根据颜色找出对应的水果<br>    switch (color) {<br>        case ‘red’:<br>            return [‘apple’, ‘strawberry’];<br>        case ‘yellow’:<br>            return [‘banana’, ‘pineapple’];<br>        case ‘purple’:<br>            return [‘grape’, ‘plum’];<br>        default:<br>            return [];<br>    }<br>}</p>
+<p>//测试结果<br>test(null); // []<br>test(‘yellow’); // [‘banana’, ‘pineapple’]</p>
+<p>上面的代码似乎没有错，但我觉得它很冗长。使用具有更清晰语法的 <code>object</code> 字面量可以实现相同的结果：</p>
+<p>// 使用对象字面量，根据颜色找出对应的水果<br>const fruitColor = {<br>    red: [‘apple’, ‘strawberry’],<br>    yellow: [‘banana’, ‘pineapple’],<br>    purple: [‘grape’, ‘plum’]<br>};</p>
+<p>function test(color) {<br>    return fruitColor[color]  [];<br>}</p>
+<p>或者，您可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> 来实现相同的结果：</p>
+<p>// 使用 Map ，根据颜色找出对应的水果<br>const fruitColor = new Map()<br>    .set(‘red’, [‘apple’, ‘strawberry’])<br>    .set(‘yellow’, [‘banana’, ‘pineapple’])<br>    .set(‘purple’, [‘grape’, ‘plum’]);</p>
+<p>function test(color) {<br>    return fruitColor.get(color)  [];<br>}</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> 是 <code>ES2015(ES6)</code> 引入的新的对象类型，允许您存储键值对。 我们是不是应该禁止使用 <code>switch</code> 语句呢？ 不要局限于此。 就个人而言，我尽可能使用对象字面量，但我不会设置硬规则来阻止使用 <code>switch</code> ，是否使用应该根据你的场景而决定。 Todd Motto 有一篇文章深入地研究了 switch语句与对象字面量，你可以在 <a target="_blank" rel="noopener" href="https://toddmotto.com/deprecating-the-switch-statement-for-object-literals/">这里</a> 阅读。 <strong>重构语法</strong> 对于上面的示例，我们实际上可以使用 <code>Array.filter</code> 来重构我们的代码，以实现相同的结果。</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘strawberry’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘pineapple’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ },<br>    { name: ‘plum’, color: ‘purple’ }<br>];</p>
+<p>function test(color) {<br>    // 使用 Array filter ，根据颜色找出对应的水果</p>
+<pre><code>return fruits.filter(f =&gt; f.color == color);
+</code></pre>
+<p>}</p>
+<p>总有不止一种方法可以达到相同的效果。对于这个例子我们展示了 <code>4</code> 种实现方法。编码很有趣！</p>
+<h2 id="5-使用-Array-every-和-Array-some-来处理全部-部分满足条件"><a href="#5-使用-Array-every-和-Array-some-来处理全部-部分满足条件" class="headerlink" title="5. 使用 Array.every 和 Array.some 来处理全部/部分满足条件"></a>5. 使用 Array.every 和 Array.some 来处理全部/部分满足条件</h2><p>最后一个小技巧更多地是利用新的（但不是那么新的）<code>Javascript Array</code>函数来减少代码行。查看下面的代码，我们想检查所有水果是否都是红色的：</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ }<br>];</p>
+<p>function test() {<br>    let isAllRed = true;</p>
+<pre><code>// 条件：所有的水果都必须是红色
+for (let f of fruits) &#123;
+    if (!isAllRed) break;
+    isAllRed = (f.color == &#39;red&#39;);
+&#125;
+
+console.log(isAllRed); // false
+</code></pre>
+<p>}</p>
+<p>代码太长了！我们可以使用 <code>Array.every</code> 减少行数：</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ }<br>];</p>
+<p>function test() {<br>    // 条件：简短方式，所有的水果都必须是红色<br>    const isAllRed = fruits.every(f =&gt; f.color == ‘red’);</p>
+<pre><code>console.log(isAllRed); // false
+</code></pre>
+<p>}</p>
+<p>干净多了对吧？类似的，如果我们想要检查是否有至少一个水果是红色的，我们可以使用 <code>Array.some</code> 仅用一行代码就实现出来。</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ }<br>];</p>
+<p>function test() {<br>    // 条件：是否存在红色的水果<br>    const isAnyRed = fruits.some(f =&gt; f.color == ‘red’);</p>
+<pre><code>console.log(isAnyRed); // true
+</code></pre>
+<p>}</p>
+<p>  原文地址：<a target="_blank" rel="noopener" href="https://scotch.io/bar-talk/5-tips-to-write-better-conditionals-in-javascript">https://scotch.io</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/20/notyf-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84-javascript-%E9%80%9A%E7%9F%A5%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/20/notyf-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84-javascript-%E9%80%9A%E7%9F%A5%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">Notyf – 响应式的 JavaScript 通知插件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-20 13:31:01" itemprop="dateCreated datePublished" datetime="2019-04-20T13:31:01+08:00">2019-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简要教程"><a href="#简要教程" class="headerlink" title="简要教程"></a>简要教程</h2><p>notyf.js是一款超级简单的响应式纯js消息通知插件。它使用纯javascript来制作，没有任何外部依赖，通过简单的设置，即可生成漂亮的消息通知效果。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可以通过npm来安装notyf.js消息通知插件。</p>
+<p>npm i notyf</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>在页面中引入notyf.min.css和notyf.min.js文件。</p>
+<html>
+<head>
+    ...
+    <link rel="stylesheet" type="text/css" href="/path/to/notyf.min.css">
+</head>
+<body>
+    ...
+    <script src="/path/to/notyf.min.js" type="text/javascript"></script>
+</body>
+</html>
+
+<h2 id="初始化插件"><a href="#初始化插件" class="headerlink" title="初始化插件"></a>初始化插件</h2><p>notyf.js消息通知插件的使用方法如下：</p>
+<p>//创建一个Notyf实例对象<br>var notyf = new Notyf();<br>//显示一条警告消息<br>notyf.error(‘You must fill out the form before moving forward’);<br>//显示一条成功消息<br>notyf.success(‘Your changes have been successfully saved!’);</p>
+<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><p>notyf.js消息通知插件的可用配置参数如下：</p>
+<p>参数</p>
+<p>类型</p>
+<p>默认值</p>
+<p>描述</p>
+<p>delay</p>
+<p>Number</p>
+<p>2000</p>
+<p>消息通知显示的延迟时间，单位毫秒</p>
+<p>alertIcon</p>
+<p>String</p>
+<p>预定义图标</p>
+<p>警告消息显示的图标的class类</p>
+<p>confirmIcon</p>
+<p>String</p>
+<p>预定义图标</p>
+<p>成功消息显示的图标的class类</p>
+<p>下面的例子是消息在用户点击按钮后1秒钟显示，并使用FontAwesome字体图标作为警告框和成功消息框的图标。</p>
+<p>var notyf = new Notyf({<br>    delay: 1000,<br>    alertIcon: ‘icon icon-exclamation-circle’,<br>    confirmIcon: ‘icon icon-check-circle’<br>})</p>
+<p>演示地址：<a target="_blank" rel="noopener" href="https://carlosroso.com/notyf/">https://carlosroso.com/notyf/</a> github地址：<a target="_blank" rel="noopener" href="https://github.com/caroso1222/notyf">https://github.com/caroso1222/notyf</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/16/%E5%A4%A7%E9%83%A8%E5%88%86%E6%95%99%E7%A8%8B%E4%B8%8D%E4%BC%9A%E5%91%8A%E8%AF%89%E4%BD%A0%E7%9A%8412%E4%B8%AAJS%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/16/%E5%A4%A7%E9%83%A8%E5%88%86%E6%95%99%E7%A8%8B%E4%B8%8D%E4%BC%9A%E5%91%8A%E8%AF%89%E4%BD%A0%E7%9A%8412%E4%B8%AAJS%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">大部分教程不会告诉你的12个JS技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-16 09:25:30" itemprop="dateCreated datePublished" datetime="2019-04-16T09:25:30+08:00">2019-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:22:24" itemprop="dateModified" datetime="2021-08-30T11:22:24+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-过滤唯一值"><a href="#1-过滤唯一值" class="headerlink" title="1. 过滤唯一值"></a>1. 过滤唯一值</h2><p>ES6 引入了 Set 对象和延展（spread）语法…，我们可以用它们来创建一个只包含唯一值的数组。</p>
+<p>const array = [1, 1, 2, 3, 5, 5, 1]<br>const uniqueArray = […new Set(array)];<br>console.log(uniqueArray); // Result: [1, 2, 3, 5]</p>
+<p>在 ES6 之前，获得同样的数组需要更多的代码！ 这个技巧可以支持包含原始类型的数组：<code>undefined</code>、<code>null</code>、<code>boolean</code>、<code>string</code> 和 number</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/16/%E5%A4%A7%E9%83%A8%E5%88%86%E6%95%99%E7%A8%8B%E4%B8%8D%E4%BC%9A%E5%91%8A%E8%AF%89%E4%BD%A0%E7%9A%8412%E4%B8%AAJS%E6%8A%80%E5%B7%A7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/10/10%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84javascript%E5%92%8Ccss%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/10/10%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84javascript%E5%92%8Ccss%E5%BA%93/" class="post-title-link" itemprop="url">10个有趣的JavaScript和CSS库</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-10 17:39:42" itemprop="dateCreated datePublished" datetime="2019-04-10T17:39:42+08:00">2019-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://cube.dev/"><img src="http://file.w3cbest.com/file/images/cubejs.png"></a> <a target="_blank" rel="noopener" href="https://cube.dev/">Cube.js</a> 强大的开源框架，用于开发复杂的，定制的分析系统。由前端SDK和API后端组成，适用于大多数数据库，包括MySQL，Postreges和MongoDB。 <a target="_blank" rel="noopener" href="https://github.com/kognise/water.css"><img src="http://file.w3cbest.com/file/images/watercss.png"></a> <a target="_blank" rel="noopener" href="https://github.com/kognise/water.css">Water.css</a> 一个just-add-css框架，它可以应用样式而无需定义元素类。只需通过CDN将其包含在您的项目中，您的所有页面都会自动显示得更好。包括明暗主题，可通过SCSS定制。 <a target="_blank" rel="noopener" href="https://codex.so/editor"><img src="http://file.w3cbest.com/file/images/editorjs.png"></a> <a target="_blank" rel="noopener" href="https://codex.so/editor">Editor.js</a> 富文本和媒体编辑器，以JSON格式输出数据。它是完全模块化的，由“块”组成，这意味着每个结构单元都是它自己的块（例如Paragraph，Heading，Image都是块），用户可以轻松编写自己的插件来进一步扩展编辑器。 <a target="_blank" rel="noopener" href="https://github.com/alikinvv/stepper"><img src="http://file.w3cbest.com/file/images/stepper.png"></a> <a target="_blank" rel="noopener" href="https://github.com/alikinvv/stepper">Stepper</a> 漂亮的数字Stepper组件，非常适合upvote / downvote控件或其他计数器元素。非常精美的动画，点击箭头时有一个黄油般的CSS效果。 <a target="_blank" rel="noopener" href="https://github.com/leeoniya/dropcss"><img src="http://file.w3cbest.com/file/images/dropcsss.png"></a> <a target="_blank" rel="noopener" href="https://github.com/leeoniya/dropcss">DropCSS</a> 彻底的CSS清理器，它可以获取HTML和CSS并仅返回实际使用的样式。它删除所有未使用的样式块，重复选择器，@ keyframes等。高度优化，速度极快。 <a target="_blank" rel="noopener" href="https://github.com/twitter/twemoji"><img src="http://file.w3cbest.com/file/images/twemoji.png"></a> <a target="_blank" rel="noopener" href="https://github.com/twitter/twemoji">Twemoji</a> Twitter团队提供的优秀图书馆，可在所有平台上提供标准的Unicode表情符号支持。拥有超过3000个emojis和一个可靠的API，当您想要将emojis添加到您的应用程序时，它可以是完美的解决方案。 <a target="_blank" rel="noopener" href="https://foreseaz.github.io/react-loadcon/"><img src="http://file.w3cbest.com/file/images/react-loadcon.png"></a> <a target="_blank" rel="noopener" href="https://foreseaz.github.io/react-loadcon/">React LoadCon</a> React组件，允许您使用一系列动态生成的图像为网站的图标设置动画。此效果可以用作进度或加载指示器，或者只是作为一个很酷的小动画来使您的页面脱颖而出。 <a target="_blank" rel="noopener" href="https://github.com/matvp91/indigo-player"><img src="http://file.w3cbest.com/file/images/indigoplayer.png"></a> <a target="_blank" rel="noopener" href="https://github.com/matvp91/indigo-player">Indigo Player</a> 基于React的视频播放器，具有开箱即用的功能，如字幕，缩略图，质量选择等。高度可扩展，现代化，并支持大多数流行的视频格式和编解码器。 <a target="_blank" rel="noopener" href="https://github.com/niklasvh/html2canvas"><img src="http://file.w3cbest.com/file/images/html2canvas.png"></a> <a target="_blank" rel="noopener" href="https://github.com/niklasvh/html2canvas">html2canvas</a> 这个很酷的脚本获取页面中的元素和样式，并通过呈现DOM的副本来捕获“屏幕截图”。由于屏幕截图基于DOM，因此它们可能不是100％准确，但该库仍然是调试和自动化测试的绝佳工具。 <a target="_blank" rel="noopener" href="https://github.com/jshjohnson/Choices"><img src="http://file.w3cbest.com/file/images/choices.png"></a> <a target="_blank" rel="noopener" href="https://github.com/jshjohnson/Choices">Choices</a> 轻量级库，用于制作高度可自定义的选择框，文本区域和其他表单输入。类似于<a target="_blank" rel="noopener" href="https://select2.org/">Select2</a>和<a target="_blank" rel="noopener" href="https://selectize.github.io/selectize.js/">Selectize</a>但没有jQuery依赖。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

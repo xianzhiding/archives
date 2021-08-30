@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="为什么要做 HTML5 语义化HTML5的主要进步之一是引入了一组标准化的语义元素。 ”语义元素“是用于以更有意义的方式标记文档结构的元素，这种方式可以清楚地表明它们的用途和目的是什么。而且重要的是，由于它们是标准化的，定义文档的这些元素可以被每个人使用并理解，包括机器人。 在web无障碍开发领域，给视障用户使用的屏幕阅读器是视障群体访问网络的必备工具，合理的 HTML5 语义化元素，会让屏幕阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5语义化开发指南">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/06/20/html5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="为什么要做 HTML5 语义化HTML5的主要进步之一是引入了一组标准化的语义元素。 ”语义元素“是用于以更有意义的方式标记文档结构的元素，这种方式可以清楚地表明它们的用途和目的是什么。而且重要的是，由于它们是标准化的，定义文档的这些元素可以被每个人使用并理解，包括机器人。 在web无障碍开发领域，给视障用户使用的屏幕阅读器是视障群体访问网络的必备工具，合理的 HTML5 语义化元素，会让屏幕阅读">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://via.placeholder.com/30.png/09f/fff">
+<meta property="article:published_time" content="2019-06-20T01:45:16.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.112Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="footer">
+<meta property="article:tag" content="html5">
+<meta property="article:tag" content="html教程">
+<meta property="article:tag" content="aside">
+<meta property="article:tag" content="datalist">
+<meta property="article:tag" content="details">
+<meta property="article:tag" content="dialog">
+<meta property="article:tag" content="header">
+<meta property="article:tag" content="option">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://via.placeholder.com/30.png/09f/fff">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/06/20/html5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTML5语义化开发指南 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/06/20/html5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML5语义化开发指南
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-20 09:45:16" itemprop="dateCreated datePublished" datetime="2019-06-20T09:45:16+08:00">2019-06-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="为什么要做-HTML5-语义化"><a href="#为什么要做-HTML5-语义化" class="headerlink" title="为什么要做 HTML5 语义化"></a>为什么要做 HTML5 语义化</h2><p>HTML5的主要进步之一是引入了一组标准化的语义元素。 ”语义元素“是用于以更有意义的方式标记文档结构的元素，这种方式可以清楚地表明它们的用途和目的是什么。而且重要的是，由于它们是标准化的，定义文档的这些元素可以被每个人使用并理解，包括机器人。 在web无障碍开发领域，给视障用户使用的屏幕阅读器是视障群体访问网络的必备工具，合理的 HTML5 语义化元素，会让屏幕阅读器正确的理解网页的内容，从而以最为合适的方式朗读。 站在开发者的角度，写出符合 HTML5 语义化的结构，也是显示我们职业素养的一种方式，最为重要的是这样的代码自带翻译，比如下面的div结构，为了让开发者明白div的含义，我们必须在class命名上下功夫。</p>
+<div class="header">
+    <h1>Super duper best blog ever</h1> ...
+</div>
+<div class="main">
+    <h2>Why you should buy more cheeses than you currently do</h2> ...
+</div>
+<div class="footer">
+Contact us! 
+<div class="contact-info">this.is.us@example.com</div>
+</div>
+
+<p>而如果采用语义化元素，结构一目了然，不管是日后维护还是交接给他人，都是件轻松的事情。</p>
+<header>
+    <h1>Super duper best blog ever</h1> ...
+</header>
+<main>
+    <h2>Why you should buy more cheeses than you currently do</h2> ...
+</main>
+<footer>
+Contact us! 
+<div class="contact-info">this.is.us@example.com</div>
+</footer>
+
+<p>先来回顾一下 HTML5 有哪些元素（根据 MDN 资料整理）</p>
+<h2 id="HTML5-元素大全"><a href="#HTML5-元素大全" class="headerlink" title="HTML5 元素大全"></a>HTML5 元素大全</h2><h3 id="文档元素"><a href="#文档元素" class="headerlink" title="文档元素"></a>文档元素</h3><p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html">html</a></p>
+<p>HTML 文档中最外层的元素，也可称为根元素。</p>
+<h3 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head">head</a></p>
+<p>表示文档的头部</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/title">title</a></p>
+<p>用来定义文档的标题</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base">base</a></p>
+<p>为页面上的所有的相对链接规定默认 URL 或默认目标</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link">link</a></p>
+<p>定义文档与外部资源的关系</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta">meta</a></p>
+<p>提供了 HTML 文档的元数据</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/style">style</a></p>
+<p>用于表示文档所使用的样式</p>
+<h3 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body">body</a></p>
+<p>表示文档的内容</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/article">article</a></p>
+<p>表示文档、页面、应用或网站中的独立结构</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/section">section</a></p>
+<p>表示文档中的一个区域（或节）</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/nav">nav</a></p>
+<p>描绘一个含有多个超链接的导航栏区域</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/aside">aside</a></p>
+<p>表示一个和其余页面内容几乎无关的部分</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Heading_Elements">h1-h6</a></p>
+<p>标题(Heading)元素呈现了六个不同的级别的标题，<code>&lt;h1&gt;</code> 级别最高，而 <code>&lt;h6&gt;</code> 级别最低</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/footer">footer</a></p>
+<p>表示最近一个章节内容或者根节点（sectioning root ）元素的页脚</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header">header</a></p>
+<p>用于展示介绍性内容</p>
+<h3 id="内容分组"><a href="#内容分组" class="headerlink" title="内容分组"></a>内容分组</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/p">p</a></p>
+<p>表示文本的一个段落</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/address">address</a></p>
+<p>表示其中的内容提供了某个人或某个组织（等等）的联系信息</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr">hr</a></p>
+<p>表示段落级元素之间的主题转换</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/pre">pre</a></p>
+<p>表示预定义格式文本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/blockquote">blockquote</a></p>
+<p>表示其中的文字是引用内容</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ol">ol</a></p>
+<p>表示多个元素的有序列表</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ul">ul</a></p>
+<p>表示多个元素的无序列表</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/li">li</a></p>
+<p>表示列表里的条目</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl">dl</a></p>
+<p>表示一个包含术语定义以及描述的列表</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dt">dt</a></p>
+<p>用于在一个定义列表中声明一个术语</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dd">dd</a></p>
+<p>用来指明一个描述列表元素中一个术语的描述</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/figure">figure</a></p>
+<p>代表一段独立的内容</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/figcaption">figcaption</a></p>
+<p>与其相关联的图片的说明/标题</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/main">main</a></p>
+<p>呈现了文档的 <code>&lt;body&gt;</code> 或应用的主体部分</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/div">div</a></p>
+<p>通用型的流内容容器，它应该在没有任何其它语义元素可用时才使用</p>
+<h3 id="文本级语义"><a href="#文本级语义" class="headerlink" title="文本级语义"></a>文本级语义</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a">a</a></p>
+<p>定义超链接，用于从一个页面链接到另一个页面</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/em">em</a></p>
+<p>标记出需要用户着重阅读的内容</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/strong">strong</a></p>
+<p>表示文本十分重要</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/small">small</a></p>
+<p>表示边注释和附属细则，包括版权和法律文本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/s">s</a></p>
+<p>表示不再相关，或者不再准确的事情</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/cite">cite</a></p>
+<p>表示一个作品的引用</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/q">q</a></p>
+<p>表示一个封闭的并且是短的行内引用的文本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn">dfn</a></p>
+<p>表示术语的一个定义</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/abbr">abbr</a></p>
+<p>用于展示缩写</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ruby">ruby</a></p>
+<p>用来展示东亚文字注音或字符注释</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rb">rb</a></p>
+<p>用于分隔<code>&lt;ruby&gt;</code>注释的基本文本组件</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rt">rt</a></p>
+<p>包含字符的发音</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rtc">rtc</a></p>
+<p>包含 <code>&lt;ruby&gt;</code> 元素中文字的语义注解</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/rp">rp</a></p>
+<p>用于为那些不能使用 <code>&lt;ruby&gt;</code> 元素展示 ruby 注解的浏览器</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/data">data</a></p>
+<p>将一个指定内容和机器可读的翻译联系在一起</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time">time</a></p>
+<p>用来表示24小时制时间或者公历日期</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/code">code</a></p>
+<p>呈现一段计算机代码</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/var">var</a></p>
+<p>表示变量的名称，或者由用户提供的值</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/samp">samp</a></p>
+<p>用于标识计算机程序输出</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/kbd">kbd</a></p>
+<p>表示用户输入</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sub">sub</a></p>
+<p>定义了一个下标文本区域</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sup">sup</a></p>
+<p>定义了一个上标文本区域</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/i">i</a></p>
+<p>用于表现因某些原因需要区分普通文本的一系列文本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/b">b</a></p>
+<p>用于吸引读者的注意到该元素的内容上</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/u">u</a></p>
+<p>表示具有未标注的文本跨度，显示渲染，非文本注释</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/mark">mark</a></p>
+<p>用来表示上下文的关联性的而突出显示的文字</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdi">bdi</a></p>
+<p>隔离可能以不同方向进行格式化的外部文本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdo">bdo</a></p>
+<p>用于覆盖当前文本的朝向</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/span">span</a></p>
+<p>短语内容的通用行内容器，并没有任何特殊语义</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br">br</a></p>
+<p>在文本中生成一个换行（回车）符号</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr">wbr</a></p>
+<p>一个文本中的位置，其中浏览器可以选择来换行</p>
+<h3 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ins">ins</a></p>
+<p>定义已经被插入文档中的文本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/del">del</a></p>
+<p>表示一些被从文档中删除的文字内容</p>
+<h3 id="嵌入内容"><a href="#嵌入内容" class="headerlink" title="嵌入内容"></a>嵌入内容</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/picture">picture</a></p>
+<p>通过包含零或多个 <code>&lt;source&gt;</code> 元素和一个 <code>&lt;img&gt;</code> 元素来为不同的显示/设备场景提供图像版本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source">source</a></p>
+<p>为 <code>&lt;picture&gt;</code>, <code>&lt;audio&gt;</code> 或者 <code>&lt;video&gt;</code> 元素指定多个媒体资源</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img">img</a></p>
+<p>代表文档中的一个图像</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe">iframe</a></p>
+<p>表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed">embed</a></p>
+<p>将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件）提供</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object">object</a></p>
+<p>表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param">param</a></p>
+<p>为<code>&lt;object&gt;</code>元素定义参数</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video">video</a></p>
+<p>用于支持文档内的视频播放</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio">audio</a></p>
+<p>用于在文档中表示音频内容</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track">track</a></p>
+<p>指定计时字幕（或者基于时间的数据）</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/map">map</a></p>
+<p>与 <code>&lt;area&gt;</code>属性一起使用来定义一个图像映射(一个可点击的链接区域)</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area">area</a></p>
+<p>在图片上定义一个热点区域，可以关联一个超链接</p>
+<h3 id="表格数据"><a href="#表格数据" class="headerlink" title="表格数据"></a>表格数据</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/table">table</a></p>
+<p>表示表格数据</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/caption">caption</a></p>
+<p>展示一个表格的标题</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup">colgroup</a></p>
+<p>用来定义表中的一组列表</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col">col</a></p>
+<p>定义表格中的列，并用于定义所有公共单元格上的公共语义</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/tbody">tbody</a></p>
+<p>表示它们包含表的主体</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/thead">thead</a></p>
+<p>定义了一组定义表格的列头的行</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/tfoot">tfoot</a></p>
+<p>定义了一组表格中各列的汇总行</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/tr">tr</a></p>
+<p>定义表格中的行</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/td">td</a></p>
+<p>定义包含数据的表格的单元格</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/th">th</a></p>
+<p>定义表格内的表头单元格</p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form">form</a></p>
+<p>示了文档中的一个区域，这个区域包含有交互控制元件</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label">label</a></p>
+<p>表示用户界面中某个元素的说明</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input">input</a></p>
+<p>用于为基于Web的表单创建交互式控件，以便接受来自用户的数据</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button">button</a></p>
+<p>表示一个可点击的按钮</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select">select</a></p>
+<p>表示一个控件，提供一个选项菜单</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/datalist">datalist</a></p>
+<p>包含了一组<code>&lt;option&gt;</code>元素，这些元素表示其它表单控件可选值</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/optgroup">optgroup</a></p>
+<p>创建包含在一个 <code>&lt;select&gt;</code>元素中的一组选项</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option">option</a></p>
+<p>用于定义在<code>&lt;select&gt;</code>, <code>&lt;optgroup&gt;</code> 或<code>&lt;datalist&gt;</code> 元素中包含的项</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea">textarea</a></p>
+<p>表示一个多行纯文本编辑控件</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/output">output</a></p>
+<p>表示计算或用户操作的结果</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress">progress</a></p>
+<p>用来显示一项任务的完成进度</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meter">meter</a></p>
+<p>用来显示已知范围的标量值或者分数值</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/fieldset">fieldset</a></p>
+<p>用来对表单中的控制元素进行分组</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/legend">legend</a></p>
+<p>用于表示它的父元素<code>&lt;fieldset&gt;</code>的内容的标题</p>
+<h3 id="交互元素"><a href="#交互元素" class="headerlink" title="交互元素"></a>交互元素</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/details">details</a></p>
+<p>可创建一个挂件，仅在被切换成展开状态时，它才会显示内含的信息</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/summary">summary</a></p>
+<p>用作 一个<code>&lt;details&gt;</code>元素的一个内容的摘要，标题或图例</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog">dialog</a></p>
+<p>表示一个对话框或其他交互式组件</p>
+<h3 id="脚本元素"><a href="#脚本元素" class="headerlink" title="脚本元素"></a>脚本元素</h3><p>元素</p>
+<p>元素</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script">script</a></p>
+<p>用于嵌入或引用可执行脚本</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/noscript">noscript</a></p>
+<p>定义脚本未被执行时的替代内容</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template">template</a></p>
+<p>用于保存客户端内容机制，该内容在加载页面时不会呈现</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas">canvas</a></p>
+<p>用来通过脚本（通常是JavaScript）绘制图形</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/slot">slot</a></p>
+<p>是 Web Components 技术套件的一部分，是Web组件内的一个占位符</p>
+<h2 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h2><html>
+<head>
+    <title>示例页面</title>
+</head>
+<body>
+    <div>
+        <header>
+            <h1>我的网站</h1>
+            <nav> <a href="">首页</a> <a href="">文章</a> <a href="">留言</a> </nav>
+            <aside> <img src="https://via.placeholder.com/30.png/09f/fff" alt="用户头像"> </aside>
+        </header>
+        <div>
+            <main>
+                <article>
+                    <section>
+                        <h2>文章标题11111</h2>
+                        <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                    </section>
+                    <section>
+                        <h2>文章标题2222</h2>
+                        <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                    </section>
+                    <section>
+                        <h2>文章标题3333</h2>
+                        <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                    </section>
+                </article>
+                <ul> <a href="" title="第1页">1</a> <a href="" title="第2页">2</a> <a href="" title="第3页">3</a> </ul>
+            </main>
+            <aside>
+                <section>
+                    <h2>作者介绍</h2>
+                    <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                </section>
+                <nav> <a href="">HTML</a> <a href="">JS</a> <a href="">CSS</a> </nav>
+            </aside>
+        </div>
+    </div>
+    <footer> <address> xxxx@xxx.com <br /> <a href="">https://www.w3cbest.com</a> </address> </footer>
+</body>
+</html>
+
+<p><a target="_blank" rel="noopener" href="http://gafish.github.io/demo/basicLayout.html">查看示例</a></p>
+<h2 id="header-、footer-不止表示页头页尾"><a href="#header-、footer-不止表示页头页尾" class="headerlink" title="header 、footer 不止表示页头页尾"></a>header 、footer 不止表示页头页尾</h2><p>通常的用法都是把一个页面的页头用header，页尾用footer来表示，但这并不是它们的唯一用法，根据元素的定义，它们表示的是章节或区块的头和尾，严格来说一个<code>&lt;article&gt;</code> 元素的头部需要用 header 来表示，如：</p>
+<article>
+    <header>
+        <h2>我们是相亲相爱的一家人</h2>
+    </header>
+    <p>.....</p>
+</article>
+
+<p>但以上这种 header 中只有一个 h2 的场景中 header 是可以忽略的。 MacOs VoiceOver 读屏软件对 div 中的 header 会说“横幅”，而对 article 、section 中的 header 会忽略，直接读内部的内容。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/headerFooter.html">查看示例</a></p>
+<h2 id="section-、-figure-的用法区别"><a href="#section-、-figure-的用法区别" class="headerlink" title="section 、 figure 的用法区别"></a>section 、 figure 的用法区别</h2><p>section 和 figure 有相似的地方，都可以表示一个区域，结构上也相似，都可以有标题和内容，但两个元素的用法是完全不一样的。</p>
+<ul>
+<li>  section 的内容跟上下文结构存在关联关系，figure 的内容是独立存在的一部分，把 figure 移除不影响主体内容的表达；</li>
+<li>  section 中存在标题只能在开始的位置，figure 中的标题可以在开头也可以在结尾；</li>
+</ul>
+<p>MacOs VoiceOver 读屏软件会把 section 的标题说成“标题”，但对 figure 的标题会说成“文本”。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/sectionFigure.html">查看示例</a></p>
+<h2 id="article-、-section-、-div-的用法区别"><a href="#article-、-section-、-div-的用法区别" class="headerlink" title="article 、 section 、 div 的用法区别"></a>article 、 section 、 div 的用法区别</h2><ul>
+<li>  如果元素内容可以分为几个部分的话，应该使用 <code>&lt;article&gt;</code> 而不是 <code>&lt;section&gt;</code>。</li>
+<li>  如果内容中的几个部分是互相独立的，应该使用 <code>&lt;article&gt;</code> 嵌套，几个部分的内容之间是关联的应该使用 <code>&lt;section&gt;</code>。</li>
+<li>  不要把 <code>&lt;section&gt;</code> 元素作为一个普通的容器来使用，这是本应该是<code>&lt;div&gt;</code>的用法（特别是当片段仅仅是为了美化样式的时候）。</li>
+</ul>
+<p>MacOs VoiceOver 读屏软件对3个元素的朗读方式没有区别，都是直接读取内部的内容。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/articleSectionDiv.html">查看示例</a></p>
+<h2 id="不是所有的导航链接都需要-nav"><a href="#不是所有的导航链接都需要-nav" class="headerlink" title="不是所有的导航链接都需要 nav"></a>不是所有的导航链接都需要 nav</h2><p>只用来将一些热门的链接放入 <code>&lt;nav&gt;</code> 导航栏，建议这些链接应该是跟当前页面或站点有较强的关联性。例如 <code>&lt;footer&gt;</code> 元素就常用来在页面底部包含一个不常用到，没必要加入 <code>&lt;nav&gt;</code> 的链接列表。 MacOs VoiceOver 读屏软件遇到 nav 时会先说“导航“，下一步读取内部的内容，最后会说”导航的结尾“。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/nav.html">查看示例</a></p>
+<h2 id="address-的内容不只是地址"><a href="#address-的内容不只是地址" class="headerlink" title="address 的内容不只是地址"></a>address 的内容不只是地址</h2><p>HTML <code>&lt;address&gt;</code> 元素 表示其中的内容提供了某个人或某个组织的联系信息，包括真实地址、URL、电子邮箱、电话号码、社交媒体账号、地理坐标等等，通过它会被放到 footer 里，但这并不是唯一的用法，在页头 header 中，article 或其它区块中需要显示联系信息的地方都可以使用 address。 MacOs VoiceOver 读屏软件遇到 address 只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/address.html">查看示例</a></p>
+<h2 id="em-、-strong-、-b-、-i-、-mark-的用法区别"><a href="#em-、-strong-、-b-、-i-、-mark-的用法区别" class="headerlink" title="em 、 strong 、 b 、 i 、 mark 的用法区别"></a>em 、 strong 、 b 、 i 、 mark 的用法区别</h2><p>这几个元素表示的都是对文本内容的强调，但强调的含义是不一样的</p>
+<ul>
+<li>  em 强调的是语句的重心，如“我<code>&lt;em&gt;</code>今天<code>&lt;/em&gt;</code>吃薯条了”、“我今天吃<code>&lt;em&gt;</code>薯条<code>&lt;/em&gt;</code>了”；</li>
+<li>  strong 强调的是一句话中重要的一定要看的部分，如”每天早上9点打卡，<code>&lt;strong</code>迟到者罚款1000元<code>&lt;/strong&gt;</code>“；</li>
+<li>  b 强调的是视觉上需要吸引用户来看的内容，类似广告语，对用户来说并不一定很重要；</li>
+<li>  i 强调的是一段文本中，某些部分需要跟周边的文本做一些视觉上区别，但不一定是吸引人的；</li>
+<li>  mark 强调的是上下文的关联性，如搜索关键字；</li>
+</ul>
+<p>MacOs VoiceOver 读屏软件遇到这5个元素时只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/emStrongBIMark.html">查看示例</a></p>
+<h2 id="small-、-s-、-u-还能用吗"><a href="#small-、-s-、-u-还能用吗" class="headerlink" title="small 、 s 、 u 还能用吗"></a>small 、 s 、 u 还能用吗</h2><p>这三个元素在 HTML5 之前，都是为了表示明显的排版视觉效果，HTML5 中保留下来并添加了新的语义</p>
+<ul>
+<li>  small 用来描述对内容的注释，如版权和法律文本等；</li>
+<li>  s 用来表示不再相关或不再准确的事，如之前对某句话的解释，很多年之后已经不适用，但要保留在内容中的时候；</li>
+<li>  u 用来标记中文文本中的专有名称，或将文本标记为拼写错误；</li>
+</ul>
+<p>建议在除了上面提到的几个特殊用途之外，不再使用这三个元素； MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/smallSU.html">查看示例</a></p>
+<h2 id="blockquote-、-q-、-cite-都表示引用，如何区分"><a href="#blockquote-、-q-、-cite-都表示引用，如何区分" class="headerlink" title="blockquote 、 q 、 cite 都表示引用，如何区分"></a>blockquote 、 q 、 cite 都表示引用，如何区分</h2><ul>
+<li>  blockquote 引用的是长文本；</li>
+<li>  q 引用的是短文本；</li>
+<li>  cite 引用的是一个作品的名称或链接；</li>
+</ul>
+<p>MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。<a target="_blank" rel="noopener" href="http://gafish.github.io/demo/blockquoteQCite.html">查看示例</a></p>
+<h2 id="什么时候使用-div"><a href="#什么时候使用-div" class="headerlink" title="什么时候使用 div"></a>什么时候使用 div</h2><p>根据元素的定义，只有在所有 html5 标签都不适用于你想表达的语义时，这时候才使用终极大法 div，从这个角度来说，目前对 div 元素的滥用其实是程序员偷懒的一种表现，反正有 div 兜底，也就懒得去思考那些语义元素的区别。 在追求开发效率和做不完的需求面前，使用 div 兜底也是很多人无奈的选择，我觉得这个是可以理解，某种程度上也可以接受的，但进一步去想一想，你的产品面向的用户也有可能会是存在各种行为障碍的视障、残障人群，他们无法像正常人那样使用你开发的功能，而需要借助类似于屏幕阅读器这样的辅助工具，这时候才是真正考验你的产品是否合格的时候。 我们做语义化开发，很大程度上就是在帮助更多人的人正常的使用我们的产品，同时也会让你离专业的程序员更进一步。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/TR/html53/">https://www.w3.org/TR/html53/</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://www.w3cschool.cn/html5/">https://www.w3cschool.cn/html5/</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://juejin.im/post/5cb1a7af5188251b0c653736">https://juejin.im/post/5cb1a7af5188251b0c653736</a></li>
+</ul>
+<p>来源：<a target="_blank" rel="noopener" href="http://gafish.github.io/">http://gafish.github.io</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/footer/" rel="tag"># footer</a>
+              <a href="/tags/html5/" rel="tag"># html5</a>
+              <a href="/tags/html%E6%95%99%E7%A8%8B/" rel="tag"># html教程</a>
+              <a href="/tags/aside/" rel="tag"># aside</a>
+              <a href="/tags/datalist/" rel="tag"># datalist</a>
+              <a href="/tags/details/" rel="tag"># details</a>
+              <a href="/tags/dialog/" rel="tag"># dialog</a>
+              <a href="/tags/header/" rel="tag"># header</a>
+              <a href="/tags/option/" rel="tag"># option</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/05/29/wordpress-%E8%BE%93%E5%87%BA-wp-nav-menu%E8%8F%9C%E5%8D%95%E5%87%BD%E6%95%B0/" rel="prev" title="wordpress 输出 wp_nav_menu()菜单函数">
+      <i class="fa fa-chevron-left"></i> wordpress 输出 wp_nav_menu()菜单函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/04/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE%E9%81%87%E5%88%B0%E8%B4%9F%E5%80%BC%E4%B8%AD%E5%BF%83%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E8%AE%BE%E7%BD%AE/" rel="next" title="echarts 雷达图遇到负值中心点偏移的设置">
+      echarts 雷达图遇到负值中心点偏移的设置 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A-HTML5-%E8%AF%AD%E4%B9%89%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">为什么要做 HTML5 语义化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">Super duper best blog ever</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Why you should buy more cheeses than you currently do</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">Super duper best blog ever</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Why you should buy more cheeses than you currently do</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5-%E5%85%83%E7%B4%A0%E5%A4%A7%E5%85%A8"><span class="nav-number">2.</span> <span class="nav-text">HTML5 元素大全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%85%83%E7%B4%A0"><span class="nav-number">2.1.</span> <span class="nav-text">文档元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%85%83%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">文档元数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97"><span class="nav-number">2.3.</span> <span class="nav-text">区块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E5%88%86%E7%BB%84"><span class="nav-number">2.4.</span> <span class="nav-text">内容分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%BA%A7%E8%AF%AD%E4%B9%89"><span class="nav-number">2.5.</span> <span class="nav-text">文本级语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95"><span class="nav-number">2.6.</span> <span class="nav-text">修改记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%86%85%E5%AE%B9"><span class="nav-number">2.7.</span> <span class="nav-text">嵌入内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE"><span class="nav-number">2.8.</span> <span class="nav-text">表格数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95"><span class="nav-number">2.9.</span> <span class="nav-text">表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E5%85%83%E7%B4%A0"><span class="nav-number">2.10.</span> <span class="nav-text">交互元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E5%85%83%E7%B4%A0"><span class="nav-number">2.11.</span> <span class="nav-text">脚本元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80"><span class="nav-number">3.</span> <span class="nav-text">基本布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">我的网站</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">文章标题11111</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">文章标题2222</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">文章标题3333</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">作者介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#header-%E3%80%81footer-%E4%B8%8D%E6%AD%A2%E8%A1%A8%E7%A4%BA%E9%A1%B5%E5%A4%B4%E9%A1%B5%E5%B0%BE"><span class="nav-number">5.</span> <span class="nav-text">header 、footer 不止表示页头页尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">我们是相亲相爱的一家人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section-%E3%80%81-figure-%E7%9A%84%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB"><span class="nav-number">7.</span> <span class="nav-text">section 、 figure 的用法区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#article-%E3%80%81-section-%E3%80%81-div-%E7%9A%84%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB"><span class="nav-number">8.</span> <span class="nav-text">article 、 section 、 div 的用法区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E6%98%AF%E6%89%80%E6%9C%89%E7%9A%84%E5%AF%BC%E8%88%AA%E9%93%BE%E6%8E%A5%E9%83%BD%E9%9C%80%E8%A6%81-nav"><span class="nav-number">9.</span> <span class="nav-text">不是所有的导航链接都需要 nav</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#address-%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%9C%B0%E5%9D%80"><span class="nav-number">10.</span> <span class="nav-text">address 的内容不只是地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#em-%E3%80%81-strong-%E3%80%81-b-%E3%80%81-i-%E3%80%81-mark-%E7%9A%84%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB"><span class="nav-number">11.</span> <span class="nav-text">em 、 strong 、 b 、 i 、 mark 的用法区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#small-%E3%80%81-s-%E3%80%81-u-%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97"><span class="nav-number">12.</span> <span class="nav-text">small 、 s 、 u 还能用吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blockquote-%E3%80%81-q-%E3%80%81-cite-%E9%83%BD%E8%A1%A8%E7%A4%BA%E5%BC%95%E7%94%A8%EF%BC%8C%E5%A6%82%E4%BD%95%E5%8C%BA%E5%88%86"><span class="nav-number">13.</span> <span class="nav-text">blockquote 、 q 、 cite 都表示引用，如何区分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8-div"><span class="nav-number">14.</span> <span class="nav-text">什么时候使用 div</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">15.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

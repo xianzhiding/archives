@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="常用的 class、id、属性 选择器都可以使用 document.querySelector 或 document.querySelectorAll 替代。区别是    document.querySelector 返回第一个匹配的 Element   document.querySelectorAll 返回所有匹配的 Element 组成的 NodeList。它可以通过 [].slice.ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="常用的 class、id、属性 选择器都可以使用 document.querySelector 或 document.querySelectorAll 替代。区别是    document.querySelector 返回第一个匹配的 Element   document.querySelectorAll 返回所有匹配的 Element 组成的 NodeList。它可以通过 [].slice.ca">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-10-08T00:56:49.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.875Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="es6">
+<meta property="article:tag" content="jquery">
+<meta property="article:tag" content="document">
+<meta property="article:tag" content="querySelector">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-08 08:56:49" itemprop="dateCreated datePublished" datetime="2018-10-08T08:56:49+08:00">2018-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>常用的 class、id、属性 选择器都可以使用 <code>document.querySelector</code> 或 <code>document.querySelectorAll</code> 替代。区别是</p>
+<ul>
+<li>  <code>document.querySelector</code> 返回第一个匹配的 <code>Element</code></li>
+<li>  <code>document.querySelectorAll</code> 返回所有匹配的 <code>Element</code> 组成的 <code>NodeList</code>。它可以通过 <code>[].slice.call()</code> 把它转成 <code>Array</code></li>
+<li>  如果匹配不到任何 <code>Element，jQuery</code> 返回空数组 <code>[]</code>，但 <code>document.querySelector</code> 返回 null，注意空指针异常。当找不到时，也可以使用 设置默认的值，如 document.querySelectorAll(selector) []</li>
+</ul>
+<blockquote>
+<p>注意：<code>document.querySelector</code> 和 <code>document.querySelectorAll</code> 性能很<strong>差</strong>。如果想提高性能，尽量使用 <code>document.getElementById</code>、<code>document.getElementsByClassName</code> 或 <code>document.getElementsByTagName</code>。</p>
+</blockquote>
+<p>探讨一下如果不需要支持过于陈旧的浏览器版本，如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</p>
+<h3 id="选取元素"><a href="#选取元素" class="headerlink" title="选取元素"></a>选取元素</h3><h4 id="选择器查询"><a href="#选择器查询" class="headerlink" title="选择器查询"></a>选择器查询</h4><p>常用的 class、id、属性 选择器都可以使用 document.querySelector 或 document.querySelectorAll 替代。</p>
+<ul>
+<li>  document.querySelector 返回第一个匹配的 Element</li>
+<li>  document.querySelectorAll 返回所有匹配的 Element 组成的 NodeList。</li>
+</ul>
+<p>jQuery：</p>
+<p>var $ele = $(“selector”);</p>
+<p>Native:</p>
+<p>let ele = document.querySelectorAll(“selector”);</p>
+<h4 id="选择器模式"><a href="#选择器模式" class="headerlink" title="选择器模式"></a>选择器模式</h4><p>选择器</p>
+<p>示例</p>
+<p>示例说明</p>
+<p>.class</p>
+<p>.intro</p>
+<p>选择所有class=”intro”的元素</p>
+<p>#id</p>
+<p>#firstname</p>
+<p>选择所有id=”firstname”的元素</p>
+<p>*</p>
+<p>*</p>
+<p>选择所有元素</p>
+<p>element</p>
+<p>p</p>
+<p>选择所有<p>元素</p>
+<p>element,element</p>
+<p>div,p</p>
+<p>选择所有<div>元素和<p>元素</p>
+<p>element element</p>
+<p>div p</p>
+<p>选择<div>元素内的所有<p>元素</p>
+<p>element&gt;element</p>
+<p>div&gt;p</p>
+<p>选择所有父级是<div>元素的 <p>元素</p>
+<p>element+element</p>
+<p>div+p</p>
+<p>选择所有紧接着<div>元素之后的<p>元素</p>
+<p>[attribute=value]</p>
+<p>a[target=_blank]</p>
+<p>选择所有使用target=”_blank”的<a>元素</p>
+<p>[attribute^=value]</p>
+<p>a[src^=”http”]</p>
+<p>选择每一个src属性的值以”http”开头的<a>元素</p>
+<p>[attribute$=value]</p>
+<p>a[src$=”.jpg”]</p>
+<p>选择每一个src属性的值以”.jpg”结尾的<a>元素</p>
+<p>:first-child</p>
+<p>ul li:first-child</p>
+<p>选择<ul>元素下的首个<li>元素</p>
+<p>:nth-child(n)</p>
+<p>ul li:nth-child(3)</p>
+<p>选择<ul>元素下的第三个<li>元素</p>
+<p>:last-child</p>
+<p>ul li:last-child</p>
+<p>选择<ul>元素下的最后一个<li>元素</p>
+<p> </p>
+<h4 id="DOM-树查询"><a href="#DOM-树查询" class="headerlink" title="DOM 树查询"></a>DOM 树查询</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$ele.parent()</code></p>
+<p><code>ele.parentNode</code></p>
+<p>元素的直接父元素</p>
+<p><code>$ele.children()</code></p>
+<p><code>ele.childNodes</code></p>
+<p>元素的所有直接子元素</p>
+<p><code>$ele.find(&quot;a&quot;)</code></p>
+<p><code>ele.querySelectorAll(&quot;a&quot;)</code></p>
+<p>元素的后代元素</p>
+<p><code>$ele.prev()</code></p>
+<p><code>ele.previousElementSibling</code></p>
+<p>元素的上一个同胞元素</p>
+<p><code>$ele.next()</code></p>
+<p><code>ele.nextElementSibling</code></p>
+<p>元素的下一个同胞元素</p>
+<h3 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h3><p>DOM本身就具有很丰富的操作方法，可以取代jQuery提供的操作方法。</p>
+<h4 id="内容和属性"><a href="#内容和属性" class="headerlink" title="内容和属性"></a>内容和属性</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>var text = $ele.text()</code></p>
+<p><code>let text = ele.innerText</code></p>
+<p>获取所选元素的文本内容</p>
+<p><code>$ele.text(&quot;text&quot;)</code></p>
+<p><code>ele.innerText = &quot;text&quot;</code></p>
+<p>设置所选元素的文本内容</p>
+<p><code>var html = $ele.html()</code></p>
+<p><code>let html = ele.innerHTML</code></p>
+<p>获取所选元素的HTML内容</p>
+<p><code>$ele.html(&quot;&lt;div&gt;html&lt;/div&gt;&quot;)</code></p>
+<p><code>ele.innerHTML = &quot;&lt;div&gt;html&lt;/div&gt;&quot;</code></p>
+<p>设置所选元素的HTML内容</p>
+<p><code>var input = $ele.val()</code></p>
+<p><code>let input = ele.value</code></p>
+<p>获取表单字段的值</p>
+<p><code>$ele.val(&quot;input&quot;)</code></p>
+<p><code>ele.value = &quot;input&quot;</code></p>
+<p>设置表单字段的值</p>
+<p><code>var href = $ele.attr(&quot;href&quot;)</code></p>
+<p><code>let href = ele.getAttribute(&quot;href&quot;)</code></p>
+<p>获取元素的属性值</p>
+<p><code>$ele.attr(&quot;href&quot;, &quot;/&quot;)</code></p>
+<p><code>ele.setAttribute(&quot;href&quot;, &quot;/&quot;)</code></p>
+<p>设置元素的属性值</p>
+<h4 id="修改-DOM-树"><a href="#修改-DOM-树" class="headerlink" title="修改 DOM 树"></a>修改 DOM 树</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$parent.append($ele)</code></p>
+<p><code>parent.appendChild(ele)</code></p>
+<p>在被选元素的结尾插入内容</p>
+<p><code>$parent.prepend($ele)</code></p>
+<p><code>parent.insertBefore(ele, parent.firstChild)</code></p>
+<p>在被选元素的开头插入内容</p>
+<p><code>$ele.after(html)</code></p>
+<p><code>ele.insertAdjacentHTML(&quot;afterend&quot;, html)</code></p>
+<p>在被选元素之后插入内容</p>
+<p><code>$ele.before(html)</code></p>
+<p><code>ele.insertAdjacentHTML(&quot;beforebegin&quot;, html)</code></p>
+<p>在被选元素之前插入内容</p>
+<p><code>$ele.remove()</code></p>
+<p><code>ele.parentNode.removeChild(ele)</code></p>
+<p>删除被选元素及其子元素</p>
+<p><code>$ele.empty()</code></p>
+<p><code>ele.innerHTML = null</code></p>
+<p>从被选元素中删除子元素</p>
+<p><code>$ele.clone()</code></p>
+<p><code>ele.cloneNode(true)</code></p>
+<p>拷贝被选元素</p>
+<p><code>$ele.replaceWith(html)</code></p>
+<p><code>ele.outerHTML = html</code></p>
+<p>指定HTML替换被选元素</p>
+<h3 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h3><p> </p>
+<h4 id="设置-Style"><a href="#设置-Style" class="headerlink" title="设置 Style"></a>设置 Style</h4><p>HTML DOM 允许 JavaScript 改变 HTML 元素的样式，Native API 提供了如下几种方式：</p>
+<ul>
+<li>  ele.setAttribute 直接修改 DOM style 属性改变样式</li>
+<li>  ele.style.cssText 通过 cssText 修改 Style 属性</li>
+<li>  ele.style.property 通过 style 对象读写行内 CSS 样式</li>
+</ul>
+<p>jQuery：</p>
+<p>var size = $ele.css(“font-size”); // 返回第一个匹配元素的 CSS 属性值<br>$ele.css(“font-size”, “2rem”); // 为所有元素设置指定的 CSS 属性值</p>
+<p>Native:</p>
+<p>let size = getComputedStyle(ele)[“font-size”]; // 获取当前元素计算后的 CSS 属性值<br>ele.style.setProperty(“font-size”, “2rem”); // 设置当前元素的某个内联样式<br>ele.style.removeProperty(“font-size”); // 移除当前元素的某个内联样式</p>
+<h4 id="设置-Class"><a href="#设置-Class" class="headerlink" title="设置 Class"></a>设置 Class</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$ele.hasClass(className)</code></p>
+<p><code>ele.classList.contains(className)</code></p>
+<p>检查元素是否包含指定的类名</p>
+<p><code>$ele.addClass(className)</code></p>
+<p><code>ele.classList.add(className)</code></p>
+<p>向元素增加一个或多个类名</p>
+<p><code>$ele.removeClass(className)</code></p>
+<p><code>ele.classList.remove(className)</code></p>
+<p>从元素中移除一个或多个类</p>
+<p><code>$ele.toggleClass(className)</code></p>
+<p><code>ele.classList.toggle(className)</code></p>
+<p>对元素的一个或多个类进行切换</p>
+<h3 id="事件方法"><a href="#事件方法" class="headerlink" title="事件方法"></a>事件方法</h3><h4 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h4><p>jQuery：</p>
+<p>$ele.on(“click”, function (evt) {<br>console.log(evt.target);<br>});</p>
+<p>Native:</p>
+<p>ele.addEventListener(“click”, evt =&gt; {<br>console.log(evt.target);<br>});</p>
+<p>解除绑定 jQuery：</p>
+<p>$ele.off(“click”);</p>
+<p>Native:</p>
+<p>ele.removeEventListener(“click”, func);</p>
+<p>如果要移除事件，addEventListener 必须使用外部函数，绑定匿名函数的事件是无法移除的。</p>
+<h4 id="模拟触发"><a href="#模拟触发" class="headerlink" title="模拟触发"></a>模拟触发</h4><p>jQuery：</p>
+<p>$ele.trigger(“click”);</p>
+<p>Native:</p>
+<p>let event = document.createEvent(“MouseEvents”);<br>event.initMouseEvent(“click”);<br>ele.dispatchEvent(event);</p>
+<p>模拟事件：</p>
+<ul>
+<li>  首先通过 document.createEvent 方法创建 Event 对象。</li>
+<li>  然后利用 Event 对象的 init 方法对其进行初始化。</li>
+<li>  最后使用 dispatchEvent 方法触发 Event 对象。</li>
+</ul>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$.isArray(array)</code></p>
+<p><code>Array.isArray(array)</code></p>
+<p>判断参数是否为一个数组</p>
+<p><code>$.inArray(item, array)</code></p>
+<p><code>array.includes(item)</code></p>
+<p>判断值是否在指定数组中</p>
+<p><code>$.makeArray(objlist)</code></p>
+<p><code>Array.from(objlist)</code></p>
+<p>将类数组对象转换为数组</p>
+<p><code>$.merge(array1, array2)</code></p>
+<p><code>array1.concat(array2)</code></p>
+<p>合并两个数组（有区别）</p>
+<p><code>$.each(array, function (i, item) &#123;&#125;</code></p>
+<p><code>array.forEach((item, i) =&gt; &#123;&#125;)</code></p>
+<p>遍历指定的对象和数组</p>
+<p>合并数组时，merge 会改变原数组的内容，而 concat 不会修改原数组，只会返回合并后的数组</p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$.now()</code></p>
+<p><code>Date.now()</code></p>
+<p>返回当前时间戳</p>
+<p><code>$.trim(string)</code></p>
+<p><code>string.trim();</code></p>
+<p>移除字符串头尾空白</p>
+<p><code>$.type(obj);</code></p>
+<p><code>Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, &#39;$1&#39;).toLowerCase();</code></p>
+<p>检测参数的内部类型</p>
+<p><code>$.parseJSON(string)</code></p>
+<p><code>JSON.parse(string)</code></p>
+<p>将JSON转换为JS对象</p>
+<p><code>$ele.data(&quot;key&quot;, &quot;value&quot;)</code></p>
+<p><code>ele.dataset.key = &quot;value&quot;</code></p>
+<p>在指定的元素上存储数据</p>
+<p><code>$.map(array, function(value, index)&#123; &#125;);</code></p>
+<p><code>array.map(function(value, index)&#123; &#125;);</code></p>
+<p>将数组转化为处理后的新数组</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/nefe/You-Dont-Need-jQuery/blob/master/README.zh-CN.md">https://github.com/nefe/You-Dont-Need-jQuery</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/es6/" rel="tag"># es6</a>
+              <a href="/tags/jquery/" rel="tag"># jquery</a>
+              <a href="/tags/document/" rel="tag"># document</a>
+              <a href="/tags/querySelector/" rel="tag"># querySelector</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/10/07/%E5%A6%82%E4%BD%95%E7%BB%99echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%AB%98%E4%BA%AE%E8%89%B2/" rel="prev" title="如何给ECharts柱状图设置一个高亮色">
+      <i class="fa fa-chevron-left"></i> 如何给ECharts柱状图设置一个高亮色
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/" rel="next" title="box-shadow和drop-shadow实现不规则投影">
+      box-shadow和drop-shadow实现不规则投影 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">选取元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.1.</span> <span class="nav-text">选择器查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">选择器模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM-%E6%A0%91%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.3.</span> <span class="nav-text">DOM 树查询</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">DOM 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E5%92%8C%E5%B1%9E%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">内容和属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-DOM-%E6%A0%91"><span class="nav-number">2.2.</span> <span class="nav-text">修改 DOM 树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">CSS 样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-Style"><span class="nav-number">3.1.</span> <span class="nav-text">设置 Style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-Class"><span class="nav-number">3.2.</span> <span class="nav-text">设置 Class</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">事件方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">绑定事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E8%A7%A6%E5%8F%91"><span class="nav-number">4.2.</span> <span class="nav-text">模拟触发</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Array"><span class="nav-number">5.1.</span> <span class="nav-text">Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Method"><span class="nav-number">5.2.</span> <span class="nav-text">Method</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

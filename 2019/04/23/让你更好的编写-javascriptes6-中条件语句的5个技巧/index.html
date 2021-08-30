@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好&#x2F;更清晰的条件语句。 1.使用 Array.includes 来处理多个条件我们来看看下面的例子： &#x2F;&#x2F; conditionfunction test(fruit) {    if (fruit &#x3D;&#x3D; ‘apple’  fruit &#x3D;&#x3D; ‘strawberry’) {        console.l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让你更好的编写 JavaScript(ES6) 中条件语句的5个技巧">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/04/23/%E8%AE%A9%E4%BD%A0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%BC%96%E5%86%99-javascriptes6-%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%845%E4%B8%AA%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好&#x2F;更清晰的条件语句。 1.使用 Array.includes 来处理多个条件我们来看看下面的例子： &#x2F;&#x2F; conditionfunction test(fruit) {    if (fruit &#x3D;&#x3D; ‘apple’  fruit &#x3D;&#x3D; ‘strawberry’) {        console.l">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-23T04:21:14.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.059Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="Array.includes">
+<meta property="article:tag" content="Map">
+<meta property="article:tag" content="Object">
+<meta property="article:tag" content="Array.some">
+<meta property="article:tag" content="es6">
+<meta property="article:tag" content="对象字面量">
+<meta property="article:tag" content="Array.every">
+<meta property="article:tag" content="default parameters">
+<meta property="article:tag" content="Destructuring">
+<meta property="article:tag" content="if &#x2F; else">
+<meta property="article:tag" content="lodash">
+<meta property="article:tag" content="return">
+<meta property="article:tag" content="减少嵌套">
+<meta property="article:tag" content="条件语句">
+<meta property="article:tag" content="编程技巧">
+<meta property="article:tag" content="解构">
+<meta property="article:tag" content="重构">
+<meta property="article:tag" content="默认参数">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/04/23/%E8%AE%A9%E4%BD%A0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%BC%96%E5%86%99-javascriptes6-%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%845%E4%B8%AA%E6%8A%80%E5%B7%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>让你更好的编写 JavaScript(ES6) 中条件语句的5个技巧 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/23/%E8%AE%A9%E4%BD%A0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%BC%96%E5%86%99-javascriptes6-%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%845%E4%B8%AA%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          让你更好的编写 JavaScript(ES6) 中条件语句的5个技巧
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-23 12:21:14" itemprop="dateCreated datePublished" datetime="2019-04-23T12:21:14+08:00">2019-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好/更清晰的条件语句。</p>
+<h2 id="1-使用-Array-includes-来处理多个条件"><a href="#1-使用-Array-includes-来处理多个条件" class="headerlink" title="1.使用 Array.includes 来处理多个条件"></a>1.使用 Array.includes 来处理多个条件</h2><p>我们来看看下面的例子：</p>
+<p>// condition<br>function test(fruit) {<br>    if (fruit == ‘apple’  fruit == ‘strawberry’) {<br>        console.log(‘red’);<br>    }<br>}</p>
+<p>乍一看，上面的例子看起来似乎没什么问题。 但是，如果我们还有更多的红色水果呢？比如樱桃（<code>cherry</code>）和蔓越莓（<code>cranberries</code>）。 我们是否要用更多的 操作符来扩展该语句呢？ 我们可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Array.includes</a> 重写上面的条件语句。</p>
+<p>function test(fruit) {<br>    // 条件提取到数组中<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];<br>    if (redFruits.includes(fruit)) {<br>        console.log(‘red’);<br>    }<br>}</p>
+<p>我们将红色水果（条件）提取到一个数组中。这样做，可以让代码看起来更整洁。</p>
+<h2 id="2-减少嵌套，提前使用-return-语句"><a href="#2-减少嵌套，提前使用-return-语句" class="headerlink" title="2.减少嵌套，提前使用 return 语句"></a>2.减少嵌套，提前使用 return 语句</h2><p>让我们扩展前面的示例，再包含另外两个条件：</p>
+<ul>
+<li>  如果没有提供水果，抛出错误</li>
+<li>  接受水果 <code>quantity</code>（数量）参数，如果超过 <code>10</code>，则并打印相关信息。</li>
+</ul>
+<p>function test(fruit, quantity) {<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];<br>    // 条件 1：fruit 必须有值<br>    if (fruit) {<br>        // 条件 2：必须为红色<br>        if (redFruits.includes(fruit)) {<br>            console.log(‘red’);</p>
+<pre><code>        // 条件 3：数量必须大于 10
+        if (quantity &gt; 10) &#123;
+            console.log(&#39;big quantity&#39;);
+        &#125;
+    &#125;
+&#125; else &#123;
+    throw new Error(&#39;No fruit!&#39;);
+&#125;
+</code></pre>
+<p>}</p>
+<p>// 测试结果<br>test(null); // 抛出错误：No fruits<br>test(‘apple’); // 打印：red<br>test(‘apple’, 20); // 打印：red，big quantity</p>
+<p>看看上面的代码，我们有： – 1 个 <code>if / else</code> 语句过滤掉无效条件 – 3 层 <code>if</code> 语句嵌套（分别是条件1,2和3） 我个人遵循的一般规则是 在发现无效条件时提前 <code>return</code>。</p>
+<p>/* 在发现无效条件时提前 return */<br>function test(fruit, quantity) {<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];</p>
+<pre><code>// 条件 1：提前抛出错误
+if (!fruit) throw new Error(&#39;No fruit!&#39;);
+
+// 条件2：必须为红色
+if (redFruits.includes(fruit)) &#123;
+    console.log(&#39;red&#39;);
+
+    // 条件 3：数量必须大于 10
+    if (quantity &gt; 10) &#123;
+        console.log(&#39;big quantity&#39;);
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>这样做，我们可以减少一个嵌套层级。 这种编码风格很好，特别是当你的 <code>if</code> 语句很长时（想象一下，你需要滚动到最底部才知道那里有一个 <code>else</code> 语句，这样代码的可读性就变得很差了）。 如果通过反转条件并提前 <code>return</code> ，我们可以进一步减少嵌套。 请查看下面的条件 <code>2</code> ，看看我们是如何做到的：</p>
+<p>/* 在发现无效条件时提前 return */<br>function test(fruit, quantity) {<br>    const redFruits = [‘apple’, ‘strawberry’, ‘cherry’, ‘cranberries’];</p>
+<pre><code>if (!fruit) throw new Error(&#39;No fruit!&#39;); // 条件 1：提前抛出错误
+if (!redFruits.includes(fruit)) return; // 条件 2：当 fruit 不是红色的时候，提前 return
+
+console.log(&#39;red&#39;);
+
+// 条件 3：必须是大量存在
+if (quantity &gt; 10) &#123;
+    console.log(&#39;big quantity&#39;);
+&#125;
+</code></pre>
+<p>}</p>
+<p>通过反转条件2的条件，我们的代码现在没有嵌套语句了。 当我们有很长的逻辑代码时，这种技巧非常有用，我们希望在条件不满足时停止下一步的处理。 然而，这并不是严格的规定。问问自己，这个版本（没有嵌套）是否要比前一个版本（条件 <code>2</code> 有嵌套）的更好、可具可读性？ 对我来说，我会选择前一个版本（条件 <code>2</code> 有嵌套）。 这是因为：</p>
+<ul>
+<li>  代码简短直接，嵌套 <code>if</code> 更清晰</li>
+<li>  反转条件可能会引发更多的思考过程（增加认知负担）</li>
+</ul>
+<p>因此，始终追求更少的嵌套，提前 <code>return</code>，但是不要过度。但不要过度。如果您感兴趣，这里有一篇文章和 <code>StackOverflow</code> 的讨论， 进一步讨论这个话题：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="http://blog.timoxley.com/post/47041269194/avoid-else-return-early">Avoid Else, Return Early</a> by Tim Oxley</li>
+<li>  <a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/questions/18454/should-i-return-from-a-function-early-or-use-an-if-statement">StackOverflow 上关于 if/else 代码风格的讨论</a></li>
+</ul>
+<h2 id="3-使用函数的默认参数-和-解构"><a href="#3-使用函数的默认参数-和-解构" class="headerlink" title="3.使用函数的默认参数 和 解构"></a>3.使用函数的默认参数 和 解构</h2><p>我想下面的代码可能看起来很熟悉，我们在使用 JavaScript 时总是需要检查 <code>null / undefined</code> 值并分配默认值：</p>
+<p>function test(fruit, quantity) {<br>    if (!fruit) return;<br>    const q = quantity  1; // 如果没有提供 quantity 参数，则默认为 1</p>
+<pre><code>console.log(\`We have $&#123;q&#125; $&#123;fruit&#125;!\`);
+</code></pre>
+<p>}</p>
+<p>// 测试结果<br>test(‘banana’); // We have 1 banana!<br>test(‘apple’, 2); // We have 2 apple!</p>
+<p>实际上，我们可以通过分配默认函数参数来消除变量 <code>q</code> 。</p>
+<p>function test(fruit, quantity = 1) { // i如果没有提供 quantity 参数，则默认为 1<br>    if (!fruit) return;<br>    console.log(`We have ${quantity} ${fruit}!`);<br>}</p>
+<p>// 测试结果<br>test(‘banana’); // We have 1 banana!<br>test(‘apple’, 2); // We have 2 apple!</p>
+<p>更简单直观不是吗？ 请注意，每个函数参数都有自己的默认值。 例如，我们也可以为 <code>fruit</code> 分配一个默认值：<code>function test(fruit = &#39;unknown&#39;, quantity = 1)</code>。 如果我们的 <code>fruit</code> 是一个 <code>Object</code> 对象怎么办？ 我们可以指定默认参数吗？</p>
+<p>function test(fruit) {<br>    // 如果有值，则打印 fruit.name<br>    if (fruit &amp;&amp; fruit.name) {<br>        console.log(fruit.name);<br>    } else {<br>        console.log(‘unknown’);<br>    }<br>}</p>
+<p>//测试结果<br>test(undefined); // unknown<br>test({}); // unknown<br>test({ name: ‘apple’, color: ‘red’ }); // apple</p>
+<p>看看上面的例子，我们想要的是如果 <code>fruit.name</code> 可用则打印水果名称，否则将打印 <code>unknown</code> 。我们可以使用默认函数参数和解构(<code>destructing</code>) 来避免 <code>fruit &amp;&amp; fruit.name</code> 这样的检查。</p>
+<p>// 解构 —— 只获得 name 属性<br>// 参数默认分配空对象 {}<br>function test({ name } = {}) {<br>    console.log(name  ‘unknown’);<br>}</p>
+<p>//测试结果<br>test(undefined); // unknown<br>test({}); // unknown<br>test({ name: ‘apple’, color: ‘red’ }); // apple</p>
+<p>由于我们只需要来自 <code>fruit</code> 的 <code>name</code> 属性，我们可以使用 <code>&#123;name&#125;</code> 来解构参数，然后我们可以在代码中使用 <code>name</code> 作为变量来取代<code>fruit.name</code>。 我们还将空对象 <code>&#123;&#125;</code> 指定为默认值。 如果我们不这样做，你将在执行行测试时遇到<code>test(undefined) – Cannot destructure property name of &#39;undefined&#39; or &#39;null&#39;.</code>(无法解析’undefined’或’null’的属性名称)。 因为 <code>undefined</code>中 没有 <code>name</code> 属性。 如果您不介意使用第三方库，有几种方法可以减少空检查：</p>
+<ul>
+<li>  使用 <a target="_blank" rel="noopener" href="https://lodash.com/docs/4.17.11#get">Lodash get</a> 函数</li>
+<li>  使用 Facebook 开源的 <a target="_blank" rel="noopener" href="https://github.com/facebookincubator/idx">idx</a> 库（需搭配 Babeljs）</li>
+</ul>
+<p>以下是使用Lodash的示例：</p>
+<p>// 引入 lodash 库，我们将获得 _.get()<br>function test(fruit) {<br>console.log(_.get(fruit, ‘name’, ‘unknown’); // 获取 name 属性，如果没有分配，则设为默认值 unknown<br>}</p>
+<p>//测试结果<br>test(undefined); // unknown<br>test({ }); // unknown<br>test({ name: ‘apple’, color: ‘red’ }); // apple</p>
+<p>您可以在这里 <a target="_blank" rel="noopener" href="http://jsbin.com/bopovajiye/edit?js,console">运行演示代码</a> 。此外，如果你喜欢函数式编程（FP），您可以选择使用<a target="_blank" rel="noopener" href="https://github.com/lodash/lodash/wiki/FP-Guide">Lodash fp</a> ，Lodash的函数式能版本（方法名更改为 <code>get</code> 或 <code>getOr</code>）。</p>
+<h2 id="4-选择-Map-Object-字面量，而不是Switch语句"><a href="#4-选择-Map-Object-字面量，而不是Switch语句" class="headerlink" title="4.选择 Map / Object 字面量，而不是Switch语句"></a>4.选择 Map / Object 字面量，而不是Switch语句</h2><p>让我们看看下面的例子，我们想根据颜色打印水果：</p>
+<p>function test(color) {<br>    // 使用 switch case 语句，根据颜色找出对应的水果<br>    switch (color) {<br>        case ‘red’:<br>            return [‘apple’, ‘strawberry’];<br>        case ‘yellow’:<br>            return [‘banana’, ‘pineapple’];<br>        case ‘purple’:<br>            return [‘grape’, ‘plum’];<br>        default:<br>            return [];<br>    }<br>}</p>
+<p>//测试结果<br>test(null); // []<br>test(‘yellow’); // [‘banana’, ‘pineapple’]</p>
+<p>上面的代码似乎没有错，但我觉得它很冗长。使用具有更清晰语法的 <code>object</code> 字面量可以实现相同的结果：</p>
+<p>// 使用对象字面量，根据颜色找出对应的水果<br>const fruitColor = {<br>    red: [‘apple’, ‘strawberry’],<br>    yellow: [‘banana’, ‘pineapple’],<br>    purple: [‘grape’, ‘plum’]<br>};</p>
+<p>function test(color) {<br>    return fruitColor[color]  [];<br>}</p>
+<p>或者，您可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> 来实现相同的结果：</p>
+<p>// 使用 Map ，根据颜色找出对应的水果<br>const fruitColor = new Map()<br>    .set(‘red’, [‘apple’, ‘strawberry’])<br>    .set(‘yellow’, [‘banana’, ‘pineapple’])<br>    .set(‘purple’, [‘grape’, ‘plum’]);</p>
+<p>function test(color) {<br>    return fruitColor.get(color)  [];<br>}</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> 是 <code>ES2015(ES6)</code> 引入的新的对象类型，允许您存储键值对。 我们是不是应该禁止使用 <code>switch</code> 语句呢？ 不要局限于此。 就个人而言，我尽可能使用对象字面量，但我不会设置硬规则来阻止使用 <code>switch</code> ，是否使用应该根据你的场景而决定。 Todd Motto 有一篇文章深入地研究了 switch语句与对象字面量，你可以在 <a target="_blank" rel="noopener" href="https://toddmotto.com/deprecating-the-switch-statement-for-object-literals/">这里</a> 阅读。 <strong>重构语法</strong> 对于上面的示例，我们实际上可以使用 <code>Array.filter</code> 来重构我们的代码，以实现相同的结果。</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘strawberry’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘pineapple’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ },<br>    { name: ‘plum’, color: ‘purple’ }<br>];</p>
+<p>function test(color) {<br>    // 使用 Array filter ，根据颜色找出对应的水果</p>
+<pre><code>return fruits.filter(f =&gt; f.color == color);
+</code></pre>
+<p>}</p>
+<p>总有不止一种方法可以达到相同的效果。对于这个例子我们展示了 <code>4</code> 种实现方法。编码很有趣！</p>
+<h2 id="5-使用-Array-every-和-Array-some-来处理全部-部分满足条件"><a href="#5-使用-Array-every-和-Array-some-来处理全部-部分满足条件" class="headerlink" title="5. 使用 Array.every 和 Array.some 来处理全部/部分满足条件"></a>5. 使用 Array.every 和 Array.some 来处理全部/部分满足条件</h2><p>最后一个小技巧更多地是利用新的（但不是那么新的）<code>Javascript Array</code>函数来减少代码行。查看下面的代码，我们想检查所有水果是否都是红色的：</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ }<br>];</p>
+<p>function test() {<br>    let isAllRed = true;</p>
+<pre><code>// 条件：所有的水果都必须是红色
+for (let f of fruits) &#123;
+    if (!isAllRed) break;
+    isAllRed = (f.color == &#39;red&#39;);
+&#125;
+
+console.log(isAllRed); // false
+</code></pre>
+<p>}</p>
+<p>代码太长了！我们可以使用 <code>Array.every</code> 减少行数：</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ }<br>];</p>
+<p>function test() {<br>    // 条件：简短方式，所有的水果都必须是红色<br>    const isAllRed = fruits.every(f =&gt; f.color == ‘red’);</p>
+<pre><code>console.log(isAllRed); // false
+</code></pre>
+<p>}</p>
+<p>干净多了对吧？类似的，如果我们想要检查是否有至少一个水果是红色的，我们可以使用 <code>Array.some</code> 仅用一行代码就实现出来。</p>
+<p>const fruits = [<br>    { name: ‘apple’, color: ‘red’ },<br>    { name: ‘banana’, color: ‘yellow’ },<br>    { name: ‘grape’, color: ‘purple’ }<br>];</p>
+<p>function test() {<br>    // 条件：是否存在红色的水果<br>    const isAnyRed = fruits.some(f =&gt; f.color == ‘red’);</p>
+<pre><code>console.log(isAnyRed); // true
+</code></pre>
+<p>}</p>
+<p>  原文地址：<a target="_blank" rel="noopener" href="https://scotch.io/bar-talk/5-tips-to-write-better-conditionals-in-javascript">https://scotch.io</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/Array-includes/" rel="tag"># Array.includes</a>
+              <a href="/tags/Map/" rel="tag"># Map</a>
+              <a href="/tags/Object/" rel="tag"># Object</a>
+              <a href="/tags/Array-some/" rel="tag"># Array.some</a>
+              <a href="/tags/es6/" rel="tag"># es6</a>
+              <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F/" rel="tag"># 对象字面量</a>
+              <a href="/tags/Array-every/" rel="tag"># Array.every</a>
+              <a href="/tags/default-parameters/" rel="tag"># default parameters</a>
+              <a href="/tags/Destructuring/" rel="tag"># Destructuring</a>
+              <a href="/tags/if-else/" rel="tag"># if / else</a>
+              <a href="/tags/lodash/" rel="tag"># lodash</a>
+              <a href="/tags/return/" rel="tag"># return</a>
+              <a href="/tags/%E5%87%8F%E5%B0%91%E5%B5%8C%E5%A5%97/" rel="tag"># 减少嵌套</a>
+              <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/" rel="tag"># 条件语句</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" rel="tag"># 编程技巧</a>
+              <a href="/tags/%E8%A7%A3%E6%9E%84/" rel="tag"># 解构</a>
+              <a href="/tags/%E9%87%8D%E6%9E%84/" rel="tag"># 重构</a>
+              <a href="/tags/%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0/" rel="tag"># 默认参数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/20/notyf-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84-javascript-%E9%80%9A%E7%9F%A5%E6%8F%92%E4%BB%B6/" rel="prev" title="Notyf – 响应式的 JavaScript 通知插件">
+      <i class="fa fa-chevron-left"></i> Notyf – 响应式的 JavaScript 通知插件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/" rel="next" title="JavaScript高级程序设计——闭包">
+      JavaScript高级程序设计——闭包 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8-Array-includes-%E6%9D%A5%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">1.使用 Array.includes 来处理多个条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%8F%E5%B0%91%E5%B5%8C%E5%A5%97%EF%BC%8C%E6%8F%90%E5%89%8D%E4%BD%BF%E7%94%A8-return-%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">2.减少嵌套，提前使用 return 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0-%E5%92%8C-%E8%A7%A3%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">3.使用函数的默认参数 和 解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%80%89%E6%8B%A9-Map-Object-%E5%AD%97%E9%9D%A2%E9%87%8F%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AFSwitch%E8%AF%AD%E5%8F%A5"><span class="nav-number">4.</span> <span class="nav-text">4.选择 Map &#x2F; Object 字面量，而不是Switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%BD%BF%E7%94%A8-Array-every-%E5%92%8C-Array-some-%E6%9D%A5%E5%A4%84%E7%90%86%E5%85%A8%E9%83%A8-%E9%83%A8%E5%88%86%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">5. 使用 Array.every 和 Array.some 来处理全部&#x2F;部分满足条件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

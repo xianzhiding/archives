@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端开发 大前端 W3Cbest">
+<meta property="og:url" content="https://xianzhiding.github.io/page/3/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="前端开发,es5,es6,es10,css,javascript,html,flexbox,grid,echarts">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/29/wordpress-%E8%BE%93%E5%87%BA-wp-nav-menu%E8%8F%9C%E5%8D%95%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/29/wordpress-%E8%BE%93%E5%87%BA-wp-nav-menu%E8%8F%9C%E5%8D%95%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">wordpress 输出 wp_nav_menu()菜单函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-29 11:40:19" itemprop="dateCreated datePublished" datetime="2019-05-29T11:40:19+08:00">2019-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>wp_nav_menu()函数主要用途是通过该方法，实现后台的生成菜单调用。使用该功能之前，必须激活主题3.0+菜单功能。 激活方法如下： 在<strong>functions.php</strong>文件中加入</p>
+<p>if (function_exists(‘register_nav_menus’)) {<br>  register_nav_menus(<br>    array(<br>      ‘header-menu’ =&gt; __(‘导航菜单’),<br>      ‘footer-menu’ =&gt; __(‘页脚菜单’),<br>      ‘side-menu’ =&gt; __(‘侧边栏菜单’)<br>    )<br>  );<br>}</p>
+<p>上面这些，只是菜单的位置，并不是菜单的内容。菜单的内容，得在后台添加。</p>
+<h2 id="简单调用如下："><a href="#简单调用如下：" class="headerlink" title="简单调用如下："></a>简单调用如下：</h2><?php wp\_nav\_menu(
+  array(
+    'theme\_location' => '' //指定显示的导航名，如果没有设置，则显示第一个
+    'menu' => 'header-menu', //后台设置的菜单的名称
+    'container' => 'nav', //最外层容器标签名
+    'container\_class' => 'primary', //最外层容器class名
+    'container\_id' => '', //最外层容器id值
+    'menu\_class' => 'sf-menu', //ul标签class
+    'menu\_id' => 'topnav', //ul标签id
+    'echo' => true, //是否打印，默认是true，如果想将导航的代码作为赋值使用，可设置为false
+    'fallback\_cb' => 'wp\_page\_menu', //备用的导航菜单函数，用于没有在后台设置导航时调用
+    'before' => '', //显示在导航a标签之前
+    'after' => '', //显示在导航a标签之后
+    'link\_before' => '', //显示在导航链接名之后
+    'link\_after' => '', //显示在导航链接名之前
+    'items\_wrap' => '<ul id="%1$s">%3$s</ul>',
+    'depth' => 0, ////显示的菜单层数，默认0，0是显示所有层
+    'walker' => '' // //调用一个对象定义显示导航菜单
+  ));
+?>
+
+<h2 id="根据是否登录生成不同该菜单栏"><a href="#根据是否登录生成不同该菜单栏" class="headerlink" title="根据是否登录生成不同该菜单栏"></a>根据是否登录生成不同该菜单栏</h2><?php
+if ( is\_user\_logged\_in() ) {
+     wp\_nav\_menu( array( 'theme\_location' => 'logged-in-menu' ) );
+} else {
+     wp\_nav\_menu( array( 'theme\_location' => 'logged-out-menu' ) );
+}
+?>
+
+<p><strong>移除菜单栏</strong></p>
+<p>function my_wp_nav_menu_args($args = ‘’) {<br>  $args[‘container’] = false;<br>  return $args;<br>} // function<br>add_filter(‘wp_nav_menu_args’, ‘my_wp_nav_menu_args’); ?&gt;</p>
+<p>或者</p>
+<?php wp\_nav\_menu(array('container' => '')); ?>
+
+<p> </p>
+<h2 id="将“active”类添加到wp-nav-menu（）"><a href="#将“active”类添加到wp-nav-menu（）" class="headerlink" title="将“active”类添加到wp_nav_menu（）"></a>将“active”类添加到wp_nav_menu（）</h2><p>要在其中一个子页面处于活动状态时突出显示该菜单项，还请检查其他类（<code>current-page-ancestor</code>），如下所示：</p>
+<p>function special_nav_class($classes, $item) {<br>  if (in_array(‘current-page-ancestor’, $classes)  in_array(‘current-menu-item’, $classes)) {<br>    $classes[] = ‘active ‘;<br>  }<br>  return $classes;<br>}</p>
+<p>add_filter(‘nav_menu_css_class’, ‘special_nav_class’, 10, 2);</p>
+<p>  <a target="_blank" rel="noopener" href="https://developer.wordpress.org/reference/functions/wp/_nav/_menu/">https://developer.wordpress.org/reference/functions/wp\_nav\_menu/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/24/jquery%E7%9A%84deferred%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/24/jquery%E7%9A%84deferred%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">jQuery的deferred对象详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-24 17:09:13" itemprop="dateCreated datePublished" datetime="2019-05-24T17:09:13+08:00">2019-05-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、什么是deferred对象？"><a href="#一、什么是deferred对象？" class="headerlink" title="一、什么是deferred对象？"></a>一、什么是deferred对象？</h2><p>开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。 通常的做法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。 但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQuery开发团队就设计了<a target="_blank" rel="noopener" href="http://api.jquery.com/category/deferred-object/">deferred对象</a>。 简单说，deferred对象就是jQuery的回调函数解决方案。在英语中，defer的意思是”延迟”，所以deferred对象的含义就是”延迟”到未来某个点再执行。 它解决了如何处理耗时操作的问题，对那些操作提供了更好的控制，以及统一的编程接口。它的主要功能，可以归结为四点。下面我们通过示例代码，一步步来学习。</p>
+<h2 id="二、ajax操作的链式写法"><a href="#二、ajax操作的链式写法" class="headerlink" title="二、ajax操作的链式写法"></a>二、ajax操作的链式写法</h2><p>首先，回顾一下jQuery的ajax操作的传统写法：</p>
+<p>$.ajax({<br>    url: “test.html”,<br>    success: function() {<br>        console.log(“success”);<br>    },<br>    error: function() {<br>        console.log(“error”);<br>    }<br>});</p>
+<p>在上面的代码中，$.ajax()接受一个对象参数，这个对象包含两个方法：success方法指定操作成功后的回调函数，error方法指定操作失败后的回调函数。 $.ajax()操作完成后，如果使用的是低于1.5.0版本的jQuery，返回的是XHR对象，你没法进行链式操作；如果高于1.5.0版本，返回的是deferred对象，可以进行链式操作。 现在，新的写法是这样的：</p>
+<p>$.ajax({<br>url: ‘/path/to/file’,<br>type: ‘default GET (Other values: POST)’,<br>dataType: ‘default: Intelligent Guess (Other values: xml, json, script, or html)’,<br>data: {param1: ‘value1’},<br>})<br>.done(function() {<br>console.log(“success”);<br>})<br>.fail(function() {<br>console.log(“error”);<br>})<br>.always(function() {<br>console.log(“complete”);<br>});</p>
+<p>可以看到，<a target="_blank" rel="noopener" href="http://api.jquery.com/deferred.done/">done()</a>相当于success方法，<a target="_blank" rel="noopener" href="http://api.jquery.com/deferred.fail/">fail()</a>相当于error方法。采用链式写法以后，代码的可读性大大提高。</p>
+<h2 id="三、指定同一操作的多个回调函数"><a href="#三、指定同一操作的多个回调函数" class="headerlink" title="三、指定同一操作的多个回调函数"></a>三、指定同一操作的多个回调函数</h2><p>deferred对象的一大好处，就是它允许你自由添加多个回调函数。 还是以上面的代码为例，如果ajax操作成功后，除了原来的回调函数，我还想再运行一个回调函数，怎么办？ 很简单，直接把它加在后面就行了。</p>
+<p>$.ajax(“test.html”)</p>
+<p>.done(function(){ console.log(“哈哈，成功了！”);} )</p>
+<p>.fail(function(){ console.log(“出错啦！”); } )</p>
+<p>.done(function(){ console.log(“第二个回调函数！”);} );</p>
+<p>回调函数可以添加任意多个，它们按照添加顺序执行。</p>
+<h2 id="四、为多个操作指定回调函数"><a href="#四、为多个操作指定回调函数" class="headerlink" title="四、为多个操作指定回调函数"></a>四、为多个操作指定回调函数</h2><p>deferred对象的另一大好处，就是它允许你为多个事件指定一个回调函数，这是传统写法做不到的。 请看下面的代码，它用到了一个新的方法<a target="_blank" rel="noopener" href="http://api.jquery.com/jQuery.when/">$.when()</a>：</p>
+<p>$.when($.ajax(“test1.html”), $.ajax(“test2.html”))</p>
+<p>.done(function(){ console.log(“哈哈，成功了！”); })</p>
+<p>.fail(function(){ console.log(“出错啦！”); });</p>
+<p>这段代码的意思是，先执行两个操作$.ajax(“test1.html”)和$.ajax(“test2.html”)，如果都成功了，就运行done()指定的回调函数；如果有一个失败或都失败了，就执行fail()指定的回调函数。</p>
+<h2 id="五、普通操作的回调函数接口（上）"><a href="#五、普通操作的回调函数接口（上）" class="headerlink" title="五、普通操作的回调函数接口（上）"></a>五、普通操作的回调函数接口（上）</h2><p>deferred对象的最大优点，就是它把这一套回调函数接口，从ajax操作扩展到了所有操作。也就是说，任何一个操作—-不管是ajax操作还是本地操作，也不管是异步操作还是同步操作—-都可以使用deferred对象的各种方法，指定回调函数。 我们来看一个具体的例子。假定有一个很耗时的操作wait：</p>
+<p>　　var wait = function() {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>    };<br>    setTimeout(tasks, 5000);<br>};</p>
+<p>我们为它指定回调函数，应该怎么做呢？ 很自然的，你会想到，可以使用$.when()：</p>
+<p>$.when(wait())</p>
+<p>.done(function(){ console.log(“哈哈，成功了！”); })</p>
+<p>.fail(function(){ console.log(“出错啦！”); });</p>
+<p>但是，这样写的话，done()方法会立即执行，起不到回调函数的作用。原因在于$.when()的参数只能是deferred对象，所以必须对wait()进行改写：</p>
+<p>var dtd = $.Deferred(); // 新建一个deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd;<br>};</p>
+<p>现在，wait()函数返回的是deferred对象，这就可以加上链式操作了。</p>
+<p>$.when(wait(dtd))</p>
+<p>.done(function(){ console.log(“哈哈，成功了！”); })</p>
+<p>.fail(function(){ console.log(“出错啦！”); });</p>
+<p>wait()函数运行完，就会自动运行done()方法指定的回调函数。</p>
+<h2 id="六、deferred-resolve-方法和deferred-reject-方法"><a href="#六、deferred-resolve-方法和deferred-reject-方法" class="headerlink" title="六、deferred.resolve()方法和deferred.reject()方法"></a>六、deferred.resolve()方法和deferred.reject()方法</h2><p>如果仔细看，你会发现在上面的wait()函数中，还有一个地方我没讲解。那就是dtd.resolve()的作用是什么？ 要说清楚这个问题，就要引入一个新概念”执行状态”。jQuery规定，deferred对象有三种执行状态—-未完成，已完成和已失败。如果执行状态是”已完成”（resolved）,deferred对象立刻调用done()方法指定的回调函数；如果执行状态是”已失败”，调用fail()方法指定的回调函数；如果执行状态是”未完成”，则继续等待，或者调用progress()方法指定的回调函数（jQuery1.7版本添加）。 前面部分的ajax操作时，deferred对象会根据返回结果，自动改变自身的执行状态；但是，在wait()函数中，这个执行状态必须由程序员手动指定。dtd.resolve()的意思是，将dtd对象的执行状态从”未完成”改为”已完成”，从而触发done()方法。 类似的，还存在一个deferred.reject()方法，作用是将dtd对象的执行状态从”未完成”改为”已失败”，从而触发fail()方法。</p>
+<p>var dtd = $.Deferred(); // 新建一个Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.reject(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd;<br>};</p>
+<p>$.when(wait(dtd))<br> .done(function() { console.log(“哈哈，成功了！”); })<br> .fail(function() { console.log(“出错啦！”); });</p>
+<h2 id="七、deferred-promise-方法"><a href="#七、deferred-promise-方法" class="headerlink" title="七、deferred.promise()方法"></a>七、deferred.promise()方法</h2><p>上面这种写法，还是有问题。那就是dtd是一个全局对象，所以它的执行状态可以从外部改变。 请看下面的代码：</p>
+<p>var dtd = $.Deferred(); // 新建一个Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd;<br>};</p>
+<p>$.when(wait(dtd))<br>.done(function() { console.log(“哈哈，成功了！”); })<br>.fail(function() { console.log(“出错啦！”); });<br>dtd.resolve();</p>
+<p>我在代码的尾部加了一行dtd.resolve()，这就改变了dtd对象的执行状态，因此导致done()方法立刻执行，跳出”哈哈，成功了！”的提示框，等5秒之后再跳出”执行完毕！”的提示框。 为了避免这种情况，jQuery提供了deferred.promise()方法。它的作用是，在原来的deferred对象上返回另一个deferred对象，后者只开放与改变执行状态无关的方法（比如done()方法和fail()方法），屏蔽与改变执行状态有关的方法（比如resolve()方法和reject()方法），从而使得执行状态不能被改变。 请看下面的代码：</p>
+<p>var dtd = $.Deferred(); // 新建一个Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd.promise(); // 返回promise对象<br>};</p>
+<p>var d = wait(dtd); // 新建一个d对象，改为对这个对象进行操作<br>$.when(d)<br>    .done(function() { console.log(“哈哈，成功了！”); })<br>    .fail(function() { console.log(“出错啦！”); });<br>d.resolve(); // 此时，这个语句是无效的</p>
+<p>在上面的这段代码中，wait()函数返回的是promise对象。然后，我们把回调函数绑定在这个对象上面，而不是原来的deferred对象上面。这样的好处是，无法改变这个对象的执行状态，要想改变执行状态，只能操作原来的deferred对象。 不过，更好的写法是allenm所指出的，将dtd对象变成wait(）函数的内部对象。</p>
+<p>var dtd = $.Deferred(); //在函数内部，新建一个Deferred对象<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd.promise(); // 返回promise对象<br>};</p>
+<p>$.when(wait())<br>    .done(function() { console.log(“哈哈，成功了！”); })<br>    .fail(function() { console.log(“出错啦！”); });</p>
+<h2 id="八、普通操作的回调函数接口（中）"><a href="#八、普通操作的回调函数接口（中）" class="headerlink" title="八、普通操作的回调函数接口（中）"></a>八、普通操作的回调函数接口（中）</h2><p>另一种防止执行状态被外部改变的方法，是使用deferred对象的建构函数$.Deferred()。 这时，wait函数还是保持不变，我们直接把它传入$.Deferred()：</p>
+<p>$.Deferred(wait)<br>　　.done(function(){ console.log(“哈哈，成功了！”); })<br>　　.fail(function(){ console.log(“出错啦！”); });</p>
+<p>jQuery规定，$.Deferred()可以接受一个函数名（注意，是函数名）作为参数，$.Deferred()所生成的deferred对象将作为这个函数的默认参数。</p>
+<h2 id="九、普通操作的回调函数接口（下）"><a href="#九、普通操作的回调函数接口（下）" class="headerlink" title="九、普通操作的回调函数接口（下）"></a>九、普通操作的回调函数接口（下）</h2><p>除了上面两种方法以外，我们还可以直接在wait对象上部署deferred接口。</p>
+<p>var dtd = $.Deferred(); // 生成Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>};</p>
+<p>dtd.promise(wait);<br>wait.done(function() { console.log(“哈哈，成功了！”); })<br>    .fail(function() { console.log(“出错啦！”); });<br>wait(dtd);</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/22/display-grid%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%BD%91%E6%A0%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/22/display-grid%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%BD%91%E6%A0%BC/" class="post-title-link" itemprop="url">display-grid定义一个网格</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-22 13:49:43" itemprop="dateCreated datePublished" datetime="2019-05-22T13:49:43+08:00">2019-05-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>要定义网格，请在父元素上使用display: grid或display:inline-grid。然后可以使用grid-template-columns和grid-template-rows属性创建网格。 我使用grid-gap属性在列和行之间创建一个10px的空白。此属性是grid-column-gap和grid-row-gap的简写，因此可以单独设置这些值。 父元素的所有直接子元素现在都成为网格项，自动放置算法将它们放置在每个网格单元中。根据需要会自动创建所需要的行</p>
+<div class="wrapper">
+  <div class="box a">A</div>
+  <div class="box b">B</div>
+  <div class="box c">C</div>
+  <div class="box d">D</div>
+  <div class="box e">E</div>
+  <div class="box f">F</div>
+</div>
+
+<p>.wrapper {<br>    display: grid;<br>    grid-template-columns: 100px 100px 100px;<br>    grid-gap: 10px;<br>    background-color: #fff;<br>    color: #444;<br>}<br>.box {<br>    background-color: #444;<br>    color: #fff;<br>    border-radius: 5px;<br>    padding: 20px;<br>    font-size: 150%;<br>}</p>
+<p><a target="_blank" rel="noopener" href="http://www.w3cbest.com/example?pid=788">查看示例</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/20/wordpress%E4%B8%BB%E9%A2%98get-the-category%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/20/wordpress%E4%B8%BB%E9%A2%98get-the-category%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">wordpress主题get_the_category()函数使用详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-20 15:01:32" itemprop="dateCreated datePublished" datetime="2019-05-20T15:01:32+08:00">2019-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>函数 get_the_category() 是获取与查询参数相匹配的类别对象，用法如下：</p>
+<?php get\_the\_category($id) ?>
+
+<p>显示第一个类别的名称</p>
+<?php
+    $category = get\_the\_category();
+    echo $category\[0\]->cat\_name;
+?>
+
+<p>显示第一个类别的连接</p>
+<?php
+    $category = get\_the\_category();
+        if($category\[0\]){
+        echo '<a href="'.get\_category\_link($category\[0\]->term\_id ).'">'.$category\[0\]->cat\_name.'</a>';
+    }
+?>
+
+<p>获取指定文章编号的类别信息</p>
+<?php
+    global $post;
+    $categories = get\_the\_category($post->ID);
+    var\_dump($categories);
+?>
+
+<p>显示类别的图片</p>
+<?php
+    foreach((get\_the\_category()) as $category) {
+        echo '<img src="http://www.w3cbest.com/images/' . $category->cat\_ID . '.jpg" alt="' . $category->cat\_name . '" />';
+    }
+?>
+
+<p>返回对象的成员：</p>
+<ul>
+<li>  cat_ID：类别编号，存储在term_id字段;</li>
+<li>  cat_name：类别名称，存储在name字段;</li>
+<li>  category_nicename：别名，存储在slug字段;</li>
+<li>  category_description：类别描述，存储在description字段;</li>
+<li>  category_parent：父类别编号，没有父类的为0，存储在parent字段;</li>
+<li>  category_count：类别使用的数量，存储在count字段.</li>
+</ul>
+<p>文件：</p>
+<blockquote>
+<p>wp-includes/category-template.php</p>
+</blockquote>
+<p>参考： <a target="_blank" rel="noopener" href="https://developer.wordpress.org/reference/functions/get/_the/_category/">https://developer.wordpress.org/reference/functions/get\_the\_category/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/19/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/19/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0-css/" class="post-title-link" itemprop="url">如何有效的学习 CSS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-19 21:30:54" itemprop="dateCreated datePublished" datetime="2019-05-19T21:30:54+08:00">2019-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很多人想让我给他们推荐有关CSS部分的教程，或者问我如何学习CSS。 我也看到很多人对CSS的部分内容感到困惑，一部分原因是由于对语言的过时认识。 鉴于CSS在过去几年中发生了相当大的变化，这是一个更新知识的好时机。 即使CSS只是你所做工作的一小部分（因为你使用其他技术栈），CSS是你最终希望在屏幕上显示的结果，所以值得合理去学习。 因此，本文旨在概述CSS的关键基础和资源，以便进一步阅读现代CSS开发的关键领域。 其中许多资源在Smashing杂志上已经有了，但我也选择了其他一些资源，也有人关注CSS的关键领域。 这不是一本完整的初学者指南或旨在涵盖所有知识点。 我的目标是覆盖现代CSS的广度，同时重点关注几个关键领域，将帮助你理解CSS的其他部分。</p>
+<h2 id="语言基础知识"><a href="#语言基础知识" class="headerlink" title="语言基础知识"></a>语言基础知识</h2><p>对于CSS的大部分内容，你不需要特意去学习属性和值，你可以在需要时查找它们。 然而，CSS中一些基础知识没有掌握好，你将很难去理解它。 这些基础知识值得你花时间去理解，从长远看，它会帮你节省很多时间和少走弯路。</p>
+<h2 id="选择器，不仅仅有类"><a href="#选择器，不仅仅有类" class="headerlink" title="选择器，不仅仅有类"></a>选择器，不仅仅有类</h2><p>选择器的表现如标题所说的，它选择文档的某些部分，以便你可以将CSS规则应用于它。 大多数人都熟悉使用 <code>class</code>，或在 直接使用HTML元素设置样式，比如 <code>body</code>，但是还有很多更高级的选择器可以根据文档中的位置选择元素，直接选择位于元素之后的元素，或选择表格中的奇数行。 这些选择器是CSS3规范的一部分（你可能听说过它们被称为第3级选择器）具有出色的<a target="_blank" rel="noopener" href="https://caniuse.com/#feat=css-sel3">浏览器支持</a>。 有关可以使用的各种选择器的详细信息，请参阅 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN</a> 参考。 有些选择器的行为就好像你已经将类应用于文档中的某些内容。 例如<code>p:first-child</code>就像你在第一个<code>p</code>元素中添加了一个类一样，这些被称为 <code>伪类选择器</code>。 伪元素选择器就像动态插入一个元素一样，例如<code>::first-line</code>的表现与用<code>span</code> 包裹第一行文本类似。 但是，如果该行的长度发生变化，它将重新应用，如果插入该元素则不会出现这种情况。 这些选择器可能会相当复杂。 在下面的CodePen中是一个用伪类链接的伪元素的例子。 我们使用<code>:first-child</code>伪类定位第一个p元素，然后<code>::first-line</code>选择器选择该元素的第一行，就好像在第一行周围添加了一个<code>&lt;span&gt;</code>以使其变为粗体和改变颜色。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/wRdJdQ/">first-line of first-child</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="继承和层叠"><a href="#继承和层叠" class="headerlink" title="继承和层叠"></a>继承和层叠</h2><p>层叠是指当元素应用了多个样式规则，哪个规则优先应用。 如果你曾经遇到过无法理解为什么某些CSS似乎没有应用的情况，那可能是层叠没有运用好。 层叠与继承紧密相关，继承定义了子元素可以继承父元素的样式属性。 它还与特异性有关，不同的选择器具有不同的特异性，当有几个选择器可以应用于一个元素时，继承可以决定应用哪个规则。</p>
+<blockquote>
+<p>注意：为了理解所有这些内容，我建议阅读MDN CSS简介中的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance">层叠和继承</a>。</p>
+</blockquote>
+<p>如果你正在尝试将一些CSS应用于一个元素，那么你的浏览器开发者工具是开始最好的地方。看看下面的例子，我用元素选择器 <code>h1</code> 将 <code>h1</code> 标题设置为橙色。同时，我也使用类选择器设置<code>h1</code> 设置为紫色。 由于类更具体，因此<code>h1</code>是紫色的。 在开发者工具中，您可以看到元素选择器被划掉，因为它没有被应用。 一旦你看到浏览器正在获取你的CSS（但其他东西已经推翻了它），那么你可以开始找出原因。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/yGbMoL/">specificity</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p><img src="http://file.w3cbest.com/file/images/smashing-css-specificity.png"></p>
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>CSS里一切都是盒子。 屏幕上显示的所有内容都有一个框，盒模型描述了如何计算该框的大小 - 将外边距，内边距和边框考虑进去。 标准的CSS框模型接受给定元素的宽度，然后将内边框和边框添加到该宽度上——这意味着元素占用的空间大于给定的宽度。 最近，我们已经能够选择使用IE盒模型，使得元素上的给定宽度作为屏幕上可见元素的宽度。 任何内边距或边框都会从边缘插入框的内容。 这对许多布局更有意义。 在下面的演示中，我有两个盒子。 两者的宽度均为200像素，边框为5像素，内边距为20像素。 第一个框使用标准框模型，因此占用总宽度为250像素，第二个框使用IE盒模型，因此实际上是200像素宽。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/xmdqjd/">box models</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>浏览器开发者工具可以再次帮助你了解正在使用的盒子模型。 在下图中，我使用火狐浏览器的开发者工具使用默认的内容框框模型检查框。 工具告诉我这是正在使用的盒模型，我可以看到大小以及如何将边框和内边框添加到指定的宽度。 <img src="http://file.w3cbest.com/file/images/smashing-css-box-model.png"></p>
+<blockquote>
+<p>注意：在IE6之前，Internet Explorer<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug">使用IE盒模型</a>，内边框和边框插入给定宽度的内容里。 所以有一段时间浏览器使用不同的盒模型！ 如果今天的互操作性问题感到沮丧，现在已经有所改善，那么我们就不会处理浏览器以不同的方式计算元素的宽度。</p>
+</blockquote>
+<p>在 <a target="_blank" rel="noopener" href="https://css-tricks.com/box-sizing/">CSS Tricks</a> 里，有关于盒模型和盒子尺寸的很好的解释，并解释了在你的网站中全局使用<a target="_blank" rel="noopener" href="https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/">IE盒模型</a>的最佳方法。</p>
+<h2 id="标准流"><a href="#标准流" class="headerlink" title="标准流"></a>标准流</h2><p>如果你的文档内容用一些HTML标记，你的文档将具有可读性。标题和段落会另起新的一行，单词组成句子时，它们之间有一个空格。标记是用来格式化的，像 <code>em</code> 不会破坏句子的流。 句子会表现<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout">标准流</a>，或块流布局。句子的每个部分都被描述为“在流中”，它知道句子其余内容，所以不会重叠。 如果你去了解，而不是去反对这种行为，你会变得更加轻松。这是为什么从正确标记的<a target="_blank" rel="noopener" href="https://www.brucelawson.co.uk/2018/the-practical-value-of-semantic-html/">HTML文档</a>开始很有意义的原因之一，由于浏览器遵守正常流和内置样式表，你的内容从可读的地方开始。</p>
+<h2 id="格式化上下文"><a href="#格式化上下文" class="headerlink" title="格式化上下文"></a>格式化上下文</h2><p>一旦文档的内容处于正常流程中，您可能希望更改其中一些内容的外观。 你可以通过更改元素的格式上下文来完成此操作。 举个一个非常简单的示例，如果你希望所有段落连在一起而不是从新行开始，你可以设置 <code>p</code> 元素的样式属性<code>display:inline</code> ，将 <code>p</code> 元素由块级元素变成内联元素。 本质上，格式化上下文定义了外部和内部类型。外部控制元素与页面上其他元素的行为，内部控制子元素的外观。例如，当你设置 <code>display:flex</code> ，你在设置外部为块格式化上下文，设置子元素为 flex 格式化上下文。 注意：最新版本的Display规范改变了 <code>display</code> 的值，显式声明外部和内部的类型。因此，将你可能会声明 <code>display:block flex;</code> （外部为 <code>block</code>，内部为 <code>flex</code>） 在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">MDN</a> 上阅读更多关于 <code>display</code>的信息</p>
+<h2 id="进入或离开流"><a href="#进入或离开流" class="headerlink" title="进入或离开流"></a>进入或离开流</h2><p>CSS中的元素被描述为“在流中”或“脱离流”。流中的元素被赋予空间，并且空间被流中的其他元素所影响。 如果通过浮动或定位元素使元素脱离流，则该元素的空间将不再受到其他流元素的影响。 对于绝对定位的元素，是最明显的。 如果你设置一个元素 <code>position: absolute</code> ，该元素会从流中脱离，你需要确保这个元素不会与流中的元素重叠，且不影响你布局的其他部分的可读性。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/Ormgzj/">out of flow: abspos</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>然而，浮动元素也会从流中脱离，但后面的元素的文本将环绕该浮动元素。你可以设置后面元素的背景颜色，你会看到他们会上升并占用了原来浮动元素原来的空间。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/BvRZYw/">Out of flow: floated</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>你可以在<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/In_Flow_and_Out_of_Flow">MDN</a>上阅读更多有关 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/In_Flow_and_Out_of_Flow">流中和脱离流</a> 的信息。 需要记住的重要一点是，如果从流中取出一个元素，则需要自己管理重叠，因为块流布局的常规规则不再适用。</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>十五年来，我们一直使用CSS布局，但没有设计一套布局系统。这已经改变了。 我们现在拥有功能完备的布局系统，其中包括 Grid 和 Flexbox ，还有多列布局和旧布局方法也应用于实际目的。如果你想对CSS布局还不熟悉，你可以阅读 MDN 上的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout">布局教程</a>，或阅读我发表在Smashing杂志上的文章 《<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/05/guide-css-layout/">开始学习CSS布局</a>》。 不要认为grid和flexbox等方法在某种程度上是竞争的。为了更好地使用布局，你有时会发现组件最好作为 flex ，有时作为 Grid。有时，你想要多列流动布局。所有这些都是不错的选择。如果你觉得自己在与某些事物的行为方式作斗争，这通常是一个非常好的迹象，表明它可能值得退一步，尝试一种不同的方法。我们已经习惯了在CSS上做一些我们想做的事情，以至于我们可能会忘记我们还有很多其他的选择可以尝试。 布局是我的主要专业领域，我在Smashing Magazine和其他地方写了很多文章，试图开拓新的布局美化。 除了上面提到的布局文章，我在Flexbox上有一整套系列 - 《<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/08/flexbox-display-flex-container/">从创建Flex 容器时，发生了什么</a>》。 在 <a target="_blank" rel="noopener" href="https://gridbyexample.com/">Grid示例</a> 上，我列出很多CSS Grid 的例子 — 以及一个视频教程。 此外 - 特别是对于设计师 - 查看 <a target="_blank" rel="noopener" href="https://twitter.com/jensimmons">Jen Simmons</a> 和她的《<a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UC7TizprGknbDalbHplROtag">Layout Land</a>》视频系列。</p>
+<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>通常，我会将对齐和布局分开，虽然大多数人把对齐当作 Flexbox的一部分。对齐这些属性适用于所有布局方法上，应该在上下文去理解对齐，而不是考虑 “Flexbox对齐”或“CSSGrid 对齐”。对齐属性在大体上表现一样，但不同布局方式里会有一些差异。 在MDN上，您可以深入了解 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment">盒对齐</a> 及其在Grid，Flexbox，多列和块布局中的实现方式。 在Smashing Magazine上，我有一篇文章专门介绍Flexbox中的对齐方式：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/08/flexbox-alignment/">你需要知道的有关Flexbox中对齐的所有内容</a>。</p>
+<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><p>我在2018年花了很多时间讨论了内部和外部尺寸规范，特别是它与Grid和Flexbox的关系。在web上，我们习惯于设置尺寸为长度或百分比，这就是我们如何使用浮动来制作网格类型布局的方法。然而，现代的布局方法可以为我们做很多空间分配——如果我们允许的话。值得花时间去了解Flexbox如何分配空间(或Grid <code>fr</code> 单元如何工作)。 在Smashing Magazine上，我写了一些关于 <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/01/understanding-sizing-css-layout/">布局中的尺寸</a> 的文章，也写了一些关于Flexbox的文章，比如 <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/09/flexbox-sizing-flexible-box/">Flex 盒子有多大</a>?</p>
+<h2 id="响应式设计"><a href="#响应式设计" class="headerlink" title="响应式设计"></a>响应式设计</h2><p>通常，新的Grid和Flexbox布局方法意味着我们可以使用比旧方法更少的媒体查询，因为它们非常灵活，可以响应视口或组件大小的变化，而无需我们更改元素的宽度。 但是，有些地方需要添加一些断点来进一步增强设计。 以下是<a target="_blank" rel="noopener" href="https://responsivedesign.is/">响应式设计</a>的一些简单指南，一般情况下，对于媒体查询，请查看我的文章《<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/02/media-queries-responsive-design-2018/">在2018年使用媒体查询进行响应式设计</a>》。我将查看媒体查询的用途，并介绍规范4的媒体查询的新功能。</p>
+<h2 id="字体和排版"><a href="#字体和排版" class="headerlink" title="字体和排版"></a>字体和排版</h2><p>与布局一样，网络上的字体使用在去年发生了巨大的变化。现在，可变字体，使单个字体文件具有无限的变化。 要了解它们是什么以及它们如何工作，请观看<a target="_blank" rel="noopener" href="https://twitter.com/mandy_kerr">Mandy Michael</a>的精彩简短演讲：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=luAqYCd_TC8">可变字体和网页设计的未来</a>。 另外，我会推荐<a target="_blank" rel="noopener" href="https://twitter.com/jpamental">Jason Pamental</a>的<a target="_blank" rel="noopener" href="https://noti.st/jpamental/WNNxqQ/dynamic-typography-with-modern-css-variable-fonts">动态排版与现代CSS和可变字体</a>。 为了探索可变字体和它们的功能，微软提供了一个<a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/microsoft-edge/testdrive/demos/variable-fonts/">有趣的演示</a>，以及一些尝试可变字体的游乐场 - <a target="_blank" rel="noopener" href="https://www.axis-praxis.org/">Axis Praxis</a>是最知名的（我也喜欢<a target="_blank" rel="noopener" href="https://play.typedetail.com/">字体游乐场</a>）。 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide">MDN上的指南</a>将证明一开始使用可变字体是非常有用的。要了解如何为不支持可变字体的浏览器实现回退解决方案，请阅读Oliver Schondorfer的《<a target="_blank" rel="noopener" href="https://www.zeichenschatz.net/typografie/implementing-a-variable-font-with-fallback-web-fonts.html">使用回退Web字体实现可变字体</a>》<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Edit_fonts">Firefox DevTools字体编辑器</a>还支持使用可变字体。</p>
+<h2 id="变形和动画"><a href="#变形和动画" class="headerlink" title="变形和动画"></a>变形和动画</h2><p>CSS转换和动画绝对是我需要知道的基础。 我不经常需要使用它们，在使用时会忘记语法。 值得庆幸的是，MDN上的参考资料帮助了我，我建议从使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms">CSS变换</a>和使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations">CSS动画</a>的指南开始。 <a target="_blank" rel="noopener" href="https://twitter.com/zellwk">Zell Liew</a>也有一篇很好的文章，为<a target="_blank" rel="noopener" href="https://zellwk.com/blog/css-transitions/">CSS过渡</a>提供了很好的<a target="_blank" rel="noopener" href="https://zellwk.com/blog/css-transitions/">解释</a>。 要发现一些可能的事情，请查看<a target="_blank" rel="noopener" href="http://animista.net/">Animista</a>网站。 关于动画可能令人困惑的事情之一是采取哪种方法。 除了CSS支持的内容之外，你可能还需要涉及JavaScript，SVG或Web Animation API，而这些事情往往都会被混为一谈。 在她的演讲中，选择你的<a target="_blank" rel="noopener" href="https://aneventapart.com/news/post/choose-your-animation-adventure-by-val-head-aea-video">动画冒险</a>记录在事件中，<a target="_blank" rel="noopener" href="https://twitter.com/vlh">Val Head</a>解释了这些选项。</p>
+<h2 id="使用速查表作为回忆，而不是学习工具"><a href="#使用速查表作为回忆，而不是学习工具" class="headerlink" title="使用速查表作为回忆，而不是学习工具"></a>使用速查表作为回忆，而不是学习工具</h2><p>当我提到Grid或Flexbox资源时，我经常看到回复说，如果没有特定的速查表，他们就不能使用Flexbox。我觉得把速查表作为记忆助手查找语法没有问题，我自己也出版过一些速查表。完全依赖速查表的问题是当你复制语法时，你可能会忽略为什么要这样写。然后，当你遇到属性的行为似乎不同的情况时，这种明显的不一致性似乎令人困惑，或者是语言的错误 。 如果你发现CSS在做一些非常奇怪的事情的情况下，问问为什么。创建一个简单的测试用例来强调这个问题，问问对规范更熟悉的人。我被问到的许多CSS问题都是因为人们认为属性的表现与它在现实中的表现不同。这就是为什么我经常讨论关于对齐和尺寸，因为这些地方经常会混淆。 是的，CSS中有一些奇怪的东西。它是一门经过多年进化的语言，有些东西我们无法改变，除非我们<a target="_blank" rel="noopener" href="https://wiki.csswg.org/ideas/mistakes">发明了时间机器</a>。然而，一旦你掌握了一些基础知识，并且理解了为什么会这样，你就可以更轻松地处理棘手的问题。 来源：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2019/01/how-to-learn-css">https://www.smashingmagazine.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/08/javascript%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/08/javascript%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">JavaScript数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-08 08:06:54" itemprop="dateCreated datePublished" datetime="2019-05-08T08:06:54+08:00">2019-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>简介：在本教程中，您将了解JavaScript数组类型及其一些独特的特性。</p>
+</blockquote>
+<h2 id="JavaScript数组简介"><a href="#JavaScript数组简介" class="headerlink" title="JavaScript数组简介"></a>JavaScript数组简介</h2><p>在 JavaScript 中，数组是有序的数据列表。与其他编程语言（如Java，C / C ++等）的数组相比，数组具有以下特殊特性。</p>
+<ul>
+<li>  首先，数组可以在每个槽中保存不同类型的数据，即数组可以保存具有数字，字符串，对象等的混合的元素。</li>
+<li>  其次，数组的长度是动态调整大小和自动增长的。</li>
+</ul>
+<h2 id="创建JavaScript数组"><a href="#创建JavaScript数组" class="headerlink" title="创建JavaScript数组"></a>创建JavaScript数组</h2><p>JavaScript 为您提供了两种创建数组的方法。 第一个是使用Array构造函数如下：</p>
+<p>var scores = new Array();</p>
+<p>该scores 数组为空即，它不包含任何元素。 如果您知道数组将包含的元素数，则可以创建一个具有初始大小的数组，如以下示例所示：</p>
+<p>var scores = Array(10);</p>
+<p>要使用初始元素创建数组，可以在Array()构造函数中将元素作为逗号分隔列表传递。以下示例创建scores包含五个数字的数组：</p>
+<p>var scores = new Array(9,10,8,7,6);</p>
+<p>重要的是要注意，如果使用数组构造函数创建数组并传入数字，则需要创建一个具有初始大小的数组。但是，如果传入另一个类型的一个参数，则创建一个包含该元素的数组。 请参阅以下示例：</p>
+<p>var athletes = new Array(3); // creates an array with initial size 3<br>var scores = new Array(1, 2, 3); // create an array with three numbers 1,2 3<br>var signs = new Array(‘Red’); // creates an array with one element ‘Red’</p>
+<p>JavaScript 允许您new在使用数组构造函数时省略运算符。例如，以下语句创建artists数组。</p>
+<p>var artists = Array();</p>
+<p>第二种方式，也许是更优选的方式，创建一个数组是使用数组文字表示法，如下所示：</p>
+<p>var array_name = [element1, element2, element3];</p>
+<p>数组文字形式使用方括号[]来包装逗号分隔的元素列表。例如，以下语句创建三种颜色的colors数组：</p>
+<p>var colors = [‘red’, ‘green’, ‘blue’];</p>
+<p>可以使用空方括号创建一个空数组。</p>
+<p>var emptyArray = [];</p>
+<p>以下示例创建一个包含两个未定义元素的数组。</p>
+<p>var nonEmptyArry = [,,];<br>console.log(nonEmptyArray); // [undefined, undefined]</p>
+<h2 id="访问-JavaScript-数组元素"><a href="#访问-JavaScript-数组元素" class="headerlink" title="访问 JavaScript 数组元素"></a>访问 JavaScript 数组元素</h2><p>您可以使用方括号[]访问数组的元素。数组的第一个元素以0开头，第二个元素以1开头，依此类推。 例如，以下示例创建一个包含三个字符串的数组。</p>
+<p>var mountains = [‘Everest’, ‘Fuji’, ‘Nanga Parbat’];</p>
+<p>以下语句显示如何访问mountains数组的元素。</p>
+<p>console.log(mountains[0]); // ‘Everest’<br>console.log(mountains[1]); // ‘Fuji’<br>console.log(mountains[2]); // ‘Nanga Parbat’</p>
+<p>要更改数组中元素的值，可以使用为该元素赋值，如下所示：</p>
+<p>mountains[2] = ‘K2’;</p>
+<h2 id="数组的大小"><a href="#数组的大小" class="headerlink" title="数组的大小"></a>数组的大小</h2><p>数组使用length属性来存储它保存的当前元素数。您可以访问获取length属性的值，如以下示例所示。</p>
+<p>console.log(mountains.length); // 3</p>
+<p>该length属性是可写的，因此您可以 通过更改属性的值来插入或删除元素length。 如果将length属性设置为大于数组中元素数的值，则新元素将添加初始值undefined。 例如，我们将mountains数组的length属性更改为4，那么数组末尾将会附加一个初始值为undefined的元素。</p>
+<p>// append 1 element<br>mountains.length = 4;<br>console.log(mountains[3]); // undefined</p>
+<p>类似地，下面的示例将mountains数组的length属性设置为2，那么将会删除数组的最后两个元素。当我们访问数组的第三个元素时，它返回undefined。</p>
+<p>// remove the last 2 elements<br>mountains.length = 2;<br>console.log(mountains[2]); // undefined</p>
+<p>请注意，JavaScript 数组可容纳的最大元素数为4,294,967,295，足以满足典型应用程序的要求。</p>
+<h2 id="数组的基本操作"><a href="#数组的基本操作" class="headerlink" title="数组的基本操作"></a>数组的基本操作</h2><p>所有数组都是该Array类型的实例。因此，数组变量的typeof返回object如下例所示：</p>
+<p>var seas = [‘Black Sea’, ‘Caribbean Sea’, ‘North Sea’, ‘Baltic Sea’];<br>console.log(typeof seas); // object</p>
+<p>要检查变量是否为数组，可以使用Array.isArray()方法进行检测：</p>
+<p>console.log(Array.isArray(seas)); // true</p>
+<p>当您调用数组的toString()和valueOf()方法时，您将获得一个以逗号分隔的元素列表表示的字符串，如以下示例所示：</p>
+<p>console.log(seas.toString()); // Black Sea,Caribbean Sea,North Sea,Baltic Sea<br>console.log(seas.valueOf());</p>
+<p>如果要以不同的方式使用数组的字符串表示形式，可以使用join()方法。 以下示例使用join()方法返回mountains数组的字符串表示形式。但是元素由()字符分隔。</p>
+<p>console.log(seas.join(‘’));<br>// Black SeaCaribbean SeaNorth SeaBaltic Sea</p>
+<p>如果数组的元素是null或undefined时，toString(), valueOf()以及join()将其视为得到的字符串中一个空字符串。这是一个例子。</p>
+<p>var mixedValues = [1, 2, null, ‘A’, undefined, 3];<br>console.log(mixedValues.toString()); // 1,2,,A,,3</p>
+<p>现在您应该对JavaScript数组及其一些独特的特性有基本的了解。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F30%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F30%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">正则表达式30分钟入门教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-07 11:08:23" itemprop="dateCreated datePublished" datetime="2019-05-07T11:08:23+08:00">2019-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="正则表达式到底是什么东西？"><a href="#正则表达式到底是什么东西？" class="headerlink" title="正则表达式到底是什么东西？"></a>正则表达式到底是什么东西？</h2><p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。换句话说，正则表达式就是记录文本规则的代码。 很可能你使用过Windows/Dos下用于文件查找的通配符(wildcard)，也就是*和?。如果你想查找某个目录下的所有的Word文档的话，你会搜索*.doc。在这里，*会被解释成任意的字符串。和通配符类似，正则表达式也是用来进行文本匹配的工具，只不过比起通配符，它能更精确地描述你的需求——当然，代价就是更复杂——比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串(像010-12345678或0376-7654321)。</p>
+<blockquote>
+<p>字符是计算机软件处理文字时最基本的单位，可能是字母，数字，标点符号，空格，换行符，汉字等等。字符串是0个或更多个字符的序列。文本也就是文字，字符串。说某个字符串匹配某个正则表达式，通常是指这个字符串里有一部分（或几部分分别）能满足表达式给出的条件。</p>
+</blockquote>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>学习正则表达式的最好方法是从例子开始，理解例子之后再自己对例子进行修改，实验。下面给出了不少简单的例子，并对它们作了详细的说明。 假设你在一篇英文小说里查找hi，你可以使用正则表达式hi。 这几乎是最简单的正则表达式了，它可以精确匹配这样的字符串：由两个字符组成，前一个字符是h,后一个是i。通常，处理正则表达式的工具会提供一个忽略大小写的选项，如果选中了这个选项，它可以匹配hi,HI,Hi,hI这四种情况中的任意一种。 不幸的是，很多单词里包含hi这两个连续的字符，比如him,history,high等等。用hi来查找的话，这里边的hi也会被找出来。如果要精确地查找hi这个单词的话，我们应该使用\bhi\b。 \b是正则表达式规定的一个特殊代码（好吧，某些人叫它元字符，metacharacter），代表着单词的开头或结尾，也就是单词的分界处。虽然通常英文的单词是由空格，标点符号或者换行来分隔的，但是\b并不匹配这些单词分隔字符中的任何一个，它<strong>只匹配一个位置</strong>。</p>
+<blockquote>
+<p>如果需要更精确的说法，\b匹配这样的位置：它的前一个字符和后一个字符不全是(一个是,一个不是或不存在)\w。</p>
+</blockquote>
+<p>假如你要找的是hi后面不远处跟着一个Lucy，你应该用\bhi\b.*\bLucy\b。 这里，.是另一个元字符，匹配除了换行符以外的任意字符。*同样是元字符，不过它代表的不是字符，也不是位置，而是数量——它指定*前边的内容可以连续重复使用任意次以使整个表达式得到匹配。因此，.*连在一起就意味着任意数量的不包含换行的字符。现在\bhi\b.*\bLucy\b的意思就很明显了：先是一个单词hi,然后是任意个任意字符(但不能是换行)，最后是Lucy这个单词。 如果同时使用其它元字符，我们就能构造出功能更强大的正则表达式。比如下面这个例子：</p>
+<ul>
+<li>  0\d\d-\d\d\d\d\d\d\d\d匹配这样的字符串：以0开头，然后是两个数字，然后是一个连字号“-”，最后是8个数字(也就是中国的电话号码。当然，这个例子只能匹配区号为3位的情形)。</li>
+</ul>
+<p>这里的\d是个新的元字符，匹配一位数字(0，或1，或2，或……)。-不是元字符，只匹配它本身——连字符(或者减号，或者中横线，或者随你怎么称呼它)。 为了避免那么多烦人的重复，我们也可以这样写这个表达式：0\d{2}-\d{8}。这里\d后面的{2}({8})的意思是前面\d必须连续重复匹配2次(8次)。</p>
+<blockquote>
+<p>换行符就是’\n’,ASCII编码为10(十六进制0x0A)的字符。</p>
+</blockquote>
+<h2 id="测试正则表达式"><a href="#测试正则表达式" class="headerlink" title="测试正则表达式"></a>测试正则表达式</h2><p>如果你不觉得正则表达式很难读写的话，要么你是一个天才，要么，你不是地球人。正则表达式的语法很令人头疼，即使对经常使用它的人来说也是如此。由于难于读写，容易出错，所以找一种工具对正则表达式进行测试是很有必要的。 不同的环境下正则表达式的一些细节是不相同的，本教程介绍的是微软 .Net Framework 4.5 下正则表达式的行为，所以，我向你推荐我编写的.Net下的工具 Regester。请参考该页面的说明来安装和运行该软件。 <strong>下载与安装</strong> 你可以使用以下两种方式中的任意一个来下载安装正则表达式测试器.</p>
+<ul>
+<li>安装版<ul>
+<li>  下载 <a target="_blank" rel="noopener" href="http://deerchao.net/tools/regester/regester.setup.zh.zip">Regester安装程序</a></li>
+<li>  解压后运行 RegesterSetup.zh.exe</li>
+</ul>
+</li>
+<li>绿色版<ul>
+<li>  下载 <a target="_blank" rel="noopener" href="http://deerchao.net/tools/regester/regester.zip">Regester</a></li>
+<li>  解压后运行 Regester.exe</li>
+<li>  如果无法启动,请自行下载安装 <a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/download/details.aspx?id=30653">Microsoft .Net Framework 4.5</a> 后再试</li>
+</ul>
+</li>
+</ul>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><p>现在你已经知道几个很有用的元字符了，如\b,.,*，还有\d.正则表达式里还有更多的元字符，比如\s匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等。\w匹配字母或数字或下划线或汉字等。 下面来看看更多的例子：</p>
+<ul>
+<li>  \ba\w*\b匹配以字母a开头的单词——先是某个单词开始处(\b)，然后是字母a,然后是任意数量的字母或数字(\w*)，最后是单词结束处(\b)。</li>
+<li>  \d+匹配1个或更多连续的数字。这里的+是和*类似的元字符，不同的是*匹配重复任意次(可能是0次)，而+则匹配重复1次或更多次。</li>
+<li>  \b\w{6}\b 匹配刚好6个字符的单词。</li>
+</ul>
+<p>表1.常用的元字符</p>
+<p>代码</p>
+<p>说明</p>
+<p>.</p>
+<p>匹配除换行符以外的任意字符</p>
+<p>\w</p>
+<p>匹配字母或数字或下划线或汉字</p>
+<p>\s</p>
+<p>匹配任意的空白符</p>
+<p>\d</p>
+<p>匹配数字</p>
+<p>\b</p>
+<p>匹配单词的开始或结束</p>
+<p>^</p>
+<p>匹配字符串的开始</p>
+<p>$</p>
+<p>匹配字符串的结束</p>
+<p>元字符^（和数字6在同一个键位上的符号）和$都匹配一个位置，这和\b有点类似。^匹配你要用来查找的字符串的开头，$匹配结尾。这两个代码在验证输入的内容时非常有用，比如一个网站如果要求你填写的QQ号必须为5位到12位数字时，可以使用：^\d{5,12}$。 这里的{5,12}和前面介绍过的{2}是类似的，只不过{2}匹配只能不多不少重复2次，{5,12}则是重复的次数不能少于5次，不能多于12次，否则都不匹配。 因为使用了^和$，所以输入的整个字符串都要用来和\d{5,12}来匹配，也就是说整个输入必须是5到12个数字，因此如果输入的QQ号能匹配这个正则表达式的话，那就符合要求了。 和忽略大小写的选项类似，有些正则表达式处理工具还有一个处理多行的选项。如果选中了这个选项，^和$的意义就变成了匹配行的开始处和结束处。</p>
+<h2 id="字符转义"><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h2><p>如果你想查找元字符本身的话，比如你查找.,或者*,就出现了问题：你没办法指定它们，因为它们会被解释成别的意思。这时你就得使用\来取消这些字符的特殊意义。因此，你应该使用\.和\*。当然，要查找\本身，你也得用\\. 例如：deerchao\.net匹配deerchao.net，C:\\Windows匹配C:\Windows。</p>
+<h2 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h2><p>你已经看过了前面的*,+,{2},{5,12}这几个匹配重复的方式了。下面是正则表达式中所有的限定符(指定数量的代码，例如*,{5,12}等)：</p>
+<p>表2.常用的限定符</p>
+<p>代码/语法</p>
+<p>说明</p>
+<p>*</p>
+<p>重复零次或更多次</p>
+<p>+</p>
+<p>重复一次或更多次</p>
+<p>?</p>
+<p>重复零次或一次</p>
+<p>{n}</p>
+<p>重复n次</p>
+<p>{n,}</p>
+<p>重复n次或更多次</p>
+<p>{n,m}</p>
+<p>重复n到m次</p>
+<p>下面是一些使用重复的例子：</p>
+<ul>
+<li>  Windows\d+匹配Windows后面跟1个或更多数字</li>
+<li>  ^\w+匹配一行的第一个单词(或整个字符串的第一个单词，具体匹配哪个意思得看选项设置)</li>
+</ul>
+<h2 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h2><p>要想查找数字，字母或数字，空白是很简单的，因为已经有了对应这些字符集合的元字符，但是如果你想匹配没有预定义元字符的字符集合(比如元音字母a,e,i,o,u),应该怎么办？ 很简单，你只需要在方括号里列出它们就行了，像[aeiou]就匹配任何一个英文元音字母，[.?!]匹配标点符号(.或?或!)。 我们也可以轻松地指定一个字符范围，像[0-9]代表的含意与\d就是完全一致的：一位数字；同理[a-z0-9A-Z_]也完全等同于\w（如果只考虑英文的话）。 下面是一个更复杂的表达式：\(?0\d{2}[) -]?\d{8}。 这个表达式可以匹配几种格式的电话号码，像(010)88886666，或022-22334455，或02912345678等。我们对它进行一些分析吧：首先是一个转义字符\(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现1次或不出现(?)，最后是8个数字(\d{8})。</p>
+<h2 id="分枝条件"><a href="#分枝条件" class="headerlink" title="分枝条件"></a>分枝条件</h2><p>不幸的是，刚才那个表达式也能匹配010)12345678或(022-87654321这样的“不正确”的格式。要解决这个问题，我们需要用到分枝条件。正则表达式里的分枝条件指的是有几种规则，如果满足其中任意一种规则都应该当成匹配，具体方法是用把不同的规则分隔开。听不明白？没关系，看例子： 0\d{2}-\d{8}0\d{3}-\d{7}这个表达式能匹配两种以连字号分隔的电话号码：一种是三位区号，8位本地号(如010-12345678)，一种是4位区号，7位本地号(0376-2233445)。 \(0\d{2}\)[- ]?\d{8}0\d{2}[- ]?\d{8}这个表达式匹配3位区号的电话号码，其中区号可以用小括号括起来，也可以不用，区号与本地号间可以用连字号或空格间隔，也可以没有间隔。你可以试试用分枝条件把这个表达式扩展成也支持4位区号的。 \d{5}-\d{4}\d{5}这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成\d{5}\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。原因是匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。</p>
+<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>我们已经提到了怎么重复单个字符（直接在字符后面加上限定符就行了）；但如果想要重复多个字符又该怎么办？你可以用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了，你也可以对子表达式进行其它一些操作(后面会有介绍)。 (\d{1,3}\.){3}\d{1,3}是一个简单的IP地址匹配表达式。要理解这个表达式，请按下列顺序分析它：\d{1,3}匹配1到3位的数字，(\d{1,3}\.){3}匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字(\d{1,3})。 不幸的是，它也将匹配256.300.888.999这种不可能存在的IP地址。如果能使用算术比较的话，或许能简单地解决这个问题，但是正则表达式中并不提供关于数学的任何功能，所以只能使用冗长的分组，选择，字符类来描述一个正确的IP地址：((2[0-4]\d25[0-5][01]?\d\d?)\.){3}(2[0-4]\d25[0-5][01]?\d\d?)。 理解这个表达式的关键是理解2[0-4]\d25[0-5][01]?\d\d?，这里我就不细说了，你自己应该能分析得出来它的意义。</p>
+<h2 id="反义"><a href="#反义" class="headerlink" title="反义"></a>反义</h2><p>有时需要查找不属于某个能简单定义的字符类的字符。比如想查找除了数字以外，其它任意字符都行的情况，这时需要用到反义：</p>
+<p>表3.常用的反义代码</p>
+<p>代码/语法</p>
+<p>说明</p>
+<p>\W</p>
+<p>匹配任意不是字母，数字，下划线，汉字的字符</p>
+<p>\S</p>
+<p>匹配任意不是空白符的字符</p>
+<p>\D</p>
+<p>匹配任意非数字的字符</p>
+<p>\B</p>
+<p>匹配不是单词开头或结束的位置</p>
+<p>[^x]</p>
+<p>匹配除了x以外的任意字符</p>
+<p>[^aeiou]</p>
+<p>匹配除了aeiou这几个字母以外的任意字符</p>
+<p>例子：\S+匹配不包含空白符的字符串。 &lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</p>
+<h2 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h2><p>使用小括号指定一个子表达式后，<strong>匹配这个子表达式的文本</strong>(也就是此分组捕获的内容)可以在表达式或其它程序中作进一步的处理。默认情况下，每个分组会自动拥有一个组号，规则是：从左向右，以分组的左括号为标志，第一个出现的分组的组号为1，第二个为2，以此类推。 后向引用用于重复搜索前面某个分组匹配的文本。例如，\1代表分组1匹配的文本。难以理解？请看示例： \b(\w+)\b\s+\1\b可以用来匹配重复的单词，像go go, 或者kitty kitty。这个表达式首先是一个单词，也就是单词开始处和结束处之间的多于一个的字母或数字(\b(\w+)\b)，这个单词会被捕获到编号为1的分组中，然后是1个或几个空白符(\s+)，最后是分组1中捕获的内容（也就是前面匹配的那个单词）(\1)。 你也可以自己指定子表达式的组名。要指定一个子表达式的组名，请使用这样的语法：(?<Word>\w+)(或者把尖括号换成’也行：(?’Word’\w+)),这样就把\w+的组名指定为Word了。要反向引用这个分组捕获的内容，你可以使用\k<Word>,所以上一个例子也可以写成这样：\b(?<Word>\w+)\b\s+\k<Word>\b。 使用小括号的时候，还有很多特定用途的语法。下面列出了最常用的一些：</p>
+<p>表4.常用分组语法</p>
+<p>分类</p>
+<p>代码/语法</p>
+<p>说明</p>
+<p>捕获</p>
+<p>(exp)</p>
+<p>匹配exp,并捕获文本到自动命名的组里</p>
+<p>(?<name>exp)</p>
+<p>匹配exp,并捕获文本到名称为name的组里，也可以写成(?’name’exp)</p>
+<p>(?:exp)</p>
+<p>匹配exp,不捕获匹配的文本，也不给此分组分配组号</p>
+<p>零宽断言</p>
+<p>(?=exp)</p>
+<p>匹配exp前面的位置</p>
+<p>(?&lt;=exp)</p>
+<p>匹配exp后面的位置</p>
+<p>(?!exp)</p>
+<p>匹配后面跟的不是exp的位置</p>
+<p>(?&lt;!exp)</p>
+<p>匹配前面不是exp的位置</p>
+<p>注释</p>
+<p>(?#comment)</p>
+<p>这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读</p>
+<p>我们已经讨论了前两种语法。第三个(?:exp)不会改变正则表达式的处理方式，只是这样的组匹配的内容不会像前两种那样被捕获到某个组里面，也不会拥有组号。“我为什么会想要这样做？”——好问题，你觉得为什么呢？</p>
+<h2 id="零宽断言"><a href="#零宽断言" class="headerlink" title="零宽断言"></a>零宽断言</h2><p>接下来的四个用于查找在某些内容(但并不包括这些内容)之前或之后的东西，也就是说它们像\b,^,$那样用于指定一个位置，这个位置应该满足一定的条件(即断言)，因此它们也被称为零宽断言。最好还是拿例子来说明吧： (?=exp)也叫零宽度正预测先行断言，它断言自身出现的位置的后面能匹配表达式exp。比如\b\w+(?=ing\b)，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如查找I’m singing while you’re dancing.时，它会匹配sing和danc。 (?&lt;=exp)也叫零宽度正回顾后发断言，它断言自身出现的位置的前面能匹配表达式exp。比如(?&lt;=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找reading a book时，它匹配ading。 假如你想要给一个很长的数字中每三位间加一个逗号(当然是从右边加起了)，你可以这样查找需要在前面和里面添加逗号的部分：((?&lt;=\d)\d{3})+\b，用它对1234567890进行查找时结果是234567890。 下面这个例子同时使用了这两种断言：(?&lt;=\s)\d+(?=\s)匹配以空白符间隔的数字(再次强调，不包括这些空白符)。</p>
+<h2 id="负向零宽断言"><a href="#负向零宽断言" class="headerlink" title="负向零宽断言"></a>负向零宽断言</h2><p>前面我们提到过怎么查找<strong>不是某个字符或不在某个字符类里</strong>的字符的方法(反义)。但是如果我们只是想要<strong>确保某个字符没有出现，但并不想去匹配它</strong>时怎么办？例如，如果我们想查找这样的单词–它里面出现了字母q,但是q后面跟的不是字母u,我们可以尝试这样： \b\w*q[^u]\w*\b匹配包含<strong>后面不是字母u的字母q</strong>的单词。但是如果多做测试(或者你思维足够敏锐，直接就观察出来了)，你会发现，如果q出现在单词的结尾的话，像<strong>Iraq</strong>,<strong>Benq</strong>，这个表达式就会出错。这是因为[^u]总要匹配一个字符，所以如果q是单词的最后一个字符的话，后面的[^u]将会匹配q后面的单词分隔符(可能是空格，或者是句号或其它的什么)，后面的\w*\b将会匹配下一个单词，于是\b\w*q[^u]\w*\b就能匹配整个Iraq fighting。负向零宽断言能解决这样的问题，因为它只匹配一个位置，并不<strong>消费</strong>任何字符。现在，我们可以这样来解决这个问题：\b\w*q(?!u)\w*\b。 零宽度负预测先行断言(?!exp)，断言此位置的后面不能匹配表达式exp。例如：\d{3}(?!\d)匹配三位数字，而且这三位数字的后面不能是数字；\b((?!abc)\w)+\b匹配不包含连续字符串abc的单词。 同理，我们可以用(?&lt;!exp),零宽度负回顾后发断言来断言此位置的前面不能匹配表达式exp：(?&lt;![a-z])\d{7}匹配前面不是小写字母的七位数字。 一个更复杂的例子：(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)匹配不包含属性的简单HTML标签内里的内容。(?&lt;=&lt;(\w+)&gt;)指定了这样的前缀：被尖括号括起来的单词(比如可能是<b>)，然后是.*(任意的字符串),最后是一个后缀(?=&lt;\/\1&gt;)。注意后缀里的\/，它用到了前面提过的字符转义；\1则是一个反向引用，引用的正是捕获的第一组，前面的(\w+)匹配的内容，这样如果前缀实际上是<b>的话，后缀就是</b>了。整个表达式匹配的是<b>和</b>之间的内容(再次提醒，不包括前缀和后缀本身)。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>小括号的另一种用途是通过语法(?#comment)来包含注释。例如：2[0-4]\d(?#200-249)25[0-5](?#250-255)[01]?\d\d?(?#0-199)。 要包含注释的话，最好是启用“忽略模式里的空白符”选项，这样在编写表达式时能任意的添加空格，Tab，换行，而实际使用时这些都将被忽略。启用这个选项后，在#后面到这一行结束的所有文本都将被当成注释忽略掉。例如，我们可以前面的一个表达式写成这样：</p>
+<p>(?&lt;=    # 断言要匹配的文本的前缀<br>&lt;(\w+)&gt; # 查找尖括号括起来的字母或数字(即HTML/XML标签)<br>)       # 前缀结束<br>.*      # 匹配任意文本<br>(?=     # 断言要匹配的文本的后缀<br>&lt;\/\1&gt;  # 查找尖括号括起来的内容：前面是一个”/“，后面是先前捕获的标签<br>)       # 后缀结束</p>
+<h2 id="贪婪与懒惰"><a href="#贪婪与懒惰" class="headerlink" title="贪婪与懒惰"></a>贪婪与懒惰</h2><p>当正则表达式中包含能接受重复的限定符时，通常的行为是（在使整个表达式能得到匹配的前提下）匹配<strong>尽可能多</strong>的字符。以这个表达式为例：a.*b，它将会匹配最长的以a开始，以b结束的字符串。如果用它来搜索aabab的话，它会匹配整个字符串aabab。这被称为贪婪匹配。 有时，我们更需要懒惰匹配，也就是匹配<strong>尽可能少</strong>的字符。前面给出的限定符都可以被转化为懒惰匹配模式，只要在它后面加上一个问号?。这样.*?就意味着匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复。现在看看懒惰版的例子吧： a.*?b匹配最短的，以a开始，以b结束的字符串。如果把它应用于aabab的话，它会匹配aab（第一到第三个字符）和ab（第四到第五个字符）。</p>
+<p>表5.懒惰限定符</p>
+<p>代码/语法</p>
+<p>说明</p>
+<p>*?</p>
+<p>重复任意次，但尽可能少重复</p>
+<p>+?</p>
+<p>重复1次或更多次，但尽可能少重复</p>
+<p>??</p>
+<p>重复0次或1次，但尽可能少重复</p>
+<p>{n,m}?</p>
+<p>重复n到m次，但尽可能少重复</p>
+<p>{n,}?</p>
+<p>重复n次以上，但尽可能少重复</p>
+<h2 id="处理选项"><a href="#处理选项" class="headerlink" title="处理选项"></a>处理选项</h2><p>上面介绍了几个选项如忽略大小写，处理多行等，这些选项能用来改变处理正则表达式的方式。下面是.Net中常用的正则表达式选项：</p>
+<p>表6.常用的处理选项</p>
+<p>名称</p>
+<p>说明</p>
+<p>IgnoreCase(忽略大小写)</p>
+<p>匹配时不区分大小写。</p>
+<p>Multiline(多行模式)</p>
+<p>更改^和$的含义，使它们分别在任意一行的行首和行尾匹配，而不仅仅在整个字符串的开头和结尾匹配。(在此模式下,$的精确含意是:匹配\n之前的位置以及字符串结束前的位置.)</p>
+<p>Singleline(单行模式)</p>
+<p>更改.的含义，使它与每一个字符匹配（包括换行符\n）。</p>
+<p>IgnorePatternWhitespace(忽略空白)</p>
+<p>忽略表达式中的非转义空白并启用由#标记的注释。</p>
+<p>ExplicitCapture(显式捕获)</p>
+<p>仅捕获已被显式命名的组。</p>
+<p>一个经常被问到的问题是：是不是只能同时使用多行模式和单行模式中的一种？答案是：不是。这两个选项之间没有任何关系，除了它们的名字比较相似（以至于让人感到疑惑）以外。</p>
+<h2 id="平衡组-递归匹配"><a href="#平衡组-递归匹配" class="headerlink" title="平衡组/递归匹配"></a>平衡组/递归匹配</h2><p>有时我们需要匹配像( 100 * ( 50 + 15 ) )这样的可嵌套的层次性结构，这时简单地使用\(.+\)则只会匹配到最左边的左括号和最右边的右括号之间的内容(这里我们讨论的是贪婪模式，懒惰模式也有下面的问题)。假如原来的字符串里的左括号和右括号出现的次数不相等，比如( 5 / ( 3 + 2 ) ) )，那我们的匹配结果里两者的个数也不会相等。有没有办法在这样的字符串里匹配到最长的，配对的括号之间的内容呢？ 为了避免(和\(把你的大脑彻底搞糊涂，我们还是用尖括号代替圆括号吧。现在我们的问题变成了如何把xx &lt;aa <bbb> <bbb> aa&gt; yy这样的字符串里，最长的配对的尖括号内的内容捕获出来？ 这里需要用到以下的语法构造：</p>
+<ul>
+<li>  (?’group’) 把捕获的内容命名为group,并压入堆栈(Stack)</li>
+<li>  (?’-group’) 从堆栈上弹出最后压入堆栈的名为group的捕获内容，如果堆栈本来为空，则本分组的匹配失败</li>
+<li>  (?(group)yesno) 如果堆栈上存在以名为group的捕获内容的话，继续匹配yes部分的表达式，否则继续匹配no部分</li>
+<li>  (?!) 零宽负向先行断言，由于没有后缀表达式，试图匹配总是失败</li>
+</ul>
+<p>我们需要做的是每碰到了左括号，就在压入一个”Open”,每碰到一个右括号，就弹出一个，到了最后就看看堆栈是否为空－－如果不为空那就证明左括号比右括号多，那匹配就应该失败。正则表达式引擎会进行回溯(放弃最前面或最后面的一些字符)，尽量使整个表达式得到匹配。</p>
+<p>&lt;                         #最外层的左括号<br>    [^&lt;&gt;]*                #最外层的左括号后面的不是括号的内容<br>    (<br>        (<br>            (?’Open’&lt;)    #碰到了左括号，在黑板上写一个”Open”<br>            [^&lt;&gt;]*       #匹配左括号后面的不是括号的内容<br>        )+<br>        (<br>            (?’-Open’&gt;)   #碰到了右括号，擦掉一个”Open”<br>            [^&lt;&gt;]*        #匹配右括号后面不是括号的内容<br>        )+<br>    )*<br>    (?(Open)(?!))         #在遇到最外层的右括号前面，判断黑板上还有没有没擦掉的”Open”；如果还有，则匹配失败</p>
+<blockquote>
+<pre><code>                    #最外层的右括号
+</code></pre>
+</blockquote>
+<p>平衡组的一个最常见的应用就是匹配HTML,下面这个例子可以匹配嵌套的<div>标签：&lt;div[^&gt;]*&gt;[^&lt;&gt;]*(((?’Open’&lt;div[^&gt;]*&gt;)[^&lt;&gt;]*)+((?’-Open’</div>)[^&lt;&gt;]*)+)*(?(Open)(?!))</div>.</p>
+<h2 id="还有些什么东西没提到"><a href="#还有些什么东西没提到" class="headerlink" title="还有些什么东西没提到"></a>还有些什么东西没提到</h2><p>上边已经描述了构造正则表达式的大量元素，但是还有很多没有提到的东西。下面是一些未提到的元素的列表，包含语法和简单的说明。你可以在网上找到更详细的参考资料来学习它们–当你需要用到它们的时候。如果你安装了MSDN Library,你也可以在里面找到.net下正则表达式详细的文档。这里的介绍很简略，如果你需要更详细的信息，而又没有在电脑上安装MSDN Library,可以查看<a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/az24scfc.aspx">关于正则表达式语言元素的MSDN在线文档</a>。</p>
+<p>表7.尚未详细讨论的语法</p>
+<p>代码/语法</p>
+<p>说明</p>
+<p>\a</p>
+<p>报警字符(打印它的效果是电脑嘀一声)</p>
+<p>\b</p>
+<p>通常是单词分界位置，但如果在字符类里使用代表退格</p>
+<p>\t</p>
+<p>制表符，Tab</p>
+<p>\r</p>
+<p>回车</p>
+<p>\v</p>
+<p>竖向制表符</p>
+<p>\f</p>
+<p>换页符</p>
+<p>\n</p>
+<p>换行符</p>
+<p>\e</p>
+<p>Escape</p>
+<p>\0nn</p>
+<p>ASCII代码中八进制代码为nn的字符</p>
+<p>\xnn</p>
+<p>ASCII代码中十六进制代码为nn的字符</p>
+<p>\unnnn</p>
+<p>Unicode代码中十六进制代码为nnnn的字符</p>
+<p>\cN</p>
+<p>ASCII控制字符。比如\cC代表Ctrl+C</p>
+<p>\A</p>
+<p>字符串开头(类似^，但不受处理多行选项的影响)</p>
+<p>\Z</p>
+<p>字符串结尾或行尾(不受处理多行选项的影响)</p>
+<p>\z</p>
+<p>字符串结尾(类似$，但不受处理多行选项的影响)</p>
+<p>\G</p>
+<p>当前搜索的开头</p>
+<p>\p{name}</p>
+<p>Unicode中命名为name的字符类，例如\p{IsGreek}</p>
+<p>(?&gt;exp)</p>
+<p>贪婪子表达式</p>
+<p>(?<x>-<y>exp)</p>
+<p>平衡组</p>
+<p>(?im-nsx:exp)</p>
+<p>在子表达式exp中改变处理选项</p>
+<p>(?im-nsx)</p>
+<p>为表达式后面的部分改变处理选项</p>
+<p>(?(exp)yesno)</p>
+<p>把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</p>
+<p>(?(exp)yes)</p>
+<p>同上，只是使用空表达式作为no</p>
+<p>(?(name)yesno)</p>
+<p>如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</p>
+<p>(?(name)yes)</p>
+<p>同上，只是使用空表达式作为no</p>
+<h2 id="网上的资源及本文参考文献"><a href="#网上的资源及本文参考文献" class="headerlink" title="网上的资源及本文参考文献"></a>网上的资源及本文参考文献</h2><ul>
+<li>  <a target="_blank" rel="noopener" href="https://item.jd.com/11070361.html">精通正则表达式(第3版)</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/zh-cn/library/hs600312.aspx">微软的正则表达式教程</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://msdn2.microsoft.com/zh-cn/library/system.text.regularexpressions.regex.aspx">System.Text.RegularExpressions.Regex类(MSDN)</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://www.regular-expressions.info/">专业的正则表达式教学网站(英文)</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://weblogs.asp.net/whaggard/archive/2005/02/20/377025.aspx">关于.Net下的平衡组的详细讨论（英文）</a></li>
+</ul>
+<p>来源：<a target="_blank" rel="noopener" href="http://deerchao.net/tutorials/regex/regex.htm">http://deerchao.net/tutorials/regex/regex.htm</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">javascript数据类型 —— String 类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-07 08:00:43" itemprop="dateCreated datePublished" datetime="2019-05-07T08:00:43+08:00">2019-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>String 类型用于表示由零或多个16位 Unicode 字符组成的字符序列，即字符串 。</p>
+<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>由于计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。在计算机中，1个字节（byte）由 8个比特（bit）组成，所以 1 个字节能表示的最大整数就是 255，如果想表示更大整数，就必须用更多的字节，比如 2 个字节可以表示的最大整数为 65535 。最早，只有127个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母A的编码是65，小写字母z的编码是122。 但如果要表示中文字符，显然一个字节是不够的，至少需要两个字节。所以，中国制定了GB2312编码，用来表示中文字符。基于同样的原因，各个国家都制定了自己的编码规则。这样就会出现一个问题，即在多语言混合的文本中，不同的编码会出现冲突，导致乱码出现。 为了解决这个问题，Unicode 编码应运而生，它把所有的语言都统一到一套编码中，采用2个字节表示一个字符，即最多可以表示65535个字符，这样基本上可以覆盖世界上常用的文字，如果要表示更多的文字，也可以采用4个字节进行编码，这是一种通用的编码规范。 因此，JavaScript中的字符也采用Unicode来编码，也就是说，JavaScript中的英文字符和中文字符都会占用2个字节的空间大小，这种多字节字符，通常被称为宽字符。</p>
+<h2 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h2><p>在JavaScript中，字符串是基本数据类型，本身不存任何操作方法。为了方便的对字符串进行操作，ECMAScript提供了一个基本包装类型：<code>String()</code>对象。它是一种特殊的引用类型，JS引擎每当读取一个字符串的时候，就会在内部创建一个对应的<code>String()</code>对象，该对象提供了很多操作字符的方法，这就是为什么能对字符串调用方法的原因。</p>
+<p>var name = ‘JavaScript’;<br>var value = name.substr(2,1);</p>
+<p>当第二行代码访问变量str时，访问过程处于一种读取模式，也就是要从内存中读取这个字符串的值。而在读取模式中访问字符串时，引擎内部会自动完成下列处理：</p>
+<ol>
+<li> 创建String类型的一个实例</li>
+<li> 在实例上调用指定的方法</li>
+<li> 销毁这个实例</li>
+</ol>
+<p>用伪代码形象的模拟以上三个步骤：</p>
+<p>var obj = new String(‘JavaScript’);<br>var value = obj.substr(2,1);<br>name = null;</p>
+<p>可以看出，基本包装类型是一种特殊的引用类型。它和普通引用类型有一个很重要的区别，就是对象的生存期不同。使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。在JavaScript中，类似的基本包装类型还有<code>Number</code>、<code>Boolean</code>对象 。</p>
+<h2 id="常用操作方法"><a href="#常用操作方法" class="headerlink" title="常用操作方法"></a>常用操作方法</h2><p>作为字符串的基本包装类型，String()对象提供了以下几类方法，用以操作字符串：</p>
+<ul>
+<li>  字符操作：<code>charAt()</code>、<code>charCodeAt()</code>、<code>fromCharCode()</code></li>
+<li>  字符串提取：<code>substr()</code>、<code>substring()</code>、<code>slice()</code></li>
+<li>  位置索引：<code>indexOf()</code>、<code>lastIndexOf()</code></li>
+<li>  大小写转换：<code>toLowerCase()</code>、<code>toUpperCase()</code></li>
+<li>  模式匹配：<code>match()</code>、<code>search()</code>、<code>replace()</code>、<code>split()</code></li>
+<li>  其他操作：<code>concat()</code>、<code>trim()</code>、<code>localeCompare()</code></li>
+</ul>
+<p><code>charCodeAt()</code>方法的作用是获取字符的Unicode编码，俗称“Unicode码点”。<code>fromCharCode()</code>是<code>String()</code>对象上的静态方法，作用是根据Unicode编码返回对应的字符。</p>
+<p>var a = ‘a’;<br>// 获取Unicode编码<br>var code = a.charCodeAt(0); // 97<br>// 根据Unicode编码获取字符<br>String.fromCharCode(code); // a</p>
+<p>通过<code>charCodeAt()</code>方法获取字符的Unicode编码，然后再把这个编码转化成二进制，就可以得到该字符的二进制表示。</p>
+<p>var a = ‘a’;<br>var code = a.charCodeAt(0); // 97<br>code.toString(2); // 1100001</p>
+<p>对于字符串的提取操作，有三个相类似的方法，分别如下：</p>
+<p>substr(start [, length])<br>substring(start [, end])<br>slice(start [, end])</p>
+<p>从定义上看，<code>substring()</code>和<code>slice()</code>是同类的，参数都是字符串的某个start位置到某个end位置（但end位置的字符不包括在结果中）；而<code>substr()</code>则是字符串的某个start位置起，数length个长度的字符才结束。二者的共性是：从start开始，如果没有第2个参数，都是直到字符串末尾。 <code>substring()</code>和<code>slice()</code>的区别则是：<code>slice()</code>可以接受“负数”，表示从字符串尾部开始计数；而<code>substring()</code>则把负数或其它无效的数当作0。</p>
+<p>‘hello world!’.slice(-6, -1) // ‘world’<br>‘hello world!’.substring(“abc”, 5) // ‘hello’</p>
+<p><code>substr()</code>的start也可接受负数，也表示从字符串尾部计数，这点和<code>slice()</code>相同；但<code>substr()</code>的length则不能小于1，否则返回空字符串。</p>
+<p>‘hello world!’.substr(-6, 5) // ‘world’<br>‘hello world!’.substr(0, -1) // ‘’</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/04/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/04/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">常用正则表达式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-04 10:49:09" itemprop="dateCreated datePublished" datetime="2019-05-04T10:49:09+08:00">2019-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>说明：正则表达式通常用于两种任务：1.验证，2.搜索/替换。用于验证时，通常需要在前后分别加上<code>^</code>和<code>$</code>，以匹配整个待验证字符串；搜索/替换时是否加上此限定则根据搜索的要求而定，此外，也有可能要在前后加上<code>\b</code>而不是<code>^</code>和<code>$</code>。此表所列的常用正则表达式，除个别外均未在前后加上任何限定，请根据需要，自行处理。</p>
+<p>说明</p>
+<p>正则表达式</p>
+<p>网址（URL）</p>
+<p><code>[a-zA-z]+://[^\s]*</code></p>
+<p>IP地址(IP Address)</p>
+<p><code>((2[0-4]\d25[0-5][01]?\d\d?)\.)&#123;3&#125;(2[0-4]\d25[0-5][01]?\d\d?)</code></p>
+<p>电子邮件(Email)</p>
+<p><code>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</code></p>
+<p>QQ号码</p>
+<p><code>[1-9]\d&#123;4,&#125;</code></p>
+<p>HTML标记(包含内容或自闭合)</p>
+<p><code>&lt;(.*)(.*)&gt;.*&lt;\/\1&gt;&lt;(.*) \/&gt;</code></p>
+<p>密码(由数字/大写字母/小写字母/标点符号组成，四种都必有，8位以上)</p>
+<p><code>(?=^.&#123;8,&#125;$)(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z])(?!.*\n).*$</code></p>
+<p>日期(年-月-日)</p>
+<p><code>(\d&#123;4&#125;\d&#123;2&#125;)-((1[0-2])(0?[1-9]))-(([12][0-9])(3[01])(0?[1-9]))</code></p>
+<p>日期(月/日/年)</p>
+<p><code>((1[0-2])(0?[1-9]))/(([12][0-9])(3[01])(0?[1-9]))/(\d&#123;4&#125;\d&#123;2&#125;)</code></p>
+<p>时间(小时:分钟, 24小时制)</p>
+<p><code>((10?)[0-9]2[0-3]):([0-5][0-9])</code></p>
+<p>汉字(字符)</p>
+<p><code>[\u4e00-\u9fa5]</code></p>
+<p>中文及全角标点符号(字符)</p>
+<p><code>[\u3000-\u301e\ufe10-\ufe19\ufe30-\ufe44\ufe50-\ufe6b\uff01-\uffee]</code></p>
+<p>中国大陆固定电话号码</p>
+<p><code>(\d&#123;4&#125;-\d&#123;3&#125;-)?(\d&#123;8&#125;\d&#123;7&#125;)</code></p>
+<p>中国大陆手机号码</p>
+<p><code>1\d&#123;10&#125;</code></p>
+<p>中国大陆邮政编码</p>
+<p><code>[1-9]\d&#123;5&#125;</code></p>
+<p>中国大陆身份证号(15位或18位)</p>
+<p><code>\d&#123;15&#125;(\d\d[0-9xX])?</code></p>
+<p>非负整数(正整数或零)</p>
+<p><code>\d+</code></p>
+<p>正整数</p>
+<p><code>[0-9]*[1-9][0-9]*</code></p>
+<p>负整数</p>
+<p><code>-[0-9]*[1-9][0-9]*</code></p>
+<p>整数</p>
+<p><code>-?\d+</code></p>
+<p>小数</p>
+<p><code>(-?\d+)(\.\d+)?</code></p>
+<p>不包含abc的单词</p>
+<p><code>\b((?!abc)\w)+\b</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/02/for-in%E4%B8%8Efor-of%E5%BE%AA%E7%8E%AF%E5%AF%B9%E6%AF%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/02/for-in%E4%B8%8Efor-of%E5%BE%AA%E7%8E%AF%E5%AF%B9%E6%AF%94/" class="post-title-link" itemprop="url">for..in与for..of循环对比</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-02 08:00:06" itemprop="dateCreated datePublished" datetime="2019-05-02T08:00:06+08:00">2019-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Javascript中最基本的迭代方法是<code>for</code>循环。它需要三个表达式：变量声明、在每次迭代之前要计算的表达式以及在每次迭代结束时要计算的表达式。例如，这个<code>for</code>循环将<code>console.log</code>数组中的每个项。</p>
+<p>const array = [‘a’, ‘b’, ‘c’, ‘d’];<br>for (let i = 0; i &lt; array.length; i++) {<br>console.log(array[i]);<br>}<br>// Result: a, b, c, d</p>
+<p>除了<code>for</code>循环之外，我们还可以使用另外两种<code>for</code>迭代方法：<code>for..in</code>和<code>for..of</code>。</p>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for..in"></a>for..in</h2><p><code>for..in</code>是一种迭代对象的“可枚举”属性的方法。因此，它适用于所有具有这些属性的对象(不仅是<code>object()</code>)。 可枚举属性定义为可枚举值为<code>true</code>的对象的属性。从本质上讲，如果一个属性是可枚举的，它就是“可枚举的”。我们可以通过调用<code>property.Enumerable</code>来检查属性是否可枚举，它将返回<code>true</code>或<code>false</code>。 我们使用<code>for..in</code>循环与以下语法一起使用</p>
+<p>for (variable in enumerable) {<br>// do stuff<br>}</p>
+<p>例如，要循环遍历<code>console.log</code>此<code>Object</code>中的所有值，我们可以执行以下操作 -</p>
+<p>const obj = {<br>a: 1,<br>b: 2,<br>c: 3,<br>d: 4<br>}<br>for (const key in obj) {<br>console.log( obj[key] )<br>}</p>
+<p><code>for…in</code>循环也将迭代继承的属性，只要它们是可枚举的属性。<code>for…in</code>迭代以任意顺序发生。因此，如果需要按照定义的顺序发生，则不应使用它。</p>
+<h3 id="for-in-和-Object"><a href="#for-in-和-Object" class="headerlink" title="for..in 和 Object"></a>for..in 和 Object</h3><p><code>for..in</code>方法为我们提供了循环对象键和值的最简单方法，因为对象不能访问数组所使用的<code>forEach</code>方法。</p>
+<h3 id="for-in-和-Array"><a href="#for-in-和-Array" class="headerlink" title="for..in 和 Array"></a>for..in 和 Array</h3><p>数组中值的“键”是数字索引。因此，这些索引本质上只是可枚举的属性，就像<code>Object</code>键一样，只是它们是整数而不是字符串。 这意味着我们可以通过使用<code>for..in</code>来检索数组中的索引来循环数组中的所有值。</p>
+<p>const array = [‘a’, ‘b’, ‘c’, ‘d’];</p>
+<p>for (const index in array) {<br>console.log(array[index])<br>}</p>
+<p>// Result: a, b, c, d</p>
+<p>但是，一般建议不要将<code>for..in</code>与数组一起使用，特别是因为不能保证迭代按顺序进行，这通常对数组很重要。</p>
+<h3 id="for-in-和-String"><a href="#for-in-和-String" class="headerlink" title="for..in 和 String"></a>for..in 和 String</h3><p>字符串中的每个字符都有一个索引。因此，与<code>Array</code>类似，索引是可枚举的属性，恰好是整数。</p>
+<p>const string = ‘Ire Aderinokun’;</p>
+<p>for (const index in string) {<br>console.log(string[index])<br>}</p>
+<p>// Result: I, r, e, , A, d, e, r, i, n, o, k, u, n</p>
+<h2 id="for-of"><a href="#for-of" class="headerlink" title="for..of"></a>for..of</h2><p><code>for..of</code>是在ES2015中引入的一种方法，用于迭代“iterable collections”。这些对象具有<code>[symbol.iterator]</code>属性。 <code>[symbol.iterator]</code>属性允许我们通过调用<code>[symbol.iterator]().next()</code>方法来检索集合中的下一项，从而手动迭代集合。</p>
+<p>const array = [‘a’,’b’,’c’, ‘d’];<br>const iterator = array[Symbol.iterator]();<br>console.log( iterator.next().value )<br>console.log( iterator.next().value )<br>console.log( iterator.next().value )<br>console.log( iterator.next().value )</p>
+<p>// Result: a, b, c, d</p>
+<p><code>for..of</code>语法实质上是围绕<code>[symbol.iterator]</code>的包装，以创建循环。它使用以下语法-</p>
+<p>for (variable of iterable) {<br>// do stuff<br>}</p>
+<h3 id="for-of-和-Object"><a href="#for-of-和-Object" class="headerlink" title="for..of 和 Object"></a>for..of 和 Object</h3><p><code>for..of</code>循环不适用于对象，因为他们不是“迭代”，因此不具有<code>[Symbol.iterator]</code>属性。</p>
+<h3 id="for-of-和-Array-String"><a href="#for-of-和-Array-String" class="headerlink" title="for..of 和 Array/String"></a>for..of 和 Array/String</h3><p><code>for..of</code>循环使用数组和字符串的效果很好，因为它们是可迭代。此这种方法是一种更可靠的循环遍历数组的方法。</p>
+<p>const array = [‘a’, ‘b’, ‘c’, ‘d’];<br>for (const item of array) {<br>console.log(item)<br>}<br>// Result: a, b, c, d</p>
+<p>const string = ‘Ire Aderinokun’;<br>for (const character of string) {<br>console.log(character)<br>}<br>// Result: I, r, e, , A, d, e, r, i, n, o, k, u, n</p>
+<h3 id="for-of-和-NodeLists"><a href="#for-of-和-NodeLists" class="headerlink" title="for..of 和 NodeLists"></a>for..of 和 NodeLists</h3><p>最后，另一个非常有用的案例<code>for..of</code>是迭代<code>NodeLists</code>。当我们在文档中查询一组元素时，返回的是<code>NodeList</code>，而不是<code>Array</code>。这意味着我们不能使用<code>forEach</code>等数组方法对列表进行迭代。 为了解决这个问题，我们可以使用<code>Array.from()</code>或者使用<code>for..of</code>循环将其转换为数组，这不仅仅适用于数组。</p>
+<p>const elements = document.querySelectorAll(‘.foo’);</p>
+<p>for (const element of elements) {<br>    element.addEventListener(‘click’, doSomething);<br>}</p>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p><code>for..in</code></p>
+<p><code>for..of</code></p>
+<p>适用于</p>
+<p>可枚举属性</p>
+<p>无法检索的集合</p>
+<p>与Object一起使用?</p>
+<p>Yes</p>
+<p>No</p>
+<p>与Array一起使用?</p>
+<p>Yes, 不建议</p>
+<p>Yes</p>
+<p>与String一起使用?</p>
+<p>Yes, 不建议</p>
+<p>Yes</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

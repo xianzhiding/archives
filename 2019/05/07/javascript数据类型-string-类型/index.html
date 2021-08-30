@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="String 类型用于表示由零或多个16位 Unicode 字符组成的字符序列，即字符串 。 存储结构由于计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。在计算机中，1个字节（byte）由 8个比特（bit）组成，所以 1 个字节能表示的最大整数就是 255，如果想表示更大整数，就必须用更多的字节，比如 2 个字节可以表示的最大整数为 65535 。最早，只有127个字符被编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript数据类型 —— String 类型">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="String 类型用于表示由零或多个16位 Unicode 字符组成的字符序列，即字符串 。 存储结构由于计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。在计算机中，1个字节（byte）由 8个比特（bit）组成，所以 1 个字节能表示的最大整数就是 255，如果想表示更大整数，就必须用更多的字节，比如 2 个字节可以表示的最大整数为 65535 。最早，只有127个字符被编">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-07T00:00:43.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.087Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="slice()">
+<meta property="article:tag" content="charAt()">
+<meta property="article:tag" content="indexOf()">
+<meta property="article:tag" content="match()">
+<meta property="article:tag" content="replace()">
+<meta property="article:tag" content="split()">
+<meta property="article:tag" content="substr()">
+<meta property="article:tag" content="substring()">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>javascript数据类型 —— String 类型 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javascript数据类型 —— String 类型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-07 08:00:43" itemprop="dateCreated datePublished" datetime="2019-05-07T08:00:43+08:00">2019-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>String 类型用于表示由零或多个16位 Unicode 字符组成的字符序列，即字符串 。</p>
+<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>由于计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。在计算机中，1个字节（byte）由 8个比特（bit）组成，所以 1 个字节能表示的最大整数就是 255，如果想表示更大整数，就必须用更多的字节，比如 2 个字节可以表示的最大整数为 65535 。最早，只有127个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母A的编码是65，小写字母z的编码是122。 但如果要表示中文字符，显然一个字节是不够的，至少需要两个字节。所以，中国制定了GB2312编码，用来表示中文字符。基于同样的原因，各个国家都制定了自己的编码规则。这样就会出现一个问题，即在多语言混合的文本中，不同的编码会出现冲突，导致乱码出现。 为了解决这个问题，Unicode 编码应运而生，它把所有的语言都统一到一套编码中，采用2个字节表示一个字符，即最多可以表示65535个字符，这样基本上可以覆盖世界上常用的文字，如果要表示更多的文字，也可以采用4个字节进行编码，这是一种通用的编码规范。 因此，JavaScript中的字符也采用Unicode来编码，也就是说，JavaScript中的英文字符和中文字符都会占用2个字节的空间大小，这种多字节字符，通常被称为宽字符。</p>
+<h2 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h2><p>在JavaScript中，字符串是基本数据类型，本身不存任何操作方法。为了方便的对字符串进行操作，ECMAScript提供了一个基本包装类型：<code>String()</code>对象。它是一种特殊的引用类型，JS引擎每当读取一个字符串的时候，就会在内部创建一个对应的<code>String()</code>对象，该对象提供了很多操作字符的方法，这就是为什么能对字符串调用方法的原因。</p>
+<p>var name = ‘JavaScript’;<br>var value = name.substr(2,1);</p>
+<p>当第二行代码访问变量str时，访问过程处于一种读取模式，也就是要从内存中读取这个字符串的值。而在读取模式中访问字符串时，引擎内部会自动完成下列处理：</p>
+<ol>
+<li> 创建String类型的一个实例</li>
+<li> 在实例上调用指定的方法</li>
+<li> 销毁这个实例</li>
+</ol>
+<p>用伪代码形象的模拟以上三个步骤：</p>
+<p>var obj = new String(‘JavaScript’);<br>var value = obj.substr(2,1);<br>name = null;</p>
+<p>可以看出，基本包装类型是一种特殊的引用类型。它和普通引用类型有一个很重要的区别，就是对象的生存期不同。使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。在JavaScript中，类似的基本包装类型还有<code>Number</code>、<code>Boolean</code>对象 。</p>
+<h2 id="常用操作方法"><a href="#常用操作方法" class="headerlink" title="常用操作方法"></a>常用操作方法</h2><p>作为字符串的基本包装类型，String()对象提供了以下几类方法，用以操作字符串：</p>
+<ul>
+<li>  字符操作：<code>charAt()</code>、<code>charCodeAt()</code>、<code>fromCharCode()</code></li>
+<li>  字符串提取：<code>substr()</code>、<code>substring()</code>、<code>slice()</code></li>
+<li>  位置索引：<code>indexOf()</code>、<code>lastIndexOf()</code></li>
+<li>  大小写转换：<code>toLowerCase()</code>、<code>toUpperCase()</code></li>
+<li>  模式匹配：<code>match()</code>、<code>search()</code>、<code>replace()</code>、<code>split()</code></li>
+<li>  其他操作：<code>concat()</code>、<code>trim()</code>、<code>localeCompare()</code></li>
+</ul>
+<p><code>charCodeAt()</code>方法的作用是获取字符的Unicode编码，俗称“Unicode码点”。<code>fromCharCode()</code>是<code>String()</code>对象上的静态方法，作用是根据Unicode编码返回对应的字符。</p>
+<p>var a = ‘a’;<br>// 获取Unicode编码<br>var code = a.charCodeAt(0); // 97<br>// 根据Unicode编码获取字符<br>String.fromCharCode(code); // a</p>
+<p>通过<code>charCodeAt()</code>方法获取字符的Unicode编码，然后再把这个编码转化成二进制，就可以得到该字符的二进制表示。</p>
+<p>var a = ‘a’;<br>var code = a.charCodeAt(0); // 97<br>code.toString(2); // 1100001</p>
+<p>对于字符串的提取操作，有三个相类似的方法，分别如下：</p>
+<p>substr(start [, length])<br>substring(start [, end])<br>slice(start [, end])</p>
+<p>从定义上看，<code>substring()</code>和<code>slice()</code>是同类的，参数都是字符串的某个start位置到某个end位置（但end位置的字符不包括在结果中）；而<code>substr()</code>则是字符串的某个start位置起，数length个长度的字符才结束。二者的共性是：从start开始，如果没有第2个参数，都是直到字符串末尾。 <code>substring()</code>和<code>slice()</code>的区别则是：<code>slice()</code>可以接受“负数”，表示从字符串尾部开始计数；而<code>substring()</code>则把负数或其它无效的数当作0。</p>
+<p>‘hello world!’.slice(-6, -1) // ‘world’<br>‘hello world!’.substring(“abc”, 5) // ‘hello’</p>
+<p><code>substr()</code>的start也可接受负数，也表示从字符串尾部计数，这点和<code>slice()</code>相同；但<code>substr()</code>的length则不能小于1，否则返回空字符串。</p>
+<p>‘hello world!’.substr(-6, 5) // ‘world’<br>‘hello world!’.substr(0, -1) // ‘’</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/slice/" rel="tag"># slice()</a>
+              <a href="/tags/charAt/" rel="tag"># charAt()</a>
+              <a href="/tags/indexOf/" rel="tag"># indexOf()</a>
+              <a href="/tags/match/" rel="tag"># match()</a>
+              <a href="/tags/replace/" rel="tag"># replace()</a>
+              <a href="/tags/split/" rel="tag"># split()</a>
+              <a href="/tags/substr/" rel="tag"># substr()</a>
+              <a href="/tags/substring/" rel="tag"># substring()</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/05/04/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="常用正则表达式">
+      <i class="fa fa-chevron-left"></i> 常用正则表达式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F30%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="next" title="正则表达式30分钟入门教程">
+      正则表达式30分钟入门教程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">基本包装类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">常用操作方法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

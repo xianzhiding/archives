@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="我们在网页开发中实现一个tips时会有一个小箭头，实现这种方法的文章网上已经泛滥了，但有时实现这个小箭头不止只有单纯的三角它还有描边，今天我们就借那些现有的文章在深入一点来说说如何给tips小箭头描边，本章不涉及svg&#x2F;canvas，没必要因为我讲的是css。 See the Pen 第一种border描边双层覆盖 by w3cbest.com (@xianzhiding) on CodePen.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css多种方法实现一个tips带有描边的小箭头">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/12/21/css%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAtips%E5%B8%A6%E6%9C%89%E6%8F%8F%E8%BE%B9%E7%9A%84%E5%B0%8F%E7%AE%AD%E5%A4%B4/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="我们在网页开发中实现一个tips时会有一个小箭头，实现这种方法的文章网上已经泛滥了，但有时实现这个小箭头不止只有单纯的三角它还有描边，今天我们就借那些现有的文章在深入一点来说说如何给tips小箭头描边，本章不涉及svg&#x2F;canvas，没必要因为我讲的是css。 See the Pen 第一种border描边双层覆盖 by w3cbest.com (@xianzhiding) on CodePen.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-21T09:11:10.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.970Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="css3">
+<meta property="article:tag" content="transforms">
+<meta property="article:tag" content="box-shadow">
+<meta property="article:tag" content="text-shadow">
+<meta property="article:tag" content="css tips">
+<meta property="article:tag" content="css三角">
+<meta property="article:tag" content="translate">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/12/21/css%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAtips%E5%B8%A6%E6%9C%89%E6%8F%8F%E8%BE%B9%E7%9A%84%E5%B0%8F%E7%AE%AD%E5%A4%B4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>css多种方法实现一个tips带有描边的小箭头 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/21/css%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAtips%E5%B8%A6%E6%9C%89%E6%8F%8F%E8%BE%B9%E7%9A%84%E5%B0%8F%E7%AE%AD%E5%A4%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          css多种方法实现一个tips带有描边的小箭头
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-21 17:11:10" itemprop="dateCreated datePublished" datetime="2018-12-21T17:11:10+08:00">2018-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我们在网页开发中实现一个tips时会有一个小箭头，实现这种方法的文章网上已经泛滥了，但有时实现这个小箭头不止只有单纯的三角它还有描边，今天我们就借那些现有的文章在深入一点来说说如何给tips小箭头描边，本章不涉及svg/canvas，没必要因为我讲的是css。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/WLOvqR/">第一种border描边双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<div class="dui-tips">
+  <a href="www.w3cbest.com">w3cbest我是一个tips</a>
+</div>
+
+<p>.dui-tips{<br>position: relative;<br>padding: 10px;<br>text-align: center;<br>border: 1px solid #f60;<br>border-radius: 5px;<br>background-color: #fff;<br>}</p>
+<h2 id="第一种border描边双层覆盖："><a href="#第一种border描边双层覆盖：" class="headerlink" title="第一种border描边双层覆盖："></a>第一种border描边双层覆盖：</h2><p>就是大家常用的border，实现原理就是给其中一条边设置颜色宽度及样式，我这里使用了两个伪类进行折叠，将一个白色的覆盖在有颜色的伪类上面，再偏移1px来模拟实现1px的描边效果，代码如下：</p>
+<p>.dui-tips {<br>&amp;:before, &amp;:after {<br>position: absolute;<br>left: 50%;<br>display: table;<br>width: 0;<br>height: 0;<br>content: ‘’;<br>transform: translate(-50%, 0);<br>border-width: 10px 10px 0 10px;<br>border-style: solid;<br>}<br>&amp;:before {<br>z-index: 0;<br>bottom: -10px;<br>border-color: #f60 transparent transparent transparent;<br>}<br>&amp;:after {<br>z-index: 1;<br>bottom: -8px;<br>border-color: #fff transparent transparent transparent;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/WLOvqR/">第一种border描边双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第二种border描边结合滤镜drop-shadow属性："><a href="#第二种border描边结合滤镜drop-shadow属性：" class="headerlink" title="第二种border描边结合滤镜drop-shadow属性："></a>第二种border描边结合滤镜drop-shadow属性：</h2><p>第二种是第一种的延伸，使用滤镜filter的drop-shadow描边来实现，box-shadow和drop-shadow实现不规则投影 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/?p=172">http://www.w3cbest.com/?p=172</a></p>
+<p>.dui-tips {<br>&amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 0;<br>    height: 0;<br>    content: ‘’;<br>    transform: translate(-50%, 0);<br>    border-width: 10px 10px 0 10px;<br>    border-style: solid;<br>}<br>&amp;:after {<br>    bottom: -9px;<br>    border-color: #fff transparent transparent transparent;<br>    filter: drop-shadow(0px 2px 0px #f60);<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/aPwOga/">第二种border描边结合滤镜drop-shadow属性</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第三种通过特殊符号”◆”字体双层覆盖"><a href="#第三种通过特殊符号”◆”字体双层覆盖" class="headerlink" title="第三种通过特殊符号”◆”字体双层覆盖"></a>第三种通过特殊符号”◆”字体双层覆盖</h2><p>第三种方法和第一种类似，通过两层颜色叠加在有层级的偏移来实现</p>
+<p>.dui-tips {<br>&amp;:before, &amp;:after {<br>    font-size: 24px;<br>    line-height: 18px;<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    content: ‘◆’;<br>    transform: translate(-50%, 0);<br>    text-align: center;<br>}<br>&amp;:before {<br>    z-index: 0;<br>    bottom: -10px;<br>    color: #f60;<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -8px;<br>    color: #fff;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/pqwJMr/">第三种通过特殊符号”◆”字体双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第四种通过text-shadow实现"><a href="#第四种通过text-shadow实现" class="headerlink" title="第四种通过text-shadow实现"></a>第四种通过text-shadow实现</h2><p>这种放发通过给文子设置1px的阴影来显描边效果</p>
+<p>.dui-tips {<br>&amp;:after {<br>    font-size: 24px;<br>    line-height: 18px;<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    content: ‘◆’;<br>    transform: translate(-50%, 0);<br>    text-align: center;<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -8px;<br>    color: #fff;<br>    text-shadow: 0 2px 0 #f60;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/vvZOoo/">第四种通过text-shadow实现</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第五种-background双层覆盖"><a href="#第五种-background双层覆盖" class="headerlink" title="第五种 background双层覆盖"></a>第五种 background双层覆盖</h2><p>这种方式设置两个宽度和高度分别为10px的方块背景，再给两层背景分别设置不同的颜色，再通过两层背景颜色叠加，经过层级偏移再有transform的rotate属性旋转角度，来实现箭头的朝向。</p>
+<p>.dui-tips {<br>&amp;:before, &amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-45deg);<br>}<br>&amp;:before {<br>    z-index: 0;<br>    bottom: -6px;<br>    background-color: #f60;<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background-color: #fff;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/KbqdPq/">第五种 background双层覆盖</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第六种background和border背景描边旋转"><a href="#第六种background和border背景描边旋转" class="headerlink" title="第六种background和border背景描边旋转"></a>第六种background和border背景描边旋转</h2><p>此方法就是设置一个宽度和高度分别为10px的方块背景，然后背景相邻的两条边描边再有transform的rotate属性旋转角度，来实现箭头的朝向。</p>
+<p>.dui-tips {<br>&amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    margin-left: -5px;<br>    content: ‘’;<br>    transform: rotate(-45deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -6px;<br>    border-bottom: 1px solid #f60;<br>    border-left: 1px solid #f60;<br>    background-color: #fff;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/YdQyKm/">第六种background和border背景描边旋转</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第七种background和box-shadow"><a href="#第七种background和box-shadow" class="headerlink" title="第七种background和box-shadow"></a>第七种background和box-shadow</h2><p>.dui-tips {<br>&amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-45deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background-color: #fff;<br>    box-shadow: -1px 1px 0 #f60;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/QzgjWv/">第七种background和box-shadow</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第八种linear-gradient"><a href="#第八种linear-gradient" class="headerlink" title="第八种linear-gradient"></a>第八种linear-gradient</h2><p>.dui-tips{<br>&amp;:before, &amp;:after{<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-135deg);<br>}<br>&amp;:before {<br>    z-index: 0;<br>    bottom: -6px;<br>    background: linear-gradient(-45deg, transparent 7px, #f60 0);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background: linear-gradient(-45deg, transparent 7px, #fff 0);<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/EGXVxe/">第八种linear-gradient</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第九种linear-gradient和box-shadow"><a href="#第九种linear-gradient和box-shadow" class="headerlink" title="第九种linear-gradient和box-shadow"></a>第九种linear-gradient和box-shadow</h2><p>.dui-tips{<br>&amp;:after{<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-135deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -5px;<br>    background: linear-gradient(-45deg, transparent 7px, #fff 0);<br>    box-shadow: -1px -1px 0 #f60<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/REgWNw/">第九种linear-gradient和box-shadow</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第十种linear-gradient和border"><a href="#第十种linear-gradient和border" class="headerlink" title="第十种linear-gradient和border"></a>第十种linear-gradient和border</h2><p>.dui-tips{<br>&amp;:after{<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 10px;<br>    height: 10px;<br>    content: ‘’;<br>    margin-left: -5px;<br>    transform: rotate(-135deg);<br>}<br>&amp;:after {<br>    z-index: 1;<br>    bottom: -6px;<br>    background: linear-gradient(-45deg, transparent 7px, #fff 0);<br>    border-top: 1px solid #f60;<br>    border-left: 1px solid #f60;<br>}<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/LMLpEa/">第十种linear-gradient和border</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="第十一种ouline"><a href="#第十一种ouline" class="headerlink" title="第十一种ouline"></a>第十一种ouline</h2><p>.dui-tips {<br>  &amp;:before, &amp;:after {<br>    position: absolute;<br>    left: 50%;<br>    display: table;<br>    width: 0;<br>    height: 0;<br>    content: ‘’;<br>    transform: rotate(45deg);<br>    outline-style: solid;<br>    outline-width: 5px;<br>  }<br>  &amp;:before {<br>    z-index: 0;<br>    bottom: -1px;<br>    outline-color: #f60;<br>  }<br>  &amp;:after {<br>    z-index: 1;<br>    bottom: 0;<br>    outline-color: #fff;<br>  }<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/vvJmXj/">第十一种outline</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css3/" rel="tag"># css3</a>
+              <a href="/tags/transforms/" rel="tag"># transforms</a>
+              <a href="/tags/box-shadow/" rel="tag"># box-shadow</a>
+              <a href="/tags/text-shadow/" rel="tag"># text-shadow</a>
+              <a href="/tags/css-tips/" rel="tag"># css tips</a>
+              <a href="/tags/css%E4%B8%89%E8%A7%92/" rel="tag"># css三角</a>
+              <a href="/tags/translate/" rel="tag"># translate</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/21/%E7%94%A8css3%E5%BC%80%E5%90%AF%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%E6%9D%A5%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E6%80%A7%E8%83%BD/" rel="prev" title="用CSS3开启硬件加速来提高网站性能">
+      <i class="fa fa-chevron-left"></i> 用CSS3开启硬件加速来提高网站性能
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/26/%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8table%E8%A1%A8%E6%A0%BCth%E3%80%81td%E5%A1%AB%E5%85%85%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BE%B9%E5%90%8E%E8%AE%BE%E7%BD%AEposition-relative%E8%BE%B9%E6%A1%86/" rel="next" title="火狐浏览器table表格th、td填充背景描边后设置position: relative边框失效问题">
+      火狐浏览器table表格th、td填充背景描边后设置position: relative边框失效问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8Dborder%E6%8F%8F%E8%BE%B9%E5%8F%8C%E5%B1%82%E8%A6%86%E7%9B%96%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">第一种border描边双层覆盖：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8Dborder%E6%8F%8F%E8%BE%B9%E7%BB%93%E5%90%88%E6%BB%A4%E9%95%9Cdrop-shadow%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">第二种border描边结合滤镜drop-shadow属性：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E9%80%9A%E8%BF%87%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E2%80%9D%E2%97%86%E2%80%9D%E5%AD%97%E4%BD%93%E5%8F%8C%E5%B1%82%E8%A6%86%E7%9B%96"><span class="nav-number">3.</span> <span class="nav-text">第三种通过特殊符号”◆”字体双层覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%A7%8D%E9%80%9A%E8%BF%87text-shadow%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">第四种通过text-shadow实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%A7%8D-background%E5%8F%8C%E5%B1%82%E8%A6%86%E7%9B%96"><span class="nav-number">5.</span> <span class="nav-text">第五种 background双层覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%A7%8Dbackground%E5%92%8Cborder%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BE%B9%E6%97%8B%E8%BD%AC"><span class="nav-number">6.</span> <span class="nav-text">第六种background和border背景描边旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%A7%8Dbackground%E5%92%8Cbox-shadow"><span class="nav-number">7.</span> <span class="nav-text">第七种background和box-shadow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E7%A7%8Dlinear-gradient"><span class="nav-number">8.</span> <span class="nav-text">第八种linear-gradient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%A7%8Dlinear-gradient%E5%92%8Cbox-shadow"><span class="nav-number">9.</span> <span class="nav-text">第九种linear-gradient和box-shadow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E7%A7%8Dlinear-gradient%E5%92%8Cborder"><span class="nav-number">10.</span> <span class="nav-text">第十种linear-gradient和border</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%A7%8Douline"><span class="nav-number">11.</span> <span class="nav-text">第十一种ouline</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

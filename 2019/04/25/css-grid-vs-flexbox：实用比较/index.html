@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="不久以前，所有 HTML 页面的布局还都是通过 tables、floats 以及其他的 CSS 属性来完成的。面对复杂页面的布局，却没有很好的办法。 然而 Flexbox 的出现，便轻松的解决了复杂的 Web 布局。它是一种专注于创建稳定的响应式页面的布局模式，并可以轻松地正确对齐元素及其内容。如今已是大多数 Web 开发人员首选的 CSS 布局方式。 现在，又出现了一个构建 HTML 最佳布局体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Grid VS Flexbox：实用比较">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/04/25/css-grid-vs-flexbox%EF%BC%9A%E5%AE%9E%E7%94%A8%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="不久以前，所有 HTML 页面的布局还都是通过 tables、floats 以及其他的 CSS 属性来完成的。面对复杂页面的布局，却没有很好的办法。 然而 Flexbox 的出现，便轻松的解决了复杂的 Web 布局。它是一种专注于创建稳定的响应式页面的布局模式，并可以轻松地正确对齐元素及其内容。如今已是大多数 Web 开发人员首选的 CSS 布局方式。 现在，又出现了一个构建 HTML 最佳布局体">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/html-layout.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/css-grid-header.png">
+<meta property="article:published_time" content="2019-04-25T00:29:18.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.065Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="flexbox">
+<meta property="article:tag" content="grid">
+<meta property="article:tag" content="Flexbox 布局">
+<meta property="article:tag" content="Grid 布局">
+<meta property="article:tag" content="tables 布局">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/html-layout.png">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/04/25/css-grid-vs-flexbox%EF%BC%9A%E5%AE%9E%E7%94%A8%E6%AF%94%E8%BE%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS Grid VS Flexbox：实用比较 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/25/css-grid-vs-flexbox%EF%BC%9A%E5%AE%9E%E7%94%A8%E6%AF%94%E8%BE%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS Grid VS Flexbox：实用比较
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-25 08:29:18" itemprop="dateCreated datePublished" datetime="2019-04-25T08:29:18+08:00">2019-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>不久以前，所有 HTML 页面的布局还都是通过 tables、floats 以及其他的 CSS 属性来完成的。面对复杂页面的布局，却没有很好的办法。 然而 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/490.html">Flexbox</a> 的出现，便轻松的解决了复杂的 Web 布局。它是一种专注于创建稳定的响应式页面的布局模式，并可以轻松地正确对齐元素及其内容。如今已是大多数 Web 开发人员首选的 CSS 布局方式。 现在，又出现了一个构建 HTML 最佳布局体系的新竞争者。（霸主地位正在争夺中…）它就是强大的 CSS <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">Grid 布局</a>。直到本月月底，它也将在 Firefox 52 和 Chrome 57 上得到原生支持，相信不久也会得到其他浏览器兼容性的支持。</p>
+<h2 id="基本布局测试"><a href="#基本布局测试" class="headerlink" title="基本布局测试"></a>基本布局测试</h2><p>要了解这两个体系构建布局的方式，我们将通过相同的 HTML 页面，利用不同的布局方式 （即 Flexbox 与 CSS Grid）为大家区分。同时，你也可以通过文章顶部附近的下载按钮，下载演示项目进行对比，或者通过在线演示来察看它们： <a target="_blank" rel="noopener" href="https://demo.tutorialzine.com/2017/03/css-grid-vs-flexbox/"><img src="http://file.w3cbest.com/file/images/html-layout.png"></a> 该页面的设计相对比较简单 – 它是由一个居中的容器组成，在其内部则包含了标头、主要内容部分、侧边栏和页脚。接下来，我们要完成同时保持 CSS 和 HTML 尽可能整洁的挑战事项：</p>
+<ol>
+<li> 在布局中将四个主要的部分进行定位。</li>
+<li> 将页面变为响应式页面；</li>
+<li> 对齐标头：导航朝左对齐，按钮向右对齐。</li>
+</ol>
+<p>如你所见，为了便于比较，我们将所有事项从简处理。那么，让我们从第一个挑战事项开始吧！</p>
+<h2 id="挑战-1：定位页面部分"><a href="#挑战-1：定位页面部分" class="headerlink" title="挑战 1：定位页面部分"></a>挑战 1：定位页面部分</h2><p><strong>Flexbox 解决方案</strong> 我们将从 Flexbox 解决方案开始。我们将为容器添加 display: flex 来指定为 Flex 布局，并指定子元素的垂直方向。</p>
+<p>.container {<br>    display: flex;<br>    flex-direction: column;<br>}</p>
+<p>现在我们需要使主要内容部分和侧边栏彼此相邻。由于 Flex 容器通常是单向的，所以我们需要添加一个包装器元素。</p>
+<header></header>
+<div class="main-and-sidebar-wrapper">
+    <section class="main"></section>
+    <aside class="sidebar"></aside>
+</div>
+<footer></footer>
+
+<p>然后，我们给包装器在反向添加 display: flex 和 flex-direction 属性。</p>
+<p>.main-and-sidebar-wrapper {<br>    display: flex;<br>    flex-direction: row;<br>}</p>
+<p>最后一步，我们将设置主要内容部分与侧边栏的大小。通过 Flex 实现后，主要内容部分会比侧边栏大三倍。</p>
+<p>.main {<br>    flex: 3;<br>    margin-right: 60px;<br>}<br>.sidebar {<br>    flex: 1;<br>}</p>
+<p>如你所见，Flex 将其很好的实现了出来，但是仍需要相当多的 CSS 属性，并借助了额外的 HTML 元素。那么，让我们看看 CSS Grid 如何实现的。 <strong>CSS Grid 解决方案</strong> 针对本项目，有几种不同的 CSS Grid 解决方法，但是我们将使用网格模板区域语法来实现，因为它似乎最适合我们要完成的工作。 首先，我们将定义四个网格区域，所有的页面各一个：</p>
+<header></header>
+<!-- Notice there isn't a wrapper this time -->
+<section class="main"></section>
+<aside class="sidebar"></aside>
+<footer></footer>
+
+<p>header {<br>    grid-area: header;<br>}<br>.main {<br>    grid-area: main;<br>}<br>.sidebar {<br>    grid-area: sidebar;<br>}<br>footer {<br>    grid-area: footer;<br>}</p>
+<p>然后，我们会设置网格并分配每个区域的位置。初次接触 Grid 布局的朋友，可能感觉以下的代码会有些复杂，但当你了解了网格体系，就很容易掌握了。</p>
+<p>.container {<br>    display: grid;</p>
+<pre><code>/\* Define the size and number of columns in our grid. 
+</code></pre>
+<p>The fr unit works similar to flex:<br>fr columns will share the free space in the row in proportion to their value.<br>We will have 2 columns - the first will be 3x the size of the second. */<br>    grid-template-columns: 3fr 1fr;</p>
+<pre><code>/\* Assign the grid areas we did earlier to specific places on the grid. 
+</code></pre>
+<p>First row is all header.<br>Second row is shared between main and sidebar.<br>Last row is all footer. */<br>    grid-template-areas:<br>        “header header”<br>        “main sidebar”<br>        “footer footer”;</p>
+<pre><code>/\* The gutters between each grid cell will be 60 pixels. \*/
+grid-gap: 60px;
+</code></pre>
+<p>}</p>
+<p>就是这样！ 我们现在将遵循上述结构进行布局，甚至不需要我们处理任何的 margins 或 paddings 。</p>
+<h2 id="挑战-2：将页面变为响应式页面"><a href="#挑战-2：将页面变为响应式页面" class="headerlink" title="挑战 2：将页面变为响应式页面"></a>挑战 2：将页面变为响应式页面</h2><p><strong>Flexbox 解决方案</strong> 这一步的执行与上一步密切相关。对于 Flexbox 解决方案，我们将更改包装器的 flex-direction 属性，并调整一些 margins。</p>
+<p>@media (max-width: 600px) {<br>    .main-and-sidebar-wrapper {<br>        flex-direction: column;<br>    }<br>    .main {<br>        margin-right: 0;<br>        margin-bottom: 60px;<br>    }<br>}</p>
+<p>由于网页比较简单，所以我们在媒体查询上不需要太多的重写。但是，如果遇见更为复杂的布局，那么将会重新的定义相当多的内容。 <strong>CSS Grid 解决方案</strong> 由于我们已经定义了网格区域，所以我们只需要在媒体查询中重新排序它们。 我们可以使用相同的列设置。</p>
+<p>@media (max-width: 600px) {<br>    .container {<br>        /* Realign the grid areas for a mobile layout. */<br>        grid-template-areas:<br>            “header header”<br>            “main main”<br>            “sidebar sidebar”<br>            “footer footer”;<br>    }<br>}</p>
+<p>或者，我们可以从头开始重新定义整个布局。</p>
+<p>@media (max-width: 600px) {<br>    .container {<br>        /* Redefine the grid into a single column layout. */<br>        grid-template-columns: 1fr;<br>        grid-template-areas:<br>            “header”<br>            “main”<br>            “sidebar”<br>            “footer”;<br>    }<br>}</p>
+<h2 id="挑战-3：对齐标头组件"><a href="#挑战-3：对齐标头组件" class="headerlink" title="挑战 3：对齐标头组件"></a>挑战 3：对齐标头组件</h2><p><strong>Flexbox 解决方案</strong> 我们的标头包含了导航和一个按钮的相关链接。我们希望导航朝左对齐，按钮向右对齐。而导航中的链接务必正确对齐，且彼此相邻。</p>
+<header>
+    <nav>
+        <li><a href="#">
+                <h1>Logo</h1>
+            </a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+    </nav>
+    <button>Button</button>
+</header>
+
+<p>我们曾在一篇较早的文章中使用 Flexbox 做了类似的布局：响应式标头最简单的制作方法。这个技术很简单：</p>
+<p>header {<br>    display: flex;<br>    justify-content: space-between;<br>}</p>
+<p>现在导航列表和按钮已正确对齐。下来我们将使 内的 items 进行水平移动。这里最简单的方法就是使用 display：inline-block 属性，但目前我们需要使用一个 Flexbox 解决方案：</p>
+<p>header nav {<br>    display: flex;<br>    align-items: baseline;<br>}</p>
+<p>仅两行代码就搞定了！ 还不错吧。接下来让我们看看如何使用 CSS Grid 解决它。 <strong>CSS Grid 解决方案</strong> 为了拆分导航和按钮，我们要为标头定义 display: grid 属性，并设置一个 2 列的网格。同时，我们还需要两行额外的 CSS 代码，将它们定位在相应的边界上。</p>
+<p>header {<br>    display: grid;<br>    grid-template-columns: 1fr 1fr;<br>}<br>header nav {<br>    justify-self: start;<br>}<br>header button {<br>    justify-self: end;<br>}</p>
+<p>至于导航中的内链 – 这是我们使用 CSS grid 最好的布局展示： <img src="http://file.w3cbest.com/file/images/css-grid-header.png"> 虽然链接为内链形式，但它们不能正确的对齐。由于 CSS grid 不具备基线选项（不像 Flexbox 具备的 align-items 属性），所以我们只能再定义一个子网格。</p>
+<p>header nav {<br>    display: grid;<br>    grid-template-columns: auto 1fr 1fr;<br>    align-items: end;<br>}</p>
+<p>CSS grid 在此步骤中，存在一些明显的布局上的缺陷。但你也不必过于惊讶。因为它的目标是对齐容器，而不是内部的内容。所以，用它来处理收尾工作，或许不是很好的选择哦。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>如果你已经浏览完整篇文章，那么结论不会让你感到意外。事实上，并不存在最好的布局方式。Flexbox 和 CSS grid 是两种不同的布局形式，我们应该根据具体的场景将它们搭配使用，而不是相互替代。 对于那些跳过文章只想看结论的朋友（不用担心，我们也这样做），这里是通过实例比较后的总结：</p>
+<ul>
+<li>  CSS Grid 适用于布局整体页面。它们使页面的布局变得非常容易，甚至可以处理一些不规则和非对称的设计。</li>
+<li>  Flexbox 非常适合对齐元素内的内容。你可以使用 Flexbox 来定位设计上一些较小的细节问题。</li>
+<li>  CSS Grid 适用于二维布局（行与列）。</li>
+<li>  Flexbox 适用于一维布局（行或列）。</li>
+<li>  同时学习它们，并配合使用。</li>
+</ul>
+<p>原文地址：<a target="_blank" rel="noopener" href="https://tutorialzine.com/2017/03/css-grid-vs-flexbox">https://tutorialzine.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css/" rel="tag"># css</a>
+              <a href="/tags/flexbox/" rel="tag"># flexbox</a>
+              <a href="/tags/grid/" rel="tag"># grid</a>
+              <a href="/tags/Flexbox-%E5%B8%83%E5%B1%80/" rel="tag"># Flexbox 布局</a>
+              <a href="/tags/Grid-%E5%B8%83%E5%B1%80/" rel="tag"># Grid 布局</a>
+              <a href="/tags/tables-%E5%B8%83%E5%B1%80/" rel="tag"># tables 布局</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/" rel="prev" title="JavaScript高级程序设计——闭包">
+      <i class="fa fa-chevron-left"></i> JavaScript高级程序设计——闭包
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/25/10-%E4%B8%AA%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84-javascript-%E9%94%99%E8%AF%AF%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%AE%83%E4%BB%AC%EF%BC%89/" rel="next" title="10 个最常见的 JavaScript 错误（以及如何避免它们）">
+      10 个最常见的 JavaScript 错误（以及如何避免它们） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">基本布局测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%98-1%EF%BC%9A%E5%AE%9A%E4%BD%8D%E9%A1%B5%E9%9D%A2%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">挑战 1：定位页面部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%98-2%EF%BC%9A%E5%B0%86%E9%A1%B5%E9%9D%A2%E5%8F%98%E4%B8%BA%E5%93%8D%E5%BA%94%E5%BC%8F%E9%A1%B5%E9%9D%A2"><span class="nav-number">3.</span> <span class="nav-text">挑战 2：将页面变为响应式页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%98-3%EF%BC%9A%E5%AF%B9%E9%BD%90%E6%A0%87%E5%A4%B4%E7%BB%84%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">挑战 3：对齐标头组件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">Logo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">结论</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="对象是 JavaScript 的基本块。对象是属性的集合，属性是键值对。JavaScript 中的几乎所有对象都是位于原型链顶部 Object 的实例。 介绍如你所知，赋值运算符不会创建一个对象的副本，它只分配一个引用，我们来看下面的代码： let obj &#x3D; {    a: 1,    b: 2,};let copy &#x3D; obj;obj.a &#x3D; 5;console.log(copy.a);&#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用JavaScript 进行对象拷贝">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/04/26/%E4%BD%BF%E7%94%A8javascript-%E8%BF%9B%E8%A1%8C%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="对象是 JavaScript 的基本块。对象是属性的集合，属性是键值对。JavaScript 中的几乎所有对象都是位于原型链顶部 Object 的实例。 介绍如你所知，赋值运算符不会创建一个对象的副本，它只分配一个引用，我们来看下面的代码： let obj &#x3D; {    a: 1,    b: 2,};let copy &#x3D; obj;obj.a &#x3D; 5;console.log(copy.a);&#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/circular-object.jpg">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/circular-object-tree.jpg">
+<meta property="article:published_time" content="2019-04-25T23:16:47.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.073Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="JSON.parse()">
+<meta property="article:tag" content="JSON.stringify(object)">
+<meta property="article:tag" content="Object.assign">
+<meta property="article:tag" content="writable">
+<meta property="article:tag" content="不变性">
+<meta property="article:tag" content="复制循环引用对象">
+<meta property="article:tag" content="对象拷贝">
+<meta property="article:tag" content="深度拷贝">
+<meta property="article:tag" content="解构赋值">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/circular-object.jpg">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/04/26/%E4%BD%BF%E7%94%A8javascript-%E8%BF%9B%E8%A1%8C%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>使用JavaScript 进行对象拷贝 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/26/%E4%BD%BF%E7%94%A8javascript-%E8%BF%9B%E8%A1%8C%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用JavaScript 进行对象拷贝
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-26 07:16:47" itemprop="dateCreated datePublished" datetime="2019-04-26T07:16:47+08:00">2019-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>对象是 JavaScript 的基本块。对象是属性的集合，属性是键值对。JavaScript 中的几乎所有对象都是位于原型链顶部 <code>Object</code> 的实例。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>如你所知，赋值运算符不会创建一个对象的副本，它只分配一个引用，我们来看下面的代码：</p>
+<p>let obj = {<br>    a: 1,<br>    b: 2,<br>};<br>let copy = obj;<br>obj.a = 5;<br>console.log(copy.a);<br>// Result<br>// a = 5;</p>
+<p><code>obj</code> 变量是一个新对象初始化的容器。<code>copy</code> 变量指向同一个对象，是对该对象的引用。所以现在有两种方式可以访问这个 <code>&#123; a: 1, b: 2, &#125;</code> 对象。你必须通过 <code>obj</code> 变量或 <code>copy</code> 变量，无论你是通过何种方式对这个对象进行的任何操作都会影响该对象。 不变性（Immutability）最近被广泛地谈论，这个很重要！上面示例的方法消除了任何形式的不变性，如果原始对象被你的代码的另一部分使用，则可能导致bug。</p>
+<h2 id="复制对象的原始方式"><a href="#复制对象的原始方式" class="headerlink" title="复制对象的原始方式"></a>复制对象的原始方式</h2><p>复制对象的原始方法是循环遍历原始对象，然后一个接一个地复制每个属性。我们来看看这段代码：</p>
+<p>function copy(mainObj) {<br>    let objCopy = {}; // objCopy will store a copy of the mainObj<br>    let key;</p>
+<pre><code>for (key in mainObj) &#123;
+    objCopy\[key\] = mainObj\[key\]; // copies each property to the objCopy object
+&#125;
+return objCopy;
+</code></pre>
+<p>}</p>
+<p>const mainObj = {<br>    a: 2,<br>    b: 5,<br>    c: {<br>        x: 7,<br>        y: 4,<br>    },<br>}</p>
+<p>console.log(copy(mainObj));</p>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><ol>
+<li> <code>objCopy</code> 对象具有一个新的 <code>Object.prototype</code>方法，这与 <code>mainObj</code> 对象的原型方法不同，这不是我们想要的。我们需要精确的拷贝原始对象。</li>
+<li> 属性描述符不能被复制。值为 <code>false</code> 的 “可写(<code>writable</code>)” 描述符在 <code>objCopy</code> 对象中为 <code>true</code> 。</li>
+<li> 上面的代码只复制了 <code>mainObj</code> 的可枚举属性。</li>
+<li> 如果原始对象中的一个属性本身就是一个对象，那么副本和原始对象之间将共享这个对象，从而使其各自的属性指向同一个对象。</li>
+</ol>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>当 <code>writable</code> 设置为<code>false</code>时，表示不可写，也就是说属性不能被修改。</p>
+<p>var o = {}; // Creates a new object</p>
+<p>Object.defineProperty(o, ‘a’, {<br>    value: 37,<br>    writable: false<br>});</p>
+<p>console.log(o.a); // logs 37<br>o.a = 25; // No error thrown<br>// (it would throw in strict mode,<br>// even if the value had been the same)<br>console.log(o.a); // logs 37. The assignment didn’t work.</p>
+<p>// strict mode<br>(function() {<br>    ‘use strict’;<br>    var o = {};<br>    Object.defineProperty(o, ‘b’, {<br>        value: 2,<br>        writable: false<br>    });<br>    o.b = 3; // throws TypeError: “b” is read-only<br>    return o.b; // returns 2 without the line above<br>}());</p>
+<p>正如上例中看到的，修改一个 non-writable 的属性不会改变属性的值，同时也不会报异常。</p>
+<h2 id="浅拷贝对象"><a href="#浅拷贝对象" class="headerlink" title="浅拷贝对象"></a>浅拷贝对象</h2><p>当拷贝源对象的顶级属性被复制而没有任何引用，并且拷贝源对象存在一个值为对象的属性，被复制为一个引用时，那么我说这个对象被浅拷贝。如果拷贝源对象的属性值是对象的引用，则只将该引用值复制到目标对象。 浅层复制将复制顶级属性，但是嵌套对象将在原始（源）对象和副本（目标）对象之间是共享。</p>
+<h3 id="使用-Object-assign-方法"><a href="#使用-Object-assign-方法" class="headerlink" title="使用 Object.assign() 方法"></a>使用 Object.assign() 方法</h3><p>Object.assign() 方法用于将从一个或多个源对象中的所有可枚举的属性值复制到目标对象。</p>
+<p>let obj = {<br>    a: 1,<br>    b: 2,<br>};<br>let objCopy = Object.assign({}, obj);<br>console.log(objCopy);<br>// Result - { a: 1, b: 2 }</p>
+<p>到目前为止。我们创建了一个 <code>obj</code> 的副本。让我们看看是否存在不变性：</p>
+<p>let obj = {<br>    a: 1,<br>    b: 2,<br>};<br>let objCopy = Object.assign({}, obj);</p>
+<p>console.log(objCopy); // result - { a: 1, b: 2 }<br>objCopy.b = 89;<br>console.log(objCopy); // result - { a: 1, b: 89 }<br>console.log(obj); // result - { a: 1, b: 2 }</p>
+<p>在上面的代码中，我们将 <code>objCopy</code> 对象中的属性 <code>b</code> 的值更改为 <code>89</code> ，并且当我们在控制台中 log 修改后的 <code>objCopy</code> 对象时，这些更改仅应用于 <code>objCopy</code> 。我们可以看到最后一行代码检查 <code>obj</code> 对象并没有被修改。这意味着我们已经成功地创建了拷贝源对象的副本，而且它没有引用。</p>
+<h3 id="Object-assign-的陷阱"><a href="#Object-assign-的陷阱" class="headerlink" title="Object.assign()的陷阱"></a>Object.assign()的陷阱</h3><p>不要高兴的太早！ 虽然我们成功地创建了一个副本，一切似乎都正常工作，记得我们讨论了浅拷贝？ 我们来看看这个例子：</p>
+<p>let obj = {<br>    a: 1,<br>    b: {<br>        c: 2,<br>    },<br>}<br>let newObj = Object.assign({}, obj);<br>console.log(newObj); // { a: 1, b: { c: 2} }</p>
+<p>obj.a = 10;<br>console.log(obj); // { a: 10, b: { c: 2} }<br>console.log(newObj); // { a: 1, b: { c: 2} }</p>
+<p>newObj.a = 20;<br>console.log(obj); // { a: 10, b: { c: 2} }<br>console.log(newObj); // { a: 20, b: { c: 2} }</p>
+<p>newObj.b.c = 30;<br>console.log(obj); // { a: 10, b: { c: 30} }<br>console.log(newObj); // { a: 20, b: { c: 30} }</p>
+<p>// Note: newObj.b.c = 30; Read why..</p>
+<h3 id="obj-b-c-30"><a href="#obj-b-c-30" class="headerlink" title="obj.b.c = 30 ?"></a>obj.b.c = 30 ?</h3><p>这就是 <code>Object.assign()</code> 的陷阱。<code>Object.assign</code> 只是浅拷贝。 <code>newObj.b</code> 和 <code>obj.b</code> 都引用同一个对象，没有单独拷贝，而是复制了对该对象的引用。任何对对象属性的更改都适用于使用该对象的所有引用。我们如何解决这个问题？继续阅读…我们会在下一节给出修复方案。 注意：原型链上的属性和不可枚举的属性不能复制。 看这里：</p>
+<p>let someObj = {<br>    a: 2,<br>}</p>
+<p>let obj = Object.create(someObj, {<br>    b: {<br>        value: 2,<br>    },<br>    c: {<br>        value: 3,<br>        enumerable: true,<br>    },<br>});</p>
+<p>let objCopy = Object.assign({}, obj);<br>console.log(objCopy); // { c: 3 }</p>
+<ul>
+<li>  <code>someObj</code> 是在 <code>obj</code> 的原型链，所以它不会被复制。</li>
+<li>  <code>property b</code> 是不可枚举属性。</li>
+<li>  <code>property c</code> 具有 可枚举(enumerable) 属性描述符，所以它可以枚举。 这就是为什么它会被复制。</li>
+</ul>
+<h2 id="深度拷贝对象"><a href="#深度拷贝对象" class="headerlink" title="深度拷贝对象"></a>深度拷贝对象</h2><p>深度拷贝将拷贝遇到的每个对象。副本和原始对象不会共享任何东西，所以它将是原件的副本。以下是使用 <code>Object.assign()</code> 遇到问题的修复方案。让我们探索一下。</p>
+<h3 id="使用-JSON-parse-JSON-stringify-object"><a href="#使用-JSON-parse-JSON-stringify-object" class="headerlink" title="使用 JSON.parse(JSON.stringify(object));"></a>使用 JSON.parse(JSON.stringify(object));</h3><p>这可以修复了我们之前提出的问题。现在 <code>newObj.b</code> 有一个副本而不是一个引用！这是深度拷贝对象的一种方式。 这里有一个例子：</p>
+<p>let obj = {<br>    a: 1,<br>    b: {<br>        c: 2,<br>    },<br>}</p>
+<p>let newObj = JSON.parse(JSON.stringify(obj));</p>
+<p>obj.b.c = 20;<br>console.log(obj); // { a: 1, b: { c: 20 } }<br>console.log(newObj); // { a: 1, b: { c: 2 } } (New Object Intact!)</p>
+<p>不可变性: ?</p>
+<h3 id="陷阱"><a href="#陷阱" class="headerlink" title="陷阱"></a>陷阱</h3><p>不幸的是，此方法不能用于复制用户定义的对象方法。 见下文。</p>
+<h2 id="复制对象方法"><a href="#复制对象方法" class="headerlink" title="复制对象方法"></a>复制对象方法</h2><p>方法是一个对象的属性，它是一个函数。在以上的示例中，我们还没有复制对象的方法。现在让我们尝试一下，使用我们学过的方法来创建副本。</p>
+<p>let obj = {<br>    name: ‘scotch.io’,<br>    exec: function exec() {<br>        return true;<br>    },<br>}</p>
+<p>let method1 = Object.assign({}, obj);<br>let method2 = JSON.parse(JSON.stringify(obj));</p>
+<p>console.log(method1); //Object.assign({}, obj)<br>/* result<br>{<br>  exec: function exec() {<br>    return true;<br>  },<br>  name: “scotch.io”<br>}<br>*/</p>
+<p>console.log(method2); // JSON.parse(JSON.stringify(obj))<br>/* result<br>{<br>  name: “scotch.io”<br>}<br>*/</p>
+<p>结果表明，<code>Object.assign()</code> 可以用于复制对象的方法，而使用 <code>JSON.parse(JSON.stringify(obj))</code> 则不行。</p>
+<h2 id="复制循环引用对象"><a href="#复制循环引用对象" class="headerlink" title="复制循环引用对象"></a>复制循环引用对象</h2><p>循环引用对象是具有引用自身属性的对象。让我们使用已学的复制对象的方法来复制一个循环引用对象的副本，看看它是否有效。</p>
+<h3 id="使用-JSON-parse-JSON-stringify-object-1"><a href="#使用-JSON-parse-JSON-stringify-object-1" class="headerlink" title="使用 JSON.parse(JSON.stringify(object))"></a>使用 JSON.parse(JSON.stringify(object))</h3><p>让我们尝试使用 <code>JSON.parse(JSON.stringify(object))</code>：</p>
+<p>// circular object<br>let obj = {<br>    a: ‘a’,<br>    b: {<br>        c: ‘c’,<br>        d: ‘d’,<br>    },<br>}</p>
+<p>obj.c = obj.b;<br>obj.e = obj.a;<br>obj.b.c = obj.c;<br>obj.b.d = obj.b;<br>obj.b.e = obj.b.c;</p>
+<p>let newObj = JSON.parse(JSON.stringify(obj));</p>
+<p>console.log(newObj);</p>
+<p>结果是： <img src="http://file.w3cbest.com/file/images/circular-object.jpg"> 很明显，<code>JSON.parse(JSON.stringify(object))</code> 不能用于复制循环引用对象。</p>
+<h3 id="使用-Object-assign"><a href="#使用-Object-assign" class="headerlink" title="使用 Object.assign()"></a>使用 Object.assign()</h3><p>让我们尝试使用 <code>Object.assign()</code>：</p>
+<p>// circular object<br>let obj = {<br>    a: ‘a’,<br>    b: {<br>        c: ‘c’,<br>        d: ‘d’,<br>    },<br>}</p>
+<p>obj.c = obj.b;<br>obj.e = obj.a;<br>obj.b.c = obj.c;<br>obj.b.d = obj.b;<br>obj.b.e = obj.b.c;</p>
+<p>let newObj2 = Object.assign({}, obj);</p>
+<p>console.log(newObj2);</p>
+<p>结果是： <img src="http://file.w3cbest.com/file/images/circular-object-tree.jpg"> <code>Object.assign()</code> 适用于浅拷贝循环引用对象，但不适用于深度拷贝。随意浏览浏览器控制台上的循环引用对象树。我相信你会发现很多有趣的工作在那里。</p>
+<h2 id="使用展开操作符-…"><a href="#使用展开操作符-…" class="headerlink" title="使用展开操作符(…)"></a>使用展开操作符(…)</h2><p>ES6已经有了用于数组解构赋值的 rest 元素，和实现的数组字面展开的操作符。看一看这里的数组的展开操作符的实现：</p>
+<p>const array = [<br>    “a”,<br>    “c”,<br>    “d”, {<br>        four: 4<br>    },<br>];<br>const newArray = […array];<br>console.log(newArray);<br>// Result<br>// [“a”, “c”, “d”, { four: 4 }]</p>
+<p>对象字面量的展开操作符目前是<a target="_blank" rel="noopener" href="https://jsbin.com/denadeg/edit?js,console">ECMAScript 的第 3 阶段提案</a>。对象字面量的展开操作符能将源对象中的可枚举的属性复制到目标对象上。下面的例子展示了在提案被接受后复制一个对象是多么的容易。</p>
+<p>let obj = {<br>    one: 1,<br>    two: 2,<br>}</p>
+<p>let newObj = { …z };</p>
+<p>// { one: 1, two: 2 }</p>
+<p>注意：这将只对浅拷贝有效</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在 JavaScript 中复制对象可能是相当艰巨的，特别是如果您刚开始使用 JavaScript 并且不了解该语言的方式。希望本文帮助您了解并避免您可能遇到复制对象的陷阱。如果您有任何库或一段代码可以获得更好的结果，欢迎与社区分享。 文章来源：<a target="_blank" rel="noopener" href="https://scotch.io/bar-talk/copying-objects-in-javascript">https://scotch.io</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JSON-parse/" rel="tag"># JSON.parse()</a>
+              <a href="/tags/JSON-stringify-object/" rel="tag"># JSON.stringify(object)</a>
+              <a href="/tags/Object-assign/" rel="tag"># Object.assign</a>
+              <a href="/tags/writable/" rel="tag"># writable</a>
+              <a href="/tags/%E4%B8%8D%E5%8F%98%E6%80%A7/" rel="tag"># 不变性</a>
+              <a href="/tags/%E5%A4%8D%E5%88%B6%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1/" rel="tag"># 复制循环引用对象</a>
+              <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/" rel="tag"># 对象拷贝</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D/" rel="tag"># 深度拷贝</a>
+              <a href="/tags/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" rel="tag"># 解构赋值</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/25/10-%E4%B8%AA%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84-javascript-%E9%94%99%E8%AF%AF%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%AE%83%E4%BB%AC%EF%BC%89/" rel="prev" title="10 个最常见的 JavaScript 错误（以及如何避免它们）">
+      <i class="fa fa-chevron-left"></i> 10 个最常见的 JavaScript 错误（以及如何避免它们）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/30/javascript%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8D%95%E8%A1%8C%E7%A8%8B%E5%BA%8F/" rel="next" title="JavaScript骚操作之单行程序">
+      JavaScript骚操作之单行程序 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">复制对象的原始方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">存在的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">浅拷贝对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Object-assign-%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">使用 Object.assign() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-assign-%E7%9A%84%E9%99%B7%E9%98%B1"><span class="nav-number">3.2.</span> <span class="nav-text">Object.assign()的陷阱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#obj-b-c-30"><span class="nav-number">3.3.</span> <span class="nav-text">obj.b.c &#x3D; 30 ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">深度拷贝对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-JSON-parse-JSON-stringify-object"><span class="nav-number">4.1.</span> <span class="nav-text">使用 JSON.parse(JSON.stringify(object));</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%B7%E9%98%B1"><span class="nav-number">4.2.</span> <span class="nav-text">陷阱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">复制对象方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">复制循环引用对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-JSON-parse-JSON-stringify-object-1"><span class="nav-number">6.1.</span> <span class="nav-text">使用 JSON.parse(JSON.stringify(object))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Object-assign"><span class="nav-number">6.2.</span> <span class="nav-text">使用 Object.assign()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B1%95%E5%BC%80%E6%93%8D%E4%BD%9C%E7%AC%A6-%E2%80%A6"><span class="nav-number">7.</span> <span class="nav-text">使用展开操作符(…)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">8.</span> <span class="nav-text">结论</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

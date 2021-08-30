@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="很多人想让我给他们推荐有关CSS部分的教程，或者问我如何学习CSS。 我也看到很多人对CSS的部分内容感到困惑，一部分原因是由于对语言的过时认识。 鉴于CSS在过去几年中发生了相当大的变化，这是一个更新知识的好时机。 即使CSS只是你所做工作的一小部分（因为你使用其他技术栈），CSS是你最终希望在屏幕上显示的结果，所以值得合理去学习。 因此，本文旨在概述CSS的关键基础和资源，以便进一步阅读现代C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何有效的学习 CSS">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/05/19/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0-css/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="很多人想让我给他们推荐有关CSS部分的教程，或者问我如何学习CSS。 我也看到很多人对CSS的部分内容感到困惑，一部分原因是由于对语言的过时认识。 鉴于CSS在过去几年中发生了相当大的变化，这是一个更新知识的好时机。 即使CSS只是你所做工作的一小部分（因为你使用其他技术栈），CSS是你最终希望在屏幕上显示的结果，所以值得合理去学习。 因此，本文旨在概述CSS的关键基础和资源，以便进一步阅读现代C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/smashing-css-specificity.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/smashing-css-box-model.png">
+<meta property="article:published_time" content="2019-05-19T13:30:54.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.098Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="css3">
+<meta property="article:tag" content="css3教程">
+<meta property="article:tag" content="css 布局">
+<meta property="article:tag" content="css 排版">
+<meta property="article:tag" content="css选择器">
+<meta property="article:tag" content="css伪类">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/smashing-css-specificity.png">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/05/19/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0-css/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>如何有效的学习 CSS | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/19/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何有效的学习 CSS
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-19 21:30:54" itemprop="dateCreated datePublished" datetime="2019-05-19T21:30:54+08:00">2019-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>很多人想让我给他们推荐有关CSS部分的教程，或者问我如何学习CSS。 我也看到很多人对CSS的部分内容感到困惑，一部分原因是由于对语言的过时认识。 鉴于CSS在过去几年中发生了相当大的变化，这是一个更新知识的好时机。 即使CSS只是你所做工作的一小部分（因为你使用其他技术栈），CSS是你最终希望在屏幕上显示的结果，所以值得合理去学习。 因此，本文旨在概述CSS的关键基础和资源，以便进一步阅读现代CSS开发的关键领域。 其中许多资源在Smashing杂志上已经有了，但我也选择了其他一些资源，也有人关注CSS的关键领域。 这不是一本完整的初学者指南或旨在涵盖所有知识点。 我的目标是覆盖现代CSS的广度，同时重点关注几个关键领域，将帮助你理解CSS的其他部分。</p>
+<h2 id="语言基础知识"><a href="#语言基础知识" class="headerlink" title="语言基础知识"></a>语言基础知识</h2><p>对于CSS的大部分内容，你不需要特意去学习属性和值，你可以在需要时查找它们。 然而，CSS中一些基础知识没有掌握好，你将很难去理解它。 这些基础知识值得你花时间去理解，从长远看，它会帮你节省很多时间和少走弯路。</p>
+<h2 id="选择器，不仅仅有类"><a href="#选择器，不仅仅有类" class="headerlink" title="选择器，不仅仅有类"></a>选择器，不仅仅有类</h2><p>选择器的表现如标题所说的，它选择文档的某些部分，以便你可以将CSS规则应用于它。 大多数人都熟悉使用 <code>class</code>，或在 直接使用HTML元素设置样式，比如 <code>body</code>，但是还有很多更高级的选择器可以根据文档中的位置选择元素，直接选择位于元素之后的元素，或选择表格中的奇数行。 这些选择器是CSS3规范的一部分（你可能听说过它们被称为第3级选择器）具有出色的<a target="_blank" rel="noopener" href="https://caniuse.com/#feat=css-sel3">浏览器支持</a>。 有关可以使用的各种选择器的详细信息，请参阅 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN</a> 参考。 有些选择器的行为就好像你已经将类应用于文档中的某些内容。 例如<code>p:first-child</code>就像你在第一个<code>p</code>元素中添加了一个类一样，这些被称为 <code>伪类选择器</code>。 伪元素选择器就像动态插入一个元素一样，例如<code>::first-line</code>的表现与用<code>span</code> 包裹第一行文本类似。 但是，如果该行的长度发生变化，它将重新应用，如果插入该元素则不会出现这种情况。 这些选择器可能会相当复杂。 在下面的CodePen中是一个用伪类链接的伪元素的例子。 我们使用<code>:first-child</code>伪类定位第一个p元素，然后<code>::first-line</code>选择器选择该元素的第一行，就好像在第一行周围添加了一个<code>&lt;span&gt;</code>以使其变为粗体和改变颜色。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/wRdJdQ/">first-line of first-child</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="继承和层叠"><a href="#继承和层叠" class="headerlink" title="继承和层叠"></a>继承和层叠</h2><p>层叠是指当元素应用了多个样式规则，哪个规则优先应用。 如果你曾经遇到过无法理解为什么某些CSS似乎没有应用的情况，那可能是层叠没有运用好。 层叠与继承紧密相关，继承定义了子元素可以继承父元素的样式属性。 它还与特异性有关，不同的选择器具有不同的特异性，当有几个选择器可以应用于一个元素时，继承可以决定应用哪个规则。</p>
+<blockquote>
+<p>注意：为了理解所有这些内容，我建议阅读MDN CSS简介中的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance">层叠和继承</a>。</p>
+</blockquote>
+<p>如果你正在尝试将一些CSS应用于一个元素，那么你的浏览器开发者工具是开始最好的地方。看看下面的例子，我用元素选择器 <code>h1</code> 将 <code>h1</code> 标题设置为橙色。同时，我也使用类选择器设置<code>h1</code> 设置为紫色。 由于类更具体，因此<code>h1</code>是紫色的。 在开发者工具中，您可以看到元素选择器被划掉，因为它没有被应用。 一旦你看到浏览器正在获取你的CSS（但其他东西已经推翻了它），那么你可以开始找出原因。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/yGbMoL/">specificity</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p><img src="http://file.w3cbest.com/file/images/smashing-css-specificity.png"></p>
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>CSS里一切都是盒子。 屏幕上显示的所有内容都有一个框，盒模型描述了如何计算该框的大小 - 将外边距，内边距和边框考虑进去。 标准的CSS框模型接受给定元素的宽度，然后将内边框和边框添加到该宽度上——这意味着元素占用的空间大于给定的宽度。 最近，我们已经能够选择使用IE盒模型，使得元素上的给定宽度作为屏幕上可见元素的宽度。 任何内边距或边框都会从边缘插入框的内容。 这对许多布局更有意义。 在下面的演示中，我有两个盒子。 两者的宽度均为200像素，边框为5像素，内边距为20像素。 第一个框使用标准框模型，因此占用总宽度为250像素，第二个框使用IE盒模型，因此实际上是200像素宽。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/xmdqjd/">box models</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>浏览器开发者工具可以再次帮助你了解正在使用的盒子模型。 在下图中，我使用火狐浏览器的开发者工具使用默认的内容框框模型检查框。 工具告诉我这是正在使用的盒模型，我可以看到大小以及如何将边框和内边框添加到指定的宽度。 <img src="http://file.w3cbest.com/file/images/smashing-css-box-model.png"></p>
+<blockquote>
+<p>注意：在IE6之前，Internet Explorer<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug">使用IE盒模型</a>，内边框和边框插入给定宽度的内容里。 所以有一段时间浏览器使用不同的盒模型！ 如果今天的互操作性问题感到沮丧，现在已经有所改善，那么我们就不会处理浏览器以不同的方式计算元素的宽度。</p>
+</blockquote>
+<p>在 <a target="_blank" rel="noopener" href="https://css-tricks.com/box-sizing/">CSS Tricks</a> 里，有关于盒模型和盒子尺寸的很好的解释，并解释了在你的网站中全局使用<a target="_blank" rel="noopener" href="https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/">IE盒模型</a>的最佳方法。</p>
+<h2 id="标准流"><a href="#标准流" class="headerlink" title="标准流"></a>标准流</h2><p>如果你的文档内容用一些HTML标记，你的文档将具有可读性。标题和段落会另起新的一行，单词组成句子时，它们之间有一个空格。标记是用来格式化的，像 <code>em</code> 不会破坏句子的流。 句子会表现<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout">标准流</a>，或块流布局。句子的每个部分都被描述为“在流中”，它知道句子其余内容，所以不会重叠。 如果你去了解，而不是去反对这种行为，你会变得更加轻松。这是为什么从正确标记的<a target="_blank" rel="noopener" href="https://www.brucelawson.co.uk/2018/the-practical-value-of-semantic-html/">HTML文档</a>开始很有意义的原因之一，由于浏览器遵守正常流和内置样式表，你的内容从可读的地方开始。</p>
+<h2 id="格式化上下文"><a href="#格式化上下文" class="headerlink" title="格式化上下文"></a>格式化上下文</h2><p>一旦文档的内容处于正常流程中，您可能希望更改其中一些内容的外观。 你可以通过更改元素的格式上下文来完成此操作。 举个一个非常简单的示例，如果你希望所有段落连在一起而不是从新行开始，你可以设置 <code>p</code> 元素的样式属性<code>display:inline</code> ，将 <code>p</code> 元素由块级元素变成内联元素。 本质上，格式化上下文定义了外部和内部类型。外部控制元素与页面上其他元素的行为，内部控制子元素的外观。例如，当你设置 <code>display:flex</code> ，你在设置外部为块格式化上下文，设置子元素为 flex 格式化上下文。 注意：最新版本的Display规范改变了 <code>display</code> 的值，显式声明外部和内部的类型。因此，将你可能会声明 <code>display:block flex;</code> （外部为 <code>block</code>，内部为 <code>flex</code>） 在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">MDN</a> 上阅读更多关于 <code>display</code>的信息</p>
+<h2 id="进入或离开流"><a href="#进入或离开流" class="headerlink" title="进入或离开流"></a>进入或离开流</h2><p>CSS中的元素被描述为“在流中”或“脱离流”。流中的元素被赋予空间，并且空间被流中的其他元素所影响。 如果通过浮动或定位元素使元素脱离流，则该元素的空间将不再受到其他流元素的影响。 对于绝对定位的元素，是最明显的。 如果你设置一个元素 <code>position: absolute</code> ，该元素会从流中脱离，你需要确保这个元素不会与流中的元素重叠，且不影响你布局的其他部分的可读性。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/Ormgzj/">out of flow: abspos</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>然而，浮动元素也会从流中脱离，但后面的元素的文本将环绕该浮动元素。你可以设置后面元素的背景颜色，你会看到他们会上升并占用了原来浮动元素原来的空间。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/BvRZYw/">Out of flow: floated</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>你可以在<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/In_Flow_and_Out_of_Flow">MDN</a>上阅读更多有关 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/In_Flow_and_Out_of_Flow">流中和脱离流</a> 的信息。 需要记住的重要一点是，如果从流中取出一个元素，则需要自己管理重叠，因为块流布局的常规规则不再适用。</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>十五年来，我们一直使用CSS布局，但没有设计一套布局系统。这已经改变了。 我们现在拥有功能完备的布局系统，其中包括 Grid 和 Flexbox ，还有多列布局和旧布局方法也应用于实际目的。如果你想对CSS布局还不熟悉，你可以阅读 MDN 上的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout">布局教程</a>，或阅读我发表在Smashing杂志上的文章 《<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/05/guide-css-layout/">开始学习CSS布局</a>》。 不要认为grid和flexbox等方法在某种程度上是竞争的。为了更好地使用布局，你有时会发现组件最好作为 flex ，有时作为 Grid。有时，你想要多列流动布局。所有这些都是不错的选择。如果你觉得自己在与某些事物的行为方式作斗争，这通常是一个非常好的迹象，表明它可能值得退一步，尝试一种不同的方法。我们已经习惯了在CSS上做一些我们想做的事情，以至于我们可能会忘记我们还有很多其他的选择可以尝试。 布局是我的主要专业领域，我在Smashing Magazine和其他地方写了很多文章，试图开拓新的布局美化。 除了上面提到的布局文章，我在Flexbox上有一整套系列 - 《<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/08/flexbox-display-flex-container/">从创建Flex 容器时，发生了什么</a>》。 在 <a target="_blank" rel="noopener" href="https://gridbyexample.com/">Grid示例</a> 上，我列出很多CSS Grid 的例子 — 以及一个视频教程。 此外 - 特别是对于设计师 - 查看 <a target="_blank" rel="noopener" href="https://twitter.com/jensimmons">Jen Simmons</a> 和她的《<a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UC7TizprGknbDalbHplROtag">Layout Land</a>》视频系列。</p>
+<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><p>通常，我会将对齐和布局分开，虽然大多数人把对齐当作 Flexbox的一部分。对齐这些属性适用于所有布局方法上，应该在上下文去理解对齐，而不是考虑 “Flexbox对齐”或“CSSGrid 对齐”。对齐属性在大体上表现一样，但不同布局方式里会有一些差异。 在MDN上，您可以深入了解 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment">盒对齐</a> 及其在Grid，Flexbox，多列和块布局中的实现方式。 在Smashing Magazine上，我有一篇文章专门介绍Flexbox中的对齐方式：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/08/flexbox-alignment/">你需要知道的有关Flexbox中对齐的所有内容</a>。</p>
+<h2 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h2><p>我在2018年花了很多时间讨论了内部和外部尺寸规范，特别是它与Grid和Flexbox的关系。在web上，我们习惯于设置尺寸为长度或百分比，这就是我们如何使用浮动来制作网格类型布局的方法。然而，现代的布局方法可以为我们做很多空间分配——如果我们允许的话。值得花时间去了解Flexbox如何分配空间(或Grid <code>fr</code> 单元如何工作)。 在Smashing Magazine上，我写了一些关于 <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/01/understanding-sizing-css-layout/">布局中的尺寸</a> 的文章，也写了一些关于Flexbox的文章，比如 <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/09/flexbox-sizing-flexible-box/">Flex 盒子有多大</a>?</p>
+<h2 id="响应式设计"><a href="#响应式设计" class="headerlink" title="响应式设计"></a>响应式设计</h2><p>通常，新的Grid和Flexbox布局方法意味着我们可以使用比旧方法更少的媒体查询，因为它们非常灵活，可以响应视口或组件大小的变化，而无需我们更改元素的宽度。 但是，有些地方需要添加一些断点来进一步增强设计。 以下是<a target="_blank" rel="noopener" href="https://responsivedesign.is/">响应式设计</a>的一些简单指南，一般情况下，对于媒体查询，请查看我的文章《<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/02/media-queries-responsive-design-2018/">在2018年使用媒体查询进行响应式设计</a>》。我将查看媒体查询的用途，并介绍规范4的媒体查询的新功能。</p>
+<h2 id="字体和排版"><a href="#字体和排版" class="headerlink" title="字体和排版"></a>字体和排版</h2><p>与布局一样，网络上的字体使用在去年发生了巨大的变化。现在，可变字体，使单个字体文件具有无限的变化。 要了解它们是什么以及它们如何工作，请观看<a target="_blank" rel="noopener" href="https://twitter.com/mandy_kerr">Mandy Michael</a>的精彩简短演讲：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=luAqYCd_TC8">可变字体和网页设计的未来</a>。 另外，我会推荐<a target="_blank" rel="noopener" href="https://twitter.com/jpamental">Jason Pamental</a>的<a target="_blank" rel="noopener" href="https://noti.st/jpamental/WNNxqQ/dynamic-typography-with-modern-css-variable-fonts">动态排版与现代CSS和可变字体</a>。 为了探索可变字体和它们的功能，微软提供了一个<a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/microsoft-edge/testdrive/demos/variable-fonts/">有趣的演示</a>，以及一些尝试可变字体的游乐场 - <a target="_blank" rel="noopener" href="https://www.axis-praxis.org/">Axis Praxis</a>是最知名的（我也喜欢<a target="_blank" rel="noopener" href="https://play.typedetail.com/">字体游乐场</a>）。 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide">MDN上的指南</a>将证明一开始使用可变字体是非常有用的。要了解如何为不支持可变字体的浏览器实现回退解决方案，请阅读Oliver Schondorfer的《<a target="_blank" rel="noopener" href="https://www.zeichenschatz.net/typografie/implementing-a-variable-font-with-fallback-web-fonts.html">使用回退Web字体实现可变字体</a>》<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Edit_fonts">Firefox DevTools字体编辑器</a>还支持使用可变字体。</p>
+<h2 id="变形和动画"><a href="#变形和动画" class="headerlink" title="变形和动画"></a>变形和动画</h2><p>CSS转换和动画绝对是我需要知道的基础。 我不经常需要使用它们，在使用时会忘记语法。 值得庆幸的是，MDN上的参考资料帮助了我，我建议从使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms">CSS变换</a>和使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations">CSS动画</a>的指南开始。 <a target="_blank" rel="noopener" href="https://twitter.com/zellwk">Zell Liew</a>也有一篇很好的文章，为<a target="_blank" rel="noopener" href="https://zellwk.com/blog/css-transitions/">CSS过渡</a>提供了很好的<a target="_blank" rel="noopener" href="https://zellwk.com/blog/css-transitions/">解释</a>。 要发现一些可能的事情，请查看<a target="_blank" rel="noopener" href="http://animista.net/">Animista</a>网站。 关于动画可能令人困惑的事情之一是采取哪种方法。 除了CSS支持的内容之外，你可能还需要涉及JavaScript，SVG或Web Animation API，而这些事情往往都会被混为一谈。 在她的演讲中，选择你的<a target="_blank" rel="noopener" href="https://aneventapart.com/news/post/choose-your-animation-adventure-by-val-head-aea-video">动画冒险</a>记录在事件中，<a target="_blank" rel="noopener" href="https://twitter.com/vlh">Val Head</a>解释了这些选项。</p>
+<h2 id="使用速查表作为回忆，而不是学习工具"><a href="#使用速查表作为回忆，而不是学习工具" class="headerlink" title="使用速查表作为回忆，而不是学习工具"></a>使用速查表作为回忆，而不是学习工具</h2><p>当我提到Grid或Flexbox资源时，我经常看到回复说，如果没有特定的速查表，他们就不能使用Flexbox。我觉得把速查表作为记忆助手查找语法没有问题，我自己也出版过一些速查表。完全依赖速查表的问题是当你复制语法时，你可能会忽略为什么要这样写。然后，当你遇到属性的行为似乎不同的情况时，这种明显的不一致性似乎令人困惑，或者是语言的错误 。 如果你发现CSS在做一些非常奇怪的事情的情况下，问问为什么。创建一个简单的测试用例来强调这个问题，问问对规范更熟悉的人。我被问到的许多CSS问题都是因为人们认为属性的表现与它在现实中的表现不同。这就是为什么我经常讨论关于对齐和尺寸，因为这些地方经常会混淆。 是的，CSS中有一些奇怪的东西。它是一门经过多年进化的语言，有些东西我们无法改变，除非我们<a target="_blank" rel="noopener" href="https://wiki.csswg.org/ideas/mistakes">发明了时间机器</a>。然而，一旦你掌握了一些基础知识，并且理解了为什么会这样，你就可以更轻松地处理棘手的问题。 来源：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2019/01/how-to-learn-css">https://www.smashingmagazine.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css/" rel="tag"># css</a>
+              <a href="/tags/css3/" rel="tag"># css3</a>
+              <a href="/tags/css3%E6%95%99%E7%A8%8B/" rel="tag"># css3教程</a>
+              <a href="/tags/css-%E5%B8%83%E5%B1%80/" rel="tag"># css 布局</a>
+              <a href="/tags/css-%E6%8E%92%E7%89%88/" rel="tag"># css 排版</a>
+              <a href="/tags/css%E9%80%89%E6%8B%A9%E5%99%A8/" rel="tag"># css选择器</a>
+              <a href="/tags/css%E4%BC%AA%E7%B1%BB/" rel="tag"># css伪类</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/05/08/javascript%E6%95%B0%E7%BB%84/" rel="prev" title="JavaScript数组">
+      <i class="fa fa-chevron-left"></i> JavaScript数组
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/20/wordpress%E4%B8%BB%E9%A2%98get-the-category%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" rel="next" title="wordpress主题get_the_category()函数使用详解">
+      wordpress主题get_the_category()函数使用详解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">语言基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%B8%8D%E4%BB%85%E4%BB%85%E6%9C%89%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">选择器，不仅仅有类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%92%8C%E5%B1%82%E5%8F%A0"><span class="nav-number">3.</span> <span class="nav-text">继承和层叠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%B5%81"><span class="nav-number">5.</span> <span class="nav-text">标准流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-number">6.</span> <span class="nav-text">格式化上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E6%88%96%E7%A6%BB%E5%BC%80%E6%B5%81"><span class="nav-number">7.</span> <span class="nav-text">进入或离开流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B1%80"><span class="nav-number">8.</span> <span class="nav-text">布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E9%BD%90"><span class="nav-number">9.</span> <span class="nav-text">对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%BA%E5%AF%B8"><span class="nav-number">10.</span> <span class="nav-text">尺寸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.</span> <span class="nav-text">响应式设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E5%92%8C%E6%8E%92%E7%89%88"><span class="nav-number">12.</span> <span class="nav-text">字体和排版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E5%BD%A2%E5%92%8C%E5%8A%A8%E7%94%BB"><span class="nav-number">13.</span> <span class="nav-text">变形和动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%80%9F%E6%9F%A5%E8%A1%A8%E4%BD%9C%E4%B8%BA%E5%9B%9E%E5%BF%86%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7"><span class="nav-number">14.</span> <span class="nav-text">使用速查表作为回忆，而不是学习工具</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

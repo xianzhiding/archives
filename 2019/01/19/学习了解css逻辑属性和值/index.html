@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="在了解本文时可先查看本博客就是使用的新的语法样式搭建的， 2017年5月18日，W3C的 CSS工作组（CSS Working Group） 发布了 CSS逻辑属性和值（CSS Logical Properties and Values Level 1） 的首份工作草案（First Public Working Draft）。不同的书写模式（writing mode）中，可以抽取出共性的抽象概念（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习了解CSS逻辑属性和值（CSS Logical Properties and Values）">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/01/19/%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%A7%A3css%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="在了解本文时可先查看本博客就是使用的新的语法样式搭建的， 2017年5月18日，W3C的 CSS工作组（CSS Working Group） 发布了 CSS逻辑属性和值（CSS Logical Properties and Values Level 1） 的首份工作草案（First Public Working Draft）。不同的书写模式（writing mode）中，可以抽取出共性的抽象概念（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/block-row-axis.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/inline-column-axis.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/block-inline-vertical-column-axis.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/float-margins-side.png">
+<meta property="article:published_time" content="2019-01-19T05:33:03.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.011Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="*-block-end">
+<meta property="article:tag" content="*-block-start">
+<meta property="article:tag" content="*-inline-end">
+<meta property="article:tag" content="*-inline-start">
+<meta property="article:tag" content="CSS Logical">
+<meta property="article:tag" content="css逻辑">
+<meta property="article:tag" content="wrioting-mode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/block-row-axis.png">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/01/19/%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%A7%A3css%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学习了解CSS逻辑属性和值（CSS Logical Properties and Values） | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/19/%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%A7%A3css%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          学习了解CSS逻辑属性和值（CSS Logical Properties and Values）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-19 13:33:03" itemprop="dateCreated datePublished" datetime="2019-01-19T13:33:03+08:00">2019-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在了解本文时可先查看本博客就是使用的新的语法样式搭建的， 2017年5月18日，W3C的 <a target="_blank" rel="noopener" href="https://www.w3.org/Stlye/CSS/Members/">CSS工作组（CSS Working Group）</a> 发布了 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/2017/WD-css-logical-1-20170518/">CSS逻辑属性和值（CSS Logical Properties and Values Level 1）</a> 的首份工作草案（First Public Working Draft）。不同的书写模式（writing mode）中，可以抽取出共性的抽象概念（如开始位置，或行），这些逻辑抽象概念需要在不同书写模式下映射到左或右、上或下等物理的概念上。一些CSS布局可能依赖这些共性的逻辑概念。该 CSS 模块给出了用于通过逻辑方式（而不是基于物理坐标、书写方向和维映射等）控制布局的逻辑属性和取值（logical properties and values）。这个模块来源于CSS21中关于逻辑属性和值的特性。 在过去，CSS属性运用于物理维度（尺寸）和方向，将元素的位置映射到<code>left</code>、<code>right</code>、<code>top</code>或<code>bottom</code>。使用<code>float</code>可以让一个元素向左或向右浮动，可以使用<code>position</code>的<code>top</code>、<code>right</code>、<code>bottom</code>和<code>left</code>定位元素的偏移量。使用比如<code>margin-top</code>或<code>padding-top</code>来设置<code>margin</code>、<code>padding</code>和<code>border</code>的值。这些特理属性和值在<code>top</code>、<code>right</code>、<code>bottom</code>和left 和书写模式有很大的关系，书写模式可以直接改变其方向。比如： 当书写模式<code>direction</code>是<code>rtl</code>（从右向左）时，<code>margin-left</code>不再是让该元素距其侧元素有多少间距了，而是变成了该元素距右侧元素之间有多少间距 如果你使用垂直书写模式，无论是在整个布局中还是在某些元素中，都没有什么意义。这篇文章中接下来将解释CSS如何改变这些，并且可以支持书写模式。在这个过程中，可以解释清楚一些关于Flexbox和Grid布局中一些令人感到困惑的一些事情。 当第一次开始使用CSS Grid并向大家解释其规范时，我注意到<code>grid-area</code>属性被用于<code>grid-row-start</code>、<code>grid-row-end</code>、<code>grid-column-start</code>和<code>grid-column-end</code>四个属性的简写属性。因此，下面三种书写方式，其达到的效果都是相同的：</p>
+<p>.item {<br>    grid-row-start: 1;<br>    grid-column-start: 2;<br>    grid-row-end: 3;<br>    grid-column-end: 4;<br>}</p>
+<p>.item {<br>    grid-row: 1 / 3;<br>    grid-column: 2 / 4;<br>}</p>
+<p>.item {<br>    grid-area: 1 / 2 / 3 / 4;<br>}</p>
+<p>grid-area对应的顺序如下：</p>
+<ul>
+<li>  grid-row-start</li>
+<li>  grid-column-start</li>
+<li>  grid-row-end</li>
+<li>  grid-column-end</li>
+</ul>
+<p>这里有两个关键词<code>*-start</code>和<code>*-end</code>，而我们以前接触的CSS属性，比如<code>margin</code>、<code>padding</code>和<code>border</code>之类的都是以<code>*-top</code>、<code>*-right</code>、<code>*-bottom</code>和<code>*-left</code>。那么为什么会是如此呢？如果仔细观察，它们实际上是按照相反的顺序排列的：<code>top</code>、<code>left</code>、<code>bottom</code>和<code>right</code>。这样一来，CSS工作组不是把事情变得更为困难了？ 答案是，这些值 已经偏离了一个基本的假设，即Web上的内容映射到屏幕的物理尺寸，一个句子的第一个单词位于其所在框的左上角。如果你从未遇到过我们用简写的属性设置这些值，那么<code>grid-area</code>中的行顺序就变得完全有意义了。我们先设置了两个起始位置（行和列的起始位置），然后设置两个结束位置（行和列的结束位置）。 这意味着，如果书写模式改为垂直模式，那么块的位置仍然相对于文档的书写模式，而不是屏幕的物理属性。这样理解可能有点困惑。咱们来看看@Rachel Andrew在Codepen上给我们提供的一个示例：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/yvGEbZ/">Grid and writing-mode</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>了解了书写模式的这个事实，也就解释清楚了为什么Flexbox和Grid是指开始和结束行，而不是将网格映射到top、right、bottom和left的物理维度上。 了解写入模式的这一事实也解释了为什么CSS Grid和Flexbox引用<code>start</code>和<code>end</code>排列而不是将网格映射到<code>top</code>、<code>right</code>、<code>bottom</code>和<code>left</code>的物理维度上，就像我们使用绝对定位一样。在上面的示例中，第一个项目使用<code>grid-area</code>基于行的定位定位。</p>
+<p>grid-area: 1 / 2 / 3 / 4;</p>
+<p>如果我们使用的是手写是这样的：</p>
+<p>grid-row-start: 1;<br>grid-column-start: 2;<br>grid-row-end: 3;<br>grid-column-end: 4;</p>
+<p>我们设置两个起始行，首先是阻塞轴，然后是第二个内联轴，然后按照相同的模式设置每个维度中的结束行。无论网格布局如何，起始线和结束线都保持相对于网格和文档的写入模式。</p>
+<h2 id="块和内联维度"><a href="#块和内联维度" class="headerlink" title="块和内联维度"></a>块和内联维度</h2><p>我已经提到了一些对于理解新布局，块和内联维度的概念至关重要的东西。当你使用新的CSS时，这些术语将不断涌现。这两个维度在网格布局的上下文中相当容易理解，因为我们在网格布局中工作时总是使用块和内联轴，所以我将使用网格演示来解释。 块维度对应于在页面上布置块的顺序。比如你d的页面中有一大段文本内容。每个段落都是一个在另一段下面排列，这些排列的方向是块的维度，所以在网格布局中，这是块轴。 在CSS网格布局中，块轴也称为行轴，这就是块轴属性为<code>grid-row-start</code>和的原因<code>grid-row-end</code>。 <img src="http://file.w3cbest.com/file/images/block-row-axis.png"> 因此，内联轴将会穿过块轴，沿着词在句子中的方向分布。在英文语句中，这个轴从左到右。在网格布局中，内联轴属性是<code>grid-column-start</code>和<code>grid-column-end</code>。 <img src="http://file.w3cbest.com/file/images/inline-column-axis.png"> 如果我们把书写模式改变<code>vertical-lr</code>（垂直模式），这意味着块轴垂直运行，而内联轴沿着直线从上到下。 <img src="http://file.w3cbest.com/file/images/block-inline-vertical-column-axis.png"> 因此，如果我们谈论块维度，其实对应的是描述文本段落在普通文档流中布局的方向，内联维度是句子运行的方向。</p>
+<h2 id="逻辑属性"><a href="#逻辑属性" class="headerlink" title="逻辑属性"></a>逻辑属性</h2><p>所谓CSS逻辑属性，指的是<code>*-start</code>，<code>*-end</code>以及<code>*-inline-start</code>，<code>*-inline-end</code>，<code>*-block-start</code>，<code>*-block-start</code>这类CSS属性，其最终渲染的方向是有逻辑性在里面的。 例如<code>margin-left</code>方向是固定的，就左侧间距，没有逻辑；但是，<code>margin-start</code>有可能是左间距，也有可能是右间距，例如，对于内联元素，如果<code>direction</code>属性值是<code>rtl</code>，则<code>margin-start</code>的表现等同于<code>margin-right</code>，如果属性值是<code>ltr</code>，则<code>margin-start</code>的表现等同于<code>margin-left</code>，就表现出了逻辑判断在里面，因此，成为CSS逻辑属性。</p>
+<h2 id="逻辑维度"><a href="#逻辑维度" class="headerlink" title="逻辑维度"></a>逻辑维度</h2><p>逻辑属性定义块和内联维度的开始和结束属性。对于高度和宽度属性，我们改为使用<code>block-size</code>和<code>inline-size</code>。我们还可以设置<code>max-block-size</code>、<code>min-block-size</code>、<code>max-inline-size</code>和<code>min-inline-size</code>。如果您使用的是英语，则从上到下的横向语言<code>block-size</code>是指<code>height</code>屏幕上块<code>inline-size</code>的物理特性<code>width</code>，即物品的物理特性。如果您使用的是垂直运行的语言，那么当您查看屏幕时，<code>block-size</code>将会出现控制<code>width</code>和<code>inline-size</code>高度的情况。 您可以在下面的演示中看到这一点。我的块是<code>block-size: 150px</code>和<code>inline-size: 250px</code>组成。更改<code>writing-mode</code>属性以查看布局如何调整。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/paqZvz/">Block and Inline Size demo</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>逻辑边界(border) 我们来回忆一下物理属性边界的工作方式，边界(border)的物理属性是：</p>
+<ul>
+<li>  border-top</li>
+<li>  border-top-width</li>
+<li>  border-top-style</li>
+<li>  border-top-color</li>
+<li>  border-right</li>
+<li>  border-right-width</li>
+<li>  border-right-style</li>
+<li>  border-right-color</li>
+<li>  border-bottom</li>
+<li>  border-bottom-width</li>
+<li>  border-bottom-style</li>
+<li>  border-bottom-color</li>
+<li>  border-left</li>
+<li>  border-left-width</li>
+<li>  border-left-style</li>
+<li>  border-left-color</li>
+</ul>
+<p>现在它们具有逻辑映射，这些映射变得有点冗余：</p>
+<ul>
+<li>  border-block-start</li>
+<li>  border-block-start-width</li>
+<li>  border-block-start-style</li>
+<li>  border-block-start-color</li>
+<li>  border-inline-start</li>
+<li>  border-inline-start-width</li>
+<li>  border-inline-start-style</li>
+<li>  border-inline-start-color</li>
+<li>  border-block-end</li>
+<li>  border-block-end-width</li>
+<li>  border-block-end-style</li>
+<li>  border-block-end-color</li>
+<li>  border-inline-end</li>
+<li>  border-inline-end-width</li>
+<li>  border-inline-end-style</li>
+<li>  border-inline-end-color</li>
+</ul>
+<p>在以下示例中，有两个访客，第一个使用逻辑属性来设置<code>border-block-start-color: green</code>和<code>border-inline-end-style:dotted</code>。第二个使用物理属性<code>border-top-color: green</code>和<code>border-right-style:dotted</code>。我们通过改变<code>write-mode</code>的属性值，来看一下<code>border</code>的物理属性和逻辑属性之间的差异：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/RQEYbm/">Logical borders</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="margin和padding"><a href="#margin和padding" class="headerlink" title="margin和padding"></a>margin和padding</h2><p>margin和padding和border属性一样，其物理属性为：</p>
+<ul>
+<li>  margin-top</li>
+<li>  margin-left</li>
+<li>  margin-bottom</li>
+<li>  margin-right</li>
+<li>  padding-top</li>
+<li>  padding-right</li>
+<li>  padding-bottom</li>
+<li>  padding-left</li>
+</ul>
+<p>它们具有如下逻辑属性：</p>
+<ul>
+<li>  margin-block-start</li>
+<li>  margin-inline-start</li>
+<li>  margin-inline-start</li>
+<li>  margin-inline-end</li>
+<li>  padding-block-start</li>
+<li>  padding-inline-start</li>
+<li>  padding-inline-start</li>
+<li>  padding-inline-end</li>
+</ul>
+<p>在下一个示例中，我已设置<code>padding-block-start</code>第一个块，而<code>padding-top</code>在第二个块中，我们通过改变<code>write-mode</code>的属性值，来看一下物理属性和逻辑属性之间的差异：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/OQrorW/">Logical properties - padding</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="position的位移属性"><a href="#position的位移属性" class="headerlink" title="position的位移属性"></a>position的位移属性</h2><p>使用物理属性的另一个地方是使用属性定位事物<code>position</code>。在设置<code>position: absolute</code>或<code>position</code>除<code>static</code>我们的默认值之外的其他值之后，可以使用偏移来定位项目，无论是来自视口还是来自已创建新定位上下文的父项。 偏移物理属性是：</p>
+<ul>
+<li>  top</li>
+<li>  right</li>
+<li>  bottom</li>
+<li>  left</li>
+</ul>
+<p>按照我们其他逻辑属性的模式，我们得到：</p>
+<ul>
+<li>  offset-block-start</li>
+<li>  offset-inline-start</li>
+<li>  offset-block-end</li>
+<li>  offset-inline-end</li>
+</ul>
+<p>请在下面的示例中尝试这些。带边框的盒子<code>position: relative</code>和小紫色方块<code>position: absolute</code>。在物理示例的正方形被定位<code>top: 50px</code>和<code>right: 20px</code>。逻辑版本有<code>offset-block-start: 50px</code>和<code>offset-inline-end: 20px</code>。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/QQzZwm/">Logical offsets</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>逻辑值 我们习惯使用物理尺寸的另一个地方是我们漂浮或清理东西。因为<code>float</code>，<code>clear</code> 我们有一些left和right值的逻辑版本。</p>
+<ul>
+<li>  inline-start</li>
+<li>  inline-end</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/XZoOGb/">floating with logical values</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>在演示中，我将紫色块浮动到逻辑版本中<code>inline-start</code>。我也使用逻辑属性作为保证金; 这样可以确保边距始终位于块之后，并且在包围它的内容之前。通过选择<code>vertical-rl</code>下拉列表中的值，您可以看到物理示例中的边距如何在块的右侧结束，而不是在<code>-end</code>方向上应用。 <img src="http://file.w3cbest.com/file/images/float-margins-side.png"> 还有<code>start</code>和<code>end</code>值<code>text-align</code>。对齐要启动的内容将使其与内联轴的起点对齐，直到内联轴<code>end</code>的末端，无论写入模式是水平还是垂直。</p>
+<h2 id="今天使用逻辑属性和值"><a href="#今天使用逻辑属性和值" class="headerlink" title="今天使用逻辑属性和值"></a>今天使用逻辑属性和值</h2><p><a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-logical-props">Can I Use css-logical-props?</a> Data on support for the css-logical-props feature across the major browsers from caniuse.com.</p>
+<p>如前所述，目前逻辑属性和值的浏览器支持很少。但是，如果您现在想要开始使用它们，并且选项是使用它们编写CSS，然后使用PostCSS插件将逻辑属性和值转换为它们的物理对应物。<a target="_blank" rel="noopener" href="https://github.com/jonathantneal/postcss-logical-properties">Jonathan Neal的这个插件</a>涵盖了我在本文中描述的所有属性和值。 即使您现在决定不使用这些属性，了解它们的工作方式也是使用新布局的关键理解。将Grid或Flex布局描述为具有起始和结束线，考虑块和内联维度，这些将使得更容易理解布局的工作原理。 进一步阅读</p>
+<ul>
+<li>  MDN Web Docs具有列出的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties">所有逻辑属性和值</a>以及其他示例。</li>
+<li>  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logical_Values_and_Writing_Modes">CSS网格，逻辑值和写入模式</a>，MDN</li>
+<li>  <a target="_blank" rel="noopener" href="https://24ways.org/2016/css-writing-modes/">CSS写作模式</a>，Jen Simmons，24种方式</li>
+</ul>
+<p>文章来源：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/03/understanding-logical-properties-values/">https://www.smashingmagazine.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/block-end/" rel="tag"># *-block-end</a>
+              <a href="/tags/block-start/" rel="tag"># *-block-start</a>
+              <a href="/tags/inline-end/" rel="tag"># *-inline-end</a>
+              <a href="/tags/inline-start/" rel="tag"># *-inline-start</a>
+              <a href="/tags/CSS-Logical/" rel="tag"># CSS Logical</a>
+              <a href="/tags/css%E9%80%BB%E8%BE%91/" rel="tag"># css逻辑</a>
+              <a href="/tags/wrioting-mode/" rel="tag"># wrioting-mode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/16/%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95%E6%9D%A5%E5%8C%BA%E5%88%AB%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" rel="prev" title="实现深拷贝的几种方法来区别深拷贝与浅拷贝">
+      <i class="fa fa-chevron-left"></i> 实现深拷贝的几种方法来区别深拷贝与浅拷贝
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/01/24/html%E8%AF%AD%E6%B3%95/" rel="next" title="HTML语法">
+      HTML语法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%97%E5%92%8C%E5%86%85%E8%81%94%E7%BB%B4%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">块和内联维度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">逻辑属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%B4%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">逻辑维度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin%E5%92%8Cpadding"><span class="nav-number">4.</span> <span class="nav-text">margin和padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position%E7%9A%84%E4%BD%8D%E7%A7%BB%E5%B1%9E%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">position的位移属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8A%E5%A4%A9%E4%BD%BF%E7%94%A8%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC"><span class="nav-number">6.</span> <span class="nav-text">今天使用逻辑属性和值</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

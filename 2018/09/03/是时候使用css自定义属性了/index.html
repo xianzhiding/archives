@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="在今天，css预加载已经成为了前端开发的一个标准。预加载的一个主要优势就是可以让你使用变量。它可以让你避免复制黏贴你的代码，并且简化了开发和重构。 我们用预加载来存储颜色、字体偏好，布局的细节——几乎是我们在css里面用到的所有东西。 但是预加载的变量有一些使用上的限制：    你不能动态的改变他们。   他们不能认出DOM结构。   他们不能用JavaScript读取和改变。  为了解决这样或那">
+<meta property="og:type" content="article">
+<meta property="og:title" content="是时候使用CSS自定义属性了">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/09/03/%E6%98%AF%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8css%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BA%86/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="在今天，css预加载已经成为了前端开发的一个标准。预加载的一个主要优势就是可以让你使用变量。它可以让你避免复制黏贴你的代码，并且简化了开发和重构。 我们用预加载来存储颜色、字体偏好，布局的细节——几乎是我们在css里面用到的所有东西。 但是预加载的变量有一些使用上的限制：    你不能动态的改变他们。   他们不能认出DOM结构。   他们不能用JavaScript读取和改变。  为了解决这样或那">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/closure-780w-opt.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/closure-scss-780w-opt.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/20190118223123.jpg">
+<meta property="article:published_time" content="2018-09-03T15:32:56.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.848Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="css var()">
+<meta property="article:tag" content="CSS Variables">
+<meta property="article:tag" content="前端开发">
+<meta property="article:tag" content="var()">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/closure-780w-opt.png">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/09/03/%E6%98%AF%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8css%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BA%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>是时候使用CSS自定义属性了 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/03/%E6%98%AF%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8css%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%BA%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          是时候使用CSS自定义属性了
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-03 23:32:56" itemprop="dateCreated datePublished" datetime="2018-09-03T23:32:56+08:00">2018-09-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在今天，css预加载已经成为了前端开发的一个标准。预加载的一个主要优势就是可以让你使用变量。它可以让你避免复制黏贴你的代码，并且简化了开发和重构。 我们用预加载来存储颜色、字体偏好，布局的细节——几乎是我们在css里面用到的所有东西。 但是预加载的变量有一些使用上的限制：</p>
+<ul>
+<li>  你不能动态的改变他们。</li>
+<li>  他们不能认出DOM结构。</li>
+<li>  他们不能用JavaScript读取和改变。</li>
+</ul>
+<p>为了解决这样或那样的问题，社区发明了CSS自定义属性。本质上这看上去和实现起来就像CSS变量。并且他们的实现方式就像他们的名字一样。 自定义属性为前端开发打开了新的大门。</p>
+<h2 id="申明和使用自定义属性的语法"><a href="#申明和使用自定义属性的语法" class="headerlink" title="申明和使用自定义属性的语法"></a>申明和使用自定义属性的语法</h2><p>在你开始学习心得预处理器或者框架的使用通常的问题是你必须学习新的语法。 每一种预处理器都使用不同的方法申明变量。通常使用一个保留字符作为开始——举个例子，Sass的$、LESS的@。 CSS自定义属性同样也是用保留字符 –来引入声明。但是好处是你只需要学一遍语法就能在所有浏览器上使用。 你可能会问，“为什么不使用已经有的语法？” <a target="_blank" rel="noopener" href="http://www.xanthir.com/blog/b4KT0">这是有原因的</a>。简单来说这提供了一种在任何预处理器中使用自定义属性的方式。在这种方式下我们可以使用自定义属性，预处理器也不会编译他们，所以这些属性会直接输出到编译后的CSS中。并且你也可以重复使用预处理器变量在源文件中，这个我稍后会细说。 （关于这个名字：因为他们的想法和目标非常相似，有些时候自定义属性被叫做CSS变量，尽管正确名称叫CSS自定义属性，往下读你就会明白为什么这个名字是最正确的。） 所以要声明一个变量来代替常用的CSS属性，就像color或者padding，用–连接一个自定义名称属性就可以：</p>
+<p>.box{<br>  –box-color: #4d4e53;<br>  –box-padding: 0 10px;<br>}</p>
+<p>属性的值可以是任何有效的CSS值：颜色、字符串、布局甚至是表达式。 这里是有效的自定义属性的例子：</p>
+<p>:root{<br>  –main-color: #4d4e53;<br>  –main-bg: rgb(255, 255, 255);<br>  –logo-border-color: rebeccapurple;</p>
+<p>  –header-height: 68px;<br>  –content-padding: 10px 20px;</p>
+<p>  –base-line-height: 1.428571429;<br>  –transition-duration: .35s;<br>  –external-link: “external link”;<br>  –margin-top: calc(2vh + 20px);</p>
+<p>  /* Valid CSS custom properties can be reused later in, say, JavaScript. */<br>  –foo: if(x &gt; 5) this.width = 10;<br>}</p>
+<p>以防万一你不知道什么是<a target="_blank" rel="noopener" href="http://www.xanthir.com/blog/b4KT0">:root</a>匹配，在HTML里他就等同与html标签，但是具有更高的特异性。 自定义属性和其他的CSS属性一样是动态的、级联的。这意味着他们能在任何时候被改变是由浏览器来进行的。 为了使用自定义的变量，你需要使用 <code>var()</code> CSS函数，并且提供属性参数：</p>
+<p>.box{<br>–box-color:#4d4e53;<br>–box-padding: 0 10px;</p>
+<p>padding: var(–box-padding);<br>}</p>
+<p>.box div{<br>color: var(–box-color);<br>}</p>
+<h2 id="声明和用例"><a href="#声明和用例" class="headerlink" title="声明和用例"></a>声明和用例</h2><p>var()函数有一个非常便利的提供默认值的方法。如果你不确信自定义属性已经被定义并且需要一个默认值，函数的第二个参数用来作为默认值的:</p>
+<p>.box{<br>–box-color:#4d4e53;<br>–box-padding: 0 10px;</p>
+<p>/* 10px is used because –box-margin is not defined. */<br>margin: var(–box-margin, 10px);<br>}</p>
+<p>你可能会希望在声明新的变量的时候能重复使用已有的变量值：</p>
+<p>.box{<br>/* The –main-padding variable is used if –box-padding is not defined. */<br>padding: var(–box-padding, var(–main-padding));</p>
+<p>–box-text: ‘This is my box’;</p>
+<p>/* Equal to –box-highlight-text:’This is my box with highlight’; */<br>–box-highlight-text: var(–box-text)’ with highlight’;<br>}</p>
+<h2 id="运算：-，-，-，"><a href="#运算：-，-，-，" class="headerlink" title="运算：+，-，*，/"></a>运算：+，-，*，/</h2><p>既然我们习惯使用预处理器和其他语言，我们也希望在处理变量的时候能使用基本运算。为了达到这个目的，CSS提供了<code>calc()</code>函数，作用当自定义属性的值被改变的时候浏览器会重新计算表达式：</p>
+<p>:root{<br>–indent-size: 10px;</p>
+<p>–indent-xl: calc(2*var(–indent-size));<br>–indent-l: calc(var(–indent-size) + 2px);<br>–indent-s: calc(var(–indent-size) - 2px);<br>–indent-xs: calc(var(–indent-size)/2);<br>}</p>
+<p>特别是当你想用一个没有单位的值得时候，就需要使用calc()函数：</p>
+<p>:root{<br>–spacer: 10;<br>}</p>
+<p>.box{<br>padding: var(–spacer)px 0; /* DOESN’T work */<br>padding: calc(var(–spacer)*1px) 0; /* WORKS */<br>}</p>
+<h2 id="作用域和继承"><a href="#作用域和继承" class="headerlink" title="作用域和继承"></a>作用域和继承</h2><p>在讨论CSS自定义属性的作用域之前，我们先来回顾一下JavaScript和预处理器的作用域。这样就能更好的认识他们之间的区别。 我们知道在JavaScript中如果在函数中使用<code>var</code>关键字声明变量，那么他的作用域就在函数里面。 同样的我们可以使用<code>let</code>和<code>const</code>关键字，但他们的作用域相对于变量的块作用域。 在JavaScript中闭包(closure)是一个可以访问外部函数变量的函数——作用域链。闭包有三个作用域链：</p>
+<ul>
+<li>  它自己的作用域（即 变量定义在大括号中）</li>
+<li>  外部函数的变量</li>
+<li>  全局变量</li>
+</ul>
+<p><img src="http://file.w3cbest.com/file/images/closure-780w-opt.png"> 预处理器也是相同的，让我们用Sass来举个例子。因为这大概是今天最流行的预处理器了。 在Sass中有两种类型的变量：当前作用域变量(local) 和 全局变量。 一个全局变量能被申明在选择器和构造器（比如mixin）外，其他的变量就是当前作用域变量。 任何嵌套的代码块都可以访问封闭变量（如JavaScript）。 <img src="http://file.w3cbest.com/file/images/closure-scss-780w-opt.png"> 这意味着在Sass中变量的作用域完全依赖代码的嵌套结构。 然而CSS自定义属性完全和其他的CSS属性一样使用级联方式默认继承。 当然你也不能在CSS中定义一个在选择器外的属于全局的自定义属性变量，因为这不是有效的CSS。自定义属性的全局作用域实际上就是:root的作用域，这里面定义的属性就是全局的。 让我们用已知的语法知识和Sass的例子来创建一个使用原生的CSS自定义属性的例子，首先是HTML：</p>
+<p>global</p>
+<div class="enclosing">
+  enclosing
+  <div class="closure">
+    closure
+  </div>
+</div>
+
+<p>然后是CSS:</p>
+<p>:root {<br>  –globalVar: 10px;<br>}</p>
+<p>.enclosing {<br>  –enclosingVar: 20px;<br>}</p>
+<p>.enclosing .closure {<br>  –closureVar: 30px;</p>
+<p>  font-size: calc(var(–closureVar) + var(–enclosingVar) + var(–globalVar));<br>  /* 60px for now */<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/MJmebz/">css-custom-properties-time-to-start-using 1</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="对自定义属性的更改将立即应用于所有实例"><a href="#对自定义属性的更改将立即应用于所有实例" class="headerlink" title="对自定义属性的更改将立即应用于所有实例"></a>对自定义属性的更改将立即应用于所有实例</h2><p>到目前为止我们还没有看出他和Sass变量有什么区别。然而让我们重新给变量赋值： 在Sass中，是无效的：</p>
+<p>.closure {<br>  $closureVar: 30px; // local variable<br>  font-size: $closureVar +$enclosingVar+ $globalVar;<br>  // 60px, $closureVar: 30px is used</p>
+<p>  $closureVar: 50px; // local variable<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/bgWerv/">css-custom-properties-time-to-start-using 3</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>但是在CSS中计算的值改变了。因为<code>font-size</code>的值因为<code>--closureVar</code>值得改变重新计算了：</p>
+<p>.enclosing .closure {<br>  –closureVar: 30px;<br>  font-size: calc(var(–closureVar) + var(–enclosingVar) + var(–globalVar));<br>  /* 80px for now, –closureVar: 50px is used */<br>  –closureVar: 50px;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/WRjxOy/">css-custom-properties-time-to-start-using 2</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>这是第一个非常大的区别：如果你对自定义属性重新赋值，浏览器会重新计算所有的变量和<code>calc()</code>表达式。</p>
+<h2 id="预处理器不能识别DOM结构"><a href="#预处理器不能识别DOM结构" class="headerlink" title="预处理器不能识别DOM结构"></a>预处理器不能识别DOM结构</h2><p>假如我们想在除了class是<code>highlighted</code>的div上使用默认的<code>font-size</code> 下面是 HTML代码：</p>
+<div class="default">
+  default
+</div>
+
+<div class="default highlighted">
+  default highlighted
+</div>
+
+<p>让我们使用CSS自定义属性：</p>
+<p>.highlighted {<br>  –highlighted-size: 30px;<br>}</p>
+<p>.default {<br>  –default-size: 10px;</p>
+<p>  /* Use default-size, except when highlighted-size is provided. */<br>  font-size: var(–highlighted-size, var(–default-size));<br>}</p>
+<p>因为第二个div元素使用了<code>highlighted</code>类，在<code>highlighted</code>类上的属性就提供给这个元素了。 在这里就意味着，<code>--hightlighted-size: 30px</code>被提供了。是的<code>font-size</code>的属性被重新赋值了。 一切都是这么直截了当的运行：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/ggWMvG/">css-custom-properties-time-to-start-using 4</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>接下来让我们尝试使用Sass来实现同样的例子：</p>
+<p>.highlighted {<br>  $highlighted-size: 30px;<br>}</p>
+<p>.default {<br>  $default-size: 10px;</p>
+<p>  /* Use default-size, except when highlighted-size is provided. */<br>  @if variable-exists(highlighted-size) {<br>    font-size: $highlighted-size;<br>  }<br>  @else {<br>    font-size: $default-size;<br>  }<br>}</p>
+<p>结果显示他们都使用默认字体大小：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/PWmzQO/">css-custom-properties-time-to-start-using 5</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>这是因为所有的Sass的计算和进程都发生在编译过程中，所以理所当然的他不知道DOM结构，所以依赖代码结构。 如你所见自定义属性在变量作用域和通常的css级联样式上具有优势。并且能够识别DOM结构。和普通的CSS属性使用相同的语法规则。 第二个例外是CSS自定义属性能动态的识别DOM结构</p>
+<h2 id="CSS关键字和all属性"><a href="#CSS关键字和all属性" class="headerlink" title="CSS关键字和all属性"></a>CSS关键字和all属性</h2><p>CSS自定义属性遵守与常规CSS自定义属性相同的规则。这意味着您可以为其分配任何常见的CSS关键字：</p>
+<ul>
+<li>  <code>inherit</code> 此CSS关键字应用元素的父对象的值。</li>
+<li>  <code>initial</code> 这将应用CSS规范中定义的初始值（空值，或在某些CSS自定义属性的情况下）。</li>
+<li>  <code>unset</code> 在自定义属性中，如果属性是继承的，则应用继承的值，如果属性是初始化的值，则引用初始化值。</li>
+<li>  <code>revert</code> 这会将该属性重置为用户代理样式表建立的默认值（在CSS自定义属性的情况下为空值）。</li>
+</ul>
+<p>以下是例子：</p>
+<p>.common-values{<br>  –border: inherit;<br>  –bgcolor: initial;<br>  –padding: unset;<br>  –animation: revert;<br>}</p>
+<p>我们来看另外一个例子。假设你想构建一个组件，并且想要确保没有其他样式或自定义属性被无意中应用（在这种情况下，通常会使用模块化的CSS解决方案）。 现在还有另一种方法：使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/CSS/all">all CSS属性</a>。这个简写将重置所有CSS属性。 与CSS关键字一起，我们可以执行以下操作：</p>
+<p>.my-wonderful-clean-component{<br>  all: initial;<br>}</p>
+<p>这会为我们的组件重置所有的样式： 不幸的是，all关键字<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-variables/#defining-variables">不会重置自定义属性</a>。<a target="_blank" rel="noopener" href="https://github.com/w3c/webcomponents/issues/300#issuecomment-144551648">关于是否添加 – 前缀</a>，这将重置所有CSS自定义属性，正在进行讨论。 所以在将来，一个完整的重置会是这样的：</p>
+<p>.my-wonderful-clean-component{<br>  –: initial; /* reset all CSS custom properties */<br>  all: initial; /* reset all other CSS styles */<br>}</p>
+<h2 id="CSS自定义属性用例"><a href="#CSS自定义属性用例" class="headerlink" title="CSS自定义属性用例"></a>CSS自定义属性用例</h2><p>有许多自定义属性使用的方式，在这里我会展示他们中最有趣的部分。</p>
+<h3 id="模拟不存在的CSS规则"><a href="#模拟不存在的CSS规则" class="headerlink" title="模拟不存在的CSS规则"></a>模拟不存在的CSS规则</h3><p>这些CSS变量的名称是自定义属性，那为什么我们不能用它来模拟不存在的CSS属性？ 有很多比如translateX/Y/Z,background-repeat-x/y(仍然不能跨浏览器兼容)，<code>box-shadow-color</code>。 让我们试着模拟最后一个属性。在这个例子里当hover的时候我们改变box-shadow的颜色。我们只想遵循DRY规则（不要重复你自：），所以我们只是改变它的颜色，而不是在<code>:hover</code>部分重复<code>box-shadow</code>的整个值。（变量的改变会重新计算<code>var()</code>和<code>calc()</code>）</p>
+<p>.test {<br>  –box-shadow-color: yellow;<br>  box-shadow: 0 0 30px var(–box-shadow-color);<br>}</p>
+<p>.test:hover {<br>  –box-shadow-color: orange;<br>  /* Instead of: box-shadow: 0 0 30px orange; */<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/KzZXRq/">Emulating &quot;box-shadow-color&quot; CSS property using CSS Custom Properties</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h3 id="颜色主题"><a href="#颜色主题" class="headerlink" title="颜色主题"></a>颜色主题</h3><p>自定义属性有一个最常用的用例就是应用程序中的颜色主题。自定义属性就是用来解决这类问题的。所以，让我们为一个组件提供一个简单的颜色主题（应用程序可以遵循相同的步骤）。 这是<a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/XpRjNK">button组件的代码</a>：</p>
+<p>.btn {<br>  background-image: linear-gradient(to bottom, #3498db, #2980b9);<br>  text-shadow: 1px 1px 3px #777;<br>  box-shadow: 0px 1px 3px #777;<br>  border-radius: 28px;<br>  color: #ffffff;<br>  padding: 10px 20px 10px 20px;<br>}</p>
+<p>我们假设要反转颜色主题。 第一步是将所有颜色变量扩展到CSS自定义属性并重写我们的组件。<a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/EZmgmZ">重写后的代码</a>：</p>
+<p>.btn {<br>  –shadow-color: #777;<br>  –gradient-from-color: #3498db;<br>  –gradient-to-color: #2980b9;<br>  –color: #ffffff;</p>
+<p>  background-image: linear-gradient(<br>    to bottom,<br>    var(–gradient-from-color),<br>    var(–gradient-to-color)<br>  );<br>  text-shadow: 1px 1px 3px var(–shadow-color);<br>  box-shadow: 0px 1px 3px var(–shadow-color);<br>  border-radius: 28px;<br>  color: var(–color);<br>  padding: 10px 20px 10px 20px;<br>}</p>
+<p>这有我们需要的一切。使用它，我们可以将颜色变量重写为反转值，并在需要时应用它们。例如，我们可以添加全局<code>inverted</code>类（例如，<code>body</code>元素），并在应用颜色时更改颜色：</p>
+<p>body.inverted .btn{<br>  –shadow-color: #888888;<br>  –gradient-from-color: #CB6724;<br>  –gradient-to-color: #D67F46;<br>  –color: #000000;<br>}</p>
+<p>以下是一个演示，您可以在其中单击一个按钮来添加和删除全局类</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/dNWpRd/">css-custom-properties-time-to-start-using 9</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>如果不重复代码，在CSS预处理器中无法实现此行为。使用预处理器，您将始终需要覆盖实际的值和规则，这往往会导致额外的CSS。 使用CSS自定义属性，解决方案可以尽可能的干净，复制黏贴是可以避免的。因为只需要对变量进行重新赋值。</p>
+<h2 id="在JavaScript中使用自定义属性"><a href="#在JavaScript中使用自定义属性" class="headerlink" title="在JavaScript中使用自定义属性"></a>在JavaScript中使用自定义属性</h2><p>以前，要将数据从CSS发送到JavaScript，我们经常不得不采取<a target="_blank" rel="noopener" href="https://blog.hospodarets.com/passing_data_from_sass_to_js">技巧</a>，通过CSS输出中的纯JSON编写CSS值，然后从JavaScript读取它。 现在，我们可以轻松地使用JavaScript中的CSS变量进行交互，使用众所周知的<code>.getPropertyValue()</code>和<code>.setProperty()</code>方法读取和写入它们，这些方法用于通常的CSS属性:</p>
+<p>/**<br>* Gives a CSS custom property value applied at the element<br>* element {Element}<br>* varName {String} without ‘–’<br>*<br>* For example:<br>* readCssVar(document.querySelector(‘.box’), ‘color’);<br>*/<br>function readCssVar(element, varName){<br>  const elementStyles = getComputedStyle(element);<br>  return elementStyles.getPropertyValue(`–${varName}`).trim();<br>}</p>
+<p>/**<br>* Writes a CSS custom property value at the element<br>* element {Element}<br>* varName {String} without ‘–’<br>*<br>* For example:<br>* readCssVar(document.querySelector(‘.box’), ‘color’, ‘white’);<br>*/<br>function writeCssVar(element, varName, value){<br>  return element.style.setProperty(`–${varName}`, value);<br>}</p>
+<p>假设我们有一系列的媒体查询值</p>
+<p>.breakpoints-data {<br>  –phone: 480px;<br>  –tablet: 800px;<br>}</p>
+<p>因为我们只想在JavaScript中重用它们 - 例如，在<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/API/Window/matchMedia">Window.matchMedia()</a>中，我们可以轻松地从CSS中获取它们</p>
+<p>const breakpointsData = document.querySelector(‘.breakpoints-data’);</p>
+<p>// GET<br>const phoneBreakpoint = getComputedStyle(breakpointsData)<br>  .getPropertyValue(‘–phone’);</p>
+<p>为了展示如何从JavaScript分配自定义属性，我创建了一个交互式3D CSS 立方体demo，以响应用户操作。 这不是很难我们只需要添加一个简单的背景，然后放置五个立方体面与transform属性的相关值：<code>translateZ()</code>，<code>translateY()</code>，<code>rotateX()</code>和<code>rotateY()</code>。 为了提供正确的视角，我向页面添加了以下内容：</p>
+<p>#world{<br>  –translateZ:0;<br>  –rotateX:65;<br>  –rotateY:0;</p>
+<p>  transform-style:preserve-3d;<br>  transform:<br>    translateZ(calc(var(–translateZ) * 1px))<br>    rotateX(calc(var(–rotateX) * 1deg))<br>    rotateY(calc(var(–rotateY) * 1deg));<br>}</p>
+<p>唯一缺少的是交互性。当鼠标移动时，演示应该更改X和Y视角（<code>--rotateX</code>和<code>-rotateY</code>），当鼠标滚动（<code>--translateZ</code>）时应该放大和缩小）。 这是JavaScript的诀窍：</p>
+<p>// Events<br>onMouseMove(e) {<br>  this.worldXAngle = (.5 - (e.clientY / window.innerHeight)) * 180;<br>  this.worldYAngle = -(.5 - (e.clientX / window.innerWidth)) * 180;<br>  this.updateView();<br>};</p>
+<p>onMouseWheel(e) {<br>  /*…*/</p>
+<p>  this.worldZ += delta * 5;<br>  this.updateView();<br>};</p>
+<p>// JavaScript -&gt; CSS<br>updateView() {<br>  this.worldEl.style.setProperty(‘–translateZ’, this.worldZ);<br>  this.worldEl.style.setProperty(‘–rotateX’, this.worldXAngle);<br>  this.worldEl.style.setProperty(‘–rotateY’, this.worldYAngle);<br>};</p>
+<p>现在，当用户移动鼠标时，演示会更改视图。您可以通过移动鼠标并使用鼠标滚轮放大和缩小来检查：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/xgdEQp/">css-custom-properties-time-to-start-using 10</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>基本上，我们只是更改了CSS自定义属性的值。其他（旋转和放大和缩小）都是由CSS完成的。 提示：调整CSS自定义属性值的最简单方法之一就是在CSS生成的内容中显示其内容（在简单的情况下，例如使用字符串），以便浏览器将自动显示当前应用的值：</p>
+<p>body:after {<br>  content: ‘–screen-category : ‘var(–screen-category);<br>}</p>
+<p>您可以在纯<a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/oBWMOY">CSS演示</a>（无HTML或JavaScript）中查看。 （调整窗口大小，查看浏览器会自动反映更改后的CSS自定义属性值。） 浏览器支持 主流<a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-variables">浏览器</a>都支持了CSS自定义属性: <img src="http://file.w3cbest.com/file/images/20190118223123.jpg"> 这意味着你可以自己开始使用它们。 如果您需要支持旧版浏览器，您可以学习语法和使用示例，并考虑并行切换或使用CSS和预处理器变量的可能方法。 当然，我们需要能够检测CSS和JavaScript中的支持，以便提供回退或增强功能。 这很容易对于CSS，您可以使用带有虚拟功能查询的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/CSS/@supports">@supports条件</a>：</p>
+<p>@supports ( (–a: 0)) {<br>  /* supported */<br>}</p>
+<p>@supports ( not (–a: 0)) {<br>  /* not supported */<br>}</p>
+<p>在JavaScript中，您可以使用与<code>CSS.supports()</code>静态方法相同的虚拟自定义属性：</p>
+<p>const isSupported = window.CSS &amp;&amp;<br>    window.CSS.supports &amp;&amp; window.CSS.supports(‘–a’, 0);</p>
+<p>if (isSupported) {<br>  /* supported */<br>} else {<br>  /* not supported */<br>}</p>
+<p>我们看到，CSS自定义属性在每个浏览器中仍然不可用。知道这一点，您可以通过检查它们是否受支持来逐步增强您的应用程序。 例如，您可以生成两个主要的CSS文件：一个具有CSS自定义属性，另一个没有它们，其中属性是内联的（我们将在稍后讨论一些方法）。 默认加载第二个。然后，如果支持自定义属性，只需检查JavaScript并切换到增强版本即可:</p>
+<p>// JavaScript<br>if(isSupported){<br>  removeCss(‘without-css-custom-properties.css’);<br>  loadCss(‘css-custom-properties.css’);<br>  // + conditionally apply some application enhancements<br>  // using the custom properties<br>}</p>
+<p>这只是一个例子。往下看，有更好的选择。</p>
+<h2 id="如何开始使用它们"><a href="#如何开始使用它们" class="headerlink" title="如何开始使用它们"></a>如何开始使用它们</h2><p>针对<a target="_blank" rel="noopener" href="https://ashleynolan.co.uk/blog/frontend-tooling-survey-2016-results">最近的一项调查</a>，Sass已经成为了开发社区中预处理器的最佳选择。 所以，让我们考虑开始使用CSS自定义属性或使用Sass为他们做准备的方法。 我们有一些观点。</p>
+<h3 id="1-手动检查代码支持"><a href="#1-手动检查代码支持" class="headerlink" title="1. 手动检查代码支持"></a>1. 手动检查代码支持</h3><p>手动检查代码中自定义属性是否支持的方法的一个优点是如果它可行我们就可以直接用它（不要忘记我们已经切换到Sass）：</p>
+<p>$color: red;<br>:root {<br>  –color: red;<br>}</p>
+<p>.box {<br>  @supports ( (–a: 0)) {<br>    color: var(–color);<br>  }<br>  @supports ( not (–a: 0)) {<br>    color: $color;<br>  }<br>}</p>
+<p>这种方法确实有许多缺点，其中不仅仅是代码变得复杂，而且复制和粘贴变得很难维护。</p>
+<h3 id="2-使用自动转换CSS的插件"><a href="#2-使用自动转换CSS的插件" class="headerlink" title="2. 使用自动转换CSS的插件"></a>2. 使用自动转换CSS的插件</h3><p>PostCSS生态系统今天提供了几十个插件。它们中的几个在生成的CSS输出中处理自定义属性（内联值），并使它们工作，假设您仅提供全局变量（即，您只声明或更改：根选择器中的CSS自定义属性），因此它们的值可以轻松内联。 其中一个例子就是<a target="_blank" rel="noopener" href="https://github.com/postcss/postcss-custom-properties">postcss-custom-properties</a> 这个插件提供了几个优点：它使语法工作;它与PostCSS的所有基础设施兼容;并且不需要太多的配置。 但是有一些缺点。该插件需要您使用CSS自定义属性，因此您没有准备项目以从Sass变量切换的路径。此外，您将无法对转换进行很多控制，因为在Sass被编译为CSS之后完成。最后，插件不提供很多调试信息。</p>
+<h3 id="3-css-vars-Mixin"><a href="#3-css-vars-Mixin" class="headerlink" title="3. css-vars Mixin"></a>3. <a target="_blank" rel="noopener" href="https://github.com/malyw/css-vars">css-vars Mixin</a></h3><p>我开始在我大多数项目里使用CSS自定义属性并且尝试了很多策略：</p>
+<ul>
+<li>  用<a target="_blank" rel="noopener" href="http://cssnext.io/">cssnext</a>从Sass切换到<a target="_blank" rel="noopener" href="http://cssnext.io/">PostCSS</a>。</li>
+<li>  从Sass变量切换到纯CSS自定义属性。</li>
+<li>  在Sass中使用CSS变量来检测是否支持它们。</li>
+</ul>
+<p>通过这些经验，我开始寻找一个可以满足我的标准的解决方案：</p>
+<ul>
+<li>  它应该很容配合Sass来使用。</li>
+<li>  应该直接使用，并且语法必须尽可能接近原生的CSS自定义属性。</li>
+<li>  将CSS输出从内联值切换到CSS变量应该很容易。</li>
+<li>  熟悉CSS自定义属性的团队成员将能够使用该解决方案。</li>
+<li>  应该有一种方法有使用变量的调试信息。</li>
+</ul>
+<p>因此，我创建了css-vars，一个Sass mixin，可以在<a target="_blank" rel="noopener" href="https://github.com/malyw/css-vars">Github</a>上找到。使用它，你就可以使用CSS自定义属性语法。</p>
+<h2 id="使用-css-vars-Mixin"><a href="#使用-css-vars-Mixin" class="headerlink" title="使用 css-vars Mixin"></a>使用 css-vars Mixin</h2><p>声明变量，使用的mixin如下：</p>
+<p>$white-color: #fff;<br>$base-font-size: 10px;</p>
+<p>@include css-vars((<br>  –main-color: #000,<br>  –main-bg: $white-color,<br>  –main-font-size: 1.5*$base-font-size,<br>  –padding-top: calc(2vh + 20px)<br>));</p>
+<p>使用这些变量，用var()函数：</p>
+<p>body {<br>  color: var(–main-color);<br>  background: var(–main-bg, #f00);<br>  font-size: var(–main-font-size);<br>  padding: var(–padding-top) 0 10px;<br>}</p>
+<p>这为您提供了一种从一个地方（从Sass）控制所有CSS输出并开始熟悉语法的方法。此外，您可以使用mixin重用Sass变量和逻辑。 当您想要支持的所有浏览器都使用CSS变量时，您需要做的就是添加：</p>
+<p>$css-vars-use-native: true;</p>
+<p>而不是调整生成的CSS中的变量属性，mixin将开始注册自定义属性，并且<code>var()</code>实例将转到生成的CSS而不进行任何转换。这意味着您将完全切换到CSS自定义属性，并具有我们讨论的所有优点。 如果你想打开有用的调试信息，如下：</p>
+<p>$css-vars-debug-log: true;</p>
+<p>这会给你</p>
+<ul>
+<li>  当变量没有被定义却被使用的日志</li>
+<li>  变量被重复定义的日志</li>
+<li>  当默认值代替了未定义变量值的日志</li>
+</ul>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>现在你对CSS自定义属性有了更多的了解，包括语法、优势、一些有用的例子还有如何在JavaScript中进行交互 你需要知道如何确认他们是否被支持，他们和CSS预处理器的变量有什么区别，以及如何在浏览器支持之前开始使用原生的CSS变量。 这是开始使用CSS自定义属性并为浏览器支持做准备的最佳时机。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/css-var/" rel="tag"># css var()</a>
+              <a href="/tags/CSS-Variables/" rel="tag"># CSS Variables</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag"># 前端开发</a>
+              <a href="/tags/var/" rel="tag"># var()</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/09/02/flexbox%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" rel="prev" title="Flexbox完整指南">
+      <i class="fa fa-chevron-left"></i> Flexbox完整指南
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/09/04/checkbox%E5%92%8Cradio-%E5%8F%96%E5%80%BC%E3%80%81%E8%B5%8B%E5%80%BC%E3%80%81%E9%80%89%E4%B8%AD%E3%80%81%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E7%AD%89%E6%93%8D%E4%BD%9C/" rel="next" title="checkbox和radio 取值、赋值、选中、事件监听等操作">
+      checkbox和radio 取值、赋值、选中、事件监听等操作 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B3%E6%98%8E%E5%92%8C%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">申明和使用自定义属性的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%92%8C%E7%94%A8%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">声明和用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%EF%BC%9A-%EF%BC%8C-%EF%BC%8C-%EF%BC%8C"><span class="nav-number">3.</span> <span class="nav-text">运算：+，-，*，&#x2F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%BB%A7%E6%89%BF"><span class="nav-number">4.</span> <span class="nav-text">作用域和继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E7%9A%84%E6%9B%B4%E6%94%B9%E5%B0%86%E7%AB%8B%E5%8D%B3%E5%BA%94%E7%94%A8%E4%BA%8E%E6%89%80%E6%9C%89%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">对自定义属性的更改将立即应用于所有实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%8D%E8%83%BD%E8%AF%86%E5%88%ABDOM%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">预处理器不能识别DOM结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8Call%E5%B1%9E%E6%80%A7"><span class="nav-number">7.</span> <span class="nav-text">CSS关键字和all属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E7%94%A8%E4%BE%8B"><span class="nav-number">8.</span> <span class="nav-text">CSS自定义属性用例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84CSS%E8%A7%84%E5%88%99"><span class="nav-number">8.1.</span> <span class="nav-text">模拟不存在的CSS规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E4%B8%BB%E9%A2%98"><span class="nav-number">8.2.</span> <span class="nav-text">颜色主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8JavaScript%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">在JavaScript中使用自定义属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC"><span class="nav-number">10.</span> <span class="nav-text">如何开始使用它们</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%89%8B%E5%8A%A8%E6%A3%80%E6%9F%A5%E4%BB%A3%E7%A0%81%E6%94%AF%E6%8C%81"><span class="nav-number">10.1.</span> <span class="nav-text">1. 手动检查代码支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2CSS%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="nav-number">10.2.</span> <span class="nav-text">2. 使用自动转换CSS的插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-css-vars-Mixin"><span class="nav-number">10.3.</span> <span class="nav-text">3. css-vars Mixin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-css-vars-Mixin"><span class="nav-number">11.</span> <span class="nav-text">使用 css-vars Mixin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="nav-number">12.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

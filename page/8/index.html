@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端开发 大前端 W3Cbest">
+<meta property="og:url" content="https://xianzhiding.github.io/page/8/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="前端开发,es5,es6,es10,css,javascript,html,flexbox,grid,echarts">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/page/8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/" class="post-title-link" itemprop="url">background-attachment 背景图片固定文字滚动</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-08 07:00:00" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:00+08:00">2018-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>关于background-attachment 也不算是一个比较生僻的属性，基本上在做背景图片固定特别是全屏页面时用时就会用到。</p>
+<h3 id="概述节"><a href="#概述节" class="headerlink" title="概述节"></a>概述节</h3><p>如果指定了 background-image ，那么 background-attachment 决定背景是在视口中固定的还是随包含它的区块滚动的。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>background-attachment: scroll;<br>background-attachment: fixed;<br>background-attachment: local;<br>background-attachment: inherit;</p>
+<h3 id="取值节"><a href="#取值节" class="headerlink" title="取值节"></a>取值节</h3><h4 id="fixed"><a href="#fixed" class="headerlink" title="fixed"></a>fixed</h4><p>此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。</p>
+<h4 id="local"><a href="#local" class="headerlink" title="local"></a>local</h4><p>此关键字表示背景相对于元素的内容固定。如果一个元素拥有滚动机制，背景将会随着元素的内容滚动，且背景的绘制区域和定位区域是相对于可滚动的区域而不是包含他们的边框。</p>
+<h4 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h4><p>此关键字表示背景相对于元素本身固定， 而不是随着它的内容滚动（对元素边框是有效的）。</p>
+<blockquote>
+<p>注意： fixed是相对视口固定，而scroll是相对元素本身固定，它和 position 定位的 absolute 和 fixed有点像。</p>
+</blockquote>
+<p> </p>
+<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>section {<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;">https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;</a>);<br>background-attachment: fixed;<br>}</p>
+<section>
+<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
+<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
+<p>子曰：“巧言令色，鲜矣仁！”</p>
+<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
+<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
+<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
+</section>
+
+<p> </p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/qQzQaP/">单背景支持</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h3 id="多背景图支持"><a href="#多背景图支持" class="headerlink" title="多背景图支持"></a>多背景图支持</h3><p>此属性支持多张背景图片。你可以用逗号分隔来为每一张背景图片指定不同的<attachment>。每一张背景图片顺序对应相应的attachment 类型。</p>
+<p>section{<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;">https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;</a>), url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;">https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;</a>);<br>background-attachment: fixed, scroll;<br>background-repeat: no-repeat, repeat-y;<br>}</p>
+<section>
+<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
+<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
+<p>子曰：“巧言令色，鲜矣仁！”</p>
+<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
+<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
+<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
+</section>
+
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/vQqQga/">多背景图支持节</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h3 id="使用-fixed-实现多模块背景固定效果"><a href="#使用-fixed-实现多模块背景固定效果" class="headerlink" title="使用 fixed 实现多模块背景固定效果"></a>使用 fixed 实现多模块背景固定效果</h3><p>fixed 此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。也就是说，背景图从一开始就已经被固定死在初始所在的位置。  </p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zMVMdw/">视差效果</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>)on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/07/%E5%86%99%E5%A5%BD%E7%9A%84javascript%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/%E5%86%99%E5%A5%BD%E7%9A%84javascript%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81/" class="post-title-link" itemprop="url">写好的JavaScript代码为什么非常重要</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 08:16:36" itemprop="dateCreated datePublished" datetime="2018-12-07T08:16:36+08:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文将通过简单的术语和真实世界的例子解释 JavaScript 中 this 及其用途，并告诉你写出好的代码为何如此重要。</p>
+</blockquote>
+<h3 id="this-适合你吗？"><a href="#this-适合你吗？" class="headerlink" title="this 适合你吗？"></a>this 适合你吗？</h3><p>我看到许多文章在介绍 JavaScript 的 this 时都会假设你学过某种面向对象的编程语言，比如 Java、C++ 或 Python 等。但这篇文章面向的读者是那些不知道 this 是什么的人。我尽量不用任何术语来解释 this 是什么，以及 this 的用法。 也许你一直不敢解开 this 的秘密，因为它看起来挺奇怪也挺吓人的。或许你只在 StackOverflow 说你需要用它的时候（比如在 React 里实现某个功能）才会使用。 在深入介绍 this 之前，我们首先需要理解函数式编程和面向对象编程之间的区别。  </p>
+<h3 id="函数式编程-vs-面向对象编程"><a href="#函数式编程-vs-面向对象编程" class="headerlink" title="函数式编程 vs 面向对象编程"></a>函数式编程 vs 面向对象编程</h3><p>你可能不知道，JavaScript 同时拥有面向对象和函数式的结构，所以你可以自己选择用哪种风格，或者两者都用。 我在很早以前使用 JavaScript 时就喜欢函数式编程，而且会像躲避瘟疫一样避开面向对象编程，因为我不理解面向对象中的关键字，比如 this。我不知道为什么要用 this。似乎没有它我也可以做好所有的工作。 而且我是对的。 在某种意义上 。也许你可以只专注于一种结构并且完全忽略另一种，但这样你只能是一个 JavaScript 开发者。为了解释函数式和面向对象之间的区别，下面我们通过一个数组来举例说明，数组的内容是 Facebook 的好友列表。 假设你要做一个 Web 应用，当用户使用 Facebook 登录你的 Web 应用时，需要显示他们的 Facebook 的好友信息。你需要访问 Facebook 并获得用户的好友数据。这些数据可能是 firstName、lastName、username、numFriends、friendData、birthday 和 lastTenPosts 等信息。</p>
+<p>const data = [<br>{<br>firstName: ‘Bob’,<br>lastName: ‘Ross’,<br>username: ‘bob.ross’,<br>numFriends: 125,<br>birthday: ‘2/23/1985’,<br>lastTenPosts: [‘What a nice day’, ‘I love Kanye West’, …],<br>},<br>…<br>]</p>
+<p>假设上述数据是你通过 Facebook API 获得的。现在需要将其转换成方便你的项目使用的格式。我们假设你想显示的好友信息如下：</p>
+<ul>
+<li>  姓名，格式为`${firstName} ${lastName}`</li>
+<li>  三篇随机文章</li>
+<li>  距离生日的天数</li>
+</ul>
+<p> </p>
+<h3 id="函数式方式"><a href="#函数式方式" class="headerlink" title="函数式方式"></a>函数式方式</h3><p>函数式的方式就是将整个数组或者数组中的某个元素传递给某个函数，然后返回你需要的信息：</p>
+<p>const fullNames = getFullNames(data)<br>// [‘Ross, Bob’, ‘Smith, Joanna’, …]</p>
+<p>首先我们有 Facebook API 返回的原始数据。为了将其转换成需要的格式，首先要将数据传递给一个函数，函数的输出是（或者包含）经过修改的数据，这些数据可以在应用中向用户展示。 我们可以用类似的方法获得随机三篇文章，并且计算距离好友生日的天数。 函数式的方式是：将原始数据传递给一个函数或者多个函数，获得对你的项目有用的数据格式。  </p>
+<h3 id="面向对象的方式"><a href="#面向对象的方式" class="headerlink" title="面向对象的方式"></a>面向对象的方式</h3><p>对于编程初学者和 JavaScript 初学者，面向对象的概念可能有点难以理解。其思想是，我们要将每个好友变成一个对象，这个对象能够生成你一切开发者需要的东西。 你可以创建一个对象，这个对象对应于某个好友，它有 fullName 属性，还有两个函数 getThreeRandomPosts 和 getDaysUntilBirthday。</p>
+<p>function initializeFriend(data) {<br>return {<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from data.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use data.birthday to get the num days until birthday<br>}<br>};<br>}<br>const objectFriends = data.map(initializeFriend)<br>objectFriends[0].getThreeRandomPosts()<br>// Gets three of Bob Ross’s posts</p>
+<p>面向对象的方式就是为数据创建对象，每个对象都有自己的状态，并且包含必要的信息，能够生成需要的数据。  </p>
+<h3 id="这跟-this-有什么关系？"><a href="#这跟-this-有什么关系？" class="headerlink" title="这跟 this 有什么关系？"></a>这跟 this 有什么关系？</h3><p>你也许从来没想过要写上面的 initializeFriend 代码，而且你也许认为，这种代码可能会很有用。但你也注意到，这并不是真正的面向对象。 其原因就是，上面例子中的 getThreeRandomPosts 或 getdaysUntilBirtyday 能够正常工作的原因其实是闭包。因为使用了闭包，它们在 initializeFriend 返回之后依然能访问 data。关于闭包的更多信息可以看看这篇文章：作用域和闭包（<a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md%EF%BC%89%E3%80%82">https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md）。</a> 还有一个方法该怎么处理？我们假设这个方法叫做 greeting。注意方法（与 JavaScript 的对象有关的方法）其实只是一个属性，只不过属性值是函数而已。我们想在 greeting 中实现以下功能：</p>
+<p>function initializeFriend(data) {<br>return {<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from data.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use data.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>return `Hello, this is ${fullName}’s data!`<br>}<br>};<br>}</p>
+<p>这样能正常工作吗？ 不能！ 我们新建的对象能够访问 initializeFriend 中的一切变量，但不能访问这个对象本身的属性或方法。当然你会问，</p>
+<blockquote>
+<p>难道不能在 greeting 中直接用 data.firstName 和 data.lastName 吗？</p>
+</blockquote>
+<p>当然可以。但要是想在 greeting 中加入距离好友生日的天数怎么办？我们最好还是有办法在 greeting 中调用 getDaysUntilBirthday。 这时轮到 this 出场了！  </p>
+<h3 id="终于——this-是什么"><a href="#终于——this-是什么" class="headerlink" title="终于——this 是什么"></a>终于——this 是什么</h3><p>this 在不同的环境中可以指代不同的东西。默认的全局环境中 this 指代的是全局对象（在浏览器中 this 是 window 对象），这没什么太大的用途。而在 this 的规则中具有实用性的是这一条： 如果在对象的方法中使用 this，而该方法在该对象的上下文中调用，那么 this 指代该对象本身。</p>
+<blockquote>
+<p>你会说“在该对象的上下文中调用”……是啥意思？</p>
+</blockquote>
+<p>别着急，我们一会儿就说。 所以，如果我们想从 greeting 中调用 getDaysUntilBirtyday 我们只需要写 this.getDaysUntilBirthday，因为此时的 this 就是对象本身。 附注：不要在全局作用域的普通函数或另一个函数的作用域中使用 this！this 是个面向对象的东西，它只在对象的上下文（或类的上下文）中有意义。 我们利用 this 来重写 initializeFriend：</p>
+<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const numDays = this.getDaysUntilBirthday()<br>return `Hello, this is ${this.fullName}’s data! It is ${numDays} until ${this.fullName}’s birthday!`<br>}<br>};<br>}</p>
+<p>现在，在 initializeFriend 执行结束后，该对象需要的一切都位于对象本身的作用域之内了。我们的方法不需要再依赖于闭包，它们只会用到对象本身包含的信息。 好吧，这是 this 的用法之一，但你说过 this 在不同的上下文中有不同的含义。那是什么意思？为什么不一定会指向对象自己？ 有时候，你需要将 this 指向某个特定的东西。一种情况就是事件处理函数。比如我们希望在用户点击好友时打开好友的 Facebook 首页。我们会给对象添加下面的 onClick 方法：</p>
+<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const numDays = this.getDaysUntilBirthday()<br>return `Hello, this is ${this.fullName}’s data! It is ${numDays} until ${this.fullName}’s birthday!`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
+<p>注意我们在对象中添加了 username 属性，这样 onFriendClick 就能访问它，从而在新窗口中打开该好友的 Facebook 首页。现在只需要编写 HTML：</p>
+<button id="Bob\_Ross">
+<!-- A bunch of info associated with Bob Ross -->
+</button>
+
+<p>还有 JavaScript：</p>
+<p>const bobRossObj = initializeFriend(data[0])<br>const bobRossDOMEl = document.getElementById(‘Bob_Ross’)<br>bobRossDOMEl.addEventListener(“onclick”, bobRossObj.onFriendClick)</p>
+<p>在上述代码中，我们给 Bob Ross 创建了一个对象。然后我们拿到了 Bob Ross 对应的 DOM 元素。然后执行 onFriendClick 方法来打开 Bob 的 Facebook 主页。似乎没问题，对吧？ 有问题！ 哪里出错了？ 注意我们调用 onclick 处理程序的代码是 bobRossObj.onFriendClick。看到问题了吗？要是写成这样的话能看出来吗？</p>
+<p>bobRossDOMEl.addEventListener(“onclick”, function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>})</p>
+<p>现在看到问题了吗？如果把事件处理程序写成 bobRossObj.onFriendClick，实际上是把 bobRossObj.onFriendClick 上保存的函数拿出来，然后作为参数传递。它不再“依附”在 bobRossObj 上，也就是说，this 不再指向 bobRossObj。它实际指向全局对象，也就是说 this.username 不存在。似乎我们没什么办法了。 轮到绑定上场了！  </p>
+<h3 id="明确绑定-this"><a href="#明确绑定-this" class="headerlink" title="明确绑定 this"></a>明确绑定 this</h3><p>我们需要明确地将 this 绑定到 bobRossObj 上。我们可以通过 bind 实现：</p>
+<p>const bobRossObj = initializeFriend(data[0])<br>const bobRossDOMEl = document.getElementById(‘Bob_Ross’)<br>bobRossObj.onFriendClick = bobRossObj.onFriendClick.bind(bobRossObj)<br>bobRossDOMEl.addEventListener(“onclick”, bobRossObj.onFriendClick)</p>
+<p>之前，this 是按照默认的规则设置的。但使用 bind 之后，我们明确地将 bobRossObj.onFriendClick 中的 this 的值设置为 bobRossObj 对象本身。 到此为止，我们看到了为什么要使用 this，以及为什么要明确地绑定 this。最后我们来介绍一下，this 实际上是箭头函数。  </p>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>你也许注意到了箭头函数最近很流行。人们喜欢箭头函数，因为很简洁、很优雅。而且你还知道箭头函数和普通函数有点区别，尽管不太清楚具体区别是什么。 简而言之，两者的区别在于： <strong>在定义箭头函数时，不管 this 指向谁，箭头函数内部的 this 永远指向同一个东西。</strong></p>
+<blockquote>
+<p>嗯……这貌似没什么用……似乎跟普通函数的行为一样啊？</p>
+</blockquote>
+<p>我们通过 initializeFriend 举例说明。假设我们想添加一个名为 greeting 的函数：</p>
+<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>function getLastPost() {<br>return this.lastTenPosts[0]<br>}<br>const lastPost = getLastPost()<br>return `Hello, this is ${this.fullName}’s data!<br>${this.fullName}’s last post was ${lastPost}.`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
+<p>这样能运行吗？如果不能，怎样修改才能运行？ 答案是不能。因为 getLastPost 没有在对象的上下文中调用，因此getLastPost 中的 this 按照默认规则指向了全局对象。</p>
+<blockquote>
+<p>你说没有“在对象的上下文中调用”……难道它不是从 initializeFriend 返回的内部调用的吗？如果这还不叫“在对象的上下文中调用”，那我就不知道什么才算了。</p>
+</blockquote>
+<p>  我知道“在对象的上下文中调用”这个术语很模糊。也许，判断函数是否“在对象的上下文中调用”的好方法就是检查一遍函数的调用过程，看看是否有个对象“依附”到了函数上。 我们来检查下执行 bobRossObj.onFriendClick() 时的情况。“给我对象 bobRossObj，找到其中的 onFriendClick 然后调用该属性对应的函数”。 我们同样检查下执行 getLastPost() 时的情况。“给我名为 getLastPost 的函数然后执行。”看到了吗？我们根本没有提到对象。 好了，这里有个难题来测试你的理解程度。假设有个函数名为 functionCaller，它的功能就是调用一个函数： functionCaller(fn) { fn() } 如果调用 functionCaller(bobRossObj.onFriendClick) 会怎样？你会认为 onFriendClick 是“在对象的上下文中调用”的吗？this.username有定义吗？ 我们来检查一遍：“给我 bobRosObj 对象然后查找其属性 onFriendClick。取出其中的值（这个值碰巧是个函数），然后将它传递给 functionCaller，取名为 fn。然后，执行名为 fn 的函数。”注意该函数在调用之前已经从 bobRossObj 对象上“脱离”了，因此并不是“在对象的上下文中调用”的，所以 this.username 没有定义。 这时可以用箭头函数解决这个问题：</p>
+<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const getLastPost = () =&gt; {<br>return this.lastTenPosts[0]<br>}<br>const lastPost = getLastPost()<br>return `Hello, this is ${this.fullName}’s data!<br>${this.fullName}’s last post was ${lastPost}.`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
+<p>上述代码的规则是： <strong>在定义箭头函数时，不管 this 指向谁，箭头函数内部的 this 永远指向同一个东西。</strong> 箭头函数是在 greeting 中定义的。我们知道，在 greeting 内部的 this 指向对象本身。因此，箭头函数内部的 this 也指向对象本身，这正是我们需要的结果。  </p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>this 有时很不好理解，但它对于开发 JavaScript 应用非常有用。本文当然没能介绍 this 的所有方面。一些没有涉及到的话题包括：</p>
+<ul>
+<li>  call 和 apply；</li>
+<li>  使用 new 时 this 会怎样；</li>
+<li>  在 ES6 的 class 中 this 会怎样。</li>
+</ul>
+<p>我建议你首先问问自己在这些情况下的 this，然后在浏览器中执行代码来检验你的结果。   想学习更多关 于this 的内容，可参考《你不知道的 JS：this 和对象原型》： <a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes">https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes</a> 如果你想测试自己的知识，可参考《你不知道的JS练习：this和对象原型》： <a target="_blank" rel="noopener" href="https://ydkjs-exercises.com/this-object-prototypes">https://ydkjs-exercises.com/this-object-prototypes</a> 原文：<a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/a-deep-dive-into-this-in-javascript-why-its-critical-to-writing-good-code-7dca7eb489e7">https://medium.freecodecamp.org/a-deep-dive-into-this-in-javascript-why-its-critical-to-writing-good-code-7dca7eb489e7</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/07/%E8%82%AF%E5%AE%9A%E6%9C%89%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%80%E4%BA%9Bcss%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/%E8%82%AF%E5%AE%9A%E6%9C%89%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%80%E4%BA%9Bcss%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">肯定有你不知道的一些CSS小技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 07:00:12" itemprop="dateCreated datePublished" datetime="2018-12-07T07:00:12+08:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="黑白图像"><a href="#黑白图像" class="headerlink" title="黑白图像"></a>黑白图像</h3><p>这段代码会让你的彩色照片显示为黑白照片，是不是很酷？</p>
+<p>img.desaturate {<br>filter: grayscale(100%);<br>-webkit-filter: grayscale(100%);<br>-moz-filter: grayscale(100%);<br>-ms-filter: grayscale(100%);<br>-o-filter: grayscale(100%);<br>}</p>
+<h3 id="使用-not-在菜单上应用-取消应用边框"><a href="#使用-not-在菜单上应用-取消应用边框" class="headerlink" title="使用 :not() 在菜单上应用/取消应用边框"></a>使用 :not() 在菜单上应用/取消应用边框</h3><p>先给每一个菜单项添加边框</p>
+<p>/* add border */<br>.nav li {<br>border-right: 1px solid #666;<br>}</p>
+<p>……然后再除去最后一个元素……</p>
+<p>// remove border //<br>.nav li:last-child {<br>border-right: none;<br>}</p>
+<p>这样代码就干净，易读，易于理解了。 当然，如果你的新元素有兄弟元素的话，也可以使用通用的兄弟选择符（~）：</p>
+<p>.nav li:first-child ~ li {<br>border-left: 1px solid #666;<br>}</p>
+<h3 id="页面顶部阴影"><a href="#页面顶部阴影" class="headerlink" title="页面顶部阴影"></a>页面顶部阴影</h3><p>下面这个简单的 css3 代码片段可以给网页加上漂亮的顶部阴影效果：</p>
+<p>body:before {<br>content: “”;<br>position: fixed;<br>top: -10px;<br>left: 0;<br>width: 100%;<br>height: 10px;<br>-webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);<br>-moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);<br>box-shadow: 0px 0px 10px rgba(0,0,0,.8);<br>z-index: 100;<br>}</p>
+<h3 id="给-body-添加行高"><a href="#给-body-添加行高" class="headerlink" title="给 body 添加行高"></a>给 body 添加行高</h3><p>你不需要分别添加 line-height 到每个p,h标记等。只要添加到 body 即可：</p>
+<p>body {<br>line-height: 1;<br>}</p>
+<p>这样文本元素就可以很容易地从 body 继承。</p>
+<h3 id="所有一切都垂直居中"><a href="#所有一切都垂直居中" class="headerlink" title="所有一切都垂直居中"></a>所有一切都垂直居中</h3><p>要将所有元素垂直居中，太简单了</p>
+<p>html, body {<br>height: 100%;<br>margin: 0;<br>}<br>body {<br>-webkit-align-items: center;<br>-ms-flex-align: center;<br>align-items: center;<br>display: -webkit-flex;<br>display: flex;<br>}</p>
+<p>注意：在IE11中要小心flexbox。  </p>
+<h3 id="逗号分隔的列表"><a href="#逗号分隔的列表" class="headerlink" title="逗号分隔的列表"></a>逗号分隔的列表</h3><p>让HTML列表项看上去像一个真正的，用逗号分隔的列表：</p>
+<p>ul &gt; li:not(:last-child)::after {<br>content: “,”;<br>}</p>
+<p>对最后一个列表项使用 :not() 伪类。  </p>
+<h3 id="使用负的-nth-child-选择项目"><a href="#使用负的-nth-child-选择项目" class="headerlink" title="使用负的 nth-child 选择项目"></a>使用负的 nth-child 选择项目</h3><p>在CSS中使用负的 nth-child 选择项目1到项目n。</p>
+<p>li {<br>display: none;<br>}<br>/* select items 1 through 3 and display them */<br>li:nth-child(-n+3) {<br>display: block;<br>}</p>
+<p> </p>
+<h3 id="对图标使用-SVG"><a href="#对图标使用-SVG" class="headerlink" title="对图标使用 SVG"></a>对图标使用 SVG</h3><p>我们没有理由不对图标使用SVG：</p>
+<p>.logo {<br>background: url(“logo.svg”);<br>}</p>
+<p>SVG对所有的分辨率类型都具有良好的扩展性，并支持所有浏览器都回归到IE9。这样可以避开.png、.jpg或.gif文件了。  </p>
+<h3 id="优化显示文本"><a href="#优化显示文本" class="headerlink" title="优化显示文本"></a>优化显示文本</h3><p>有时，字体并不能在所有设备上都达到最佳的显示，所以可以让设备浏览器来帮助你：</p>
+<p>html {<br>-moz-osx-font-smoothing: grayscale;<br>-webkit-font-smoothing: antialiased;<br>text-rendering: optimizeLegibility;<br>}</p>
+<p>注：请负责任地使用 optimizeLegibility。此外，IE /Edge没有 text-rendering 支持。  </p>
+<h3 id="对纯-CSS-滑块使用-max-height"><a href="#对纯-CSS-滑块使用-max-height" class="headerlink" title="对纯 CSS 滑块使用 max-height"></a>对纯 CSS 滑块使用 max-height</h3><p>使用 max-height 和溢出隐藏来实现只有CSS的滑块：</p>
+<p>.slider ul {<br>max-height: 0;<br>overlow: hidden;<br>}<br>.slider:hover ul {<br>max-height: 1000px;<br>transition: .3s ease;<br>}</p>
+<p> </p>
+<h3 id="继承-box-sizing"><a href="#继承-box-sizing" class="headerlink" title="继承 box-sizing"></a>继承 box-sizing</h3><p>让 box-sizing 继承 html：</p>
+<p>html {<br>box-sizing: border-box;<br>}<br>*, *:before, *:after {<br>box-sizing: inherit;<br>}</p>
+<p>这样在插件或杠杆其他行为的其他组件中就能更容易地改变 box-sizing 了。  </p>
+<h3 id="表格单元格等宽"><a href="#表格单元格等宽" class="headerlink" title="表格单元格等宽"></a>表格单元格等宽</h3><p>表格工作起来很麻烦，所以务必尽量使用 table-layout: fixed 来保持单元格的等宽：</p>
+<p>.calendar {<br>table-layout: fixed;<br>}</p>
+<p> </p>
+<h3 id="用-Flexbox-摆脱外边距的各种-hack"><a href="#用-Flexbox-摆脱外边距的各种-hack" class="headerlink" title="用 Flexbox 摆脱外边距的各种 hack"></a>用 Flexbox 摆脱外边距的各种 hack</h3><p>当需要用到列分隔符时，通过flexbox的 space-between 属性，你就可以摆脱nth-，first-，和 last-child 的hack了：</p>
+<p>.list {<br>display: flex;<br>justify-content: space-between;<br>}<br>.list .person {<br>flex-basis: 23%;<br>}</p>
+<p>现在，列表分隔符就会在均匀间隔的位置出现。</p>
+<h3 id="使用属性选择器用于空链接"><a href="#使用属性选择器用于空链接" class="headerlink" title="使用属性选择器用于空链接"></a>使用属性选择器用于空链接</h3><p>当a元素没有文本值，但 href 属性有链接的时候显示链接：</p>
+<p>a[href^=”http”]:empty::before {<br>content: attr(href);<br>}</p>
+<p> </p>
+<h3 id="检测鼠标双击"><a href="#检测鼠标双击" class="headerlink" title="检测鼠标双击"></a>检测鼠标双击</h3><p>.test3 span {<br>position: relative;<br>}<br>.test3 span a {<br>position: relative;<br>z-index: 2;<br>}<br>.test3 span a:hover, .test3 span a:active {<br>z-index: 4;<br>}<br>.test3 span input {<br>background: transparent;<br>border: 0;<br>cursor: pointer;<br>position: absolute;<br>top: -1px;<br>left: 0;<br>width: 101%; /* Hacky */<br>height: 301%; /* Hacky */<br>z-index: 3;<br>}<br>.test3 span input:focus {<br>background: transparent;<br>border: 0;<br>z-index: 1;<br>}</p>
+<p> </p>
+<h3 id="CSS-写出三角形"><a href="#CSS-写出三角形" class="headerlink" title="CSS 写出三角形"></a>CSS 写出三角形</h3><p>利用border来写三角形代码，并且兼容IE6.</p>
+<p>/* create an arrow that points up */<br>div.arrow-up {<br>width:0px;<br>height:0px;<br>border-left:5px solid transparent; /* left arrow slant */<br>border-right:5px solid transparent; /* right arrow slant */<br>border-bottom:5px solid #2f2f2f; /* bottom, add background color here */<br>font-size:0px;<br>line-height:0px;<br>}<br>/* create an arrow that points down */<br>div.arrow-down {<br>width:0px;<br>height:0px;<br>border-left:5px solid transparent;<br>border-right:5px solid transparent;<br>border-top:5px solid #2f2f2f;<br>font-size:0px;<br>line-height:0px;<br>}<br>/* create an arrow that points left */<br>div.arrow-left {<br>width:0px;<br>height:0px;<br>border-bottom:5px solid transparent; /* left arrow slant */<br>border-top:5px solid transparent; /* right arrow slant */<br>border-right:5px solid #2f2f2f; /* bottom, add background color here */<br>font-size:0px;<br>line-height:0px;<br>}<br>/* create an arrow that points right */<br>div.arrow-right {<br>width:0px;<br>height:0px;<br>border-bottom:5px solid transparent; /* left arrow slant */<br>border-top:5px solid transparent; /* right arrow slant */<br>border-left:5px solid #2f2f2f; /* bottom, add background color here */<br>font-size:0px;<br>line-height:0px;<br>}</p>
+<p> </p>
+<h3 id="CSS3-calc-的使用"><a href="#CSS3-calc-的使用" class="headerlink" title="CSS3 calc() 的使用"></a>CSS3 calc() 的使用</h3><p>calc() 用法类似于函数，能够给元素设置动态的值：</p>
+<p>/* basic calc */<br>.simpleBlock {<br>width: calc(100% - 100px);<br>}<br>/* calc in calc */<br>.complexBlock {<br>width: calc(100% - 50% / 3);<br>padding: 5px calc(3% - 2px);<br>margin-left: calc(10% + 10px);<br>}</p>
+<h3 id="文本渐变"><a href="#文本渐变" class="headerlink" title="文本渐变"></a>文本渐变</h3><p>文本渐变效果很流行，使用 CSS3 能够很简单就实现：</p>
+<p>h2[data-text] {<br>position: relative;<br>}<br>h2[data-text]::after {<br>content: attr(data-text);<br>z-index: 10;<br>color: #e3e3e3;<br>position: absolute;<br>top: 0;<br>left: 0;<br>-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), color-stop(50%, rgba(0,0,0,1)), to(rgba(0,0,0,0)));<br>}</p>
+<p> </p>
+<h3 id="禁用鼠标事件"><a href="#禁用鼠标事件" class="headerlink" title="禁用鼠标事件"></a>禁用鼠标事件</h3><p>CSS3 新增的 pointer-events 让你能够禁用元素的鼠标事件，例如，一个连接如果设置了下面的样式就无法点击了。</p>
+<p>.disabled { pointer-events: none; }</p>
+<p> </p>
+<h3 id="模糊文本"><a href="#模糊文本" class="headerlink" title="模糊文本"></a>模糊文本</h3><p>简单但很漂亮的文本模糊效果，简单又好看！</p>
+<p>.blur {<br>color: transparent;<br>text-shadow: 0 0 5px rgba(0,0,0,0.5);<br>}</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/06/matches-any-%E6%96%B9%E4%BE%BF%E5%A5%BD%E7%94%A8%E7%9A%84%E4%BC%AA%E7%B1%BB%E5%87%BD%E6%95%B0%E9%80%89%E6%8B%A9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/06/matches-any-%E6%96%B9%E4%BE%BF%E5%A5%BD%E7%94%A8%E7%9A%84%E4%BC%AA%E7%B1%BB%E5%87%BD%E6%95%B0%E9%80%89%E6%8B%A9%E5%99%A8/" class="post-title-link" itemprop="url">:matches() (:any()) 方便好用的伪类函数选择器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-06 10:42:41" itemprop="dateCreated datePublished" datetime="2018-12-06T10:42:41+08:00">2018-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>:matches()</code> CSS 伪类函数将选择器列表作为参数，并选择该列表中任意一个选择器可以选择的元素。这对于以更紧凑的形式编写大型选择器非常有用。</p>
+<blockquote>
+<p>注意，许多浏览器通过一个更旧的、带前缀的伪类:any()来支持这个功能，包括旧版本的Chrome、Firefox和Safari。这与<code>:matches()</code>的工作方式完全相同，只是它需要厂商前缀，不支持复杂的选择器。</p>
+</blockquote>
+<p>/* 选择header, main, footer里的任意一个悬浮状态的段落(p标签) */<br>:matches(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
+<p>/* 以上内容相当于以下内容 */<br>header p:hover,<br>main p:hover,<br>footer p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
+<p>/* 向后兼容的版本:-*-any() */<br>:-moz-any(header, main, footer) p:hover,<br>:-webkit-any(header, main, footer) p:hover,<br>:matches(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
+<h4 id="来个例子："><a href="#来个例子：" class="headerlink" title="来个例子："></a>来个例子：</h4><header>
+<p>一段标题信息</p>
+</header>
+
+<main>
+<ul>
+<li><p>一段列表</p><p>列表项</p></li>
+<li><p>一段列表</p><p>列表项</p></li>
+</ul>
+</main>
+
+<footer>
+<p>一段底部信息</p>
+</footer>
+
+<p>:matches(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
+<p>:-webkit-any(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
+<p>:-moz-any(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
+<h3 id="选择器列表简化"><a href="#选择器列表简化" class="headerlink" title="选择器列表简化"></a>选择器列表简化</h3><p><code>:matches()</code> 伪类可以大大简化CSS选择器。例如，下面的CSS:</p>
+<p>/* 多层无须列表 */<br>ol ol ul, ol ul ul, ol menu ul, ol dir ul,<br>ol ol menu, ol ul menu, ol menu menu, ol dir menu,<br>ol ol dir, ol ul dir, ol menu dir, ol dir dir,<br>ul ol ul, ul ul ul, ul menu ul, ul dir ul,<br>ul ol menu, ul ul menu, ul menu menu, ul dir menu,<br>ul ol dir, ul ul dir, ul menu dir, ul dir dir,<br>menu ol ul, menu ul ul, menu menu ul, menu dir ul,<br>menu ol menu, menu ul menu, menu menu menu, menu dir menu,<br>menu ol dir, menu ul dir, menu menu dir, menu dir dir,<br>dir ol ul, dir ul ul, dir menu ul, dir dir ul,<br>dir ol menu, dir ul menu, dir menu menu, dir dir menu,<br>dir ol dir, dir ul dir, dir menu dir, dir dir dir {<br>list-style-type: square;<br>}</p>
+<p>可以被替换为：</p>
+<p>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) ul,<br>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) menu,<br>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) dir {<br>list-style-type: square;<br>}</p>
+<p>但是，不要像下面那么做: (参见 the section on performance 。)</p>
+<p>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) :matches(ul, menu, dir) {<br>list-style-type: square;<br>}</p>
+<h3 id="简化部分选择器"><a href="#简化部分选择器" class="headerlink" title="简化部分选择器"></a>简化部分选择器</h3><p><code>:matches</code> 伪类在处理HTML5 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Sections_and_Outlines_of_an_HTML5_document">sections and headings</a>特别有用。 由于 <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;nav&gt;</code> 经常嵌套在一起, 没有 <code>:matches()</code>的话匹配其他元素将会很棘手。 例如, 在没有 :matches()的情况下, 在不同深度对所有<h1> 素进行样式化可能非常复杂:</p>
+<p>/* Level 0 */<br>h1 {<br>font-size: 30px;<br>}<br>/* Level 1 */<br>section h1, article h1, aside h1, nav h1 {<br>font-size: 25px;<br>}<br>/* Level 2 */<br>section section h1, section article h1, section aside h1, section nav h1,<br>article section h1, article article h1, article aside h1, article nav h1,<br>aside section h1, aside article h1, aside aside h1, aside nav h1,<br>nav section h1, nav article h1, nav aside h1, nav nav h1, {<br>font-size: 20px;<br>}<br>/* Level 3 */<br>/* … */</p>
+<p>使用 :matches()之后,它变的非常简单:</p>
+<p>/* Level 0 */<br>h1 {<br>font-size: 30px;<br>}<br>/* Level 1 */<br>:matches(section, article, aside, nav) h1 {<br>font-size: 25px;<br>}<br>/* Level 2 */<br>:matches(section, article, aside, nav)<br>:matches(section, article, aside, nav) h1 {<br>font-size: 20px;<br>}<br>/* Level 3 */<br>:matches(section, article, aside, nav)<br>:matches(section, article, aside, nav)<br>:matches(section, article, aside, nav) h1 {<br>font-size: 15px;<br>}</p>
+<p>这个函数暂时还不被完全支持，相信不久的将来一定会被完美支持</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/03/%E5%88%9B%E5%BB%BAcss-grid-%E5%9B%BE%E5%83%8F%E5%BA%93%E5%85%B7%E6%9C%89%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E5%92%8C%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/03/%E5%88%9B%E5%BB%BAcss-grid-%E5%9B%BE%E5%83%8F%E5%BA%93%E5%85%B7%E6%9C%89%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E5%92%8C%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/" class="post-title-link" itemprop="url">创建CSS Grid 图像库(具有模糊效果和媒体查询)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-03 16:41:56" itemprop="dateCreated datePublished" datetime="2018-12-03T16:41:56+08:00">2018-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们将用一组图片缩略图列表将它们转换为具有模糊悬停效果的响应式CSS Grid图库。我们还将使用一个很棒的CSS技巧来确保触摸屏用户也能体验到这种效果！ 我们将执行以下操作：</p>
+<ul>
+<li>  使用CSS Grid排列缩略图，为我们提供响应式图库。</li>
+<li>  使用CSS filter和transitions创建悬停效果。</li>
+<li>  使用漂亮的CSS媒体查询来确保触摸屏用户仍然可以看到每个缩略图标题，即使没有悬停。</li>
+</ul>
+<h2 id="首先要把列表的结构罗列出来"><a href="#首先要把列表的结构罗列出来" class="headerlink" title="首先要把列表的结构罗列出来"></a>首先要把列表的结构罗列出来</h2><div class="grid-container">
+  <article class="location-listing">
+    <a class="location-title" href="#"></a>
+    <a class="location-image" href="#">
+        <img src="">
+    </a>
+  </article>
+</div>
+
+<h2 id="响应式CSS网格"><a href="#响应式CSS网格" class="headerlink" title="响应式CSS网格"></a>响应式CSS网格</h2><p>只要有几个规则，我们就可以把缩略图变成网格：</p>
+<p>.grid-container {<br>  display: grid;<br>  grid-gap: 1em;<br>  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));<br>}</p>
+<p>这里的简单线条是display:grid;（它将所有子项转换成网格项并加以布局）和grid-gap:1em;（它定义了模块之间的间隔）。 稍微的复杂的是我们定义的grid-template-columns属性的值，它定义了我们的列。你平常可能看到的是类似repeat(3,200px)的内容，它将定义的是三列200px。在这种情况下，我们将使用auto-fill来填充关键字repeat()，然后使用了一些值。这给了我们尽可能多的列，最小为300px，最大为1fr，将适合网格容器。 调整浏览器窗口大小，看看它是如何运行的！</p>
+<h3 id="你需要补充的一个细节："><a href="#你需要补充的一个细节：" class="headerlink" title="你需要补充的一个细节："></a>你需要补充的一个细节：</h3><p>img {<br>  width: 100%;<br>  height: auto;<br>  vertical-align: middle;<br>}</p>
+<h3 id="悬停效果"><a href="#悬停效果" class="headerlink" title="悬停效果"></a>悬停效果</h3><p>我们将使用标题作为缩略图的叠加层，在悬停时显示它们。我们还将为悬停的图像提供红色效果，并使其略微模糊，以帮助覆盖文本的可读性。</p>
+<h3 id="覆盖标题"><a href="#覆盖标题" class="headerlink" title="覆盖标题"></a>覆盖标题</h3><p>要叠加标题，我们需要定位它，所以我们首先要将<article>设置position: relative;和标题position: absolute;。我们将其背景填充为红色背景：</p>
+<p>.location-listing {<br>  position: relative;<br>}</p>
+<p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);<br>}</p>
+<p>已经很好的显示了<img src="http://file.w3cbest.com/file/images/columns.gif"></p>
+<h3 id="标题的风格"><a href="#标题的风格" class="headerlink" title="标题的风格"></a>标题的风格</h3><p>一些印刷样式将改善我们的标题的外观，并且三行flexbox魔术将集中为我们对齐：</p>
+<p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);</p>
+<p>  color: white;<br>  font-size: 1.5em;<br>  font-weight: bold;<br>  text-decoration: none;</p>
+<p>  display: flex;<br>  align-items: center;<br>  justify-content: center;<br>}</p>
+<p>好多了： <img src="http://file.w3cbest.com/file/images/align-items.gif"></p>
+<h3 id="隐藏标题"><a href="#隐藏标题" class="headerlink" title="隐藏标题"></a>隐藏标题</h3><p>现在让我们通过设置它的不透明度隐藏标题，这样我们可以在悬停时看到它。.location-title应该这样做：</p>
+<p>opacity: 0;<br>transition: opacity .5s;</p>
+<p>在这里，我们还设置了一个transition规则，以便当我们将不透明度恢复时，它将有0.5秒的延时过程。我们现在将hover悬停时不透明度设置为1</p>
+<p>.location-listing:hover .location-title {<br>  opacity: 1;<br>}</p>
+<p>到这里我们标题悬停效果已经完美实现了： <img src="http://file.w3cbest.com/file/images/transition.jpg"></p>
+<h3 id="模糊效果"><a href="#模糊效果" class="headerlink" title="模糊效果"></a>模糊效果</h3><p>我们已经创造了一个漂亮的悬停效果，接下来为图像添加模糊滤镜。首先将模糊滤镜设置为正常状态，以便为我们提供一些过渡。然后我们会为悬停状态模糊设置为2px（这里你可以根据你的意愿设置，但我认为2px是一个很棒的视觉效果）：</p>
+<p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>}</p>
+<p>.location-listing:hover .location-image img {<br>  filter: blur(2px);<br>}</p>
+<p>这就是效果了： <img src="http://file.w3cbest.com/file/images/filter.jpg"></p>
+<h3 id="需要注意的两件事："><a href="#需要注意的两件事：" class="headerlink" title="需要注意的两件事："></a>需要注意的两件事：</h3><ul>
+<li>  标题已经消失，因为浏览器现在正在顶部呈现模糊的图形。</li>
+<li>  模糊效果看起来不错，但它也有边缘模糊效果。(可以把它去掉)</li>
+</ul>
+<p>因为层级的关系标题被遮住了把.location-title设置z-index:1 把边缘模糊去掉，首先我们对图像进行缩放，使其稍微大一些，然后对图像容器（.location-list）设置overflow: hidden;以便当较大的图像模糊时，有效地裁剪其边缘。下面是两个元素已设置的属性：</p>
+<p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>  transform: scale(1.1);<br>}</p>
+<p>.location-listing {<br>  position: relative;<br>  overflow: hidden;<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/transform-scale.jpg"></p>
+<h2 id="触摸屏问题"><a href="#触摸屏问题" class="headerlink" title="触摸屏问题"></a>触摸屏问题</h2><p>有些网页应用都有很多悬停效果，而且是都被隐藏，在不触发的时候是看不到的(大量的平板电脑和智能手机不能模仿悬停“按下”动作)，这是不容易访问的。 幸运的是，CSS有一些非常有用的交互媒体查询可以帮助我们（他们也享受相当不错的浏览器支持）。这些查询将检测浏览器的输入机制 - 指针设备质量，悬停能力以及一些其他特殊定义 - 因此我们可以相当准确地确定是否在触摸屏设备上查看我们的缩略图。 以此媒体查询为例（它完全符合我们的预期）</p>
+<p>@media (hover: none) { }</p>
+<p>在这些花括号中，我们将我们想要应用的任何样式应用于无法处理的浏览器:hover。我们将声明对于悬停不可能或至少不方便的设备，缩略图图像将始终模糊，标题将始终可见：</p>
+<p>@media (hover: none) {<br>  .location-title {<br>     opacity: 1;<br>  }<br>  .location-image img {<br>    filter: blur(2px);<br>  }<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/screen-devices.jpg"> 注意：如上所述，对此的支持非常合理，但有关交互媒体查询实施的讨论仍在进行中。这个规范很可能会改变或删除部分。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/oQVGaa/">创建CSS Grid 图像库</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/29/echarts%E7%BB%99%E6%9F%B1%E5%AD%90%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%90%8C%E9%A2%9C%E8%89%B2%E7%82%B9%E5%87%BB%E5%B9%B6%E6%94%B9%E5%8F%98%E9%A2%9C%E8%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/29/echarts%E7%BB%99%E6%9F%B1%E5%AD%90%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%90%8C%E9%A2%9C%E8%89%B2%E7%82%B9%E5%87%BB%E5%B9%B6%E6%94%B9%E5%8F%98%E9%A2%9C%E8%89%B2/" class="post-title-link" itemprop="url">Echarts给柱子设置不同颜色点击并改变颜色</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-29 12:30:56" itemprop="dateCreated datePublished" datetime="2018-11-29T12:30:56+08:00">2018-11-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>关于给Echarts柱子设置不同颜色的方案网上已经有了，不多啰嗦。其实就是通过设置itemStyle的color函数(可以当作函数回调)，使其设置一组颜色值通过函数返回值的下标一一对应将颜色赋给柱子上，大致操作就是下面的一段代码</p>
+<p>var colors = [‘#4587E7’,’#35AB33’,’#F5AD1D’,’#ff7f50’,’#da70d6’,’#32cd32’,’#6495ed’];<br>option = {<br>    …<br>    series:[{<br>        …<br>        itemStyle: {<br>            color: function(params) {<br>                //通过返回值的下标一一对应将颜色赋给柱子上<br>                return colors[params.dataIndex];<br>            }<br>        }<br>        …<br>    }]<br>}</p>
+<p> </p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/dawKPV/">dawKPV</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p> </p>
+<h3 id="下面我们讲一下如何点击改变颜色"><a href="#下面我们讲一下如何点击改变颜色" class="headerlink" title="下面我们讲一下如何点击改变颜色"></a>下面我们讲一下<a target="_blank" rel="noopener" href="http://www.w3cbest.com/?p=228">如何点击改变颜色</a></h3><p>为啥子要讲这个呢，这是我在项目中遇到的需求,看下图:</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/xMmzyY/">Echarts给柱子设置不同颜色点击变色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>需求是这样的，分值在小于20%的时候柱子显示红色，默认是蓝色，点击后为深蓝色，需求知道了接下来该如何实现呢？通过循环判断小于20%的值赋上颜色这样把data数组结构就改变成数组对象，这样效果已经出来了，就是在点击的时候不会换色，红色柱子已被定死了不能改变了，也就是说这个方法是行不通的，换其他方法，再不改变data数组的前提下是否可以呢，然后就结合了文章开头的给柱子添加不同颜色的思想和刚刚的那个点击变色没实现的方法实现了下面的效果，也就是我的需求</p>
+<p>data = [7, 10, 20, 30, 10, 29, 16];<br>var colors = [];<br>for (var i = 0; i &lt; data.length; i++) {<br>    if(data[i] &lt; 20){<br>        colors.push(‘#EE4B46’);<br>    }else{<br>         colors.push(‘#00A1E9’);<br>    }<br>};</p>
+<p>option = {<br>    …<br>    data: data,<br>    itemStyle: {<br>        color: function(params) {<br>            var key = params.dataIndex + 1;<br>            if (key === curInt) {<br>                return ‘#4587E7’;<br>            } else {<br>                return colors[params.dataIndex]<br>            }<br>        }<br>    }<br>    …<br>}</p>
+<p> </p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/OdrwGp/">Echarts给柱子设置不同颜色点击变色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/28/javascript%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/28/javascript%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="post-title-link" itemprop="url">JavaScript继承和原型链</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-28 08:00:07" itemprop="dateCreated datePublished" datetime="2018-11-28T08:00:07+08:00">2018-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文为 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/529.html">JavaScript Class 类的私有和公共属性</a> 续篇</p>
+</blockquote>
+<p>之前我们学习了如何在 ES5 和 ES6 中创建 <code>Animal</code> 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>class Animal {<br>constructor(name, energy) {<br>this.name = name<br>this.energy = energy<br>}<br>eat(amount) {<br>console.log(`${this.name} is eating.`)<br>this.energy += amount<br>}<br>sleep() {<br>console.log(`${this.name} is sleeping.`)<br>this.energy += length<br>}<br>play() {<br>console.log(`${this.name} is playing.`)<br>this.energy -= length<br>}<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>现在我们想为特定动物建一个别 class(类) 。 例如，如果我们想要开始制作一堆狗实例，该怎么办？ 这些狗有哪些属性和方法？ 嗯，类似于我们的 <code>Animal</code> 类，我们可以给每只狗一个 <code>name</code> ，一个 <code>energy</code> 等级，以及 <code>eat</code> ，<code>sleep</code> 和 <code>play</code> 的能力。 我们的 <code>Dog</code> 类是独一无二的，我们也可以给<code>Dog</code> 类一些独一无二的的属性，比如一个 <code>breed</code>(品种) 属性以及 <code>bark</code>(吠叫) 的能力。 在 ES5 中，我们的 <code>Dog</code> 类可能看起来像这样:</p>
+<p>function Dog(name, energy, breed) {<br>    this.name = name<br>    this.energy = energy<br>    this.breed = breed<br>}</p>
+<p>Dog.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Dog.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Dog.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof-Woof!’)<br>    this.energy -= .1<br>}</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
+<p>你应该看出来了，我们刚刚重新创建了 <code>Animal</code> 类并为它添加了一些新属性。 如果我们想创建另一个动物，比如说 <code>Cat</code> ，那么我们必须再次创建一个 <code>Cat</code> 类，将 <code>Animal</code> 类中的所有常用逻辑复制到 <code>Cat</code> ，然后像 <code>Dog</code> 类一样添加 <code>Cat</code> 特定属性。 就是说，我们必须对我们创造的每一种不同类型的动物都这样做。</p>
+<p>function Dog (name, energy, breed) {}</p>
+<p>function Cat (name, energy, declawed) {}</p>
+<p>function Giraffe (name, energy, height) {}</p>
+<p>function Monkey (name, energy, domesticated) {}</p>
+<p>这项工作似乎很浪费。 <code>Animal</code> 类是完美的基类。 这意味着它具有我们每只动物的共同特征。 无论我们是创造 狗，猫，长颈鹿还是猴子，它们都会有一个<code>name</code> ，<code>energy</code> 等级，以及 <code>eat</code> ，<code>sleep</code> 和 <code>play</code> 的能力。 那么每当我们为每个不同的动物创建单独的类时，我们是否可以利用 <code>Animal</code>类？ 我们来试试吧。 我将在下面再次粘贴 <code>Animal</code> 类以便于参考。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>function Dog(name, energy, breed) {</p>
+<p>}</p>
+<p>我们对上面的 <code>Dog</code> 构造函数你了解多少？ 首先，我们知道它需要3个参数，<code>name</code>, <code>energy</code> 和 <code>breed</code>。 其次，我们知道它将使用 <code>new</code> 关键字调用，因此我们将拥有一个 <code>this</code> 对象。 第三，我们知道我们需要利用 <code>Animal</code> 函数，这样任何狗的实例都会有一个<code>name</code> ，<code>energy</code> 等级，以及 <code>eat</code> ，<code>sleep</code> 和 <code>play</code> 的能力。 第三点是有点棘手的问题。 你“利用”一个函数的方式就是调用它。 所以我们知道在 <code>Dog</code> 里面，我们想要调用 <code>Animal</code> 。 我们需要弄清楚的是我们如何在<code>Dog</code> 的上下文中调用 <code>Animal</code>。 这意味着我们想用 <code>Dog</code> 中的 <code>this</code> 关键字调用 <code>Animal</code>。 如果我们正确地做到了，那么 <code>Dog</code> 函数内部将具有 <code>Animal</code> 的所有属性（<code>name</code> ，<code>energy</code>）。 如果你记得 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/this-keyword-call-apply-bind-javascript/">上一节我们所讨论的内容</a>，JavaScript 中的每个函数都有一个 <code>.call</code> 方法。</p>
+<blockquote>
+<p><code>.call()</code> 是函数的一个方法，它允许你调用函数时，指定该函数的上下文。</p>
+</blockquote>
+<p>听起来正是我们所需要的。我们想在 <code>Dog</code> 上下文中调用 <code>Animal</code> 。</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
+<p>charlie.name // Charlie<br>charlie.energy // 10<br>charlie.breed // Goldendoodle</p>
+<p>知道这个，我们就已经成功一半了。你将在上面的代码中注意到，因为这一行是 <code>Animal.call(this, name, energy)</code>， <code>Dog</code> 的每个实例都将有一个 <code>name</code> 和 <code>energy</code> 属性。同样，这样做的原因是，就好像我们使用从 <code>Dog</code> 生成的 <code>this</code> 关键字运行 <code>Animal</code> 函数一样。在我们添加了一个<code>name</code> 和 <code>energy</code> 属性之后，我们又像往常一样添加了一个 <code>breed</code> 属性。 请记住，这里的目标是让 <code>Dog</code> 的每个实例不仅具有 <code>Animal</code> 的所有属性，而且还具有所有方法。如果你运行上面的代码，你会注意到如果你尝试运行 <code>charlie.eat(10)</code> ，你将收到一个错误。目前 <code>Dog</code> 的每个实例都具有 <code>Animal</code>（<code>name</code> 和 <code>energy</code>）的属性，但我们没有做任何事情来确保他们也有方法（<code>eat</code> ，<code>sleep</code> 和 <code>play</code>）。 让我们考虑如何解决这个问题。我们知道所有 <code>Animal</code> 的方法都位于 <code>Animal.prototype</code> 上。这意味着我们想要确保 <code>Dog</code> 的所有实例都可以访问<code>Animal.prototype</code> 上的方法。如果我们在这里使用我们的好朋友 <code>Object.create</code> 怎么办？如果你还记得，<code>Object.create</code> 允许你创建一个对象，该对象将在失败的查找中委托给另一个对象。所以在我们的例子中，我们想要创建的对象将是 <code>Dog</code> 的原型，而我们想要在失败的查找中委托的对象是<code>Animal.prototype</code>。</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>现在，只要在 <code>Dog</code> 实例上查找失败，JavaScript 就会将该查找委托给 <code>Animal.prototype</code> 。 如果这仍然有点模糊，请重新阅读 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>，其中我们讨论了 <code>Object.create</code> 和 JavaScript 的 原型(prototype) 。 让我们一起看完整个代码，然后我们将了解发生的事情。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>现在我们已经创建了我们的基类（ <code>Animal</code> ）以及我们的子类（ <code>Dog</code> ），让我们在创建 <code>Dog</code> 实例时看看它的样子。</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
+<p>charlie.name // Charlie<br>charlie.energy // 10<br>charlie.breed // Goldendoodle</p>
+<p>到目前为止没有任何花哨的东西，但让我们来看看当我们调用位于 <code>Animal</code> 上的方法时会发生什么。</p>
+<p>charlie.eat(10)</p>
+<p>/*</p>
+<ol>
+<li>JavaScript checks if charlie has an eat property - it doesn’t.</li>
+<li>JavaScript then checks if Dog.prototype has an eat property</li>
+</ol>
+<ul>
+<li>it doesn’t.</li>
+</ul>
+<ol start="3">
+<li>JavaScript then checks if Animal.prototype has an eat property</li>
+</ol>
+<ul>
+<li>it does so it calls it.<br>*/</li>
+</ul>
+<p><code>Dog.prototype</code> 被检查的原因是因为当我们创建一个新的 <code>Dog</code> 实例时，我们使用了 <code>new</code> 关键字。在引擎中，为我们创建的 <code>this</code> 对象委托给<code>Dog.prototype</code>（见下面的注释）。</p>
+<p>function Dog(name, energy, breed) {<br>    // this = Object.create(Dog.prototype)<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+// return this
+</code></pre>
+<p>}</p>
+<p>之所以检查 <code>Animal.prototype</code> 是因为我们用这一行覆盖了 <code>Dog.prototype</code> 以委托给失败的查找的 <code>Animal.prototype</code></p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>现在我们还没有谈到的一件事是，如果 <code>Dog</code> 有自己的方法呢？ 嗯，这是一个简单的解决方案。 就像 <code>Animal</code> 一样，如果我们想在该类的所有实例之间共享一个方法，我们将它添加到函数的原型中。</p>
+<p>…</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
+<p>非常好。我们需要做一个小小的补充。如果你不记得了请回到 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>了解详情，我们可以通过使用 <code>instance.constructor</code> 来访问实例的构造函数。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>console.log(leo.constructor) // Logs the constructor function</p>
+<p>正如前一篇文章中所解释的那样，“其工作原因是因为任何 <code>Animal</code> 实例都会在失败的查找中委托给 <code>Animal.prototype</code> 。 因此，当你尝试访问<code>leo.prototype</code> 时，<code>leo</code> 没有 <code>prototype</code> 属性，因此它会将该查找委托给 <code>Animal.prototype</code> ，它确实具有 <code>constructor</code> 属性。“ 我提出这个问题的原因是因为在我们的实现中，我们用一个委托给 <code>Animal.prototype</code> 的对象覆盖了 <code>Dog.prototype</code> 。</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
+<p>这意味着现在，任何打印 <code>Dog</code> 的实例 <code>instance.constructor</code> 都将获得 <code>Animal</code> 构造函数而不是 <code>Dog</code> 构造函数。你可以通过运行此代码自行查看</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)<br>console.log(charlie.constructor)</p>
+<p>请注意，即使 <code>charlie</code> 是 <code>Dog</code> 的直接实例，它也会为你提供 <code>Animal</code> 构造函数。同样，我们可以像上面一样了解这里发生的事情。</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)<br>console.log(charlie.constructor)<br>/* </p>
+<ol>
+<li>JavaScript checks if charlie has a constructor property - it doesn’t. </li>
+<li>JavaScript then checks if Dog.prototype has a constructor property - it doesn’t because it was deleted when we overwrote Dog.prototype. </li>
+<li>JavaScript then checks if Animal.prototype has a constructor property - it does so it logs that.<br>*/</li>
+</ol>
+<p>我们该如何解决这个问题？嗯，这很简单。一旦我们覆盖它，我们就可以向 <code>Dog.prototype</code> 添加正确的 <code>constructor</code> 属性。</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
+<p>Dog.prototype.constructor = Dog</p>
+<p>此时如果我们想要创建另一个子类，比如 <code>Cat</code> ，我们将遵循相同的模式。</p>
+<p>function Cat(name, energy, declawed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.declawed = declawed
+</code></pre>
+<p>}</p>
+<p>Cat.prototype = Object.create(Animal.prototype)<br>Cat.prototype.constructor = Cat</p>
+<p>Cat.prototype.meow = function() {<br>    console.log(‘Meow!’)<br>    this.energy -= .1<br>}</p>
+<p>这种具有委托给它的子类的基类的概念称为继承，它是面向对象编程（OOP）的主要部分。 如果你来自不同的编程语言，你可能已经熟悉OOP和继承了。 在 ES6 classes 之前，在 JavaScript 中，继承是一项非常艰巨的任务，正如你在上面所看到的。你现在只需要了解什么时候使用继承，以及 <code>.call</code> 和 <code>Object.create</code>， <code>this</code> ，和 <code>FN.prototype</code> 的良好组合。- 这些都是高级 JS 主题。让我们看看如何使用 ES6 类来完成同样的事情。 首先，让我们回顾一下使用我们的 <code>Animal</code> 类从 ES5 “类” 到 ES6 类的样子。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep() {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play() {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>现在我们已经将我们的 <code>Animal</code> 构造函数重构为 ES6 类，接下来我们需要做的是弄清楚如何重构我们的基类（ <code>Dog</code> ）。好消息是它更加直观。作为参考，在ES5 中，这是我们所拥有的。</p>
+<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
+<pre><code>this.breed = breed
+</code></pre>
+<p>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
+<p>Dog.prototype.constructor = Dog</p>
+<p>在我们进入继承之前，让我们使用 ES6 类来重构 <code>Dog</code> ，就像我们在之前的帖子中学到的那样。</p>
+<p>class Dog {<br>    constructor(name, energy, breed) {<br>        this.breed = breed<br>    }<br>    bark() {<br>        console.log(‘Woof Woof!’)<br>        this.energy -= .1<br>    }<br>}</p>
+<p>看起来很棒。现在，让我们弄清楚如何确保 <code>Dog</code> 继承自 <code>Animal</code> 。我们需要做的第一步是非常直接的。使用 ES6 类，你可以使用此语法 <code>extend</code> 基类</p>
+<p>class Subclass extends Baseclass {}</p>
+<p>翻译成我们的例子，这将使我们的 <code>Dog</code> 类看起来像这样：</p>
+<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep() {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play() {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}</p>
+<p>class Dog extends Animal {<br>    constructor(name, energy, breed) {<br>        this.breed = breed<br>    }<br>    bark() {<br>        console.log(‘Woof Woof!’)<br>        this.energy -= .1<br>    }<br>}</p>
+<p>在ES5中，为了确保 <code>Dog</code> 的每个实例都具有<code>name</code> 和 <code>energy</code> 属性，我们使用 <code>.call</code> 以在 <code>Dog</code> 实例的上下文中调用 <code>Animal</code> 构造函数。 幸运的是，在 ES6 中，它更直接。 每当你扩展一个基类并且你需要调用那个基类的构造函数时，你调用 <code>super</code> 传递它需要的任何参数即可。 所以在我们的例子中，我们的 <code>Dog</code> 构造函数被重构为这样:</p>
+<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep() {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play() {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}<br>class Dog extends Animal {<br>    constructor(name, energy, breed) {<br>        super(name, energy) // calls Animal’s constructor<br>        this.breed = breed<br>    }<br>    bark() {<br>        console.log(‘Woof Woof!’)<br>        this.energy -= .1<br>    }<br>}</p>
+<p>就是这样。不使用 <code>.call</code> ，不使用 <code>Object.create</code> ，不用担心重置原型上的构造函数 – 只需 <code>extends</code> 基类并确保调用 <code>super</code> 即可。 JavaScript 的有趣之处在于你学到的相同模式，最后几篇文章直接融入语言本身。 以前你了解到 <code>Array</code> 的所有实例都可以访问 <code>pop</code> ，<code>slice</code> ，<code>filter</code> 等数组方法的原因是因为所有这些方法都存在于 <code>Array.prototype</code> 中。</p>
+<p>console.log(Array.prototype)<br>/*<br>concat: ?n concat()<br>constructor: ?n Array()<br>copyWithin: ?n copyWithin()<br>entries: ?n entries()<br>every: ?n every()<br>fill: ?n fill()<br>filter: ?n filter()<br>find: ?n find()<br>findIndex: ?n findIndex()<br>forEach: ?n forEach()<br>includes: ?n includes()<br>indexOf: ?n indexOf()<br>join: ?n join()<br>keys: ?n keys()<br>lastIndexOf: ?n lastIndexOf()<br>length: 0n<br>map: ?n map()<br>pop: ?n pop()<br>push: ?n push()<br>reduce: ?n reduce()<br>reduceRight: ?n reduceRight()<br>reverse: ?n reverse()<br>shift: ?n shift()<br>slice: ?n slice()<br>some: ?n some()<br>sort: ?n sort()<br>splice: ?n splice()<br>toLocaleString: ?n toLocaleString()<br>toString: ?n toString()<br>unshift: ?n unshift()<br>values: ?n values()<br>*/</p>
+<p>你知道，所有 <code>Object</code> 实例都可以访问 <code>hasOwnProperty</code> 和 <code>toString</code> 等方法的原因是因为这些方法存在于 <code>Object.prototype</code> 上。</p>
+<p>console.log(Object.prototype)<br>/*<br>constructor: ?n Object()<br>hasOwnProperty: ?n hasOwnProperty()<br>isPrototypeOf: ?n isPrototypeOf()<br>propertyIsEnumerable: ?n propertyIsEnumerable()<br>toLocaleString: ?n toLocaleString()<br>toString: ?n toString()<br>valueOf: ?n valueOf()<br>*/</p>
+<p>这对你来说是一个挑战。使用上面的 Array 方法和 Object 方法列表，为什么下面的代码有效？</p>
+<p>const friends = [‘Mikenzi’, ‘Jake’, ‘Ean’]<br>friends.hasOwnProperty(‘push’) // false</p>
+<p>如果查看 <code>Array.prototype</code> ，则没有 <code>hasOwnProperty</code> 方法。 好吧，如果 <code>Array.prototype</code> 上没有 <code>hasOwnProperty</code> 方法，上面示例中的 <code>friends</code> 数组如何访问 <code>hasOwnProperty</code>？ 原因是因为 <code>Array</code> 类扩展了 <code>Object</code> 类。 因此，在上面的示例中，当 JavaScript 看到<code>friends</code> 没有 <code>hasOwnProperty</code> 属性时，它会检查 <code>Array.prototype</code> 是否具有该方法。 当 <code>Array.prototype</code> 没有时，它会检查 <code>Object.prototype</code> 是否有该方法，然后再调用它。 这是我们在这篇博客文章中看到的相同过程。 JavaScript 有两种类型 – 原始类型 和 引用类型 。 原始类型是 <code>boolean</code> ， <code>number</code>， <code>string</code>，<code>null</code> 和 <code>undefined</code> 并且是不可变的。 其他所有内容都是引用类型，它们都扩展了 <code>Object.prototype</code> 。 这就是为什么你可以为函数和数组添加属性，这就是为什么函数和数组都可以访问 <code>Object.prototype</code> 上的方法。</p>
+<p>function speak(){} speak.woahFunctionsAreLikeObjects = true console.log(speak.woahFunctionsAreLikeObjects) // true const friends = [‘Mikenzi’, ‘Jake’, ‘Ean’] friends.woahArraysAreLikeObjectsToo = true console.log(friends.woahArraysAreLikeObjectsToo) // true</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/javascript-inheritance-and-the-prototype-chain/">https://tylermcginnis.com/javascript-inheritance-and-the-prototype-chain/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/16/wordpress%E5%BC%95%E7%94%A8%E8%84%9A%E6%9C%ACjs%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E4%BD%B3%E5%87%BD%E6%95%B0wp-enqueue-script/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/16/wordpress%E5%BC%95%E7%94%A8%E8%84%9A%E6%9C%ACjs%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E4%BD%B3%E5%87%BD%E6%95%B0wp-enqueue-script/" class="post-title-link" itemprop="url">wordpress引用脚本js文件的最佳函数wp_enqueue_script()</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-16 17:24:08" itemprop="dateCreated datePublished" datetime="2018-11-16T17:24:08+08:00">2018-11-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>相信大部分人在制作wordpress主题引用js文件时，会直接在header.php或footer.php文件中或通过<code>bloginfo()</code>函数调用js文件，其实wordpress主题最佳引用js文件的方法是使用wordpress内置的<code>wp_enqueue_script()</code>函数，通过该函数可以安全地将javascript代码加入到WordPress创建的页面中，不仅可以最大限度地保证兼容性，还是提高wordpress性能效率的一个方法。</p>
+<h2 id="函数代码："><a href="#函数代码：" class="headerlink" title="函数代码："></a>函数代码：</h2><?php wp\_enqueue\_script( string $handle, string $src = '', array $deps = array(), stringboolnull $ver = false, bool $in\_footer = false ) ?>
+
+<h3 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h3><ul>
+<li>  <code>$handle</code> (string)(必需) 调用的脚本名称，用于区分其它脚本js，因此不能和其它脚本js文件命名相同；</li>
+<li>  <code>$src</code> (字符串)(可选) 脚本的完整路径，或脚本相对于WordPress根目录的路径。 默认值: ‘’；</li>
+<li>  <code>$deps</code> 依赖关系，加载的js文件所依存的其它js的标识字串数组（array:string），即需要在本代码之前加载的代码的名称（如js脚本依赖jquery库，那么这里要用数组的形式写上jquery），非必需;</li>
+<li>  <code>$ver</code> 加载js文件的版本号，作为查询字串附加在路径的末尾，作用是确保正确的版本信息传递给了客户端，以免受到缓存的影响（如js脚本发生变化时，通过更改版本号可以强制客户浏览器更新缓存），默认为false，调用当前wordpress程序的版本号，如果不想显示，则设置为NULL（不推荐）;</li>
+<li>  <code>$in_footer</code> boolean类型，设置调用js文件放置的位置，设置为ture则放在</body>之前，设置为false则放置在head部分;</li>
+</ul>
+<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><p>通过<code>wp_enqueue_script</code>函数加载js文件时，应该将它分配给一个钩子，如只在前台调用，使用钩子<code>wp_enqueue_script</code>；只在后台调用，使用<code>admin_enqueue_scripts</code>。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><p>只在前台调用</p>
+<?php
+function dui\_theme\_scripts() {  
+wp\_enqueue\_script( 'dui', get\_template\_directory\_uri() . '/assets/js/dui.js', array(), '1.0.0', true );
+}
+add\_action( 'wp\_enqueue\_scripts', 'dui\_theme\_scripts' );
+?>
+
+<p>只在后台调用</p>
+<?php
+function dui\_theme\_scripts() {  
+wp\_enqueue\_script( 'dui', get\_template\_directory\_uri() . '/assets/js/dui.js', array(), '1.0.0', true );
+}
+add\_action( 'admin\_enqueue\_scripts', 'dui\_theme\_scripts' );
+?>
+
+<p>附：函数位置wp-includes/functions.wp-scripts.php文件</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8Bcss%E5%8F%98%E9%87%8F-var/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8Bcss%E5%8F%98%E9%87%8F-var/" class="post-title-link" itemprop="url">你真的需要了解一下CSS变量 var()</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-14 12:39:49" itemprop="dateCreated datePublished" datetime="2018-11-14T12:39:49+08:00">2018-11-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当Web项目变得越来越大时，他的CSS会变得像天文数字那么大而且还变得混乱。为了帮助我们解决这个问题，新的CSS变量很快就会出现在主流浏览器中，它让开发人员能够重用并轻松编辑重复出现的CSS属性。用过SASS或Less的人应该知道他的变量功能有多棒，但这些变量是预处理器，需要在使用前进行编译。现在变量在vanilla CSS中可用，您可以立即在浏览器中使用它们！</p>
+<h3 id="定义和使用CSS变量"><a href="#定义和使用CSS变量" class="headerlink" title="定义和使用CSS变量"></a>定义和使用CSS变量</h3><p>与任何其他CSS定义一样，变量遵循相同的范围和继承规则。使用它们的最简单方法是通过将声明添加到:root伪类来使它们全局可用，以便所有其他选择器都可以继承它。</p>
+<p>:root {<br>  –awesome-blue：＃2196F3;<br>}</p>
+<p>要访问变量中的值，我们可以使用var(…)语法。请注意，名称区分大小写，因此–foo != –FOO。</p>
+<p>.element {<br>background-color:var(–awesome-blue);<br>}</p>
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>常用的浏览器除了IE都完美支持，您可以在此处获取更多详细信息 - <a target="_blank" rel="noopener" href="https://caniuse.com/#search=var()">我可以使用CSS变量</a>。下面是几个例子，展示了CSS变量的典型用法。为确保它们正常工作，请尝试在我们上面提到的其中一个浏览器上查看它们。</p>
+<h3 id="示例1-主题颜色"><a href="#示例1-主题颜色" class="headerlink" title="示例1 - 主题颜色"></a>示例1 - 主题颜色</h3><p>当我们需要对多个元素一遍又一遍地应用相同的规则时，CSS中的变量是最有用的，例如主题中的重复颜色。我们不是每次想要重复使用相同颜色时进行复制和粘贴，而是将其放在变量中并从那里访问它。 现在，如果我们的客户不喜欢我们选择的蓝色阴影，我们可以在一个地方（变量的定义）改变样式来改变整个主题的颜色。没有变量，我们必须手动搜索和替换每一次出现。 可将代码复制下来在你的编辑器里面测试</p>
+<p>* {margin: 0;padding: 0;box-sizing: border-box;}html {padding: 30px;font: normal 13px/1.5 sans-serif;color: #546567;background-color: var(–primary-color);}.container {background: #fff;padding: 20px;}h3 {padding-bottom: 10px;margin-bottom: 15px;}p {background-color: #fff;margin: 15px 0;}button {font-size: 13px;padding: 8px 12px;background-color: #fff;border-radius: 3px;box-shadow: none;text-transform: uppercase;font-weight: bold;cursor: pointer;opacity: 0.8;outline: 0;}button:hover {opacity: 1;}</p>
+<!-- 分割线 -->:root {
+<pre><code>--primary-color: #B1D7DC;
+--accent-color: #FF3F90;
+</code></pre>
+<p>}<br>html {<br>    background-color: var(–primary-color);<br>}<br>h3 {<br>    border-bottom: 2px solid var(–primary-color);<br>}<br>button {<br>    color: var(–accent-color);<br>    border: 1px solid var(–accent-color);<br>}</p>
+<div class="container">
+<h3>对话框窗口</h3>
+<p>过放荡不羁的生活，容易得像顺水推舟，但是要结识良朋益友，却难如登天。</p>
+<button>确认</button>
+</div>
+
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/xmLvoV/">示例1 – 主题颜色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h3 id="示例2-属性类名可读性"><a href="#示例2-属性类名可读性" class="headerlink" title="示例2 - 属性类名可读性"></a>示例2 - 属性类名可读性</h3><p>变量的另一个重要用途是当我们想要保存更复杂的属性值时，我们不必记住它。最好的例子就是有多个参数，如CSS规则box-shadow，transform和font。 通过将属性放在变量中，我们可以使用语义可读的名称来访问它。</p>
+<p>html{background-color: #F9F9F9;}<br>ul{padding: 20px;list-style: none;width: 300px;}<br>li{font: normal 18px sans-serif;padding: 20px;transition: 0.4s;margin: 10px;color: #444;background-color: #fff;cursor: pointer;}</p>
+<!-- 分割线 -->
+<p>:root{<br>–tiny-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);<br>–animate-right: translateX(20px);<br>}<br>li{<br>box-shadow: var(–tiny-shadow);<br>}<br>li:hover{<br>transform: var(–animate-right);<br>}</p>
+<ul>
+<li>我在这里!</li>
+<li>我在这里!</li>
+<li>我在这里!</li>
+</ul>
+
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/LMjwKb/">示例2 – 属性类名可读性</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h3 id="示例3-动态更改变量"><a href="#示例3-动态更改变量" class="headerlink" title="示例3 - 动态更改变量"></a>示例3 - 动态更改变量</h3><p>当多次声明自定义属性时，标准规则有助于解决冲突，样式表中最后定义的会覆盖上面定义的。 下面的示例演示了用户动态操作改变属性是多么容易，同时仍然保持代码清晰简洁。</p>
+<p>*{margin: 0;padding: 0;box-sizing: border-box;}<br>html{background: #eee;padding: 30px;font: 500 14px sans-serif;color: #333;line-height: 1.5;}<br>.blue-container{background: #64B5F6;padding-left: 50px;}<br>.green-container{background: #AED581;padding-left: 50px;}<br>.container{background: #fff;padding: 20px;}<br>p{transition: 0.4s;}<br>.title{font-weight: bold;}</p>
+<!-- 分割线 -->
+<p>.blue-container{<br>–title-text: 18px;<br>–main-text: 14px;<br>}<br>.blue-container:hover{<br>–title-text: 24px;<br>–main-text: 16px;<br>}<br>.green-container:hover{<br>–title-text: 30px;<br>–main-text: 18px;<br>}<br>.title{<br>font-size: var(–title-text);<br>}<br>.content{<br>font-size: var(–main-text);<br>}</p>
+<div class="blue-container">
+<div class="green-container">
+<div class="container">
+<p class="title">这是个标题</p>
+<p class="content">将鼠标悬停在不同的颜色区域上可以更改此文本和标题的大小。</p>
+</div>
+</div>
+</div>
+
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/OrxLLE/">示例3 – 动态更改变量</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>正如您所看到的，CSS变量非常简单易用，开发人员不必花费太多时间在各处开始应用它们。以下是扩展内容：</p>
+<ul>
+<li>  var()函数有两个参数，如果自定义属性失败，它可用于提供回退值： width: var(–custom-width, 20%);</li>
+<li>  可以嵌套自定义属性： –base-color: #f93ce9; –background-gradient: linear-gradient(to top, var(–base-color), #444);</li>
+<li>  变量可以与CSS的另一个新增功能- calc() 函数结合使用。 –container-width: 1000px; max-width: calc(var(–container-width) / 2);</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">你真的需要了解一下CSS变量 var()</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-14 00:00:00" itemprop="dateCreated datePublished" datetime="2018-11-14T00:00:00+08:00">2018-11-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-21 10:25:12" itemprop="dateModified" datetime="2021-04-21T10:25:12+08:00">2021-04-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当Web项目变得越来越大时，他的CSS会变得像天文数字那么大而且还变得混乱。为了帮助我们解决这个问题，新的CSS变量很快就会出现在主流浏览器中，它让开发人员能够重用并轻松编辑重复出现的CSS属性。用过SASS或Less的人应该知道他的变量功能有多棒，但这些变量是预处理器，需要在使用前进行编译。现在变量在vanilla CSS中可用，您可以立即在浏览器中使用它们！</p>
+<h2 id="定义和使用CSS变量"><a href="#定义和使用CSS变量" class="headerlink" title="定义和使用CSS变量"></a>定义和使用CSS变量</h2><p>与任何其他CSS定义一样，变量遵循相同的范围和继承规则。使用它们的最简单方法是通过将声明添加到:root伪类来使它们全局可用，以便所有其他选择器都可以继承它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">  --awesome-blue：＃2196F3; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要访问变量中的值，我们可以使用var(…)语法。请注意，名称区分大小写，因此–foo != –FOO。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.element &#123;</span><br><span class="line">    background-color:var(--awesome-blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>常用的浏览器除了IE都完美支持，您可以在此处获取更多详细信息 - 我可以使用CSS变量。下面是几个例子，展示了CSS变量的典型用法。为确保它们正常工作，请尝试在我们上面提到的其中一个浏览器上查看它们。</p>
+<h4 id="示例1-主题颜色"><a href="#示例1-主题颜色" class="headerlink" title="示例1 - 主题颜色"></a>示例1 - 主题颜色</h4><p>当我们需要对多个元素一遍又一遍地应用相同的规则时，CSS中的变量是最有用的，例如主题中的重复颜色。我们不是每次想要重复使用相同颜色时进行复制和粘贴，而是将其放在变量中并从那里访问它。</p>
+<p>现在，如果我们的客户不喜欢我们选择的蓝色阴影，我们可以在一个地方（变量的定义）改变样式来改变整个主题的颜色。没有变量，我们必须手动搜索和替换每一次出现。</p>
+<p>可将代码复制下来在你的编辑器里面测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">* &#123;margin: 0;padding: 0;box-sizing: border-box;&#125;html &#123;padding: 30px;font: normal 13px&#x2F;1.5 sans-serif;color: #546567;background-color: var(--primary-color);&#125;.container &#123;background: #fff;padding: 20px;&#125;h3 &#123;padding-bottom: 10px;margin-bottom: 15px;&#125;p &#123;background-color: #fff;margin: 15px 0;&#125;button &#123;font-size: 13px;padding: 8px 12px;background-color: #fff;border-radius: 3px;box-shadow: none;text-transform: uppercase;font-weight: bold;cursor: pointer;opacity: 0.8;outline: 0;&#125;button:hover &#123;opacity: 1;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">:root &#123;</span><br><span class="line">    --primary-color: #B1D7DC;</span><br><span class="line">    --accent-color: #FF3F90;</span><br><span class="line">&#125;</span><br><span class="line">html &#123;</span><br><span class="line">    background-color: var(--primary-color);</span><br><span class="line">&#125;</span><br><span class="line">h3 &#123;</span><br><span class="line">    border-bottom: 2px solid var(--primary-color);</span><br><span class="line">&#125;</span><br><span class="line">button &#123;</span><br><span class="line">    color: var(--accent-color);</span><br><span class="line">    border: 1px solid var(--accent-color);</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">&lt;h3&gt;对话框窗口&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;p&gt;过放荡不羁的生活，容易得像顺水推舟，但是要结识良朋益友，却难如登天。&lt;&#x2F;p&gt;</span><br><span class="line">&lt;button&gt;确认&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="xmLvoV" data-default-tab="result" data-user="w3cbest" data-pen-title="示例1 – 主题颜色">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/xmLvoV/">示例1 – 主题颜色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
+
+<h4 id="示例2-属性类名可读性"><a href="#示例2-属性类名可读性" class="headerlink" title="示例2 - 属性类名可读性"></a>示例2 - 属性类名可读性</h4><p>变量的另一个重要用途是当我们想要保存更复杂的属性值时，我们不必记住它。最好的例子就是有多个参数，如CSS规则box-shadow，transform和font。</p>
+<p>通过将属性放在变量中，我们可以使用语义可读的名称来访问它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">html&#123;background-color: #F9F9F9;&#125;</span><br><span class="line">ul&#123;padding: 20px;list-style: none;width: 300px;&#125;</span><br><span class="line">li&#123;font: normal 18px sans-serif;padding: 20px;transition: 0.4s;margin: 10px;color: #444;background-color: #fff;cursor: pointer;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">:root&#123;</span><br><span class="line">    --tiny-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);</span><br><span class="line">    --animate-right: translateX(20px);</span><br><span class="line">&#125;</span><br><span class="line">li&#123;</span><br><span class="line">    box-shadow: var(--tiny-shadow);</span><br><span class="line">&#125;</span><br><span class="line">li:hover&#123;</span><br><span class="line">    transform: var(--animate-right);</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;我在这里!&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="LMjwKb" data-default-tab="result" data-user="w3cbest" data-pen-title="示例2 – 属性类名可读性">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/LMjwKb/">示例2 – 属性类名可读性</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
+
+<h4 id="示例3-动态更改变量"><a href="#示例3-动态更改变量" class="headerlink" title="示例3 - 动态更改变量"></a>示例3 - 动态更改变量</h4><p>当多次声明自定义属性时，标准规则有助于解决冲突，样式表中最后定义的会覆盖上面定义的。</p>
+<p>下面的示例演示了用户动态操作改变属性是多么容易，同时仍然保持代码清晰简洁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">*&#123;margin: 0;padding: 0;box-sizing: border-box;&#125;</span><br><span class="line">html&#123;background: #eee;padding: 30px;font: 500 14px sans-serif;color: #333;line-height: 1.5;&#125;</span><br><span class="line">.blue-container&#123;background: #64B5F6;padding-left: 50px;&#125;</span><br><span class="line">.green-container&#123;background: #AED581;padding-left: 50px;&#125;</span><br><span class="line">.container&#123;background: #fff;padding: 20px;&#125;</span><br><span class="line">p&#123;transition: 0.4s;&#125;</span><br><span class="line">.title&#123;font-weight: bold;&#125;</span><br><span class="line">&lt;!-- 分割线 --&gt;</span><br><span class="line">.blue-container&#123;</span><br><span class="line">    --title-text: 18px;</span><br><span class="line">    --main-text: 14px;</span><br><span class="line">&#125;</span><br><span class="line">.blue-container:hover&#123;</span><br><span class="line">    --title-text: 24px;</span><br><span class="line">    --main-text: 16px;</span><br><span class="line">&#125;</span><br><span class="line">.green-container:hover&#123;</span><br><span class="line">    --title-text: 30px;</span><br><span class="line">    --main-text: 18px;</span><br><span class="line">&#125;</span><br><span class="line">.title&#123;</span><br><span class="line">    font-size: var(--title-text);</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    font-size: var(--main-text);</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;blue-container&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;green-container&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;p class&#x3D;&quot;title&quot;&gt;这是个标题&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p class&#x3D;&quot;content&quot;&gt;将鼠标悬停在不同的颜色区域上可以更改此文本和标题的大小。&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p class="codepen" data-height="265" data-theme-id="0" data-slug-hash="OrxLLE" data-default-tab="result" data-user="w3cbest" data-pen-title="示例3 – 动态更改变量">See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/OrxLLE/">示例3 – 动态更改变量</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</p>
+<p><script async="" src="https://static.codepen.io/assets/embed/ei.js"></script></p>
+
+<p>正如您所看到的，CSS变量非常简单易用，开发人员不必花费太多时间在各处开始应用它们。以下是扩展内容：</p>
+<p>var()函数有两个参数，如果自定义属性失败，它可用于提供回退值：<br>    width: var(–custom-width, 20%);<br>    可以嵌套自定义属性：<br>    –base-color: #f93ce9;<br>    –background-gradient: linear-gradient(to top, var(–base-color), #444);<br>    变量可以与CSS的另一个新增功能- calc() 函数结合使用。<br>    –container-width: 1000px;<br>    max-width: calc(var(–container-width) / 2);</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

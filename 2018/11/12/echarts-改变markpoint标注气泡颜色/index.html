@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="改变markPoint 标注(气泡)颜色的方法很简单，其实还是多翻文档，markPoint属性有很多下面列了几个也不一一介绍了，自己翻文档。  markPoint:{  symbol: ‘pin’, &#x2F;&#x2F;标记(气泡)的图形  symbolSize: 50, &#x2F;&#x2F;标记(气泡)的大小  …  itemStyle: {…}, &#x2F;&#x2F;标注(气泡)的样式} symbol标记的图形，默认是个气泡型的，看上图很清">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Echarts 改变markPoint标注(气泡)颜色">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="改变markPoint 标注(气泡)颜色的方法很简单，其实还是多翻文档，markPoint属性有很多下面列了几个也不一一介绍了，自己翻文档。  markPoint:{  symbol: ‘pin’, &#x2F;&#x2F;标记(气泡)的图形  symbolSize: 50, &#x2F;&#x2F;标记(气泡)的大小  …  itemStyle: {…}, &#x2F;&#x2F;标注(气泡)的样式} symbol标记的图形，默认是个气泡型的，看上图很清">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.w3cbest.com/wp-content/uploads/2018/11/echartimg.jpg">
+<meta property="article:published_time" content="2018-11-12T03:36:37.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.923Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="echarts">
+<meta property="article:tag" content="markPoint">
+<meta property="article:tag" content="可视化">
+<meta property="article:tag" content="插件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.w3cbest.com/wp-content/uploads/2018/11/echartimg.jpg">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Echarts 改变markPoint标注(气泡)颜色 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Echarts 改变markPoint标注(气泡)颜色
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-12 11:36:37" itemprop="dateCreated datePublished" datetime="2018-11-12T11:36:37+08:00">2018-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>改变markPoint 标注(气泡)颜色的方法很简单，其实还是多翻文档，markPoint属性有很多下面列了几个也不一一介绍了，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint">自己翻文档。</a> <img src="http://www.w3cbest.com/wp-content/uploads/2018/11/echartimg.jpg"></p>
+<p>markPoint:{<br>  symbol: ‘pin’, //标记(气泡)的图形<br>  symbolSize: 50, //标记(气泡)的大小<br>  …<br>  itemStyle: {…}, //标注(气泡)的样式<br>}</p>
+<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>标记的图形，默认是个气泡型的，看上图很清晰，</p>
+<h3 id="symbolSize"><a href="#symbolSize" class="headerlink" title="symbolSize"></a>symbolSize</h3><p>标记的大小，设置标记的大小，可根据自己的嗜好设置大小</p>
+<h3 id="itemStyle"><a href="#itemStyle" class="headerlink" title="itemStyle"></a>itemStyle</h3><p>标注(气泡)的样式就是这个属性，其实文档讲的都很清晰，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.itemStyle">只是有的人真的很懒只会问不会找</a></p>
+<p>itemStyle:{<br>  color: ‘#4587E7’,<br>  borderColor: ‘#000’,<br>  borderWidth: 0,<br>  borderType: ‘solid’,<br>  …<br>}</p>
+<h4 id="color-default-自适应"><a href="#color-default-自适应" class="headerlink" title="color [ default: 自适应 ]"></a>color [ default: 自适应 ]</h4><p>图形的颜色。</p>
+<h4 id="borderColor-default-“-000”"><a href="#borderColor-default-“-000”" class="headerlink" title="borderColor [ default: “#000” ]"></a>borderColor [ default: “#000” ]</h4><p>图形的描边颜色。支持的颜色格式同 color，不支持回调函数。</p>
+<h4 id="borderWidth-default-0"><a href="#borderWidth-default-0" class="headerlink" title="borderWidth [ default: 0 ]"></a>borderWidth [ default: 0 ]</h4><p>描边线宽。为 0 时无描边。</p>
+<h4 id="borderType-default-‘solid’"><a href="#borderType-default-‘solid’" class="headerlink" title="borderType [ default: ‘solid’ ]"></a>borderType [ default: ‘solid’ ]</h4><p>柱条的描边类型，默认为实线，支持 ‘solid’, ‘dashed’, ‘dotted’。   在结束之前，提一下如何给每个值都加上标注(气泡)，在文档代码看到的气泡是在最大值或最小值上，那么如何给每个值都加上标注(气泡)呢，其实这些值就是你的坐标轴上data值，如果想在每个值的上面显示标注，就要循环你的data值，但是在那循环呢，还是在markPoint对象里面，看文档API里面markPoint还有个<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.data">data数组对象属性</a>，文档是这样说的；</p>
+<h3 id="series-i-line-markPoint-data-i"><a href="#series-i-line-markPoint-data-i" class="headerlink" title="series[i]-line.markPoint.data[i]"></a>series[i]-line.markPoint.data[i]</h3><p>标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。</p>
+<ul>
+<li>  通过 x, y 属性指定相对容器的屏幕坐标，单位像素，支持百分比。</li>
+<li>  用 coord 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 ‘min’, ‘max’, ‘average’。</li>
+<li>  直接用 type 属性标注系列中的最大值，最小值。这时候可以使用 valueIndex 指定是在哪个维度上的最大值、最小值、平均值。或者可以使用 valueDim 指定在哪个维度上的最大值、最小值、平均值。</li>
+</ul>
+<p>当多个属性同时存在时，优先级按上述的顺序。 那么我们可以把数据组装成多个对象，例如我有一个数组</p>
+<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {…},<br>}</p>
+<p>那么我要在markPoint里面应该是这样组装的</p>
+<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {<br>    …<br>    data: [<br>      {value: 820, xAxis: 0, yAxis: 820},<br>      {value: 932, xAxis: 1, yAxis: 932},<br>      {value: 901, xAxis: 2, yAxis: 901},<br>      {value: 934, xAxis: 3, yAxis: 934},<br>      {value: 129, xAxis: 4, yAxis: 129},<br>      {value: 670, xAxis: 5, yAxis: 670}<br>    ]<br>  }<br>  …<br>}</p>
+<p>这样就如上图一样效果就出来了 来个?，假设一组数组，大于50显示红色，小于则显示绿色</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/gVwvqQ/">echarts markPoint 气泡</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/echarts/" rel="tag"># echarts</a>
+              <a href="/tags/markPoint/" rel="tag"># markPoint</a>
+              <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="tag"># 可视化</a>
+              <a href="/tags/%E6%8F%92%E4%BB%B6/" rel="tag"># 插件</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/" rel="prev" title="JavaScript Class 类的私有和公共属性">
+      <i class="fa fa-chevron-left"></i> JavaScript Class 类的私有和公共属性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCSS%E5%8F%98%E9%87%8F/" rel="next" title="你真的需要了解一下CSS变量 var()">
+      你真的需要了解一下CSS变量 var() <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#symbol"><span class="nav-number">1.</span> <span class="nav-text">symbol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#symbolSize"><span class="nav-number">2.</span> <span class="nav-text">symbolSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#itemStyle"><span class="nav-number">3.</span> <span class="nav-text">itemStyle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#color-default-%E8%87%AA%E9%80%82%E5%BA%94"><span class="nav-number">3.1.</span> <span class="nav-text">color [ default: 自适应 ]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#borderColor-default-%E2%80%9C-000%E2%80%9D"><span class="nav-number">3.2.</span> <span class="nav-text">borderColor [ default: “#000” ]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#borderWidth-default-0"><span class="nav-number">3.3.</span> <span class="nav-text">borderWidth [ default: 0 ]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#borderType-default-%E2%80%98solid%E2%80%99"><span class="nav-number">3.4.</span> <span class="nav-text">borderType [ default: ‘solid’ ]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#series-i-line-markPoint-data-i"><span class="nav-number">4.</span> <span class="nav-text">series[i]-line.markPoint.data[i]</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

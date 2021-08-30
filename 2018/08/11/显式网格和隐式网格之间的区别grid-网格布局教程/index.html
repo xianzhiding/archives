@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="Grid(网格) 布局最终使我们能够在CSS中定义网格，并将网格项放置到网格单元格中。这本身就很棒，但事实上我们不需要指定每个网格轨道，也不必手动放置每一个网格项。因为 Grid(网格) 布局足够灵活，可以适应它们的网格项。 这些都由所谓的显式和隐式网格来处理的。 这篇文章中所有代码示例都附有图片，以显示网格线和轨道。 如果你想自己修改代码，我建议你下载Firefox Nightly，因为它目前有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="显式网格和隐式网格之间的区别[Grid 网格布局教程]">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/08/11/%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC%E5%92%8C%E9%9A%90%E5%BC%8F%E7%BD%91%E6%A0%BC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%ABgrid-%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="Grid(网格) 布局最终使我们能够在CSS中定义网格，并将网格项放置到网格单元格中。这本身就很棒，但事实上我们不需要指定每个网格轨道，也不必手动放置每一个网格项。因为 Grid(网格) 布局足够灵活，可以适应它们的网格项。 这些都由所谓的显式和隐式网格来处理的。 这篇文章中所有代码示例都附有图片，以显示网格线和轨道。 如果你想自己修改代码，我建议你下载Firefox Nightly，因为它目前有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid1.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid6_.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid7_.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid8.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid9.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid10.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid2.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid3.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid4_.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid11.png">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/grid5.png">
+<meta property="article:published_time" content="2018-08-11T05:12:25.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.854Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="css教程">
+<meta property="article:tag" content="grid-area">
+<meta property="article:tag" content="grid教程">
+<meta property="article:tag" content="html教程">
+<meta property="article:tag" content="前端教程">
+<meta property="article:tag" content="grid布局">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/grid1.png">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/08/11/%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC%E5%92%8C%E9%9A%90%E5%BC%8F%E7%BD%91%E6%A0%BC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%ABgrid-%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80%E6%95%99%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>显式网格和隐式网格之间的区别[Grid 网格布局教程] | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/08/11/%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC%E5%92%8C%E9%9A%90%E5%BC%8F%E7%BD%91%E6%A0%BC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%ABgrid-%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          显式网格和隐式网格之间的区别[Grid 网格布局教程]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-11 13:12:25" itemprop="dateCreated datePublished" datetime="2018-08-11T13:12:25+08:00">2018-08-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">Grid(网格)</a> 布局最终使我们能够在CSS中定义网格，并将网格项放置到网格单元格中。这本身就很棒，但事实上我们不需要指定每个网格轨道，也不必手动放置每一个网格项。因为 Grid(网格) 布局足够灵活，可以适应它们的网格项。 这些都由所谓的显式和隐式网格来处理的。 这篇文章中所有代码示例都附有图片，以显示网格线和轨道。 如果你想自己修改代码，我建议你下载<a target="_blank" rel="noopener" href="https://www.mozilla.org/en-US/firefox/channel/desktop/">Firefox Nightly</a>，因为它目前有调试网格最好的<a target="_blank" rel="noopener" href="https://hacks.mozilla.org/2017/06/new-css-grid-layout-panel-in-firefox-nightly/">DevTools</a>。</p>
+<h2 id="显式的-Grid-网格"><a href="#显式的-Grid-网格" class="headerlink" title="显式的 Grid(网格)"></a>显式的 Grid(网格)</h2><p>我们可以使用 grid-template-rows，grid-template-columns 和 grid-template-areas 属性来定义形成网格的固定数量的网格线和网格轨道。这种手动定义的 Grid 称为显式网格。 <img src="http://file.w3cbest.com/file/images/grid1.png"> 具有4个垂直轨道（列）和2个水平轨道（行）的显式网格。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/OjMGMY/">CSS Grid Layout: The explicit grid</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>.grid {<br>  display: grid;<br>  grid-template-columns: 1fr 1fr 1fr 1fr;<br>  grid-template-rows: 100px 100px;<br>  grid-gap: 20px;<br>}</p>
+<h2 id="重复轨道"><a href="#重复轨道" class="headerlink" title="重复轨道"></a>重复轨道</h2><p>当我们定义<code>grid-template-columns: 1fr 1fr 1fr 1fr</code>; 时，我们得到<code>4</code>条垂直轨道，每条轨道的宽度为<code>1fr</code>。 我们可以通过使用<code>repeat()</code>表示法来自动化，如<code>grid-template-columns: repeat(4, 1fr)</code>;。第一个参数指定重复次数，第二个参数指定轨道列表。 轨道列表？ 是的，你实际上可以重复多个轨道。例如和上面代码等价的代码：grid-template-columns: repeat(2, 1fr 1fr);。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/yoerVa/">CSS Grid Layout: Repeating track lists</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="自动重复轨道"><a href="#自动重复轨道" class="headerlink" title="自动重复轨道"></a>自动重复轨道</h2><p><img src="http://file.w3cbest.com/file/images/grid6_.png"> 一个带有4个垂直轨道的显式网格，每个100px宽，由重复表示法生成。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/VzeNpE/">CSS Grid Layout: Auto-fitting</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p><code>repeat()</code>函数非常有用，但它可以进一步自动化。我们可以使用<code>auto-fill</code>和<code>auto-fit</code>关键字，来替代设置固定数量的重复。</p>
+<h2 id="自动填充轨道（auto-fill）"><a href="#自动填充轨道（auto-fill）" class="headerlink" title="自动填充轨道（auto-fill）"></a>自动填充轨道（auto-fill）</h2><p>auto-fill 关键字创建适合网格容器的轨道数，而不会导致网格溢出。 <img src="http://file.w3cbest.com/file/images/grid7_.png"> 重复放入宽度为100px的垂直轨道，以适应网格容器。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/PKZgmr/">CSS Grid Layout: auto-fill</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(auto-fill, 100px);<br>  grid-gap: 20px;<br>}</p>
+<p>注意：<code>repeat(auto-fill, 1fr)</code>; 只会创建一个轨道，因为宽度为<code>1fr</code>的单个轨道已经填满了整个网格容器。</p>
+<h2 id="自动调整轨道（auto-fit）"><a href="#自动调整轨道（auto-fit）" class="headerlink" title="自动调整轨道（auto-fit）"></a>自动调整轨道（auto-fit）</h2><p><code>auto-fit</code>关键字的行为与<code>auto-fill</code>相同，只是在网格项目放置后，它只会根据需要创建任意数量的轨道，并且任何空的重复轨道都会折叠在一起。</p>
+<p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(auto-fit, 100px);<br>  grid-gap: 20px;<br>}</p>
+<p>上例的代码，使用<code>repeat(auto-fit, 100px)</code>; 和<code>repeat(4, 100px)</code>创建的网格看上去相同。当有超过4个网格项时，就可以看到差异了。 如果有更多网格项，则<code>auto-fit</code>会创建更多列。 <img src="http://file.w3cbest.com/file/images/grid8.png"> 在 repeat() 中使用 auto-fit 关键词可根据需要创建尽可能多的轨道，并将轨道尽可能多地放入网格容器中。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/RZrOXw/">CSS Grid Layout: auto-fit</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>另一方面，如果在<code>repeat()</code>中使用固定数量的垂直轨道，并且网格项数超过该值，则添加更多行。您可以在下一节中阅读更多相关内容：<a href="#implicit-grids">隐式网格</a>。 <img src="http://file.w3cbest.com/file/images/grid9.png"> 如果网格项多于垂直轨道，则会添加更多行。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/ZJQZgr/">CSS Grid Layout: implicit rows</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>为方便起见，我在上面的示例中使用了<code>grid-template-columns</code>，但所有规则也适用于<code>grid-template-rows</code>。</p>
+<p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(auto-fill, 100px);<br>  grid-template-rows: repeat(auto-fill, 100px);<br>  grid-gap: 20px;<br>  height: 100%;<br>}</p>
+<p>html, body {<br>  height: 100%;<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/grid10.png"> 在两个轴(行和列)上使用<code>auto-fill</code>关键字重复表示法。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/prgVmW/">CSS Grid Layout: auto-fill on both axes</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="隐式的-Grid-网格"><a href="#隐式的-Grid-网格" class="headerlink" title="隐式的 Grid(网格)"></a>隐式的 Grid(网格)</h2><p>如果网格项的数量多于网格单元格，或者网格项位于显式网格外部，则网格容器会通过向网格添加网格线自动生成网格轨道。 显式网格与这些额外的隐式轨道和网格线线一起形成所谓的隐式网格。 <img src="http://file.w3cbest.com/file/images/grid2.png"> 两个网格项放置在显式网格之外，导致创建隐式网格线条和网格轨道。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/vJLwNY/">CSS Grid Layout: implicit tracks</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>.item:first-child {<br>  grid-column-start: -1;<br>}</p>
+<p>.item:nth-child(2) {<br>  grid-row-start: 4;<br>}</p>
+<p>隐式轨道的宽度和高度是自动设置。它们的大小足以适合放置的网格项，但可以更改其默认行为。</p>
+<h2 id="调整隐式轨道"><a href="#调整隐式轨道" class="headerlink" title="调整隐式轨道"></a>调整隐式轨道</h2><p><code>grid-auto-rows</code>和<code>grid-auto-columns</code>属性使我们可以控制隐式轨道的大小。</p>
+<p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(4, 1fr);<br>  grid-template-rows: 100px 100px;<br>  grid-gap: 20px;<br>  grid-auto-columns: 200px;<br>  grid-auto-rows: 60px;<br>}</p>
+<p>无论网格项是否适合，隐式轨道现在总是具有200px的宽度和60px的高度。 <img src="http://file.w3cbest.com/file/images/grid3.png"> 固定宽度和高度的隐式轨道。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/KvVLVy/">CSS Grid Layout: Sizing implicit tracks</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>通过使用 minmax() 函数来指定范围，可以使调整隐式轨道更灵活。</p>
+<p>.grid {<br>  grid-auto-columns: minmax(200px, auto);<br>  grid-auto-rows: minmax(60px, auto);<br>}</p>
+<p>隐式轨道现在至少有200px宽和60px高，但如果内容需要它将会扩展。</p>
+<h2 id="将网格扩展到开始"><a href="#将网格扩展到开始" class="headerlink" title="将网格扩展到开始"></a>将网格扩展到开始</h2><p>隐式轨道可能不仅仅被添加到显式网格的末尾。也可能扩展到显式网格的开始处。 <img src="http://file.w3cbest.com/file/images/grid4_.png"> 一个隐式网格，由一行和一列扩展到开头</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/BdyJWR/">CSS Grid Layout: Implicit grid</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>.item:first-child {<br>  grid-row-end: 2;<br>  grid-row-start: span 2;<br>}</p>
+<p>.item:nth-child(2) {<br>  grid-column-end: 2;<br>  grid-column-start: span 2;<br>}</p>
+<p>每个网格项在第二行结束，并跨越2个单元格（一个垂直，另一个水平）。 由于在第二行之前只有一个单元，因此在每一侧的开始处将另一个隐式轨道添加到网格中。</p>
+<h2 id="自动放置"><a href="#自动放置" class="headerlink" title="自动放置"></a>自动放置</h2><p>如前所述，如果项目数超过单元格数，也会添加隐式轨道。 默认情况下，自动放置算法通过连续填充每一行来放置网格项，并根据需要添加新行。 我们可以使用 grid-auto-flow 属性来指定如何把网格项自动放置到网格容器。 <img src="http://file.w3cbest.com/file/images/grid11.png"> 如果网格项数超过单元格数量，则添加新列而不是行。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/JyGqBP/">CSS Grid Layout: grid-auto-flow</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(4, 1fr);<br>  grid-template-rows: 100px 100px;<br>  grid-gap: 20px;<br>  grid-auto-flow: column;<br>}</p>
+<p>使用网格项填充列，不是填充行，并创建其他隐式列。</p>
+<h2 id="未定义显式网格"><a href="#未定义显式网格" class="headerlink" title="未定义显式网格"></a>未定义显式网格</h2><p>由于可以使用<code>grid-auto-rows</code>和<code>grid-auto-columns</code>自动调整单元格大小，因此不必定义显式网格。 <img src="http://file.w3cbest.com/file/images/grid5.png"> 没有显式行和轨道的隐式网格。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/gxPzeY/">CSS Grid Layout: Implicit grid only</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>.grid {<br>  display: grid;<br>  grid-auto-columns: minmax(60px, 200px);<br>  grid-auto-rows: 60px;<br>  grid-gap: 20px;<br>}</p>
+<p>.item:first-child {<br>  grid-row: span 2;<br>}</p>
+<p>.item:nth-child(2) {<br>  grid-column: 1 / span 2;<br>}</p>
+<p>.item:nth-child(5) {<br>  grid-column: 3;<br>}</p>
+<p>完全依赖于隐式网格可能会变得混乱和难以理解。我们建议与显式网格相结使用。 在此示例中，第一个网格项自动放置并跨越 2 行，第二个项目显式放置在第一列中，并跨越 2 列创建第二个垂直轨道。 第三和第四网格项实际上都会自动放在第四行，但第五网格项明确地放在先前不存在的第三列中。 这将创建第三个垂直轨道，并且由于网格自动放置，第三个项目向上移动一行以填充空间。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文并未涵盖有关显式和隐式网格的所有内容，它应该为您提供的不仅仅是对该概念的深入理解。 了解创建隐式网格线和隐式轨迹的原因和方式对于使用网格布局至关重要。 你可以在 <a target="_blank" rel="noopener" href="https://codepen.io/collection/XkLzYO/">CodePen</a> 集合 中找到本文中使用的所有示例。 文章来源：<a target="_blank" rel="noopener" href="https://css-tricks.com/difference-explicit-implicit-grids/">https://css-tricks.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css%E6%95%99%E7%A8%8B/" rel="tag"># css教程</a>
+              <a href="/tags/grid-area/" rel="tag"># grid-area</a>
+              <a href="/tags/grid%E6%95%99%E7%A8%8B/" rel="tag"># grid教程</a>
+              <a href="/tags/html%E6%95%99%E7%A8%8B/" rel="tag"># html教程</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E6%95%99%E7%A8%8B/" rel="tag"># 前端教程</a>
+              <a href="/tags/grid%E5%B8%83%E5%B1%80/" rel="tag"># grid布局</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/07/22/ecmascript-20162017%E5%92%8C2018%E4%B8%AD%E6%89%80%E6%9C%89%E6%96%B0%E5%8A%9F%E8%83%BD%E7%9A%84%E7%A4%BA%E4%BE%8B/" rel="prev" title="ECMAScript 2016,2017和2018中所有新功能的示例">
+      <i class="fa fa-chevron-left"></i> ECMAScript 2016,2017和2018中所有新功能的示例
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/08/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="next" title="排序算法">
+      排序算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F%E7%9A%84-Grid-%E7%BD%91%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">显式的 Grid(网格)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E8%BD%A8%E9%81%93"><span class="nav-number">2.</span> <span class="nav-text">重复轨道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%87%8D%E5%A4%8D%E8%BD%A8%E9%81%93"><span class="nav-number">3.</span> <span class="nav-text">自动重复轨道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E8%BD%A8%E9%81%93%EF%BC%88auto-fill%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">自动填充轨道（auto-fill）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%B0%83%E6%95%B4%E8%BD%A8%E9%81%93%EF%BC%88auto-fit%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">自动调整轨道（auto-fit）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E7%9A%84-Grid-%E7%BD%91%E6%A0%BC"><span class="nav-number">6.</span> <span class="nav-text">隐式的 Grid(网格)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E9%9A%90%E5%BC%8F%E8%BD%A8%E9%81%93"><span class="nav-number">7.</span> <span class="nav-text">调整隐式轨道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E7%BD%91%E6%A0%BC%E6%89%A9%E5%B1%95%E5%88%B0%E5%BC%80%E5%A7%8B"><span class="nav-number">8.</span> <span class="nav-text">将网格扩展到开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%94%BE%E7%BD%AE"><span class="nav-number">9.</span> <span class="nav-text">自动放置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E5%AE%9A%E4%B9%89%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC"><span class="nav-number">10.</span> <span class="nav-text">未定义显式网格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">11.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

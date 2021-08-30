@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="任何一种编程语言都具有超出基本用法的功能，它得益于成功的设计和试图去解决广泛问题。 JavaScript 中有一个这样的函数: Array.from：允许在 JavaScript 集合(如: 数组、类数组对象、或者是字符串、map 、set 等可迭代对象) 上进行有用的转换。 在本文中，我将描述5个有用且有趣的 Array.from() 用例。 1. 介绍在开始之前，我们先回想一下 Array.f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Array.from() 五个超好用的用途">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/09/03/array-from-%E4%BA%94%E4%B8%AA%E8%B6%85%E5%A5%BD%E7%94%A8%E7%9A%84%E7%94%A8%E9%80%94/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="任何一种编程语言都具有超出基本用法的功能，它得益于成功的设计和试图去解决广泛问题。 JavaScript 中有一个这样的函数: Array.from：允许在 JavaScript 集合(如: 数组、类数组对象、或者是字符串、map 、set 等可迭代对象) 上进行有用的转换。 在本文中，我将描述5个有用且有趣的 Array.from() 用例。 1. 介绍在开始之前，我们先回想一下 Array.f">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-03T07:55:40.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.133Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="Array.from()">
+<meta property="article:tag" content="Array.isArray()">
+<meta property="article:tag" content="map.set()">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/09/03/array-from-%E4%BA%94%E4%B8%AA%E8%B6%85%E5%A5%BD%E7%94%A8%E7%9A%84%E7%94%A8%E9%80%94/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Array.from() 五个超好用的用途 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/09/03/array-from-%E4%BA%94%E4%B8%AA%E8%B6%85%E5%A5%BD%E7%94%A8%E7%9A%84%E7%94%A8%E9%80%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Array.from() 五个超好用的用途
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-03 15:55:40" itemprop="dateCreated datePublished" datetime="2019-09-03T15:55:40+08:00">2019-09-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>任何一种编程语言都具有超出基本用法的功能，它得益于成功的设计和试图去解决广泛问题。 JavaScript 中有一个这样的函数: Array.from：允许在 JavaScript 集合(如: 数组、类数组对象、或者是字符串、map 、set 等可迭代对象) 上进行有用的转换。 在本文中，我将描述5个有用且有趣的 Array.from() 用例。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h2><p>在开始之前，我们先回想一下 Array.from() 的作用。语法:</p>
+<blockquote>
+<p>Array.from(arrayLike[, mapFunction[, thisArg]])</p>
+</blockquote>
+<p>arrayLike：必传参数，想要转换成数组的伪数组对象或可迭代对象。 mapFunction：可选参数，mapFunction(item，index){…} 是在集合中的每个项目上调用的函数。返回的值将插入到新集合中。 thisArg：可选参数，执行回调函数 mapFunction 时 this 对象。这个参数很少使用。 例如，让我们将类数组的每一项乘以2：</p>
+<p>const someNumbers = { ‘0’: 10, ‘1’: 15, length: 2 };</p>
+<p>Array.from(someNumbers, value =&gt; value * 2); // =&gt; [20, 30]</p>
+<h2 id="2-将类数组转换成数组"><a href="#2-将类数组转换成数组" class="headerlink" title="2.将类数组转换成数组"></a>2.将类数组转换成数组</h2><p>Array.from() 第一个用途：将类数组对象转换成数组。 通常，你会碰到的类数组对象有：函数中的 arguments 关键字，或者是一个 DOM 集合。 在下面的示例中，让我们对函数的参数求和：</p>
+<p>function sumArguments() {<br>return Array.from(arguments).reduce((sum, num) =&gt; sum + num);<br>}</p>
+<p>sumArguments(1, 2, 3); // =&gt; 6</p>
+<p>Array.from(arguments) 将类数组对象 arguments 转换成一个数组，然后使用数组的 reduce 方法求和。 此外，Array.from() 的第一个参数可以是任意一个可迭代对象，我们继续看一些例子:</p>
+<p>Array.from(‘Hey’); // =&gt; [‘H’, ‘e’, ‘y’]<br>Array.from(new Set([‘one’, ‘two’])); // =&gt; [‘one’, ‘two’]</p>
+<p>const map = new Map();<br>map.set(‘one’, 1)<br>map.set(‘two’, 2);<br>Array.from(map); // =&gt; [[‘one’, 1], [‘two’, 2]]</p>
+<h2 id="3-克隆一个数组"><a href="#3-克隆一个数组" class="headerlink" title="3.克隆一个数组"></a>3.克隆一个数组</h2><p>在 JavaScript 中有很多克隆数组的方法。正如你所想，Array.from() 可以很容易的实现数组的浅拷贝。</p>
+<p>const numbers = [3, 6, 9];<br>const numbersCopy = Array.from(numbers);</p>
+<p>numbers === numbersCopy; // =&gt; false</p>
+<p>Array.from(numbers) 创建了对 numbers 数组的浅拷贝，numbers === numbersCopy 的结果是 false，意味着虽然 numbers 和 numbersCopy有着相同的项，但是它们是不同的数组对象。 是否可以使用 Array.from() 创建数组的克隆，包括所有嵌套的？挑战一下！</p>
+<p>function recursiveClone(val) {<br>return Array.isArray(val) ? Array.from(val, recursiveClone) : val;<br>}<br>const numbers = [[0, 1, 2], [‘one’, ‘two’, ‘three’]];<br>const numbersClone = recursiveClone(numbers);<br>numbersClone; // =&gt; [[0, 1, 2], [‘one’, ‘two’, ‘three’]]<br>numbers[0] === numbersClone[0] // =&gt; false</p>
+<p>recursiveClone() 能够对数组的深拷贝，通过判断 数组的 item 是否是一个数组，如果是数组，就继续调用 recursiveClone() 来实现了对数组的深拷贝。 你能编写一个比使用 Array.from() 递归拷贝更简短的数组深拷贝吗？如果可以的话，请写在下面的评论区。</p>
+<h2 id="4-使用值填充数组"><a href="#4-使用值填充数组" class="headerlink" title="4. 使用值填充数组"></a>4. 使用值填充数组</h2><p>如果你需要使用相同的值来初始化数组，那么 Array.from() 将是不错的选择。 我们来定义一个函数，创建一个填充相同默认值的数组：</p>
+<p>const length = 3;<br>const init = 0;<br>const result = Array.from({ length }, () =&gt; init);<br>result; // =&gt; [0, 0, 0]</p>
+<p>result 是一个新的数组，它的长度为3，数组的每一项都是0。调用 Array.from() 方法，传入一个类数组对象 { length } 和 返回初始化值的 mapFunction 函数。 但是，有一个替代方法 array.fill() 可以实现同样的功能。</p>
+<p>const length = 3;<br>const init = 0;<br>const result = Array(length).fill(init);<br>fillArray2(0, 3); // =&gt; [0, 0, 0]</p>
+<p>fill() 使用初始值正确填充数组。</p>
+<h3 id="4-1-使用对象填充数组"><a href="#4-1-使用对象填充数组" class="headerlink" title="4.1 使用对象填充数组"></a>4.1 使用对象填充数组</h3><p>当初始化数组的每个项都应该是一个新对象时，Array.from() 是一个更好的解决方案：</p>
+<p>const length = 3;<br>const resultA = Array.from({ length }, () =&gt; ({}));<br>const resultB = Array(length).fill({});</p>
+<p>resultA; // =&gt; [{}, {}, {}]<br>resultB; // =&gt; [{}, {}, {}]</p>
+<p>resultA[0] === resultA[1]; // =&gt; false<br>resultB[0] === resultB[1]; // =&gt; true</p>
+<p>由 Array.from 返回的 resultA 使用不同空对象实例进行初始化。之所以发生这种情况是因为每次调用时，mapFunction，即此处的 () =&gt; ({}) 都会返回一个新的对象。 然后，fill() 方法创建的 resultB 使用相同的空对象实例进行初始化。不会跳过空项。</p>
+<h3 id="4-2-使用-array-map-怎么样？"><a href="#4-2-使用-array-map-怎么样？" class="headerlink" title="4.2 使用 array.map 怎么样？"></a>4.2 使用 array.map 怎么样？</h3><p>是不是可以使用 array.map() 方法来实现？我们来试一下:</p>
+<p>const length = 3;<br>const init = 0;<br>const result = Array(length).map(() =&gt; init);</p>
+<p>result; // =&gt; [undefined, undefined, undefined]</p>
+<p>map() 方法似乎不正常，创建出来的数组不是预期的 [0, 0, 0]，而是一个有3个空项的数组。 这是因为 Array(length) 创建了一个有3个空项的数组(也称为稀疏数组)，但是 map() 方法会跳过空项。</p>
+<h2 id="5-生成数字范围"><a href="#5-生成数字范围" class="headerlink" title="5. 生成数字范围"></a>5. 生成数字范围</h2><p>你可以使用 Array.from() 生成值范围。例如，下面的 range 函数生成一个数组，从0开始到 end - 1。</p>
+<p>function range(end) {<br>return Array.from({ length: end }, (_, index) =&gt; index);<br>}<br>range(4); // =&gt; [0, 1, 2, 3]</p>
+<p>在 range() 函数中，Array.from() 提供了类似数组的 {length：end} ，以及一个简单地返回当前索引的 map 函数 。这样你就可以生成值范围。</p>
+<h2 id="6-数组去重"><a href="#6-数组去重" class="headerlink" title="6.数组去重"></a>6.数组去重</h2><p>由于 Array.from() 的入参是可迭代对象，因而我们可以利用其与 Set 结合来实现快速从数组中删除重复项。</p>
+<p>function unique(array) {<br>return Array.from(new Set(array));<br>}</p>
+<p>unique([1, 1, 2, 3, 3]); // =&gt; [1, 2, 3]</p>
+<p>首先，new Set(array) 创建了一个包含数组的集合，Set 集合会删除重复项。 因为 Set 集合是可迭代的，所以可以使用 Array.from() 将其转换为一个新的数组。 这样，我们就实现了数组去重。</p>
+<h2 id="7-结论"><a href="#7-结论" class="headerlink" title="7.结论"></a>7.结论</h2><p>Array.from() 方法接受类数组对象以及可迭代对象，它可以接受一个 map 函数，并且，这个 map 函数不会跳过值为 undefined 的数值项。这些特性给 Array.from() 提供了很多可能。 如上所述，你可以轻松的将类数组对象转换为数组，克隆一个数组，使用初始化填充数组，生成一个范围，实现数组去重。 实际上，Array.from() 是非常好的设计，灵活的配置，允许很多集合转换。 你知道 Array.from() 的其他有趣用例吗？可以写在评论区。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Array-from/" rel="tag"># Array.from()</a>
+              <a href="/tags/Array-isArray/" rel="tag"># Array.isArray()</a>
+              <a href="/tags/map-set/" rel="tag"># map.set()</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/" rel="prev" title="什么是防抖和节流？有什么区别？如何实现？">
+      <i class="fa fa-chevron-left"></i> 什么是防抖和节流？有什么区别？如何实现？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/03/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%88%A4%E6%96%ADthis%E7%9A%84%E6%8C%87%E5%90%91%EF%BC%9F/" rel="next" title="如何正确判断this的指向？">
+      如何正确判断this的指向？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">1. 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B0%86%E7%B1%BB%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B0%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">2.将类数组转换成数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%8B%E9%9A%86%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">3.克隆一个数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8%E5%80%BC%E5%A1%AB%E5%85%85%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">4. 使用值填充数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1%E5%A1%AB%E5%85%85%E6%95%B0%E7%BB%84"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 使用对象填充数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%BD%BF%E7%94%A8-array-map-%E6%80%8E%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 使用 array.map 怎么样？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%94%9F%E6%88%90%E6%95%B0%E5%AD%97%E8%8C%83%E5%9B%B4"><span class="nav-number">5.</span> <span class="nav-text">5. 生成数字范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="nav-number">6.</span> <span class="nav-text">6.数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%BB%93%E8%AE%BA"><span class="nav-number">7.</span> <span class="nav-text">7.结论</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

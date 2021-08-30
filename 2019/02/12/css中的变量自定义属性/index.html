@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="多年来，变量一直是最常用的CSS特性之一。变量可以更容易地管理颜色、字体、大小和动画值，并确保它们在代码库中的一致性。 花了数年的时间来研究语法的细节，并决定变量如何适应管理级联和继承的现有规则。现在它们以CSS“自定义属性”的形式提供给开发人员。 在本章中，我们将讨论CSS自定义属性的语法。我们来看看：    如何定义属性并为这些属性设置默认值   级联和继承的规则如何与自定义属性一起工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS中的变量:自定义属性">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/02/12/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="多年来，变量一直是最常用的CSS特性之一。变量可以更容易地管理颜色、字体、大小和动画值，并确保它们在代码库中的一致性。 花了数年的时间来研究语法的细节，并决定变量如何适应管理级联和继承的现有规则。现在它们以CSS“自定义属性”的形式提供给开发人员。 在本章中，我们将讨论CSS自定义属性的语法。我们来看看：    如何定义属性并为这些属性设置默认值   级联和继承的规则如何与自定义属性一起工作">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-02-12T04:30:30.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.023Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="css3教程">
+<meta property="article:tag" content="css var()">
+<meta property="article:tag" content="CSS Variables">
+<meta property="article:tag" content="css 布局">
+<meta property="article:tag" content="css 排版">
+<meta property="article:tag" content="css教程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/02/12/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS中的变量:自定义属性 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/02/12/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS中的变量:自定义属性
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-12 12:30:30" itemprop="dateCreated datePublished" datetime="2019-02-12T12:30:30+08:00">2019-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>多年来，变量一直是最常用的CSS特性之一。变量可以更容易地管理颜色、字体、大小和动画值，并确保它们在代码库中的一致性。 花了数年的时间来研究语法的细节，并决定变量如何适应管理级联和继承的现有规则。现在它们以CSS“自定义属性”的形式提供给开发人员。 在本章中，我们将讨论CSS自定义属性的语法。我们来看看：</p>
+<ul>
+<li>  如何定义属性并为这些属性设置默认值</li>
+<li>  级联和继承的规则如何与自定义属性一起工作</li>
+<li>  如何在媒体查询中使用自定义属性</li>
+</ul>
+<p>最后，您应该很好地掌握了如何在项目中使用自定义属性。 注意:浏览器对自定义变量的支持是健壮的，存在于每个主流浏览器的最新版本中。然而，在较老但最近发布的浏览器版本中还没有支持，这些版本可能仍然被站点的受众广泛使用。微软15之前的Edge版本和9.1之前的Safari版本完全缺乏支持。任何版本的Internet Explorer都是如此。Microsoft Edge 15有支持，但也有一些文档记录的bug。</p>
+<h2 id="定义自定义属性"><a href="#定义自定义属性" class="headerlink" title="定义自定义属性"></a>定义自定义属性</h2><p>要定义自定义属性，请选择一个名称并在其前面加上两个连字符。任何字母数字字符都可以是名称的一部分。也允许使用连字符(-)和下划线(_)字符。广泛的unicode字符可以作为自定义属性名称的一部分，包括表情符号。为了清晰易读，请坚持使用字母数字名称。 这里有一个例子:</p>
+<p>--primarycolor: #0ad0f9ff; /* Using #rrggbbaa color notation */</p>
+<p>--向CSS解析器表明这是一个自定义属性。属性的值将替换作为变量使用的属性。 自定义属性名区分大小写。换句话说，<code>--primaryColor</code>和<code>--primaryColor</code>被认为是两个不同的属性名。这与传统的CSS有所不同，在传统CSS中，属性和值并不重要。然而，它与ECMAScript处理变量的方式是一致的。 与显示或字体等其他属性一样，CSS自定义属性必须在声明块中定义。一个常见的模式是在使用<code>:root</code> <code>psuedo-element</code>作为选择器的规则集中定义自定义属性:</p>
+<p>:root {<br>    –primarycolor: #0ad0f9ff;<br>}</p>
+<p><code>:root</code>是引用文档根元素的伪元素。对于HTML文档，这是HTML元素。对于SVG文档，它是SVG元素。通过使用<code>:root</code>，属性可以立即在整个文档中可用。 使用自定义属性 要使用自定义属性值作为变量，我们需要使用<code>var()</code>函数。例如，如果我们想使用<code>--primarycolor</code>自定义属性作为背景色，我们可以使用以下方法:</p>
+<p>body {<br>    background-color: var(–primarycolor);<br>}</p>
+<p>我们自定义属性的值将成为<code>background-color</code>属性的计算值。 到目前为止，自定义属性只能用作为标准CSS属性设置值的变量。例如，您不能将属性名存储为变量，然后重用它。下面的CSS不工作:</p>
+<p>:root {<br>    –top-border: border-top; /* Can’t set a property as custom property’s value */<br>    var(–top-border): 10px solid #bc84d8 /* Can’t use a variable as a property */<br>}</p>
+<p>您也不能将属性-值对存储为变量并重用它。下面的例子也是无效的:</p>
+<p>:root {<br>   –text-color: ‘color: orange’; /* Invalid property value */<br>}<br>body {<br>  var(–text-color); /* Invalid use of a property */<br>}</p>
+<p>最后，您也不能将变量作为值字符串的一部分连接起来:</p>
+<p>:root {<br>    –base-font-size: 10;<br>}<br>body {<br>    font: var(–base-font-size)px / 1.25 sans-serif; /* Invalid CSS syntax. */<br>}</p>
+<p>定制属性被设计成根据CSS规范解析的属性。如果浏览器厂商采用<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-extensions/#custom-selectors">CSS扩展规范</a>，将来我们可以使用自定义属性来创建自定义选择器组或自定义at规则。但是，目前我们仅限于使用它们作为变量来设置标准属性值。 设置回滚值 <code>var()</code>函数实际上最多接受两个参数。第一个参数应该是自定义属性名。第二个参数是可选的，但应该是一个声明值。如果自定义属性值没有定义，则此声明值作为一种回退值。 让我们看看下面的CSS:</p>
+<p>.btn__call-to-action {<br>    background: var(–accent-color, salmon);<br>}</p>
+<p>如果<code>--accent-color</code>被定义(假设它的值是<code>#f30</code>)那么具有<code>.btn__call-to-action</code>类属性的任何路径的填充颜色都将是红橙色的。如果没有定义，填充色将是橙红色。 声明值也可以嵌套。换句话说，您可以使用一个变量作为var函数的回退值：</p>
+<p>body {<br>    background-color: var(–books-bg, var(–arts-bg));<br>}</p>
+<p>在上面的CSS中，如果<code>--books-bg</code>被定义，背景颜色将被设置为<code>--books-bg</code>属性的值。如果不是，背景颜色将改为指定的任何值<code>--arts-bg</code>。如果它们都没有定义，背景颜色将是属性的初始值——在本例中是<code>transparent</code>。 当自定义属性被赋予一个值，而该值对于它所使用的属性无效时，也会发生类似的情况。考虑以下CSS:</p>
+<p>:root {<br>    –footer-link-hover: #0cg; /* Not a valid color value. */<br>}<br>a:link {<br>     color: blue;<br>}<br>a:hover {<br>    color: red;<br>}<br>footer a:hover {<br>    color: var(–footer-link-hover);<br>}</p>
+<p>在这种情况下，<code>--footer-link-hover</code>属性的值不是有效颜色。在microsoftedge中，页脚链接的悬停状态颜色将从<code>a:hover</code>选择器继承。在大多数其他浏览器中，悬停状态颜色将继承body元素的文本颜色。 自定义属性和级联 自定义属性也遵循级联规则。它们的值可以被后续规则覆盖:</p>
+<p>:root {<br>    –text-color: #190736; /* navy */<br>}<br>body {<br>   –text-color: #333;  /* Dark gray */<br>}<br>body {<br>  color: var(–text-color);<br>}</p>
+<p>在上面的例子中，我们的正文是深灰色的。我们还可以在每个选择器的基础上重置值。让我们添加更多的规则到这个CSS:</p>
+<p>:root {<br>    –text-color: #190736; /* navy */<br>}<br>body {<br>   –text-color: #333;  /* Dark gray */<br>}<br>p {<br>  –text-color: #f60; /* Orange */<br>}<br>body {<br>  color: var(–text-color);<br>}<br>p {<br>  color: var(–text-color)<br>}</p>
+<p>在本例中，包装在p元素标记中的任何文本都是橙色的。但是div或其他元素中的文本仍然是深灰色的。 还可以使用style属性(例如<code>style=&quot;--brand-color: #9a09af&quot;</code>)设置自定义属性的值，这在基于组件的前端体系结构中非常有用。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css3%E6%95%99%E7%A8%8B/" rel="tag"># css3教程</a>
+              <a href="/tags/css-var/" rel="tag"># css var()</a>
+              <a href="/tags/CSS-Variables/" rel="tag"># CSS Variables</a>
+              <a href="/tags/css-%E5%B8%83%E5%B1%80/" rel="tag"># css 布局</a>
+              <a href="/tags/css-%E6%8E%92%E7%89%88/" rel="tag"># css 排版</a>
+              <a href="/tags/css%E6%95%99%E7%A8%8B/" rel="tag"># css教程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/29/12%E4%B8%AA%E4%BB%A4%E4%BA%BA%E9%9A%BE%E4%BB%A5%E7%BD%AE%E4%BF%A1%E7%9A%84%E7%BA%AFcss%E5%AE%9E%E9%AA%8C/" rel="prev" title="12个令人难以置信的纯CSS实验">
+      <i class="fa fa-chevron-left"></i> 12个令人难以置信的纯CSS实验
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/02/12/%E8%81%8A%E4%B8%80%E8%81%8A-css-position-sticky%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/" rel="next" title="聊一聊 CSS position sticky是如何工作的">
+      聊一聊 CSS position sticky是如何工作的 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">定义自定义属性</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

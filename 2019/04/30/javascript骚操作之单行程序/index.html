@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="单行简洁的代码很难维护（有时甚至难以理解），但这并不能阻止广大攻城狮们脑洞，在编写简洁的代码后获得一定的满足感。 以下我最近的一些收藏javascript精简代码集合。它们都可以在你的开发控制台中运行，你可以从控制台中查看运行结果。同时，我希望你能在评论中分享一些自己的藏品 日历创建过去七天的数组，如果将代码中的减号换成加号，你将得到未来7天的数组集合 &#x2F;&#x2F; 创建过去七天的数组[…Array(7)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript骚操作之单行程序">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/04/30/javascript%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8D%95%E8%A1%8C%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="单行简洁的代码很难维护（有时甚至难以理解），但这并不能阻止广大攻城狮们脑洞，在编写简洁的代码后获得一定的满足感。 以下我最近的一些收藏javascript精简代码集合。它们都可以在你的开发控制台中运行，你可以从控制台中查看运行结果。同时，我希望你能在评论中分享一些自己的藏品 日历创建过去七天的数组，如果将代码中的减号换成加号，你将得到未来7天的数组集合 &#x2F;&#x2F; 创建过去七天的数组[…Array(7)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-30T01:34:37.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.076Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="Array.map">
+<meta property="article:tag" content="Math.ceil()">
+<meta property="article:tag" content="Math.floor()">
+<meta property="article:tag" content="Math.random()">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/04/30/javascript%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8D%95%E8%A1%8C%E7%A8%8B%E5%BA%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript骚操作之单行程序 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/30/javascript%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8D%95%E8%A1%8C%E7%A8%8B%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript骚操作之单行程序
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-30 09:34:37" itemprop="dateCreated datePublished" datetime="2019-04-30T09:34:37+08:00">2019-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>单行简洁的代码很难维护（有时甚至难以理解），但这并不能阻止广大攻城狮们脑洞，在编写简洁的代码后获得一定的满足感。 以下我最近的一些收藏javascript精简代码集合。它们都可以在你的开发控制台中运行，你可以从控制台中查看运行结果。同时，我希望你能在评论中分享一些自己的藏品</p>
+<h2 id="日历"><a href="#日历" class="headerlink" title="日历"></a>日历</h2><p>创建过去七天的数组，如果将代码中的减号换成加号，你将得到未来7天的数组集合</p>
+<p>// 创建过去七天的数组<br>[…Array(7).keys()].map(days =&gt; new Date(Date.now() - 86400000 * days));</p>
+<p>Array.from(Array(7).keys(),(days) =&gt; new Date(Date.now() - 86400000 * days));</p>
+<p>Array.from({length:7},(_,days) =&gt; new Date(Date.now() - 86400000 * days));</p>
+<h2 id="生成随机ID"><a href="#生成随机ID" class="headerlink" title="生成随机ID"></a>生成随机ID</h2><p>在原型设计时经常使用的创建ID功能。但是我在实际项目中看到有人使用它。其实这并不安全</p>
+<p>// 生成长度为11的随机字母数字字符串<br>Math.random().toString(36).substring(2);</p>
+<h2 id="取URL的查询参数"><a href="#取URL的查询参数" class="headerlink" title="取URL的查询参数"></a>取URL的查询参数</h2><p>这个获取URL的查询参数代码，是我见过最精简的QAQ <code>?foo=bar&amp;baz=bing =&gt; &#123;foo: bar, baz: bing&#125;</code></p>
+<p>// 获取URL的查询参数<br>q={};location.search.replace(/([^?&amp;=]+)=([^&amp;]+)/g,(_,k,v)=&gt;q[k]=v);q;</p>
+<p>Object.fromEntries(new URLSearchParams(‘a=1&amp;b=2’))</p>
+<h2 id="本地时间"><a href="#本地时间" class="headerlink" title="本地时间"></a>本地时间</h2><p>通过一堆HTML，您可以创建一个本地时间，其中包含您可以一口气读出的源代码，它每秒都会用当前时间更新页面</p>
+<p>// 创建本地时间</p>
+<body onload="setInterval(()=>document.body.innerHTML=new Date().toLocaleString().slice(10,19))"></body>
+
+<p>new Date().toLocaleTimeString()</p>
+<h2 id="数组混淆"><a href="#数组混淆" class="headerlink" title="数组混淆"></a>数组混淆</h2><p>随机更改数组元素顺序，混淆数组</p>
+<p>// 随机更改数组元素顺序，混淆数组<br>(arr) =&gt; arr.slice().sort(() =&gt; Math.random() - 0.5)<br>/*<br>let a = (arr) =&gt; arr.slice().sort(() =&gt; Math.random() - 0.5)<br>let b = a([1,2,3,4,5])<br>console.log(b)<br>*/</p>
+<p>或者</p>
+<p>function shuffle(arr) {<br>    const newArr = […arr];<br>    for (let i = 0, len = newArr.length; i &lt; len; i += 1) {<br>const random = Math.floor(Math.random() * (i + 1));<br>    if (i !== random){<br>        [newArr[i], newArr[random]] = [newArr[random], newArr[i]];<br>    }<br>    }<br>    return newArr;<br>}</p>
+<p>或者</p>
+<p>function shuffle(arr) {<br>    let i = arr.length, j;<br>    while (i) {<br>        j = Math.floor(Math.random() * i–);<br>        [arr[i], arr[j]] = [arr[j], arr[i]];<br>    }<br>    return arr;<br>}</p>
+<h2 id="生成随机十六进制代码（生成随机颜色）"><a href="#生成随机十六进制代码（生成随机颜色）" class="headerlink" title="生成随机十六进制代码（生成随机颜色）"></a>生成随机十六进制代码（生成随机颜色）</h2><p>使用JavaScript简洁代码生成随机十六进制代码</p>
+<p>// before<br>‘#’ + Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, ‘0’);</p>
+<p>// after<br>‘#’ + (0x1000000 + Math.random() * 0xffffff).toString(16).slice(1, 6);</p>
+<p>Array.from({ length: 6 }, () =&gt; Math.floor(Math.random() * 16).toString(16)).join(“”)</p>
+<h2 id="一个面试题"><a href="#一个面试题" class="headerlink" title="一个面试题"></a>一个面试题</h2><p>这是一个臭名昭著的面试题，让你写出他的运行结果</p>
+<p>for (i = 0; ++i &lt; 101; console.log(i % 5 ? f  i : f + ‘Buzz’)) f = i % 3 ? ‘’ : ‘Fizz’</p>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><p>这是一个原生的JS函数但是非常简洁，Set接受任何可迭代对象，如数组[1,2,3,3]，并删除重复项</p>
+<p>// 数组去重<br>[…new Set(arr)]<br>// 或者<br>arr.filter((x, index, self) =&gt; self.indexOf(x) === index)</p>
+<h2 id="创建特定大小的数组"><a href="#创建特定大小的数组" class="headerlink" title="创建特定大小的数组"></a>创建特定大小的数组</h2><p>方便快捷创建特定大小的数组</p>
+<p>// 创建一个数组<br>[…Array(3).keys()]</p>
+<p>或者</p>
+<p>Array.from({length: 3}, (val, i) =&gt; i)</p>
+<h2 id="返回一个键盘"><a href="#返回一个键盘" class="headerlink" title="返回一个键盘"></a>返回一个键盘</h2><p>这是一个很难看懂的简洁代码，但是运行后你会惊呆的，他竟然返回一个图形键盘</p>
+<p>// 用字符串返回一个键盘图形<br>(_=&gt;[…”`1234567890-=<del>QWERTYUIOP[]\\~ASDFGHJKL;’</del>ZXCVBNM,./~”].map(x=&gt;(o+=`/${b=’_‘.repeat(w=x&lt;y?2:’ 667699’[x=[“BS”,”TAB”,”CAPS”,”ENTER”][p++]‘SHIFT’,p])}\\`,m+=y+(x+’ ‘).slice(0,w)+y+y,n+=y+b+y+y,l+=’ __‘+b)[73]&amp;&amp;(k.push(l,m,n,o),l=’’,m=n=o=y),m=n=o=y=’’,p=l=k=[])&amp;&amp;k.join`<br>`)()</p>
+<p>参考文章来源：<a target="_blank" rel="noopener" href="https://dev.to/healeycodes/javascript-one-liners-that-make-me-excited-56aj">https://dev.to</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Array-map/" rel="tag"># Array.map</a>
+              <a href="/tags/Math-ceil/" rel="tag"># Math.ceil()</a>
+              <a href="/tags/Math-floor/" rel="tag"># Math.floor()</a>
+              <a href="/tags/Math-random/" rel="tag"># Math.random()</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/26/%E4%BD%BF%E7%94%A8javascript-%E8%BF%9B%E8%A1%8C%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/" rel="prev" title="使用JavaScript 进行对象拷贝">
+      <i class="fa fa-chevron-left"></i> 使用JavaScript 进行对象拷贝
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/01/%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AF%B9%E8%B1%A1/" rel="next" title="从数组中删除重复的对象">
+      从数组中删除重复的对象 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%8E%86"><span class="nav-number">1.</span> <span class="nav-text">日历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BAID"><span class="nav-number">2.</span> <span class="nav-text">生成随机ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96URL%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">取URL的查询参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%97%B6%E9%97%B4"><span class="nav-number">4.</span> <span class="nav-text">本地时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%B7%B7%E6%B7%86"><span class="nav-number">5.</span> <span class="nav-text">数组混淆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E4%BB%A3%E7%A0%81%EF%BC%88%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E9%A2%9C%E8%89%B2%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">生成随机十六进制代码（生成随机颜色）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">一个面试题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="nav-number">8.</span> <span class="nav-text">数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%89%B9%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%95%B0%E7%BB%84"><span class="nav-number">9.</span> <span class="nav-text">创建特定大小的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E9%94%AE%E7%9B%98"><span class="nav-number">10.</span> <span class="nav-text">返回一个键盘</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

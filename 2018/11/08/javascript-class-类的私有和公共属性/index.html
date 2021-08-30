@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="本文为JavaScript Prototype(原型) 初学者指南续篇。  我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。” 在 上一篇文章 中，我们学习了如何在 ES5 和 ES6 中创建 JavaScrip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Class 类的私有和公共属性">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="本文为JavaScript Prototype(原型) 初学者指南续篇。  我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。” 在 上一篇文章 中，我们学习了如何在 ES5 和 ES6 中创建 JavaScrip">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-08T09:18:23.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.983Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="javascript教程">
+<meta property="article:tag" content="ECMAScript2016">
+<meta property="article:tag" content="ECMAScript教程">
+<meta property="article:tag" content="js教程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript Class 类的私有和公共属性 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript Class 类的私有和公共属性
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-08 17:18:23" itemprop="dateCreated datePublished" datetime="2018-11-08T17:18:23+08:00">2018-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本文为<a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>续篇。</p>
+</blockquote>
+<p>我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。” 在 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">上一篇文章</a> 中，我们学习了如何在 ES5 和 ES6 中创建 JavaScript 类。 我们还讨论了如何通过构造函数向这些类的实例添加 state(状态) ，以及如何通过类的原型在实例之间共享方法。 这是一个简单的 Player 类，它包含了我们讨论的有关 ES6 类的所有内容。</p>
+<p>class Player {<br>  constructor() {<br>    this.points = 0<br>    this.assists = 0<br>    this.rebounds = 0<br>    this.steals = 0<br>  }<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
+<p>我们看看这段代码，我们能不能让它更直观一点呢？方法很好理解，都很自然。那么构造函数呢？什么是 constructor ？为什么我们必须在这里定义实例值？现在，这些问题已经有了答案，但是为什么我们不能向实例中添加 state(状态) ，就像方法那样？比如：</p>
+<p>class Player {<br>  points = 0<br>  assists = 0<br>  rebounds = 0<br>  steals = 0<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
+<p>事实上，这是 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-class-fields">Class Fields Declaration</a> 提案的基础，该提案目前处于 TC-39 流程的 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/ecmascript/">第3阶段</a> 。 此提议允许您直接将实例属性添加为类的属性，而无需使用构造方法。 非常漂亮，但是如果我们看一些 React 代码，这个提案真的很棒。 这是一个典型的 React 组件。 它具有本地 state(状态) ，一些方法以及一些静态属性被添加到类中。</p>
+<p>class PlayerInput extends Component {<br>  constructor(props) {<br>    super(props)<br>    this.state = {<br>      username: ‘’<br>    }</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
+<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
+<p>让我们看看新的 Class Fields 提议如何改进上面的代码首先，我们可以将 state(状态) 变量从构造函数中取出，并将其直接定义为类的属性（或“字段”）。</p>
+<p>class PlayerInput extends Component {<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
+<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
+<p>很酷，但没什么好兴奋的。 我们继续吧。 在上一篇文章中，我们讨论了如何使用 static 关键字向类本身添加静态方法。 但是，根据 ES6 类规范，这只对方法有效，对于值则无效。 这就是为什么在上面的代码中，我们必须在我们定义完 PlayerInput 之后，再在 class 外面将 propTypes 和 defaultProps 添加到 PlayerInput ，而不是在 class 体内定义他们的原因。 再说一遍，它们不能像静态方法那样直接放入 class 体内呢? 好消息是，这也包含在 Class Fields 提案中。 所以现在不仅可以在类体中定义静态方法，还可以定义静态值。 这对我们的代码意味着我们可以将 propTypes 和 defaultProps 移动到 class 体内定义。</p>
+<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>这样代码看上去好多了，但我们仍然有丑陋的 constructor 方法和 super 调用。 同样，我们现在需要构造函数的原因是为了将 handleChange 方法绑定到恰当的上下文中。 如果我们能找到另一种方法来确保始终在恰当的上下文中调用 handleChange ，那么我们可以摆脱掉 constructor 。 如果您以前使用过箭头函数，就会知道它们没有自己的 this 关键字。相反，this 关键字是按 lexically(词法) 绑定的。这是一种奇特的说法，当你在箭头函数中使用 this 关键字时，事情会按照你所期望的方式运行。利用这些知识并将其与 “Class Fields” 提案相结合起来，如果我们将 handleChange 方法替换为箭头函数呢？这看起来有点奇怪，但是通过这样做，我们可以解决绑定问题，因为，箭头函数是通过 lexically(词法) 绑定 this 的。</p>
+<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  handleChange = (event) =&gt; {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>你看上面的代码，这比我们开始的原始类要好得多，这都要感谢 “Class Fields” 提案，它将很快成为 EcmaScript 规范的一部分。 从开发者体验的角度来看，Class Fields 提案优势很明显。 然而，他们有一些缺点，很少被谈论。 在上一篇文章中，我们讨论了 ES6 类实际上只是 Pseudoclassical Instantiation(伪类实例化) 模式的语法糖。也就是说，当你向类添加方法时，这就像在函数原型中添加方法一样。</p>
+<p>class Animal {<br>  eat() {}<br>}</p>
+<p>// 等价于</p>
+<p>function Animal () {}<br>Animal.prototype.eat = function () {}</p>
+<p>这是高效的，因为 eat 定义一次并在类的所有实例之间共享。 这与 Class Fields 有什么关系？ 好吧，正如我们上面所看到的， Class Fields 被添加到实例中。 这意味着对于我们创建的每个实例，我们将创建一个新的 eat 方法。</p>
+<p>class Animal {<br>  eat() {}<br>  sleep = () =&gt; {}<br>}</p>
+<p>// 等价于</p>
+<p>function Animal () {<br>  this.sleep = function () {}<br>}</p>
+<p>Animal.prototype.eat = function () {}</p>
+<p>请注意 sleep 如何放在实例上，而不是放在 Animal.prototype 上。这是件坏事吗？嗯，有可能。在不进行度量的情况下对性能进行宽泛的描述通常不是一个好主意。您需要在应用程序中回答的问题是，您从 Class Fields 中获得的开发人员体验是否超过了潜在的性能损失。</p>
+<blockquote>
+<p>如果你想在你的应用程序中使用我们之前谈到的任何内容，你需要使用 <a target="_blank" rel="noopener" href="https://babeljs.io/docs/en/babel-plugin-proposal-class-properties">babel-plugin-transform-class-properties</a> 插件。</p>
+</blockquote>
+<h2 id="Private-私有-属性"><a href="#Private-私有-属性" class="headerlink" title="Private(私有) 属性"></a>Private(私有) 属性</h2><p>Class Fields 提案的另一个内容时是 “private fields (私有属性)” 。 有时，当您构建一个类时，您希望拥有不暴露给外界的私有值。 从历史上看， JavaScript 缺乏真正私有值 的能力，所以我们通过约定，用下划线标记它们。</p>
+<p>class Car {<br>  _milesDriven = 0<br>  drive(distance) {<br>    this._milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this._milesDriven<br>  }<br>}</p>
+<p>在上面的示例中，我们依靠 Car class（类）的实例通过调用 getMilesDriven 方法来获取汽车的里程数。但是，因为没有什么能使 _milesDriven成为私有的，所以任何实例都可以访问它。</p>
+<p>const tesla = new Car()<br>tesla.drive(10)<br>console.log(tesla._milesDriven)</p>
+<p>有个奇特的（hacky）方法，就是使用 WeakMaps 可以解决这个问题，但如果存在更简单的解决方案，那将会很好。 同样，Class Fields 提案正在拯救我们。 根据提议，您可以使用 ＃ 创建私有字段。 是的，你没有看错， ＃ 。 我们来看看它对我们的代码有什么影响，</p>
+<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    this.#milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this.#milesDriven<br>  }<br>}</p>
+<p>我们可以用速记语法更进一步简化</p>
+<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    #milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return #milesDriven<br>  }<br>}</p>
+<p>const tesla = new Car()<br>tesla.drive(10)<br>tesla.getMilesDriven() // 10<br>tesla.#milesDriven // Invalid</p>
+<p>如果您对私有属性背后的更多细节/决策感兴趣，那么这里有一篇 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-private-fields/blob/master/FAQ.md">很好的文章</a>。</p>
+<blockquote>
+<p>目前 <a target="_blank" rel="noopener" href="https://github.com/babel/proposals/issues/12">有一个 PR</a> 将私有属性添加到 Babel ，以便您可以在应用中使用它们。</p>
+</blockquote>
+<p>文章来源：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/javascript-private-and-public-class-fields/">https://tylermcginnis.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"># javascript教程</a>
+              <a href="/tags/ECMAScript2016/" rel="tag"># ECMAScript2016</a>
+              <a href="/tags/ECMAScript%E6%95%99%E7%A8%8B/" rel="tag"># ECMAScript教程</a>
+              <a href="/tags/js%E6%95%99%E7%A8%8B/" rel="tag"># js教程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/08/%E4%BD%BF%E7%94%A8css%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8B%BC%E6%8E%A5html/" rel="prev" title="使用CSS属性选择器拼接html">
+      <i class="fa fa-chevron-left"></i> 使用CSS属性选择器拼接html
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/" rel="next" title="Echarts 改变markPoint标注(气泡)颜色">
+      Echarts 改变markPoint标注(气泡)颜色 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-%E7%A7%81%E6%9C%89-%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">Private(私有) 属性</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

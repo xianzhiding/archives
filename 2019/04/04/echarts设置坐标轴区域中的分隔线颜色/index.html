@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="想要设置区域分割线颜色首先要知道他的属性是什么，splitLine 顾名思义”分割线”。知道了分割线是什么属性后我来看看他都包含哪些特性。 从API中可以看出他是坐标轴xAxis和yAxis中的一个splitLine:&amp;#123;&amp;#125; 对象，证明他的内部有多个属性和值。我们以X轴为例 splitLine: {show: true,interval: ‘auto’,lineStyle: {c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echarts设置坐标轴区域中的分隔线颜色">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/04/04/echarts%E8%AE%BE%E7%BD%AE%E5%9D%90%E6%A0%87%E8%BD%B4%E5%8C%BA%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%88%86%E9%9A%94%E7%BA%BF%E9%A2%9C%E8%89%B2/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="想要设置区域分割线颜色首先要知道他的属性是什么，splitLine 顾名思义”分割线”。知道了分割线是什么属性后我来看看他都包含哪些特性。 从API中可以看出他是坐标轴xAxis和yAxis中的一个splitLine:&amp;#123;&amp;#125; 对象，证明他的内部有多个属性和值。我们以X轴为例 splitLine: {show: true,interval: ‘auto’,lineStyle: {c">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-04T07:41:42.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.045Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="echarts">
+<meta property="article:tag" content="Echarts xAxis">
+<meta property="article:tag" content="Echarts x轴">
+<meta property="article:tag" content="echarts分割线">
+<meta property="article:tag" content="echarts分割线颜色">
+<meta property="article:tag" content="echarts颜色">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/04/04/echarts%E8%AE%BE%E7%BD%AE%E5%9D%90%E6%A0%87%E8%BD%B4%E5%8C%BA%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%88%86%E9%9A%94%E7%BA%BF%E9%A2%9C%E8%89%B2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>echarts设置坐标轴区域中的分隔线颜色 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/04/echarts%E8%AE%BE%E7%BD%AE%E5%9D%90%E6%A0%87%E8%BD%B4%E5%8C%BA%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%88%86%E9%9A%94%E7%BA%BF%E9%A2%9C%E8%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          echarts设置坐标轴区域中的分隔线颜色
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-04 15:41:42" itemprop="dateCreated datePublished" datetime="2019-04-04T15:41:42+08:00">2019-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>想要设置区域分割线颜色首先要知道他的属性是什么，<code>splitLine</code> 顾名思义”分割线”。知道了分割线是什么属性后我来看看他都包含哪些特性。 从API中可以看出他是坐标轴<code>xAxis</code>和<code>yAxis</code>中的一个<code>splitLine:&#123;&#125;</code> 对象，证明他的内部有多个属性和值。我们以X轴为例</p>
+<p>splitLine: {<br>show: true,<br>interval: ‘auto’,<br>lineStyle: {<br>color: [‘#ccc’],<br>width: 1,<br>type: ‘solid’,<br>shadowBlur: …,<br>shadowColor: …,<br>shadowOffsetX: 0,<br>shadowOffsetY: 0,<br>opacity: …,<br>}<br>}</p>
+<p><strong><code>xAxis.splitLine.show</code></strong>      boolean 值 [ default: true ] 是否显示分隔线。默认数值轴显示，类目轴不显示。 <strong><code>xAxis.splitLine.interval</code></strong>   number, Function [ default: ‘auto’ ] 坐标轴分隔线的显示间隔，在类目轴中有效。默认同 axisLabel.interval 一样。 默认会采用标签不重叠的策略间隔显示标签。 可以设置成 0 强制显示所有标签。 如果设置为 1，表示『隔一个标签显示一个标签』，如果值为 2，表示隔两个标签显示一个标签，以此类推。 可以用数值表示间隔的数据，也可以通过回调函数控制。回调函数格式如下： (index:number, value: string) =&gt; boolean 第一个参数是类目的 index，第二个值是类目名称，如果跳过则返回 false。 <strong><code>xAxis.splitLine.lineStyle</code></strong>      Object</p>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**color**</code>      Array, string</p>
+</blockquote>
+<p>[ default: [‘#ccc’] ] 分隔线颜色，可以设置成单个颜色。 也可以设置成颜色数组，分隔线会按数组中颜色的顺序依次循环设置颜色。 示例</p>
+<p>splitLine: {<br>    lineStyle: {<br>        // 使用深浅的间隔色<br>        color: [‘#aaa’, ‘#ddd’]<br>    }<br>}</p>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**width**</code>      number</p>
+</blockquote>
+<p>[ default: 1 ] 分隔线线宽。</p>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**type**</code>      string</p>
+</blockquote>
+<p>[ default: ‘solid’ ] 分隔线线的类型。 可选：</p>
+<ul>
+<li>  <code>&#39;solid&#39;</code></li>
+<li>  <code>&#39;dashed&#39;</code></li>
+<li>  <code>&#39;dotted&#39;</code></li>
+</ul>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**shadowBlur**</code>      number</p>
+</blockquote>
+<p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code>一起设置图形的阴影效果。 示例：</p>
+<p>{<br>    shadowColor: ‘rgba(0, 0, 0, 0.5)’,<br>    shadowBlur: 10<br>}</p>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**shadowColor**</code>      Color</p>
+</blockquote>
+<p>阴影颜色。支持的格式同color。</p>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**shadowOffsetX**</code>      number</p>
+</blockquote>
+<p>[ default: 0 ] 阴影水平方向上的偏移距离。</p>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**shadowOffsetY**</code>      number</p>
+</blockquote>
+<p>[ default: 0 ] 阴影垂直方向上的偏移距离。</p>
+<blockquote>
+<p><code>xAxis.splitLine.lineStyle.**opacity**</code>      number</p>
+</blockquote>
+<p>图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。 通过上面的解释我们可以了解到坐标轴区域的分割线可以设置 分割线颜色、分割线大小、分割线类型、分割线阴影以及分割线的透明度</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/BEjxKJ/">Echarts设置坐标轴区域中的分隔线颜色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/echarts/" rel="tag"># echarts</a>
+              <a href="/tags/Echarts-xAxis/" rel="tag"># Echarts xAxis</a>
+              <a href="/tags/Echarts-x%E8%BD%B4/" rel="tag"># Echarts x轴</a>
+              <a href="/tags/echarts%E5%88%86%E5%89%B2%E7%BA%BF/" rel="tag"># echarts分割线</a>
+              <a href="/tags/echarts%E5%88%86%E5%89%B2%E7%BA%BF%E9%A2%9C%E8%89%B2/" rel="tag"># echarts分割线颜色</a>
+              <a href="/tags/echarts%E9%A2%9C%E8%89%B2/" rel="tag"># echarts颜色</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/03/css-%E5%87%BD%E6%95%B0calc-%E4%B8%8E-css-%E5%8F%98%E9%87%8Fvar%E7%9A%84%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8/" rel="prev" title="CSS 函数calc() 与 CSS 变量var()的混合使用">
+      <i class="fa fa-chevron-left"></i> CSS 函数calc() 与 CSS 变量var()的混合使用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/08/12%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87javascript%E6%8A%80%E8%83%BD%E7%9A%84%E6%A6%82%E5%BF%B5/" rel="next" title="12个可以提升JavaScript技能的概念">
+      12个可以提升JavaScript技能的概念 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

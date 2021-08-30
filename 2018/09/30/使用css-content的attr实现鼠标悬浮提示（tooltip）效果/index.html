@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="当你的用户需要漂亮的图标给出额外的文字信息时，亦或是当他们在点击了按钮之后需要确认自己没点错时，又或是带图片和字幕的复活节彩蛋，提示框是用来增强用户界面的绝佳手段。现在，让我们来做几个动画提示框，没有别的，只有HTML和CSS。 样例 这是我们之后要做的： See the Pen CSS Tooltip Magic by xianzhiding (@xianzhiding) on CodePen.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用CSS content的attr实现鼠标悬浮提示（tooltip）效果">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/09/30/%E4%BD%BF%E7%94%A8css-content%E7%9A%84attr%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%82%AC%E6%B5%AE%E6%8F%90%E7%A4%BA%EF%BC%88tooltip%EF%BC%89%E6%95%88%E6%9E%9C/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="当你的用户需要漂亮的图标给出额外的文字信息时，亦或是当他们在点击了按钮之后需要确认自己没点错时，又或是带图片和字幕的复活节彩蛋，提示框是用来增强用户界面的绝佳手段。现在，让我们来做几个动画提示框，没有别的，只有HTML和CSS。 样例 这是我们之后要做的： See the Pen CSS Tooltip Magic by xianzhiding (@xianzhiding) on CodePen.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-09-30T08:09:31.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.873Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="css3">
+<meta property="article:tag" content=":after">
+<meta property="article:tag" content=":before">
+<meta property="article:tag" content="Bootstrap">
+<meta property="article:tag" content="content">
+<meta property="article:tag" content="tooltip">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/09/30/%E4%BD%BF%E7%94%A8css-content%E7%9A%84attr%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%82%AC%E6%B5%AE%E6%8F%90%E7%A4%BA%EF%BC%88tooltip%EF%BC%89%E6%95%88%E6%9E%9C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>使用CSS content的attr实现鼠标悬浮提示（tooltip）效果 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/30/%E4%BD%BF%E7%94%A8css-content%E7%9A%84attr%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%82%AC%E6%B5%AE%E6%8F%90%E7%A4%BA%EF%BC%88tooltip%EF%BC%89%E6%95%88%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用CSS content的attr实现鼠标悬浮提示（tooltip）效果
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-30 16:09:31" itemprop="dateCreated datePublished" datetime="2018-09-30T16:09:31+08:00">2018-09-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>当你的用户需要漂亮的图标给出额外的文字信息时，亦或是当他们在点击了按钮之后需要确认自己没点错时，又或是带图片和字幕的复活节彩蛋，提示框是用来增强用户界面的绝佳手段。现在，让我们来做几个动画提示框，没有别的，只有HTML和CSS。 样例 这是我们之后要做的：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/BGRKEE/">CSS Tooltip Magic</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>在我们沉浸在写代码的过程中之前，让我们先来看看我们的意图是什么。主要目的是为了获得一种简单的添加提示框的方法，这样一来，我们之后就能够通过增加一个自定义的 tooltip 属性来做到这一点。</p>
+<p><span tooltip="message">visible text or icon, etc.</span></p>
+<h2 id="让我们设定几个预期"><a href="#让我们设定几个预期" class="headerlink" title="让我们设定几个预期"></a>让我们设定几个预期</h2><ul>
+<li>  不需要JavaScript</li>
+<li>  我们将会使用属性选择器（而不是类名），以及CSS内建的模式匹配</li>
+<li>  加到现有的DOM元素（你的标签中不需要新的元素）</li>
+<li>  代码例子中是没有前缀的（如有需要，为你的目标浏览器加上供应商前缀）</li>
+<li>  假设通过 mouseover/hover 来触发提示框</li>
+<li>  仅仅是纯文本提示框（HTML，图片等等都不支持）</li>
+<li>  当唤起提示框时，有巧妙的动画</li>
+</ul>
+<h2 id="好了，老司机要开车了！"><a href="#好了，老司机要开车了！" class="headerlink" title="好了，老司机要开车了！"></a>好了，老司机要开车了！</h2><p>哦，等等。我们还要先处理一个问题，是关于”不需要额外标签”的。毕竟，这很巧妙。 我们的提示框真的不需要额外的DOM元素，因为它们完全是基于伪元素的（::before 和 ::after），我们可以通过CSS来控制。 如果你已经在其它样式集中使用了一个元素的伪元素，又希望在这个元素是加一个提示框，那么你可能需要稍稍做一些重构。 没什么比得上来一场提示框盛会了！ 等等。小坏蛋！还有一个警告：CSS定位。为了提示框正常运作，它们的父元素（我们把提示框添加在它后面）需要是</p>
+<ul>
+<li>  <code>position: relative</code>，或者</li>
+<li>  <code>position: absolute</code>，或</li>
+<li>  <code>position: fixed</code></li>
+</ul>
+<p>基本上，什么都行，只要不是 position: static — 这是浏览器赋给几乎所有元素的默认定位模式。提示框是绝对定位的，所以它们需要知道它们的绝对值在什么边界内是有意义的。 默认的定位指令 static 不会声明它的边界，也不会给我们的提示框以上下文来进行相对定位。所以提示框会使用之后，最近的，有声明边界的父元素。 你还需要根据你如何使用提示框来决定哪个定位指令最为合适。这篇教程假设父元素是 postion: relative 如果你的UI依靠一个绝对定位的元素，那么在那个元素上部署一个提示框，也会需要一些重构（额外的标签）。 让我们开始吧。</p>
+<h2 id="属性选择器：快速回顾"><a href="#属性选择器：快速回顾" class="headerlink" title="属性选择器：快速回顾"></a>属性选择器：快速回顾</h2><p>大多数CSS规则印象中都是用类名写的，比如 .this-thing ,但是CSS有几个类型的选择器。我们巧妙的提示框打算使用属性选择器——也就是方括号表示法。</p>
+<p>[foo] {<br>background: rgba(0, 0, 0, 0.8);<br>color: #fff;<br>}</p>
+<p>当浏览器看到诸如此类的东西时：</p>
+<p><span foo>Check it out!</span></p>
+<p>浏览器会知道，它需要应用 [foo] 规则了，因为 <span> 标签有一个叫做 foo 的属性。在这个例子中，span自身会有一个半透明的黑色背景，以及白色文字。 HTML元素有着各种各样的内置属性，但是我们也可以给出我们自己的属性。比如 foo ，又或者是 tooltip 。默认情况下，HTML不知道这些东西是什么意思，但是有了CSS，我们可以告诉HTML这些自定义属性是什么意思。</p>
+<h2 id="为什么用属性选择器？"><a href="#为什么用属性选择器？" class="headerlink" title="为什么用属性选择器？"></a>为什么用属性选择器？</h2><p>我们后面会使用属性选择器，主要是出于侧重分离的目的。使用属性而不是类名，并不会让我们在详细程度上获得更多益处，类和属性在详细程度上是相同的。 然而，通过使用属性，我们可以把我们的内容放在一块儿，因为HTML属性可以有值，而类名没有值。 在这个例子的代码中，来权衡一下类名 .tooltip 对比属性 [tooltip] 。类名是 [class] 属性的值中的一个，而tooltip属性可以存放一个值，它就是我们要显示的文字。</p>
+<p><span class="tooltip another-classname">lorem ipsum</span><br><span tooltip="sit dolar amet">lorem ipsum</span></p>
+<h2 id="现在让我们来看看提示框炼金术"><a href="#现在让我们来看看提示框炼金术" class="headerlink" title="现在让我们来看看提示框炼金术"></a>现在让我们来看看提示框炼金术</h2><p>我们的提示框会使用两种不同的属性：</p>
+<ul>
+<li>  tooltip: 这个属性存放了提示框的内容（一个纯文本字符串）</li>
+<li>  flow: 可选；这个属性允许我们控制如何显示提示框。我们可以支持很多方位，但是我们会覆盖4各常用方位： 上，左，右，下</li>
+</ul>
+<p>现在，让我们为所有的提示框做好准备工作。步骤1-5的规则会应用到所有的提示框上，无论我们给 flow 属性什么值。步骤6-7对于不同的 flow 值会有所区分。</p>
+<h3 id="1-相对性"><a href="#1-相对性" class="headerlink" title="1. 相对性"></a>1. 相对性</h3><p>这是用在提示框的父元素上的。让我们来给定一个定位指令，这样提示框的组成部分（即::before 和 ::after 伪元素）的绝对定位就可以以父元素做参照进行定位，而不是以整个页面或祖父元素或DOM树上方的其它外围元素作为参照进行定位。</p>
+<p>[tooltip] {<br>position: relative;<br>}</p>
+<h3 id="2-伪元素准备时间"><a href="#2-伪元素准备时间" class="headerlink" title="2. 伪元素准备时间"></a>2. 伪元素准备时间</h3><p>是时候准备伪元素了。在这里，我们要对 ::before 和 ::after 设置常用属性。content 属性是真正让伪元素工作的属性，不过我们稍后再讨论它。</p>
+<p>[tooltip]::before,<br>[tooltip]::after {<br>line-height: 1;<br>user-select: none;<br>pointer-events: none;<br>position: absolute;<br>display: none;<br>opacity: 0;</p>
+<p>/* opinions */<br>text-transform: none;<br>font-size: .9em;<br>}</p>
+<h3 id="3-丁克帽"><a href="#3-丁克帽" class="headerlink" title="3. 丁克帽"></a>3. 丁克帽</h3><p>我不知道丁克帽是不是说得通，我只是一直这么叫它。它是一个尖尖的小三角形，通过指向它的调用者，为提示框提供对话气泡的感觉。 注意到我们在边界颜色这一块，使用了 tranparent ；由于上色要根据提示框的 flow 值来，所以之后再加上颜色。</p>
+<p>[tooltip]::before {<br>content: ‘’;<br>z-index: 1001;<br>border: 5px solid transparent;<br>}</p>
+<p>content: ‘’;声明中的值是一个空字符串，这并不是笔误。字符串里面，我们不想要任何东西，但是我们需要这个属性，使得伪元素得以存在。 为了生成一个三角形，我们定义了一个实现边框，在空的盒子（没有内容）上加了一些厚度，而不设定盒子的宽度和高度，仅仅对盒子的每一条边都给一个边框颜色。</p>
+<h3 id="4-气泡！"><a href="#4-气泡！" class="headerlink" title="4. 气泡！"></a>4. 气泡！</h3><p>这里是重点了。注意到 content: attr(tooltip) 这一部分是说：“这个伪类应该使用 tooltip 属性的值作为这个伪类的内容。”这也是为什么使用属性而不是类名会这么赞的原因。</p>
+<p>[tooltip]::after {<br>content: attr(tooltip); /* magic! */<br>z-index: 1000;</p>
+<p>/* most of the rest of this is opinion */<br>font-family: Helvetica, sans-serif;<br>text-align: center;</p>
+<p>/*<br>Let the content set the size of the tooltips<br>but this will also keep them from being obnoxious<br>*/<br>min-width: 3em;<br>max-width: 21em;<br>white-space: nowrap;<br>overflow: hidden;<br>text-overflow: ellipsis;</p>
+<p>/* visible design of the tooltip bubbles */<br>padding: 1ch 1.5ch;<br>border-radius: .3ch;<br>box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);<br>background: #333;<br>color: #fff;<br>}</p>
+<p>注意看丁克帽和气泡的 z-index 值。这些值可以是任意的。但是要记住，z-index 值是相对的。 解释：一个z-index值为1001的元素，在一个z-index为3的元素内部。仅仅意味着，z-index: 3 容器内部，1001元素是最顶层的元素。 气泡的z-index应该至少比丁克帽的z-index低一档。如果它和丁克的一样高，或更高的话，如果你提示框使用了 box-shadow 的话，结果在丁克帽上回得到不一致的颜色效果。</p>
+<h3 id="5-交互动作"><a href="#5-交互动作" class="headerlink" title="5. 交互动作"></a>5. 交互动作</h3><p>我们的提示框是通过把鼠标移动到带提示框的元素上面，来激活的。差不多是这样。</p>
+<p>[tooltip]:hover::before,<br>[tooltip]:hover::after {<br>display: block;<br>}</p>
+<p>如果你回顾在第2不中的样式部分，你会看到我们对提示框的组成部分，使用了 opacity: 0; 以及 display: none; 。我们这么做是为了当提示框显示和隐藏时，可以使用CSS动画效果。 display属性是不能做成动画的，但是opacity属性可以！我们留到最后来处理动画的问题。如果你对动画提示框没兴趣，只要把第2步中的 opacity: 0; 删掉，无视第7步即可。 最后一件要应用到所有提示框上的是，如果提示框没有内容，能有一个方法来抑制提示框。如果你使用某种动态系统（Vue.js, Angular, 或者 React, PHP等等）来生成提示框的话，我们就不需要笨笨的空白气泡了！</p>
+<p>/* don’t show empty tooltips */<br>[tooltip=’’]::before,<br>[tooltip=’’]::after {<br>display: none !important;<br>}</p>
+<h3 id="6-流控制"><a href="#6-流控制" class="headerlink" title="6. 流控制"></a>6. 流控制</h3><p>这一步会变得更加复杂，因为我们会使用一些不那么常见的选择器，来帮助我们的提示框基于 flow 值（或没有flow属性）来确定位置。 在我们写样式之前，让我们看看将要用到一些选择器模式。</p>
+<p>[tooltip]:not([flow])::before,<br>[tooltip][flow^=”up”]::before {<br>/* …<br>properties: values<br>… */<br>}</p>
+<p>这是在告诉浏览器：“对于所有带有 tooltip 属性来说，其中没有 flow 属性的元素，或者有flow元素，但它的值是以’up’开头的：将这些样式套用到这类元素的::before伪元素上。” 我们在这里使用了一个模式，这样一来，这些东西可以扩展到其它流上，而步需要重复这么多的CSS。这个模式 flow^=”up” 使用了 ^= （开头）匹配符。 如果你想增加其它流控制的话，通过这个模式，也可以将样式应用在 up-right 和 up-left 方向上（代码中）。我们在这里不会讨论这些流控制，不过你可以在CodePen上，我原来的提示框演示中看到如何使用它们。 以下是教程中所讲到的4个流所对应的CSS代码块。 上（这是默认的方向）</p>
+<p>/* ONLY the ::before */<br>[tooltip]:not([flow])::before,<br>[tooltip][flow^=”up”]::before {<br>bottom: 100%;<br>border-bottom-width: 0;<br>border-top-color: #333;<br>}</p>
+<p>/* ONLY the ::after */<br>[tooltip]:not([flow])::after,<br>[tooltip][flow^=”up”]::after {<br>bottom: calc(100% + 5px);<br>}</p>
+<p>/* Both ::before &amp; ::after */<br>[tooltip]:not([flow])::before,<br>[tooltip]:not([flow])::after,<br>[tooltip][flow^=”up”]::before,<br>[tooltip][flow^=”up”]::after {<br>left: 50%;<br>transform: translate(-50%, -.5em);<br>}</p>
+<h4 id="下"><a href="#下" class="headerlink" title="下:"></a>下:</h4><p>[tooltip][flow^=”down”]::before {<br>top: 100%;<br>border-top-width: 0;<br>border-bottom-color: #333;<br>}</p>
+<p>[tooltip][flow^=”down”]::after {<br>top: calc(100% + 5px);<br>}</p>
+<p>[tooltip][flow^=”down”]::before,<br>[tooltip][flow^=”down”]::after {<br>left: 50%;<br>transform: translate(-50%, .5em);<br>}</p>
+<h4 id="左"><a href="#左" class="headerlink" title="左:"></a>左:</h4><p>[tooltip][flow^=”left”]::before {<br>top: 50%;<br>border-right-width: 0;<br>border-left-color: #333;<br>left: calc(0em - 5px);<br>transform: translate(-.5em, -50%);<br>}</p>
+<p>[tooltip][flow^=”left”]::after {<br>top: 50%;<br>right: calc(100% + 5px);<br>transform: translate(-.5em, -50%);<br>}</p>
+<h4 id="右"><a href="#右" class="headerlink" title="右:"></a>右:</h4><p>[tooltip][flow^=”right”]::before {<br>top: 50%;<br>border-left-width: 0;<br>border-right-color: #333;<br>right: calc(0em - 5px);<br>transform: translate(.5em, -50%);<br>}</p>
+<p>[tooltip][flow^=”right”]::after {<br>top: 50%;<br>left: calc(100% + 5px);<br>transform: translate(.5em, -50%);<br>}</p>
+<h3 id="7-让一切都动起来"><a href="#7-让一切都动起来" class="headerlink" title="7. 让一切都动起来"></a>7. 让一切都动起来</h3><p>动画是很神奇的。动画可以做到： 让用户感觉舒服 让用户感受到你的用户界面的空间感 注意到该看到的东西 让用户界面中本来非黑即白的生硬效果变得柔和 我们的提示框属于最后那一种。如果仅仅是让一个文字泡泡出现然后突然消失，效果是不令人满意的，我们可以让它更柔和一些。 关键帧 (@keyframes) 我们需要两个关键帧 (@keyframe) 动画。向上/向下提示框要用到tooltips-vert关键帧，而向左/向右提示框使用tooltips-horz关键帧。 注意，在这些关键帧中，我们只定义了提示框所需的终止状态。我们并不需要知道它们从何处来 (提示框本身就有状态信息)。我们只想控制它们要到哪儿去。</p>
+<p>@keyframes tooltips-vert {<br>to {<br>opacity: .9;<br>transform: translate(-50%, 0);<br>}<br>}</p>
+<p>@keyframes tooltips-horz {<br>to {<br>opacity: .9;<br>transform: translate(0, -50%);<br>}<br>}</p>
+<p>现在，当一个用户的鼠标移到触发元素 (具有[tooltip]属性的元素) 上时，我们需要将这些关键帧应用到提示框上。因为我们采用了不同的流来控制提示框的显示方式，我们需要在样式中对它们进行定义。 使用:hover将控制传递给动画</p>
+<p>[tooltip]:not([flow]):hover::before,<br>[tooltip]:not([flow]):hover::after,<br>[tooltip][flow^=”up”]:hover::before,<br>[tooltip][flow^=”up”]:hover::after,<br>[tooltip][flow^=”down”]:hover::before,<br>[tooltip][flow^=”down”]:hover::after {<br>animation:<br>tooltips-vert<br>300ms<br>ease-out<br>forwards;<br>}</p>
+<p>[tooltip][flow^=”left”]:hover::before,<br>[tooltip][flow^=”left”]:hover::after,<br>[tooltip][flow^=”right”]:hover::before,<br>[tooltip][flow^=”right”]:hover::after {<br>animation:<br>tooltips-horz<br>300ms<br>ease-out<br>forwards;<br>}</p>
+<p>我们不能对display属性进行动画，但是可以通过操作opacity属性，在提示框上加上淡入效果。我们也可以动画transform属性，它可以给提示框加上微妙的动作，触发的元素就像飞入某点的一样。 主要forward关键词在动画的声明中，这告诉动画当完成时不重置，而是继续停留在结束。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>棒极了！我们在这个教程里已经覆盖了很多，一堆提示框效果。 我们仅仅摸索了用css做提示框的表面。好好享受它们，继续试验，调制出你自己的方子！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css/" rel="tag"># css</a>
+              <a href="/tags/css3/" rel="tag"># css3</a>
+              <a href="/tags/after/" rel="tag"># :after</a>
+              <a href="/tags/before/" rel="tag"># :before</a>
+              <a href="/tags/Bootstrap/" rel="tag"># Bootstrap</a>
+              <a href="/tags/content/" rel="tag"># content</a>
+              <a href="/tags/tooltip/" rel="tag"># tooltip</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/09/29/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/" rel="prev" title="CSS中的变量：自定义属性">
+      <i class="fa fa-chevron-left"></i> CSS中的变量：自定义属性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/10/03/%E5%88%A9%E7%94%A8javascript%E5%AE%9E%E7%8E%B0%E5%AF%86%E7%A0%81%E5%8F%AF%E8%A7%81%E6%80%A7%E5%88%87%E6%8D%A2%EF%BC%88%E6%98%BE%E7%A4%BA%E5%92%8C%E9%9A%90%E8%97%8F%EF%BC%89/" rel="next" title="利用JavaScript实现密码可见性切换（显示和隐藏）">
+      利用JavaScript实现密码可见性切换（显示和隐藏） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9%E6%88%91%E4%BB%AC%E8%AE%BE%E5%AE%9A%E5%87%A0%E4%B8%AA%E9%A2%84%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">让我们设定几个预期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%BD%E4%BA%86%EF%BC%8C%E8%80%81%E5%8F%B8%E6%9C%BA%E8%A6%81%E5%BC%80%E8%BD%A6%E4%BA%86%EF%BC%81"><span class="nav-number">2.</span> <span class="nav-text">好了，老司机要开车了！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A%E5%BF%AB%E9%80%9F%E5%9B%9E%E9%A1%BE"><span class="nav-number">3.</span> <span class="nav-text">属性选择器：快速回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">为什么用属性选择器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E5%9C%A8%E8%AE%A9%E6%88%91%E4%BB%AC%E6%9D%A5%E7%9C%8B%E7%9C%8B%E6%8F%90%E7%A4%BA%E6%A1%86%E7%82%BC%E9%87%91%E6%9C%AF"><span class="nav-number">5.</span> <span class="nav-text">现在让我们来看看提示框炼金术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%9B%B8%E5%AF%B9%E6%80%A7"><span class="nav-number">5.1.</span> <span class="nav-text">1. 相对性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BC%AA%E5%85%83%E7%B4%A0%E5%87%86%E5%A4%87%E6%97%B6%E9%97%B4"><span class="nav-number">5.2.</span> <span class="nav-text">2. 伪元素准备时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%81%E5%85%8B%E5%B8%BD"><span class="nav-number">5.3.</span> <span class="nav-text">3. 丁克帽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%B0%94%E6%B3%A1%EF%BC%81"><span class="nav-number">5.4.</span> <span class="nav-text">4. 气泡！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E4%BA%A4%E4%BA%92%E5%8A%A8%E4%BD%9C"><span class="nav-number">5.5.</span> <span class="nav-text">5. 交互动作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%B5%81%E6%8E%A7%E5%88%B6"><span class="nav-number">5.6.</span> <span class="nav-text">6. 流控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B"><span class="nav-number">5.6.1.</span> <span class="nav-text">下:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6"><span class="nav-number">5.6.2.</span> <span class="nav-text">左:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3"><span class="nav-number">5.6.3.</span> <span class="nav-text">右:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E8%AE%A9%E4%B8%80%E5%88%87%E9%83%BD%E5%8A%A8%E8%B5%B7%E6%9D%A5"><span class="nav-number">5.7.</span> <span class="nav-text">7. 让一切都动起来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">6.</span> <span class="nav-text">结论</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

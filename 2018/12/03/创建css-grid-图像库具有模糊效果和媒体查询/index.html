@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="我们将用一组图片缩略图列表将它们转换为具有模糊悬停效果的响应式CSS Grid图库。我们还将使用一个很棒的CSS技巧来确保触摸屏用户也能体验到这种效果！ 我们将执行以下操作：    使用CSS Grid排列缩略图，为我们提供响应式图库。   使用CSS filter和transitions创建悬停效果。   使用漂亮的CSS媒体查询来确保触摸屏用户仍然可以看到每个缩略图标题，即使没有悬停。  首先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建CSS Grid 图像库(具有模糊效果和媒体查询)">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/12/03/%E5%88%9B%E5%BB%BAcss-grid-%E5%9B%BE%E5%83%8F%E5%BA%93%E5%85%B7%E6%9C%89%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E5%92%8C%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="我们将用一组图片缩略图列表将它们转换为具有模糊悬停效果的响应式CSS Grid图库。我们还将使用一个很棒的CSS技巧来确保触摸屏用户也能体验到这种效果！ 我们将执行以下操作：    使用CSS Grid排列缩略图，为我们提供响应式图库。   使用CSS filter和transitions创建悬停效果。   使用漂亮的CSS媒体查询来确保触摸屏用户仍然可以看到每个缩略图标题，即使没有悬停。  首先">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/columns.gif">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/align-items.gif">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/transition.jpg">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/filter.jpg">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/transform-scale.jpg">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/screen-devices.jpg">
+<meta property="article:published_time" content="2018-12-03T08:41:56.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:26.935Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="filter">
+<meta property="article:tag" content="css3">
+<meta property="article:tag" content="transforms">
+<meta property="article:tag" content="translate">
+<meta property="article:tag" content="grid-template-columns">
+<meta property="article:tag" content="grid-gap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/columns.gif">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/12/03/%E5%88%9B%E5%BB%BAcss-grid-%E5%9B%BE%E5%83%8F%E5%BA%93%E5%85%B7%E6%9C%89%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E5%92%8C%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>创建CSS Grid 图像库(具有模糊效果和媒体查询) | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/03/%E5%88%9B%E5%BB%BAcss-grid-%E5%9B%BE%E5%83%8F%E5%BA%93%E5%85%B7%E6%9C%89%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E5%92%8C%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          创建CSS Grid 图像库(具有模糊效果和媒体查询)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-03 16:41:56" itemprop="dateCreated datePublished" datetime="2018-12-03T16:41:56+08:00">2018-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我们将用一组图片缩略图列表将它们转换为具有模糊悬停效果的响应式CSS Grid图库。我们还将使用一个很棒的CSS技巧来确保触摸屏用户也能体验到这种效果！ 我们将执行以下操作：</p>
+<ul>
+<li>  使用CSS Grid排列缩略图，为我们提供响应式图库。</li>
+<li>  使用CSS filter和transitions创建悬停效果。</li>
+<li>  使用漂亮的CSS媒体查询来确保触摸屏用户仍然可以看到每个缩略图标题，即使没有悬停。</li>
+</ul>
+<h2 id="首先要把列表的结构罗列出来"><a href="#首先要把列表的结构罗列出来" class="headerlink" title="首先要把列表的结构罗列出来"></a>首先要把列表的结构罗列出来</h2><div class="grid-container">
+  <article class="location-listing">
+    <a class="location-title" href="#"></a>
+    <a class="location-image" href="#">
+        <img src="">
+    </a>
+  </article>
+</div>
+
+<h2 id="响应式CSS网格"><a href="#响应式CSS网格" class="headerlink" title="响应式CSS网格"></a>响应式CSS网格</h2><p>只要有几个规则，我们就可以把缩略图变成网格：</p>
+<p>.grid-container {<br>  display: grid;<br>  grid-gap: 1em;<br>  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));<br>}</p>
+<p>这里的简单线条是display:grid;（它将所有子项转换成网格项并加以布局）和grid-gap:1em;（它定义了模块之间的间隔）。 稍微的复杂的是我们定义的grid-template-columns属性的值，它定义了我们的列。你平常可能看到的是类似repeat(3,200px)的内容，它将定义的是三列200px。在这种情况下，我们将使用auto-fill来填充关键字repeat()，然后使用了一些值。这给了我们尽可能多的列，最小为300px，最大为1fr，将适合网格容器。 调整浏览器窗口大小，看看它是如何运行的！</p>
+<h3 id="你需要补充的一个细节："><a href="#你需要补充的一个细节：" class="headerlink" title="你需要补充的一个细节："></a>你需要补充的一个细节：</h3><p>img {<br>  width: 100%;<br>  height: auto;<br>  vertical-align: middle;<br>}</p>
+<h3 id="悬停效果"><a href="#悬停效果" class="headerlink" title="悬停效果"></a>悬停效果</h3><p>我们将使用标题作为缩略图的叠加层，在悬停时显示它们。我们还将为悬停的图像提供红色效果，并使其略微模糊，以帮助覆盖文本的可读性。</p>
+<h3 id="覆盖标题"><a href="#覆盖标题" class="headerlink" title="覆盖标题"></a>覆盖标题</h3><p>要叠加标题，我们需要定位它，所以我们首先要将<article>设置position: relative;和标题position: absolute;。我们将其背景填充为红色背景：</p>
+<p>.location-listing {<br>  position: relative;<br>}</p>
+<p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);<br>}</p>
+<p>已经很好的显示了<img src="http://file.w3cbest.com/file/images/columns.gif"></p>
+<h3 id="标题的风格"><a href="#标题的风格" class="headerlink" title="标题的风格"></a>标题的风格</h3><p>一些印刷样式将改善我们的标题的外观，并且三行flexbox魔术将集中为我们对齐：</p>
+<p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);</p>
+<p>  color: white;<br>  font-size: 1.5em;<br>  font-weight: bold;<br>  text-decoration: none;</p>
+<p>  display: flex;<br>  align-items: center;<br>  justify-content: center;<br>}</p>
+<p>好多了： <img src="http://file.w3cbest.com/file/images/align-items.gif"></p>
+<h3 id="隐藏标题"><a href="#隐藏标题" class="headerlink" title="隐藏标题"></a>隐藏标题</h3><p>现在让我们通过设置它的不透明度隐藏标题，这样我们可以在悬停时看到它。.location-title应该这样做：</p>
+<p>opacity: 0;<br>transition: opacity .5s;</p>
+<p>在这里，我们还设置了一个transition规则，以便当我们将不透明度恢复时，它将有0.5秒的延时过程。我们现在将hover悬停时不透明度设置为1</p>
+<p>.location-listing:hover .location-title {<br>  opacity: 1;<br>}</p>
+<p>到这里我们标题悬停效果已经完美实现了： <img src="http://file.w3cbest.com/file/images/transition.jpg"></p>
+<h3 id="模糊效果"><a href="#模糊效果" class="headerlink" title="模糊效果"></a>模糊效果</h3><p>我们已经创造了一个漂亮的悬停效果，接下来为图像添加模糊滤镜。首先将模糊滤镜设置为正常状态，以便为我们提供一些过渡。然后我们会为悬停状态模糊设置为2px（这里你可以根据你的意愿设置，但我认为2px是一个很棒的视觉效果）：</p>
+<p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>}</p>
+<p>.location-listing:hover .location-image img {<br>  filter: blur(2px);<br>}</p>
+<p>这就是效果了： <img src="http://file.w3cbest.com/file/images/filter.jpg"></p>
+<h3 id="需要注意的两件事："><a href="#需要注意的两件事：" class="headerlink" title="需要注意的两件事："></a>需要注意的两件事：</h3><ul>
+<li>  标题已经消失，因为浏览器现在正在顶部呈现模糊的图形。</li>
+<li>  模糊效果看起来不错，但它也有边缘模糊效果。(可以把它去掉)</li>
+</ul>
+<p>因为层级的关系标题被遮住了把.location-title设置z-index:1 把边缘模糊去掉，首先我们对图像进行缩放，使其稍微大一些，然后对图像容器（.location-list）设置overflow: hidden;以便当较大的图像模糊时，有效地裁剪其边缘。下面是两个元素已设置的属性：</p>
+<p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>  transform: scale(1.1);<br>}</p>
+<p>.location-listing {<br>  position: relative;<br>  overflow: hidden;<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/transform-scale.jpg"></p>
+<h2 id="触摸屏问题"><a href="#触摸屏问题" class="headerlink" title="触摸屏问题"></a>触摸屏问题</h2><p>有些网页应用都有很多悬停效果，而且是都被隐藏，在不触发的时候是看不到的(大量的平板电脑和智能手机不能模仿悬停“按下”动作)，这是不容易访问的。 幸运的是，CSS有一些非常有用的交互媒体查询可以帮助我们（他们也享受相当不错的浏览器支持）。这些查询将检测浏览器的输入机制 - 指针设备质量，悬停能力以及一些其他特殊定义 - 因此我们可以相当准确地确定是否在触摸屏设备上查看我们的缩略图。 以此媒体查询为例（它完全符合我们的预期）</p>
+<p>@media (hover: none) { }</p>
+<p>在这些花括号中，我们将我们想要应用的任何样式应用于无法处理的浏览器:hover。我们将声明对于悬停不可能或至少不方便的设备，缩略图图像将始终模糊，标题将始终可见：</p>
+<p>@media (hover: none) {<br>  .location-title {<br>     opacity: 1;<br>  }<br>  .location-image img {<br>    filter: blur(2px);<br>  }<br>}</p>
+<p><img src="http://file.w3cbest.com/file/images/screen-devices.jpg"> 注意：如上所述，对此的支持非常合理，但有关交互媒体查询实施的讨论仍在进行中。这个规范很可能会改变或删除部分。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/oQVGaa/">创建CSS Grid 图像库</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/filter/" rel="tag"># filter</a>
+              <a href="/tags/css3/" rel="tag"># css3</a>
+              <a href="/tags/transforms/" rel="tag"># transforms</a>
+              <a href="/tags/translate/" rel="tag"># translate</a>
+              <a href="/tags/grid-template-columns/" rel="tag"># grid-template-columns</a>
+              <a href="/tags/grid-gap/" rel="tag"># grid-gap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/29/echarts%E7%BB%99%E6%9F%B1%E5%AD%90%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%90%8C%E9%A2%9C%E8%89%B2%E7%82%B9%E5%87%BB%E5%B9%B6%E6%94%B9%E5%8F%98%E9%A2%9C%E8%89%B2/" rel="prev" title="Echarts给柱子设置不同颜色点击并改变颜色">
+      <i class="fa fa-chevron-left"></i> Echarts给柱子设置不同颜色点击并改变颜色
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/06/matches-any-%E6%96%B9%E4%BE%BF%E5%A5%BD%E7%94%A8%E7%9A%84%E4%BC%AA%E7%B1%BB%E5%87%BD%E6%95%B0%E9%80%89%E6%8B%A9%E5%99%A8/" rel="next" title=":matches() (:any()) 方便好用的伪类函数选择器">
+      :matches() (:any()) 方便好用的伪类函数选择器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E8%A6%81%E6%8A%8A%E5%88%97%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84%E7%BD%97%E5%88%97%E5%87%BA%E6%9D%A5"><span class="nav-number">1.</span> <span class="nav-text">首先要把列表的结构罗列出来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8FCSS%E7%BD%91%E6%A0%BC"><span class="nav-number">2.</span> <span class="nav-text">响应式CSS网格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E9%9C%80%E8%A6%81%E8%A1%A5%E5%85%85%E7%9A%84%E4%B8%80%E4%B8%AA%E7%BB%86%E8%8A%82%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">你需要补充的一个细节：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%82%AC%E5%81%9C%E6%95%88%E6%9E%9C"><span class="nav-number">2.2.</span> <span class="nav-text">悬停效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E6%A0%87%E9%A2%98"><span class="nav-number">2.3.</span> <span class="nav-text">覆盖标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E7%9A%84%E9%A3%8E%E6%A0%BC"><span class="nav-number">2.4.</span> <span class="nav-text">标题的风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E6%A0%87%E9%A2%98"><span class="nav-number">2.5.</span> <span class="nav-text">隐藏标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C"><span class="nav-number">2.6.</span> <span class="nav-text">模糊效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%B8%A4%E4%BB%B6%E4%BA%8B%EF%BC%9A"><span class="nav-number">2.7.</span> <span class="nav-text">需要注意的两件事：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">触摸屏问题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

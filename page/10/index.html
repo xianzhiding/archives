@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端开发 大前端 W3Cbest">
+<meta property="og:url" content="https://xianzhiding.github.io/page/10/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="前端开发,es5,es6,es10,css,javascript,html,flexbox,grid,echarts">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/page/10/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/" class="post-title-link" itemprop="url">box-shadow和drop-shadow实现不规则投影</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-09 13:32:25" itemprop="dateCreated datePublished" datetime="2018-10-09T13:32:25+08:00">2018-10-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当我们想给一个矩形或其他能用 border-radius 生成的形状（在“自适应的椭圆”一节中可以看到一些示例）加投影时，box-shadow 的表现都堪称完美。但是，当元素添加了一些伪元素或半透明的装饰之后，它就有些力不从心了，因为 border-radius 会无耻地忽视透明部分。这类情况包括：</p>
+<ul>
+<li>  半透明图像、背景图像、或者 border-image（比如老式的金质像框）；</li>
+<li>  元素设置了点状、虚线或半透明的边框，但没有背景（或者当background-clip 不是 border-box 时）；</li>
+<li>  对话气泡，它的小尾巴通常是用伪元素生成的；</li>
+</ul>
+<p>如果我们打算对这类元素直接应用 box-shadow，那只能得到不完全投影的结果。难道我们只能完全放弃投影效果吗？有没有办法可以解决这个难题？ <img src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131023.png"> 滤镜效果规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/filter-effects%EF%BC%89%E4%B8%BA%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%82%E5%AE%83%E5%BC%95%E5%85%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E5%8F%AB%E4%BD%9C">http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。它引入了一个叫作</a> filter 的新属性，这个属性也是从 SVG 那里借鉴过来的。尽管 CSS 滤镜基本上就是 SVG 滤镜，但我们并不需要掌握任何SVG 知识。相反，只需要一些函数就可以很方便地指定滤镜效果了，比如blur()、grayscale() 以及我们需要的 drop-shadow() ！如果你喜欢，甚至可以把多个滤镜串连起来，只要用空格把它们分隔开就可以了，比如：</p>
+<p>filter: blur() grayscale() drop-shadow();</p>
+<p>drop-shadow() 滤镜可接受的参数基本上跟 box-shadow 属性是一样的，但不包括扩张半径，不包括 inset 关键字，也不支持逗号分割的多层投影语法。举个例子，上面的投影：</p>
+<p>box-shadow: 2px 2px 10px rgba(0,0,0,.5);</p>
+<p>可以这样来写：</p>
+<p>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
+<p><img src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131101.png"> CSS 滤镜最大的好处在于，它们可以平稳退化：当浏览器不支持时，不会出现问题，只不过没有任何效果而已。如果你确实需要这个效果在尽可能多的浏览器中显示出来，可以同时附上一个 SVG 滤镜，这样可以得到稍微好一些的浏览器支持度。你可以在滤镜效果规范（<a target="_blank" rel="noopener" href="http://www.w3.org/TR/filter-effects/%EF%BC%89%E4%B8%AD%E4%B8%BA%E6%AF%8F%E4%B8%AA%E6%BB%A4%E9%95%9C%E5%87%BD%E6%95%B0%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84">http://www.w3.org/TR/filter-effects/）中为每个滤镜函数找到对应的</a> SVG 滤镜版本。你可以把 SVG滤镜和简化的 CSS 滤镜放在一起使用，让层叠机制来决定哪一行最终生效：</p>
+<p>filter: url(drop-shadow.svg#drop-shadow);<br>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
+<p>不幸的是，如果 SVG 滤镜是存放在一个独立文件里的，那它就无法像一个简洁易用的函数那样在 CSS 代码中进行随意配置；如果它是内联的，则又会搅乱你的代码。参数需要写死在文件内部，因此每当我们新加一种哪怕是大同小异的投影效果时，都需要多准备一个文件，这显然是难以接受的。当然，我们还可以使用 data URI（它也会省掉额外的 HTTP 请求），但这个方法仍然会带来文件体积的增长。总的来说，这个方法只是一种回退方案，因此只要我们把SVG 滤镜控制在一定数量以内，哪怕它们的效果大同小异，也是说得过去的。 另外一件需要牢记的事情就是，任何非透明的部分都会被一视同仁地打上投影，包括文本（如果背景是透明的），正如我们刚刚看到的那样。你可能会想，是不是可以通过 text-shadow: none; 来取消掉文本上的投影呢？其实 text-shadow 跟它是完全不相干的两码事，因此这样做并不能取消文本上的 drop-shadow() 效果。此外，如果你已经用 textshadow在文本上加了投影效果，文本投影还会被 drop-shadow() 滤镜再加上投影，这本质上是给投影打了投影！看看下面这段示例代码（请原谅它惨不忍睹的效果，这样只是为了凸显这个怪异的问题）：</p>
+<p>color: deeppink;<br>border: 2px solid;<br>text-shadow: .1em .2em yellow;<br>filter: drop-shadow(.05em .05em .1em gray);</p>
+<p>你可以看到它的渲染效果，图中的文字被同时打上了 textshadow和 drop-shadow()。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-08 08:56:49" itemprop="dateCreated datePublished" datetime="2018-10-08T08:56:49+08:00">2018-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>常用的 class、id、属性 选择器都可以使用 <code>document.querySelector</code> 或 <code>document.querySelectorAll</code> 替代。区别是</p>
+<ul>
+<li>  <code>document.querySelector</code> 返回第一个匹配的 <code>Element</code></li>
+<li>  <code>document.querySelectorAll</code> 返回所有匹配的 <code>Element</code> 组成的 <code>NodeList</code>。它可以通过 <code>[].slice.call()</code> 把它转成 <code>Array</code></li>
+<li>  如果匹配不到任何 <code>Element，jQuery</code> 返回空数组 <code>[]</code>，但 <code>document.querySelector</code> 返回 null，注意空指针异常。当找不到时，也可以使用 设置默认的值，如 document.querySelectorAll(selector) []</li>
+</ul>
+<blockquote>
+<p>注意：<code>document.querySelector</code> 和 <code>document.querySelectorAll</code> 性能很<strong>差</strong>。如果想提高性能，尽量使用 <code>document.getElementById</code>、<code>document.getElementsByClassName</code> 或 <code>document.getElementsByTagName</code>。</p>
+</blockquote>
+<p>探讨一下如果不需要支持过于陈旧的浏览器版本，如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</p>
+<h3 id="选取元素"><a href="#选取元素" class="headerlink" title="选取元素"></a>选取元素</h3><h4 id="选择器查询"><a href="#选择器查询" class="headerlink" title="选择器查询"></a>选择器查询</h4><p>常用的 class、id、属性 选择器都可以使用 document.querySelector 或 document.querySelectorAll 替代。</p>
+<ul>
+<li>  document.querySelector 返回第一个匹配的 Element</li>
+<li>  document.querySelectorAll 返回所有匹配的 Element 组成的 NodeList。</li>
+</ul>
+<p>jQuery：</p>
+<p>var $ele = $(“selector”);</p>
+<p>Native:</p>
+<p>let ele = document.querySelectorAll(“selector”);</p>
+<h4 id="选择器模式"><a href="#选择器模式" class="headerlink" title="选择器模式"></a>选择器模式</h4><p>选择器</p>
+<p>示例</p>
+<p>示例说明</p>
+<p>.class</p>
+<p>.intro</p>
+<p>选择所有class=”intro”的元素</p>
+<p>#id</p>
+<p>#firstname</p>
+<p>选择所有id=”firstname”的元素</p>
+<p>*</p>
+<p>*</p>
+<p>选择所有元素</p>
+<p>element</p>
+<p>p</p>
+<p>选择所有<p>元素</p>
+<p>element,element</p>
+<p>div,p</p>
+<p>选择所有<div>元素和<p>元素</p>
+<p>element element</p>
+<p>div p</p>
+<p>选择<div>元素内的所有<p>元素</p>
+<p>element&gt;element</p>
+<p>div&gt;p</p>
+<p>选择所有父级是<div>元素的 <p>元素</p>
+<p>element+element</p>
+<p>div+p</p>
+<p>选择所有紧接着<div>元素之后的<p>元素</p>
+<p>[attribute=value]</p>
+<p>a[target=_blank]</p>
+<p>选择所有使用target=”_blank”的<a>元素</p>
+<p>[attribute^=value]</p>
+<p>a[src^=”http”]</p>
+<p>选择每一个src属性的值以”http”开头的<a>元素</p>
+<p>[attribute$=value]</p>
+<p>a[src$=”.jpg”]</p>
+<p>选择每一个src属性的值以”.jpg”结尾的<a>元素</p>
+<p>:first-child</p>
+<p>ul li:first-child</p>
+<p>选择<ul>元素下的首个<li>元素</p>
+<p>:nth-child(n)</p>
+<p>ul li:nth-child(3)</p>
+<p>选择<ul>元素下的第三个<li>元素</p>
+<p>:last-child</p>
+<p>ul li:last-child</p>
+<p>选择<ul>元素下的最后一个<li>元素</p>
+<p> </p>
+<h4 id="DOM-树查询"><a href="#DOM-树查询" class="headerlink" title="DOM 树查询"></a>DOM 树查询</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$ele.parent()</code></p>
+<p><code>ele.parentNode</code></p>
+<p>元素的直接父元素</p>
+<p><code>$ele.children()</code></p>
+<p><code>ele.childNodes</code></p>
+<p>元素的所有直接子元素</p>
+<p><code>$ele.find(&quot;a&quot;)</code></p>
+<p><code>ele.querySelectorAll(&quot;a&quot;)</code></p>
+<p>元素的后代元素</p>
+<p><code>$ele.prev()</code></p>
+<p><code>ele.previousElementSibling</code></p>
+<p>元素的上一个同胞元素</p>
+<p><code>$ele.next()</code></p>
+<p><code>ele.nextElementSibling</code></p>
+<p>元素的下一个同胞元素</p>
+<h3 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h3><p>DOM本身就具有很丰富的操作方法，可以取代jQuery提供的操作方法。</p>
+<h4 id="内容和属性"><a href="#内容和属性" class="headerlink" title="内容和属性"></a>内容和属性</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>var text = $ele.text()</code></p>
+<p><code>let text = ele.innerText</code></p>
+<p>获取所选元素的文本内容</p>
+<p><code>$ele.text(&quot;text&quot;)</code></p>
+<p><code>ele.innerText = &quot;text&quot;</code></p>
+<p>设置所选元素的文本内容</p>
+<p><code>var html = $ele.html()</code></p>
+<p><code>let html = ele.innerHTML</code></p>
+<p>获取所选元素的HTML内容</p>
+<p><code>$ele.html(&quot;&lt;div&gt;html&lt;/div&gt;&quot;)</code></p>
+<p><code>ele.innerHTML = &quot;&lt;div&gt;html&lt;/div&gt;&quot;</code></p>
+<p>设置所选元素的HTML内容</p>
+<p><code>var input = $ele.val()</code></p>
+<p><code>let input = ele.value</code></p>
+<p>获取表单字段的值</p>
+<p><code>$ele.val(&quot;input&quot;)</code></p>
+<p><code>ele.value = &quot;input&quot;</code></p>
+<p>设置表单字段的值</p>
+<p><code>var href = $ele.attr(&quot;href&quot;)</code></p>
+<p><code>let href = ele.getAttribute(&quot;href&quot;)</code></p>
+<p>获取元素的属性值</p>
+<p><code>$ele.attr(&quot;href&quot;, &quot;/&quot;)</code></p>
+<p><code>ele.setAttribute(&quot;href&quot;, &quot;/&quot;)</code></p>
+<p>设置元素的属性值</p>
+<h4 id="修改-DOM-树"><a href="#修改-DOM-树" class="headerlink" title="修改 DOM 树"></a>修改 DOM 树</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$parent.append($ele)</code></p>
+<p><code>parent.appendChild(ele)</code></p>
+<p>在被选元素的结尾插入内容</p>
+<p><code>$parent.prepend($ele)</code></p>
+<p><code>parent.insertBefore(ele, parent.firstChild)</code></p>
+<p>在被选元素的开头插入内容</p>
+<p><code>$ele.after(html)</code></p>
+<p><code>ele.insertAdjacentHTML(&quot;afterend&quot;, html)</code></p>
+<p>在被选元素之后插入内容</p>
+<p><code>$ele.before(html)</code></p>
+<p><code>ele.insertAdjacentHTML(&quot;beforebegin&quot;, html)</code></p>
+<p>在被选元素之前插入内容</p>
+<p><code>$ele.remove()</code></p>
+<p><code>ele.parentNode.removeChild(ele)</code></p>
+<p>删除被选元素及其子元素</p>
+<p><code>$ele.empty()</code></p>
+<p><code>ele.innerHTML = null</code></p>
+<p>从被选元素中删除子元素</p>
+<p><code>$ele.clone()</code></p>
+<p><code>ele.cloneNode(true)</code></p>
+<p>拷贝被选元素</p>
+<p><code>$ele.replaceWith(html)</code></p>
+<p><code>ele.outerHTML = html</code></p>
+<p>指定HTML替换被选元素</p>
+<h3 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h3><p> </p>
+<h4 id="设置-Style"><a href="#设置-Style" class="headerlink" title="设置 Style"></a>设置 Style</h4><p>HTML DOM 允许 JavaScript 改变 HTML 元素的样式，Native API 提供了如下几种方式：</p>
+<ul>
+<li>  ele.setAttribute 直接修改 DOM style 属性改变样式</li>
+<li>  ele.style.cssText 通过 cssText 修改 Style 属性</li>
+<li>  ele.style.property 通过 style 对象读写行内 CSS 样式</li>
+</ul>
+<p>jQuery：</p>
+<p>var size = $ele.css(“font-size”); // 返回第一个匹配元素的 CSS 属性值<br>$ele.css(“font-size”, “2rem”); // 为所有元素设置指定的 CSS 属性值</p>
+<p>Native:</p>
+<p>let size = getComputedStyle(ele)[“font-size”]; // 获取当前元素计算后的 CSS 属性值<br>ele.style.setProperty(“font-size”, “2rem”); // 设置当前元素的某个内联样式<br>ele.style.removeProperty(“font-size”); // 移除当前元素的某个内联样式</p>
+<h4 id="设置-Class"><a href="#设置-Class" class="headerlink" title="设置 Class"></a>设置 Class</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$ele.hasClass(className)</code></p>
+<p><code>ele.classList.contains(className)</code></p>
+<p>检查元素是否包含指定的类名</p>
+<p><code>$ele.addClass(className)</code></p>
+<p><code>ele.classList.add(className)</code></p>
+<p>向元素增加一个或多个类名</p>
+<p><code>$ele.removeClass(className)</code></p>
+<p><code>ele.classList.remove(className)</code></p>
+<p>从元素中移除一个或多个类</p>
+<p><code>$ele.toggleClass(className)</code></p>
+<p><code>ele.classList.toggle(className)</code></p>
+<p>对元素的一个或多个类进行切换</p>
+<h3 id="事件方法"><a href="#事件方法" class="headerlink" title="事件方法"></a>事件方法</h3><h4 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h4><p>jQuery：</p>
+<p>$ele.on(“click”, function (evt) {<br>console.log(evt.target);<br>});</p>
+<p>Native:</p>
+<p>ele.addEventListener(“click”, evt =&gt; {<br>console.log(evt.target);<br>});</p>
+<p>解除绑定 jQuery：</p>
+<p>$ele.off(“click”);</p>
+<p>Native:</p>
+<p>ele.removeEventListener(“click”, func);</p>
+<p>如果要移除事件，addEventListener 必须使用外部函数，绑定匿名函数的事件是无法移除的。</p>
+<h4 id="模拟触发"><a href="#模拟触发" class="headerlink" title="模拟触发"></a>模拟触发</h4><p>jQuery：</p>
+<p>$ele.trigger(“click”);</p>
+<p>Native:</p>
+<p>let event = document.createEvent(“MouseEvents”);<br>event.initMouseEvent(“click”);<br>ele.dispatchEvent(event);</p>
+<p>模拟事件：</p>
+<ul>
+<li>  首先通过 document.createEvent 方法创建 Event 对象。</li>
+<li>  然后利用 Event 对象的 init 方法对其进行初始化。</li>
+<li>  最后使用 dispatchEvent 方法触发 Event 对象。</li>
+</ul>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$.isArray(array)</code></p>
+<p><code>Array.isArray(array)</code></p>
+<p>判断参数是否为一个数组</p>
+<p><code>$.inArray(item, array)</code></p>
+<p><code>array.includes(item)</code></p>
+<p>判断值是否在指定数组中</p>
+<p><code>$.makeArray(objlist)</code></p>
+<p><code>Array.from(objlist)</code></p>
+<p>将类数组对象转换为数组</p>
+<p><code>$.merge(array1, array2)</code></p>
+<p><code>array1.concat(array2)</code></p>
+<p>合并两个数组（有区别）</p>
+<p><code>$.each(array, function (i, item) &#123;&#125;</code></p>
+<p><code>array.forEach((item, i) =&gt; &#123;&#125;)</code></p>
+<p>遍历指定的对象和数组</p>
+<p>合并数组时，merge 会改变原数组的内容，而 concat 不会修改原数组，只会返回合并后的数组</p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$.now()</code></p>
+<p><code>Date.now()</code></p>
+<p>返回当前时间戳</p>
+<p><code>$.trim(string)</code></p>
+<p><code>string.trim();</code></p>
+<p>移除字符串头尾空白</p>
+<p><code>$.type(obj);</code></p>
+<p><code>Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, &#39;$1&#39;).toLowerCase();</code></p>
+<p>检测参数的内部类型</p>
+<p><code>$.parseJSON(string)</code></p>
+<p><code>JSON.parse(string)</code></p>
+<p>将JSON转换为JS对象</p>
+<p><code>$ele.data(&quot;key&quot;, &quot;value&quot;)</code></p>
+<p><code>ele.dataset.key = &quot;value&quot;</code></p>
+<p>在指定的元素上存储数据</p>
+<p><code>$.map(array, function(value, index)&#123; &#125;);</code></p>
+<p><code>array.map(function(value, index)&#123; &#125;);</code></p>
+<p>将数组转化为处理后的新数组</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/nefe/You-Dont-Need-jQuery/blob/master/README.zh-CN.md">https://github.com/nefe/You-Dont-Need-jQuery</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/07/%E5%A6%82%E4%BD%95%E7%BB%99echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%AB%98%E4%BA%AE%E8%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/07/%E5%A6%82%E4%BD%95%E7%BB%99echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%AB%98%E4%BA%AE%E8%89%B2/" class="post-title-link" itemprop="url">如何给ECharts柱状图设置一个高亮色</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-07 12:06:20" itemprop="dateCreated datePublished" datetime="2018-10-07T12:06:20+08:00">2018-10-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在项目开发中用到echarts有这样的需求，比如要给一个星期的某个一天设置一个高亮色与其他天不同的颜色来区分开，那么我来演示一下如何达到这样的需求， 我知道的方法有两种，也可能有其他方法，欢迎来吐槽</p>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>也是在<a target="_blank" rel="noopener" href="http://www.echartsjs.com/option.html#series-bar.data">官网</a>上看到的，就是直接在data数据的数组上设置颜色，也就是说在数组的某一段需要添加对象值来达到这种效果</p>
+<p>option = {<br>……<br>series: [{<br>data: [120, {<br>value: 200,<br>itemStyle:{<br>color: ‘#f00’<br>}<br>}, 150, 80, 70, 110, 130],<br>……<br>}]<br>};</p>
+<p>这种方法在处理数据的太麻烦，我不喜欢这种方法</p>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>设置itemStyle图形样式属性的color，这种方法是在formatter的启发下得到的，因为在文档上没有看到color有回调函数，首先要设置一个变量也就是高亮色的位置，这个变量的值可以后端给，也可以前端给（前端给的必定是死值）， data数组我们不动，</p>
+<p>const curInt = 2;<br>option = {<br>series:[{<br>data:[…],</p>
+<!-- 在这里设置 -->
+<p>itemStyle:{<br>color: function(params){<br>const key = params.dataIndex;<br>if(key === curInt){<br>return ‘#E062AE’;<br>}else{<br>return ‘#37A2DA’<br>}<br>}<br>}<br>}]<br>};</p>
+<p>好了，我知道的就这，方法是否对你有用，我就不知道了。 <img src="http://www.w3cbest.com/wp-content/uploads/2018/11/echarts-img.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/05/%E4%BD%BF%E7%94%A8css3-%E9%80%89%E6%8B%A9%E5%99%A8target%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BC%B8%E7%BC%A9%E7%9A%84%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/05/%E4%BD%BF%E7%94%A8css3-%E9%80%89%E6%8B%A9%E5%99%A8target%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BC%B8%E7%BC%A9%E7%9A%84%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95/" class="post-title-link" itemprop="url">使用CSS3 选择器:target制作一个可伸缩的导航菜单</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-05 20:00:14" itemprop="dateCreated datePublished" datetime="2018-10-05T20:00:14+08:00">2018-10-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们使用CSS3 选择器:target制作一个可伸缩的导航菜单。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target">先理解一下:target</a></p>
+<h4 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h4><p>URL 带有后面跟有锚名称 #，指向文档内某个具体的元素。这个被链接的元素就是目标元素(target element)。 :target 选择器可用于选取当前活动的目标元素。 那么我就看一下代码如何做可伸缩的导航菜单</p>
+<nav id="menu">
+<ul id="menu-closed">
+<li><a href="#">首页</a></li>
+<li><a href="#">html/css</a></li>
+<li><a href="#">javascript</a></li>
+<li><a href="#">vue</a></li>
+<li><a href="#">anjular</a></li>
+<li><a href="#">react</a></li>
+<li><a href="#">php</a></li>
+<li><a href="#">python</a></li>
+<li><a href="#">highcharts</a></li>
+<li><a href="#">echarts</a></li>
+<li><a href="#menu-closed">&#215;</a></li>
+<li><a href="#menu">&#9776;</a></li>
+</ul>
+</nav>
+
+<p>CSS代码</p>
+<p>nav {<br>font-size: 12px;<br>background-color: rgb(19, 51, 61);<br>box-shadow: 0 1px 2px rgba(19, 51, 61, 0.5);<br>margin: 3em 0 6em;<br>padding: 0 1em;<br>height: 44px;<br>overflow: hidden;<br>}</p>
+<p>nav ul {<br>margin: 0;<br>padding: 0;<br>list-style-type: none;<br>max-height: 88px;<br>position: relative;<br>}</p>
+<p>nav li {<br>display: inline-block;<br>}</p>
+<p>nav a {<br>display: inline-block;<br>padding: 0 1em;<br>color: rgb(236, 236, 236);<br>font-weight: 700;<br>letter-spacing: 0.1em;<br>text-decoration: none;<br>text-transform: uppercase;<br>white-space: nowrap;<br>line-height: 44px;<br>height: 44px;<br>}</p>
+<p>nav a:hover {<br>background-color: rgba(255, 255, 255, 0.08);<br>}</p>
+<p>nav li:last-child {<br>/* 菜单按钮 */<br>position: absolute;<br>right: 0;<br>bottom: 44px;<br>background-image: linear-gradient(to right, rgba(19, 51, 61, 0) 0, rgba(19, 51, 61, 1) 2em);<br>padding-left: 3em;<br>}</p>
+<p>nav li:nth-last-child(2) {<br>/* 先关闭按钮 */<br>display: none;<br>}</p>
+<p>nav#menu:target {<br>height: auto;<br>padding: 0;<br>}</p>
+<p>nav#menu:target ul {<br>max-height: none;<br>}</p>
+<p>nav#menu:target li {<br>display: block;<br>}</p>
+<p>nav#menu:target a {<br>display: block;<br>padding: 0 2em;<br>background-color: rgba(255, 255, 255, 0.05);<br>}</p>
+<p>nav#menu:target a:hover {<br>background-color: rgba(255, 255, 255, 0.08);<br>}</p>
+<p>nav#menu:target li:not(:first-child) {<br>margin-top: 2px;<br>}</p>
+<p>nav#menu:target li:last-child {<br>display: none;<br>}</p>
+<p>nav#menu:target li:nth-last-child(2) {<br>display: inline-block;<br>position: absolute;<br>top: 0;<br>right: 0;<br>margin: 0;<br>border-left: 2px solid rgb(19, 51, 61);<br>}</p>
+<p><a target="_blank" rel="noopener" href="https://jshare.com.cn/temp/HpJ1bg/share/pure">查看demo</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/05/javascript-prototype%E5%8E%9F%E5%9E%8B-%E5%88%9D%E5%AD%A6%E8%80%85%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/05/javascript-prototype%E5%8E%9F%E5%9E%8B-%E5%88%9D%E5%AD%A6%E8%80%85%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">JavaScript Prototype(原型) 初学者指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-05 08:00:48" itemprop="dateCreated datePublished" datetime="2018-10-05T08:00:48+08:00">2018-10-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>如果不处理对象，您就无法在 JavaScript 方面取得很大进展。它们几乎是 JavaScript 编程语言的所有方面的基础。事实上，学习如何创建对象可能是你刚开始学习的第一件事。话虽如此，为了最有效地学习 JavaScript 中的原型，我们将从基础开始。 首先，对象是键/值对。创建对象的最常用方法是使用花括号{}，并使用点表示法向对象添加属性和方法。</p>
+<p>let animal = {}<br>animal.name = ‘Leo’<br>animal.energy = 10</p>
+<p>animal.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>animal.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>animal.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>这个很简单。现在，我们在应用程序中我们需要创建多个动物。很自然地，下一步就是将逻辑封装到一个函数中，以便我们在需要创建新动物时调用这个函数。我们将调用这个模式 <code>Functional Instantiation</code>(函数实例化)，并将函数本身称为 <code>constructor function</code>(构造函数) ，因为它负责“构造”一个新对象。</p>
+<h2 id="Functional-Instantiation-函数实例化"><a href="#Functional-Instantiation-函数实例化" class="headerlink" title="Functional Instantiation (函数实例化)"></a>Functional Instantiation (函数实例化)</h2><p>function Animal(name, energy) {<br>    let animal = {}<br>    animal.name = name<br>    animal.energy = energy</p>
+<pre><code>animal.eat = function(amount) &#123;
+    console.log(\`$&#123;this.name&#125; is eating.\`)
+    this.energy += amount
+&#125;
+
+animal.sleep = function(length) &#123;
+    console.log(\`$&#123;this.name&#125; is sleeping.\`)
+    this.energy += length
+&#125;
+
+animal.play = function(length) &#123;
+    console.log(\`$&#123;this.name&#125; is playing.\`)
+    this.energy -= length
+&#125;
+
+return animal
+</code></pre>
+<p>}</p>
+<p>const leo = Animal(‘Leo’, 7)<br>const snoop = Animal(‘Snoop’, 10)</p>
+<p>现在，每当我们想要创建一种新动物（或者更广泛地说是一种新的“实例”）时，我们所要做的就是调用我们的 <code>Animal</code> 函数，将动物的 <code>name</code> 和<code>energy</code> 传递给这个函数。这非常有效，而且非常简单。但是，你有发现这种模式的不足之处吗？我们要尝试解决的最大的问题与三种方法有关 – <code>eat</code>，<code>sleep</code> 和 <code>play</code>。这些方法中的每一种都不仅是动态的，而且它们也是完全通用的。这意味着没有理由重新创建这些方法，正如我们在创建新动物时所做的那样。我们只是在浪费内存，让每个动物物体都比它需要的更大。你能想到一个解决方案吗？ 如果我们每次创建一个新动物时不需要重新创建这些方法，而是将它们移动到它们自己的对象上，那么我们就可以让每个动物引用那个对象了?我们可以把这种模式称为 <code>Functional Instantiation with Shared Methods</code>(共享方法的函数实例化) 。描述起来有点啰嗦。</p>
+<h3 id="Functional-Instantiation-with-Shared-Methods-共享方法的函数实例化"><a href="#Functional-Instantiation-with-Shared-Methods-共享方法的函数实例化" class="headerlink" title="Functional Instantiation with Shared Methods (共享方法的函数实例化)"></a>Functional Instantiation with Shared Methods (共享方法的函数实例化)</h3><p>const animalMethods = {<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    },<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    },<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}</p>
+<p>function Animal(name, energy) {<br>    let animal = {}<br>    animal.name = name<br>    animal.energy = energy<br>    animal.eat = animalMethods.eat<br>    animal.sleep = animalMethods.sleep<br>    animal.play = animalMethods.play</p>
+<pre><code>return animal
+</code></pre>
+<p>}</p>
+<p>const leo = Animal(‘Leo’, 7)<br>const snoop = Animal(‘Snoop’, 10)</p>
+<p>通过将共享方法移动到它们自己的对象并在 <code>Animal</code> 函数中引用该对象，我们现在已经解决了内存浪费和动物对象过大的问题。</p>
+<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h2><p>让我们使用 <code>Object.create</code> 再次改进我们的例子。 简而言之，<code>Object.create</code> 允许您创建一个对象，该对象将在查找失败时委托给另一个对象。 换句话说，<code>Object.create</code> 允许您创建一个对象，只要该对象上的属性查找失败，它就可以查询另一个对象，以查看另一个对象中是否具有该属性。 说清楚需要很多文字， 我们来看一些代码。</p>
+<p>const parent = {<br>    name: ‘Stacey’,<br>    age: 35,<br>    heritage: ‘Irish’<br>}</p>
+<p>const child = Object.create(parent),<br>child.name = ‘Ryan’,<br>child.age = 7;</p>
+<p>console.log(child.name); // Ryan<br>console.log(child.age); // 7<br>console.log(child.heritage); // Irish</p>
+<p>在上面的示例中，因为 <code>child</code> 是通过 <code>Object.create(parent)</code> 创建的，所以每当在 <code>child</code> 中查找属性失败时，JavaScript 就会将该查找委托给 <code>parent</code> 对象。这意味着即使 <code>child</code> 没有 <code>heritage</code> 属性，当你查找 <code>child.heritage</code> 时你会得到 <code>parent</code> 的<code>heritage</code> 属性，即 <code>Irish</code>。 现在，通过使用 <code>Object.create</code> ，我们该如何使用它来简化之前的 <code>Animal</code> 代码呢？好吧，我们可以使用 <code>Object.create</code> 委托给<code>animalMethods</code> 对象，而不是像我们之前一样逐个将所有共享方法添加到 <code>Animal</code> 中。 为了听起来很智能，让我们称之为 <code>Functional Instantiation with Shared Methods and Object.create</code>(使用共享方法和Object.create进行函数实例化)。</p>
+<h2 id="Functional-Instantiation-with-Shared-Methods-and-Object-create-使用共享方法和Object-create进行函数实例化"><a href="#Functional-Instantiation-with-Shared-Methods-and-Object-create-使用共享方法和Object-create进行函数实例化" class="headerlink" title="Functional Instantiation with Shared Methods and Object.create (使用共享方法和Object.create进行函数实例化)"></a>Functional Instantiation with Shared Methods and Object.create (使用共享方法和Object.create进行函数实例化)</h2><p>const animalMethods = {<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`);<br>        this.energy += amount;<br>    },<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`);<br>        this.energy += length;<br>    },<br>    play(length) {<br>        console.log(`${this.name} is playing.`);<br>        this.energy -= length;<br>    }<br>}</p>
+<p>function Animal(name, energy) {<br>    let animal = Object.create(animalMethods);<br>    animal.name = name;<br>    animal.energy = energy;</p>
+<pre><code>return animal;
+</code></pre>
+<p>}</p>
+<p>const leo = Animal(‘Leo’, 7);<br>const snoop = Animal(‘Snoop’, 10);</p>
+<p>leo.eat(10);<br>snoop.play(5);</p>
+<p>所以现在当我们调用 <code>leo.eat</code> 时，JavaScript 会在 <code>leo</code> 对象上查找 <code>eat</code> 方法。 这个查找将失败，因为使用了 <code>Object.create</code>，它将委托给 <code>animalMethods</code> 对象，然后在这里将找到 <code>eat</code> 方法。 到现在为止还挺好的。 尽管如此，我们仍然可以做出一些改进。 为了跨实例共享方法，必须管理一个单独的对象（<code>animalMethods</code>）似乎有点“hacky”。 这似乎是您希望在语言本身中实现的常见功能。 事实证明，这就是你看这篇文章的原因 – prototype(原型) 。 那么究竟什么是 JavaScript 的 prototype（原型）呢？ 简单地说，JavaScript 中的每个函数都有一个引用对象的 prototype 属性。 我们来亲自测试一下。</p>
+<p>function doThing () {};<br>console.log(doThing.prototype); // {}</p>
+<p>如果不是创建一个单独的对象（比如我们正在使用的 <code>animalMethods</code> ）来管理我们的方法，也就是我们只是将每个方法放在 <code>Animal</code> 函数的 prototype(原型) 对象上，该怎么办呢？我们所要做的就是不使用 <code>Object.create</code> 委托给 <code>animalMethods</code>，我们可以用使用来委托<code>Animal.prototype</code>。 我们将这种模式称为 <code>Prototypal Instantiation</code>(原型实例化)。</p>
+<h2 id="Prototypal-Instantiation-原型实例化"><a href="#Prototypal-Instantiation-原型实例化" class="headerlink" title="Prototypal Instantiation (原型实例化)"></a>Prototypal Instantiation (原型实例化)</h2><p>function Animal(name, energy) {<br>    let animal = Object.create(Animal.prototype);<br>    animal.name = name;<br>    animal.energy = energy;</p>
+<pre><code>return animal;
+</code></pre>
+<p>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`);<br>    this.energy += amount;<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`);<br>    this.energy += length;<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`);<br>    this.energy -= length;<br>}</p>
+<p>const leo = Animal(‘Leo’, 7);<br>const snoop = Animal(‘Snoop’, 10);</p>
+<p>leo.eat(10);<br>snoop.play(5);</p>
+<p>这里你可以为自己鼓掌鼓励一下了。 同样，原型只是 JavaScript 中每个函数都具有的属性，并且如上所述，它允许我们在函数的所有实例之间共享方法。 我们所有的功能仍然相同，但现在我们不必为所有方法管理一个单独的对象，我们可以使用另一个内置于 <code>Animal</code> 函数本身的对象<code>Animal.prototype</code>。</p>
+<h2 id="更深的，走起！"><a href="#更深的，走起！" class="headerlink" title="更深的，走起！"></a>更深的，走起！</h2><p>首先，我们需要知道三件事：</p>
+<ol>
+<li> 如何创建构造函数。</li>
+<li> 如何将方法添加到构造函数的原型中。</li>
+<li> 如何使用 <code>Object.create</code> 将失败的查找委托给函数的原型。</li>
+</ol>
+<p>这三个任务似乎是任何编程语言的基础。 JavaScript 是否真的那么糟糕，没有更简单，“内置”的方式来完成同样的事情？ 正如你可能已经猜测的那样，它是通过使用 <code>new</code> 关键字。 我们采用的这种缓慢而有条理的方法的好处是，您现在可以深入了解 JavaScript 中的 <code>new</code> 关键字在幕后的作用。 回顾一下我们的 <code>Animal</code> 构造函数，最重要的两个部分是创建对象并返回它。 如果不使用 <code>Object.create</code>创建对象，我们将无法在查找失败时委托给函数的原型。 如果没有 <code>return</code> 语句，我们将永远不会返回创建的对象。</p>
+<p>function Animal(name, energy) {<br>    let animal = Object.create(Animal.prototype);<br>    animal.name = name;<br>    animal.energy = energy;<br>    return animal;<br>}</p>
+<p><code>new</code> 有一个很酷的地方——当您使用 <code>new</code> 关键字调用函数时，注释掉的这两行代码是隐式(引擎)完成的，创建的对象称为 <code>this</code>。 使用注释来显示在幕后发生的事情并假设使用 <code>new</code> 关键字调用 <code>Animal</code> 构造函数，可以将其重写为这样：</p>
+<p>function Animal(name, energy) {<br>    // const this = Object.create(Animal.prototype)<br>    this.name = name<br>    this.energy = energy<br>    // return this<br>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
+<p>去掉注释后：</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}<br>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}<br>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}<br>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
+<p>同样，这样做以及为我们创建 <code>this</code> 对象的原因是，我们使用 <code>new</code> 关键字调用构造函数。如果在调用函数时不使用 <code>new</code> ，则该对象永远不会创建，也不会隐式返回。我们可以在下面的例子中看到这个问题。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}<br>const leo = Animal(‘Leo’, 7)<br>console.log(leo) // undefined</p>
+<p>此模式的名称是 <code>Pseudoclassical Instantiation</code>(伪类实例化) 。 如果 JavaScript 不是您的第一种编程语言，您可能会有点不安。</p>
+<blockquote>
+<p>“WTF这个家伙只是重新创造了一个更糟糕的版本” – 你</p>
+</blockquote>
+<p>对于那些不熟悉的人，Class(类) 允许您为对象创建模板。然后，无论何时创建该类的实例，都会获得一个具有模板中定义的属性和方法的对象。 听起来有点熟悉？这基本上就是我们对上面的 <code>Animal</code> 构造函数所做的事情。但是对于 <code>Animal</code> 构造函数，我们只使用常规的旧 JavaScript 函数来重新创建相同的功能，而不是使用 <code>class</code> 关键字。当然，它需要一些额外的工作以及一些关于 JavaScript “引擎” 所处理的事情的相关知识，但结果是一样的。 这是个好消息。 JavaScript 不是一种 “死” 语言。它不断得到改进，并由 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/videos/ecmascript/">TC-39委员会</a> 不断的制定标准。这意味着即使 JavaScript 的初始版本不支持类，也不影响后续将它们添加到官方规范中。事实上，这正是TC-39委员会所做的事情。 2015年，发布了 EcmaScript（官方JavaScript规范）6 ，支持 Classes(类) 和 <code>class</code> 关键字。让我们看看上面的 <code>Animal</code> 构造函数如何使用新的 class(类) 语法。</p>
+<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
+<p>很干净是吧？ 因此，如果这是创建类的新方法，为什么我们前面花了这么多时间来讨论旧的方式呢？ 原因是新的方式（使用 <code>class</code> 关键字）只是经典伪类模式的 “语法糖”。 为了完全理解 ES6 类的便捷语法，首先必须理解经典的伪类模式。 我们已经介绍了 JavaScript 原型的基础知识。 本文的其余部分将致力于加深理解相关知识的主题。 在另一篇文章中，我们将看看如何利用这些基础知识并使用它们来理解 JavaScript 中继承的工作原理。</p>
+<h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><p>我们在上面深入讨论了如何在类的实例之间共享方法，您应该将这些方法放在类（或函数）原型上。 如果我们查看 <code>Array</code> 类，我们可以看到相同的模式。 从历史上看，您可能已经创建了这样的数组：</p>
+<p>const friends = []</p>
+<p>事实证明，这只是创建一个新的 <code>Array</code> 类实例的语法糖。</p>
+<p>const friendsWithSugar = []<br>const friendsWithoutSugar = new Array()</p>
+<p>您可能从未想过：数组的每个实例是如何具有所有内置方法的（<code>splice</code> , <code>slice</code>, <code>pop</code> 等）？ 正如您现在所知，这是因为这些方法存在于 <code>Array.prototype</code> 上，当您创建一个新的 <code>Array</code> 实例时，您使用 <code>new</code> 关键字在查找失败时将该委托设置为 <code>Array.prototype</code> 。 我们可以通过简单地 <code>console.log(Array.prototype)</code> 来查看所有数组的方法。</p>
+<p>console.log(Array.prototype)<br>/*<br>  concat: ?n concat()<br>  constructor: ?n Array()<br>  copyWithin: ?n copyWithin()<br>  entries: ?n entries()<br>  every: ?n every()<br>  fill: ?n fill()<br>  filter: ?n filter()<br>  find: ?n find()<br>  findIndex: ?n findIndex()<br>  forEach: ?n forEach()<br>  includes: ?n includes()<br>  indexOf: ?n indexOf()<br>  join: ?n join()<br>  keys: ?n keys()<br>  lastIndexOf: ?n lastIndexOf()<br>  length: 0n<br>  map: ?n map()<br>  pop: ?n pop()<br>  push: ?n push()<br>  reduce: ?n reduce()<br>  reduceRight: ?n reduceRight()<br>  reverse: ?n reverse()<br>  shift: ?n shift()<br>  slice: ?n slice()<br>  some: ?n some()<br>  sort: ?n sort()<br>  splice: ?n splice()<br>  toLocaleString: ?n toLocaleString()<br>  toString: ?n toString()<br>  unshift: ?n unshift()<br>  values: ?n values()<br>*/</p>
+<p>Objects(对象) 也是完全相同的逻辑。 所有对象将在查找失败时委托给 <code>Object.prototype</code> ，这就是所有对象都有 <code>toString</code> 和<code>hasOwnProperty</code> 等方法的原因。</p>
+<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>到目前为止，我们已经介绍了为什么，以及如何在类的实例之间共享方法。 但是，如果我们有一个对 Class 很重要但不需要又跨实例共享的方法，该怎么办呢？ 例如，如果我们有一个函数，它接收一系列 <code>Animal</code> 实例并决定下一个需要喂食的对象，会怎样? 我们将其称为 <code>nextToEat</code>。</p>
+<p>function nextToEat(animals) {<br>    const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>        return a.energy - b.energy<br>    })<br>    return sortedByLeastEnergy[0].name<br>}</p>
+<p>我们不希望在所有实例之间共享它，所以在 <code>Animal.prototype</code> 上使用 <code>nextToEat</code> 是没有意义的。 相反，我们可以将其视为辅助方法。 所以如果 <code>nextToEat</code> 不应该存在于 <code>Animal.prototype</code> 中，我们应该把它放在哪里呢？ 那么显而易见的答案是我们可以将 <code>nextToEat</code> 放在与 <code>Animal</code> 类相同的作用域中，然后像我们平常那样，在需要时引用它。</p>
+<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}<br>function nextToEat(animals) {<br>    const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>        return a.energy - b.energy<br>    })</p>
+<pre><code>return sortedByLeastEnergy\[0\].name
+</code></pre>
+<p>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)<br>console.log(nextToEat([leo, snoop])) // Leo</p>
+<p>现在这可行，但有更好的方法。 只要有一个特定于类本身的方法，但不需要在该类的实例之间共享，就可以将其添加为类的 <code>static</code>(静态) 属性。</p>
+<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>    static nextToEat(animals) {<br>        const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>            return a.energy - b.energy<br>        })</p>
+<pre><code>    return sortedByLeastEnergy\[0\].name
+&#125;
+</code></pre>
+<p>}</p>
+<p>现在，因为我们在类上添加了 <code>nextToEat</code> 作为 <code>static</code>(静态) 属性，所以它存在于 <code>Animal</code> 类本身（而不是它的原型）中，并且可以使用 <code>Animal.nextToEat</code> 进行访问。</p>
+<p>const leo = new Animal(‘Leo’, 7) const snoop = new Animal(‘Snoop’, 10) console.log(Animal.nextToEat([leo, snoop])) // Leo</p>
+<p>因为我们在这篇文章中都遵循了类似的模式，让我们来看看如何使用 ES5 完成同样的事情。 在上面的例子中，我们看到了如何使用 <code>static</code> 关键字将方法直接放在类本身上。 使用ES5，同样的模式就像手动将方法添加到函数对象一样简单。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>Animal.nextToEat = function(nextToEat) {<br>    const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>        return a.energy - b.energy<br>    })</p>
+<pre><code>return sortedByLeastEnergy\[0\].name
+</code></pre>
+<p>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
+<p>console.log(Animal.nextToEat([leo, snoop])) // Leo</p>
+<h2 id="获取对象的原型"><a href="#获取对象的原型" class="headerlink" title="获取对象的原型"></a>获取对象的原型</h2><p>无论您使用哪种模式创建对象，都可以使用 <code>Object.getPrototypeOf</code> 方法完成获取该对象的原型。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>const prototype = Object.getPrototypeOf(leo)</p>
+<p>console.log(prototype)<br>// {constructor: ?, eat: ?, sleep: ?, play: ?}</p>
+<p>prototype === Animal.prototype // true</p>
+<p>上面的代码有两个要点。 首先，你会注意到 <code>proto</code> 是一个对象，有4种方法，<code>constructor</code>，<code>eat</code>，<code>sleep</code>，和<code>play</code>。那讲得通。我们将实例传递给<code>getPrototypeOf</code>，<code>leo</code> 获取了实例的原型，这里是所有的方法。这提示我们，关于原型的另外一件事我们还没有讨论过。默认情况下，原型对象将具有 <code>constructor</code> 属性，该属性指向原始函数或创建实例的类。这也意味着 JavaScript 默认在原型上放置 <code>constructor</code> 属性，所以任何实例都可以通过 <code>instance.constructor</code> 访问它们的构造函数。 上面的第二个要点是 <code>Object.getPrototypeOf(leo) === Animal.prototype</code> 。这也是有道理的。 <code>Animal</code> 构造函数有一个 prototype(原型) 属性，我们可以在所有实例之间共享方法，<code>getPrototypeOf</code> 允许我们查看实例本身的原型。</p>
+<p>function Animal(name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>console.log(leo.constructor) // Logs the constructor function</p>
+<p>为了配合我们之前使用 <code>Object.create</code> 所讨论的内容，其工作原因是因为任何 <code>Animal</code> 实例都会在查找失败时委托给 <code>Animal.prototype</code>。 因此，当您尝试访问 <code>leo.prototype</code> 时， <code>leo</code> 没有 <code>prototype</code> 属性，因此它会将该查找委托给<code>Animal.prototype</code>，它确实具有 <code>constructor</code> 属性。 如果这段没有看懂，请回过头来阅读上面的 <code>Object.create</code> 。 您可能以前看到过使用 <code>__proto__</code> 获取实例的原型。 这是过去的遗物。 现在，如上所述使用 <code>Object.getPrototypeOf(instance)</code> 获取实例的原型。</p>
+<h2 id="确定属性是否存在于原型上"><a href="#确定属性是否存在于原型上" class="headerlink" title="确定属性是否存在于原型上"></a>确定属性是否存在于原型上</h2><p>在某些情况下，您需要知道属性是否存在于实例本身上，还是存在于对象委托的原型上。 我们可以通过循环我们创建的 <code>leo</code> 对象来知道这一点。假设目标是循环 <code>leo</code> 并记录其所有键和值。使用 <code>for in</code> 循环，可能看起来像这样。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>for (let key in leo) {<br>    console.log(`Key: ${key}. Value: ${leo[key]}`)<br>}</p>
+<p>你期望看到什么？最有可能的是，它是这样的 –</p>
+<p>Key: name. Value: Leo<br>Key: energy. Value: 7</p>
+<p>但是，如果你运行代码，你看到的是这样的 –</p>
+<p>Key: name.Value: Leo<br>Key: energy.Value: 7<br>Key: eat.Value: function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}<br>Key: sleep.Value: function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}<br>Key: play.Value: function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>这是为什么？ <code>for in</code> 循环将循环遍历对象本身以及它所委托的原型的所有 <strong>可枚举属性</strong> 。 因为默认情况下，您添加到函数原型的任何属性都是可枚举的，我们不仅会看到<code>name</code> 和 <code>energy</code> ，还会看到原型上的所有方法 – <code>eat</code>，<code>sleep</code> 和 <code>play</code> 。 要解决这个问题，我们需要指定所有原型方法都是不可枚举的，或者如果属性在 <code>leo</code> 对象本身上而不是 <code>leo</code> 查找失败时委托给的原型上。 <code>hasOwnProperty</code> 可以帮助我们实现这个需求。 <code>hasOwnProperty</code> 是每个对象上的一个属性，它返回一个布尔值，指示对象是否具有指定的属性作为其自身的属性，而不是对象委托给的原型。 这正是我们所需要的。 现在有了这些新知识，我们可以修改我们的代码，以便利用 <code>for in</code> 循环中的 <code>hasOwnProperty</code> 。</p>
+<p>…</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>for (let key in leo) {<br>    if (leo.hasOwnProperty(key)) {<br>        console.log(`Key: ${key}. Value: ${leo[key]}`)<br>    }<br>}</p>
+<p>而现在我们看到的只是 <code>leo</code> 对象本身的属性，而不是 <code>leo</code> 原型中的方法。</p>
+<p>Key: name. Value: Leo<br>Key: energy. Value: 7</p>
+<p>如果你仍然对 <code>hasOwnProperty</code> 感到困惑，这里有一些代码可以帮你消除困惑。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
+<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>leo.hasOwnProperty(‘name’) // true<br>leo.hasOwnProperty(‘energy’) // true<br>leo.hasOwnProperty(‘eat’) // false<br>leo.hasOwnProperty(‘sleep’) // false<br>leo.hasOwnProperty(‘play’) // false</p>
+<h2 id="检查对象是否是类的实例"><a href="#检查对象是否是类的实例" class="headerlink" title="检查对象是否是类的实例"></a>检查对象是否是类的实例</h2><p>有时您想知道对象是否是指定类的实例。 为此，您可以使用 <code>instanceof</code> 运算符。 用例非常简单，但如果您以前从未见过它，实际的语法有点奇怪。 它的工作原理如下</p>
+<p>object instanceof Class</p>
+<p>如果 <code>object</code> 是 <code>Class</code> 的实例，则上面的语句将返回 <code>true</code> ，否则返回 <code>false</code> 。回到我们的 <code>Animal</code> 示例，我们会有类似的东西。</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>function User() {}</p>
+<p>const leo = new Animal(‘Leo’, 7)</p>
+<p>leo instanceof Animal // true<br>leo instanceof User // false</p>
+<p><code>instanceof</code> 的工作方式是检查对象原型链中是否存在 <code>constructor.prototype</code> 。 在上面的例子中，<code>leo instanceof Animal</code> 为 <code>true</code> ，因为<code>Object.getPrototypeOf(leo) === Animal.prototype</code>。 另外，<code>leo instanceof User</code> 为 <code>false</code> ，因为 <code>Object.getPrototypeOf(leo) !== User.prototype</code>。</p>
+<h2 id="创建新的不可知构造函数"><a href="#创建新的不可知构造函数" class="headerlink" title="创建新的不可知构造函数"></a>创建新的不可知构造函数</h2><p>你能发现下面代码中的错误吗？</p>
+<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>const leo = Animal(‘Leo’, 7)</p>
+<p>即使是经验丰富的 JavaScript 开发人员有时也会因为上面的例子而被绊倒。 因为我们正在使用之前学过的 <code>pseudoclassical pattern</code>(经典伪类模式)，所以当调用 <code>Animal</code> 构造函数时，我们需要确保使用 <code>new</code> 关键字调用它。 如果我们不这样做，则不会创建 <code>this</code> 关键字，也不会隐式返回。 作为复习，注释掉的行是在函数上使用 <code>new</code> 关键字时幕后所做的事情。</p>
+<p>function Animal(name, energy) {<br>    // const this = Object.create(Animal.prototype)</p>
+<pre><code>this.name = name
+this.energy = energy
+
+// return this
+</code></pre>
+<p>}</p>
+<p>这似乎是一个非常重要的细节，让其他开发人员记住。 假设我们正在与其他开发人员合作，有没有办法确保我们的 <code>Animal</code> 构造函数始终使用 <code>new</code> 关键字调用呢？ 事实证明，它是通过使用我们之前学到的 <code>instanceof</code> 运算符来实现的。 如果使用 <code>new</code> 关键字调用构造函数，那么构造函数体的内部将是构造函数本身的实例。 那是很多文字才能说清楚的。 这是一些代码。</p>
+<p>function Animal(name, energy) {<br>    if (this instanceof Animal === false) {<br>        console.warn(‘Forgot to call Animal with the new keyword’)<br>    }<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>现在，如果我们使用 <code>new</code> 关键字重新调用函数，而不是只向函数的使用者打印警告，会发生什么呢？</p>
+<p>function Animal(name, energy) {<br>    if (this instanceof Animal === false) {<br>        return new Animal(name, energy)<br>    }<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<p>现在无论是否使用 <code>new</code> 关键字调用 <code>Animal</code>，它都可以正常工作。</p>
+<h2 id="重新创建-Object-create"><a href="#重新创建-Object-create" class="headerlink" title="重新创建 Object.create"></a>重新创建 Object.create</h2><p>在这篇文章中，我们非常依赖于 <code>Object.create</code> 来创建委托给构造函数原型的对象。 此时，您应该知道如何在代码中使用 <code>Object.create</code> ，但您可能没有想到的一件事是<code>Object.create</code> 实际上是如何工作的。 为了让您真正了解 <code>Object.create</code> 的工作原理，我们将重新创建它。 首先，我们对 <code>Object.create</code> 的工作原理了解多少？</p>
+<ol>
+<li> 它接受一个对象作为参数。</li>
+<li> 它创建一个对象，该对象在查找失败时委托给参数对象。</li>
+<li> 它返回新创建的对象。</li>
+</ol>
+<p>让我们从第1点开始吧。</p>
+<p>Object.create = function (objToDelegateTo) {}</p>
+<p>很简单。 现在第2点 – 我们需要创建一个对象，该对象将在查找失败时委托给参数对象。 这个有点棘手。 为此，我们将使用我们对 <code>new</code> 关键字和原型如何在 JavaScript 中工作的知识。首先，在 <code>Object.create</code> 实现的主体中，我们将创建一个空函数。 然后，我们将该空函数的原型设置为参数对象。然后，为了创建一个新对象，我们将使用 <code>new</code> 关键字调用空函数。如果我们返回新创建的对象，也会完成第3点。</p>
+<p>Object.create = function(objToDelegateTo) {<br>    function Fn() {}<br>    Fn.prototype = objToDelegateTo<br>    return new Fn()<br>}</p>
+<p>有点野蛮是吧？让我们来看看吧。 当我们在上面的代码中创建一个新函数 <code>Fn</code> 时，它带有一个 <code>prototype</code> 属性。 当我们使用 <code>new</code> 关键字调用它时，我们知道我们将得到的是一个对象，该对象将在查找失败时委托给函数的原型。 如果我们覆盖函数的原型，那么我们可以决定在查找失败时委托给哪个对象。 所以在我们上面的例子中，我们用调用 <code>Object.create</code> 时传入的对象覆盖 <code>Fn</code>的原型，我们称之为 <code>objToDelegateTo</code>。 请注意，我们只支持 <code>Object.create</code> 的单个参数。官方实现还支持第二个可选参数，该参数允许您向创建的对象添加更多属性。</p>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>箭头函数没有自己的 <code>this</code> 关键字。因此，箭头函数不能用于构造函数，如果您尝试使用 <code>new</code> 关键字调用箭头函数，它将抛出错误。</p>
+<p>const Animal = () =&gt; {}<br>const leo = new Animal() // Error: Animal is not a constructor</p>
+<p>另外，因为我们在上面证明了 <code>pseudoclassical pattern</code>(经典伪类模式) 不能与箭头函数一起使用，所以箭头函数也没有 <code>prototype</code>(原型) 属性。</p>
+<p>const Animal = () =&gt; {}<br>console.log(Animal.prototype) // undefined</p>
+<p>  原文地址：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/beginners-guide-to-javascript-prototype/">https://tylermcginnis.com/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/03/%E5%88%A9%E7%94%A8javascript%E5%AE%9E%E7%8E%B0%E5%AF%86%E7%A0%81%E5%8F%AF%E8%A7%81%E6%80%A7%E5%88%87%E6%8D%A2%EF%BC%88%E6%98%BE%E7%A4%BA%E5%92%8C%E9%9A%90%E8%97%8F%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/03/%E5%88%A9%E7%94%A8javascript%E5%AE%9E%E7%8E%B0%E5%AF%86%E7%A0%81%E5%8F%AF%E8%A7%81%E6%80%A7%E5%88%87%E6%8D%A2%EF%BC%88%E6%98%BE%E7%A4%BA%E5%92%8C%E9%9A%90%E8%97%8F%EF%BC%89/" class="post-title-link" itemprop="url">利用JavaScript实现密码可见性切换（显示和隐藏）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-03 17:22:46" itemprop="dateCreated datePublished" datetime="2018-10-03T17:22:46+08:00">2018-10-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>对于密码的可见性切换经常会在移动端见到，由于移动端输入体验不是很好，经常会输入密码的时候出现错误，反正我是有这样的体验，所以衍生出了密码的显示和隐藏的切换，那么在pc端会出现这种问题吗？答案是会的，特别是在重置密码的时候要输入两次，就会出现输入错误的问题，我是程序员我的解决方法是查看源码。把input的type类型的password改变成text或置空，就显示密码了，这是我经常使用的惯例，所以你在使用浏览器的时候千万不要让浏览器记住密码，很危险的。 那么我们的用户是否也可以看到密码呢，答案是有的，实现原理就是通过js将input 标签 type=”password”改变为type=”text”，在 Chrome、FireFox 等浏览器中通过修改 input 标签的 type 属性轻松实现该效果，但是 IE 下就会报错。如果你需要兼容IE，就必须考虑其他方案。下面看例子： 例子一：用复选框作为介质来切换显示隐藏 最常见的实现是位于密码输入框下的复选框和标签。切换复选框后，密码变为可见。 对于上面提到的安全问题，我已经在密码输入上禁用了自动完成功能。交互非常简单，JavaScript将监听复选框输入的更改。切换后，密码字段将从type属性更改password为text。 在功能方面，这种实现很好。但是有个问题是，“显示密码”复选框文本乍一看就像登录表单更常见的“记住我”选项，不可取。 例子二：用一个按钮实现 实现密码可见性切换的另一种方法是在密码字段本身上设置一个按钮。你也可以用图标来表示。 实现与复选框示例没有太大差别，主要区别在于文本根据密码字段的状态而变化。 我更喜欢这种方法的原因是因为像按钮的作用，至少它看起来不像是“记住我”复选框，它仍然有相同的安全问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/30/%E4%BD%BF%E7%94%A8css-content%E7%9A%84attr%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%82%AC%E6%B5%AE%E6%8F%90%E7%A4%BA%EF%BC%88tooltip%EF%BC%89%E6%95%88%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/30/%E4%BD%BF%E7%94%A8css-content%E7%9A%84attr%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%82%AC%E6%B5%AE%E6%8F%90%E7%A4%BA%EF%BC%88tooltip%EF%BC%89%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">使用CSS content的attr实现鼠标悬浮提示（tooltip）效果</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-30 16:09:31" itemprop="dateCreated datePublished" datetime="2018-09-30T16:09:31+08:00">2018-09-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当你的用户需要漂亮的图标给出额外的文字信息时，亦或是当他们在点击了按钮之后需要确认自己没点错时，又或是带图片和字幕的复活节彩蛋，提示框是用来增强用户界面的绝佳手段。现在，让我们来做几个动画提示框，没有别的，只有HTML和CSS。 样例 这是我们之后要做的：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/BGRKEE/">CSS Tooltip Magic</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>在我们沉浸在写代码的过程中之前，让我们先来看看我们的意图是什么。主要目的是为了获得一种简单的添加提示框的方法，这样一来，我们之后就能够通过增加一个自定义的 tooltip 属性来做到这一点。</p>
+<p><span tooltip="message">visible text or icon, etc.</span></p>
+<h2 id="让我们设定几个预期"><a href="#让我们设定几个预期" class="headerlink" title="让我们设定几个预期"></a>让我们设定几个预期</h2><ul>
+<li>  不需要JavaScript</li>
+<li>  我们将会使用属性选择器（而不是类名），以及CSS内建的模式匹配</li>
+<li>  加到现有的DOM元素（你的标签中不需要新的元素）</li>
+<li>  代码例子中是没有前缀的（如有需要，为你的目标浏览器加上供应商前缀）</li>
+<li>  假设通过 mouseover/hover 来触发提示框</li>
+<li>  仅仅是纯文本提示框（HTML，图片等等都不支持）</li>
+<li>  当唤起提示框时，有巧妙的动画</li>
+</ul>
+<h2 id="好了，老司机要开车了！"><a href="#好了，老司机要开车了！" class="headerlink" title="好了，老司机要开车了！"></a>好了，老司机要开车了！</h2><p>哦，等等。我们还要先处理一个问题，是关于”不需要额外标签”的。毕竟，这很巧妙。 我们的提示框真的不需要额外的DOM元素，因为它们完全是基于伪元素的（::before 和 ::after），我们可以通过CSS来控制。 如果你已经在其它样式集中使用了一个元素的伪元素，又希望在这个元素是加一个提示框，那么你可能需要稍稍做一些重构。 没什么比得上来一场提示框盛会了！ 等等。小坏蛋！还有一个警告：CSS定位。为了提示框正常运作，它们的父元素（我们把提示框添加在它后面）需要是</p>
+<ul>
+<li>  <code>position: relative</code>，或者</li>
+<li>  <code>position: absolute</code>，或</li>
+<li>  <code>position: fixed</code></li>
+</ul>
+<p>基本上，什么都行，只要不是 position: static — 这是浏览器赋给几乎所有元素的默认定位模式。提示框是绝对定位的，所以它们需要知道它们的绝对值在什么边界内是有意义的。 默认的定位指令 static 不会声明它的边界，也不会给我们的提示框以上下文来进行相对定位。所以提示框会使用之后，最近的，有声明边界的父元素。 你还需要根据你如何使用提示框来决定哪个定位指令最为合适。这篇教程假设父元素是 postion: relative 如果你的UI依靠一个绝对定位的元素，那么在那个元素上部署一个提示框，也会需要一些重构（额外的标签）。 让我们开始吧。</p>
+<h2 id="属性选择器：快速回顾"><a href="#属性选择器：快速回顾" class="headerlink" title="属性选择器：快速回顾"></a>属性选择器：快速回顾</h2><p>大多数CSS规则印象中都是用类名写的，比如 .this-thing ,但是CSS有几个类型的选择器。我们巧妙的提示框打算使用属性选择器——也就是方括号表示法。</p>
+<p>[foo] {<br>background: rgba(0, 0, 0, 0.8);<br>color: #fff;<br>}</p>
+<p>当浏览器看到诸如此类的东西时：</p>
+<p><span foo>Check it out!</span></p>
+<p>浏览器会知道，它需要应用 [foo] 规则了，因为 <span> 标签有一个叫做 foo 的属性。在这个例子中，span自身会有一个半透明的黑色背景，以及白色文字。 HTML元素有着各种各样的内置属性，但是我们也可以给出我们自己的属性。比如 foo ，又或者是 tooltip 。默认情况下，HTML不知道这些东西是什么意思，但是有了CSS，我们可以告诉HTML这些自定义属性是什么意思。</p>
+<h2 id="为什么用属性选择器？"><a href="#为什么用属性选择器？" class="headerlink" title="为什么用属性选择器？"></a>为什么用属性选择器？</h2><p>我们后面会使用属性选择器，主要是出于侧重分离的目的。使用属性而不是类名，并不会让我们在详细程度上获得更多益处，类和属性在详细程度上是相同的。 然而，通过使用属性，我们可以把我们的内容放在一块儿，因为HTML属性可以有值，而类名没有值。 在这个例子的代码中，来权衡一下类名 .tooltip 对比属性 [tooltip] 。类名是 [class] 属性的值中的一个，而tooltip属性可以存放一个值，它就是我们要显示的文字。</p>
+<p><span class="tooltip another-classname">lorem ipsum</span><br><span tooltip="sit dolar amet">lorem ipsum</span></p>
+<h2 id="现在让我们来看看提示框炼金术"><a href="#现在让我们来看看提示框炼金术" class="headerlink" title="现在让我们来看看提示框炼金术"></a>现在让我们来看看提示框炼金术</h2><p>我们的提示框会使用两种不同的属性：</p>
+<ul>
+<li>  tooltip: 这个属性存放了提示框的内容（一个纯文本字符串）</li>
+<li>  flow: 可选；这个属性允许我们控制如何显示提示框。我们可以支持很多方位，但是我们会覆盖4各常用方位： 上，左，右，下</li>
+</ul>
+<p>现在，让我们为所有的提示框做好准备工作。步骤1-5的规则会应用到所有的提示框上，无论我们给 flow 属性什么值。步骤6-7对于不同的 flow 值会有所区分。</p>
+<h3 id="1-相对性"><a href="#1-相对性" class="headerlink" title="1. 相对性"></a>1. 相对性</h3><p>这是用在提示框的父元素上的。让我们来给定一个定位指令，这样提示框的组成部分（即::before 和 ::after 伪元素）的绝对定位就可以以父元素做参照进行定位，而不是以整个页面或祖父元素或DOM树上方的其它外围元素作为参照进行定位。</p>
+<p>[tooltip] {<br>position: relative;<br>}</p>
+<h3 id="2-伪元素准备时间"><a href="#2-伪元素准备时间" class="headerlink" title="2. 伪元素准备时间"></a>2. 伪元素准备时间</h3><p>是时候准备伪元素了。在这里，我们要对 ::before 和 ::after 设置常用属性。content 属性是真正让伪元素工作的属性，不过我们稍后再讨论它。</p>
+<p>[tooltip]::before,<br>[tooltip]::after {<br>line-height: 1;<br>user-select: none;<br>pointer-events: none;<br>position: absolute;<br>display: none;<br>opacity: 0;</p>
+<p>/* opinions */<br>text-transform: none;<br>font-size: .9em;<br>}</p>
+<h3 id="3-丁克帽"><a href="#3-丁克帽" class="headerlink" title="3. 丁克帽"></a>3. 丁克帽</h3><p>我不知道丁克帽是不是说得通，我只是一直这么叫它。它是一个尖尖的小三角形，通过指向它的调用者，为提示框提供对话气泡的感觉。 注意到我们在边界颜色这一块，使用了 tranparent ；由于上色要根据提示框的 flow 值来，所以之后再加上颜色。</p>
+<p>[tooltip]::before {<br>content: ‘’;<br>z-index: 1001;<br>border: 5px solid transparent;<br>}</p>
+<p>content: ‘’;声明中的值是一个空字符串，这并不是笔误。字符串里面，我们不想要任何东西，但是我们需要这个属性，使得伪元素得以存在。 为了生成一个三角形，我们定义了一个实现边框，在空的盒子（没有内容）上加了一些厚度，而不设定盒子的宽度和高度，仅仅对盒子的每一条边都给一个边框颜色。</p>
+<h3 id="4-气泡！"><a href="#4-气泡！" class="headerlink" title="4. 气泡！"></a>4. 气泡！</h3><p>这里是重点了。注意到 content: attr(tooltip) 这一部分是说：“这个伪类应该使用 tooltip 属性的值作为这个伪类的内容。”这也是为什么使用属性而不是类名会这么赞的原因。</p>
+<p>[tooltip]::after {<br>content: attr(tooltip); /* magic! */<br>z-index: 1000;</p>
+<p>/* most of the rest of this is opinion */<br>font-family: Helvetica, sans-serif;<br>text-align: center;</p>
+<p>/*<br>Let the content set the size of the tooltips<br>but this will also keep them from being obnoxious<br>*/<br>min-width: 3em;<br>max-width: 21em;<br>white-space: nowrap;<br>overflow: hidden;<br>text-overflow: ellipsis;</p>
+<p>/* visible design of the tooltip bubbles */<br>padding: 1ch 1.5ch;<br>border-radius: .3ch;<br>box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);<br>background: #333;<br>color: #fff;<br>}</p>
+<p>注意看丁克帽和气泡的 z-index 值。这些值可以是任意的。但是要记住，z-index 值是相对的。 解释：一个z-index值为1001的元素，在一个z-index为3的元素内部。仅仅意味着，z-index: 3 容器内部，1001元素是最顶层的元素。 气泡的z-index应该至少比丁克帽的z-index低一档。如果它和丁克的一样高，或更高的话，如果你提示框使用了 box-shadow 的话，结果在丁克帽上回得到不一致的颜色效果。</p>
+<h3 id="5-交互动作"><a href="#5-交互动作" class="headerlink" title="5. 交互动作"></a>5. 交互动作</h3><p>我们的提示框是通过把鼠标移动到带提示框的元素上面，来激活的。差不多是这样。</p>
+<p>[tooltip]:hover::before,<br>[tooltip]:hover::after {<br>display: block;<br>}</p>
+<p>如果你回顾在第2不中的样式部分，你会看到我们对提示框的组成部分，使用了 opacity: 0; 以及 display: none; 。我们这么做是为了当提示框显示和隐藏时，可以使用CSS动画效果。 display属性是不能做成动画的，但是opacity属性可以！我们留到最后来处理动画的问题。如果你对动画提示框没兴趣，只要把第2步中的 opacity: 0; 删掉，无视第7步即可。 最后一件要应用到所有提示框上的是，如果提示框没有内容，能有一个方法来抑制提示框。如果你使用某种动态系统（Vue.js, Angular, 或者 React, PHP等等）来生成提示框的话，我们就不需要笨笨的空白气泡了！</p>
+<p>/* don’t show empty tooltips */<br>[tooltip=’’]::before,<br>[tooltip=’’]::after {<br>display: none !important;<br>}</p>
+<h3 id="6-流控制"><a href="#6-流控制" class="headerlink" title="6. 流控制"></a>6. 流控制</h3><p>这一步会变得更加复杂，因为我们会使用一些不那么常见的选择器，来帮助我们的提示框基于 flow 值（或没有flow属性）来确定位置。 在我们写样式之前，让我们看看将要用到一些选择器模式。</p>
+<p>[tooltip]:not([flow])::before,<br>[tooltip][flow^=”up”]::before {<br>/* …<br>properties: values<br>… */<br>}</p>
+<p>这是在告诉浏览器：“对于所有带有 tooltip 属性来说，其中没有 flow 属性的元素，或者有flow元素，但它的值是以’up’开头的：将这些样式套用到这类元素的::before伪元素上。” 我们在这里使用了一个模式，这样一来，这些东西可以扩展到其它流上，而步需要重复这么多的CSS。这个模式 flow^=”up” 使用了 ^= （开头）匹配符。 如果你想增加其它流控制的话，通过这个模式，也可以将样式应用在 up-right 和 up-left 方向上（代码中）。我们在这里不会讨论这些流控制，不过你可以在CodePen上，我原来的提示框演示中看到如何使用它们。 以下是教程中所讲到的4个流所对应的CSS代码块。 上（这是默认的方向）</p>
+<p>/* ONLY the ::before */<br>[tooltip]:not([flow])::before,<br>[tooltip][flow^=”up”]::before {<br>bottom: 100%;<br>border-bottom-width: 0;<br>border-top-color: #333;<br>}</p>
+<p>/* ONLY the ::after */<br>[tooltip]:not([flow])::after,<br>[tooltip][flow^=”up”]::after {<br>bottom: calc(100% + 5px);<br>}</p>
+<p>/* Both ::before &amp; ::after */<br>[tooltip]:not([flow])::before,<br>[tooltip]:not([flow])::after,<br>[tooltip][flow^=”up”]::before,<br>[tooltip][flow^=”up”]::after {<br>left: 50%;<br>transform: translate(-50%, -.5em);<br>}</p>
+<h4 id="下"><a href="#下" class="headerlink" title="下:"></a>下:</h4><p>[tooltip][flow^=”down”]::before {<br>top: 100%;<br>border-top-width: 0;<br>border-bottom-color: #333;<br>}</p>
+<p>[tooltip][flow^=”down”]::after {<br>top: calc(100% + 5px);<br>}</p>
+<p>[tooltip][flow^=”down”]::before,<br>[tooltip][flow^=”down”]::after {<br>left: 50%;<br>transform: translate(-50%, .5em);<br>}</p>
+<h4 id="左"><a href="#左" class="headerlink" title="左:"></a>左:</h4><p>[tooltip][flow^=”left”]::before {<br>top: 50%;<br>border-right-width: 0;<br>border-left-color: #333;<br>left: calc(0em - 5px);<br>transform: translate(-.5em, -50%);<br>}</p>
+<p>[tooltip][flow^=”left”]::after {<br>top: 50%;<br>right: calc(100% + 5px);<br>transform: translate(-.5em, -50%);<br>}</p>
+<h4 id="右"><a href="#右" class="headerlink" title="右:"></a>右:</h4><p>[tooltip][flow^=”right”]::before {<br>top: 50%;<br>border-left-width: 0;<br>border-right-color: #333;<br>right: calc(0em - 5px);<br>transform: translate(.5em, -50%);<br>}</p>
+<p>[tooltip][flow^=”right”]::after {<br>top: 50%;<br>left: calc(100% + 5px);<br>transform: translate(.5em, -50%);<br>}</p>
+<h3 id="7-让一切都动起来"><a href="#7-让一切都动起来" class="headerlink" title="7. 让一切都动起来"></a>7. 让一切都动起来</h3><p>动画是很神奇的。动画可以做到： 让用户感觉舒服 让用户感受到你的用户界面的空间感 注意到该看到的东西 让用户界面中本来非黑即白的生硬效果变得柔和 我们的提示框属于最后那一种。如果仅仅是让一个文字泡泡出现然后突然消失，效果是不令人满意的，我们可以让它更柔和一些。 关键帧 (@keyframes) 我们需要两个关键帧 (@keyframe) 动画。向上/向下提示框要用到tooltips-vert关键帧，而向左/向右提示框使用tooltips-horz关键帧。 注意，在这些关键帧中，我们只定义了提示框所需的终止状态。我们并不需要知道它们从何处来 (提示框本身就有状态信息)。我们只想控制它们要到哪儿去。</p>
+<p>@keyframes tooltips-vert {<br>to {<br>opacity: .9;<br>transform: translate(-50%, 0);<br>}<br>}</p>
+<p>@keyframes tooltips-horz {<br>to {<br>opacity: .9;<br>transform: translate(0, -50%);<br>}<br>}</p>
+<p>现在，当一个用户的鼠标移到触发元素 (具有[tooltip]属性的元素) 上时，我们需要将这些关键帧应用到提示框上。因为我们采用了不同的流来控制提示框的显示方式，我们需要在样式中对它们进行定义。 使用:hover将控制传递给动画</p>
+<p>[tooltip]:not([flow]):hover::before,<br>[tooltip]:not([flow]):hover::after,<br>[tooltip][flow^=”up”]:hover::before,<br>[tooltip][flow^=”up”]:hover::after,<br>[tooltip][flow^=”down”]:hover::before,<br>[tooltip][flow^=”down”]:hover::after {<br>animation:<br>tooltips-vert<br>300ms<br>ease-out<br>forwards;<br>}</p>
+<p>[tooltip][flow^=”left”]:hover::before,<br>[tooltip][flow^=”left”]:hover::after,<br>[tooltip][flow^=”right”]:hover::before,<br>[tooltip][flow^=”right”]:hover::after {<br>animation:<br>tooltips-horz<br>300ms<br>ease-out<br>forwards;<br>}</p>
+<p>我们不能对display属性进行动画，但是可以通过操作opacity属性，在提示框上加上淡入效果。我们也可以动画transform属性，它可以给提示框加上微妙的动作，触发的元素就像飞入某点的一样。 主要forward关键词在动画的声明中，这告诉动画当完成时不重置，而是继续停留在结束。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>棒极了！我们在这个教程里已经覆盖了很多，一堆提示框效果。 我们仅仅摸索了用css做提示框的表面。好好享受它们，继续试验，调制出你自己的方子！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/29/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/29/css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">CSS中的变量：自定义属性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-29 16:01:57" itemprop="dateCreated datePublished" datetime="2018-09-29T16:01:57+08:00">2018-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>多年来，变量是最常请求的CSS功能之一。变量可以更轻松地管理颜色，字体，大小和动画值，并确保它们在代码库中的一致性。 花了几年时间研究语法的细节，并决定变量如何适应控制级联和继承的现有规则。现在，它们以CSS“自定义属性”的形式供开发人员使用。 在本章中，我们将讨论CSS自定义属性的语法。我们来看看：</p>
+<ul>
+<li>  如何定义属性并为这些属性设置默认值 级联和继承的规则如何与自定义属性一起使用 如何在媒体查询中使用自定义属性 最后，您应该很好地掌握如何在项目中使用自定义属性。</li>
+</ul>
+<p>注意：浏览器对自定义变量的支持非常强大，存在于每个主要浏览器的最新版本中。但是，旧版但最近发布的浏览器版本仍然不支持这些版本，这些版本可能仍会被您网站的受众广泛使用。15之前的Microsoft Edge版本和9.1版之前的Safari版本完全缺乏支持。任何版本的Internet Explorer都是如此。Microsoft Edge 15有支持，但也有一些记录的错误。</p>
+<h4 id="定义自定义属性"><a href="#定义自定义属性" class="headerlink" title="定义自定义属性"></a>定义自定义属性</h4><p>要定义自定义属性，请选择一个名称，并使用两个连字符作为前缀。任何字母数字字符都可以是名称的一部分。也允许使用连字符（-）和下划线（_）字符。广泛的unicode字符可以是自定义属性名称的一部分，包括emojis。为了清晰和可读性，请坚持使用字母数字名称。 这是一个例子：</p>
+<p>--primarycolor: #0ad0f9ff; /* Using #rrggbbaa color notation */</p>
+<p>该–指示的CSS解析器，这是一个自定义属性。无论将属性用作变量，属性的值都将替换该属性。 自定义属性名称区分大小写。换句话说，–primaryColor并且–primarycolor被认为是两个不同的属性名称。这与传统的CSS背道而驰，其中财产和价值案例并不重要。但是，它与ECMAScript处理变量的方式一致。 与其他属性（如displayor）一样font，必须在声明块中定义CSS自定义属性。一种常见的模式是在规则:root集中定义使用psuedo-element作为选择器的自定义属性：</p>
+<p>:root {<br>–primarycolor: #0ad0f9ff;<br>}</p>
+<p>:root是一个伪元素，它引用文档的根元素。对于HTML文档，这是html元素。对于SVG文档，它是svg元素。通过使用:root，可以在整个文档中立即获得属性。</p>
+<h4 id="使用自定义属性"><a href="#使用自定义属性" class="headerlink" title="使用自定义属性"></a>使用自定义属性</h4><p>要将自定义属性值用作变量，我们需要使用该var()函数。例如，如果我们想将–primarycolor自定义属性用作背景颜色，我们将使用以下内容：</p>
+<p>body {<br>background-color: var(–primarycolor);<br>}</p>
+<p>我们的自定义属性的值将成为属性的计算值background-color。 到目前为止，自定义属性只能用作变量来设置标准CSS属性的值。例如，您不能将属性名称存储为变量，然后重复使用它。以下CSS不起作用：</p>
+<p>:root {<br>–top-border: border-top; /* Can’t set a property as custom property’s value */<br>var(–top-border): 10px solid #bc84d8 /* Can’t use a variable as a property */<br>}</p>
+<p>您也不能将属性 - 值对存储为变量并重用它。以下示例也无效：</p>
+<p>:root {<br>–text-color: ‘color: orange’; /* Invalid property value */<br>}<br>body {<br>var(–text-color); /* Invalid use of a property */<br>}</p>
+<p>最后，您也无法将变量连接为值字符串的一部分：</p>
+<p>:root {<br>–base-font-size: 10;<br>}<br>body {<br>font: var(–base-font-size)px / 1.25 sans-serif; /* Invalid CSS syntax. */<br>}</p>
+<p>自定义属性被设计为用作根据CSS规范解析的属性。如果浏览器供应商采用CSS扩展规范，我们有一天可能会使用自定义属性来创建自定义选择器组或自定义规则。但是，目前我们仅限于将它们用作变量来设置标准属性值。</p>
+<h4 id="设置后备值"><a href="#设置后备值" class="headerlink" title="设置后备值"></a>设置后备值</h4><p>该var()函数实际上最多接受两个参数。第一个参数应该是自定义属性名称。第二个参数是可选的，但应该是声明值。如果尚未定义自定义属性值，则此声明值将用作一种回退值。 我们来看下面的CSS：</p>
+<p>.btn__call-to-action {<br>background: var(–accent-color, salmon);<br>}</p>
+<p>如果–accent-color已定义 - 让我们说它的值是#f30- 然后具有.btn__call-to-actionclass属性的任何路径的填充颜色将具有红橙色填充。如果没有定义，填充将是鲑鱼。 声明值也可以嵌套。换句话说，您可以使用变量作为var函数的回退值：</p>
+<p>body {<br>background-color: var(–books-bg, var(–arts-bg));<br>}</p>
+<p>在上面的CSS中，如果–books-bg已定义，则背景颜色将设置为–books-bg属性的值。如果没有，背景颜色将改为分配给的任何值–arts-bg。如果这两个都没有定义，那么背景颜色将是属性的初始值 - 在这种情况下transparent。 当自定义属性被赋予对其所使用的属性无效的值时，会发生类似的事情。考虑以下CSS：</p>
+<p>:root {<br>–footer-link-hover: #0cg; /* Not a valid color value. */<br>}<br>a:link {<br>color: blue;<br>}<br>a:hover {<br>color: red;<br>}<br>footer a:hover {<br>color: var(–footer-link-hover);<br>}</p>
+<p>在这种情况下，–footer-link-hover属性的值不是有效颜色。在Microsoft Edge中，页脚链接的悬停状态颜色将从a:hover选择器继承。在大多数其他浏览器中，悬停状态颜色将从body元素的文本颜色继承。 自定义属性和级联 自定义属性也遵循级联规则。后续规则可以覆盖它们的值：</p>
+<p>:root {<br>–text-color: #190736; /* navy */<br>}<br>body {<br>–text-color: #333; /* Dark gray */<br>}<br>body {<br>color: var(–text-color);<br>}</p>
+<p>在上面的示例中，我们的正文将为深灰色。我们还可以基于每个选择器重置值。让我们为这个CSS添加更多规则：</p>
+<p>:root {<br>–text-color: #190736; /* navy */<br>}<br>body {<br>–text-color: #333; /* Dark gray */<br>}<br>p {<br>–text-color: #f60; /* Orange */<br>}<br>body {<br>color: var(–text-color);<br>}<br>p {<br>color: var(–text-color)<br>}</p>
+<p>在这种情况下，包含在p元素标记中的任何文本都将为橙色。但是内部div或其他元素中的文本仍然是深灰色的。 也可以使用style属性设置自定义属性的值- 例如，style=”–brand-color: #9a09af”- 这在基于组件的前端体系结构中很有用。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/28/%E5%A6%82%E4%BD%95%E5%9C%A8css%E4%B8%AD%E4%BD%BF%E7%94%A82d-transformation%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/28/%E5%A6%82%E4%BD%95%E5%9C%A8css%E4%B8%AD%E4%BD%BF%E7%94%A82d-transformation%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">如何在CSS中使用2D Transformation功能</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-28 15:57:04" itemprop="dateCreated datePublished" datetime="2018-09-28T15:57:04+08:00">2018-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Transforms允许我们创建不可能的效果和交互。与过渡和动画结合使用时，我们可以创建旋转，dance和zoom的元素和界面。特别是三维变换使得模仿物体成为可能。在本文中，我们将介绍2D变换函数（此处介绍了3D函数）。 有四种主要的二维变换函数：rotate，scale，skew，和translate。其他六个函数让我们在一个维度上转换元素：scaleX和scaleY; skewX和skewY; 和translateX和translateY。</p>
+<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h2><p>旋转变换围绕该transform-origin点围绕指定的角度旋转元素。使用rotate()顺时针（正角度值）或逆时针（负角度值）倾斜元素。它的效果很像风车或风车，如下所示。 紫色框从其起始位置旋转了55度，如虚线所示 <img src="http://file.w3cbest.com/file/images/1TransformRotate.png"> 该rotate()函数接受角度单位的值。角度单位由CSS值和单位模块级别3定义。这些可以是deg（度），rad（弧度），grad（梯度）或turn单位。一个完整旋转等于360deg，6.28rad，400grad，或1turn。 超过一个旋转（例如，540deg或1.5turn）的旋转值将根据其剩余值进行渲染，除非设置为动画或过渡。换句话说，540deg渲染与180deg（540度减去360度）相同，并且渲染与（1.5-1）1.5turn相同.5turn。但是，从一个过渡或动画0deg来540deg或1turn以1.5turn将旋转元素一个和倍半。</p>
+<h2 id="2D缩放功能：scale，scaleX，和scaleY"><a href="#2D缩放功能：scale，scaleX，和scaleY" class="headerlink" title="2D缩放功能：scale，scaleX，和scaleY"></a>2D缩放功能：scale，scaleX，和scaleY</h2><p>使用缩放功能，我们可以在X维度（scaleX），Y维度（scaleY）或两者（scale）中增加或减少元素的渲染大小。缩放如下图所示，其中边框表示框的原始边界，+标记其中心点。 一个方框（左）缩放2倍（右） <img src="http://file.w3cbest.com/file/images/2TransformScale.png"> 每个比例函数都接受乘数或因子作为其参数。这个乘数可以是任何正数或负数。不支持百分比值。正乘数大于1增加元素的大小。例如，scale(1.5)将元素在X和Y方向上的尺寸增加1.5倍。之间的正乘数0和1将降低元素的大小。 小于的值0也会导致元素向上或向下缩放并创建反射（翻转）变换。 警告：使用scale(0)将导致元素消失，因为将数字乘以零会产生零。 使用scale(1)创建标识转换，这意味着它被绘制到屏幕，就像没有应用缩放转换一样。使用scale(-1)不会更改元素的绘制大小，但负值将导致元素被反射。即使元素没有出现变换，它仍会触发新的堆叠上下文并包含块。 可以使用该scale功能分别缩放X和Y尺寸。只需传递两个参数：scale(1.5, 2)。第一个参数缩放X维度; 第二个缩放Y维度。例如，我们可以单独使用X轴反射物体scale(-1, 1)。传递单个参数可以按相同因子缩放两个维度。</p>
+<h2 id="2D转换功能：translateX，translateY，和translate"><a href="#2D转换功能：translateX，translateY，和translate" class="headerlink" title="2D转换功能：translateX，translateY，和translate"></a>2D转换功能：translateX，translateY，和translate</h2><p>平移元素会将其绘制位置与布局位置偏移指定的距离。如同其它变换，平移一个元件不改变其offsetLeft或offsetTop位置。但是，它会影响它在屏幕上的可视位置。 每个2D平移函数translateX- translateY，和 - translate接受参数的长度或百分比。长度单位包括像素（px）， ，em，rem和视口单元（vw和vh）。 该translateX函数更改元素的水平渲染位置。如果元素位于左侧零像素处，则将transform: transitionX(50px)其渲染位置移动50个像素到其起始位置的右侧。同样，translateY更改元素的垂直渲染位置。transform: transitionY(50px)将元素垂直偏移50个像素的变换。 使用translate()，我们可以使用单个函数垂直和水平移动元素。它最多接受两个参数：X转换值和Y转换值。下图显示了一个元件与效果transform的值translate(120%, -50px)，其中，所述左绿色正方形是在原来的位置，而右侧绿色正方形水平平移120％，并从它的含有元素（虚线框）垂直-50px。 <img src="http://file.w3cbest.com/file/images/3Translate.png"> 具有转换值为translate的元素的效果（120％， - 50px） 传递单个参数translate相当于使用translateX; Y转换值将设置为0。使用translate()是更简洁的选择。申请translate(100px, 200px)相当于translateX(100px) translateY(200px)。 正转换值将元素向右移动（for translateX）或向下移动（for translateY）。负值将元素移动到左（translateX）或向上（translateY）。 翻译对于向左，向右，向上或向下移动项目特别有用。更新的值left，right，top，和bottom属性强制浏览器重新计算整个文档布局信息。但是在计算布局之后计算变换。它们影响其中的元素出现在屏幕上，而不是他们的实际尺寸。是的，将文档布局和渲染视为单独的概念是很奇怪的，但就浏览器而言，它们是。 转换属性可能会到达您附近的浏览器 在CSS的最新版本来变换规范增加translate，rotate以及scale 性能的CSS。变换属性的工作方式与其对应的变换函数非常相似，但值是以空格分隔的，而不是以逗号分隔的。例如，我们可以transform: rotate3d(1, 1, 1, 45deg)使用该rotate属性表达：rotate: 1 1 1 45deg。同样，translate: 15% 10% 300px在视觉上与之相同transform: translate3d(15%, 10%, 300px)并且scale: 1.5 1.5 3相同transform: scale3d(1.5, 1.5, 3)。通过这些属性，我们可以与其他转换分开管理旋转，平移或缩放转换。 在撰写本文时，浏览器对转换属性的支持仍然非常稀少。Chrome和三星互联网支持开箱即用。在Firefox 60及更高版本中，支持隐藏在标志后面; 访问about: config并设置layout.css.individual-transform.enabled为true。</p>
+<h2 id="skew，skewX和skewY"><a href="#skew，skewX和skewY" class="headerlink" title="skew，skewX和skewY"></a>skew，skewX和skewY</h2><p>歪斜变换会使点之间的角度和距离发生偏移，同时将它们保持在同一平面内。歪斜变换也称为剪切变换，它们会扭曲元素的形状，如下所示，其中虚线表示元素的原始边界框。 矩形沿其X维度倾斜45度 <img src="http://file.w3cbest.com/file/images/4TransformSkew.png"> 偏斜函数skew- skewX，和 - skewY接受大多数角度单位作为参数。度，渐变和弧度是倾斜函数的有效角度单位，而转弯单位可能显然不是。 该skewX功能在X或水平方向上剪切元素（参见下面的图像）。它接受一个参数，该参数也必须是一个角度单位。正值将元素向左移动，负值将元素向右移动。 左图像未被变换，而右图像显示变换的效果：skewX（30deg） <img src="http://file.w3cbest.com/file/images/5skewX.png"> 同样，skewY剪切Y或垂直方向的元素。下图显示了效果transform: skewY(30deg)。原点右侧的点向下移动，带有正值。负值将这些点向上移动。 同样，左图像保持未变换，右图像垂直偏斜30度 <img src="http://file.w3cbest.com/file/images/6skewY.png"> 这带给我们的skew功能。该skew函数需要一个参数，但最多可接受两个参数。第一个参数在X方向上扭曲一个元素，第二个参数在Y方向上扭曲它。如果只提供一个参数，则假定第二个值为零，使其相当于单独在X方向上的倾斜。换句话说，skew(45deg)渲染相同skewX(45deg)。</p>
+<h2 id="当前变换矩阵"><a href="#当前变换矩阵" class="headerlink" title="当前变换矩阵"></a>当前变换矩阵</h2><p>到目前为止，我们已经分别讨论了变换函数，但它们也可以组合在一起。想要缩放和旋转对象？没问题：使用转换列表。例如：</p>
+<p>.rotatescale {<br>transform: rotate(45deg) scale(2);<br>}</p>
+<p>这将产生您在下面看到的结果。 <img src="http://file.w3cbest.com/file/images/7ScaleAndRotate.png"> 应用原始元素（左）和组合旋转和缩放变换后（右） 使用转换函数时，顺序很重要。这是一个比谈论更好的一点，所以让我们看一个例子来说明。以下CSS倾斜并旋转元素：</p>
+<p>.transformEl {<br>transform: skew(10deg, 15deg) rotate(45deg);<br>}</p>
+<p>它为我们提供了您在下面看到的结果。 <img src="http://file.w3cbest.com/file/images/8SkewAndRotate.png"> 歪斜变换后的元素（10度，15度）旋转（45度） 如果首先旋转元素然后将其倾斜会发生什么？</p>
+<p>.transformEl {<br>transform: rotate(45deg) skew(10deg, 15deg);<br>}</p>
+<p>如下所示，效果完全不同。 <img src="http://file.w3cbest.com/file/images/9RotateThenSkew.png"> 旋转后然后倾斜的元素 这些变换中的每一个具有由其变换函数的顺序创建的不同的当前变换矩阵。为了完全理解为什么这样，我们需要学习一点矩阵乘法。这也有助于我们理解matrix和matrix3d功能。 矩阵乘法和矩阵函数 甲矩阵是排列成行和列的矩形号码或表达式的阵列。所有变换可以使用4×4矩阵表示，如下所示。 <img src="http://file.w3cbest.com/file/images/1536071956matrix4x4.png"> 用于3D变换的4×4矩阵 该矩阵对应于matrix3d函数，该函数接受16个参数，每个参数用于4×4矩阵的每个值。二维变换也可以使用3×3矩阵表示，如下所示。 <img src="http://file.w3cbest.com/file/images/1536071982matrix.png"> 用于2D变换的3×3矩阵 该3×3矩阵对应于matrix变换函数。该matrix()函数接受六个参数，每个参数对应于值a到f。 可以使用矩阵和/ matrix或matrix3d函数来描述每个变换函数。下图显示了scale3d函数的4×4矩阵，其中sx，sy和sz分别是X，Y和Z维度的缩放因子。 <img src="http://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png"> 当我们组合变换时 - 例如transform: scale(2) translate(30px, 50px)- 浏览器将每个函数的矩阵相乘以创建新矩阵。这个新矩阵是应用于元素的。 但这是关于矩阵乘法的事情：它不是可交换的。使用简单值，3×2的乘积与2×3相同。但是，对于矩阵，A × B的乘积不一定与B × A的乘积相同。我们来看一个例子。我们将计算出的矩阵乘积transform: scale(2) translate(30px, 50px)。 <img src="http://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png"> 我们的元素按比例缩放了两倍，然后水平翻译60像素，垂直翻译100像素。我们也可以使用以下matrix功能表达此产品：transform: matrix(2, 0, 0, 2, 60, 100)。现在让我们切换这些变换的顺序 - 即transform: translate(30px, 50px) scale(2)。结果如下所示。 <img src="http://file.w3cbest.com/file/images/1536072076TranslateAndScale.png"> 用于平移（30px，50px）和刻度（2）的矩阵的乘积 请注意，我们的对象仍然按比例缩放了两倍，但在这里它被水平翻译了30个像素而垂直翻译了50个像素。使用该matrix函数表示，这是transform: matrix(2, 0, 0, 2, 30, 50)。 值得注意的是，继承转换的功能与转换列表类似。每个子变换乘以应用于其父变换的任何变换。例如，请使用以下代码：</p>
+<div style="transform: skewX(25deg)">
+<p style="transform: rotate(-15deg)"></p>
+</div>
+
+<p>这与以下内容相同：</p>
+<div>
+<p style="transform: skewX(25deg) rotate(-15deg)"></p>
+</div>
+
+<p>p在两种情况下，元素的当前变换矩阵都是相同的。虽然到目前为止我们专注于2D变换，但上述内容也适用于3D变换。第三个维度增加了深度的幻觉。它还以新功能和属性的形式带来了一些额外的复杂性。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/28/css3%E4%B8%AD%E7%9A%84-scroll-snap%EF%BC%9A%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E5%8A%A8%E4%BD%9C%EF%BC%88%E7%B1%BB%E4%BC%BC%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/28/css3%E4%B8%AD%E7%9A%84-scroll-snap%EF%BC%9A%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E5%8A%A8%E4%BD%9C%EF%BC%88%E7%B1%BB%E4%BC%BC%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87%EF%BC%89/" class="post-title-link" itemprop="url">CSS3中的 Scroll Snap：控制滚动动作（类似滚动图片）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-28 15:33:27" itemprop="dateCreated datePublished" datetime="2018-09-28T15:33:27+08:00">2018-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>随着Web平台的发展，它也获得了类似原生应用的特点。其中一个功能是<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-scroll-snap-1/">CSS Scroll Snap Module</a>。Scroll snap允许开发人员定义界面在滚动操作期间应该移动的距离。您可以使用它来构建幻灯片放映或分页界面 - 目前需要JavaScript和DOM操作才能完成。 Scroll snap作为一项功能经历了很多变化。早期的2013版规范 - 当时称为Scroll Snap Points–定义了一种基于坐标和像素的方法来指定滚动距离。此版本的规范是在Microsoft Edge，Internet Explorer 11和Firefox中实现的。 Chrome 69+和Safari 11+实现了规范的最新版本，该版本使用了盒子对齐模型。这就是我们将在本节中关注的内容。 警告： 当前浮动在Web上的许多滚动快照教程都基于早期的CSS Scroll Snap Points规范。标题中“points”一词的出现是教程可能依赖于旧规范的一个标志。然而，更可靠的指标是存在scroll-snap-points-x或scroll-snap-points-y属性。 由于滚动捕捉非常适合幻灯片放映布局，这就是我们要构建的内容。这是我们的标记。</p>
+<div class="slideshow">
+<img src="avocado-and-bacon-salad.jpg">
+<img src="salad-eggs-and-scallops.jpg">
+<img src="seafood-and-noodles.jpg">
+<img src="grilled-salmon-and-side-salad.jpg">
+<img src="avocado-toast-with-egg.jpg">
+</div>
+
+<p>这就是我们所需要的一切。我们不需要具有外部包裹元件和内部滑动容器。我们也不需要任何JavaScript。 现在我们的CSS：</p>
+<p>* {<br>box-sizing: border-box;<br>}</p>
+<p>html, body {<br>padding: 0;<br>margin: 0;<br>}</p>
+<p>.slideshow {<br>scroll-snap-type: x mandatory; /* Indicates scroll axis and behavior */<br>overflow-x: auto; /* Should be either `scroll` or `auto` */<br>display: flex;<br>height: 100vh;<br>}</p>
+<p>.slideshow img {<br>width: 100vw;<br>height: 100vh;<br>scroll-snap-align: center;<br>}</p>
+<p>添加scroll-snap-type以.slideshow创建滚动容器。此属性的值x mandatory描述了我们要滚动的方向以及滚动快照严格性。在这种情况下，该mandatory值告诉浏览器，当没有活动的滚动操作时，它必须捕捉到捕捉位置。使用display: flex只是确保我们的所有图像水平堆叠。 现在我们需要的另一个属性是scroll-snap-align。此属性指示如何在滚动容器的捕捉端口内对齐每个图像的滚动捕捉区域。它接受三个值：start，end，和center。在这种情况下，我们使用了center这意味着每个图像将在视口中居中，如下所示。 <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/ScrollSnap.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

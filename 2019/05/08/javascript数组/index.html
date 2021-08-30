@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="简介：在本教程中，您将了解JavaScript数组类型及其一些独特的特性。  JavaScript数组简介在 JavaScript 中，数组是有序的数据列表。与其他编程语言（如Java，C &#x2F; C ++等）的数组相比，数组具有以下特殊特性。    首先，数组可以在每个槽中保存不同类型的数据，即数组可以保存具有数字，字符串，对象等的混合的元素。   其次，数组的长度是动态调整大小和自动增长的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数组">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/05/08/javascript%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="简介：在本教程中，您将了解JavaScript数组类型及其一些独特的特性。  JavaScript数组简介在 JavaScript 中，数组是有序的数据列表。与其他编程语言（如Java，C &#x2F; C ++等）的数组相比，数组具有以下特殊特性。    首先，数组可以在每个槽中保存不同类型的数据，即数组可以保存具有数字，字符串，对象等的混合的元素。   其次，数组的长度是动态调整大小和自动增长的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-08T00:06:54.000Z">
+<meta property="article:modified_time" content="2021-08-30T02:43:27.095Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="array()">
+<meta property="article:tag" content="Array.isArray()">
+<meta property="article:tag" content="join()">
+<meta property="article:tag" content="toString()">
+<meta property="article:tag" content="valueOf()">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/05/08/javascript%E6%95%B0%E7%BB%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript数组 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/08/javascript%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript数组
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-08 08:06:54" itemprop="dateCreated datePublished" datetime="2019-05-08T08:06:54+08:00">2019-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>简介：在本教程中，您将了解JavaScript数组类型及其一些独特的特性。</p>
+</blockquote>
+<h2 id="JavaScript数组简介"><a href="#JavaScript数组简介" class="headerlink" title="JavaScript数组简介"></a>JavaScript数组简介</h2><p>在 JavaScript 中，数组是有序的数据列表。与其他编程语言（如Java，C / C ++等）的数组相比，数组具有以下特殊特性。</p>
+<ul>
+<li>  首先，数组可以在每个槽中保存不同类型的数据，即数组可以保存具有数字，字符串，对象等的混合的元素。</li>
+<li>  其次，数组的长度是动态调整大小和自动增长的。</li>
+</ul>
+<h2 id="创建JavaScript数组"><a href="#创建JavaScript数组" class="headerlink" title="创建JavaScript数组"></a>创建JavaScript数组</h2><p>JavaScript 为您提供了两种创建数组的方法。 第一个是使用Array构造函数如下：</p>
+<p>var scores = new Array();</p>
+<p>该scores 数组为空即，它不包含任何元素。 如果您知道数组将包含的元素数，则可以创建一个具有初始大小的数组，如以下示例所示：</p>
+<p>var scores = Array(10);</p>
+<p>要使用初始元素创建数组，可以在Array()构造函数中将元素作为逗号分隔列表传递。以下示例创建scores包含五个数字的数组：</p>
+<p>var scores = new Array(9,10,8,7,6);</p>
+<p>重要的是要注意，如果使用数组构造函数创建数组并传入数字，则需要创建一个具有初始大小的数组。但是，如果传入另一个类型的一个参数，则创建一个包含该元素的数组。 请参阅以下示例：</p>
+<p>var athletes = new Array(3); // creates an array with initial size 3<br>var scores = new Array(1, 2, 3); // create an array with three numbers 1,2 3<br>var signs = new Array(‘Red’); // creates an array with one element ‘Red’</p>
+<p>JavaScript 允许您new在使用数组构造函数时省略运算符。例如，以下语句创建artists数组。</p>
+<p>var artists = Array();</p>
+<p>第二种方式，也许是更优选的方式，创建一个数组是使用数组文字表示法，如下所示：</p>
+<p>var array_name = [element1, element2, element3];</p>
+<p>数组文字形式使用方括号[]来包装逗号分隔的元素列表。例如，以下语句创建三种颜色的colors数组：</p>
+<p>var colors = [‘red’, ‘green’, ‘blue’];</p>
+<p>可以使用空方括号创建一个空数组。</p>
+<p>var emptyArray = [];</p>
+<p>以下示例创建一个包含两个未定义元素的数组。</p>
+<p>var nonEmptyArry = [,,];<br>console.log(nonEmptyArray); // [undefined, undefined]</p>
+<h2 id="访问-JavaScript-数组元素"><a href="#访问-JavaScript-数组元素" class="headerlink" title="访问 JavaScript 数组元素"></a>访问 JavaScript 数组元素</h2><p>您可以使用方括号[]访问数组的元素。数组的第一个元素以0开头，第二个元素以1开头，依此类推。 例如，以下示例创建一个包含三个字符串的数组。</p>
+<p>var mountains = [‘Everest’, ‘Fuji’, ‘Nanga Parbat’];</p>
+<p>以下语句显示如何访问mountains数组的元素。</p>
+<p>console.log(mountains[0]); // ‘Everest’<br>console.log(mountains[1]); // ‘Fuji’<br>console.log(mountains[2]); // ‘Nanga Parbat’</p>
+<p>要更改数组中元素的值，可以使用为该元素赋值，如下所示：</p>
+<p>mountains[2] = ‘K2’;</p>
+<h2 id="数组的大小"><a href="#数组的大小" class="headerlink" title="数组的大小"></a>数组的大小</h2><p>数组使用length属性来存储它保存的当前元素数。您可以访问获取length属性的值，如以下示例所示。</p>
+<p>console.log(mountains.length); // 3</p>
+<p>该length属性是可写的，因此您可以 通过更改属性的值来插入或删除元素length。 如果将length属性设置为大于数组中元素数的值，则新元素将添加初始值undefined。 例如，我们将mountains数组的length属性更改为4，那么数组末尾将会附加一个初始值为undefined的元素。</p>
+<p>// append 1 element<br>mountains.length = 4;<br>console.log(mountains[3]); // undefined</p>
+<p>类似地，下面的示例将mountains数组的length属性设置为2，那么将会删除数组的最后两个元素。当我们访问数组的第三个元素时，它返回undefined。</p>
+<p>// remove the last 2 elements<br>mountains.length = 2;<br>console.log(mountains[2]); // undefined</p>
+<p>请注意，JavaScript 数组可容纳的最大元素数为4,294,967,295，足以满足典型应用程序的要求。</p>
+<h2 id="数组的基本操作"><a href="#数组的基本操作" class="headerlink" title="数组的基本操作"></a>数组的基本操作</h2><p>所有数组都是该Array类型的实例。因此，数组变量的typeof返回object如下例所示：</p>
+<p>var seas = [‘Black Sea’, ‘Caribbean Sea’, ‘North Sea’, ‘Baltic Sea’];<br>console.log(typeof seas); // object</p>
+<p>要检查变量是否为数组，可以使用Array.isArray()方法进行检测：</p>
+<p>console.log(Array.isArray(seas)); // true</p>
+<p>当您调用数组的toString()和valueOf()方法时，您将获得一个以逗号分隔的元素列表表示的字符串，如以下示例所示：</p>
+<p>console.log(seas.toString()); // Black Sea,Caribbean Sea,North Sea,Baltic Sea<br>console.log(seas.valueOf());</p>
+<p>如果要以不同的方式使用数组的字符串表示形式，可以使用join()方法。 以下示例使用join()方法返回mountains数组的字符串表示形式。但是元素由()字符分隔。</p>
+<p>console.log(seas.join(‘’));<br>// Black SeaCaribbean SeaNorth SeaBaltic Sea</p>
+<p>如果数组的元素是null或undefined时，toString(), valueOf()以及join()将其视为得到的字符串中一个空字符串。这是一个例子。</p>
+<p>var mixedValues = [1, 2, null, ‘A’, undefined, 3];<br>console.log(mixedValues.toString()); // 1,2,,A,,3</p>
+<p>现在您应该对JavaScript数组及其一些独特的特性有基本的了解。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/array/" rel="tag"># array()</a>
+              <a href="/tags/Array-isArray/" rel="tag"># Array.isArray()</a>
+              <a href="/tags/join/" rel="tag"># join()</a>
+              <a href="/tags/toString/" rel="tag"># toString()</a>
+              <a href="/tags/valueOf/" rel="tag"># valueOf()</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/05/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F30%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="prev" title="正则表达式30分钟入门教程">
+      <i class="fa fa-chevron-left"></i> 正则表达式30分钟入门教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/19/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0-css/" rel="next" title="如何有效的学习 CSS">
+      如何有效的学习 CSS <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E6%95%B0%E7%BB%84%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">JavaScript数组简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAJavaScript%E6%95%B0%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">创建JavaScript数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE-JavaScript-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">访问 JavaScript 数组元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">4.</span> <span class="nav-text">数组的大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">数组的基本操作</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

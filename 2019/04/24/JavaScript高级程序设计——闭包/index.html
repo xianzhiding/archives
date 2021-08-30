@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="前言有很多人搞不清匿名函数和闭包这两个概念，经常混用。闭包是指有权访问另一个函数作用域中的变量的函数。匿名函数就是没有实际名字的函数。 闭包概念 闭包，其实是一种语言特性，它是指的是程序设计语言中，允许将函数看作对象，然后能像在对象中的操作搬在函数中定义实例（局部）变量，而这些变量能在函数中保存到函数的实例对象销毁为止，其它代码块能通过某种方式获取这些实例（局部）变量的值并进行应用扩展。 条件 闭">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript高级程序设计——闭包">
+<meta property="og:url" content="https://xianzhiding.github.io/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="前言有很多人搞不清匿名函数和闭包这两个概念，经常混用。闭包是指有权访问另一个函数作用域中的变量的函数。匿名函数就是没有实际名字的函数。 闭包概念 闭包，其实是一种语言特性，它是指的是程序设计语言中，允许将函数看作对象，然后能像在对象中的操作搬在函数中定义实例（局部）变量，而这些变量能在函数中保存到函数的实例对象销毁为止，其它代码块能通过某种方式获取这些实例（局部）变量的值并进行应用扩展。 条件 闭">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/js-closure-1.jpg">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/js-closure-2.jpg">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/js-closure-3.jpg">
+<meta property="og:image" content="http://file.w3cbest.com/file/images/js-closure-4.jpg">
+<meta property="article:published_time" content="2019-04-24T00:30:24.000Z">
+<meta property="article:modified_time" content="2021-08-30T03:22:31.470Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="javascript 闭包">
+<meta property="article:tag" content="javascript教程">
+<meta property="article:tag" content="作用域">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://file.w3cbest.com/file/images/js-closure-1.jpg">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript高级程序设计——闭包 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript高级程序设计——闭包
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-24 08:30:24" itemprop="dateCreated datePublished" datetime="2019-04-24T08:30:24+08:00">2019-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:22:31" itemprop="dateModified" datetime="2021-08-30T11:22:31+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有很多人搞不清匿名函数和闭包这两个概念，经常混用。闭包是指有权访问另一个函数作用域中的变量的函数。匿名函数就是没有实际名字的函数。</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p><strong>概念</strong> 闭包，其实是一种语言特性，它是指的是程序设计语言中，允许将函数看作对象，然后能像在对象中的操作搬在函数中定义实例（局部）变量，而这些变量能在函数中保存到函数的实例对象销毁为止，其它代码块能通过某种方式获取这些实例（局部）变量的值并进行应用扩展。 <strong>条件</strong> 闭包是允许函数访问局部作用域之外的数据。即使外部函数已经退出，外部函数的变量仍可以被内部函数访问到。 因此闭包的实现需要三个条件：</p>
+<ol>
+<li> 内部函数实用了外部函数的变量</li>
+<li> 外部函数已经退出</li>
+<li> 内部函数可以访问</li>
+</ol>
+<p>function a() {<br>    var x = 0;<br>    return function(y) {<br>        x = x + y;<br>        // return x;<br>        console.log(x);<br>    }<br>}<br>var b = a();<br>b(1); //1<br>b(1); //2</p>
+<p>上述代码在执行的时候，<code>b</code>得到的是闭包对象的引用，虽然<code>a</code>执行完毕后，但是<code>a</code>的活动对象由于闭包的存在并没有被销毁，在执行<code>b(1)</code>的时候，仍然访问到了x变量，并将其加1，若再执行<code>b(1)</code>，则<code>x</code>是<code>2</code>，因为闭包的引用<code>b</code>并没有消除。（后面会解释，闭包返回了函数，函数可以创建独立的作用域）</p>
+<blockquote>
+<p>闭包，其实就是指程序语言中能让代码调用已运行的函数中所定义的局部变量。</p>
+</blockquote>
+<p>但是你只需要知道应用的两种情况即可——函数作为返回值，函数作为参数传递。</p>
+<p>function fn() {<br>    var max = 10;<br>    return function bar(x) {<br>        if (x &gt; max) {<br>            console.log(x);<br>        }<br>    };<br>}<br>var f1 = fn();<br>f1(15);</p>
+<p>如上代码，<code>bar</code>函数作为返回值，赋值给<code>f1</code>变量。执行<code>f1(15)</code>时，用到了<code>fn</code>作用域下的<code>max</code>变量的值。至于如何跨作用域取值，可以参考上一篇文章。</p>
+<p>var max = 10,<br>    fn = function(x) {<br>        if (x &gt; max) {<br>            console.log(x); //15<br>        }<br>    };<br>(function(f) {<br>    var max = 100;<br>    f(15);<br>})(fn);</p>
+<p>如上代码中，<code>fn</code>函数作为一个参数被传递进入另一个函数，赋值给f参数。执行<code>f(15)</code>时，max变量的取值是<code>10</code>而不是<code>100</code>。 上一篇讲到自由变量跨作用域取值时，曾经强调过：要去创建这个函数的作用域取值，而不是“父作用域”。理解了这一点，以上两端代码中，自由变量如何取值应该比较简单. 另外，讲到闭包，除了结合着作用域之外，还需要结合着执行上下文栈来说一下。 在前面讲执行上下文栈时，我们提到当一个函数被调用完成之后，其执行上下文环境将被销毁，其中的变量也会被同时销毁。</p>
+<blockquote>
+<p>有些情况下，函数调用完成之后，其执行上下文环境不会接着被销毁。这就是需要理解闭包的核心内容。</p>
+</blockquote>
+<p>可以拿本文的之前代码（只做注释修改）来分析一下。</p>
+<p>1  //全局作用域<br>2  function fn() {<br>3      var max = 10;<br>4      // fn作用域<br>5      return function bar(x) {<br>6          if (x &gt; max) {<br>7              console.log(x);<br>8          }<br>9      }; //bar作用域<br>10 }<br>11 var f1 = fn();<br>12 f1(15);</p>
+<p>全局作用域为：代码1-12行；fn作用域为：代码2-10行；<code>bar</code>作用域为：代码5-9行。 <strong>举例</strong> 第一步，代码执行前生成全局上下文环境，并在执行时对其中的变量进行赋值。此时全局上下文环境是活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-1.jpg"> 第二步，执行第17行代码时，调用fn()，产生fn()执行上下文环境，压栈，并设置为活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-2.jpg"> 第三步，执行完第17行，<code>fn()</code>调用完成。按理说应该销毁掉<code>fn()</code>的执行上下文环境，但是这里不能这么做。注意，重点来了：</p>
+<blockquote>
+<p>因为执行<code>fn()</code>时，返回的是一个函数。函数的特别之处在于可以创建一个独立的作用域。而正巧合的是，返回的这个函数体中，还有一个自由变量<code>max</code>要引用<code>fn</code>作用域下的<code>fn()</code>上下文环境中的max。因此，这个max不能被销毁，销毁了之后bar函数中的max就找不到值了。</p>
+</blockquote>
+<p>因此，这里的fn()上下文环境不能被销毁，还依然存在与执行上下文栈中。 ——即，执行到第18行时，全局上下文环境将变为活动状态，但是<code>fn()</code>上下文环境依然会在执行上下文栈中。另外，执行完第18行，全局上下文环境中的<code>max</code>被赋值为<code>100</code>。如下图： <img src="http://file.w3cbest.com/file/images/js-closure-3.jpg"> 第四步，执行到第20行，执行f1(15)，即执行bar(15)，创建bar(15)上下文环境，并将其设置为活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-4.jpg"> 执行<code>bar(15)</code>时，<code>max</code>是自由变量，需要向创建<code>bar</code>函数的作用域中查找，找到了<code>max</code>的值为10。这个过程在作用域链一节已经讲过。 这里的重点就在于，创建bar函数是在执行<code>fn()</code>时创建的。<code>fn()</code>早就执行结束了，但是fn()执行上下文环境还存在与栈中，因此<code>bar(15)</code>时，<code>max</code>可以查找到。如果<code>fn()</code>上下文环境销毁了，那么<code>max</code>就找不到了。</p>
+<blockquote>
+<p>总结：使用闭包会增加内容开销</p>
+</blockquote>
+<p>第五步，执行完20行就是上下文环境的销毁过程，这里就不再赘述了。</p>
+<h2 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h2><p><strong>概念</strong> 闭包只能取得包含函数中任何变量的最后一个值,闭包所保存的是整个变量对象，而不是某个特殊变量。 例子</p>
+<p>function createFunctions() {<br>    var result = new Array();<br>    for (var i = 0; i &lt; 10; i++) {<br>        result[i] = function() {<br>            return i;<br>        };<br>    }<br>    return result;<br>}<br>var funcs = createFunctions();<br>//每个函数都输出10<br>for (var i = 0; i &lt; funcs.length; i++) {<br>    document.write(funcs[i]() + “<br />“);<br>}</p>
+<blockquote>
+<p>总结：每个函数的作用域链中都保存着createFunctions()函数的活动对象，所以它们引用的都是同一个变量i。当createFunctions()函数返回后，变量i的值为10。</p>
+</blockquote>
+<p>我们可以通过创建另一个匿名函数强制让闭包的行为符合预期。</p>
+<p>function createFunctions() {<br>    var result = new Array();<br>    for (var i = 0; i &lt; 10; i++) {<br>        result[i] = function(x) {<br>            return function() {<br>                return x;<br>            };<br>        }(i);<br>    }<br>    return result;<br>}<br>var funcs = createFunctions();<br>//循环输出0-10<br>for (var i = 0; i &lt; funcs.length; i++) {<br>    document.write(funcs[i]() + “<br />“);<br>}</p>
+<blockquote>
+<p>总结：没有直接把闭包赋值给数组，而是定义了一个匿名函数，并通过立即执行该匿名函数的结果赋值给数组，并带了for循环的参数i进去，让x能找到传入的参数值为0-10，这就解释了函数参数是按值传递的，所以会将变量i的当前值复制给参数x。而这个匿名函数内部又创建并返回了一个访问x的闭包。这样以来result数组中的每个函数都有自己x变量的一个副本，所以会符合我们的预期输出不同的值。</p>
+</blockquote>
+<p>小例子 html结构代码：</p>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+<p>js结构代码:</p>
+<p>// 闭包不符合预期<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);<br>for (var i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = function() {<br>        console.log(i);<br>    };<br>}</p>
+<p>解决方法：</p>
+<p>// 闭包1<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);<br>for (var i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = (function(x) {<br>        return function() {<br>            console.log(x);<br>            return x;<br>        }<br>    })(i);<br>}</p>
+<p>// 闭包2<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);</p>
+<p>function foo(i) {<br>    var onclick = function(e) {<br>        console.log(i);<br>    }<br>    return onclick;<br>}<br>for (var i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = foo(i);<br>}</p>
+<p>// es6语法<br>var clickBoxs = new Array();<br>clickBoxs = $(“li”);<br>for (let i = 0; i &lt; 10; i++) {<br>    clickBoxs[i].onclick = function() {<br>        console.log(i);<br>    };<br>}</p>
+<p><strong>函数按值传递</strong> 函数传参就两个类型，基本类型和引用类型，大家纠结的都是引用类型的传递。 引用类型作为参数传入函数，传的是个地址值，或者指针值，不是那个引用类型本身，它还好好的呆在堆内存呢。赋值给<code>argument</code>的同样是地址值或者指针。所以说是<code>value</code>值传递一点没错，传的是个地址值。通过两个例子看懂就行了。 例子1：</p>
+<p>function setName(obj) {<br>    obj.name = ‘aaa’;<br>    var obj = new Object(); // 如果是按引用传递的,此处传参进来obj应该被重新引用新的内存单元<br>    obj.name = ‘ccc’;<br>    return obj;<br>}<br>var person = new Object();<br>person.name = ‘bbb’;<br>var newPerson = setName(person);<br>console.log(person.name + ‘  ‘ + newPerson.name); // aaa  ccc</p>
+<p>从结果看，并没有显示两个<code>’ccc’</code>。这里是函数内部重写了<code>obj</code>，重写的<code>obj</code>是一个局部对象。当函数执行完后，立即被销毁。</p>
+<blockquote>
+<p>引用值：对象变量它里面的值是这个对象在堆内存中的内存地址。因此如果按引用传递，它传递的值也就是这个内存地址。那么<code>var obj = new Object();</code>会重新给<code>obj</code>分配一个地址，比如是0x321了，那么它就不在指向有<code>name = ‘aaa’</code>;属性的内存单元了。相当于把实参obj和形参obj的地址都改了，那么最终就是输出两个<code>ccc</code>了。</p>
+</blockquote>
+<p>例子2</p>
+<p>var a = {<br>    num: ‘1’<br>};<br>var b = {<br>    num: ‘2’<br>};</p>
+<p>function change(obj) {<br>    obj.num = ‘3’;<br>    obj = b;<br>    return obj.num;<br>}<br>var result = change(a);<br>console.log(result + ‘  ‘ + a.num); // 2  3</p>
+<ul>
+<li>  首先把a的值传到change函数内，obj.num = ‘3’;后a.name被修改为3;</li>
+<li>  a的地址被换成b的地址;</li>
+<li>  返回此时的a中a.num。</li>
+</ul>
+<h2 id="闭包中使用this对象"><a href="#闭包中使用this对象" class="headerlink" title="闭包中使用this对象"></a>闭包中使用this对象</h2><p><strong>概念</strong> <code>this</code>对象是在运行时基于函数的执行环境绑定的：全局函数中，<code>this</code>等于<code>window</code>;当函数被作用某个对象的方法调用时，<code>this</code>等于那个对象。 但在匿名函数中，由于匿名函数的执行环境具有全局性，因此<code>this</code>对象通常指向<code>window</code>(在通过call或<code>apply</code>函数改变函数执行环境的情况下，会指向其他对象)。</p>
+<p>var name = “The Window”;</p>
+<p>var object = {<br>    name: “My Object”,</p>
+<pre><code>getNameFunc: function() &#123;
+    return function() &#123;
+        return this.name;
+    &#125;;
+&#125;
+</code></pre>
+<p>};</p>
+<p>console.log(object.getNameFunc()()); //“The Window”</p>
+<p>通过修改把作用域中的<code>this</code>对象保存在一个闭包能够访问到的变量里，就可以让闭包访问该对象了。如下代码：</p>
+<p>var name = “The Window”;</p>
+<p>var object = {<br>    name: “My Object”,</p>
+<pre><code>getNameFunc: function() &#123;
+    var that = this;
+    return function() &#123;
+        return that.name;
+    &#125;;
+&#125;
+</code></pre>
+<p>};</p>
+<p>console.log();<br>(object.getNameFunc()()); //“MyObject”</p>
+<p>变量声明提前</p>
+<p>var scope = “global”;</p>
+<p>function scopeTest() {<br>    console.log(scope);<br>    var scope = “local”;<br>}<br>scopeTest(); //undefined</p>
+<p>此处的输出是<code>undefined</code>，并没有报错，这是因为在前面我们提到的函数内的声明在函数体内始终可见，上面的函数等效于：</p>
+<p>var scope = “global”;</p>
+<p>function scopeTest() {<br>    var scope;<br>    console.log(scope);<br>    scope = “local”;<br>}<br>scopeTest(); //undefined</p>
+<p>注意，如果忘记<code>var</code>，那么变量就被声明为全局变量了。结果就是global</p>
+<h2 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h2><p>和其他我们常用的语言不同，在Javascript中没有块级作用域：</p>
+<p>function scopeTest() {<br>    var scope = {};<br>    if (scope instanceof Object) {<br>        var j = 1;<br>        for (var i = 0; i &lt; 10; i++) {<br>            console.log(i); //输出0-9<br>        }<br>        console.log(i); //输出10<br>    }<br>    console.log(j); //输出1<br>}<br>scopeTest();</p>
+<p>在javascript中变量的作用范围是函数级的，即在函数中所有的变量在整个函数中都有定义，这也带来了一些我们稍不注意就会碰到的“潜规则”：</p>
+<p>var scope = “hello”;</p>
+<p>function scopeTest() {<br>    console.log(scope); //①<br>    var scope = “no”;<br>    console.log(scope); //②<br>}</p>
+<p>在①处输出的值竟然是<code>undefined</code>，简直丧心病狂啊，我们已经定义了全局变量的值啊，这地方不应该为hello吗？其实，上面的代码等效于：</p>
+<p>var scope = “hello”;</p>
+<p>function scopeTest() {<br>    var scope;<br>    console.log(scope); //①<br>    scope = “no”;<br>    console.log(scope); //②<br>}</p>
+<p>声明提前、全局变量优先级低于局部变量，根据这两条规则就不难理解为什么输出<code>undefined</code>了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/javascript-%E9%97%AD%E5%8C%85/" rel="tag"># javascript 闭包</a>
+              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"># javascript教程</a>
+              <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag"># 作用域</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/23/%E8%AE%A9%E4%BD%A0%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%BC%96%E5%86%99-javascriptes6-%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%845%E4%B8%AA%E6%8A%80%E5%B7%A7/" rel="prev" title="让你更好的编写 JavaScript(ES6) 中条件语句的5个技巧">
+      <i class="fa fa-chevron-left"></i> 让你更好的编写 JavaScript(ES6) 中条件语句的5个技巧
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/25/css-grid-vs-flexbox%EF%BC%9A%E5%AE%9E%E7%94%A8%E6%AF%94%E8%BE%83/" rel="next" title="CSS Grid VS Flexbox：实用比较">
+      CSS Grid VS Flexbox：实用比较 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">闭包与变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85%E4%B8%AD%E4%BD%BF%E7%94%A8this%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">闭包中使用this对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">5.</span> <span class="nav-text">没有块级作用域</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

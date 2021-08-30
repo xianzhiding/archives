@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="在 CSS 中对元素进行水平居中是非常简单的：如果它是一个行内元素，就对它的父元素应用 text-align: center；如果它是一个块级元素，就对它自身应用 margin: auto。然而如果要对一个元素进行垂直居中，可能光是想想就令人头皮发麻了。 多年以来，垂直居中已经成为了 CSS 领域的圣杯，它同样也是前端开发圈内广为流传的笑话。原因在于它同时具备以下几条特征。    它是极其常见的需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 垂直居中方法很简单">
+<meta property="og:url" content="https://xianzhiding.github.io/2018/12/09/CSS%20%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E5%BE%88%E7%AE%80%E5%8D%95/index.html">
+<meta property="og:site_name" content="前端开发 大前端 W3Cbest">
+<meta property="og:description" content="在 CSS 中对元素进行水平居中是非常简单的：如果它是一个行内元素，就对它的父元素应用 text-align: center；如果它是一个块级元素，就对它自身应用 margin: auto。然而如果要对一个元素进行垂直居中，可能光是想想就令人头皮发麻了。 多年以来，垂直居中已经成为了 CSS 领域的圣杯，它同样也是前端开发圈内广为流传的笑话。原因在于它同时具备以下几条特征。    它是极其常见的需">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-08T23:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-30T03:22:19.146Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="css3">
+<meta property="article:tag" content="flex">
+<meta property="article:tag" content="flexbox">
+<meta property="article:tag" content="transforms">
+<meta property="article:tag" content="垂直居中">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xianzhiding.github.io/2018/12/09/CSS%20%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E5%BE%88%E7%AE%80%E5%8D%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS 垂直居中方法很简单 | 前端开发 大前端 W3Cbest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端开发 大前端 W3Cbest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注 WEB 开发的技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/09/CSS%20%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E5%BE%88%E7%AE%80%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS 垂直居中方法很简单
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-09 07:00:00" itemprop="dateCreated datePublished" datetime="2018-12-09T07:00:00+08:00">2018-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:22:19" itemprop="dateModified" datetime="2021-08-30T11:22:19+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在 CSS 中对元素进行水平居中是非常简单的：如果它是一个行内元素，就对它的父元素应用 text-align: center；如果它是一个块级元素，就对它自身应用 margin: auto。然而如果要对一个元素进行垂直居中，可能光是想想就令人头皮发麻了。 多年以来，垂直居中已经成为了 CSS 领域的圣杯，它同样也是前端开发圈内广为流传的笑话。原因在于它同时具备以下几条特征。</p>
+<ul>
+<li>  它是极其常见的需求。</li>
+<li>  从理论上来看，它似乎极其简单。</li>
+<li>  在实践中，它往往难如登天，当涉及尺寸不固定的元素时尤其如此。</li>
+</ul>
+<p>长久以来，为了解决这一绝世难题，前端开发者们殚精竭虑，琢磨出了各种解决方法，大多数并不实用。在本篇攻略中，我们将探索现代 CSS 的强大威力，以全新的思路去攻克各种场景下的垂直居中难题。请注意，有几种技巧十分流行，但在这里并不会深入探讨，原因如下。</p>
+<ul>
+<li>  表格布局法（利用表格的显示模式）需要用到一些冗余的 HTML 元素，因此这里不多介绍。</li>
+<li>  行内块法也不作讨论，因为在我看来这种方法 hack 的味道很浓。</li>
+</ul>
+<p>如果你有兴趣，可以去看看 Chris Coyier 写的“不为人知的居中方法”（<a target="_blank" rel="noopener" href="http://css-tricks.com/centering-in-the-unknown%EF%BC%89%E3%80%82%E8%BF%99%E7%AF%87%E5%87%BA%E8%89%B2%E7%9A%84%E6%96%87%E7%AB%A0%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%BF%B0%E4%BA%86%E8%BF%99%E4%B8%A4%E7%A7%8D%E6%8A%80%E5%B7%A7%E3%80%82">http://css-tricks.com/centering-in-the-unknown）。这篇出色的文章详细讲述了这两种技巧。</a> 除非特别注明，我们将一直使用如下所示的结构代码，并直接插入<body> 元素中（但实际上我们将要探索的这些技巧是与容器无关的）：</p>
+<main>
+<h1>我居中了吗?</h1>
+</main>
+
+<p>然后再用一些基本的 CSS 来设置背景、内边距等样式，运行一下就可以看到效果了。我们将以此作为起点。  </p>
+<h2 id="基于绝对定位的解决方案"><a href="#基于绝对定位的解决方案" class="headerlink" title="基于绝对定位的解决方案"></a>基于绝对定位的解决方案</h2><p>我们先来看一个早期的垂直居中方法，它要求元素具有固定的宽度和高度：</p>
+<p>main {<br>position: absolute;<br>top: 50%;<br>left: 50%;<br>margin-top: -3em; /* 6/2 = 3 */<br>margin-left: -9em; /* 18/2 = 9 */<br>width: 18em;<br>height: 6em;<br>}</p>
+<p>这段代码在本质上做了这样几件事情：先把这个元素的左上角放置在视口（或最近的、具有定位属性的祖先元素）的正中心，然后再利用负外边距把它向左、向上移动（移动距离相当于它自身宽高的一半），从而把元素的正中心放置在视口的正中心。借助强大的 calc() 函数，这段代码还可以省掉两行声明：</p>
+<p>main {<br>position: absolute;<br>top: calc(50% - 3em);<br>left: calc(50% - 9em);<br>width: 18em;<br>height: 6em;<br>}</p>
+<p>显然，这个方法最大的局限在于它要求元素的宽高是固定的。在通常情况下，对那些需要居中的元素来说，其尺寸往往是由其内容来决定的。如果能找到一个属性的百分比值以元素自身的宽高作为解析基准，那我们的难题就迎刃而解了！遗憾的是，对于绝大多数 CSS 属性（包括 margin）来说，百分比都是以其父元素的尺寸为基准进行解析的。 CSS 领域有一个很常见的现象，真正的解决方案往往来自于我们最意想不到的地方。在这个例子中，答案来自于 CSS 变形属性。当我们在translate() 变形函数中使用百分比值时，是以这个元素自身的宽度和高度为基准进行换算和移动的，而这正是我们所需要的。接下来，只要换用基于百分比的 CSS 变形来对元素进行偏移，就不需要在偏移量中把元素的尺寸写死了。这样我们就可以彻底解除对固定尺寸的依赖：</p>
+<p>main {<br>position: absolute;<br>top: 50%;<br>left: 50%;<br>transform: translate(-50%, -50%);<br>}</p>
+<p>你可以在下面demo中看到结果：这个容器已经完美居中了，完全满足我们的期望。 当然，没有任何技巧是十全十美的，上面这个方法也有一些需要注意的地方。</p>
+<ul>
+<li>  我们有时不能选用绝对定位，因为它对整个布局的影响太过强烈。</li>
+<li>  如果需要居中的元素已经在高度上超过了视口，那它的顶部会被视口裁切掉。有一些办法可以绕过这个问题，但 hack味道过浓。</li>
+<li>  在某些浏览器中，这个方法可能会导致元素的显示有一些模糊，因为元素可能被放置在半个像素上。这个问题可以用 transformstyle:preserve-3d 来修复，不过这个修复手段也可以认为是一个hack，而且很难保证它在未来不会出问题。</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/QJXewK/">translate居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<blockquote>
+<p>实践证明，想要找到最先提出这个实用技巧的人确实不容易，不过所能挖掘到的最早起源似乎是 Stack Overflow（<a target="_blank" rel="noopener" href="http://stackoverflow.com)的用户“charlie”(http//stackoverflow.com/users/479836/charlie%EF%BC%89%EF%BC%8C%E4%BB%96%E5%9C%A82013%E5%B9%B44%E6%9C%8816%E6%97%A5%E5%9B%9E%E7%AD%94%E4%BA%86%E2%80%9C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8">http://stackoverflow.com）的用户“Charlie”（http://stackoverflow.com/users/479836/charlie），他在2013年4月16日回答了“如何使用</a> CSS3 实现垂直对齐”（<a target="_blank" rel="noopener" href="http://stackoverflow.com/a/16026893/90826%EF%BC%89%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82">http://stackoverflow.com/a/16026893/90826）这个问题。</a></p>
+</blockquote>
+<h2 id="基于视口单位的解决方案"><a href="#基于视口单位的解决方案" class="headerlink" title="基于视口单位的解决方案"></a>基于视口单位的解决方案</h2><p>假设我们不想使用绝对定位，仍然可以采用 translate() 技巧来把这个元素以其自身宽高的一半为距离进行移动；但是在缺少 left 和 top 的情况下，如何把这个元素的左上角放置在容器的正中心呢？ 我们的第一反应很可能是用 margin 属性的百分比值来实现，就像这样：</p>
+<p>main {<br>width: 18em;<br>padding: 1em 1.5em;<br>margin: 50% auto 0;<br>transform: translateY(-50%);<br>}</p>
+<p>不过，这段代码会产生十分离谱的结果。原因在于margin 的百分比值是以父元素的宽度作为解析基准的。没错，即使对于margin-top 和 margin-bottom 来说也是这样！ 不过幸运的是，如果只是想把元素相对于视口进行居中，仍然是有希望 的。CSS 值 与 单 位（ 第 三 版 ）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-values-3/#viewportrelative-lengths%EF%BC%89%E5%AE%9A%E4%B9%89%E4%BA%86%E4%B8%80%E5%A5%97%E6%96%B0%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E7%A7%B0%E4%B8%BA%E8%A7%86%E5%8F%A3%E7%9B%B8%E5%85%B3%E7%9A%84%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D%E3%80%82">http://w3.org/TR/css-values-3/#viewportrelative-lengths）定义了一套新的单位，称为视口相关的长度单位。</a></p>
+<ul>
+<li>  vw 是与视口宽度相关的。与常人的直觉不符的是，1vw 实际上表示视口宽度的 1%，而不是 100%。</li>
+<li>  与 vw 类似，1vh 表示视口高度的 1%。</li>
+<li>  当视口宽度小于高度时，1vmin 等于 1vw，否则等于 1vh。</li>
+<li>  当视口宽度大于高度时，1vmax 等于 1vw，否则等于 1vh。</li>
+</ul>
+<p>在我们的这个例子中，适用于外边距的是 vh 单位：</p>
+<p>main {<br>width: 18em;<br>padding: 1em 1.5em;<br>margin: 50vh auto 0;<br>transform: translateY(-50%);<br>}</p>
+<blockquote>
+<p>“使用视口相关的长度单位，我们还可以生成一个正好铺满视口的区块，无需脚本的辅助。更多细节请参阅“用一行 CSS 实现全屏区块”（<a target="_blank" rel="noopener" href="https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd%EF%BC%89%E3%80%82%E2%80%9D">https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd）。”</a></p>
+</blockquote>
+<p>在下面DEMO中可以看到，其效果堪称完美。当然，这个技巧的实用性是相当有限的，因为它只适用于在视口中居中的场景。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/BGgEYQ/">transform-translateY居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="基于-Flexbox-的解决方案"><a href="#基于-Flexbox-的解决方案" class="headerlink" title="基于 Flexbox 的解决方案"></a>基于 Flexbox 的解决方案</h2><p>这是毋庸置疑的最佳解决方案，因为 Flexbox（伸缩盒）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox%EF%BC%89%E6%98%AF%E4%B8%93%E9%97%A8%E9%92%88%E5%AF%B9%E8%BF%99%E7%B1%BB%E9%9C%80%E6%B1%82%E6%89%80%E8%AE%BE%E8%AE%A1%E7%9A%84%E3%80%82%E6%88%91%E4%BB%AC%E4%B9%8B%E6%89%80%E4%BB%A5%E8%A6%81%E8%AE%A8%E8%AE%BA%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88%EF%BC%8C%E4%BB%85%E4%BB%85%E6%98%AF%E5%9B%A0%E4%B8%BA%E9%82%A3%E4%BA%9B%E6%96%B9%E6%A1%88%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%94%AF%E6%8C%81%E7%A8%8B%E5%BA%A6%E4%B8%8A%E7%A8%8D%E5%BE%AE%E5%A5%BD%E4%B8%80%E4%BA%9B%E8%80%8C%E5%B7%B2%E3%80%82%E5%85%B6%E5%AE%9E%E7%9B%AE%E5%89%8D%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9">http://w3.org/TR/css-flexbox）是专门针对这类需求所设计的。我们之所以要讨论其他方案，仅仅是因为那些方案在浏览器的支持程度上稍微好一些而已。其实目前现代浏览器对</a> Flexbox 的支持度已经相当不错了。 我们只需写两行声明即可：先给这个待居中元素的父元素设置 display:flex（在这个例子中是 <body> 元素），再给这个元素自身设置我们再熟悉不过的 margin: auto（在这个例子中是 <main> 元素）：</p>
+<p>body {<br>display: flex;<br>min-height: 100vh;<br>margin: 0;<br>}<br>main {<br>margin: auto;<br>}</p>
+<p>请注意，当我们使用 Flexbox 时，margin: auto 不仅在水平方向上将元素居中，垂直方向上也是如此。还有一点，我们甚至不需要指定任何宽度（当然，如果需要的话，也是可以指定的）：这个居中元素分配到的宽度等于 maxcontent。（还记得“自适应内部元素”中提到的那些内部尺寸关键字吗？） 如果浏览器不支持 Flexbox，页面渲染结果看起来就跟我们的开篇代码是一样的了（如果设置了宽度的话）。虽然没有垂直居中效果，但也是完全可以接受的。 Flexbox 的另一个好处在于，它还可以将匿名容器（即没有被标签包裹的文本节点）垂直居中。举个例子，假设我们的结构代码是：</p>
+<main>我居中了吗?</main>
+
+<p>我们先给这个 main 元素指定一个固定的尺寸，然后借助 Flexbox 规范所引入的 align-items 和 justify-content 属性，我们可以让它内部的文本也实现居中（参见图 7-22）：</p>
+<p>main {<br>display: flex;<br>align-items: center;<br>justify-content: center;<br>width: 18em;<br>height: 10em;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/RqzOZN/">用 Flexbox 居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<blockquote>
+<p>根据盒对齐模型（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-align-3%EF%BC%89%E7%9A%84%E8%AE%A1%E5%88%92%EF%BC%8C%E5%9C%A8%E6%9C%AA%E6%9D%A5%EF%BC%8C%E5%AF%B9%E4%BA%8E%E7%AE%80%E5%8D%95%E7%9A%84%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%9C%80%E6%B1%82%EF%BC%8C%E6%88%91%E4%BB%AC%E5%AE%8C%E5%85%A8%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8A%A8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%9A%84%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F%E4%BA%86%E3%80%82%E5%9B%A0%E4%B8%BA%E5%8F%AA%E9%9C%80%E8%A6%81%E4%B8%8B%E9%9D%A2%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%90%9E%E5%AE%9A%EF%BC%9A">http://w3.org/TR/css-align-3）的计划，在未来，对于简单的垂直居中需求，我们完全不需要动用特殊的布局模式了。因为只需要下面这行代码就可以搞定：</a> align-self: center; 不管这个元素上还应用了其他什么属性，这样写就够了。这听起来可能如美梦一般令人难以置信，但或许你手边的浏览器很快就会让它成为现实！</p>
+</blockquote>
+<p>相关规范</p>
+<ul>
+<li>  CSS 变形 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-transforms">http://w3.org/TR/css-transforms</a></li>
+<li>  CSS 值与单位 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-values">http://w3.org/TR/css-values</a></li>
+<li>  CSS 伸缩盒布局模型 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox">http://w3.org/TR/css-flexbox</a></li>
+<li>  CSS 盒对齐模型 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-align">http://w3.org/TR/css-align</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css3/" rel="tag"># css3</a>
+              <a href="/tags/flex/" rel="tag"># flex</a>
+              <a href="/tags/flexbox/" rel="tag"># flexbox</a>
+              <a href="/tags/transforms/" rel="tag"># transforms</a>
+              <a href="/tags/%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/" rel="tag"># 垂直居中</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" rel="prev" title="JavaScript中Array方法的正确打开方式">
+      <i class="fa fa-chevron-left"></i> JavaScript中Array方法的正确打开方式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/18/%E5%A6%82%E4%BD%95%E4%B8%BA%E5%9B%A2%E9%98%9F%E5%AE%9A%E4%B9%89css%E6%A0%87%E5%87%86/" rel="next" title="如何为团队定义CSS标准">
+      如何为团队定义CSS标准 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">我居中了吗?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.1.</span> <span class="nav-text">基于绝对定位的解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%A7%86%E5%8F%A3%E5%8D%95%E4%BD%8D%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">基于视口单位的解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-Flexbox-%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.3.</span> <span class="nav-text">基于 Flexbox 的解决方案</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tom</p>
+  <div class="site-description" itemprop="description">w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">W3Cbest前端开发</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
