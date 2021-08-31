@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="在 Web 开发中，有许多情况需要解析 URL,这篇主要学习如何使用 URL 对象实现这一点。 入门 创建一个以下内容的 HTML 文件，并在浏览器中打开。               JavaScript URL parsing                                &#x2F;&#x2F; Exciting code coming soon!                 如果你想尝试本">
@@ -172,6 +172,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -252,18 +253,18 @@
 </html>
 
 <p>如果你想尝试本文中的任何内容，可以将其放在 <script> 标记中，保存，重新加载页面，看看会发生什么！ 在本教程中，将使用 console.log 来打印所需要的内容，你可以打开开发都工具，来查看内容。</p>
-<h2 id="什么是-URL"><a href="#什么是-URL" class="headerlink" title="什么是 URL"></a>什么是 URL</h2><p>这应该是相当简单的，但让我们说清楚。 URL 是网页的地址，可以在浏览器中输入以获取该网页的唯一内容。 可以在地址栏中看到它： <img src="http://file.w3cbest.com/file/images/url-annotated.png"> URL 是统一资源定位符，对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的 URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。 此外，如果你不熟悉基本 URL 路径的工作方式，可以查看<a target="_blank" rel="noopener" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/">此文</a>学习。 <strong>URL 不都长的一样的</strong></p>
+<h2 id="什么是-URL"><a href="#什么是-URL" class="headerlink" title="什么是 URL"></a>什么是 URL</h2><p>这应该是相当简单的，但让我们说清楚。 URL 是网页的地址，可以在浏览器中输入以获取该网页的唯一内容。 可以在地址栏中看到它： <img data-src="http://file.w3cbest.com/file/images/url-annotated.png"> URL 是统一资源定位符，对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的 URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。 此外，如果你不熟悉基本 URL 路径的工作方式，可以查看<a target="_blank" rel="noopener" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/">此文</a>学习。 <strong>URL 不都长的一样的</strong></p>
 <blockquote>
 <p>这是一个快速提醒 - 有时 URL 可能非常奇怪，如下： <a target="_blank" rel="noopener" href="https://example.com:1234/page/?a=b">https://example.com:1234/page/?a=b</a> <a target="_blank" rel="noopener" href="http://localhost/page.html">http://localhost/page.html</a> <a target="_blank" rel="noopener" href="https://154.23.54.156/page?x=">https://154.23.54.156/page?x=</a>… file:///Users/username/folder/file.png</p>
 </blockquote>
 <h2 id="获取当前URL"><a href="#获取当前URL" class="headerlink" title="获取当前URL"></a>获取当前URL</h2><p>获取当前页面的 URL 非常简单 - 我们可以使用 <code>window.location</code>。 试着把这个添加到我们形如写的的脚本中:</p>
 <p>console.log(window.location);</p>
-<p>查看浏览器的控制台： <img src="http://file.w3cbest.com/file/images/console-log-window-location.png"> 不是你想要的?这是因为它不返回你在浏览器中看到的实际 URL 地址——它返回的是一个 URL 对象。使用这个 URL 对象，我们可以解析 URL 的不同部分，接下来就会讲到。</p>
+<p>查看浏览器的控制台： <img data-src="http://file.w3cbest.com/file/images/console-log-window-location.png"> 不是你想要的?这是因为它不返回你在浏览器中看到的实际 URL 地址——它返回的是一个 URL 对象。使用这个 URL 对象，我们可以解析 URL 的不同部分，接下来就会讲到。</p>
 <h2 id="创建-URL-对象"><a href="#创建-URL-对象" class="headerlink" title="创建 URL 对象"></a>创建 URL 对象</h2><p>很快就会看到，可以使用 URL 对象来了解 URL 的不同部分。如果你想对任何 URL 执行此操作，而不仅仅是当前页面的 URL，该怎么办？ 我们可以通过创建一个新的 URL 对象来实现。 以下是如何创建一个：</p>
 <p>var myURL = new URL(‘<a target="_blank" rel="noopener" href="https://example.com&/#39;">https://example.com&#39;</a>);</p>
 <p>就这么简单！ 可以打印 <code>myURL</code> 来查看 <code>myURL</code> 的内容：</p>
 <p>console.log(myURL);</p>
-<p><img src="http://file.w3cbest.com/file/images/console-log-myurl.png"> 出于本文的目的，将 myURL 设置为这个值：</p>
+<p><img data-src="http://file.w3cbest.com/file/images/console-log-myurl.png"> 出于本文的目的，将 myURL 设置为这个值：</p>
 <p>var myURL = new URL(‘<a target="_blank" rel="noopener" href="https://example.com:4000/folder/page.html?x=y&amp;a=b#section-2&#39;">https://example.com:4000/folder/page.html?x=y&amp;a=b#section-2&#39;</a>)</p>
 <p>将其复制并粘贴到 <code>&lt;script&gt;</code> 元素中，以便你可以继续操作！ 这个 <code>URL</code> 的某些部分可能不熟悉，因为它们并不总是被使用 - 但你将在下面了解它们，所以不要担心！</p>
 <h2 id="URL-对象的结构"><a href="#URL-对象的结构" class="headerlink" title="URL 对象的结构"></a>URL 对象的结构</h2><p>使用 URL 对象，可以非常轻松地获取 URL 的不同部分。 以下是你可以从 URL 对象获得的所有内容。 对于这些示例，我们将使用上面设置的 <code>myURL</code>。</p>
@@ -302,12 +303,50 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/02/26/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-javascript-%E8%A7%A3%E6%9E%90-url/" title="如何使用 JavaScript 解析 URL">https://xianzhiding.github.io/2019/02/26/如何使用-javascript-解析-url/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/javascript/" rel="tag"># javascript</a>
-              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"># javascript教程</a>
-              <a href="/tags/url%E8%A7%A3%E6%9E%90/" rel="tag"># url解析</a>
+              <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> javascript教程</a>
+              <a href="/tags/url%E8%A7%A3%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> url解析</a>
           </div>
 
         
@@ -394,16 +433,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -454,6 +493,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

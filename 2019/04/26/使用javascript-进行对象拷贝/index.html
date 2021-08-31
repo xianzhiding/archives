@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="对象是 JavaScript 的基本块。对象是属性的集合，属性是键值对。JavaScript 中的几乎所有对象都是位于原型链顶部 Object 的实例。 介绍如你所知，赋值运算符不会创建一个对象的副本，它只分配一个引用，我们来看下面的代码： let obj &#x3D; {    a: 1,    b: 2,};let copy &#x3D; obj;obj.a &#x3D; 5;console.log(copy.a);&#x2F;&#x2F;">
@@ -177,6 +177,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -311,13 +312,13 @@ return objCopy;
 <p>obj.c = obj.b;<br>obj.e = obj.a;<br>obj.b.c = obj.c;<br>obj.b.d = obj.b;<br>obj.b.e = obj.b.c;</p>
 <p>let newObj = JSON.parse(JSON.stringify(obj));</p>
 <p>console.log(newObj);</p>
-<p>结果是： <img src="http://file.w3cbest.com/file/images/circular-object.jpg"> 很明显，<code>JSON.parse(JSON.stringify(object))</code> 不能用于复制循环引用对象。</p>
+<p>结果是： <img data-src="http://file.w3cbest.com/file/images/circular-object.jpg"> 很明显，<code>JSON.parse(JSON.stringify(object))</code> 不能用于复制循环引用对象。</p>
 <h3 id="使用-Object-assign"><a href="#使用-Object-assign" class="headerlink" title="使用 Object.assign()"></a>使用 Object.assign()</h3><p>让我们尝试使用 <code>Object.assign()</code>：</p>
 <p>// circular object<br>let obj = {<br>    a: ‘a’,<br>    b: {<br>        c: ‘c’,<br>        d: ‘d’,<br>    },<br>}</p>
 <p>obj.c = obj.b;<br>obj.e = obj.a;<br>obj.b.c = obj.c;<br>obj.b.d = obj.b;<br>obj.b.e = obj.b.c;</p>
 <p>let newObj2 = Object.assign({}, obj);</p>
 <p>console.log(newObj2);</p>
-<p>结果是： <img src="http://file.w3cbest.com/file/images/circular-object-tree.jpg"> <code>Object.assign()</code> 适用于浅拷贝循环引用对象，但不适用于深度拷贝。随意浏览浏览器控制台上的循环引用对象树。我相信你会发现很多有趣的工作在那里。</p>
+<p>结果是： <img data-src="http://file.w3cbest.com/file/images/circular-object-tree.jpg"> <code>Object.assign()</code> 适用于浅拷贝循环引用对象，但不适用于深度拷贝。随意浏览浏览器控制台上的循环引用对象树。我相信你会发现很多有趣的工作在那里。</p>
 <h2 id="使用展开操作符-…"><a href="#使用展开操作符-…" class="headerlink" title="使用展开操作符(…)"></a>使用展开操作符(…)</h2><p>ES6已经有了用于数组解构赋值的 rest 元素，和实现的数组字面展开的操作符。看一看这里的数组的展开操作符的实现：</p>
 <p>const array = [<br>    “a”,<br>    “c”,<br>    “d”, {<br>        four: 4<br>    },<br>];<br>const newArray = […array];<br>console.log(newArray);<br>// Result<br>// [“a”, “c”, “d”, { four: 4 }]</p>
 <p>对象字面量的展开操作符目前是<a target="_blank" rel="noopener" href="https://jsbin.com/denadeg/edit?js,console">ECMAScript 的第 3 阶段提案</a>。对象字面量的展开操作符能将源对象中的可枚举的属性复制到目标对象上。下面的例子展示了在提案被接受后复制一个对象是多么的容易。</p>
@@ -332,18 +333,56 @@ return objCopy;
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/04/26/%E4%BD%BF%E7%94%A8javascript-%E8%BF%9B%E8%A1%8C%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/" title="使用JavaScript 进行对象拷贝">https://xianzhiding.github.io/2019/04/26/使用javascript-进行对象拷贝/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/JSON-parse/" rel="tag"># JSON.parse()</a>
-              <a href="/tags/JSON-stringify-object/" rel="tag"># JSON.stringify(object)</a>
-              <a href="/tags/Object-assign/" rel="tag"># Object.assign</a>
-              <a href="/tags/writable/" rel="tag"># writable</a>
-              <a href="/tags/%E4%B8%8D%E5%8F%98%E6%80%A7/" rel="tag"># 不变性</a>
-              <a href="/tags/%E5%A4%8D%E5%88%B6%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1/" rel="tag"># 复制循环引用对象</a>
-              <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/" rel="tag"># 对象拷贝</a>
-              <a href="/tags/%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D/" rel="tag"># 深度拷贝</a>
-              <a href="/tags/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" rel="tag"># 解构赋值</a>
+              <a href="/tags/JSON-parse/" rel="tag"><i class="fa fa-tag"></i> JSON.parse()</a>
+              <a href="/tags/JSON-stringify-object/" rel="tag"><i class="fa fa-tag"></i> JSON.stringify(object)</a>
+              <a href="/tags/Object-assign/" rel="tag"><i class="fa fa-tag"></i> Object.assign</a>
+              <a href="/tags/writable/" rel="tag"><i class="fa fa-tag"></i> writable</a>
+              <a href="/tags/%E4%B8%8D%E5%8F%98%E6%80%A7/" rel="tag"><i class="fa fa-tag"></i> 不变性</a>
+              <a href="/tags/%E5%A4%8D%E5%88%B6%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1/" rel="tag"><i class="fa fa-tag"></i> 复制循环引用对象</a>
+              <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D/" rel="tag"><i class="fa fa-tag"></i> 对象拷贝</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D/" rel="tag"><i class="fa fa-tag"></i> 深度拷贝</a>
+              <a href="/tags/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" rel="tag"><i class="fa fa-tag"></i> 解构赋值</a>
           </div>
 
         
@@ -431,16 +470,16 @@ return objCopy;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -491,6 +530,7 @@ return objCopy;
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

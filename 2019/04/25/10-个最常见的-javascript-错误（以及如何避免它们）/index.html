@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="为了回馈我们的开发者社区，我们查看了数千个项目的数据库，发现了 JavaScript 的 10 大错误。我们将向你展示这些错误的原因，以及如何防止这些错误发生。如果你避免了这些 “陷阱” ，这将使你成为一个更好的开发人员。 由于数据是国王，我们收集，分析并排名前十的 JavaScript 错误。 Rollbar 会收集每个项目的所有错误，并总结每个项目发生的次数。 我们根据 指纹 对错误进行分组，">
@@ -183,6 +183,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -250,8 +251,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>为了回馈我们的开发者社区，我们查看了数千个项目的数据库，发现了 JavaScript 的 10 大错误。我们将向你展示这些错误的原因，以及如何防止这些错误发生。如果你避免了这些 “陷阱” ，这将使你成为一个更好的开发人员。 由于数据是国王，我们收集，分析并排名前十的 <a target="_blank" rel="noopener" href="https://rollbar.com/error-tracking/javascript/">JavaScript 错误</a>。 Rollbar 会收集每个项目的所有错误，并总结每个项目发生的次数。 我们根据 <a target="_blank" rel="noopener" href="https://rollbar.com/docs/grouping-algorithm/">指纹</a> 对错误进行分组，来做到这一点。基本上，如果第二个错误只是第一个错误的重复，我们会把两个错误分到同一组。 这给用户一个很好的概括，而不是像在日志文件中看到的那些压迫性的一大堆垃圾描述。 我们专注于最有可能影响你和你的用户的错误。 为此，我们通过横跨不同公司的项目数来排列错误。 如果我们只查看每个错误发生的总次数，那么大流量的项目可能会淹没与大多数读者无关的错误的数据集。 以下是排名前 10 的 JavaScript 错误： <img src="http://file.w3cbest.com/file/images/javascript-error-graph.png"> 为了便于阅读，没有花大段的文字来描述每个错误。让我们深入到每一个错误，来确定什么可以导致它，以及如何避免它发生。</p>
-<h2 id="1-Uncaught-TypeError-Cannot-read-property"><a href="#1-Uncaught-TypeError-Cannot-read-property" class="headerlink" title="1.Uncaught TypeError: Cannot read property"></a>1.Uncaught TypeError: Cannot read property</h2><p>如果你是一个 JavaScript 开发人员，你可能已经看到这个错误的次数比你敢承认的要多。当你读取一个属性或调用一个未定义的对象的方法时，这个错误会在 Chrome 中发生。你可以在 Chrome 开发者工具的控制台中轻松测试。 <img src="http://file.w3cbest.com/file/images/cannot-read-property.png" alt="Screenshot of Uncaught TypeError: Cannot read property"> 发生这种情况的原因很多，但常见的一种情况是在渲染UI组件时不恰当地初始化了 state(状态)。 我们来看一个在真实应用程序中如何发生的例子。 我们将选择 React，但不正确初始化的原则也适用于Angular，Vue或任何其他框架。</p>
+        <p>为了回馈我们的开发者社区，我们查看了数千个项目的数据库，发现了 JavaScript 的 10 大错误。我们将向你展示这些错误的原因，以及如何防止这些错误发生。如果你避免了这些 “陷阱” ，这将使你成为一个更好的开发人员。 由于数据是国王，我们收集，分析并排名前十的 <a target="_blank" rel="noopener" href="https://rollbar.com/error-tracking/javascript/">JavaScript 错误</a>。 Rollbar 会收集每个项目的所有错误，并总结每个项目发生的次数。 我们根据 <a target="_blank" rel="noopener" href="https://rollbar.com/docs/grouping-algorithm/">指纹</a> 对错误进行分组，来做到这一点。基本上，如果第二个错误只是第一个错误的重复，我们会把两个错误分到同一组。 这给用户一个很好的概括，而不是像在日志文件中看到的那些压迫性的一大堆垃圾描述。 我们专注于最有可能影响你和你的用户的错误。 为此，我们通过横跨不同公司的项目数来排列错误。 如果我们只查看每个错误发生的总次数，那么大流量的项目可能会淹没与大多数读者无关的错误的数据集。 以下是排名前 10 的 JavaScript 错误： <img data-src="http://file.w3cbest.com/file/images/javascript-error-graph.png"> 为了便于阅读，没有花大段的文字来描述每个错误。让我们深入到每一个错误，来确定什么可以导致它，以及如何避免它发生。</p>
+<h2 id="1-Uncaught-TypeError-Cannot-read-property"><a href="#1-Uncaught-TypeError-Cannot-read-property" class="headerlink" title="1.Uncaught TypeError: Cannot read property"></a>1.Uncaught TypeError: Cannot read property</h2><p>如果你是一个 JavaScript 开发人员，你可能已经看到这个错误的次数比你敢承认的要多。当你读取一个属性或调用一个未定义的对象的方法时，这个错误会在 Chrome 中发生。你可以在 Chrome 开发者工具的控制台中轻松测试。 <img data-src="http://file.w3cbest.com/file/images/cannot-read-property.png" alt="Screenshot of Uncaught TypeError: Cannot read property"> 发生这种情况的原因很多，但常见的一种情况是在渲染UI组件时不恰当地初始化了 state(状态)。 我们来看一个在真实应用程序中如何发生的例子。 我们将选择 React，但不正确初始化的原则也适用于Angular，Vue或任何其他框架。</p>
 <p>class Quiz extends Component {<br>    componentWillMount() {<br>        axios.get(‘/thedata’).then(res =&gt; {<br>            this.setState({ items: res.data });<br>        });<br>    }</p>
 <pre><code>render() &#123;
     return (
@@ -295,8 +296,8 @@ render() &#123;
 </code></pre>
 <p>}</p>
 <p>你的应用中的确切代码可能会有所不同，但是我们希望我们已经给了你足够的线索，来解决或避免在你的应用程序中出现这个问题。如果你还没有碰到，请继续阅读，因为我们将在下面覆盖更多相关错误的示例。</p>
-<h2 id="2-TypeError-‘undefined’-is-not-an-object-evaluating"><a href="#2-TypeError-‘undefined’-is-not-an-object-evaluating" class="headerlink" title="2.TypeError: ‘undefined’ is not an object (evaluating"></a>2.TypeError: ‘undefined’ is not an object (evaluating</h2><p>这是在 Safari 中读取属性或调用未定义对象上的方法时发生的错误。你可以在 Safari Developer Console 中轻松测试。这与 Chrome 的上述错误基本相同，但 Safari 使用不同的错误消息。 <img src="http://file.w3cbest.com/file/images/undefined-is-not-an-object.png" alt="Screenshot of TypeError: ‘undefined’ is not an object"></p>
-<h2 id="3-TypeError-null-is-not-an-object-evaluating"><a href="#3-TypeError-null-is-not-an-object-evaluating" class="headerlink" title="3.TypeError: null is not an object (evaluating"></a>3.TypeError: null is not an object (evaluating</h2><p>这是在Safari中读取属性或调用 空对象(null) 上的方法时发生的错误。您可以在 Safari Developer Console中轻松测试。 <img src="http://file.w3cbest.com/file/images/null-is-not-an-object.png" alt="Screenshot of TypeError: null is not an object"> 有趣的是，在 JavaScript 中，null 和 undefined 是不一样的，这就是为什么我们看到两个不同的错误信息。 undefined 通常是一个尚未分配的变量，而 null 表示该值为空。 要验证它们不相等，请尝试使用严格相等运算符 === ： <img src="http://file.w3cbest.com/file/images/null-is-not-an-object1.png" alt="Screenshot of TypeError: null is not an object"> 在现实的例子中，这种错误可能发生的一种场景是：如果在加载元素之前尝试在 JavaScript 中使用 DOM 元素。这是因为 DOM API 对于空白的对象引用返回 null 。 任何执行和处理 DOM 元素的 JS 代码都应在 DOM 元素创建后执行。JS 代码按照 HTML 中的规定从上到下进行解析。所以，如果 DOM 元素之前有一个 script 标签， script 标签内的JS代码将在浏览器解析 HTML 页面时执行。如果在加载脚本之前尚未创建 DOM 元素，则会出现此错误。 在这个例子中，我们可以通过添加一个事件监听器来解决这个问题，这个监听器会在页面准备好的时候通知我们。一旦 <code>addEventListener</code> 被触发，<code>init()</code> 方法就可以使用 DOM 元素。</p>
+<h2 id="2-TypeError-‘undefined’-is-not-an-object-evaluating"><a href="#2-TypeError-‘undefined’-is-not-an-object-evaluating" class="headerlink" title="2.TypeError: ‘undefined’ is not an object (evaluating"></a>2.TypeError: ‘undefined’ is not an object (evaluating</h2><p>这是在 Safari 中读取属性或调用未定义对象上的方法时发生的错误。你可以在 Safari Developer Console 中轻松测试。这与 Chrome 的上述错误基本相同，但 Safari 使用不同的错误消息。 <img data-src="http://file.w3cbest.com/file/images/undefined-is-not-an-object.png" alt="Screenshot of TypeError: ‘undefined’ is not an object"></p>
+<h2 id="3-TypeError-null-is-not-an-object-evaluating"><a href="#3-TypeError-null-is-not-an-object-evaluating" class="headerlink" title="3.TypeError: null is not an object (evaluating"></a>3.TypeError: null is not an object (evaluating</h2><p>这是在Safari中读取属性或调用 空对象(null) 上的方法时发生的错误。您可以在 Safari Developer Console中轻松测试。 <img data-src="http://file.w3cbest.com/file/images/null-is-not-an-object.png" alt="Screenshot of TypeError: null is not an object"> 有趣的是，在 JavaScript 中，null 和 undefined 是不一样的，这就是为什么我们看到两个不同的错误信息。 undefined 通常是一个尚未分配的变量，而 null 表示该值为空。 要验证它们不相等，请尝试使用严格相等运算符 === ： <img data-src="http://file.w3cbest.com/file/images/null-is-not-an-object1.png" alt="Screenshot of TypeError: null is not an object"> 在现实的例子中，这种错误可能发生的一种场景是：如果在加载元素之前尝试在 JavaScript 中使用 DOM 元素。这是因为 DOM API 对于空白的对象引用返回 null 。 任何执行和处理 DOM 元素的 JS 代码都应在 DOM 元素创建后执行。JS 代码按照 HTML 中的规定从上到下进行解析。所以，如果 DOM 元素之前有一个 script 标签， script 标签内的JS代码将在浏览器解析 HTML 页面时执行。如果在加载脚本之前尚未创建 DOM 元素，则会出现此错误。 在这个例子中，我们可以通过添加一个事件监听器来解决这个问题，这个监听器会在页面准备好的时候通知我们。一旦 <code>addEventListener</code> 被触发，<code>init()</code> 方法就可以使用 DOM 元素。</p>
 <script>
 function init() {
     var myButton = document.getElementById("myButton");
@@ -324,29 +325,29 @@ document.addEventListener('readystatechange', function() {
 <p><strong>HAProxy</strong> 将以下内容添加到提供资源服务的后端，并提供 JavaScript 文件：</p>
 <p>rspadd Access-Control-Allow-Origin:\ *</p>
 <p><strong>2.在 script 标签上设置 crossorigin=”anonymous” 属性</strong> 在你的 HTML 源代码中，对于你设置的 <code>Access-Control-Allow-Origin</code> 头信息的每个脚本，在 script 标签上设置 <code>crossorigin=&quot;anonymous&quot;</code> 。在添加脚本标记上的 crossorigin 属性之前，请确保验证上述头信息是否正确发送。在 Firefox 中，如果存在 crossorigin 属性，但 <code>Access-Control-Allow-Origin</code> 头信息不存在，则脚本将不会执行。</p>
-<h2 id="5-TypeError-Object-doesn’t-support-property"><a href="#5-TypeError-Object-doesn’t-support-property" class="headerlink" title="5.TypeError: Object doesn’t support property"></a>5.TypeError: Object doesn’t support property</h2><p>这是你在调用未定义方法时发生在IE中的错误。你可以在IE开发者工具的控制台进行测试。 <img src="http://file.w3cbest.com/file/images/object-doesnot-support-property.png" alt="Screenshot of TypeError: Object doesn’t support property"> 这相当于 Chrome 中的错误：”TypeError: ‘undefined’ is not a function” 。是的，对于相同的逻辑错误，不同的浏览器可能会有不同的错误消息。 在使用 JavaScript 命名空间的Web应用程序中，这中错误对于 IE 来说是一个常见问题。在这种情况下，这种问题 99.9％ 是 IE 无法将当前名称空间内的方法绑定到 <code>this</code> 关键字。例如，如果你的 JS 命名空间 <code>Rollbar</code> 中有 <code>isAwesome</code> 方法。通常，如果你在 <code>Rollbar</code> 命名空间内，则可以使用以下语法调用 <code>isAwesome</code> 方法：</p>
+<h2 id="5-TypeError-Object-doesn’t-support-property"><a href="#5-TypeError-Object-doesn’t-support-property" class="headerlink" title="5.TypeError: Object doesn’t support property"></a>5.TypeError: Object doesn’t support property</h2><p>这是你在调用未定义方法时发生在IE中的错误。你可以在IE开发者工具的控制台进行测试。 <img data-src="http://file.w3cbest.com/file/images/object-doesnot-support-property.png" alt="Screenshot of TypeError: Object doesn’t support property"> 这相当于 Chrome 中的错误：”TypeError: ‘undefined’ is not a function” 。是的，对于相同的逻辑错误，不同的浏览器可能会有不同的错误消息。 在使用 JavaScript 命名空间的Web应用程序中，这中错误对于 IE 来说是一个常见问题。在这种情况下，这种问题 99.9％ 是 IE 无法将当前名称空间内的方法绑定到 <code>this</code> 关键字。例如，如果你的 JS 命名空间 <code>Rollbar</code> 中有 <code>isAwesome</code> 方法。通常，如果你在 <code>Rollbar</code> 命名空间内，则可以使用以下语法调用 <code>isAwesome</code> 方法：</p>
 <p>this.isAwesome();</p>
 <p>Chrome，Firefox 和 Opera 会欣然地接受这个语法。 IE 则不会。 因此，使用 JS 命名空间时最安全的选择是始终以实际命名空间作为前缀。</p>
 <p>Rollbar.isAwesome();</p>
-<h2 id="6-TypeError-‘undefined’-is-not-a-function"><a href="#6-TypeError-‘undefined’-is-not-a-function" class="headerlink" title="6.TypeError: ‘undefined’ is not a function"></a>6.TypeError: ‘undefined’ is not a function</h2><p>当你调用未定义的函数时，在 Chrome 中会发生这种错误。 你可以在 Chrome 开发者工具的控制台和 Mozilla Firefox 开发者工具的控制台中对此进行测试。 <img src="http://file.w3cbest.com/file/images/undefined-is-nota-function.png" alt="Screenshot of undefined is not a function"> 随着 JavaScript 编码技术和设计模式在这些年来越来越复杂，回调和闭包内的自引用作用域也相应增加，这是使用 this/that 混乱的一个相当常见的原因。 考虑这个示例代码片段：</p>
+<h2 id="6-TypeError-‘undefined’-is-not-a-function"><a href="#6-TypeError-‘undefined’-is-not-a-function" class="headerlink" title="6.TypeError: ‘undefined’ is not a function"></a>6.TypeError: ‘undefined’ is not a function</h2><p>当你调用未定义的函数时，在 Chrome 中会发生这种错误。 你可以在 Chrome 开发者工具的控制台和 Mozilla Firefox 开发者工具的控制台中对此进行测试。 <img data-src="http://file.w3cbest.com/file/images/undefined-is-nota-function.png" alt="Screenshot of undefined is not a function"> 随着 JavaScript 编码技术和设计模式在这些年来越来越复杂，回调和闭包内的自引用作用域也相应增加，这是使用 this/that 混乱的一个相当常见的原因。 考虑这个示例代码片段：</p>
 <p>function clearBoard() {<br>    alert(“Cleared”);<br>}<br>document.addEventListener(“click”, function() {<br>    this.clearBoard(); // what is “this” ?<br>});</p>
 <p>如果你执行上面的代码然后点击页面，会导致以下错误： “Uncaught TypeError: this.clearBoard is not a function”。原因是正在执行的匿名函数在 document 上下文中， 而 <code>clearBoard</code> 定义在 window 中。 一个传统的，旧浏览器兼容的解决方案是简单地将你的 <code>this</code> 保存在一个变量，然后该变量可以被闭包继承。 例如：</p>
 <p>var self = this; // save reference to ‘this’, while it’s still this!<br>document.addEventListener(“click”, function() {<br>    self.clearBoard();<br>});</p>
 <p>或者，在较新的浏览器中，可以使用 <code>bind()</code> 方法传递适当的引用：</p>
 <p>document.addEventListener(“click”,this.clearBoard.bind(this));</p>
-<h2 id="7-Uncaught-RangeError-Maximum-call-stack"><a href="#7-Uncaught-RangeError-Maximum-call-stack" class="headerlink" title="7.Uncaught RangeError: Maximum call stack"></a>7.Uncaught RangeError: Maximum call stack</h2><p>这是 Chrome 在一些情况下会发生的错误。一个情况是当你调用一个不终止的递归函数时。你可以在Chrome开发者工具的控制台中进行测试。 <img src="http://file.w3cbest.com/file/images/maximum-call-stack.png" alt="Screenshot of Uncaught RangeError: Maximum call stack"> 如果你将一个值传递给超出范围的函数，也可能会发生这种情况。许多函数只接受其输入值的特定范围的数字。 例如，<code>Number.toExponential(digits)</code> 和 <code>Number.toFixed(digits)</code> 接受0到20之间的数字， 和 <code>Number.toPrecision(digits)</code> 接受从1到21的数字。</p>
+<h2 id="7-Uncaught-RangeError-Maximum-call-stack"><a href="#7-Uncaught-RangeError-Maximum-call-stack" class="headerlink" title="7.Uncaught RangeError: Maximum call stack"></a>7.Uncaught RangeError: Maximum call stack</h2><p>这是 Chrome 在一些情况下会发生的错误。一个情况是当你调用一个不终止的递归函数时。你可以在Chrome开发者工具的控制台中进行测试。 <img data-src="http://file.w3cbest.com/file/images/maximum-call-stack.png" alt="Screenshot of Uncaught RangeError: Maximum call stack"> 如果你将一个值传递给超出范围的函数，也可能会发生这种情况。许多函数只接受其输入值的特定范围的数字。 例如，<code>Number.toExponential(digits)</code> 和 <code>Number.toFixed(digits)</code> 接受0到20之间的数字， 和 <code>Number.toPrecision(digits)</code> 接受从1到21的数字。</p>
 <p>var a = new Array(4294967295); //OK<br>var b = new Array(-1); //range error</p>
 <p>var num = 2.555555;<br>document.writeln(num.toExponential(4)); //OK<br>document.writeln(num.toExponential(-2)); //range error!</p>
 <p>num = 2.9999;<br>document.writeln(num.toFixed(2)); //OK<br>document.writeln(num.toFixed(25)); //range error!</p>
 <p>num = 2.3456;<br>document.writeln(num.toPrecision(1)); //OK<br>document.writeln(num.toPrecision(22)); //range error!</p>
-<h2 id="8-TypeError-Cannot-read-property-‘length’"><a href="#8-TypeError-Cannot-read-property-‘length’" class="headerlink" title="8.TypeError: Cannot read property ‘length’"></a>8.TypeError: Cannot read property ‘length’</h2><p>这是 Chrome 中发生的错误，因为读取未定义变量的长度属性。你可以在Chrome开发者工具的控制台中进行测试。 <img src="http://file.w3cbest.com/file/images/cannot-read-property-length.png" alt="Screenshot of TypeError: Cannot read property ‘length’"> 你通常会在数组中找到定义的长度，但是如果数组未初始化或变量名隐藏在另一个上下文中，则可能会遇到此错误。让我们用下面的例子来理解这个错误。</p>
+<h2 id="8-TypeError-Cannot-read-property-‘length’"><a href="#8-TypeError-Cannot-read-property-‘length’" class="headerlink" title="8.TypeError: Cannot read property ‘length’"></a>8.TypeError: Cannot read property ‘length’</h2><p>这是 Chrome 中发生的错误，因为读取未定义变量的长度属性。你可以在Chrome开发者工具的控制台中进行测试。 <img data-src="http://file.w3cbest.com/file/images/cannot-read-property-length.png" alt="Screenshot of TypeError: Cannot read property ‘length’"> 你通常会在数组中找到定义的长度，但是如果数组未初始化或变量名隐藏在另一个上下文中，则可能会遇到此错误。让我们用下面的例子来理解这个错误。</p>
 <p>var testArray = [“Test”];<br>function testFunction(testArray) {<br>    for (var i = 0; i &lt; testArray.length; i++) {<br>        console.log(testArray[i]);<br>    }<br>}<br>testFunction();</p>
 <p>当你用参数声明一个函数时，这些参数变成了本地参数。这意味着即使你有名称为 testArray 的变量，函数中具有相同名称的参数仍将被视为 本地参数。 你有两种方法可以解决这个问题： 1，删除函数声明语句中的参数（事实证明如果你想访问那些在函数之外声明的变量，你不需要将其作为你函数的参数传入）：</p>
 <p>var testArray = [“Test”];<br>/* Precondition: defined testArray outside of a function */<br>function testFunction( /* No params */ ) {<br>    for (var i = 0; i &lt; testArray.length; i++) {<br>        console.log(testArray[i]);<br>    }<br>}<br>testFunction();</p>
 <p>2，调用函数时，将我们声明的数组传递给它：</p>
 <p>var testArray = [“Test”];<br>function testFunction(testArray) {<br>    for (var i = 0; i &lt; testArray.length; i++) {<br>        console.log(testArray[i]);<br>    }<br>}<br>testFunction(testArray);</p>
-<h2 id="9-Uncaught-TypeError-Cannot-set-property"><a href="#9-Uncaught-TypeError-Cannot-set-property" class="headerlink" title="9.Uncaught TypeError: Cannot set property"></a>9.Uncaught TypeError: Cannot set property</h2><p>当我们尝试访问一个未定义的变量时，它总是返回 undefined ，我们不能获取或设置任何 undefined 的属性。在这种情况下，应用程序将抛出 “Uncaught TypeError cannot set property of undefined.” 错误。 例如，在Chrome浏览器中： <img src="http://file.w3cbest.com/file/images/cannot-set-property.png" alt="Screenshot of Uncaught TypeError: Cannot set property"> 如果 test 对象不存在，错误将会抛出 “Uncaught TypeError cannot set property of undefined.” 。</p>
-<h2 id="10-ReferenceError-event-is-not-defined"><a href="#10-ReferenceError-event-is-not-defined" class="headerlink" title="10.ReferenceError: event is not defined"></a>10.ReferenceError: event is not defined</h2><p>当你尝试访问未定义的变量或超出当前作用域的变量时，会引发此错误。你可以在Chrome浏览器中轻松测试。 <img src="http://file.w3cbest.com/file/images/event-is-not-defined.png" alt="Screenshot of ReferenceError: event is not defined"> 如果你在使用事件处理时遇到这种错误，请确保你使用传入的事件对象作为参数。像IE这样的老浏览器提供了一个全局变量事件， Chrome 会自动将事件变量附加到处理程序。Firefox 不会自动添加它。像jQuery这样的库试图规范化这种行为。不过，最佳实践是使用传递到事件处理程序函数的方法。</p>
+<h2 id="9-Uncaught-TypeError-Cannot-set-property"><a href="#9-Uncaught-TypeError-Cannot-set-property" class="headerlink" title="9.Uncaught TypeError: Cannot set property"></a>9.Uncaught TypeError: Cannot set property</h2><p>当我们尝试访问一个未定义的变量时，它总是返回 undefined ，我们不能获取或设置任何 undefined 的属性。在这种情况下，应用程序将抛出 “Uncaught TypeError cannot set property of undefined.” 错误。 例如，在Chrome浏览器中： <img data-src="http://file.w3cbest.com/file/images/cannot-set-property.png" alt="Screenshot of Uncaught TypeError: Cannot set property"> 如果 test 对象不存在，错误将会抛出 “Uncaught TypeError cannot set property of undefined.” 。</p>
+<h2 id="10-ReferenceError-event-is-not-defined"><a href="#10-ReferenceError-event-is-not-defined" class="headerlink" title="10.ReferenceError: event is not defined"></a>10.ReferenceError: event is not defined</h2><p>当你尝试访问未定义的变量或超出当前作用域的变量时，会引发此错误。你可以在Chrome浏览器中轻松测试。 <img data-src="http://file.w3cbest.com/file/images/event-is-not-defined.png" alt="Screenshot of ReferenceError: event is not defined"> 如果你在使用事件处理时遇到这种错误，请确保你使用传入的事件对象作为参数。像IE这样的老浏览器提供了一个全局变量事件， Chrome 会自动将事件变量附加到处理程序。Firefox 不会自动添加它。像jQuery这样的库试图规范化这种行为。不过，最佳实践是使用传递到事件处理程序函数的方法。</p>
 <p>document.addEventListener(“mousemove”, function(event) {<br>    console.log(event);<br>})</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>事实证明很多都是一些 null 或 undefined 错误。如果您使用严格的编译器选项，比如 Typescript 这样的好的静态类型检查系统可以帮助您避免它们。它可以警告你，如果一个类型是预期的，但尚未定义。 我们希望你学到了一些新的东西，并且可以避免将来出现这些错误，或者本指南帮助你解决了头痛的问题。尽管如此，即使有最佳做法，生产环境中还是会出现意想不到的错误。了解影响用户的错误非常重要，并有很好的工具来快速解决它们。 Rollbar 为你提供生产环境 JavaScript 错误的可视性，并为您提供更多上下文来快速解决它们。例如，它提供了额外的调试功能，例如 <a target="_blank" rel="noopener" href="https://rollbar.com/blog/introducing-javascript-telemetry/">遥测功能</a>，可以告诉你用户的浏览器发生了什么导致错误。这可以使在本地开发者工具的控制台之外发现问题。你可以在 Rollbar 的 <a target="_blank" rel="noopener" href="https://rollbar.com/error-tracking/javascript/">JavaScript 应用程序的完整功能列表</a> 中了解更多信息。 文章来源：<a target="_blank" rel="noopener" href="https://rollbar.com/blog/top-10-javascript-errors/">https://rollbar.com/</a></p>
 
@@ -355,15 +356,53 @@ document.addEventListener('readystatechange', function() {
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/04/25/10-%E4%B8%AA%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84-javascript-%E9%94%99%E8%AF%AF%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%AE%83%E4%BB%AC%EF%BC%89/" title="10 个最常见的 JavaScript 错误（以及如何避免它们）">https://xianzhiding.github.io/2019/04/25/10-个最常见的-javascript-错误（以及如何避免它们）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/javascript/" rel="tag"># javascript</a>
-              <a href="/tags/Cannot-set-property/" rel="tag"># Cannot set property</a>
-              <a href="/tags/Error/" rel="tag"># Error</a>
-              <a href="/tags/event-is-not-defined/" rel="tag"># event is not defined</a>
-              <a href="/tags/Web-Development/" rel="tag"># Web Development</a>
-              <a href="/tags/%E9%94%99%E8%AF%AF/" rel="tag"># 错误</a>
+              <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+              <a href="/tags/Cannot-set-property/" rel="tag"><i class="fa fa-tag"></i> Cannot set property</a>
+              <a href="/tags/Error/" rel="tag"><i class="fa fa-tag"></i> Error</a>
+              <a href="/tags/event-is-not-defined/" rel="tag"><i class="fa fa-tag"></i> event is not defined</a>
+              <a href="/tags/Web-Development/" rel="tag"><i class="fa fa-tag"></i> Web Development</a>
+              <a href="/tags/%E9%94%99%E8%AF%AF/" rel="tag"><i class="fa fa-tag"></i> 错误</a>
           </div>
 
         
@@ -451,16 +490,16 @@ document.addEventListener('readystatechange', function() {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -511,6 +550,7 @@ document.addEventListener('readystatechange', function() {
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

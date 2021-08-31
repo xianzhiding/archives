@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
@@ -164,6 +164,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -224,7 +225,35 @@
       
           <p>思路：</p>
 <p>1、当页面第一次加载先判断本地储存中有没有旧数据  //储存数据格式{time:Date.now(), data}<br>2、没有旧数据直接发送请求，并将数据储存本地<br>3、有旧数据并且数据没有过期，就使用本地储存的旧数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">init()&#123;</span><br><span class="line">    &lt;!-- 1,获取本地数据 --&gt;</span><br><span class="line">    const getData &#x3D; sessionStorage.getItem(&#39;key&#39;);</span><br><span class="line">    &lt;!-- 2,判断数据是否存在 --&gt;</span><br><span class="line">    if(!getData)&#123;</span><br><span class="line">        this.getData()</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        &lt;!-- 定义过期时间 (如:10s) --&gt;</span><br><span class="line">        if(Date.new() - getData.time &gt; 1000*10)&#123;</span><br><span class="line">            &lt;!-- 如果时间超过过期时间 重新发送请求 --&gt;</span><br><span class="line">            this.getData()</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            &lt;!-- 如果时间未超过过期时间 使用本地储存数据 --&gt;</span><br><span class="line">            this.render(getData.data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">getData()&#123;</span><br><span class="line">    &lt;!-- 没有旧数据直接发送请求 --&gt;</span><br><span class="line">    request(&#39;url&#39;).then(data&#x3D;&gt;&#123;</span><br><span class="line">        &lt;!-- 并将数据储存本地 --&gt;</span><br><span class="line">        sessionStorage.setItem(&#39;key&#39;,&#123;time: Date.new(), data&#125;);</span><br><span class="line">        this.render(data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">render(data)&#123;</span><br><span class="line">    &lt;!-- 这里是数据展示 --&gt;</span><br><span class="line">    console.log(data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">init()&#123;
+    &lt;!-- 1,获取本地数据 --&gt;
+    const getData &#x3D; sessionStorage.getItem(&#39;key&#39;);
+    &lt;!-- 2,判断数据是否存在 --&gt;
+    if(!getData)&#123;
+        this.getData()
+    &#125;else&#123;
+        &lt;!-- 定义过期时间 (如:10s) --&gt;
+        if(Date.new() - getData.time &gt; 1000*10)&#123;
+            &lt;!-- 如果时间超过过期时间 重新发送请求 --&gt;
+            this.getData()
+        &#125;else&#123;
+            &lt;!-- 如果时间未超过过期时间 使用本地储存数据 --&gt;
+            this.render(getData.data);
+        &#125;
+    &#125;
+&#125;,
+getData()&#123;
+    &lt;!-- 没有旧数据直接发送请求 --&gt;
+    request(&#39;url&#39;).then(data&#x3D;&gt;&#123;
+        &lt;!-- 并将数据储存本地 --&gt;
+        sessionStorage.setItem(&#39;key&#39;,&#123;time: Date.new(), data&#125;);
+        this.render(data)
+    &#125;)
+&#125;,
+render(data)&#123;
+    &lt;!-- 这里是数据展示 --&gt;
+    console.log(data)
+&#125;</code></pre>
       
     </div>
 
@@ -289,7 +318,36 @@
 
       
           <p>思路：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">let url &#x3D; &#39;http:&#x2F;&#x2F;localhost:8080&#39;;</span><br><span class="line">let requestTotal &#x3D; 0;</span><br><span class="line">const request &#x3D; (params) &#x3D;&gt;&#123;</span><br><span class="line">  requestTotal++;</span><br><span class="line">  wx.showLoading(&#123;</span><br><span class="line">   title: &#39;加载中...&#39;,</span><br><span class="line">   mask: true</span><br><span class="line">  &#125;)</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt;&#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: url + params.url,</span><br><span class="line">      data: params.data || &#123;&#125;,</span><br><span class="line">      method: params.method || &#39;GET&#39;,</span><br><span class="line">      header: &#123;&#39;content-type&#39;: &#39;application&#x2F;x-www-form-urlencoded;charset&#x3D;UTF-8&#39;&#125;,</span><br><span class="line">      success:(result)&#x3D;&gt;&#123;</span><br><span class="line">        resolve(result.data)</span><br><span class="line">      &#125;,</span><br><span class="line">      fail:(error)&#x3D;&gt;&#123;</span><br><span class="line">        console.log(error);</span><br><span class="line">        reject(error)</span><br><span class="line">      &#125;,</span><br><span class="line">      complete:()&#x3D;&gt;&#123;</span><br><span class="line">        requestTotal--;</span><br><span class="line">        if(requestTotal&#x3D;&#x3D;&#x3D;0)&#123;</span><br><span class="line">         wx.hideLoading()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">let url &#x3D; &#39;http:&#x2F;&#x2F;localhost:8080&#39;;
+let requestTotal &#x3D; 0;
+const request &#x3D; (params) &#x3D;&gt;&#123;
+  requestTotal++;
+  wx.showLoading(&#123;
+   title: &#39;加载中...&#39;,
+   mask: true
+  &#125;)
+  return new Promise((resolve, reject) &#x3D;&gt;&#123;
+    wx.request(&#123;
+      url: url + params.url,
+      data: params.data || &#123;&#125;,
+      method: params.method || &#39;GET&#39;,
+      header: &#123;&#39;content-type&#39;: &#39;application&#x2F;x-www-form-urlencoded;charset&#x3D;UTF-8&#39;&#125;,
+      success:(result)&#x3D;&gt;&#123;
+        resolve(result.data)
+      &#125;,
+      fail:(error)&#x3D;&gt;&#123;
+        console.log(error);
+        reject(error)
+      &#125;,
+      complete:()&#x3D;&gt;&#123;
+        requestTotal--;
+        if(requestTotal&#x3D;&#x3D;&#x3D;0)&#123;
+         wx.hideLoading()
+        &#125;
+      &#125;
+    &#125;)
+  &#125;)
+&#125;</code></pre>
       
     </div>
 
@@ -355,27 +413,83 @@
       
           <h2 id="1-声明-color-scheme"><a href="#1-声明-color-scheme" class="headerlink" title="1.声明 color-scheme"></a>1.声明 color-scheme</h2><p>有两种方式。</p>
 <h3 id="1-1-meta"><a href="#1-1-meta" class="headerlink" title="1.1 meta"></a>1.1 meta</h3><p>在head中声明 meta，声明当前页面支持 light 和 dark 两种模式，系统切换到深色模式时，浏览器默认样式也会切换到深色；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">&quot;color-scheme&quot;</span> content=<span class="string">&quot;light dark&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>meta <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"color-scheme"</span> <span class="token assign-left variable">content</span><span class="token operator">=</span><span class="token string">"light dark"</span><span class="token operator">></span></code></pre>
 
 <h3 id="1-2-CSS"><a href="#1-2-CSS" class="headerlink" title="1.2 CSS"></a>1.2 CSS</h3><p>下面的 css 同样可以实现上面 meta 声明的效果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    color-scheme: light dark;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">:root <span class="token punctuation">&#123;</span>
+    color-scheme: light dark<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>注意：此声明并非为页面做自动适配，只影响浏览器默认样式</p>
 <p>更多信息可查阅：<br>    W3C文档：<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-color-adjust-1/"> CSS Color Adjustment Module Level 1</a><br>    微信开放文档：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/DarkMode.html">DarkMode 适配指南</a></p>
 <h2 id="2-通过-CSS-媒体查询"><a href="#2-通过-CSS-媒体查询" class="headerlink" title="2.通过 CSS 媒体查询"></a>2.通过 CSS 媒体查询</h2><p>prefers-color-scheme CSS 媒体特性用于检测用户是否有将系统的主题色设置为亮色或者暗色。</p>
 <p>no-preference<br>表示系统未得知用户在这方面的选项。在布尔值上下文中，其执行结果为 false。</p>
 <p>light<br>表示用户已告知系统他们选择使用浅色主题的界面。</p>
 <p>dark<br>表示用户已告知系统他们选择使用暗色主题的界面。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    color-scheme: light dark;</span><br><span class="line">    background: white;</span><br><span class="line">    color: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (prefers-color-scheme: dark) &#123;</span><br><span class="line">    :root &#123;</span><br><span class="line">        background: black;</span><br><span class="line">        color: white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">:root <span class="token punctuation">&#123;</span>
+    color-scheme: light dark<span class="token punctuation">;</span>
+    background: white<span class="token punctuation">;</span>
+    color: black<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+@media <span class="token punctuation">(</span>prefers-color-scheme: dark<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    :root <span class="token punctuation">&#123;</span>
+        background: black<span class="token punctuation">;</span>
+        color: white<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>颜色较多的情况，建议使用CSS变量对颜色值进行管理</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    color-scheme: light dark;</span><br><span class="line">    --nav-bg-color: <span class="comment">#F7F7F7;</span></span><br><span class="line">    --content-bg-color: <span class="comment">#FFFFFF;</span></span><br><span class="line">    --font-color: rgba(0,0,0,.9);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (prefers-color-scheme: dark) &#123;</span><br><span class="line">    :root &#123;</span><br><span class="line">        --nav-bg-color: <span class="comment">#2F2F2F;</span></span><br><span class="line">        --content-bg-color: <span class="comment">#2C2C2C;</span></span><br><span class="line">        --font-color: rgba(255, 255, 255, .8);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">:root &#123;</span><br><span class="line">    color: var(--font-color)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.header &#123;</span><br><span class="line">    background-color: var(--nav-bg-color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.content &#123;</span><br><span class="line">    background-color: var(--content-bg-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">:root <span class="token punctuation">&#123;</span>
+    color-scheme: light dark<span class="token punctuation">;</span>
+    --nav-bg-color: <span class="token comment">#F7F7F7;</span>
+    --content-bg-color: <span class="token comment">#FFFFFF;</span>
+    --font-color: rgba<span class="token punctuation">(</span><span class="token number">0,0</span>,0,.9<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+@media <span class="token punctuation">(</span>prefers-color-scheme: dark<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    :root <span class="token punctuation">&#123;</span>
+        --nav-bg-color: <span class="token comment">#2F2F2F;</span>
+        --content-bg-color: <span class="token comment">#2C2C2C;</span>
+        --font-color: rgba<span class="token punctuation">(</span><span class="token number">255</span>, <span class="token number">255</span>, <span class="token number">255</span>, .8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+:root <span class="token punctuation">&#123;</span>
+    color: var<span class="token punctuation">(</span>--font-color<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+.header <span class="token punctuation">&#123;</span>
+    background-color: var<span class="token punctuation">(</span>--nav-bg-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+.content <span class="token punctuation">&#123;</span>
+    background-color: var<span class="token punctuation">(</span>--content-bg-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
 <h2 id="3-图片适配"><a href="#3-图片适配" class="headerlink" title="3.图片适配"></a>3.图片适配</h2><p>利用picture+source标签，设置不同模式下的图片 url。</p>
 <p>HTML <picture>元素通过包含零或多个 <source> 元素和一个 <img> 元素来为不同的显示/设备场景提供图像版本。浏览器会选择最匹配的子 <source> 元素，如果没有匹配的，就选择 <img> 元素的 src 属性中的URL。然后，所选图像呈现在<img>元素占据的空间中。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;picture&gt;</span><br><span class="line">    &lt;!-- 深色模式下的图片 --&gt;</span><br><span class="line">    &lt;<span class="built_in">source</span> srcset=<span class="string">&quot;dark.jpg&quot;</span> media=<span class="string">&quot;(prefers-color-scheme: dark)&quot;</span> /&gt;</span><br><span class="line">    &lt;!-- 默认模式下的图片 --&gt;</span><br><span class="line">    &lt;img src=<span class="string">&quot;light.jpg&quot;</span>/&gt;</span><br><span class="line">&lt;/picture&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>picture<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span>-- 深色模式下的图片 --<span class="token operator">></span>
+    <span class="token operator">&lt;</span>source <span class="token assign-left variable">srcset</span><span class="token operator">=</span><span class="token string">"dark.jpg"</span> <span class="token assign-left variable">media</span><span class="token operator">=</span><span class="token string">"(prefers-color-scheme: dark)"</span> /<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span>-- 默认模式下的图片 --<span class="token operator">></span>
+    <span class="token operator">&lt;</span>img <span class="token assign-left variable">src</span><span class="token operator">=</span><span class="token string">"light.jpg"</span>/<span class="token operator">></span>
+<span class="token operator">&lt;</span>/picture<span class="token operator">></span></code></pre>
 <h2 id="4-JavaScript中判断当前模式-amp-监听模式变化"><a href="#4-JavaScript中判断当前模式-amp-监听模式变化" class="headerlink" title="4. JavaScript中判断当前模式&amp;监听模式变化"></a>4. JavaScript中判断当前模式&amp;监听模式变化</h2><h3 id="4-1-matchMedia"><a href="#4-1-matchMedia" class="headerlink" title="4.1 matchMedia"></a>4.1 matchMedia</h3><p>Window 的matchMedia() 方法返回一个新的MediaQueryList 对象，表示指定的媒体查询 (en-US)字符串解析后的结果。返回的MediaQueryList 可被用于判定Document是否匹配媒体查询，或者监控一个document 来判定它匹配了或者停止匹配了此媒体查询。</p>
 <h3 id="4-2-addListener"><a href="#4-2-addListener" class="headerlink" title="4.2 addListener()"></a>4.2 addListener()</h3><p>MediaQueryList接口的addListener()方法向MediaQueryListener添加一个侦听器，该侦听器将运行自定义回调函数以响应媒体查询状态的更改。</p>
 <p>具体用法参考以下例子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const mediaQuery = window.matchMedia(<span class="string">&#x27;(prefers-color-scheme: dark)&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">darkModeHandler</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> (mediaQuery.matches) &#123;</span><br><span class="line">        console.log(<span class="string">&#x27;现在是深色模式&#x27;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        console.log(<span class="string">&#x27;现在是浅色模式&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 判断当前模式</span><br><span class="line">darkModeHandler()</span><br><span class="line">// 监听模式变化</span><br><span class="line">mediaQuery.addListener(darkModeHandler)</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">const mediaQuery <span class="token operator">=</span> window.matchMedia<span class="token punctuation">(</span><span class="token string">'(prefers-color-scheme: dark)'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> <span class="token function-name function">darkModeHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mediaQuery.matches<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        console.log<span class="token punctuation">(</span><span class="token string">'现在是深色模式'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        console.log<span class="token punctuation">(</span><span class="token string">'现在是浅色模式'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+// 判断当前模式
+darkModeHandler<span class="token punctuation">(</span><span class="token punctuation">)</span>
+// 监听模式变化
+mediaQuery.addListener<span class="token punctuation">(</span>darkModeHandler<span class="token punctuation">)</span></code></pre>
       
     </div>
 
@@ -441,14 +555,30 @@
       
           <p>随着移动设备的普及，日常生活中随处可见二维码，大有一码走天下之势。那么前端如何来生成二维码？</p>
 <p>通过QRCode.js我们可以快速生成二维码啦，一起来看看怎么使用吧。</p>
-<h3 id="1、引入插件"><a href="#1、引入插件" class="headerlink" title="1、引入插件"></a>1、引入插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*html*/</span><br><span class="line">&lt;div id=<span class="string">&quot;qrcode&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">/*js*/</span><br><span class="line">&lt;script src=<span class="string">&quot;qrcode.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1、引入插件"><a href="#1、引入插件" class="headerlink" title="1、引入插件"></a>1、引入插件</h3><pre class="language-bash" data-language="bash"><code class="language-bash">/*html*/
+<span class="token operator">&lt;</span>div <span class="token assign-left variable">id</span><span class="token operator">=</span><span class="token string">"qrcode"</span><span class="token operator">></span><span class="token operator">&lt;</span>/div<span class="token operator">></span>
 
-<h3 id="2、基本用法"><a href="#2、基本用法" class="headerlink" title="2、基本用法"></a>2、基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var qrcode = document.getElementById(<span class="string">&#x27;qrcode&#x27;</span>)</span><br><span class="line"></span><br><span class="line">/*直接生成二维码*/</span><br><span class="line">new QRCode(qrcode, <span class="string">&#x27;http://www.w3cbest.com&#x27;</span>)</span><br><span class="line"></span><br><span class="line">/*也可以配置二维码的宽高等*/</span><br><span class="line">var qrcodeObj = new QRCode(<span class="string">&#x27;qrcode&#x27;</span>, &#123;</span><br><span class="line">    text: <span class="string">&#x27;http://www.w3cbest.com&#x27;</span>,</span><br><span class="line">    width: 256,</span><br><span class="line">    height: 256,</span><br><span class="line">    colorDark : <span class="string">&#x27;#000000&#x27;</span>, //前景色</span><br><span class="line">    colorLight : <span class="string">&#x27;#ffffff&#x27;</span>  //背景色</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+/*js*/
+<span class="token operator">&lt;</span>script <span class="token assign-left variable">src</span><span class="token operator">=</span><span class="token string">"qrcode.js"</span><span class="token operator">></span><span class="token operator">&lt;</span>/script<span class="token operator">></span></code></pre>
+
+<h3 id="2、基本用法"><a href="#2、基本用法" class="headerlink" title="2、基本用法"></a>2、基本用法</h3><pre class="language-bash" data-language="bash"><code class="language-bash">var qrcode <span class="token operator">=</span> document.getElementById<span class="token punctuation">(</span><span class="token string">'qrcode'</span><span class="token punctuation">)</span>
+
+/*直接生成二维码*/
+new QRCode<span class="token punctuation">(</span>qrcode, <span class="token string">'http://www.w3cbest.com'</span><span class="token punctuation">)</span>
+
+/*也可以配置二维码的宽高等*/
+var qrcodeObj <span class="token operator">=</span> new QRCode<span class="token punctuation">(</span><span class="token string">'qrcode'</span>, <span class="token punctuation">&#123;</span>
+    text: <span class="token string">'http://www.w3cbest.com'</span>,
+    width: <span class="token number">256</span>,
+    height: <span class="token number">256</span>,
+    colorDark <span class="token builtin class-name">:</span> <span class="token string">'#000000'</span>, //前景色
+    colorLight <span class="token builtin class-name">:</span> <span class="token string">'#ffffff'</span>  //背景色
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span></code></pre>
 
 <h3 id="3、API"><a href="#3、API" class="headerlink" title="3、API"></a>3、API</h3><p>设置二维码内容–makeCode</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcodeObj.makeCode(<span class="string">&#x27;http://www.w3cbest.com/?p=6518&amp;preview=true&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">qrcodeObj.makeCode<span class="token punctuation">(</span><span class="token string">'http://www.w3cbest.com/?p=6518&amp;preview=true'</span><span class="token punctuation">)</span></code></pre>
 <p>清除二维码–clear</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcodeObj.clear()</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">qrcodeObj.clear<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
       
     </div>
 
@@ -523,20 +653,84 @@
       
           <p>CSS中的选择器用于选择元素并设置其样式。在我们使用其中一个之后，它们可能会非常强大。在本文中，我将引导您通过6个功能强大的CSS选择器，这些选择器将真正帮助您在下一个项目中编写干净的CSS。</p>
 <h3 id="1-div-gt-a"><a href="#1-div-gt-a" class="headerlink" title="1. div &gt;a"></a>1. div &gt;a</h3><p>这个选择器将使我们能够选择所有父元素是div标签的元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- This one will be selected --&gt; </span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- This one won&#39;t be selected --&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&lt;!-- This one will be selected --&gt; 
+&lt;div&gt;
+&lt;a&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+
+&lt;!-- This one won&#39;t be selected --&gt;
+&lt;p&gt;
+&lt;a&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;p&gt;</code></pre>
 <h3 id="2-div-a"><a href="#2-div-a" class="headerlink" title="2. div +a"></a>2. div +a</h3><p>选择紧接在div元素之后的每个标签。如果我们在div和a标签之间有一个元素，则不会选择该元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">&lt;!-- This one won&#39;t be selected --&gt;</span><br><span class="line">&lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;p&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">&lt;&#x2F;main&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&lt;main&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;div&gt;&lt;&#x2F;div&gt;
+&lt;a&gt;&lt;&#x2F;a&gt;
+&lt;!-- This one won&#39;t be selected --&gt;
+&lt;div&gt;&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;&#x2F;p&gt;
+&lt;a&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;main&gt;</code></pre>
 <h3 id="3-div-a"><a href="#3-div-a" class="headerlink" title="3. div ~a"></a>3. div ~a</h3><p>a标签将选择每个标签，然后在同一级别上添加div标签。换句话说，如果a标签不是紧跟在div标签之后，而是具有div标签作为同级元素，则将选择该标签。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;</span><br><span class="line">  &lt;!-- This one will be selected --&gt;</span><br><span class="line">  &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">  &lt;!-- This one will be selected --&gt;</span><br><span class="line">  &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;p&gt;&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;!-- This one will be selected --&gt;</span><br><span class="line">    &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;p&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">  &lt;&#x2F;section&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &lt;footer&gt;</span><br><span class="line">    &lt;!-- This one won&#39;t be selected --&gt;</span><br><span class="line">    &lt;p&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;a&gt;&lt;&#x2F;a&gt;</span><br><span class="line">  &lt;&#x2F;footer&gt;</span><br><span class="line">&lt;&#x2F;main&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&lt;main&gt;
+  &lt;!-- This one will be selected --&gt;
+  &lt;div&gt;&lt;&#x2F;div&gt;
+  &lt;a&gt;&lt;&#x2F;a&gt;
+  &lt;!-- This one will be selected --&gt;
+  &lt;div&gt;&lt;&#x2F;div&gt;
+  &lt;p&gt;&lt;&#x2F;p&gt;
+  &lt;a&gt;&lt;&#x2F;a&gt;
+  &lt;section&gt;
+    &lt;!-- This one will be selected --&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;p&gt;&lt;&#x2F;p&gt;
+    &lt;a&gt;&lt;&#x2F;a&gt;
+  &lt;&#x2F;section&gt;
+
+
+  &lt;footer&gt;
+    &lt;!-- This one won&#39;t be selected --&gt;
+    &lt;p&gt;&lt;&#x2F;p&gt;
+    &lt;a&gt;&lt;&#x2F;a&gt;
+  &lt;&#x2F;footer&gt;
+&lt;&#x2F;main&gt;</code></pre>
 
 <h4 id="4-属性-值"><a href="#4-属性-值" class="headerlink" title="4. [属性^=值]"></a>4. [属性^=值]</h4><p>例如：<code>[class ^ =&quot;list-&quot;]</code>此选择器将选择每个包含class属性且其值以list-开头的元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;list-element&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;list-container&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;list-item&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- This one won&#39;t be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;list__footer&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;main&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&lt;main&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;div class&#x3D;&quot;list-element&quot;&gt;&lt;&#x2F;div&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;div class&#x3D;&quot;list-container&quot;&gt;&lt;&#x2F;div&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;div class&#x3D;&quot;list-item&quot;&gt;&lt;&#x2F;div&gt;
+&lt;!-- This one won&#39;t be selected --&gt;
+&lt;div class&#x3D;&quot;list__footer&quot;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;main&gt;</code></pre>
 
 <h3 id="5-属性-值"><a href="#5-属性-值" class="headerlink" title="5. [属性$=值]"></a>5. [属性$=值]</h3><p>例如：[src $ =”.png”]这将选择每个值以.png结尾的src属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;img src&#x3D;&quot;image1.png&quot;&gt;</span><br><span class="line">&lt;!-- This one will be not selected --&gt;</span><br><span class="line">&lt;img src&#x3D;&quot;image2.jpg&quot;&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;img src&#x3D;&quot;image3.png&quot;&gt;</span><br><span class="line">&lt;!-- This one won&#39;t be selected --&gt;</span><br><span class="line">&lt;img src&#x3D;&quot;image4.svg&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&lt;div&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;img src&#x3D;&quot;image1.png&quot;&gt;
+&lt;!-- This one will be not selected --&gt;
+&lt;img src&#x3D;&quot;image2.jpg&quot;&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;img src&#x3D;&quot;image3.png&quot;&gt;
+&lt;!-- This one won&#39;t be selected --&gt;
+&lt;img src&#x3D;&quot;image4.svg&quot;&gt;
+&lt;&#x2F;div&gt;</code></pre>
 
 <h3 id="6-属性-值"><a href="#6-属性-值" class="headerlink" title="6. [属性*=值]"></a>6. [属性*=值]</h3><p>例如：<code>[class * =&quot;-list&quot;]</code>此选择器将选择其class属性包含-list的每个元素。 不管-list是在类值的开头，中间还是结尾都没有关系。最重要的是该值必须包含-list。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;main-list-container&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;primary-list&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- This one will be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;primary-list-item&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- This one won&#39;t be selected --&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;list-footer&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;main&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&lt;main&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;div class&#x3D;&quot;main-list-container&quot;&gt;&lt;&#x2F;div&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;div class&#x3D;&quot;primary-list&quot;&gt;&lt;&#x2F;div&gt;
+&lt;!-- This one will be selected --&gt;
+&lt;div class&#x3D;&quot;primary-list-item&quot;&gt;&lt;&#x2F;div&gt;
+&lt;!-- This one won&#39;t be selected --&gt;
+&lt;div class&#x3D;&quot;list-footer&quot;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;main&gt;</code></pre>
 
 <p>结论 有时候，很难找到所需样式的元素，这是因为我们对CSS选择器不够熟悉，而导致被滥用。在实际应用中，这些选择器可能是非常有用。</p>
 
@@ -606,10 +800,40 @@
           <h2 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h2><p>触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间</p>
 <p>思路：</p>
 <p>每次触发事件时都取消之前的延时调用方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn) &#123;</span><br><span class="line">    let timeout &#x3D; null; &#x2F;&#x2F; 创建一个标记用来存放定时器的返回值</span><br><span class="line">    return function () &#123;</span><br><span class="line">    clearTimeout(timeout); &#x2F;&#x2F; 每当用户输入的时候把前一个 setTimeout clear 掉</span><br><span class="line">    timeout &#x3D; setTimeout(() &#x3D;&gt; &#123; &#x2F;&#x2F; 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数</span><br><span class="line">        fn.apply(this, arguments);</span><br><span class="line">    &#125;, 500);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">function sayHi() &#123;</span><br><span class="line">    console.log(&#39;防抖成功&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var inp &#x3D; document.getElementById(&#39;inp&#39;);</span><br><span class="line">inp.addEventListener(&#39;input&#39;, debounce(sayHi)); &#x2F;&#x2F; 防抖</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">function debounce(fn) &#123;
+    let timeout &#x3D; null; &#x2F;&#x2F; 创建一个标记用来存放定时器的返回值
+    return function () &#123;
+    clearTimeout(timeout); &#x2F;&#x2F; 每当用户输入的时候把前一个 setTimeout clear 掉
+    timeout &#x3D; setTimeout(() &#x3D;&gt; &#123; &#x2F;&#x2F; 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数
+        fn.apply(this, arguments);
+    &#125;, 500);
+    &#125;;
+&#125;
+function sayHi() &#123;
+    console.log(&#39;防抖成功&#39;);
+&#125;
+
+var inp &#x3D; document.getElementById(&#39;inp&#39;);
+inp.addEventListener(&#39;input&#39;, debounce(sayHi)); &#x2F;&#x2F; 防抖</code></pre>
 <h3 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h3><p>高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率</p>
 <p>思路：<br>每次触发事件时都判断当前是否有等待执行的延时函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn) &#123;</span><br><span class="line">    let canRun &#x3D; true; &#x2F;&#x2F; 通过闭包保存一个标记</span><br><span class="line">    return function () &#123;</span><br><span class="line">    if (!canRun) return; &#x2F;&#x2F; 在函数开头判断标记是否为true，不为true则return</span><br><span class="line">    canRun &#x3D; false; &#x2F;&#x2F; 立即设置为false</span><br><span class="line">    setTimeout(() &#x3D;&gt; &#123; &#x2F;&#x2F; 将外部传入的函数的执行放在setTimeout中</span><br><span class="line">        fn.apply(this, arguments);</span><br><span class="line">        &#x2F;&#x2F; 最后在setTimeout执行完毕后再把标记设置为true(关键)表示可以执行下一次循环了。当定时器没有执行的时候标记永远是false，在开头被return掉</span><br><span class="line">        canRun &#x3D; true;</span><br><span class="line">    &#125;, 500);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">function sayHi(e) &#123;</span><br><span class="line">    console.log(e.target.innerWidth, e.target.innerHeight);</span><br><span class="line">&#125;</span><br><span class="line">window.addEventListener(&#39;resize&#39;, throttle(sayHi));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">function throttle(fn) &#123;
+    let canRun &#x3D; true; &#x2F;&#x2F; 通过闭包保存一个标记
+    return function () &#123;
+    if (!canRun) return; &#x2F;&#x2F; 在函数开头判断标记是否为true，不为true则return
+    canRun &#x3D; false; &#x2F;&#x2F; 立即设置为false
+    setTimeout(() &#x3D;&gt; &#123; &#x2F;&#x2F; 将外部传入的函数的执行放在setTimeout中
+        fn.apply(this, arguments);
+        &#x2F;&#x2F; 最后在setTimeout执行完毕后再把标记设置为true(关键)表示可以执行下一次循环了。当定时器没有执行的时候标记永远是false，在开头被return掉
+        canRun &#x3D; true;
+    &#125;, 500);
+    &#125;;
+&#125;
+function sayHi(e) &#123;
+    console.log(e.target.innerWidth, e.target.innerHeight);
+&#125;
+window.addEventListener(&#39;resize&#39;, throttle(sayHi));
+</code></pre>
       
     </div>
 
@@ -768,20 +992,34 @@
           <p>使用微信开发工具手写css真的每次都很浪费时间；现在终于可以用scss在微信开发者工具上自编译出wxss了</p>
 <h3 id="主要配置流程如下"><a href="#主要配置流程如下" class="headerlink" title="主要配置流程如下"></a>主要配置流程如下</h3><p>1，下载EasySass插件复制到微信开发者工具，可以在vscode扩展里面找，然后安装，安装后可以在C盘 <code>用户目录/.vscode/extensions</code> 找到下载的扩展包</p>
 <p>2，打开微信开发工具 找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 拓展 &gt; 编辑器自定义扩展 </code>打开扩展文件夹， 将vscode安装的扩展包复制到这里，然后重启微信开发工具，然后找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 拓展 &gt; 编辑器自定义扩展</code> 就能看到扩展文件，点击开启</p>
-<img src="http://file.w3cbest.com/file/images/20210421105100.png">
+<img data-src="http://file.w3cbest.com/file/images/20210421105100.png">
 
-<img src="http://file.w3cbest.com/file/images/20210421105148.png">
+<img data-src="http://file.w3cbest.com/file/images/20210421105148.png">
 
 <p>3，配置编辑器，找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 编辑器 &gt; 更多及工作区设置</code> 进入设置页面，点击扩展 找到 <code>EasySass configuration</code> 看到 <code>formats</code> 在 <code>setting.json</code> 中编辑进入后就会看到生成的配置信息，将.css改为.wxss,如果不想要压缩版可删除</p>
-<img src="http://file.w3cbest.com/file/images/20210421105431.png">
+<img data-src="http://file.w3cbest.com/file/images/20210421105431.png">
 
-<img src="http://file.w3cbest.com/file/images/20210421105501.png">
+<img data-src="http://file.w3cbest.com/file/images/20210421105501.png">
 
-<img src="http://file.w3cbest.com/file/images/20210421105528.png">
+<img data-src="http://file.w3cbest.com/file/images/20210421105528.png">
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;easysass.formats&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">    &quot;format&quot;: &quot;expanded&quot;,</span><br><span class="line">    &quot;extension&quot;: &quot;.css&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">    &quot;format&quot;: &quot;compressed&quot;,</span><br><span class="line">    &quot;extension&quot;: &quot;.min.css&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&quot;easysass.formats&quot;: [
+    &#123;
+    &quot;format&quot;: &quot;expanded&quot;,
+    &quot;extension&quot;: &quot;.css&quot;
+    &#125;,
+    &#123;
+    &quot;format&quot;: &quot;compressed&quot;,
+    &quot;extension&quot;: &quot;.min.css&quot;
+    &#125;
+]</code></pre>
 <p>改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;easysass.formats&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">    &quot;format&quot;: &quot;expanded&quot;,</span><br><span class="line">    &quot;extension&quot;: &quot;.wxss&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&quot;easysass.formats&quot;: [
+    &#123;
+    &quot;format&quot;: &quot;expanded&quot;,
+    &quot;extension&quot;: &quot;.wxss&quot;
+    &#125;
+]</code></pre>
 
 
 
@@ -858,52 +1096,154 @@
 
       
           <p>在JavaScript中，数组是一个特殊的变量，用于存储不同的元素。它具有一些内置属性和方法，可用于根据需要添加，删除，迭代或操作数。并且了解JavaScript数组方法可以提升你的开发技能。 在本文中，我们将介绍15种关于JavaScript的数组方法，这些方法可以帮助你正确地处理数据。 1.some() 2. reduce() 3. Every() 4. map() 5. flat() 6. filter() 7. forEach() 8. findIndex() 9. find() 10. sort() 11. concat() 12. fill() 13. includes() 14. reverse() 15. flatMap() 注意，大多数情况下，我们将简化作为参数传递的函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Instead of using this way</span><br><span class="line">myAwesomeArray.some(test &#x3D;&gt; &#123;</span><br><span class="line">if (test &#x3D;&#x3D;&#x3D; &quot;d&quot;) &#123;</span><br><span class="line">return test</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; We&#39;ll use the shorter one</span><br><span class="line">myAwesomeArray.some(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;d&quot;)</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; Instead of using this way
+myAwesomeArray.some(test &#x3D;&gt; &#123;
+if (test &#x3D;&#x3D;&#x3D; &quot;d&quot;) &#123;
+return test
+&#125;
+&#125;)
+&#x2F;&#x2F; We&#39;ll use the shorter one
+myAwesomeArray.some(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;d&quot;)</code></pre>
 
 <h3 id="1、some"><a href="#1、some" class="headerlink" title="1、some()"></a>1、some()</h3><p>此方法为参数传递的函数测试数组。如果有一个元素与测试元素匹配，则返回true，否则返回false。 译者注： some() 不会对空数组进行检测；some() 不会改变原始数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;];</span><br><span class="line"></span><br><span class="line">myAwesomeArray.some(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;d&quot;)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : true</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;];
+
+myAwesomeArray.some(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;d&quot;)
+&#x2F;&#x2F;-------&gt; Output : true</code></pre>
 
 <h3 id="2、reduce"><a href="#2、reduce" class="headerlink" title="2、reduce()"></a>2、reduce()</h3><p>此方法接收一个函数作为累加器。它为数组中的每个元素依次执行回调函数，不包括数组中被删除或者从未被赋值的元素。函数应用于累加器，数组中的每个值最后只返回一个值。 译者注：reduce() 方法接受四个参数：初始值（上一次回调的返回值），当前元素值，当前索引，原数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]</span><br><span class="line">myAwesomeArray.reduce((total, value) &#x3D;&gt; total * value)</span><br><span class="line">&#x2F;&#x2F; 1 * 2 * 3 * 4 * 5</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output &#x3D; 120</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]
+myAwesomeArray.reduce((total, value) &#x3D;&gt; total * value)
+&#x2F;&#x2F; 1 * 2 * 3 * 4 * 5
+&#x2F;&#x2F;-------&gt; Output &#x3D; 120</code></pre>
 
 <h3 id="3、Every"><a href="#3、Every" class="headerlink" title="3、Every()"></a>3、Every()</h3><p>此方法是对数组中每项运行给定函数，如果数组的每个元素都与测试匹配，则返回true，反之则返回false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span><br><span class="line"></span><br><span class="line">myAwesomeArray.every(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;d&quot;)</span><br><span class="line">&#x2F;&#x2F; -------&gt; Output : false</span><br><span class="line"></span><br><span class="line">const myAwesomeArray2 &#x3D; [&quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;]</span><br><span class="line"></span><br><span class="line">myAwesomeArray2.every(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;a&quot;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : true</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+
+myAwesomeArray.every(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;d&quot;)
+&#x2F;&#x2F; -------&gt; Output : false
+
+const myAwesomeArray2 &#x3D; [&quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;]
+
+myAwesomeArray2.every(test &#x3D;&gt; test &#x3D;&#x3D;&#x3D; &quot;a&quot;)
+
+&#x2F;&#x2F;-------&gt; Output : true</code></pre>
 
 <h3 id="4、map"><a href="#4、map" class="headerlink" title="4、map()"></a>4、map()</h3><p>该方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。它按照原始数组元素顺序依次处理元素。 译者注：map() 不会对空数组进行检测；map() 不会改变原始数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [5, 4, 3, 2, 1]</span><br><span class="line"></span><br><span class="line">myAwesomeArray.map(x &#x3D;&gt; x * x)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : 25</span><br><span class="line">&#x2F;&#x2F; 16</span><br><span class="line">&#x2F;&#x2F; 9</span><br><span class="line">&#x2F;&#x2F; 4</span><br><span class="line">&#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [5, 4, 3, 2, 1]
+
+myAwesomeArray.map(x &#x3D;&gt; x * x)
+
+&#x2F;&#x2F;-------&gt; Output : 25
+&#x2F;&#x2F; 16
+&#x2F;&#x2F; 9
+&#x2F;&#x2F; 4
+&#x2F;&#x2F; 1</code></pre>
 
 <h3 id="5、flat"><a href="#5、flat" class="headerlink" title="5、flat()"></a>5、flat()</h3><p>此方法创建一个新数组，其中包含子数组上的holden元素，并将其平整到新数组中。请注意，此方法只能进行一个级别的深度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [[1, 2], [3, 4], 5]</span><br><span class="line">myAwesomeArray.flat()</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [[1, 2], [3, 4], 5]
+myAwesomeArray.flat()
+&#x2F;&#x2F;-------&gt; Output : [1, 2, 3, 4, 5]</code></pre>
 
 <h3 id="6、filter"><a href="#6、filter" class="headerlink" title="6、filter()"></a>6、filter()</h3><p>该方法接收一个函数作为参数。并返回一个新数组，该数组包含该数组的所有元素，作为参数传递的过滤函数对其返回true。 译者注：filter()方法是对数据中的元素进行过滤，也就是说是不能修改原数组中的数据，只能读取原数组中的数据，callback需要返回布尔值；为true的时候，对应的元素留下来；为false的时候，对应的元素过滤掉。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [</span><br><span class="line">&#123; id: 1, name: &quot;john&quot; &#125;, </span><br><span class="line">&#123; id: 2, name: &quot;Ali&quot; &#125;,</span><br><span class="line">&#123; id: 3, name: &quot;Mass&quot; &#125;, </span><br><span class="line">&#123; id: 4, name: &quot;Mass&quot; &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">myAwesomeArray.filter(element &#x3D;&gt; element.name &#x3D;&#x3D;&#x3D; &quot;Mass&quot;)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : 0:&#123;id: 3, name: &quot;Mass&quot;&#125;,</span><br><span class="line">&#x2F;&#x2F; 1:&#123;id: 4, name: &quot;Mass&quot;&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [
+&#123; id: 1, name: &quot;john&quot; &#125;, 
+&#123; id: 2, name: &quot;Ali&quot; &#125;,
+&#123; id: 3, name: &quot;Mass&quot; &#125;, 
+&#123; id: 4, name: &quot;Mass&quot; &#125;
+]
+
+myAwesomeArray.filter(element &#x3D;&gt; element.name &#x3D;&#x3D;&#x3D; &quot;Mass&quot;)
+&#x2F;&#x2F;-------&gt; Output : 0:&#123;id: 3, name: &quot;Mass&quot;&#125;,
+&#x2F;&#x2F; 1:&#123;id: 4, name: &quot;Mass&quot;&#125;</code></pre>
 
 <h3 id="7、forEach"><a href="#7、forEach" class="headerlink" title="7、forEach()"></a>7、forEach()</h3><p>此方法用于调用数组的每个元素。并将元素传递给回调函数。 译者注: forEach() 对于空数组是不会执行回调函数的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [</span><br><span class="line">&#123; id: 1, name: &quot;john&quot; &#125;,</span><br><span class="line">&#123; id: 2, name: &quot;Ali&quot; &#125;,</span><br><span class="line">&#123; id: 3, name: &quot;Mass&quot; &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">myAwesomeArray.forEach(element &#x3D;&gt; console.log(element.name))</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : john</span><br><span class="line">&#x2F;&#x2F; Ali</span><br><span class="line">&#x2F;&#x2F; Mass</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [
+&#123; id: 1, name: &quot;john&quot; &#125;,
+&#123; id: 2, name: &quot;Ali&quot; &#125;,
+&#123; id: 3, name: &quot;Mass&quot; &#125;
+]
+
+myAwesomeArray.forEach(element &#x3D;&gt; console.log(element.name))
+&#x2F;&#x2F;-------&gt; Output : john
+&#x2F;&#x2F; Ali
+&#x2F;&#x2F; Mass</code></pre>
 
 <h3 id="8、-findIndex"><a href="#8、-findIndex" class="headerlink" title="8、 findIndex()"></a>8、 findIndex()</h3><p>此方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。它为数组中的每个元素都调用一次函数执行，当数组中的元素在测试条件时返回 true 时, findIndex() 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。如果没有符合条件的元素返回 -1 译者注：findIndex() 对于空数组，函数是不会执行的， findIndex() 并没有改变数组的原始值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [</span><br><span class="line">&#123; id: 1, name: &quot;john&quot; &#125;,</span><br><span class="line">&#123; id: 2, name: &quot;Ali&quot; &#125;,</span><br><span class="line">&#123; id: 3, name: &quot;Mass&quot; &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">myAwesomeArray.findIndex(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 3)</span><br><span class="line">&#x2F;&#x2F; -------&gt; Output : 2</span><br><span class="line"></span><br><span class="line">myAwesomeArray.findIndex(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 7)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : -1</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [
+&#123; id: 1, name: &quot;john&quot; &#125;,
+&#123; id: 2, name: &quot;Ali&quot; &#125;,
+&#123; id: 3, name: &quot;Mass&quot; &#125;
+]
+
+myAwesomeArray.findIndex(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 3)
+&#x2F;&#x2F; -------&gt; Output : 2
+
+myAwesomeArray.findIndex(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 7)
+&#x2F;&#x2F;-------&gt; Output : -1</code></pre>
 
 <h3 id="9、-find"><a href="#9、-find" class="headerlink" title="9、 find()"></a>9、 find()</h3><p>此方法返回通过测试（函数内判断）的数组的第一个元素的值。find() 方法为数组中的每个元素都调用一次函数执行：当数组中的元素在测试条件时回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。如果没有符合条件的元素返回 undefined。 译者注: find() 对于空数组，函数是不会执行的；find() 并没有改变数组的原始值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [</span><br><span class="line">&#123; id: 1, name: &quot;john&quot; &#125;,</span><br><span class="line">&#123; id: 2, name: &quot;Ali&quot; &#125;,</span><br><span class="line">&#123; id: 3, name: &quot;Mass&quot; &#125;</span><br><span class="line">]</span><br><span class="line">myAwesomeArray.find(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 3)</span><br><span class="line">&#x2F;&#x2F; -------&gt; Output : &#123;id: 3, name: &quot;Mass&quot;&#125;</span><br><span class="line"></span><br><span class="line">myAwesomeArray.find(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 7)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : undefined</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [
+&#123; id: 1, name: &quot;john&quot; &#125;,
+&#123; id: 2, name: &quot;Ali&quot; &#125;,
+&#123; id: 3, name: &quot;Mass&quot; &#125;
+]
+myAwesomeArray.find(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 3)
+&#x2F;&#x2F; -------&gt; Output : &#123;id: 3, name: &quot;Mass&quot;&#125;
+
+myAwesomeArray.find(element &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; 7)
+&#x2F;&#x2F;-------&gt; Output : undefined</code></pre>
 
 <h3 id="10、-sort"><a href="#10、-sort" class="headerlink" title="10、 sort()"></a>10、 sort()</h3><p>此方法接收一个函数作为参数。它对数组的元素进行排序并返回它。也可以使用含有参数的sort()方法进行排序。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [5, 4, 3, 2, 1]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Sort from smallest to largest</span><br><span class="line">myAwesomeArray.sort((a, b) &#x3D;&gt; a - b)</span><br><span class="line">&#x2F;&#x2F; -------&gt; Output : [1, 2, 3, 4, 5]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Sort from largest to smallest</span><br><span class="line">myAwesomeArray.sort((a, b) &#x3D;&gt; b - a)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : [5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [5, 4, 3, 2, 1]
+
+&#x2F;&#x2F; Sort from smallest to largest
+myAwesomeArray.sort((a, b) &#x3D;&gt; a - b)
+&#x2F;&#x2F; -------&gt; Output : [1, 2, 3, 4, 5]
+
+&#x2F;&#x2F; Sort from largest to smallest
+myAwesomeArray.sort((a, b) &#x3D;&gt; b - a)
+&#x2F;&#x2F;-------&gt; Output : [5, 4, 3, 2, 1]</code></pre>
 
 <h3 id="11、-concat"><a href="#11、-concat" class="headerlink" title="11、 concat()"></a>11、 concat()</h3><p>此方法用于连接两个或多个数组/值，它不会改变现有的数组。而仅仅返回被连接数组的一个新数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]</span><br><span class="line">const myAwesomeArray2 &#x3D; [10, 20, 30, 40, 50]</span><br><span class="line">myAwesomeArray.concat(myAwesomeArray2)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : [1, 2, 3, 4, 5, 10, 20, 30, 40, 50]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]
+const myAwesomeArray2 &#x3D; [10, 20, 30, 40, 50]
+myAwesomeArray.concat(myAwesomeArray2)
+&#x2F;&#x2F;-------&gt; Output : [1, 2, 3, 4, 5, 10, 20, 30, 40, 50]</code></pre>
 
 <h3 id="12、-fill"><a href="#12、-fill" class="headerlink" title="12、 fill()"></a>12、 fill()</h3><p>此方法的作用是使用一个固定值来替换数组中的元素。该固定值可以是字母、数字、字符串、数组等等。它还有两个可选参数，表示填充起来的开始位置（默认为0）与结束位置（默认为array.length）。 译者注：fill() 方法用于将一个固定值替换数组的元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; The first argument (0) is the value</span><br><span class="line">&#x2F;&#x2F; The second argument (1) is the starting index</span><br><span class="line">&#x2F;&#x2F; The third argument (3) is the ending index</span><br><span class="line"></span><br><span class="line">myAwesomeArray.fill(0, 1, 3)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : [1, 0, 0, 4, 5]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]
+
+&#x2F;&#x2F; The first argument (0) is the value
+&#x2F;&#x2F; The second argument (1) is the starting index
+&#x2F;&#x2F; The third argument (3) is the ending index
+
+myAwesomeArray.fill(0, 1, 3)
+&#x2F;&#x2F;-------&gt; Output : [1, 0, 0, 4, 5]</code></pre>
 
 <h3 id="13、-includes"><a href="#13、-includes" class="headerlink" title="13、 includes()"></a>13、 includes()</h3><p>此方法用于判断字符串是否包含指定的子字符串。如果找到匹配的字符串则返回 true，否则返回 false。 译者注：includes() 方法区分大小写。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]</span><br><span class="line"></span><br><span class="line">myAwesomeArray.includes(3)</span><br><span class="line">&#x2F;&#x2F; -------&gt; Output : true</span><br><span class="line"></span><br><span class="line">myAwesomeArray.includes(8)</span><br><span class="line">&#x2F;&#x2F; -------&gt; Output : false</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [1, 2, 3, 4, 5]
+
+myAwesomeArray.includes(3)
+&#x2F;&#x2F; -------&gt; Output : true
+
+myAwesomeArray.includes(8)
+&#x2F;&#x2F; -------&gt; Output : false</code></pre>
 
 <h3 id="14、-reverse"><a href="#14、-reverse" class="headerlink" title="14、 reverse()"></a>14、 reverse()</h3><p>此方法用于颠倒数组中元素的顺序。第一个元素成为最后一个，最后一个元素将成为第一个。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [&quot;e&quot;, &quot;d&quot;, &quot;c&quot;, &quot;b&quot;, &quot;a&quot;]</span><br><span class="line">myAwesomeArray.reverse()</span><br><span class="line">&#x2F;&#x2F; -------&gt; Output : [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [&quot;e&quot;, &quot;d&quot;, &quot;c&quot;, &quot;b&quot;, &quot;a&quot;]
+myAwesomeArray.reverse()
+&#x2F;&#x2F; -------&gt; Output : [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</code></pre>
 
 <h3 id="15、-flatMap"><a href="#15、-flatMap" class="headerlink" title="15、 flatMap()"></a>15、 flatMap()</h3><p>该方法将函数应用于数组的每个元素，然后将结果压缩为一个新数组。它在一个函数中结合了flat()和map()。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const myAwesomeArray &#x3D; [[1], [2], [3], [4], [5]]</span><br><span class="line"></span><br><span class="line">myAwesomeArray.flatMap(arr &#x3D;&gt; arr * 10)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : [10, 20, 30, 40, 50]</span><br><span class="line">&#x2F;&#x2F; With .flat() and .map()</span><br><span class="line"></span><br><span class="line">myAwesomeArray.flat().map(arr &#x3D;&gt; arr * 10)</span><br><span class="line">&#x2F;&#x2F;-------&gt; Output : [10, 20, 30, 40, 50]</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">const myAwesomeArray &#x3D; [[1], [2], [3], [4], [5]]
+
+myAwesomeArray.flatMap(arr &#x3D;&gt; arr * 10)
+&#x2F;&#x2F;-------&gt; Output : [10, 20, 30, 40, 50]
+&#x2F;&#x2F; With .flat() and .map()
+
+myAwesomeArray.flat().map(arr &#x3D;&gt; arr * 10)
+&#x2F;&#x2F;-------&gt; Output : [10, 20, 30, 40, 50]</code></pre>
       
     </div>
 
@@ -977,34 +1317,67 @@
 
       
           <p>在这篇文章中，我将教你如何使用 CSS Grid 来创建一个超酷的图像网格图，它将根据屏幕的宽度来改变列的数量。最精彩的地方在于：所有的响应特性被添加到了一行 css 代码中。这意味着我们不必将 HTML 与丑陋的类名(如col-sm-4, col-md-8)混杂在一起，也不必为每个屏幕创建媒体查询。ok，让我们发车吧。</p>
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>在本文中，我将继续使用我在第一篇 <a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/learn-css-grid-in-5-minutes-f582e87b1228/">CSS Grid 布局教程文章</a>中的网格布局。然后，我们将在文章末尾添加图片。下面是我们初始化网格的外观： <img src="http://file.w3cbest.com/file/images/1_fJNIdDiScjhI9CZjdxv3Eg.png"> HTML 代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">  &lt;div&gt;1&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;2&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;3&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;4&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;5&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;6&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>在本文中，我将继续使用我在第一篇 <a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/learn-css-grid-in-5-minutes-f582e87b1228/">CSS Grid 布局教程文章</a>中的网格布局。然后，我们将在文章末尾添加图片。下面是我们初始化网格的外观： <img data-src="http://file.w3cbest.com/file/images/1_fJNIdDiScjhI9CZjdxv3Eg.png"> HTML 代码：</p>
+<pre class="language-none"><code class="language-none">&lt;div class&#x3D;&quot;container&quot;&gt;
+  &lt;div&gt;1&lt;&#x2F;div&gt;
+  &lt;div&gt;2&lt;&#x2F;div&gt;
+  &lt;div&gt;3&lt;&#x2F;div&gt;
+  &lt;div&gt;4&lt;&#x2F;div&gt;
+  &lt;div&gt;5&lt;&#x2F;div&gt;
+  &lt;div&gt;6&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;</code></pre>
 
 <p>CSS 代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">display: grid;</span><br><span class="line">grid-template-columns: 100px 100px 100px;</span><br><span class="line">grid-template-rows: 50px 50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-template-columns: 100px 100px 100px;
+grid-template-rows: 50px 50px;
+&#125;</code></pre>
 
 <p>注意: 示例中有一些基础的样式，但我在这里没有写出来，因为这对 CSS 网格布局没有任何影响 如果这段代码让你感到困惑，我建议你去好好读下我的这篇文章<a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/learn-css-grid-in-5-minutes-f582e87b1228/">Learn CSS Grid in 5 minutes</a>，其中就详细的解释了布局的基础知识。 让我们让列开始具有自适应特性吧。 基础响应单位: fraction CSS 栅格布局带来了一个全新的值:fraction单位，fraction单位通常简写为fr，它允许你根据需要将容器拆分为多个块。 让我们将每一列更改为一个 fraction 单位宽:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">display: grid;</span><br><span class="line">grid-template-columns: 1fr 1fr 1fr;</span><br><span class="line">grid-template-rows: 50px 50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 50px 50px;
+&#125;</code></pre>
 
-<p>结果是栅格布局将会把整个宽度分成三个 fraction，每列占据一个 fraction 单位，效果如下： <img src="http://file.w3cbest.com/file/images/1_JgGPqT2AfFNDD8DhG2wPdQ.gif"> 如果我们将grid-template-columns的值更改为1fr 2fr 1fr，第二列的宽度将会是其它两列的两倍。总宽现在是四个 fraction 单位，第二列占据两个 fraction 单位，其它列各占一个 fraction。效果如下： <img src="http://file.w3cbest.com/file/images/1_cpfokc1HBgCwOTNhRU9SHg.gif"> 总的来说，fraction 单位值将使你可以很容易的更改列的宽度。 高级响应 然而，上面列子并没有给出我们想要的响应性，因为网格总是三列宽。我们希望网格能根据容器的宽度改变列的数量。要做到这一点，你必须学习如下三个概念：</p>
+<p>结果是栅格布局将会把整个宽度分成三个 fraction，每列占据一个 fraction 单位，效果如下： <img data-src="http://file.w3cbest.com/file/images/1_JgGPqT2AfFNDD8DhG2wPdQ.gif"> 如果我们将grid-template-columns的值更改为1fr 2fr 1fr，第二列的宽度将会是其它两列的两倍。总宽现在是四个 fraction 单位，第二列占据两个 fraction 单位，其它列各占一个 fraction。效果如下： <img data-src="http://file.w3cbest.com/file/images/1_cpfokc1HBgCwOTNhRU9SHg.gif"> 总的来说，fraction 单位值将使你可以很容易的更改列的宽度。 高级响应 然而，上面列子并没有给出我们想要的响应性，因为网格总是三列宽。我们希望网格能根据容器的宽度改变列的数量。要做到这一点，你必须学习如下三个概念：</p>
 <h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><p>首先我们学习repeat()函数。这是一个强大的指定列和行的方法。让我们使用repeat()函数来更改网格:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">  display: grid;</span><br><span class="line">  grid-template-columns: repeat(3, 100px);</span><br><span class="line">  grid-template-rows: repeat(2, 50px);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">.container &#123;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(2, 50px);
+  &#125;</code></pre>
 
-<p>在上面代码中，repeat(3, 100px)等于100px 100px 100px。第一个参数指定行与列的数量，第二个参数指定它们的宽度，因此它将为我们提供与开始时完全相同的布局： <img src="http://file.w3cbest.com/file/images/1_fJNIdDiScjhI9CZjdxv3Eg.png"></p>
+<p>在上面代码中，repeat(3, 100px)等于100px 100px 100px。第一个参数指定行与列的数量，第二个参数指定它们的宽度，因此它将为我们提供与开始时完全相同的布局： <img data-src="http://file.w3cbest.com/file/images/1_fJNIdDiScjhI9CZjdxv3Eg.png"></p>
 <h2 id="auto-fit"><a href="#auto-fit" class="headerlink" title="auto-fit"></a>auto-fit</h2><p>然后是auto-fit。让我们跳过固定数量的列，将3替换为自适应数量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">display: grid;</span><br><span class="line">grid-gap: 5px;</span><br><span class="line">grid-template-columns: repeat(auto-fit, 100px);</span><br><span class="line">grid-template-rows: repeat(2, 100px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-gap: 5px;
+grid-template-columns: repeat(auto-fit, 100px);
+grid-template-rows: repeat(2, 100px);
+&#125;</code></pre>
 
-<p>效果如下: <img src="http://file.w3cbest.com/file/images/v2-e9df20fc5a27960605959ba296042ffa_b.webp"> 现在，栅格将会根据容器的宽度调整其数量。它会尝试在容器中容纳尽可能多的 100px 宽的列。但如果我们将所有列硬写为 100px，我们将永远没法获得所需的弹性，因为它们很难填充整个宽度。正如你在上图看到的，网格通常在右侧留有空白。</p>
+<p>效果如下: <img data-src="http://file.w3cbest.com/file/images/v2-e9df20fc5a27960605959ba296042ffa_b.webp"> 现在，栅格将会根据容器的宽度调整其数量。它会尝试在容器中容纳尽可能多的 100px 宽的列。但如果我们将所有列硬写为 100px，我们将永远没法获得所需的弹性，因为它们很难填充整个宽度。正如你在上图看到的，网格通常在右侧留有空白。</p>
 <h2 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a>minmax()</h2><p>为了解决上述问题，我们需要minmax()。我们将 100px 替换为 minmax(100px, 1fr)，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">display: grid;</span><br><span class="line">grid-gap: 5px;</span><br><span class="line">grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));</span><br><span class="line">grid-template-rows: repeat(2, 100px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-gap: 5px;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+grid-template-rows: repeat(2, 100px);
+&#125;</code></pre>
 
-<p>请注意，所有响应都发生在一行 css 代码中 效果如下： <img src="http://file.w3cbest.com/file/images/v2-4c968663383dbf14b08e22c45c1ddbd8_b.webp"> 正如你所见，效果完美。minmax()函数定义的范围大于或等于 min， 小于或等于 max。 因此，现在每列将至少为 100px。但如果有更多的可用空间，栅格布局将简单地将其均分给每列，因为这些列变成了 fraction 单位，而不是 100px。</p>
+<p>请注意，所有响应都发生在一行 css 代码中 效果如下： <img data-src="http://file.w3cbest.com/file/images/v2-4c968663383dbf14b08e22c45c1ddbd8_b.webp"> 正如你所见，效果完美。minmax()函数定义的范围大于或等于 min， 小于或等于 max。 因此，现在每列将至少为 100px。但如果有更多的可用空间，栅格布局将简单地将其均分给每列，因为这些列变成了 fraction 单位，而不是 100px。</p>
 <h2 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h2><p>最后一步是添加图片。这与 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">CSS Grid</a> 布局无关，但让我们看下代码。 我们在每个网格中添加一个图片标签：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;img src&#x3D;&quot;img&#x2F;forest.jpg&quot;&#x2F;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">&lt;div&gt;&lt;img src&#x3D;&quot;img&#x2F;forest.jpg&quot;&#x2F;&gt;&lt;&#x2F;div&gt;</code></pre>
 
 <p>为了使图片适应于每个条目，我们将其宽、高设置为与条目本身一样，我们使用object-fit:cover。这将使图片覆盖它的整个容器，根据需要，浏览器将会对其进行裁剪。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.container &gt; div &gt; img &#123;</span><br><span class="line">width: 100%;</span><br><span class="line">height: 100%;</span><br><span class="line">object-fit: cover;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果如下： <img src="http://file.w3cbest.com/file/images/v2-5589cdec01ac4734366b7d38ebac182a_b.webp"> ok！现在你已经了解了 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">CSS Grid</a> 布局中最复杂的概念之一了，请给自己一个赞吧。</p>
+<pre class="language-none"><code class="language-none">.container &gt; div &gt; img &#123;
+width: 100%;
+height: 100%;
+object-fit: cover;
+&#125;</code></pre>
+<p>效果如下： <img data-src="http://file.w3cbest.com/file/images/v2-5589cdec01ac4734366b7d38ebac182a_b.webp"> ok！现在你已经了解了 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">CSS Grid</a> 布局中最复杂的概念之一了，请给自己一个赞吧。</p>
 <h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><p>在结束本文前，我提下浏览器支持情况，在撰写本文时，全球77%的网站将支持 CSS Grid，而且比例还在逐步攀升。 2018将是 CSS 网格布局的元年。它将获得突破，并成为前端开发者的必备技能，就像过去几年 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/490.html">CSS Flexbox</a> 布局发生的情况一样。</p>
 
       
@@ -1090,16 +1463,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1150,6 +1523,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

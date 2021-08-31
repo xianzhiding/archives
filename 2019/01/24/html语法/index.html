@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="什么是HTML？超文本标记语言，标准通用标记语言下的一个应用。是 网页制作必备的编程语言 “超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。 超文本标记语言的结构包括“头”部分（英语：Head）、和“主体”部分（英语：Body），其中“头”部提供关于网页的信息，“主体”部分提供网页的具体内容。 摘自:百度百科 简短一点HTML 是用来描述网页的一种语言。    HTML 指的是">
@@ -174,6 +174,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -287,8 +288,8 @@
 <p class="test"> ... </p>
 
 <p>标签总是包含<code>&lt;&gt;</code>中。</p>
-<h2 id="类型标签-Type-tags"><a href="#类型标签-Type-tags" class="headerlink" title="类型标签(Type tags)"></a>类型标签(Type tags)</h2><p>标签分为两类:开始标签和结束标签。请看下面的例子: <img src="http://file.w3cbest.com/file/images/tag-structure-1.jpg"> 开始标签总是遵循<code>&lt;x&gt;</code>的基本模式，其中x是元素的类型(例如，<code>&lt;h1&gt;</code>)。开始标签也可以有属性(我们马上会讲到)。每个元素至少必须有一个开始标签。 结束标签是在元素内容之后出现的标签。它们总是遵循<code>&lt;/x&gt;</code>的模式，其中x又是元素的类型。<code>&lt;/h1&gt;</code>)。结束标签看起来总是一样的(当然元素名除外)，不能有属性。 如果元素中没有任何内容，它就不需要关闭标签。举个例子:</p>
-<img src="/file/images/tag-structure-1.jpg">
+<h2 id="类型标签-Type-tags"><a href="#类型标签-Type-tags" class="headerlink" title="类型标签(Type tags)"></a>类型标签(Type tags)</h2><p>标签分为两类:开始标签和结束标签。请看下面的例子: <img data-src="http://file.w3cbest.com/file/images/tag-structure-1.jpg"> 开始标签总是遵循<code>&lt;x&gt;</code>的基本模式，其中x是元素的类型(例如，<code>&lt;h1&gt;</code>)。开始标签也可以有属性(我们马上会讲到)。每个元素至少必须有一个开始标签。 结束标签是在元素内容之后出现的标签。它们总是遵循<code>&lt;/x&gt;</code>的模式，其中x又是元素的类型。<code>&lt;/h1&gt;</code>)。结束标签看起来总是一样的(当然元素名除外)，不能有属性。 如果元素中没有任何内容，它就不需要关闭标签。举个例子:</p>
+<img data-src="/file/images/tag-structure-1.jpg">
 
 <p>因为它没有内容(只有属性)，所以不需要<code>&lt;/img&gt;</code>关闭标签。</p>
 <h2 id="属性（Attributes）"><a href="#属性（Attributes）" class="headerlink" title="属性（Attributes）"></a>属性（Attributes）</h2><p>元素除了具有内容外，还可以具有属性。属性存储关于元素的其他数据，并存储在开始标签中。例如:</p>
@@ -301,21 +302,59 @@
 <h1 attribute="value" otherattribute="othervalue">
 
 <p>引号是非常重要的，所以不要忘记它们!还要注意等号两边都没有空格(但是属性之间必须有空格)。</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>让我们把我们所知道的HTML标签和元素整合到这个图表中: <img src="http://file.w3cbest.com/file/images/tag-structure-2.jpg"> 唷。这可能有点令人困惑，但最终你会掌握它的窍门。如果你有什么不明白的地方，你可以在评论中问我。如果你喜欢这篇文章，不要忘记和你的朋友分享，下次我会讲到HTML网站的一般结构。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>让我们把我们所知道的HTML标签和元素整合到这个图表中: <img data-src="http://file.w3cbest.com/file/images/tag-structure-2.jpg"> 唷。这可能有点令人困惑，但最终你会掌握它的窍门。如果你有什么不明白的地方，你可以在评论中问我。如果你喜欢这篇文章，不要忘记和你的朋友分享，下次我会讲到HTML网站的一般结构。</p>
 
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/01/24/html%E8%AF%AD%E6%B3%95/" title="HTML语法">https://xianzhiding.github.io/2019/01/24/html语法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/html/" rel="tag"># html</a>
-              <a href="/tags/html5/" rel="tag"># html5</a>
-              <a href="/tags/html%E6%95%99%E7%A8%8B/" rel="tag"># html教程</a>
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag"># 前端开发</a>
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E6%95%99%E7%A8%8B/" rel="tag"># 前端教程</a>
+              <a href="/tags/html/" rel="tag"><i class="fa fa-tag"></i> html</a>
+              <a href="/tags/html5/" rel="tag"><i class="fa fa-tag"></i> html5</a>
+              <a href="/tags/html%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> html教程</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 前端开发</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 前端教程</a>
           </div>
 
         
@@ -407,16 +446,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -467,6 +506,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="有时我们需要一个容器，只在内侧有圆角，而边框或描边的四个角在外部仍然保持直角的形状，如图(1)。这是一个有趣的效果，目前还没有被滥用。用两个元素可以实现这个效果，这并没有什么特别的： 这是一个实例 (图1) 容器外围有一道边框，但只在内侧有圆角 这是一个实例 .demo { background: #655; padding: .8em; } .demo &gt; div { background: t">
@@ -176,6 +176,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -267,7 +268,7 @@ padding: 1em;
 <p>对一个有圆角的元素使用没有偏移量、没有模糊效果的 box-shadow 属性</p>
 <p>这是一个实例 (图4)</p>
 <p>为了事情的真相看起来更清楚，我们把描边显示为黑色，把投影显示为品红色；请注意描边是绘制在上层的</p>
-<p>请注意，我们为 box-shadow 属性指定的扩张值并不一定等于描边的宽度，我们只需要指定一个足够填补“空隙”的扩张值就可以了。事实上，指定一个等于描边宽度的扩张值在某些浏览器中可能会得到渲染异常，因此我推荐一个稍小些的值。这又引出了另一个问题：到底多大的投影扩张值可以填补这些空隙呢？ 为了解答这个问题，我们需要回忆起中学时学过的勾股定理，用来计算直角三角形各边的长度。勾股定理表明，如果直角边分别是 a 和 b，则斜边（正对着直角的最长边）等于 <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153413.jpg">。当两条直角边的长度相等时，这 算式会演化为<img src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153429.jpg">。 你可能还很纳闷，中学几何到底是怎么跟我们的内圆角效果扯上关系的？关于怎样用它来计算我们需要的最小扩张值，请看下图中图形化的解释。在我们的例子中，border-radius 是 .8em，那么最小的扩张值就是 0.8 (<img src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">-1 ) ≈ 0.331 370 85 em 。我们要做的就是把稍微向上取个整， 把 .34em 设置为投影的扩张半径。为了避免每次都要计算，你可以直接使用圆角半径的一半，因为 <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">—1 &lt; 0.5 。 <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901150033-300x190.jpg"> 请注意，该计算过程揭示了这个方法的另一个限制：为了让这个效果得以达成，扩张半径需要比描边的宽度值小，但它同时又要比 (<img src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 大（这里的 r 表示 border-radius）。这意味着，如果描边的宽度比 ( <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 小，那我们是不可能用这个方法达成该效果的。</p>
+<p>请注意，我们为 box-shadow 属性指定的扩张值并不一定等于描边的宽度，我们只需要指定一个足够填补“空隙”的扩张值就可以了。事实上，指定一个等于描边宽度的扩张值在某些浏览器中可能会得到渲染异常，因此我推荐一个稍小些的值。这又引出了另一个问题：到底多大的投影扩张值可以填补这些空隙呢？ 为了解答这个问题，我们需要回忆起中学时学过的勾股定理，用来计算直角三角形各边的长度。勾股定理表明，如果直角边分别是 a 和 b，则斜边（正对着直角的最长边）等于 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153413.jpg">。当两条直角边的长度相等时，这 算式会演化为<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153429.jpg">。 你可能还很纳闷，中学几何到底是怎么跟我们的内圆角效果扯上关系的？关于怎样用它来计算我们需要的最小扩张值，请看下图中图形化的解释。在我们的例子中，border-radius 是 .8em，那么最小的扩张值就是 0.8 (<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">-1 ) ≈ 0.331 370 85 em 。我们要做的就是把稍微向上取个整， 把 .34em 设置为投影的扩张半径。为了避免每次都要计算，你可以直接使用圆角半径的一半，因为 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">—1 &lt; 0.5 。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901150033-300x190.jpg"> 请注意，该计算过程揭示了这个方法的另一个限制：为了让这个效果得以达成，扩张半径需要比描边的宽度值小，但它同时又要比 (<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 大（这里的 r 表示 border-radius）。这意味着，如果描边的宽度比 ( <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 小，那我们是不可能用这个方法达成该效果的。</p>
 <h4 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h4><p>CSS 背景与边框 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-backgrounds">http://w3.org/TR/css-backgrounds</a> CSS 基本 UI 特性 <a target="_blank" rel="noopener" href="http://w3.org/TR/css3-ui">http://w3.org/TR/css3-ui</a></p>
 
     </div>
@@ -275,12 +276,50 @@ padding: 1em;
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2018/06/01/css%E8%BE%B9%E6%A1%86%E5%86%85%E5%9C%86%E8%A7%92/" title="CSS边框内圆角">https://xianzhiding.github.io/2018/06/01/css边框内圆角/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/css/" rel="tag"># css</a>
-              <a href="/tags/css3/" rel="tag"># css3</a>
-              <a href="/tags/CSS%E8%BE%B9%E6%A1%86%E5%86%85%E5%9C%86%E8%A7%92/" rel="tag"># CSS边框内圆角</a>
+              <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
+              <a href="/tags/css3/" rel="tag"><i class="fa fa-tag"></i> css3</a>
+              <a href="/tags/CSS%E8%BE%B9%E6%A1%86%E5%86%85%E5%9C%86%E8%A7%92/" rel="tag"><i class="fa fa-tag"></i> CSS边框内圆角</a>
           </div>
 
         
@@ -368,16 +407,16 @@ padding: 1em;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -428,6 +467,7 @@ padding: 1em;
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

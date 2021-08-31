@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="css实现单行文本溢出显示省略号的方法大家应该在网上已经得到想要的答案了吧，就是用text-overflow:ellipsis属性来实现，当然还需要加宽度width属来兼容部分浏览。 实现方法： .ellipsize-right{white-space: nowrap;overflow: hidden;text-overflow:ellipsis;width: 200px;} See the Pe">
@@ -171,6 +171,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -253,15 +254,53 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2018/12/28/css%E5%9C%A8%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E5%BC%80%E5%A4%B4%E6%B7%BB%E5%8A%A0%E7%9C%81%E7%95%A5%E5%8F%B7%E5%AD%97%E7%AC%A6/" title="CSS在单行文本开头添加省略号字符">https://xianzhiding.github.io/2018/12/28/css在单行文本开头添加省略号字符/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/css3/" rel="tag"># css3</a>
-              <a href="/tags/css%E6%95%99%E7%A8%8B/" rel="tag"># css教程</a>
-              <a href="/tags/CSS%E7%9C%81%E7%95%A5%E5%8F%B7/" rel="tag"># CSS省略号</a>
-              <a href="/tags/text-overflow/" rel="tag"># text-overflow</a>
-              <a href="/tags/white-space/" rel="tag"># white-space</a>
-              <a href="/tags/%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA/" rel="tag"># 文本溢出</a>
+              <a href="/tags/css3/" rel="tag"><i class="fa fa-tag"></i> css3</a>
+              <a href="/tags/css%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> css教程</a>
+              <a href="/tags/CSS%E7%9C%81%E7%95%A5%E5%8F%B7/" rel="tag"><i class="fa fa-tag"></i> CSS省略号</a>
+              <a href="/tags/text-overflow/" rel="tag"><i class="fa fa-tag"></i> text-overflow</a>
+              <a href="/tags/white-space/" rel="tag"><i class="fa fa-tag"></i> white-space</a>
+              <a href="/tags/%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA/" rel="tag"><i class="fa fa-tag"></i> 文本溢出</a>
           </div>
 
         
@@ -274,8 +313,8 @@
       <i class="fa fa-chevron-left"></i> 火狐浏览器table表格th、td填充背景描边后设置position: relative边框失效问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018/12/28/wordpress%E7%A6%81%E7%94%A85-0-2%E7%89%88%E6%9C%AC%E8%87%AA%E5%B8%A6%E7%BC%96%E8%BE%91%E5%99%A8/" rel="next" title="wordpress禁用5.0.2版本自带的Gutenberg编辑器">
-      wordpress禁用5.0.2版本自带的Gutenberg编辑器 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/01/03/%E4%BB%8E%E7%BD%91%E7%AB%99%E5%8F%91%E9%80%81http%EF%BC%8C%E4%BD%A0%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%BF%BD%E7%95%A5%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" rel="next" title="从网站发送HTTP，你可能会忽略的一个安全问题">
+      从网站发送HTTP，你可能会忽略的一个安全问题 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -348,16 +387,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -408,6 +447,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

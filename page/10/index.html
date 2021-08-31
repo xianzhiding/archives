@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
@@ -164,6 +164,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -173,592 +174,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/" class="post-title-link" itemprop="url">box-shadow和drop-shadow实现不规则投影</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-09 13:32:25" itemprop="dateCreated datePublished" datetime="2018-10-09T13:32:25+08:00">2018-10-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>当我们想给一个矩形或其他能用 border-radius 生成的形状（在“自适应的椭圆”一节中可以看到一些示例）加投影时，box-shadow 的表现都堪称完美。但是，当元素添加了一些伪元素或半透明的装饰之后，它就有些力不从心了，因为 border-radius 会无耻地忽视透明部分。这类情况包括：</p>
-<ul>
-<li>  半透明图像、背景图像、或者 border-image（比如老式的金质像框）；</li>
-<li>  元素设置了点状、虚线或半透明的边框，但没有背景（或者当background-clip 不是 border-box 时）；</li>
-<li>  对话气泡，它的小尾巴通常是用伪元素生成的；</li>
-</ul>
-<p>如果我们打算对这类元素直接应用 box-shadow，那只能得到不完全投影的结果。难道我们只能完全放弃投影效果吗？有没有办法可以解决这个难题？ <img src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131023.png"> 滤镜效果规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/filter-effects%EF%BC%89%E4%B8%BA%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%82%E5%AE%83%E5%BC%95%E5%85%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E5%8F%AB%E4%BD%9C">http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。它引入了一个叫作</a> filter 的新属性，这个属性也是从 SVG 那里借鉴过来的。尽管 CSS 滤镜基本上就是 SVG 滤镜，但我们并不需要掌握任何SVG 知识。相反，只需要一些函数就可以很方便地指定滤镜效果了，比如blur()、grayscale() 以及我们需要的 drop-shadow() ！如果你喜欢，甚至可以把多个滤镜串连起来，只要用空格把它们分隔开就可以了，比如：</p>
-<p>filter: blur() grayscale() drop-shadow();</p>
-<p>drop-shadow() 滤镜可接受的参数基本上跟 box-shadow 属性是一样的，但不包括扩张半径，不包括 inset 关键字，也不支持逗号分割的多层投影语法。举个例子，上面的投影：</p>
-<p>box-shadow: 2px 2px 10px rgba(0,0,0,.5);</p>
-<p>可以这样来写：</p>
-<p>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
-<p><img src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131101.png"> CSS 滤镜最大的好处在于，它们可以平稳退化：当浏览器不支持时，不会出现问题，只不过没有任何效果而已。如果你确实需要这个效果在尽可能多的浏览器中显示出来，可以同时附上一个 SVG 滤镜，这样可以得到稍微好一些的浏览器支持度。你可以在滤镜效果规范（<a target="_blank" rel="noopener" href="http://www.w3.org/TR/filter-effects/%EF%BC%89%E4%B8%AD%E4%B8%BA%E6%AF%8F%E4%B8%AA%E6%BB%A4%E9%95%9C%E5%87%BD%E6%95%B0%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84">http://www.w3.org/TR/filter-effects/）中为每个滤镜函数找到对应的</a> SVG 滤镜版本。你可以把 SVG滤镜和简化的 CSS 滤镜放在一起使用，让层叠机制来决定哪一行最终生效：</p>
-<p>filter: url(drop-shadow.svg#drop-shadow);<br>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
-<p>不幸的是，如果 SVG 滤镜是存放在一个独立文件里的，那它就无法像一个简洁易用的函数那样在 CSS 代码中进行随意配置；如果它是内联的，则又会搅乱你的代码。参数需要写死在文件内部，因此每当我们新加一种哪怕是大同小异的投影效果时，都需要多准备一个文件，这显然是难以接受的。当然，我们还可以使用 data URI（它也会省掉额外的 HTTP 请求），但这个方法仍然会带来文件体积的增长。总的来说，这个方法只是一种回退方案，因此只要我们把SVG 滤镜控制在一定数量以内，哪怕它们的效果大同小异，也是说得过去的。 另外一件需要牢记的事情就是，任何非透明的部分都会被一视同仁地打上投影，包括文本（如果背景是透明的），正如我们刚刚看到的那样。你可能会想，是不是可以通过 text-shadow: none; 来取消掉文本上的投影呢？其实 text-shadow 跟它是完全不相干的两码事，因此这样做并不能取消文本上的 drop-shadow() 效果。此外，如果你已经用 textshadow在文本上加了投影效果，文本投影还会被 drop-shadow() 滤镜再加上投影，这本质上是给投影打了投影！看看下面这段示例代码（请原谅它惨不忍睹的效果，这样只是为了凸显这个怪异的问题）：</p>
-<p>color: deeppink;<br>border: 2px solid;<br>text-shadow: .1em .2em yellow;<br>filter: drop-shadow(.05em .05em .1em gray);</p>
-<p>你可以看到它的渲染效果，图中的文字被同时打上了 textshadow和 drop-shadow()。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-08 08:56:49" itemprop="dateCreated datePublished" datetime="2018-10-08T08:56:49+08:00">2018-10-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>常用的 class、id、属性 选择器都可以使用 <code>document.querySelector</code> 或 <code>document.querySelectorAll</code> 替代。区别是</p>
-<ul>
-<li>  <code>document.querySelector</code> 返回第一个匹配的 <code>Element</code></li>
-<li>  <code>document.querySelectorAll</code> 返回所有匹配的 <code>Element</code> 组成的 <code>NodeList</code>。它可以通过 <code>[].slice.call()</code> 把它转成 <code>Array</code></li>
-<li>  如果匹配不到任何 <code>Element，jQuery</code> 返回空数组 <code>[]</code>，但 <code>document.querySelector</code> 返回 null，注意空指针异常。当找不到时，也可以使用 设置默认的值，如 document.querySelectorAll(selector) []</li>
-</ul>
-<blockquote>
-<p>注意：<code>document.querySelector</code> 和 <code>document.querySelectorAll</code> 性能很<strong>差</strong>。如果想提高性能，尽量使用 <code>document.getElementById</code>、<code>document.getElementsByClassName</code> 或 <code>document.getElementsByTagName</code>。</p>
-</blockquote>
-<p>探讨一下如果不需要支持过于陈旧的浏览器版本，如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</p>
-<h3 id="选取元素"><a href="#选取元素" class="headerlink" title="选取元素"></a>选取元素</h3><h4 id="选择器查询"><a href="#选择器查询" class="headerlink" title="选择器查询"></a>选择器查询</h4><p>常用的 class、id、属性 选择器都可以使用 document.querySelector 或 document.querySelectorAll 替代。</p>
-<ul>
-<li>  document.querySelector 返回第一个匹配的 Element</li>
-<li>  document.querySelectorAll 返回所有匹配的 Element 组成的 NodeList。</li>
-</ul>
-<p>jQuery：</p>
-<p>var $ele = $(“selector”);</p>
-<p>Native:</p>
-<p>let ele = document.querySelectorAll(“selector”);</p>
-<h4 id="选择器模式"><a href="#选择器模式" class="headerlink" title="选择器模式"></a>选择器模式</h4><p>选择器</p>
-<p>示例</p>
-<p>示例说明</p>
-<p>.class</p>
-<p>.intro</p>
-<p>选择所有class=”intro”的元素</p>
-<p>#id</p>
-<p>#firstname</p>
-<p>选择所有id=”firstname”的元素</p>
-<p>*</p>
-<p>*</p>
-<p>选择所有元素</p>
-<p>element</p>
-<p>p</p>
-<p>选择所有<p>元素</p>
-<p>element,element</p>
-<p>div,p</p>
-<p>选择所有<div>元素和<p>元素</p>
-<p>element element</p>
-<p>div p</p>
-<p>选择<div>元素内的所有<p>元素</p>
-<p>element&gt;element</p>
-<p>div&gt;p</p>
-<p>选择所有父级是<div>元素的 <p>元素</p>
-<p>element+element</p>
-<p>div+p</p>
-<p>选择所有紧接着<div>元素之后的<p>元素</p>
-<p>[attribute=value]</p>
-<p>a[target=_blank]</p>
-<p>选择所有使用target=”_blank”的<a>元素</p>
-<p>[attribute^=value]</p>
-<p>a[src^=”http”]</p>
-<p>选择每一个src属性的值以”http”开头的<a>元素</p>
-<p>[attribute$=value]</p>
-<p>a[src$=”.jpg”]</p>
-<p>选择每一个src属性的值以”.jpg”结尾的<a>元素</p>
-<p>:first-child</p>
-<p>ul li:first-child</p>
-<p>选择<ul>元素下的首个<li>元素</p>
-<p>:nth-child(n)</p>
-<p>ul li:nth-child(3)</p>
-<p>选择<ul>元素下的第三个<li>元素</p>
-<p>:last-child</p>
-<p>ul li:last-child</p>
-<p>选择<ul>元素下的最后一个<li>元素</p>
-<p> </p>
-<h4 id="DOM-树查询"><a href="#DOM-树查询" class="headerlink" title="DOM 树查询"></a>DOM 树查询</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$ele.parent()</code></p>
-<p><code>ele.parentNode</code></p>
-<p>元素的直接父元素</p>
-<p><code>$ele.children()</code></p>
-<p><code>ele.childNodes</code></p>
-<p>元素的所有直接子元素</p>
-<p><code>$ele.find(&quot;a&quot;)</code></p>
-<p><code>ele.querySelectorAll(&quot;a&quot;)</code></p>
-<p>元素的后代元素</p>
-<p><code>$ele.prev()</code></p>
-<p><code>ele.previousElementSibling</code></p>
-<p>元素的上一个同胞元素</p>
-<p><code>$ele.next()</code></p>
-<p><code>ele.nextElementSibling</code></p>
-<p>元素的下一个同胞元素</p>
-<h3 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h3><p>DOM本身就具有很丰富的操作方法，可以取代jQuery提供的操作方法。</p>
-<h4 id="内容和属性"><a href="#内容和属性" class="headerlink" title="内容和属性"></a>内容和属性</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>var text = $ele.text()</code></p>
-<p><code>let text = ele.innerText</code></p>
-<p>获取所选元素的文本内容</p>
-<p><code>$ele.text(&quot;text&quot;)</code></p>
-<p><code>ele.innerText = &quot;text&quot;</code></p>
-<p>设置所选元素的文本内容</p>
-<p><code>var html = $ele.html()</code></p>
-<p><code>let html = ele.innerHTML</code></p>
-<p>获取所选元素的HTML内容</p>
-<p><code>$ele.html(&quot;&lt;div&gt;html&lt;/div&gt;&quot;)</code></p>
-<p><code>ele.innerHTML = &quot;&lt;div&gt;html&lt;/div&gt;&quot;</code></p>
-<p>设置所选元素的HTML内容</p>
-<p><code>var input = $ele.val()</code></p>
-<p><code>let input = ele.value</code></p>
-<p>获取表单字段的值</p>
-<p><code>$ele.val(&quot;input&quot;)</code></p>
-<p><code>ele.value = &quot;input&quot;</code></p>
-<p>设置表单字段的值</p>
-<p><code>var href = $ele.attr(&quot;href&quot;)</code></p>
-<p><code>let href = ele.getAttribute(&quot;href&quot;)</code></p>
-<p>获取元素的属性值</p>
-<p><code>$ele.attr(&quot;href&quot;, &quot;/&quot;)</code></p>
-<p><code>ele.setAttribute(&quot;href&quot;, &quot;/&quot;)</code></p>
-<p>设置元素的属性值</p>
-<h4 id="修改-DOM-树"><a href="#修改-DOM-树" class="headerlink" title="修改 DOM 树"></a>修改 DOM 树</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$parent.append($ele)</code></p>
-<p><code>parent.appendChild(ele)</code></p>
-<p>在被选元素的结尾插入内容</p>
-<p><code>$parent.prepend($ele)</code></p>
-<p><code>parent.insertBefore(ele, parent.firstChild)</code></p>
-<p>在被选元素的开头插入内容</p>
-<p><code>$ele.after(html)</code></p>
-<p><code>ele.insertAdjacentHTML(&quot;afterend&quot;, html)</code></p>
-<p>在被选元素之后插入内容</p>
-<p><code>$ele.before(html)</code></p>
-<p><code>ele.insertAdjacentHTML(&quot;beforebegin&quot;, html)</code></p>
-<p>在被选元素之前插入内容</p>
-<p><code>$ele.remove()</code></p>
-<p><code>ele.parentNode.removeChild(ele)</code></p>
-<p>删除被选元素及其子元素</p>
-<p><code>$ele.empty()</code></p>
-<p><code>ele.innerHTML = null</code></p>
-<p>从被选元素中删除子元素</p>
-<p><code>$ele.clone()</code></p>
-<p><code>ele.cloneNode(true)</code></p>
-<p>拷贝被选元素</p>
-<p><code>$ele.replaceWith(html)</code></p>
-<p><code>ele.outerHTML = html</code></p>
-<p>指定HTML替换被选元素</p>
-<h3 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h3><p> </p>
-<h4 id="设置-Style"><a href="#设置-Style" class="headerlink" title="设置 Style"></a>设置 Style</h4><p>HTML DOM 允许 JavaScript 改变 HTML 元素的样式，Native API 提供了如下几种方式：</p>
-<ul>
-<li>  ele.setAttribute 直接修改 DOM style 属性改变样式</li>
-<li>  ele.style.cssText 通过 cssText 修改 Style 属性</li>
-<li>  ele.style.property 通过 style 对象读写行内 CSS 样式</li>
-</ul>
-<p>jQuery：</p>
-<p>var size = $ele.css(“font-size”); // 返回第一个匹配元素的 CSS 属性值<br>$ele.css(“font-size”, “2rem”); // 为所有元素设置指定的 CSS 属性值</p>
-<p>Native:</p>
-<p>let size = getComputedStyle(ele)[“font-size”]; // 获取当前元素计算后的 CSS 属性值<br>ele.style.setProperty(“font-size”, “2rem”); // 设置当前元素的某个内联样式<br>ele.style.removeProperty(“font-size”); // 移除当前元素的某个内联样式</p>
-<h4 id="设置-Class"><a href="#设置-Class" class="headerlink" title="设置 Class"></a>设置 Class</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$ele.hasClass(className)</code></p>
-<p><code>ele.classList.contains(className)</code></p>
-<p>检查元素是否包含指定的类名</p>
-<p><code>$ele.addClass(className)</code></p>
-<p><code>ele.classList.add(className)</code></p>
-<p>向元素增加一个或多个类名</p>
-<p><code>$ele.removeClass(className)</code></p>
-<p><code>ele.classList.remove(className)</code></p>
-<p>从元素中移除一个或多个类</p>
-<p><code>$ele.toggleClass(className)</code></p>
-<p><code>ele.classList.toggle(className)</code></p>
-<p>对元素的一个或多个类进行切换</p>
-<h3 id="事件方法"><a href="#事件方法" class="headerlink" title="事件方法"></a>事件方法</h3><h4 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h4><p>jQuery：</p>
-<p>$ele.on(“click”, function (evt) {<br>console.log(evt.target);<br>});</p>
-<p>Native:</p>
-<p>ele.addEventListener(“click”, evt =&gt; {<br>console.log(evt.target);<br>});</p>
-<p>解除绑定 jQuery：</p>
-<p>$ele.off(“click”);</p>
-<p>Native:</p>
-<p>ele.removeEventListener(“click”, func);</p>
-<p>如果要移除事件，addEventListener 必须使用外部函数，绑定匿名函数的事件是无法移除的。</p>
-<h4 id="模拟触发"><a href="#模拟触发" class="headerlink" title="模拟触发"></a>模拟触发</h4><p>jQuery：</p>
-<p>$ele.trigger(“click”);</p>
-<p>Native:</p>
-<p>let event = document.createEvent(“MouseEvents”);<br>event.initMouseEvent(“click”);<br>ele.dispatchEvent(event);</p>
-<p>模拟事件：</p>
-<ul>
-<li>  首先通过 document.createEvent 方法创建 Event 对象。</li>
-<li>  然后利用 Event 对象的 init 方法对其进行初始化。</li>
-<li>  最后使用 dispatchEvent 方法触发 Event 对象。</li>
-</ul>
-<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$.isArray(array)</code></p>
-<p><code>Array.isArray(array)</code></p>
-<p>判断参数是否为一个数组</p>
-<p><code>$.inArray(item, array)</code></p>
-<p><code>array.includes(item)</code></p>
-<p>判断值是否在指定数组中</p>
-<p><code>$.makeArray(objlist)</code></p>
-<p><code>Array.from(objlist)</code></p>
-<p>将类数组对象转换为数组</p>
-<p><code>$.merge(array1, array2)</code></p>
-<p><code>array1.concat(array2)</code></p>
-<p>合并两个数组（有区别）</p>
-<p><code>$.each(array, function (i, item) &#123;&#125;</code></p>
-<p><code>array.forEach((item, i) =&gt; &#123;&#125;)</code></p>
-<p>遍历指定的对象和数组</p>
-<p>合并数组时，merge 会改变原数组的内容，而 concat 不会修改原数组，只会返回合并后的数组</p>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$.now()</code></p>
-<p><code>Date.now()</code></p>
-<p>返回当前时间戳</p>
-<p><code>$.trim(string)</code></p>
-<p><code>string.trim();</code></p>
-<p>移除字符串头尾空白</p>
-<p><code>$.type(obj);</code></p>
-<p><code>Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, &#39;$1&#39;).toLowerCase();</code></p>
-<p>检测参数的内部类型</p>
-<p><code>$.parseJSON(string)</code></p>
-<p><code>JSON.parse(string)</code></p>
-<p>将JSON转换为JS对象</p>
-<p><code>$ele.data(&quot;key&quot;, &quot;value&quot;)</code></p>
-<p><code>ele.dataset.key = &quot;value&quot;</code></p>
-<p>在指定的元素上存储数据</p>
-<p><code>$.map(array, function(value, index)&#123; &#125;);</code></p>
-<p><code>array.map(function(value, index)&#123; &#125;);</code></p>
-<p>将数组转化为处理后的新数组</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://github.com/nefe/You-Dont-Need-jQuery/blob/master/README.zh-CN.md">https://github.com/nefe/You-Dont-Need-jQuery</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/07/%E5%A6%82%E4%BD%95%E7%BB%99echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%AB%98%E4%BA%AE%E8%89%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/07/%E5%A6%82%E4%BD%95%E7%BB%99echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%AB%98%E4%BA%AE%E8%89%B2/" class="post-title-link" itemprop="url">如何给ECharts柱状图设置一个高亮色</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-07 12:06:20" itemprop="dateCreated datePublished" datetime="2018-10-07T12:06:20+08:00">2018-10-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在项目开发中用到echarts有这样的需求，比如要给一个星期的某个一天设置一个高亮色与其他天不同的颜色来区分开，那么我来演示一下如何达到这样的需求， 我知道的方法有两种，也可能有其他方法，欢迎来吐槽</p>
-<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>也是在<a target="_blank" rel="noopener" href="http://www.echartsjs.com/option.html#series-bar.data">官网</a>上看到的，就是直接在data数据的数组上设置颜色，也就是说在数组的某一段需要添加对象值来达到这种效果</p>
-<p>option = {<br>……<br>series: [{<br>data: [120, {<br>value: 200,<br>itemStyle:{<br>color: ‘#f00’<br>}<br>}, 150, 80, 70, 110, 130],<br>……<br>}]<br>};</p>
-<p>这种方法在处理数据的太麻烦，我不喜欢这种方法</p>
-<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>设置itemStyle图形样式属性的color，这种方法是在formatter的启发下得到的，因为在文档上没有看到color有回调函数，首先要设置一个变量也就是高亮色的位置，这个变量的值可以后端给，也可以前端给（前端给的必定是死值）， data数组我们不动，</p>
-<p>const curInt = 2;<br>option = {<br>series:[{<br>data:[…],</p>
-<!-- 在这里设置 -->
-<p>itemStyle:{<br>color: function(params){<br>const key = params.dataIndex;<br>if(key === curInt){<br>return ‘#E062AE’;<br>}else{<br>return ‘#37A2DA’<br>}<br>}<br>}<br>}]<br>};</p>
-<p>好了，我知道的就这，方法是否对你有用，我就不知道了。 <img src="http://www.w3cbest.com/wp-content/uploads/2018/11/echarts-img.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/05/%E4%BD%BF%E7%94%A8css3-%E9%80%89%E6%8B%A9%E5%99%A8target%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BC%B8%E7%BC%A9%E7%9A%84%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/05/%E4%BD%BF%E7%94%A8css3-%E9%80%89%E6%8B%A9%E5%99%A8target%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BC%B8%E7%BC%A9%E7%9A%84%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95/" class="post-title-link" itemprop="url">使用CSS3 选择器:target制作一个可伸缩的导航菜单</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-05 20:00:14" itemprop="dateCreated datePublished" datetime="2018-10-05T20:00:14+08:00">2018-10-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我们使用CSS3 选择器:target制作一个可伸缩的导航菜单。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target">先理解一下:target</a></p>
-<h4 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h4><p>URL 带有后面跟有锚名称 #，指向文档内某个具体的元素。这个被链接的元素就是目标元素(target element)。 :target 选择器可用于选取当前活动的目标元素。 那么我就看一下代码如何做可伸缩的导航菜单</p>
-<nav id="menu">
-<ul id="menu-closed">
-<li><a href="#">首页</a></li>
-<li><a href="#">html/css</a></li>
-<li><a href="#">javascript</a></li>
-<li><a href="#">vue</a></li>
-<li><a href="#">anjular</a></li>
-<li><a href="#">react</a></li>
-<li><a href="#">php</a></li>
-<li><a href="#">python</a></li>
-<li><a href="#">highcharts</a></li>
-<li><a href="#">echarts</a></li>
-<li><a href="#menu-closed">&#215;</a></li>
-<li><a href="#menu">&#9776;</a></li>
-</ul>
-</nav>
-
-<p>CSS代码</p>
-<p>nav {<br>font-size: 12px;<br>background-color: rgb(19, 51, 61);<br>box-shadow: 0 1px 2px rgba(19, 51, 61, 0.5);<br>margin: 3em 0 6em;<br>padding: 0 1em;<br>height: 44px;<br>overflow: hidden;<br>}</p>
-<p>nav ul {<br>margin: 0;<br>padding: 0;<br>list-style-type: none;<br>max-height: 88px;<br>position: relative;<br>}</p>
-<p>nav li {<br>display: inline-block;<br>}</p>
-<p>nav a {<br>display: inline-block;<br>padding: 0 1em;<br>color: rgb(236, 236, 236);<br>font-weight: 700;<br>letter-spacing: 0.1em;<br>text-decoration: none;<br>text-transform: uppercase;<br>white-space: nowrap;<br>line-height: 44px;<br>height: 44px;<br>}</p>
-<p>nav a:hover {<br>background-color: rgba(255, 255, 255, 0.08);<br>}</p>
-<p>nav li:last-child {<br>/* 菜单按钮 */<br>position: absolute;<br>right: 0;<br>bottom: 44px;<br>background-image: linear-gradient(to right, rgba(19, 51, 61, 0) 0, rgba(19, 51, 61, 1) 2em);<br>padding-left: 3em;<br>}</p>
-<p>nav li:nth-last-child(2) {<br>/* 先关闭按钮 */<br>display: none;<br>}</p>
-<p>nav#menu:target {<br>height: auto;<br>padding: 0;<br>}</p>
-<p>nav#menu:target ul {<br>max-height: none;<br>}</p>
-<p>nav#menu:target li {<br>display: block;<br>}</p>
-<p>nav#menu:target a {<br>display: block;<br>padding: 0 2em;<br>background-color: rgba(255, 255, 255, 0.05);<br>}</p>
-<p>nav#menu:target a:hover {<br>background-color: rgba(255, 255, 255, 0.08);<br>}</p>
-<p>nav#menu:target li:not(:first-child) {<br>margin-top: 2px;<br>}</p>
-<p>nav#menu:target li:last-child {<br>display: none;<br>}</p>
-<p>nav#menu:target li:nth-last-child(2) {<br>display: inline-block;<br>position: absolute;<br>top: 0;<br>right: 0;<br>margin: 0;<br>border-left: 2px solid rgb(19, 51, 61);<br>}</p>
-<p><a target="_blank" rel="noopener" href="https://jshare.com.cn/temp/HpJ1bg/share/pure">查看demo</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -1421,17 +836,17 @@ this.energy = energy
 
       
           <p>Transforms允许我们创建不可能的效果和交互。与过渡和动画结合使用时，我们可以创建旋转，dance和zoom的元素和界面。特别是三维变换使得模仿物体成为可能。在本文中，我们将介绍2D变换函数（此处介绍了3D函数）。 有四种主要的二维变换函数：rotate，scale，skew，和translate。其他六个函数让我们在一个维度上转换元素：scaleX和scaleY; skewX和skewY; 和translateX和translateY。</p>
-<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h2><p>旋转变换围绕该transform-origin点围绕指定的角度旋转元素。使用rotate()顺时针（正角度值）或逆时针（负角度值）倾斜元素。它的效果很像风车或风车，如下所示。 紫色框从其起始位置旋转了55度，如虚线所示 <img src="http://file.w3cbest.com/file/images/1TransformRotate.png"> 该rotate()函数接受角度单位的值。角度单位由CSS值和单位模块级别3定义。这些可以是deg（度），rad（弧度），grad（梯度）或turn单位。一个完整旋转等于360deg，6.28rad，400grad，或1turn。 超过一个旋转（例如，540deg或1.5turn）的旋转值将根据其剩余值进行渲染，除非设置为动画或过渡。换句话说，540deg渲染与180deg（540度减去360度）相同，并且渲染与（1.5-1）1.5turn相同.5turn。但是，从一个过渡或动画0deg来540deg或1turn以1.5turn将旋转元素一个和倍半。</p>
-<h2 id="2D缩放功能：scale，scaleX，和scaleY"><a href="#2D缩放功能：scale，scaleX，和scaleY" class="headerlink" title="2D缩放功能：scale，scaleX，和scaleY"></a>2D缩放功能：scale，scaleX，和scaleY</h2><p>使用缩放功能，我们可以在X维度（scaleX），Y维度（scaleY）或两者（scale）中增加或减少元素的渲染大小。缩放如下图所示，其中边框表示框的原始边界，+标记其中心点。 一个方框（左）缩放2倍（右） <img src="http://file.w3cbest.com/file/images/2TransformScale.png"> 每个比例函数都接受乘数或因子作为其参数。这个乘数可以是任何正数或负数。不支持百分比值。正乘数大于1增加元素的大小。例如，scale(1.5)将元素在X和Y方向上的尺寸增加1.5倍。之间的正乘数0和1将降低元素的大小。 小于的值0也会导致元素向上或向下缩放并创建反射（翻转）变换。 警告：使用scale(0)将导致元素消失，因为将数字乘以零会产生零。 使用scale(1)创建标识转换，这意味着它被绘制到屏幕，就像没有应用缩放转换一样。使用scale(-1)不会更改元素的绘制大小，但负值将导致元素被反射。即使元素没有出现变换，它仍会触发新的堆叠上下文并包含块。 可以使用该scale功能分别缩放X和Y尺寸。只需传递两个参数：scale(1.5, 2)。第一个参数缩放X维度; 第二个缩放Y维度。例如，我们可以单独使用X轴反射物体scale(-1, 1)。传递单个参数可以按相同因子缩放两个维度。</p>
-<h2 id="2D转换功能：translateX，translateY，和translate"><a href="#2D转换功能：translateX，translateY，和translate" class="headerlink" title="2D转换功能：translateX，translateY，和translate"></a>2D转换功能：translateX，translateY，和translate</h2><p>平移元素会将其绘制位置与布局位置偏移指定的距离。如同其它变换，平移一个元件不改变其offsetLeft或offsetTop位置。但是，它会影响它在屏幕上的可视位置。 每个2D平移函数translateX- translateY，和 - translate接受参数的长度或百分比。长度单位包括像素（px）， ，em，rem和视口单元（vw和vh）。 该translateX函数更改元素的水平渲染位置。如果元素位于左侧零像素处，则将transform: transitionX(50px)其渲染位置移动50个像素到其起始位置的右侧。同样，translateY更改元素的垂直渲染位置。transform: transitionY(50px)将元素垂直偏移50个像素的变换。 使用translate()，我们可以使用单个函数垂直和水平移动元素。它最多接受两个参数：X转换值和Y转换值。下图显示了一个元件与效果transform的值translate(120%, -50px)，其中，所述左绿色正方形是在原来的位置，而右侧绿色正方形水平平移120％，并从它的含有元素（虚线框）垂直-50px。 <img src="http://file.w3cbest.com/file/images/3Translate.png"> 具有转换值为translate的元素的效果（120％， - 50px） 传递单个参数translate相当于使用translateX; Y转换值将设置为0。使用translate()是更简洁的选择。申请translate(100px, 200px)相当于translateX(100px) translateY(200px)。 正转换值将元素向右移动（for translateX）或向下移动（for translateY）。负值将元素移动到左（translateX）或向上（translateY）。 翻译对于向左，向右，向上或向下移动项目特别有用。更新的值left，right，top，和bottom属性强制浏览器重新计算整个文档布局信息。但是在计算布局之后计算变换。它们影响其中的元素出现在屏幕上，而不是他们的实际尺寸。是的，将文档布局和渲染视为单独的概念是很奇怪的，但就浏览器而言，它们是。 转换属性可能会到达您附近的浏览器 在CSS的最新版本来变换规范增加translate，rotate以及scale 性能的CSS。变换属性的工作方式与其对应的变换函数非常相似，但值是以空格分隔的，而不是以逗号分隔的。例如，我们可以transform: rotate3d(1, 1, 1, 45deg)使用该rotate属性表达：rotate: 1 1 1 45deg。同样，translate: 15% 10% 300px在视觉上与之相同transform: translate3d(15%, 10%, 300px)并且scale: 1.5 1.5 3相同transform: scale3d(1.5, 1.5, 3)。通过这些属性，我们可以与其他转换分开管理旋转，平移或缩放转换。 在撰写本文时，浏览器对转换属性的支持仍然非常稀少。Chrome和三星互联网支持开箱即用。在Firefox 60及更高版本中，支持隐藏在标志后面; 访问about: config并设置layout.css.individual-transform.enabled为true。</p>
-<h2 id="skew，skewX和skewY"><a href="#skew，skewX和skewY" class="headerlink" title="skew，skewX和skewY"></a>skew，skewX和skewY</h2><p>歪斜变换会使点之间的角度和距离发生偏移，同时将它们保持在同一平面内。歪斜变换也称为剪切变换，它们会扭曲元素的形状，如下所示，其中虚线表示元素的原始边界框。 矩形沿其X维度倾斜45度 <img src="http://file.w3cbest.com/file/images/4TransformSkew.png"> 偏斜函数skew- skewX，和 - skewY接受大多数角度单位作为参数。度，渐变和弧度是倾斜函数的有效角度单位，而转弯单位可能显然不是。 该skewX功能在X或水平方向上剪切元素（参见下面的图像）。它接受一个参数，该参数也必须是一个角度单位。正值将元素向左移动，负值将元素向右移动。 左图像未被变换，而右图像显示变换的效果：skewX（30deg） <img src="http://file.w3cbest.com/file/images/5skewX.png"> 同样，skewY剪切Y或垂直方向的元素。下图显示了效果transform: skewY(30deg)。原点右侧的点向下移动，带有正值。负值将这些点向上移动。 同样，左图像保持未变换，右图像垂直偏斜30度 <img src="http://file.w3cbest.com/file/images/6skewY.png"> 这带给我们的skew功能。该skew函数需要一个参数，但最多可接受两个参数。第一个参数在X方向上扭曲一个元素，第二个参数在Y方向上扭曲它。如果只提供一个参数，则假定第二个值为零，使其相当于单独在X方向上的倾斜。换句话说，skew(45deg)渲染相同skewX(45deg)。</p>
+<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h2><p>旋转变换围绕该transform-origin点围绕指定的角度旋转元素。使用rotate()顺时针（正角度值）或逆时针（负角度值）倾斜元素。它的效果很像风车或风车，如下所示。 紫色框从其起始位置旋转了55度，如虚线所示 <img data-src="http://file.w3cbest.com/file/images/1TransformRotate.png"> 该rotate()函数接受角度单位的值。角度单位由CSS值和单位模块级别3定义。这些可以是deg（度），rad（弧度），grad（梯度）或turn单位。一个完整旋转等于360deg，6.28rad，400grad，或1turn。 超过一个旋转（例如，540deg或1.5turn）的旋转值将根据其剩余值进行渲染，除非设置为动画或过渡。换句话说，540deg渲染与180deg（540度减去360度）相同，并且渲染与（1.5-1）1.5turn相同.5turn。但是，从一个过渡或动画0deg来540deg或1turn以1.5turn将旋转元素一个和倍半。</p>
+<h2 id="2D缩放功能：scale，scaleX，和scaleY"><a href="#2D缩放功能：scale，scaleX，和scaleY" class="headerlink" title="2D缩放功能：scale，scaleX，和scaleY"></a>2D缩放功能：scale，scaleX，和scaleY</h2><p>使用缩放功能，我们可以在X维度（scaleX），Y维度（scaleY）或两者（scale）中增加或减少元素的渲染大小。缩放如下图所示，其中边框表示框的原始边界，+标记其中心点。 一个方框（左）缩放2倍（右） <img data-src="http://file.w3cbest.com/file/images/2TransformScale.png"> 每个比例函数都接受乘数或因子作为其参数。这个乘数可以是任何正数或负数。不支持百分比值。正乘数大于1增加元素的大小。例如，scale(1.5)将元素在X和Y方向上的尺寸增加1.5倍。之间的正乘数0和1将降低元素的大小。 小于的值0也会导致元素向上或向下缩放并创建反射（翻转）变换。 警告：使用scale(0)将导致元素消失，因为将数字乘以零会产生零。 使用scale(1)创建标识转换，这意味着它被绘制到屏幕，就像没有应用缩放转换一样。使用scale(-1)不会更改元素的绘制大小，但负值将导致元素被反射。即使元素没有出现变换，它仍会触发新的堆叠上下文并包含块。 可以使用该scale功能分别缩放X和Y尺寸。只需传递两个参数：scale(1.5, 2)。第一个参数缩放X维度; 第二个缩放Y维度。例如，我们可以单独使用X轴反射物体scale(-1, 1)。传递单个参数可以按相同因子缩放两个维度。</p>
+<h2 id="2D转换功能：translateX，translateY，和translate"><a href="#2D转换功能：translateX，translateY，和translate" class="headerlink" title="2D转换功能：translateX，translateY，和translate"></a>2D转换功能：translateX，translateY，和translate</h2><p>平移元素会将其绘制位置与布局位置偏移指定的距离。如同其它变换，平移一个元件不改变其offsetLeft或offsetTop位置。但是，它会影响它在屏幕上的可视位置。 每个2D平移函数translateX- translateY，和 - translate接受参数的长度或百分比。长度单位包括像素（px）， ，em，rem和视口单元（vw和vh）。 该translateX函数更改元素的水平渲染位置。如果元素位于左侧零像素处，则将transform: transitionX(50px)其渲染位置移动50个像素到其起始位置的右侧。同样，translateY更改元素的垂直渲染位置。transform: transitionY(50px)将元素垂直偏移50个像素的变换。 使用translate()，我们可以使用单个函数垂直和水平移动元素。它最多接受两个参数：X转换值和Y转换值。下图显示了一个元件与效果transform的值translate(120%, -50px)，其中，所述左绿色正方形是在原来的位置，而右侧绿色正方形水平平移120％，并从它的含有元素（虚线框）垂直-50px。 <img data-src="http://file.w3cbest.com/file/images/3Translate.png"> 具有转换值为translate的元素的效果（120％， - 50px） 传递单个参数translate相当于使用translateX; Y转换值将设置为0。使用translate()是更简洁的选择。申请translate(100px, 200px)相当于translateX(100px) translateY(200px)。 正转换值将元素向右移动（for translateX）或向下移动（for translateY）。负值将元素移动到左（translateX）或向上（translateY）。 翻译对于向左，向右，向上或向下移动项目特别有用。更新的值left，right，top，和bottom属性强制浏览器重新计算整个文档布局信息。但是在计算布局之后计算变换。它们影响其中的元素出现在屏幕上，而不是他们的实际尺寸。是的，将文档布局和渲染视为单独的概念是很奇怪的，但就浏览器而言，它们是。 转换属性可能会到达您附近的浏览器 在CSS的最新版本来变换规范增加translate，rotate以及scale 性能的CSS。变换属性的工作方式与其对应的变换函数非常相似，但值是以空格分隔的，而不是以逗号分隔的。例如，我们可以transform: rotate3d(1, 1, 1, 45deg)使用该rotate属性表达：rotate: 1 1 1 45deg。同样，translate: 15% 10% 300px在视觉上与之相同transform: translate3d(15%, 10%, 300px)并且scale: 1.5 1.5 3相同transform: scale3d(1.5, 1.5, 3)。通过这些属性，我们可以与其他转换分开管理旋转，平移或缩放转换。 在撰写本文时，浏览器对转换属性的支持仍然非常稀少。Chrome和三星互联网支持开箱即用。在Firefox 60及更高版本中，支持隐藏在标志后面; 访问about: config并设置layout.css.individual-transform.enabled为true。</p>
+<h2 id="skew，skewX和skewY"><a href="#skew，skewX和skewY" class="headerlink" title="skew，skewX和skewY"></a>skew，skewX和skewY</h2><p>歪斜变换会使点之间的角度和距离发生偏移，同时将它们保持在同一平面内。歪斜变换也称为剪切变换，它们会扭曲元素的形状，如下所示，其中虚线表示元素的原始边界框。 矩形沿其X维度倾斜45度 <img data-src="http://file.w3cbest.com/file/images/4TransformSkew.png"> 偏斜函数skew- skewX，和 - skewY接受大多数角度单位作为参数。度，渐变和弧度是倾斜函数的有效角度单位，而转弯单位可能显然不是。 该skewX功能在X或水平方向上剪切元素（参见下面的图像）。它接受一个参数，该参数也必须是一个角度单位。正值将元素向左移动，负值将元素向右移动。 左图像未被变换，而右图像显示变换的效果：skewX（30deg） <img data-src="http://file.w3cbest.com/file/images/5skewX.png"> 同样，skewY剪切Y或垂直方向的元素。下图显示了效果transform: skewY(30deg)。原点右侧的点向下移动，带有正值。负值将这些点向上移动。 同样，左图像保持未变换，右图像垂直偏斜30度 <img data-src="http://file.w3cbest.com/file/images/6skewY.png"> 这带给我们的skew功能。该skew函数需要一个参数，但最多可接受两个参数。第一个参数在X方向上扭曲一个元素，第二个参数在Y方向上扭曲它。如果只提供一个参数，则假定第二个值为零，使其相当于单独在X方向上的倾斜。换句话说，skew(45deg)渲染相同skewX(45deg)。</p>
 <h2 id="当前变换矩阵"><a href="#当前变换矩阵" class="headerlink" title="当前变换矩阵"></a>当前变换矩阵</h2><p>到目前为止，我们已经分别讨论了变换函数，但它们也可以组合在一起。想要缩放和旋转对象？没问题：使用转换列表。例如：</p>
 <p>.rotatescale {<br>transform: rotate(45deg) scale(2);<br>}</p>
-<p>这将产生您在下面看到的结果。 <img src="http://file.w3cbest.com/file/images/7ScaleAndRotate.png"> 应用原始元素（左）和组合旋转和缩放变换后（右） 使用转换函数时，顺序很重要。这是一个比谈论更好的一点，所以让我们看一个例子来说明。以下CSS倾斜并旋转元素：</p>
+<p>这将产生您在下面看到的结果。 <img data-src="http://file.w3cbest.com/file/images/7ScaleAndRotate.png"> 应用原始元素（左）和组合旋转和缩放变换后（右） 使用转换函数时，顺序很重要。这是一个比谈论更好的一点，所以让我们看一个例子来说明。以下CSS倾斜并旋转元素：</p>
 <p>.transformEl {<br>transform: skew(10deg, 15deg) rotate(45deg);<br>}</p>
-<p>它为我们提供了您在下面看到的结果。 <img src="http://file.w3cbest.com/file/images/8SkewAndRotate.png"> 歪斜变换后的元素（10度，15度）旋转（45度） 如果首先旋转元素然后将其倾斜会发生什么？</p>
+<p>它为我们提供了您在下面看到的结果。 <img data-src="http://file.w3cbest.com/file/images/8SkewAndRotate.png"> 歪斜变换后的元素（10度，15度）旋转（45度） 如果首先旋转元素然后将其倾斜会发生什么？</p>
 <p>.transformEl {<br>transform: rotate(45deg) skew(10deg, 15deg);<br>}</p>
-<p>如下所示，效果完全不同。 <img src="http://file.w3cbest.com/file/images/9RotateThenSkew.png"> 旋转后然后倾斜的元素 这些变换中的每一个具有由其变换函数的顺序创建的不同的当前变换矩阵。为了完全理解为什么这样，我们需要学习一点矩阵乘法。这也有助于我们理解matrix和matrix3d功能。 矩阵乘法和矩阵函数 甲矩阵是排列成行和列的矩形号码或表达式的阵列。所有变换可以使用4×4矩阵表示，如下所示。 <img src="http://file.w3cbest.com/file/images/1536071956matrix4x4.png"> 用于3D变换的4×4矩阵 该矩阵对应于matrix3d函数，该函数接受16个参数，每个参数用于4×4矩阵的每个值。二维变换也可以使用3×3矩阵表示，如下所示。 <img src="http://file.w3cbest.com/file/images/1536071982matrix.png"> 用于2D变换的3×3矩阵 该3×3矩阵对应于matrix变换函数。该matrix()函数接受六个参数，每个参数对应于值a到f。 可以使用矩阵和/ matrix或matrix3d函数来描述每个变换函数。下图显示了scale3d函数的4×4矩阵，其中sx，sy和sz分别是X，Y和Z维度的缩放因子。 <img src="http://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png"> 当我们组合变换时 - 例如transform: scale(2) translate(30px, 50px)- 浏览器将每个函数的矩阵相乘以创建新矩阵。这个新矩阵是应用于元素的。 但这是关于矩阵乘法的事情：它不是可交换的。使用简单值，3×2的乘积与2×3相同。但是，对于矩阵，A × B的乘积不一定与B × A的乘积相同。我们来看一个例子。我们将计算出的矩阵乘积transform: scale(2) translate(30px, 50px)。 <img src="http://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png"> 我们的元素按比例缩放了两倍，然后水平翻译60像素，垂直翻译100像素。我们也可以使用以下matrix功能表达此产品：transform: matrix(2, 0, 0, 2, 60, 100)。现在让我们切换这些变换的顺序 - 即transform: translate(30px, 50px) scale(2)。结果如下所示。 <img src="http://file.w3cbest.com/file/images/1536072076TranslateAndScale.png"> 用于平移（30px，50px）和刻度（2）的矩阵的乘积 请注意，我们的对象仍然按比例缩放了两倍，但在这里它被水平翻译了30个像素而垂直翻译了50个像素。使用该matrix函数表示，这是transform: matrix(2, 0, 0, 2, 30, 50)。 值得注意的是，继承转换的功能与转换列表类似。每个子变换乘以应用于其父变换的任何变换。例如，请使用以下代码：</p>
+<p>如下所示，效果完全不同。 <img data-src="http://file.w3cbest.com/file/images/9RotateThenSkew.png"> 旋转后然后倾斜的元素 这些变换中的每一个具有由其变换函数的顺序创建的不同的当前变换矩阵。为了完全理解为什么这样，我们需要学习一点矩阵乘法。这也有助于我们理解matrix和matrix3d功能。 矩阵乘法和矩阵函数 甲矩阵是排列成行和列的矩形号码或表达式的阵列。所有变换可以使用4×4矩阵表示，如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536071956matrix4x4.png"> 用于3D变换的4×4矩阵 该矩阵对应于matrix3d函数，该函数接受16个参数，每个参数用于4×4矩阵的每个值。二维变换也可以使用3×3矩阵表示，如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536071982matrix.png"> 用于2D变换的3×3矩阵 该3×3矩阵对应于matrix变换函数。该matrix()函数接受六个参数，每个参数对应于值a到f。 可以使用矩阵和/ matrix或matrix3d函数来描述每个变换函数。下图显示了scale3d函数的4×4矩阵，其中sx，sy和sz分别是X，Y和Z维度的缩放因子。 <img data-src="http://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png"> 当我们组合变换时 - 例如transform: scale(2) translate(30px, 50px)- 浏览器将每个函数的矩阵相乘以创建新矩阵。这个新矩阵是应用于元素的。 但这是关于矩阵乘法的事情：它不是可交换的。使用简单值，3×2的乘积与2×3相同。但是，对于矩阵，A × B的乘积不一定与B × A的乘积相同。我们来看一个例子。我们将计算出的矩阵乘积transform: scale(2) translate(30px, 50px)。 <img data-src="http://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png"> 我们的元素按比例缩放了两倍，然后水平翻译60像素，垂直翻译100像素。我们也可以使用以下matrix功能表达此产品：transform: matrix(2, 0, 0, 2, 60, 100)。现在让我们切换这些变换的顺序 - 即transform: translate(30px, 50px) scale(2)。结果如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536072076TranslateAndScale.png"> 用于平移（30px，50px）和刻度（2）的矩阵的乘积 请注意，我们的对象仍然按比例缩放了两倍，但在这里它被水平翻译了30个像素而垂直翻译了50个像素。使用该matrix函数表示，这是transform: matrix(2, 0, 0, 2, 30, 50)。 值得注意的是，继承转换的功能与转换列表类似。每个子变换乘以应用于其父变换的任何变换。例如，请使用以下代码：</p>
 <div style="transform: skewX(25deg)">
 <p style="transform: rotate(-15deg)"></p>
 </div>
@@ -1521,11 +936,11 @@ this.energy = energy
       
           <p>随着Web平台的发展，它也获得了类似原生应用的特点。其中一个功能是<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-scroll-snap-1/">CSS Scroll Snap Module</a>。Scroll snap允许开发人员定义界面在滚动操作期间应该移动的距离。您可以使用它来构建幻灯片放映或分页界面 - 目前需要JavaScript和DOM操作才能完成。 Scroll snap作为一项功能经历了很多变化。早期的2013版规范 - 当时称为Scroll Snap Points–定义了一种基于坐标和像素的方法来指定滚动距离。此版本的规范是在Microsoft Edge，Internet Explorer 11和Firefox中实现的。 Chrome 69+和Safari 11+实现了规范的最新版本，该版本使用了盒子对齐模型。这就是我们将在本节中关注的内容。 警告： 当前浮动在Web上的许多滚动快照教程都基于早期的CSS Scroll Snap Points规范。标题中“points”一词的出现是教程可能依赖于旧规范的一个标志。然而，更可靠的指标是存在scroll-snap-points-x或scroll-snap-points-y属性。 由于滚动捕捉非常适合幻灯片放映布局，这就是我们要构建的内容。这是我们的标记。</p>
 <div class="slideshow">
-<img src="avocado-and-bacon-salad.jpg">
-<img src="salad-eggs-and-scallops.jpg">
-<img src="seafood-and-noodles.jpg">
-<img src="grilled-salmon-and-side-salad.jpg">
-<img src="avocado-toast-with-egg.jpg">
+<img data-src="avocado-and-bacon-salad.jpg">
+<img data-src="salad-eggs-and-scallops.jpg">
+<img data-src="seafood-and-noodles.jpg">
+<img data-src="grilled-salmon-and-side-salad.jpg">
+<img data-src="avocado-toast-with-egg.jpg">
 </div>
 
 <p>这就是我们所需要的一切。我们不需要具有外部包裹元件和内部滑动容器。我们也不需要任何JavaScript。 现在我们的CSS：</p>
@@ -1533,7 +948,995 @@ this.energy = energy
 <p>html, body {<br>padding: 0;<br>margin: 0;<br>}</p>
 <p>.slideshow {<br>scroll-snap-type: x mandatory; /* Indicates scroll axis and behavior */<br>overflow-x: auto; /* Should be either `scroll` or `auto` */<br>display: flex;<br>height: 100vh;<br>}</p>
 <p>.slideshow img {<br>width: 100vw;<br>height: 100vh;<br>scroll-snap-align: center;<br>}</p>
-<p>添加scroll-snap-type以.slideshow创建滚动容器。此属性的值x mandatory描述了我们要滚动的方向以及滚动快照严格性。在这种情况下，该mandatory值告诉浏览器，当没有活动的滚动操作时，它必须捕捉到捕捉位置。使用display: flex只是确保我们的所有图像水平堆叠。 现在我们需要的另一个属性是scroll-snap-align。此属性指示如何在滚动容器的捕捉端口内对齐每个图像的滚动捕捉区域。它接受三个值：start，end，和center。在这种情况下，我们使用了center这意味着每个图像将在视口中居中，如下所示。 <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/ScrollSnap.png"></p>
+<p>添加scroll-snap-type以.slideshow创建滚动容器。此属性的值x mandatory描述了我们要滚动的方向以及滚动快照严格性。在这种情况下，该mandatory值告诉浏览器，当没有活动的滚动操作时，它必须捕捉到捕捉位置。使用display: flex只是确保我们的所有图像水平堆叠。 现在我们需要的另一个属性是scroll-snap-align。此属性指示如何在滚动容器的捕捉端口内对齐每个图像的滚动捕捉区域。它接受三个值：start，end，和center。在这种情况下，我们使用了center这意味着每个图像将在视口中居中，如下所示。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/ScrollSnap.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/26/art-template%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%B9%8B%E5%81%B6%E6%95%B0%E5%A5%87%E6%95%B0%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/26/art-template%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%B9%8B%E5%81%B6%E6%95%B0%E5%A5%87%E6%95%B0%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">artTemplate模板引擎之偶数奇数解析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-26 13:57:18" itemprop="dateCreated datePublished" datetime="2018-09-26T13:57:18+08:00">2018-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:21:09" itemprop="dateModified" datetime="2021-08-30T11:21:09+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>如果有一个数组，我们只取其中的偶数或奇数该如何取值呢，下面一组数据是我们通过接口拿到的，其实我们只要奇数的一部分，1，3，5，7…等，如图：</p>
+<pre class="language-none"><code class="language-none">\[&quot;1701班&quot;,11,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;,7,&quot;63.64%&quot;,2,&quot;18.18%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;\]
+
+!\[](http:&#x2F;&#x2F;www.w3cbest.com&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;09&#x2F;20180926133157.jpg) 我们只要一个if条件判断就可以了，操作如下： js
+
+res &#x3D; &#123;&quot;data&quot;:&#123;
+  &quot;head&quot;:\[&quot;人数&quot;,&quot;比例&quot;\],
+  &quot;datas&quot;:\[
+  &#123;&quot;data&quot;:\[&quot;1701班&quot;,11,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;,7,&quot;63.64%&quot;,2,&quot;18.18%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;\]&#125;,
+  &#123;&quot;data&quot;:\[&quot;班级平均&quot;,21,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;3&quot;,&quot;28.57%&quot;,&quot;5&quot;,&quot;47.62%&quot;,&quot;1.5&quot;,&quot;14.29%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0.5&quot;,&quot;4.76%&quot;,&quot;0.5&quot;,&quot;4.76%&quot;\]&#125;,
+  &#123;&quot;data&quot;:\[&quot;全年级&quot;,21,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,6,&quot;28.57%&quot;,10,&quot;47.62%&quot;,3,&quot;14.29%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;4.76%&quot;,1,&quot;4.76%&quot;\]&#125;
+  \],
+  &quot;title&quot;:\[&quot;90以下&quot;,&quot;90 ~ 97&quot;,&quot;97 ~ 104&quot;,&quot;104 ~ 111&quot;,&quot;111 ~ 118&quot;,&quot;118 ~ 125&quot;,&quot;125 ~ 132&quot;,&quot;132 ~ 139&quot;,&quot;139 ~ 146&quot;,&quot;146以上&quot;\]
+  &#125;
+&#125;
+document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, res);</code></pre>
+<p>template</p>
+<pre class="language-none"><code class="language-none">&lt;script id&#x3D;&quot;tpl&quot; type&#x3D;&quot;text&#x2F;html&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;班级&lt;&#x2F;th&gt;
+      &#123;&#123;each title value i&#125;&#125;
+      &lt;th&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;th&gt;
+      &#123;&#123;&#x2F;each&#125;&#125;
+    &lt;&#x2F;tr&gt;
+&lt;&#x2F;thead&gt;
+&lt;tbody&gt;
+  &#123;&#123;each datas item&#125;&#125;
+  &lt;tr&gt;
+    &#123;&#123;each item.data value i&#125;&#125;
+    &#123;&#123;if (i % 2 &#x3D;&#x3D; 0)&#125;&#125;
+    &lt;td&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;td&gt;
+    &#123;&#123;&#x2F;if&#125;&#125;
+    &#123;&#123;&#x2F;each&#125;&#125;
+  &lt;&#x2F;tr&gt;
+  &#123;&#123;&#x2F;each&#125;&#125;
+&lt;&#x2F;tbody&gt;
+&lt;&#x2F;script&gt;</code></pre>
+<p>其实很简单，就跟跟平时普通的if判断一样，都是取模，但是要注意在这里面要有始有终，有<code>&#123;&#123;if&#125;&#125;</code>就得有对应的<code>&#123;&#123;/if&#125;&#125;</code>，有<code>&#123;&#123;each&#125;&#125;</code>就得有对应的<code>&#123;&#123;/each&#125;&#125;</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/25/css-%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E8%83%BD%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/25/css-%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E8%83%BD%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">CSS 选择器技能使用指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-25 09:07:13" itemprop="dateCreated datePublished" datetime="2018-09-25T09:07:13+08:00">2018-09-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我已经使用CSS多年了，但直到最近我还没有深入研究过关于 CSS 选择器的主题。 为什么我需要学习 CSS 选择器呢？ 我们现在知道了所有的内部选择器了吗？ 问题是(至少对我来说是这样)随着时间的推移，很容易习惯在每个项目上使用相同的习惯的选择器集合来完成你要做的事情。 因此，我自己对 CSS 选择器知识进行了深入的审查，并发现了一些有趣的内容，这些内容对我来说是新的，或者是以前我从来没有想过这些使用方式。 我还发现了一些很酷的新选择器，将来可用，但还没有广泛使用。 我们一起来深入研究一下各种类型的 CSS 选择器吧。 您在日常工作中已经使用了，或者本文没涉及到的 CSS 选择器技能欢迎留言告诉我。 准备好提升你的 CSS 选择器技能了吗？我们一起 GO！</p>
+<h2 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h2><p>让我们从熟悉的选择器开始。组合选择器用于选择子元素和兄弟元素，并且相信大家已经使用了很长一段时间了吧。</p>
+<ul>
+<li>  一般子元素选择器（空格）。例如A B。</li>
+<li>  直接子元素选择器。例如 A &gt; B 。</li>
+<li>  相邻兄弟元素选择器。例如 A + B。</li>
+<li>  一般兄弟元素选择器。例如 A ~ B。</li>
+</ul>
+<p>您应该熟悉相邻兄弟元素选择器 A + B ，他会选择紧跟 A 的 B 元素。但是一般兄弟元素选择器 A~B 呢？ 他将选择跟随 A 的所有兄弟 B 元素： 以下是实例：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/RyvYXd/">Combinator Selectors</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>第二行 New York 行被选中是因为它紧跟在第一行之后 table tbody tr:first-child + tr，并且最后两个城市被高亮显示，因为他们被一般兄弟选择器 table tbody tr:nth-child(4) ~ tr 匹配，也就是第四行之后的所有行。</p>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>我非常喜欢属性选择器。当您需要将包含某个属性的元素与特定值匹配时，它们可以非常灵活。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGLZEK/">Attribute Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>此示例演示如何选择所有复选框元素并将样式应用于其匹配标签，以使其变为粗体和蓝色。 然后，我们覆盖具有特定名称的 chk2 复选框的样式，并将其匹配的标签着色为红色。 请注意其他表单元素标签如何不受影响且未应用标签样式。 属性选择器不仅适用于表单元素，它们还可以定位任何元素的属性。 您可以匹配任何属性，而不仅仅是官方支持的属性。 此外，您可以检查属性是否存在，如下所示：</p>
+<p>button[icon]</p>
+<p>这匹配包含 icon 属性的 <button> 元素。它将匹配 icon 属性，无论 icon 属性是空值还是设置为特定值。 更多例子：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/pVGGye/">Attribute Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>第一个链接没有 target 属性，因此不匹配。 接下来的两个链接是匹配的，因为它们的 target 属性具有空值或特定值的属性。 最后，最后一个链接设置为粉红色，因为它 fluffy 属性匹配。 它的值无关紧要，只需要与 a[fluffy] 选择器相匹配即可。 一个实际的例子可能是突出显示没有alt属性的图像。 此属性对于网页的可访问性来说是所必需的，因此对于SEO而言，确保所有图像元素都包含此属性非常重要。 我们可以使用以下规则来实现此目的：</p>
+<p>img:not([alt]) {<br>border: 2px red dashed;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/OZdqLp/">Attribute Selectors #3</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>如果要匹配属性值的特定部分，则可以使用一些非常有用的选择器。</p>
+<ul>
+<li>  A[attr^=val] – 属性值以 val 开头。</li>
+<li>  A[attr=val] – 属性值以 val 开头，或者以 val- 开头。</li>
+<li>  A[attr$=val] – 属性值以 val 结尾。</li>
+<li>  A[attr*=val] – 属性值中包含 val 。</li>
+<li>  A[attr~=val] – 匹配用空格分隔的属性值列表，并且列表中包含 val 。</li>
+</ul>
+<p>以下是每个例子：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGLdvE/">Attribute Selectors #4</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>前两个示例非常相似，不同之处是 A[attr=val] 匹配后跟一个 - 字符串的值。 这对于匹配语言属性 lang 很有用。 例如 <p lang ="en-us">。 使用 A[attr$=”val”] 可以轻松匹配文件扩展名，并且与 ::after 相结合你可以轻松显示匹配文件。 注意使用 attr() 方法和 content 属性将它与静态字符串连接起来。 A[attr*=val] 显示了无论使用何种协议或子域，您都可以匹配特定域 mysite.com。 最后，A[attr<del>=val]，它非常适合匹配由空格分隔的值列表组成的属性中的值。 这只匹配整个单词而不是单词片段，而 *= 匹配单词片段，因此单词复数形式将不匹配。这个有点不好理解：例如某 div 元素的 categories 属性为 <div categories="table wooden maple">，其 categories 属性用空格分隔。那么 div[categories</del>=”table”] 将匹配各元素，还有一个特别要注意的是， <div categories="wooden maple table"> 也将被匹配。而 <div categories="wooden maple tables"> 或者 <div categories="wooden tableee maple"> 都不会被 div[categories~=”table”] 匹配。 以上所有属性选择器示例都区分大小写。 但是我们有一个技巧。 如果我们在结束方括号之前插入一个 i ，我们可以启用区分大小写的匹配，这有点类似于 JavaScript 中的正则表达式匹配。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/LmaYzp/">Attribute Selectors #5</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>除 Internet Explorer 和 Microsoft Edge 外，大多数主流浏览器都支持不区分大小写的匹配。</p>
+<h2 id="用户交互选择器"><a href="#用户交互选择器" class="headerlink" title="用户交互选择器"></a>用户交互选择器</h2><p>如果您处理过表单样式，那么您之前无疑会遇到这些类型的伪类选择器：</p>
+<ul>
+<li>  :enabled</li>
+<li>  :disabled</li>
+<li>  :checked</li>
+</ul>
+<p>例如，我们可以使用 :checked 来设置一个简单的待办事项列表。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/BxbjoO/">User Interface Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>这是非常标准的，但我们可以使用其他一些有趣的伪类。 :default 匹配一个或多个元素，这些元素是一组相关元素中的默认元素。这也可以与复位按钮类型组合使用。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/ELMoNK/">User Interface Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>我们可以使用伪类选择器来匹配输入值是否与 CSS 直接有效，以及在提交表单之前检查是否需要任何元素。</p>
+<ul>
+<li>  :valid</li>
+<li>  :invalid</li>
+<li>  :required</li>
+<li>  :optional (即不必须)</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/qYvpMP/">User Interface Selectors #3</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>如果您开始输入个人 email 输入字段，则必须检查有效性。 但是，工作 email 地址始终是必需的，并且需要有效检查有效性，因此不能留空。 还要注意我们可以链接伪类选择器（例如 :required:invalid ）来实现我们所需要的。 接下来，如果表单元素（支持 min 和 max 属性）在范围内，我们有两个可以匹配的伪类。</p>
+<ul>
+<li>  :in-range</li>
+<li>  :out-of-range</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/Jvzpgz/">User Interface Selectors #4</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>同样，我们可以使用重置按钮类型来重置数字输入元素的默认值。 为了完善本节，我们来看看 :read-only ，:read-write 和 :placeholder-shown 的伪类。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/ZoPREB/">User Interface Selectors #5</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>使用这些可以轻松匹配只读或可写（可编辑）的元素。 匹配元素不必是表单输入字段，如示例中所示。 最后，:placeholder-shown 将匹配尚未与之交互的元素，并仍显示默认占位符文本。 应谨慎使用此特定选择器，因为它尚未得到广泛支持。</p>
+<h2 id="结构选择器"><a href="#结构选择器" class="headerlink" title="结构选择器"></a>结构选择器</h2><p>结构选择器非常强大，基于它们在DOM中的位置匹配元素。 它们使您可以灵活地将元素与CSS完全匹配，否则需要 JavaScript 执行相同的操作。 这种类型的选择器与显示的选择器不同，因为其中一些选择器允许您传入参数来修改选择器的工作方式。 例如：nth-child() 接收一个值，该值将匹配特定子元素相对于其父容器的值。 因此，如果我们有一个项目列表，则以下选择器将匹配第三个项目：</p>
+<p>ul:nth-child(3)</p>
+<p>但是，参数不是必须是简单的数字，它可以是一个简单的表达式，而使伪类更强大。 有效表达式有：</p>
+<ul>
+<li>  ul:nth-child(2) – 匹配第 2 个子元素</li>
+<li>  ul:nth-child(4n) – 匹配每 4th 个子元素（4,8,12，…）</li>
+<li>  ul:nth-child(2n + 1) – 匹配每 2n + 1 个子元素偏移一个（1,3,5，…）</li>
+<li>  ul:nth-child(3n - 1) – 匹配每 3n – 1 个子元素偏移负数1（2,5,8，…）</li>
+<li>  ul:nth-child(odd) – 匹配奇数元素（1,3,5，…）</li>
+<li>  ul:nth-child(even) – 匹配偶数元素（2,4,6，…）</li>
+</ul>
+<p>表达式变量 n 总是从零开始，因此确切地计算出哪些元素将匹配，n 从 0 开始，然后 n 为 1 ，依此类推以编译元素列表。 这里还有 1 个简单而实用的小技巧，我们把n当做负数来用，会发生什么呢？</p>
+<ul>
+<li>  ul li:nth-child(-n+3) – 匹配第 1 到 第 3 个 li 子元素 （1,2,3）</li>
+<li>  ul li:nth-child(-2n+6) – 匹配每 2th 个子元素，最多不超过第 8 个 li 子元素 （2,4,6，8）</li>
+<li>  ul li:nth-child(n + 10):nth-child(-n + 12) – 匹配第 10 到 第 12 个 li 子元素 （10,11,12）</li>
+</ul>
+<p>例如：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/mveKRe/">把`n` 当做负数来用</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>您可以将简单表达式与以下结构选择器一起使用：</p>
+<ul>
+<li>  :nth-child()</li>
+<li>  :nth-last-child()</li>
+<li>  :nth-of-type()</li>
+<li>  :nth-last-of-type()</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGxzEq/">Structural Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>:nth-last-child() 和 :nth-last-of-type() 非常类似于 :nth-child() 和 nth-of-type() ，唯一区别是 :nth-last-child() 和 :nth-last-of-type() 是从最后一个元素开始匹配，而不是第一个元素开始匹配。 通过玩各种组合，您可以通过选择器获得相当多的创意。 例如，之前的示例包含选择器：</p>
+<p>ul:last-of-type li:nth-last-of-type(2)::after {<br>content: “(2nd from end)”;<br>/* Other styles… */<br>}</p>
+<p>这匹配第 2 个无序列表中最后一个列表项之后的伪元素。 如果你一直在努力解码一个复杂的选择器，那么最好从右到左阅读它，这样它就可以在逻辑上解构。 下一组选择器是专用的结构选择器，因为它们只匹配特定的子元素。 您无法将表达式传递给它们以修改其行为。</p>
+<ul>
+<li>  :first-child</li>
+<li>  :last-child</li>
+<li>  :only-child</li>
+<li>  :first-of-type</li>
+<li>  :last-of-type</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/JvzwJE/">Structural Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>乍一看，这里有很多事情，你在使用这些类型的选择器时需要小心，因为你可能得到你没想到的结果。 例如，您可能想知道为什么在 <section> 标记内的等等……文本是蓝色的。 实际上所有部分内容都是蓝色的，因为它是主 div 容器的最后一个子节点。 其他部分元素通过其他选择器覆盖自己的颜色，使单个段落变为蓝色。 如果你觉得这些结构选择器还不够，或者你觉得记不住，使用起来很麻烦，那么你可以使用 Family.scss – 轻松搞定这些 :nth-child 伪类 :nth-child</p>
+<h2 id="否定、排除选择器"><a href="#否定、排除选择器" class="headerlink" title="否定、排除选择器"></a>否定、排除选择器</h2><p>CSS 否定伪类选择器 :not(X)，是以一个简单的以选择器 X 为参数的功能性标记函数，将从匹配的元素集合中排除选择器 X 所匹配的元素。选择器 X 中不能包含另外一个 :not 选择器。</p>
+<ul>
+<li>  :not() 伪类的优先级即为它参数选择器的优先级。 可以利用这个伪类提高规则的优先级。例如， #foo:not(#bar) 和 #foo 会匹配相同的元素。 但是前者的优先级更高。但是 :not() 伪类不像其它伪类，它不会增加选择器的优先级。</li>
+<li>  :not() 伪类可以将一个或多个以逗号分隔的选择器作为其参数。但是以多个以逗号分隔的选择器作为参数是实验性的，尚未广泛支持。</li>
+</ul>
+<p>:not() 伪类时我们得选择器组合更加灵活，我们来看一些简单应用：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/JxYZWz/">:not() 伪类</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>上例中，.content :not(.notice) em 匹配了 .content 中所有的 em 元素，但是排除了 .content .notice 中 em 元素。 我们再来看看 :not() 和其他伪类选择器结合的例子：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/feiwen8772/pen/kkELxa/">:not伪类</a> by feiwen8772 (<a target="_blank" rel="noopener" href="https://codepen.io/feiwen8772">@feiwen8772</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>在做一个有间隔线的列表时，我们通常会去除最后一个 li 下的横线。li:not(:last-child) 表示除了最后一个 li 元素之外的所有其他 li 元素。</p>
+<h2 id="内容选择器"><a href="#内容选择器" class="headerlink" title="内容选择器"></a>内容选择器</h2><p>这些属于用于匹配内容的一组专用选择器。我们可以立即使用的是：</p>
+<ul>
+<li>  ::first-line</li>
+<li>  ::first-letter</li>
+<li>  ::selection</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/xjBBqN/">Content Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>::first-line 和 ::first-letter 仅在应用于块级元素时才起作用。另外要小心只在特定元素上使用 ::first-letter ，否则每个段落都可能会应用。 目前还没有一些令人兴奋的内容选择器，但是当它们得到支持时，它们将开启各种可能性。 以下是需要注意的内容选择器列表：</p>
+<ul>
+<li>  ::inactive-selection?—?非活动窗口内的选定内容</li>
+<li>  ::spelling-error?—?检查可编辑元素的拼写和语法</li>
+<li>  ::grammar-error?—?匹配语法错误</li>
+<li>  ::marker?—?匹配列表项标记</li>
+<li>  ::placeholder?—?匹配表单元素的 placeholder 文本样式；</li>
+</ul>
+<h2 id="其他选择器"><a href="#其他选择器" class="headerlink" title="其他选择器"></a>其他选择器</h2><p>我们接下来提到其他几个选择器不适合不适合归类到上面任何类别。 别担心我们差不多完成了！ 不幸的是，其中大部分是实验性的，所以你必须等待一段时间才能在生产中使用它们。 :target 选择器的目标是一个 id 与当前 URL 的一部分匹配的元素。 比如下面 URL 匹配该URL页面中 id 为 part1 的元素：</p>
+<p><a target="_blank" rel="noopener" href="https://www.w3cbest.com/#part1">https://www.w3cbest.com#part1</a></p>
+<p>我们可以将该元素应用以下样式：</p>
+<p>:target { border: 1px red solid; }</p>
+<p>其实 :target 选择器目前可以用于一些特殊的用例，欢迎查看： :target 伪类使用技巧 如果你有一个很大的选择器，那么 :matches() 可以帮助简化它。例如，如果您有以下选择器：</p>
+<p>nav p.content,<br>header p.content,<br>main p.content,<br>sidebar p.content,<br>footer p.content {<br>margin: 15px;<br>padding: 10px;<br>}</p>
+<p>然后可以通过 :matches() 简化，相当于： 太好了！这将有助于使样式表更具可读性。 接下来我们还有一个 :any-link 选择器，这个选择器是:link 和 :visited 组合的简写。 所以下面这两个选择器实际上是相同的：</p>
+<p>:any-link {<br>color: red;<br>}</p>
+<p>:link, :visited {<br>color: red;<br>}</p>
+<p>本文中最后两个选择器：</p>
+<ul>
+<li>  :dir()</li>
+<li>  :lang()</li>
+</ul>
+<p>这些都与您网站的语言有关。 :dir() 接受参数 ltr 或 rtl ，具体取决于您要匹配的文本的方向，目前仅 Firefox 支持。 所以：:dir(rtl) 会匹配所有具有 RTL 方向内容的元素。 HTML文档中的每个元素都可以使用 lang 属性设置自己的单独语言。</p>
+<div lang="en">The language of this element is set to English.</div>
+<div lang="el">Η γλ?σσα αυτο? του στοιχε?ου ?χει οριστε? στα ελληνικ?.</div>
+<div lang="is">Tungumál ?essa ?áttar er sett á íslensku.</div>
+
+<p>将相同的基本文本输入到三个 <div> 标记中，但将特定国家/地区添加到内容的末尾。此外，lang 属性中使用的国家代码代表相应的国家/地区。</p>
+<ul>
+<li>  :lang(en) { color: red; }</li>
+<li>  :lang(el) { color: green; }</li>
+<li>  :lang(is) { color: blue; }</li>
+</ul>
+<p>演示：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/xjBoNG/">Misc Selectors</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>好消息是所有主流浏览器都支持 :lang() 选择器。</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>如果你试图查找一个选择器，或者需要深入研究CSS规范，那么你可能需要查看一些有用的资源：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/">MDN Web Docs</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/Style/CSS/specs.en.html">CSS Specifications</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://caniuse.com/">Can I Use</a></li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我希望你会发现这篇文章很有用。 可以帮助刷新你的CSS选择器技能，并尝试各种可能性。 使用纯 CSS 可以做很多很酷的事情，这在几年前是不可能实现的。 对于能够在纯 CSS 中进行一些非常高级的样式和动画的设计师来说，这是令人兴奋的，并且所有人都看不到一行 JavaScript 。 文章来源 <a target="_blank" rel="noopener" href="https://blog.logrocket.com/level-up-your-css-selector-skills-5d7bb45ddd37">https://blog.logrocket.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/22/css-grid-%E5%B8%83%E5%B1%80%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/22/css-grid-%E5%B8%83%E5%B1%80%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">CSS Grid 布局完全指南教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-22 11:21:34" itemprop="dateCreated datePublished" datetime="2018-09-22T11:21:34+08:00">2018-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>CSS Grid 布局是 CSS 中最强大的布局系统。与 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/490.html">flexbox</a> 的一维布局系统不同，CSS Grid 布局是一个二维布局系统，也就意味着它可以同时处理列和行。通过将 CSS 规则应用于 父元素 (成为 Grid Container 网格容器)和其 子元素（成为 Grid Items 网格项），你就可以轻松使用 Grid(网格) 布局。 这篇文章最初是从<a target="_blank" rel="noopener" href="http://chris.house/blog/a-complete-guide-css-grid-layout/">Chris House</a>的指南中移植过来的，并且一直由CSS-Tricks工作人员和付费作家保持最新。 CSS网格布局(又称“网格”)，是一个二维的基于网格的布局系统，旨在完全改变我们设计基于网格的用户界面的方式。CSS一直被用来布局我们的网页，但它从来没有做得很好。一开始我们用表格（table），然后是浮动（float），再是定位（postion）和内嵌块（inline-block），但是所有这些方法本质上都是一些技巧，忽略了许多重要的功能(例如，垂直居中)。Flexbox 的出现很大程度上改善了我们的布局方式，但它的目的是为了解决更简单的一维布局，而不是复杂的二维布局(Flexbox和Grid实际上配合得很好)。Grid是第一个专门为解决布局问题而创建的CSS模块，自从我们创建网站以来，我们一直在努力解决布局问题。 有两个主要因素激发了我创建本指南的灵感。第一个是 Rachel Andrew 出色的书籍 为 <a target="_blank" rel="noopener" href="http://abookapart.com/products/get-ready-for-css-grid-layout">CSS Grid</a> 布局做好准备。这本书对 Grid 布局做了全面，清晰的介绍 ，也是本指南的基础。我强烈建议你购买并阅读。另一个灵感来自 Chris Coyier 的 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/490.html">Flexbox 布局完整指南</a>，这也是我学习 flexbox 首选的资源。这篇文章是帮助了很多人，这点从 Google “flexbox” 排名第一就可以看出来。你会发现那篇文章和我的文章有很多相似之处，为什么不跟随最好的文章呢？ 本指南的目的是介绍存在于最新版本的规范中 Grid(网格) 概念。所以我不会覆盖过时的 IE 语法，而且随着规范的逐渐成熟，我会尽我最大的努力去更新这个指南。</p>
+<h2 id="基础知识和浏览器支持"><a href="#基础知识和浏览器支持" class="headerlink" title="基础知识和浏览器支持"></a>基础知识和浏览器支持</h2><p>首先，你必须使用 display: grid 将容器元素定义为一个 grid(网格) 布局，使用 grid-template-columns 和 grid-template-rows 设置 列 和 行 的尺寸大小，然后通过 grid-column 和 grid-row 将其子元素放入这个 grid(网格) 中。与 flexbox 类似，网格项（grid items）的源(HTML结构)顺序无关紧要。你的 CSS 可以以任何顺序放置它们，这使得使用 媒体查询（media queries）重新排列网格变得非常容易。定义整个页面的布局，然后完全重新排列布局以适应不同的屏幕宽度，这些都只需要几行 CSS ，想象一下就让人兴奋。Grid(网格) 布局是有史以来最强大的 CSS 模块之一。 截至2017年3月，许多浏览器都提供了对 CSS Grid 的原生支持，而且无需加浏览器前缀：Chrome（包括 Android ），Firefox，Edge，Safari（包括iOS）和 Opera 。 另一方面，Internet Explorer 10和11支持它，但是是一个过时的语法实现。 现在是时候使用 Grid 布局网页了！ 这个浏览器支持数据来自Caniuse，它有更多细节。数字表示浏览器支持该版本及以上版本的功能。</p>
+<p>复制代码</p>
+<h2 id="重要术语"><a href="#重要术语" class="headerlink" title="重要术语"></a>重要术语</h2><p>在深入了解 Grid 的概念之前，理解术语是很重要的。由于这里涉及的术语在概念上都很相似，如果不先记住 Grid 规范定义的含义，很容易混淆它们。但是别担心，术语并不多。</p>
+<h3 id="网格容器-Grid-Container"><a href="#网格容器-Grid-Container" class="headerlink" title="网格容器(Grid Container)"></a>网格容器(Grid Container)</h3><p>应用 display: grid 的元素。这是所有 网格项（grid item）的直接父级元素。在这个例子中，container 就是 网格容器(Grid Container)。</p>
+<div class="container">
+  <div class="item item-1"></div>
+  <div class="item item-2"></div>
+  <div class="item item-3"></div>
+</div>
+
+<h3 id="网格项-Grid-Item"><a href="#网格项-Grid-Item" class="headerlink" title="网格项(Grid Item)"></a>网格项(Grid Item)</h3><p>网格容器（Grid Container）的子元素（例如直接子元素）。这里 item 元素就是网格项(Grid Item)，但是 sub-item 不是。</p>
+<div class="container">
+  <div class="item"></div> 
+  <div class="item">
+    <p class="sub-item"></p>
+  </div>
+  <div class="item"></div>
+</div>
+
+<h3 id="网格线-Grid-Line"><a href="#网格线-Grid-Line" class="headerlink" title="网格线(Grid Line)"></a>网格线(Grid Line)</h3><p>构成网格结构的分界线。它们既可以是垂直的（“列网格线(column grid lines)”），也可以是水平的（“行网格线(row grid lines)”），并位于行或列的任一侧。例如，这里的黄线就是一条列网格线。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-line.svg"></p>
+<h3 id="网格轨道-Grid-Track"><a href="#网格轨道-Grid-Track" class="headerlink" title="网格轨道(Grid Track)"></a>网格轨道(Grid Track)</h3><p>两条相邻网格线之间的空间。你可以把它们想象成网格的列或行。下图是第二条和第三条 行网格线 之间的 网格轨道(Grid Track)。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-track.svg"></p>
+<h3 id="网格单元格-Grid-Cell"><a href="#网格单元格-Grid-Cell" class="headerlink" title="网格单元格(Grid Cell)"></a>网格单元格(Grid Cell)</h3><p>两个相邻的行和两个相邻的列网格线之间的空间。这是 Grid(网格) 系统的一个“单元”。下图是第 1 至第 2 条 行网格线 和第 2 至第 3 条 列网格线 交汇构成的 网格单元格(Grid Cell)。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-cell.svg"></p>
+<h3 id="网格区域-Grid-Area"><a href="#网格区域-Grid-Area" class="headerlink" title="网格区域(Grid Area)"></a>网格区域(Grid Area)</h3><p>4条网格线包围的总空间。一个 网格区域(Grid Area) 可以由任意数量的 网格单元格(Grid Cell) 组成。下图是 行网格线1和3，以及列网格线1和3 之间的网格区域。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-area.svg"></p>
+<h3 id="Grid-网格-属性目录"><a href="#Grid-网格-属性目录" class="headerlink" title="Grid(网格) 属性目录"></a>Grid(网格) 属性目录</h3><p>网格容器(Grid Container) 属性</p>
+<p>格项(Grid Items) 属性</p>
+<p><a href="#prop-display">display</a></p>
+<p><a href="#prop-grid-column-row-start-end">grid-column-start</a></p>
+<p><a href="#prop-grid-template-columns-rows">grid-template-columns</a></p>
+<p><a href="#prop-grid-column-row-start-end">grid-column-end</a></p>
+<p><a href="#prop-grid-template-columns-rows">grid-template-rows</a></p>
+<p><a href="#prop-grid-column-row-start-end">grid-row-start</a></p>
+<p><a href="#prop-grid-template-areas">grid-template-areas</a></p>
+<p><a href="#prop-grid-column-row-start-end">grid-row-end</a></p>
+<p><a href="#prop-grid-template">grid-template</a></p>
+<p><a href="#prop-grid-column-row">grid-column</a></p>
+<p><a href="#prop-grid-column-row-gap">grid-column-gap</a></p>
+<p><a href="#prop-grid-column-row">grid-row</a></p>
+<p><a href="#prop-grid-column-row-gap">grid-row-gap</a></p>
+<p><a href="#prop-grid-area">grid-area</a></p>
+<p><a href="#prop-justify-items">justify-items</a></p>
+<p><a href="#prop-justify-self">justify-self</a></p>
+<p><a href="#prop-justify-items">justify-items</a></p>
+<p><a href="#prop-align-self">align-self</a></p>
+<p><a href="#prop-justify-items">justify-items</a></p>
+<p><a href="#prop-place-self">place-self</a></p>
+<p><a href="#prop-align-items">align-items</a></p>
+<p><a href="#prop-place-items">place-items</a></p>
+<p><a href="#prop-justify-content">justify-content</a></p>
+<p><a href="#prop-align-content">align-content</a></p>
+<p><a href="#prop-place-content">place-content</a></p>
+<p><a href="#prop-grid-auto-columns-rows">grid-auto-columns</a></p>
+<p><a href="#prop-grid-auto-columns-rows">grid-auto-rows</a></p>
+<p><a href="#prop-grid-auto-flow">grid-auto-flow</a></p>
+<p><a href="#prop-grid">grid</a></p>
+<h3 id="父元素-网格容器-Grid-Container-属性"><a href="#父元素-网格容器-Grid-Container-属性" class="headerlink" title="父元素 网格容器(Grid Container) 属性"></a>父元素 网格容器(Grid Container) 属性</h3><p> </p>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><p>将元素定义为网格容器，并为其内容建立新的 网格格式上下文。 值：</p>
+<ul>
+<li>  <strong>grid</strong> ：生成一个块级网格</li>
+<li>  <strong>inline-grid</strong> ：生成一个内联网格</li>
+</ul>
+<p>.container {<br>  display: grid  inline-grid;<br>}</p>
+<p>注意：通过嵌套元素（也称为子网格，即 subgrid ）向下传递网格参数的能力已移至<a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-grid-2/#subgrids">CSS Grid 规范的Level 2</a> 版本。这里有<a target="_blank" rel="noopener" href="https://css-tricks.com/grid-level-2-and-subgrid/">一个快速解释</a>。</p>
+<h3 id="grid-template-columns-grid-template-rows"><a href="#grid-template-columns-grid-template-rows" class="headerlink" title="grid-template-columns/grid-template-rows"></a>grid-template-columns/grid-template-rows</h3><p>使用空格分隔的值列表，用来定义网格的列和行。这些值表示 网格轨道(Grid Track) 大小，它们之间的空格表示网格线。 值：</p>
+<ul>
+<li>  <track-size>： 可以是长度值，百分比，或者等份网格容器中可用空间（使用 fr 单位）</li>
+<li>  <line-name>：你可以选择的任意名称</li>
+</ul>
+<p>.container {<br>  grid-template-columns: <track-size> …  <line-name> <track-size> …;<br>  grid-template-rows: <track-size> …  <line-name> <track-size> …;<br>}</p>
+<p>例子： 当你在 网格轨道(Grid Track) 值之间留出空格时，网格线会自动分配正数和负数名称：</p>
+<p>.container {<br>  grid-template-columns: 40px 50px auto 50px 40px;<br>  grid-template-rows: 25% 100px auto;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/template-columns-rows-01.svg"> 但是你可以明确的指定网格线(Grid Line)名称，例如 <line-name> 值。请注意网格线名称的括号语法：</p>
+<p>.container {<br>  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];<br>  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/template-column-rows-02.svg"> 请注意，一条网格线(Grid Line)可以有多个名称。例如，这里的第二条 行网格线(row grid lines) 将有两个名字：row1-end 和 row2-start ：</p>
+<p>.container {<br>  grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];<br>}</p>
+<p>如果你的定义包含多个重复值，则可以使用 repeat() 表示法来简化定义：</p>
+<p>.container {<br>  grid-template-columns: repeat(3, 20px [col-start]);<br>}</p>
+<p>上面的代码等价于：</p>
+<p>.container {<br>  grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start];<br>}</p>
+<p>如果多行共享相同的名称，则可以通过其网格线名称和计数来引用它们。</p>
+<p>.item {<br>  grid-column-start: col-start 2;<br>}</p>
+<p>fr 单元允许你用等分网格容器剩余可用空间来设置 网格轨道(Grid Track) 的大小 。例如，下面的代码会将每个网格项设置为网格容器宽度的三分之一：</p>
+<p>.container {<br>  grid-template-columns: 1fr 1fr 1fr;<br>}</p>
+<p>剩余可用空间是除去所有非灵活网格项 之后 计算得到的。在这个例子中，可用空间总量减去 50px 后，再给 fr 单元的值 3 等分：</p>
+<p>.container {<br>  grid-template-columns: 1fr 50px 1fr 1fr;<br>}</p>
+<h3 id="grid-template-areas"><a href="#grid-template-areas" class="headerlink" title="grid-template-areas"></a>grid-template-areas</h3><p>通过引用 grid-area 属性指定的 网格区域(Grid Area) 名称来定义网格模板。重复网格区域的名称导致内容跨越这些单元格。一个点号（.）代表一个空单元格。这个语法本身可视作网格的可视化结构。 值：</p>
+<ul>
+<li>  <grid-area-name>：由网格项的 grid-area 指定的网格区域名称</li>
+<li>  .（点号） ：代表一个空的网格单元</li>
+<li>  none：不定义网格区域</li>
+</ul>
+<p>.container {<br>  grid-template-areas:<br>    “<grid-area-name>  .  none  …”<br>    “…”;<br>}</p>
+<p>示例：</p>
+<p>.item-a {<br>  grid-area: header;<br>}<br>.item-b {<br>  grid-area: main;<br>}<br>.item-c {<br>  grid-area: sidebar;<br>}<br>.item-d {<br>  grid-area: footer;<br>}</p>
+<p>.container {<br>  grid-template-columns: 50px 50px 50px 50px;<br>  grid-template-rows: auto;<br>  grid-template-areas:<br>    “header header header header”<br>    “main main . sidebar”<br>    “footer footer footer footer”;<br>}</p>
+<p>上面的代码将创建一个 4 列宽 3 行高的网格。整个顶行将由 header 区域组成。中间一排将由两个 main 区域，一个是空单元格，一个 sidebar 区域组成。最后一行全是 footer 区域组成。 <img data-src="http://file.w3cbest.com/file/images/dddgrid-template-areas.svg"> 你的声明中的每一行都需要有相同数量的单元格。 你可以使用任意数量的相邻的 点. 来声明单个空单元格。 只要这些点.之间没有空隙隔开，他们就代表一个单独的单元格。 注意你 不能 用这个语法来命名网格线，只是命名 网格区域 。当你使用这种语法时，区域两端的网格线实际上会自动命名。如果你的网格区域的名字是 foo，该区域的起始行网格线 和 起始列网格线 的名称将为 foo-start，而最后一条行网格线 和 最后一条列网格线 的名称将为 foo-end。这意味着某些网格线可能有多个名字，如上例中最左边的网格线，它将有三个名称：header-start，main-start 和 footer-start 。 </p>
+<h3 id="grid-template"><a href="#grid-template" class="headerlink" title="grid-template"></a>grid-template</h3><p>用于定义grid-template-rows ，grid-template-columns ，grid-template-areas 简写属性。 值：</p>
+<ul>
+<li>  none：将所有三个属性设置为其初始值</li>
+<li>  <grid-template-rows> / <grid-template-columns>：将 grid-template-columns 和 grid-template-rows 设置为相应地特定的值，并且设置grid-template-areas为none</li>
+</ul>
+<p>.container {<br>  grid-template: none  <grid-template-rows> / <grid-template-columns>;<br>}</p>
+<p>这个属性也接受一个更复杂但非常方便的语法来指定三个上诉属性。这里有一个例子：</p>
+<p>.container {<br>  grid-template:<br>    [row1-start] “header header header” 25px [row1-end]<br>    [row2-start] “footer footer footer” 25px [row2-end]<br>    / auto 50px auto;<br>}</p>
+<p>等价于：</p>
+<p>.container {<br>  grid-template-rows: [row1-start] 25px [row1-end row2-start] 25px [row2-end];<br>  grid-template-columns: auto 50px auto;<br>  grid-template-areas:<br>    “header header header”<br>    “footer footer footer”;<br>}</p>
+<p>由于 grid-template 不会重置 隐式 网格属性（grid-auto-columns， grid-auto-rows， 和 grid-auto-flow），这可能是你想在大多数情况下做的，建议使用 grid 属性而不是 grid-template。</p>
+<h3 id="grid-column-gap-grid-row-gap"><a href="#grid-column-gap-grid-row-gap" class="headerlink" title="grid-column-gap / grid-row-gap"></a>grid-column-gap / grid-row-gap</h3><p>指定网格线(grid lines)的大小。你可以把它想象为设置列/行之间间距的宽度。 值：</p>
+<ul>
+<li>  <line-size> ：长度值</li>
+</ul>
+<p>.container {<br>  grid-column-gap: <line-size>;<br>  grid-row-gap: <line-size>;<br>}</p>
+<p>示例：</p>
+<p>.container {<br>  grid-template-columns: 100px 50px 100px;<br>  grid-template-rows: 80px auto 80px;<br>  grid-column-gap: 10px;<br>  grid-row-gap: 15px;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/dddgrid-gap.svg"> 只能在 列/行 之间创建间距，网格外部边缘不会有这个间距。 注意：这两个属性将删除 grid- 前缀，就是将 grid-column-gap 和 grid-row-gap重命名为 column-gap 和 row-gap。 Chrome 68+，Safari 11.2 Release 50+ 和Opera 54+ 已经支持无前缀的属性。  </p>
+<h3 id="grid-gap"><a href="#grid-gap" class="headerlink" title="grid-gap"></a>grid-gap</h3><p>grid-column-gap 和 grid-row-gap 的简写语法 值：</p>
+<ul>
+<li>  <grid-row-gap> <grid-column-gap>：长度值</li>
+</ul>
+<p>.container {<br>  grid-gap: <grid-row-gap> <grid-column-gap>;<br>}</p>
+<p>示例：</p>
+<p>.container {<br>  grid-template-columns: 100px 50px 100px;<br>  grid-template-rows: 80px auto 80px;<br>  grid-gap: 15px 10px;<br>}</p>
+<p>如果grid-row-gap没有定义，那么就会被设置为等同于 grid-column-gap 的值。例如下面的代码是等价的：</p>
+<p>.container{<br>  /* 设置 grid-column-gap 和 grid-row-gap */<br>  grid-column-gap: 10px;<br>  grid-row-gap: 10px; </p>
+<p>  /* 等价于 */<br>  grid-gap: 10px 10px;</p>
+<p>  /* 等价于 */<br>  grid-gap: 10px;<br>}</p>
+<p>注意：这个属性将删除 grid- 前缀，就是将 grid-gap 重命名为 gap。 Chrome 68+，Safari 11.2 Release 50+ 和Opera 54+ 已经支持无前缀的属性。</p>
+<h3 id="justify-items"><a href="#justify-items" class="headerlink" title="justify-items"></a>justify-items</h3><p>沿着 inline（行）轴线对齐网格项(grid items)（相反的属性是 align-items 沿着 block（列）轴线对齐）。此值适用于容器内的所有网格项。 值：</p>
+<ul>
+<li>  start：将网格项对齐到其单元格的左侧起始边缘（左侧对齐）</li>
+<li>  end：将网格项对齐到其单元格的右侧结束边缘（右侧对齐）</li>
+<li>  center：将网格项对齐到其单元格的水平中间位置（水平居中对齐）</li>
+<li>  stretch：填满单元格的宽度（默认值）</li>
+</ul>
+<p>.container {<br>  justify-items: start  end  center  stretch;<br>}</p>
+<p>示例：</p>
+<p>.container {<br>  justify-items: start;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-items-start.svg"></p>
+<p>.container{<br>  justify-items: end;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-items-end.svg"></p>
+<p>.container{<br>  justify-items: center;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-items-center.svg"></p>
+<p>.container{<br>  justify-items: stretch;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-items-stretch.svg"> 这些行为也可以通过每个单独网格项(grid items) 的 justify-self 属性设置。 </p>
+<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p>沿着 block（列）轴线对齐网格项(grid items)（相反的属性是 justify-items 沿着 inline（行）轴线对齐）。此值适用于容器内的所有网格项。 值：</p>
+<ul>
+<li>  start：将网格项对齐到其单元格的顶部起始边缘（顶部对齐）</li>
+<li>  end：将网格项对齐到其单元格的底部结束边缘（底部对齐）</li>
+<li>  center：将网格项对齐到其单元格的垂直中间位置（垂直居中对齐）</li>
+<li>  stretch：填满单元格的高度（默认值）</li>
+</ul>
+<p>.container {<br>  align-items: start  end  center  stretch;<br>}</p>
+<p>示例：</p>
+<p>.container {<br>  align-items: start;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-items-start.svg"></p>
+<p>.container {<br>  align-items: end;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-items-end.svg"></p>
+<p>.container {<br>  align-items: center;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-items-center.svg"></p>
+<p>.container {<br>  align-items: stretch;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-items-stretch.svg"> 这些行为也可以通过每个单独网格项(grid items) 的 align-self 属性设置。 </p>
+<h3 id="place-items"><a href="#place-items" class="headerlink" title="place-items"></a>place-items</h3><p>place-items 是设置 align-items 和 justify-items 的简写形式。 值：</p>
+<ul>
+<li>  <align-items> <justify-items>：第一个值设置 align-items 属性，第二个值设置 justify-items 属性。如果省略第二个值，则将第一个值同时分配给这两个属性。</li>
+</ul>
+<p>除 Edge 之外的所有主要浏览器都支持 place-items 简写属性。 有关更多详细信息，请参阅<a href="#prop-align-items">align-items</a> 和 <a href="#prop-justify-items">justify-items</a>。  </p>
+<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p>有时，你的网格合计大小可能小于其 网格容器(grid container) 大小。 如果你的所有 网格项(grid items) 都使用像 px 这样的非灵活单位设置大小，就可能出现这种情况。在这种情况下，您可以设置网格容器内的网格的对齐方式。 此属性沿着 inline（行）轴线对齐网格（相反的属性是 align-content ，沿着 block（列）轴线对齐网格）。 值：</p>
+<ul>
+<li>  start：将网格对齐到 网格容器(grid container) 的左侧起始边缘（左侧对齐）</li>
+<li>  end：将网格对齐到 网格容器 的右侧结束边缘（右侧对齐）</li>
+<li>  center：将网格对齐到 网格容器 的水平中间位置（水平居中对齐）</li>
+<li>  stretch：调整 网格项(grid items) 的宽度，允许该网格填充满整个 网格容器 的宽度</li>
+<li>  space-around：在每个网格项之间放置一个均匀的空间，左右两端放置一半的空间</li>
+<li>  space-between：在每个网格项之间放置一个均匀的空间，左右两端没有空间</li>
+<li>  space-evenly：在每个网格项目之间放置一个均匀的空间，左右两端放置一个均匀的空间</li>
+</ul>
+<p>.container {<br>  justify-content: start  end  center  stretch  space-around  space-between  space-evenly;<br>}</p>
+<p>示例：</p>
+<p>.container {<br>  justify-content: start;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-content-start.svg"></p>
+<p>.container {<br>  justify-content: end;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-content-end.svg"></p>
+<p>.container {<br>  justify-content: center;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-content-center.svg"></p>
+<p>.container {<br>  justify-content: stretch;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-content-stretch.svg"></p>
+<p>.container {<br>  justify-content: space-around;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-content-space-around.svg"></p>
+<p>.container {<br>  justify-content: space-between;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-content-space-between.svg"></p>
+<p>.container {<br>  justify-content: space-evenly;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-content-space-evenly.svg"> </p>
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>有时，你的网格合计大小可能小于其 网格容器(grid container) 大小。 如果你的所有 网格项(grid items) 都使用像 px 这样的非灵活单位设置大小，就可能出现这种情况。在这种情况下，您可以设置网格容器内的网格的对齐方式。 此属性沿着 block（列）轴线对齐网格（相反的属性是 justify-content ，沿着 inline（行）轴线对齐网格）。 值：</p>
+<ul>
+<li>  start：将网格对齐到 网格容器(grid container) 的顶部起始边缘（顶部对齐）</li>
+<li>  end：将网格对齐到 网格容器 的底部结束边缘（底部对齐）</li>
+<li>  center：将网格对齐到 网格容器 的垂直中间位置（垂直居中对齐）</li>
+<li>  stretch：调整 网格项(grid items) 的高度，允许该网格填充满整个 网格容器 的高度</li>
+<li>  space-around：在每个网格项之间放置一个均匀的空间，上下两端放置一半的空间</li>
+<li>  space-between：在每个网格项之间放置一个均匀的空间，上下两端没有空间</li>
+<li>  space-evenly：在每个网格项目之间放置一个均匀的空间，上下两端放置一个均匀的空间</li>
+</ul>
+<p>.container {<br>  align-content: start  end  center  stretch  space-around  space-between  space-evenly;<br>}</p>
+<p>示例：</p>
+<p>.container {<br>  align-content: start;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-content-start.svg"></p>
+<p>.container {<br>  align-content: end;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-content-end.svg"></p>
+<p>.container {<br>  align-content: center;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-content-center.svg"></p>
+<p>.container {<br>  align-content: stretch;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-content-stretch.svg"></p>
+<p>.container {<br>  align-content: space-around;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-content-space-around.svg"></p>
+<p>.container {<br>  align-content: space-between;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-content-space-between.svg"></p>
+<p>.container {<br>align-content: space-evenly;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-content-space-evenly.svg"> </p>
+<h2 id="place-content"><a href="#place-content" class="headerlink" title="place-content"></a>place-content</h2><p>place-content 是设置 align-content 和 justify-content 的简写形式。 值：</p>
+<ul>
+<li>  <align-content> <justify-content>：第一个值设置 align-content 属性，第二个值设置 justify-content 属性。如果省略第二个值，则将第一个值同时分配给这两个属性。</li>
+</ul>
+<p>除 Edge 之外的所有主要浏览器都支持 place-content 简写属性。 有关更多详细信息，请参阅align-content 和 justify-content。</p>
+<h3 id="grid-auto-columns-grid-auto-rows"><a href="#grid-auto-columns-grid-auto-rows" class="headerlink" title="grid-auto-columns / grid-auto-rows"></a>grid-auto-columns / grid-auto-rows</h3><p>指定任何自动生成的网格轨道(grid tracks)（又名隐式网格轨道）的大小。当网格中的网格项多于单元格时，或者当网格项位于显式网格之外时，就会创建隐式轨道。（<a target="_blank" rel="noopener" href="http://www.w3cbest.com/504.html">参见显式网格和隐式网格之间的区别</a>） 值：</p>
+<ul>
+<li>  <track-size>：可以是长度值，百分比，或者等份网格容器中可用空间的分数（使用 fr 单位）</li>
+</ul>
+<p>.container {<br>  grid-auto-columns: <track-size> …;<br>  grid-auto-rows: <track-size> …;<br>}</p>
+<p>为了说明如何创建隐式网格轨道，请考虑一下以下的代码：</p>
+<p>.container {<br>  grid-template-columns: 60px 60px;<br>  grid-template-rows: 90px 90px<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-columns-rows-01.svg"> 这将生成了一个 2×2 的网格。 但现在想象一下，你使用 grid-column 和 grid-row 来定位你的网格项，像这样：</p>
+<p>.item-a {<br>  grid-column: 1 / 2;<br>  grid-row: 2 / 3;<br>}<br>.item-b {<br>  grid-column: 5 / 6;<br>  grid-row: 2 / 3;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-columns-rows-02.svg"> 我们告诉 .item-b 从第 5 条列网格线开始到第 6 条列网格线结束，但我们从来没有定义过 第5 或 第6 列网格线。 因为我们引用的网格线不存在，所以创建宽度为 0 的隐式网格轨道以填补空缺。我们可以使用 grid-auto-columns 和 grid-auto-rows 来指定这些隐式轨道的大小：</p>
+<p>.container {<br>  grid-auto-columns: 60px;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-columns-rows-03.svg">  </p>
+<h3 id="grid-auto-flow"><a href="#grid-auto-flow" class="headerlink" title="grid-auto-flow"></a>grid-auto-flow</h3><p>如果你有一些没有明确放置在网格上的网格项(grid items)，自动放置算法 会自动放置这些网格项。该属性控制自动布局算法如何工作。 值：</p>
+<ul>
+<li>  row：告诉自动布局算法依次填充每行，根据需要添加新行 （默认）</li>
+<li>  column：告诉自动布局算法依次填入每列，根据需要添加新列</li>
+<li>  dense：告诉自动布局算法在稍后出现较小的网格项时，尝试填充网格中较早的空缺</li>
+</ul>
+<p>.container {<br>  grid-auto-flow: row  column  row dense  column dense<br>}</p>
+<p>请注意，dense 只会更改网格项的可视顺序，并可能导致它们出现乱序，这对可访问性不利。 示例： 考虑以下 HTML :</p>
+<section class="container">
+  <div class="item-a">item-a</div>
+  <div class="item-b">item-b</div>
+  <div class="item-c">item-c</div>
+  <div class="item-d">item-d</div>
+  <div class="item-e">item-e</div>
+</section>
+
+<p>你定义一个有 5 列和 2 行的网格，并将 grid-auto-flow 设置为 row（也就是默认值）：</p>
+<p>.container {<br>  display: grid;<br>  grid-template-columns: 60px 60px 60px 60px 60px;<br>  grid-template-rows: 30px 30px;<br>  grid-auto-flow: row;<br>}</p>
+<p>将网格项放在网格上时，只能为其中的两个指定位置：</p>
+<p>.item-a {<br>  grid-column: 1;<br>  grid-row: 1 / 3;<br>}<br>.item-e {<br>  grid-column: 5;<br>  grid-row: 1 / 3;<br>}</p>
+<p>因为我们把 grid-auto-flow 设成了 row ，所以我们的网格看起来会是这样。注意 我们没有进行定位的网格项（item-b，item-c，item-d）会这样排列在可用的行中： <img data-src="http://file.w3cbest.com/file/images/grid-auto-flow-01.svg"> 相反地，如果我们把 grid-auto-flow 设成了 column ，那么 item-b，item-c，item-d 会沿着列向下排列：</p>
+<p>.container {<br>  display: grid;<br>  grid-template-columns: 60px 60px 60px 60px 60px;<br>  grid-template-rows: 30px 30px;<br>  grid-auto-flow: column;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-flow-02.svg"> </p>
+<h3 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h3><p>在一个声明中设置所有以下属性的简写： grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, 和 grid-auto-flow 。（注意：您只能在单个网格声明中指定显式或隐式网格属性）。 值：</p>
+<ul>
+<li>  none：将所有子属性设置为其初始值。</li>
+<li>  <grid-template>：与grid-template 简写的工作方式相同。</li>
+<li>  <grid-template-rows> / [ auto-flow &amp;&amp; dense? ] <grid-auto-columns>? ：将grid-template-rows 设置为指定的值。 如果 auto-flow 关键字位于斜杠的右侧，则会将 grid-auto-flow 设置为 column。 如果另外指定了 dense 关键字，则自动放置算法使用 “dense” 算法。 如果省略 grid-auto-columns ，则将其设置为 auto。</li>
+<li>  [ auto-flow &amp;&amp; dense? ] <grid-auto-rows>? / <grid-template-columns>：将 grid-template-columns 设置为指定值。 如果 auto-flow 关键字位于斜杠的左侧，则会将grid-auto-flow 设置为 row 。 如果另外指定了 dense 关键字，则自动放置算法使用 “dense” 打包算法。 如果省略 grid-auto-rows ，则将其设置为 auto。</li>
+</ul>
+<p>例子： 以下两个代码块是等效的：</p>
+<p>.container {<br>  grid: 100px 300px / 3fr 1fr;<br>}</p>
+<p>.container {<br>  grid-template-rows: 100px 300px;<br>  grid-template-columns: 3fr 1fr;<br>}</p>
+<p>以下两个代码块是等效的：</p>
+<p>.container {<br>  grid: auto-flow / 200px 1fr;<br>}</p>
+<p>.container {<br>  grid-auto-flow: row;<br>  grid-template-columns: 200px 1fr;<br>}</p>
+<p>以下两个代码块是等效的：</p>
+<p>.container {<br>  grid: auto-flow dense 100px / 1fr 2fr;<br>}</p>
+<p>.container {<br>  grid-auto-flow: row dense;<br>  grid-auto-rows: 100px;<br>  grid-template-columns: 1fr 2fr;<br>}</p>
+<p>以下两个代码块是等效的：</p>
+<p>.container {<br>  grid: 100px 300px / auto-flow 200px;<br>}</p>
+<p>.container {<br>  grid-template-rows: 100px 300px;<br>  grid-auto-flow: column;<br>  grid-auto-columns: 200px;<br>}</p>
+<p>它也接受一个更复杂但相当方便的语法来一次设置所有内容。您可以指定 grid-template-areas，grid-template-rows和grid-template-columns，并所有其他的子属性都被设置为它们的初始值。这么做可以在它们网格区域内相应地指定网格线名字和网格轨道的大小。用最简单的例子来描述：</p>
+<p>.container {<br>  grid: [row1-start] “header header header” 1fr [row1-end]<br>        [row2-start] “footer footer footer” 25px [row2-end]<br>        / auto 50px auto;<br>}</p>
+<p>等价于：</p>
+<p>.container {<br>  grid-template-areas:<br>    “header header header”<br>    “footer footer footer”;<br>  grid-template-rows: [row1-start] 1fr [row1-end row2-start] 25px [row2-end];<br>  grid-template-columns: auto 50px auto;<br>}</p>
+<h3 id="子元素-网格项-Grid-Items-属性"><a href="#子元素-网格项-Grid-Items-属性" class="headerlink" title="子元素 网格项(Grid Items) 属性"></a>子元素 网格项(Grid Items) 属性</h3><p>注意：float，display: inline-block，display: table-cell，vertical-align 和 column-* 属性对网格项无效。</p>
+<h3 id="grid-column-start-grid-column-end-grid-row-start-grid-row-end"><a href="#grid-column-start-grid-column-end-grid-row-start-grid-row-end" class="headerlink" title="grid-column-start / grid-column-end / grid-row-start / grid-row-end"></a>grid-column-start / grid-column-end / grid-row-start / grid-row-end</h3><p>通过引用特定网格线(grid lines) 来确定 网格项(grid item) 在网格内的位置。 grid-column-start / grid-row-start 是网格项开始的网格线，grid-column-end / grid-row-end 是网格项结束的网格线。 值：</p>
+<ul>
+<li>  <line> ：可以是一个数字引用一个编号的网格线，或者一个名字来引用一个命名的网格线</li>
+<li>  span <number> ：该网格项将跨越所提供的网格轨道数量</li>
+<li>  span <name> ：该网格项将跨越到它与提供的名称位置</li>
+<li>  auto：表示自动放置，自动跨度，默认会扩展一个网格轨道的宽度或者高度</li>
+</ul>
+<p>.item {<br>  grid-column-start: <number>  <name>  span <number>  span <name>  auto<br>  grid-column-end: <number>  <name>  span <number>  span <name>  auto<br>  grid-row-start: <number>  <name>  span <number>  span <name>  auto<br>  grid-row-end: <number>  <name>  span <number>  span <name>  auto<br>}</p>
+<p>示例：</p>
+<p>.item-a {<br>  grid-column-start: 2;<br>  grid-column-end: five;<br>  grid-row-start: row1-start<br>  grid-row-end: 3;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-column-row-start-end-01.svg"></p>
+<p>.item-b {<br>  grid-column-start: 1;<br>  grid-column-end: span col4-start;<br>  grid-row-start: 2<br>  grid-row-end: span 2<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-column-row-start-end-02.svg"> 如果没有声明指定 grid-column-end / grid-row-end，默认情况下，该网格项将占据 1 个轨道。 项目可以相互重叠。您可以使用 z-index 来控制它们的重叠顺序。  </p>
+<h3 id="grid-column-grid-row"><a href="#grid-column-grid-row" class="headerlink" title="grid-column / grid-row"></a>grid-column / grid-row</h3><p>分别为 grid-column-start + grid-column-end 和 grid-row-start + grid-row-end 的简写形式。 值：</p>
+<ul>
+<li>  <start-line> / <end-line>：每个网格项都接受所有相同的值，作为普通书写的版本，包括跨度</li>
+</ul>
+<p>.item {<br>  grid-column: <start-line> / <end-line>  <start-line> / span <value>;<br>  grid-row: <start-line> / <end-line>  <start-line> / span <value>;<br>}</p>
+<p>示例：</p>
+<p>.item-c {<br>  grid-column: 3 / span 2;<br>  grid-row: third-line / 4;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-column-row.svg"> 如果没有声明分隔线结束位置，则该网格项默认占据 1 个网格轨道。 </p>
+<h3 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h3><p>为网格项提供一个名称，以便可以 被使用网格容器 grid-template-areas 属性创建的模板进行引用。 另外，这个属性可以用作grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写。 值：</p>
+<ul>
+<li>  <name>：你所选的名称</li>
+<li>  <row-start> / <column-start> / <row-end> / <column-end>：数字或分隔线名称</li>
+</ul>
+<p>.item {<br>  grid-area: <name>  <row-start> / <column-start> / <row-end> / <column-end>;<br>}</p>
+<p>示例： 作为为网格项分配名称的一种方法：</p>
+<p>.item-d {<br>  grid-area: header<br>}</p>
+<p>作为grid-row-start + grid-column-start + grid-row-end + grid-column-end 属性的简写形式</p>
+<p>.item-d {<br>    grid-area: 1 / col4-start / last-line / 6<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid-area.svg"> </p>
+<h3 id="justify-self"><a href="#justify-self" class="headerlink" title="justify-self"></a>justify-self</h3><p>沿着 inline（行）轴线对齐网格项（ 相反的属性是 align-self ，沿着 block（列）轴线对齐）。此值适用于单个网格项内的内容。 值：</p>
+<ul>
+<li>  start：将网格项对齐到其单元格的左侧起始边缘（左侧对齐）</li>
+<li>  end：将网格项对齐到其单元格的右侧结束边缘（右侧对齐）</li>
+<li>  center：将网格项对齐到其单元格的水平中间位置（水平居中对齐）</li>
+<li>  stretch：填满单元格的宽度（默认值）</li>
+</ul>
+<p>.item {<br>  justify-self: start  end  center  stretch;<br>}</p>
+<p>示例：</p>
+<p>.item-a {<br>  justify-self: start;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-self-start.svg"></p>
+<p>.item-a {<br>  justify-self: end;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-self-end.svg"></p>
+<p>.item-a {<br>  justify-self: center;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-self-center.svg"></p>
+<p>.item-a {<br>  justify-self: stretch;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/justify-self-stretch.svg"> 要为网格中的所有网格项设置 行轴线(row axis) 线上对齐方式，也可以在 网格容器 上设置 <a href="#prop-justify-items">justify-items</a> 属性。 </p>
+<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>沿着 block（列）轴线对齐网格项(grid items)（ 相反的属性是 justify-self ，沿着 inline（行）轴线对齐）。此值适用于单个网格项内的内容。 值：</p>
+<ul>
+<li>  start：将网格项对齐到其单元格的顶部起始边缘（顶部对齐）</li>
+<li>  end：将网格项对齐到其单元格的底部结束边缘（底部对齐）</li>
+<li>  center：将网格项对齐到其单元格的垂直中间位置（垂直居中对齐）</li>
+<li>  stretch：填满单元格的高度（默认值）</li>
+</ul>
+<p>.item{<br>  align-self: start  end  center  stretch;<br>}</p>
+<p>示例：</p>
+<p>.item-a {<br>  align-self: start;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-self-start.svg"></p>
+<p>.item-a {<br>  align-self: end;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-self-end.svg"></p>
+<p>.item-a {<br>  align-self: center;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-self-center.svg"></p>
+<p>.item-a {<br>  align-self: stretch;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/align-self-stretch.svg"> 要为网格中的所有网格项设置 列轴线(column axis) 上的对齐方式，也可以在 网格容器 上设置<a href="#prop-align-items">align-items</a>属性。  </p>
+<h3 id="place-self"><a href="#place-self" class="headerlink" title="place-self"></a>place-self</h3><p>place-self 是设置 align-self 和 justify-self 的简写形式。 值：</p>
+<ul>
+<li>  auto – 布局模式的 “默认” 对齐方式。</li>
+<li>  <align-self> <justify-self>：第一个值设置 align-self 属性，第二个值设置 justify-self 属性。如果省略第二个值，则将第一个值同时分配给这两个属性。</li>
+</ul>
+<p>示例：</p>
+<p>.item-a {<br>  place-self: center;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/place-self-center.svg"></p>
+<p>.item-a {<br>  place-self: center stretch;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/place-self-center-stretch.svg"> 除 Edge 之外的所有主要浏览器都支持 place-self 简写属性。</p>
+<h2 id="动画（Animation）"><a href="#动画（Animation）" class="headerlink" title="动画（Animation）"></a>动画（Animation）</h2><p>根据 CSS Grid 布局模块 Level 1 规范，有 5 个可应用动画的网格属性：</p>
+<ul>
+<li>  grid-gap， grid-row-gap，grid-column-gap 作为长度，百分比或 calc。</li>
+<li>  grid-template-columns，grid-template-rows 作为长度，百分比或 calc 的简单列表，只要列表中长度、百分比或calc组件的值不同即可。</li>
+</ul>
+<h3 id="浏览器支持CSS网格属性"><a href="#浏览器支持CSS网格属性" class="headerlink" title="浏览器支持CSS网格属性"></a>浏览器支持CSS网格属性</h3><p>截至今天（2018年5月7日），在测试的几个浏览器中仅实现 (grid-)gap，(grid-)row-gap，(grid-)column-gap 的动画。 浏览器支持可设置动画的网格属性：</p>
+<p>Browser</p>
+<p><code>(grid-)gap</code>, <code>(grid-)row-gap</code>, <code>(grid-)column-gap</code></p>
+<p><code>grid-template-columns</code></p>
+<p><code>grid-template-rows</code></p>
+<p>Firefox</p>
+<p>supported ✅ 53+</p>
+<p>supported ✅ 66+</p>
+<p>supported ✅ 66+</p>
+<p>Safari 12.0</p>
+<p>not supported ❌</p>
+<p>not supported ❌</p>
+<p>not supported ❌</p>
+<p>Chrome</p>
+<p>supported ✅ 66+</p>
+<p>not supported ❌</p>
+<p>not supported ❌</p>
+<p>Chrome for Android 66+, Opera Mini 33+</p>
+<p>supported ✅</p>
+<p>not supported ❌</p>
+<p>not supported ❌</p>
+<p>Edge</p>
+<p>supported ✅ 16+</p>
+<p>not supported ❌</p>
+<p>not supported ❌</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/rmQvMG/">CSS Grid Layout: Animation</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>文章来源：<a target="_blank" rel="noopener" href="https://css-tricks.com/snippets/css/complete-guide-grid/#prop-align-items">https://css-tricks.com/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/19/css%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/19/css%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%EF%BC%89/" class="post-title-link" itemprop="url">CSS变量使用指南（自定义属性）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-19 22:47:24" itemprop="dateCreated datePublished" datetime="2018-09-19T22:47:24+08:00">2018-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>CSS预处理器，如Sass和Less，使得CSS代码易于组织和维护。通过提供变量、混合、循环等特性，使得CSS具有动态编写的能力，从而减少重复性工作，提高开发速度。 最近，CSS开始添加一些动态特性。<a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-variables/">CSS变量</a> （自定义属性）已经加入规范，并且获得了大多数浏览器的支持。但是<a target="_blank" rel="noopener" href="https://tabatkins.github.io/specs/css-apply-rule/">CSS混合特性还在进行中</a>。 在这篇文章中，我们将会向你展示怎么把CSS变量应用到开发中，从而使得样式表更加可维护和<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> (Don’t Repeat Yourself)。 让我们现在开始！</p>
+<h2 id="CSS变量是什么？"><a href="#CSS变量是什么？" class="headerlink" title="CSS变量是什么？"></a>CSS变量是什么？</h2><p>如果你使用过任何编程语言，你肯定熟悉变量这个概念。变量让你存储和更新程序运行需要的值。 例如，考虑下面的JavaScript片段：</p>
+<p>let number1 = 2;<br>let number2 = 3;<br>let total = number1 + number2;<br>console.log(total); // 5<br>number1 = 4;<br>total = number1 + number2;<br>console.log(total); // 7</p>
+<p>number1和number2是两个变量，分别存储数字2和3。 total也是一个变量，存储<code>number1</code>和<code>number2</code>变量的和，在这个例子中是5。你可以动态更新这些变量的值，并且在程序的任何地方使用更新后的值。在上面的代码片段中，我把<code>number1</code>的值更新为<code>4</code>，当我使用相同的变量再次执行加法操作时，存储在<code>total</code>中的值就变成7，而不是5了。 变量的好处在于你可以把值存储在一个地方，然后在你需要的地方修改它。这样你就不用在程序的不同地方为不同的值添加不同的变量：所有变量更新使用同一个存储地址，比如你的变量。 CSS主要是一门声明式语言，缺乏动态性。你可能会说给CSS添加变量会与CSS本身相矛盾。如果前端开发仅仅关注语义，那么给CSS添加变量确实会与CSS本身矛盾。幸运的是，网络语言更像动态语言，它会随着周围环境和开发者的需求不断变化。CSS也不例外。 总而言之，变量已经成为CSS中令人激动的实现，你很快也会发现，学习和使用它非常直观。</p>
+<h2 id="使用CSS变量有什么好处？"><a href="#使用CSS变量有什么好处？" class="headerlink" title="使用CSS变量有什么好处？"></a>使用CSS变量有什么好处？</h2><p>在CSS中使用变量的好处和在编程语言中没有特别大的不同。 下面是规范对上述问题的回答：</p>
+<blockquote>
+<p>[使用CSS变量]使大文件更易于阅读，因为看起来很随意的值有了一个提示信息的名字，并且编辑这些文件更加简单，更不易于出错。因为你只需要在自定义属性处修改一次，然后这个修改就会自动应用到使用该变量的任何地方。 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-variables/#intro">W3C规范</a>。</p>
+</blockquote>
+<p>换句话说： 通过与项目相关的方式命名变量，管理和维护代码会变得更加容易。例如，如果项目的主色调保存在<code>--primary-color</code>中，修改项目的主色调就会变得很容易，仅仅改变该变量的值就可以，而不用去修改遍布在代码各处、不同CSS属性中的颜色值。</p>
+<h2 id="CSS变量和预处理器变量的不同之处？"><a href="#CSS变量和预处理器变量的不同之处？" class="headerlink" title="CSS变量和预处理器变量的不同之处？"></a>CSS变量和预处理器变量的不同之处？</h2><p>在给网站添加样式时，你可能已经通过预处理器，如<a target="_blank" rel="noopener" href="http://sass-lang.com/">Sass</a>和<a target="_blank" rel="noopener" href="http://lesscss.org/">Less</a>，体验过变量的灵活性带来的好处。 预处理器可以让你设置变量，并且在函数、循环和数学操作等中使用。这是不是意味着CSS变量就没有什么用处了？ 不完全是，主要是因为CSS变量和预处理器变量并不一样。 不同之处在于CSS变量是运行在浏览器中的动态CSS属性，而预处理器变量会被编译成普通的CSS代码。因此，浏览器并不知道预处理器变量的存在。 这就意味着你可以更改样式表、行内样式属性和SVG展示型属性中的CSS变量，或者使用JavaScript操作它们。这是预处理器变量做不到的。CSS变量提供了更多可能性！ 但这并不是说你需要在二者之间选择其一：你可以同时使用CSS变量和预处理器变量的强大功能。</p>
+<h2 id="CSS变量的语法"><a href="#CSS变量的语法" class="headerlink" title="CSS变量的语法"></a>CSS变量的语法</h2><p>为了简单起见，在这篇文章中我使用了CSS变量这个术语，但是官方文档给出的是级联变量的CSS自定义属性。CSS自定义属性形式如下：</p>
+<p>--my-cool-background: #73a4f4;</p>
+<p>在自定义属性前面添加两个短横线，然后像普通的CSS属性一样给它赋值。在上面的代码片段中，给<code>--my-cool-background</code>自定义属性赋了一个颜色值。 级联变量部分包括使用<code>var()</code>函数应用自定义属性，形式如下：</p>
+<p>var(–my-cool-background)</p>
+<p>自定义属性的使用范围是CSS选择器的内部，<code>var()</code>像一个真正的CSS属性值被使用。</p>
+<p>:root {<br>  –my-cool-background: #73a4f4;<br>}<br>/* CSS文件的其他部分 */<br>#foo {<br>  background-color: var(–my-cool-background);<br>}</p>
+<p>上面的代码片段把<code>--my-cool-background</code>自定义属性定义在<code>:root</code>伪元素内，这使得自定义属性的值全局可用（:root匹配元素内的任何元素）。然后使用var()函数把值应用到ID是foo的容器的background-color属性上，然后这个容器就会得到一个淡蓝色背景。 除此之外，还可以把淡蓝色应用到多个HTML元素的其他颜色属性上，如<code>color</code>，<code>border-color</code>等。你需要做得仅仅是通过<code>var(--my-cool-background)</code>获取自定义属性的值，然后应用到相应的属性上。当然，你需要好好考虑CSS变量的命名规范，使你的变量名能更好地反映变量的内容。</p>
+<p>p {<br>    color: var(–my-cool-background);<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/gRMaJw/">Basic Workings of CSS Variables</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>你也可以在CSS变量中使用另一个CSS变量，举例如下：</p>
+<p>--top-color: orange;<br>–bottom-color: yellow;<br>–my-gradient: linear-gradient(var(–top-color), var(–bottom-color));</p>
+<p>上面的代码片段创建了<code>--my-gradient</code>变量，它的值是使用<code>--top-color</code>和<code>--bottom-color</code>变量创建的一个渐变。现在，你可以在任何地方通过仅仅改变变量的值来修改渐变，而不必到处在样式表中创建渐变实例。 下面是一个在线CodePen演示。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/RgRrba/">Setting Value of CSS Variable with Another CSS Variable</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>最后，在使用CSS变量的时候，还可以添加一个或多个后备值，举例如下：</p>
+<p>var(–main-color, #333);</p>
+<p>在上面的代码片段中，<code>#333</code>是一个后备值。如果没有提供后备值，当自定义属性无效或者没有赋值的时候，会使用继承值。</p>
+<h2 id="CSS变量是大小写敏感的"><a href="#CSS变量是大小写敏感的" class="headerlink" title="CSS变量是大小写敏感的"></a>CSS变量是大小写敏感的</h2><p>和一般的CSS属性不一样，CSS变量是大小写敏感的。 例如，<code>var(--foo)</code>和<code>var(--Foo)</code>使用的是两个不同的自定义属性，分别是<code>--foo</code>和<code>--Foo</code>。</p>
+<h2 id="CSS变量是级联的"><a href="#CSS变量是级联的" class="headerlink" title="CSS变量是级联的"></a>CSS变量是级联的</h2><p>类似一般的CSS属性，CSS变量也会继承。例如，我们定义一个值是blue的自定义属性：</p>
+<p>:root {<br>    –main-color: blue;<br>}</p>
+<p><code>&lt;html&gt;</code>根元素内的所有元素如果应用<code>--main-color</code>就会继承值<code>blue</code>。 如果你在另一个元素里面给自定义属性赋了一个不同的值，这个元素的所有子元素就会继承这个新值，举例如下：</p>
+<p>:root {<br>    –main-color: blue;<br>}</p>
+<p>.alert {<br>    –main-color: red;<br>}</p>
+<p>p {<br>    color: var(–main-color);<br>}</p>
+<p>&lt;–! HTML –&gt;</p>
+<html>
+  <head>
+    <!-- head code here -->
+  </head>
+  <body>
+    <div>
+      <p>blue paragraph.</p>
+      <div class="alert">
+        <p>red paragraph.</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<p>上面的标记语言中的第一个段落会继承全局<code>--main-color</code>的值，所以字体颜色是蓝色。 具有<code>.alert</code>类的div元素内部的段落元素的字体颜色是红色的，因为它继承了局部范围内的<code>--main-color</code>变量，这个变量的值是red。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/vZKLOG/">Simple Example of CSS Variables Inheritance</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>现在了解了规则，让我们开始实践吧！</p>
+<h2 id="在SVG中使用CSS变量"><a href="#在SVG中使用CSS变量" class="headerlink" title="在SVG中使用CSS变量"></a>在SVG中使用CSS变量</h2><p>CSS变量和SVG可以很好的一起工作！你可以使用CSS变量来修改内联SVG中的样式和展示型属性。 比如，你想通过SVG图标元素的父元素来给它一个不同的颜色。你可以在父元素内设置一个局部的CSS变量，然后把它赋值成你想要的颜色，然后，父元素内的图标就能从父元素继承到合适的颜色。 下面是相关代码：</p>
+<p>/* 图标的内联SVG symbol */<br><svg><br>  <symbol id="close-icon" viewbox="0 0 200 200"><br>    <circle cx="96" cy="96" r="88" fill="none" stroke="var(--icon-color)" stroke-width="15" /><br>    <text x="100" y="160" fill="var(--icon-color)" text-anchor="middle" style="font-size:250px;">x</text><br>  </symbol><br></svg></p>
+<p>/* 图标的第一个实例  */<br><svg><br>  <use xlink:href="#close-icon" /><br></svg></p>
+<p>上面的标记语言使用了标签，使用它可以创建不可见的SVG图形。然后使用标签实例化了一个上述图形的可见版本。使用这种方式通过简单地引用元素的ID(<code>#close-icon</code>)就能创建大量的图标，然后再根据你的喜好对图标进行自定义。这比重复的写同一段代码要简便的多。如果你想复习这个技术，Massimo Cassandro在他的创造你<a target="_blank" rel="noopener" href="https://www.sitepoint.com/build-svg-icons/">自己的SVG图标</a>中提供了一个快速教程。 注意SVG中的圆形元素的stroke属性值和文本元素的fill属性值：它们都使用了一个CSS变量，<code>--icon-color</code>，这个变量定义在CSS文档的<code>:root</code>选择器上，如下所示：</p>
+<p>:root {<br>  –icon-color: black;<br>}</p>
+<p>图标现在的样子如下： <img data-src="http://file.w3cbest.com/file/images/1497293805default-svg-icon.png"> 如果你现在把SVG图标放到不同的容器中，然后在每个父元素的选择器中给这个变量赋不同的颜色值，你就能在不添加任何样式规则的情况下创建不同颜色的图标。真酷！ 举个例子，把上面图标的一个实例放在一个有类<code>.success</code>的div中。</p>
+<div class="success">
+  <svg>
+    <use xlink:href="#close-icon" />
+  </svg> 
+</div>
+
+<p>现在，在.success选择器内给–icon-color变量赋值green，然后看下效果。</p>
+<p>.success {<br>    –icon-color: green;<br>}</p>
+<p>现在，图标的颜色变成了绿色： <img data-src="http://file.w3cbest.com/file/images/1497293895success-icon.png"> 查看下面完整的演示示例：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/JJKGbj/">Basic Use of SVG Icon and CSS Variables</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="在-keyframes动画中使用CSS变量"><a href="#在-keyframes动画中使用CSS变量" class="headerlink" title="在@keyframes动画中使用CSS变量"></a>在@keyframes动画中使用CSS变量</h2><p>CSS变量可以和CSS动画一起使用，不论是在一般的HTML元素还是内联SVG元素上。只需要记住在想添加动画的元素的选择器上定义自定义属性，然后使用<code>var()</code>函数在<code>@keyframes</code>中引用。 比如，给SVG的一个有类<code>.bubble</code>的元素添加动画，CSS代码如下：</p>
+<p>.bubble {<br>  –direction-y: 30px;<br>  –transparency: 0;<br>  animation: bubbling 3s forwards infinite;<br>}</p>
+<p>@keyframes bubbling {<br>  0% {<br>    transform: translatey(var(–direction-y));<br>    opacity: var(–transparency);<br>  }<br>  40% {<br>    opacity: calc(var(–transparency) + 0.2);<br>  }<br>  70% {<br>    opacity: calc(var(–transparency) + 0.1);<br>  }<br>  100% {<br>    opacity: var(–transparency);<br>  }<br>}</p>
+<p>你可能已经注意到我们可以使用CSS的<code>calc()</code>通过<code>var()</code>函数对变量进行计算，这使代码更加灵活。 这个例子中使用CSS变量的灵活之处是通过简单的改变相应选择器内部的变量值，就可以改变动画效果，而不必查找<code>@keyframes</code>指令中的每个属性。 下面是完整的CodePen演示：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/zzBrNV/">Simple Animation with CSS Variables and SVG</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="使用JavaScript操作CSS变量"><a href="#使用JavaScript操作CSS变量" class="headerlink" title="使用JavaScript操作CSS变量"></a>使用JavaScript操作CSS变量</h2><p>一件更酷的事情是你可以直接通过JavaScript代码访问CSS变量。 假设有一个叫<code>--left-pos</code>的CSS变量，它的值的<code>100px</code>，定义在CSS文档的<code>.sidebar</code>类中：</p>
+<p>.sidebar {<br>  –left-pos: 100px;<br>}</p>
+<p>使用类似下面的JavaScript代码获取<code>--left-pos</code>的值：</p>
+<p>// 获取你想添加动画的元素<br>const sidebarElement = document.querySelector(‘.sidebar’);</p>
+<p>// 把侧边栏元素的样式存储在cssStyles变量中<br>const cssStyles = getComputedStyle(sidebarElement);</p>
+<p>// 获取CSS变量–left-pos的值<br>const cssVal = String(cssStyles.getPropertyValue(‘–left-pos’)).trim();</p>
+<p>// 在控制台打印CSS变量的值<br>// 控制台会输出变量的值为100px<br>console.log(cssVal);</p>
+<p>使用类似下面的JavaScript代码给CSS变量赋值：</p>
+<p>sidebarElement.style.setProperty(‘–left-pos’, ‘200px’);</p>
+<p>上面的代码片段把侧边栏元素的<code>--left-pos</code>变量设置成<code>200px</code>。 相对于改变大量的类或者重写全部的CSS规则，使用CSS变量给网站添加交互更直接，也更易于维护。 查看下面的CodePen演示，你可以通过侧边栏来改变<a target="_blank" rel="noopener" href="https://www.sitepoint.com/close-up-css-mix-blend-mode-property/">混合模式</a>属性和背景颜色，而这仅仅需要CSS变量和JavaScript:</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/NgrxvM/">Blend Modes, CSS Variables and JavaScript</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h2 id="浏览器对CSS变量的支持情况"><a href="#浏览器对CSS变量的支持情况" class="headerlink" title="浏览器对CSS变量的支持情况"></a>浏览器对CSS变量的支持情况</h2><p>除了IE11（不支持）和Microsoft Edge（buggy支持），在本文编写的时候，所有主流浏览器都完全<a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-variables">支持CSS变量</a>。 适配有问题的浏览器的方式之一是使用@supports进行条件查询：</p>
+<p>section {<br>  color: gray;<br>}</p>
+<p>@supports(–css: variables) {<br>  section {<br>    –my-color: blue;<br>    color: var(–my-color, ‘blue’);<br>}<br>}</p>
+<p>因为IE/Edge支持<code>@supports</code>，所以上面的代码会生效。如果在<code>var()</code>函数中添加一个后备值，你的代码将会更加健壮，在支持的更加不好的浏览器中也能优雅降级。 所以，在Chrome和其他支持CSS变量的浏览器中， 元素内部的文本是蓝色的： <img data-src="http://file.w3cbest.com/file/images/1497294865browser-with-css-variables-support.png"> IE11不支持CSS变量，文本会被渲染成灰色： <img data-src="http://file.w3cbest.com/file/images/1497294899browser-without-css-variables-support.png"> 查看在线演示：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/zzBrWY/">@supports with CSS Variables</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>这种方式的缺点是如果你在项目中使用了大量的CSS变量，但是该项目主要通过不支持CSS变量的浏览器打开，那么代码不仅会变得有点儿复杂，维护也将会是噩梦。 在这种情况下，你可以选择使用支持cssnext的<a target="_blank" rel="noopener" href="http://cssnext.io/">PostCSS</a>，然后你就可以编写尖端的CSS代码了，兼容不支持的浏览器交给PostCSS去做就可以了，这有点儿像JavaScript的编译器。如果你想了解PostCSS，SitePoint Premium为其所有成员提供了有关此主题的精彩<a target="_blank" rel="noopener" href="https://www.sitepoint.com/premium/courses/kick-starting-postcss-2948">视频课程</a>。</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>想了解更多CSS变量的细节，包括浏览器兼容问题的解决方案和有趣的例子，查看下面的资源：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-variables/">用于级联变量的CSS自定义属性模块级别1</a> - W3C规范</li>
+<li>  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">使用CSS变量</a> - MDN</li>
+<li>  <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=kZOJCVvyF-4">Lea Verou为CSSConf Asia 2016谈论CSS变量</a>（视频）</li>
+<li>  <a target="_blank" rel="noopener" href="https://css-tricks.com/difference-between-types-of-css-variables/">CSS变量和预处理器变量之间有什么区别？</a> - Chris Coyier（CSS-Tricks）</li>
+<li>  <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/">现在是时候开始使用CSS自定义属性</a> - Serg Hospodarets（Smashing Magazine）</li>
+<li>  <a target="_blank" rel="noopener" href="https://una.im/local-css-vars/">本地范围的CSS变量：什么，如何以及为什么</a> - Una Kravets</li>
+<li>  <a target="_blank" rel="noopener" href="https://csswizardry.com/2016/10/pragmatic-practical-progressive-theming-with-custom-properties/">自定义属性的实用，实用和渐进式主题</a> - Harry Roberts（CSS Wizardry）</li>
+<li>  <a target="_blank" rel="noopener" href="https://codepen.io/AmeliaBR/post/customizable-svg-icons-css-variables">带CSS变量的可定制SVG图标</a> - Amelia Bellamy-Royds（CodePen）。</li>
+</ul>
+<h2 id="有趣的例子"><a href="#有趣的例子" class="headerlink" title="有趣的例子"></a>有趣的例子</h2><ul>
+<li>  <a target="_blank" rel="noopener" href="https://codepen.io/wesbos/pen/gPZBZQ?editors=0010">CSS变量的动画</a>- Wes Bos</li>
+<li>  <a target="_blank" rel="noopener" href="https://codepen.io/wesbos/pen/adQjoY?editors=0110">使用JS更新CSS变量</a>- Wes Bos</li>
+<li>  <a target="_blank" rel="noopener" href="https://codepen.io/chriscoyier/pen/ORdLvq?editors=0110">简单的响应网格与CSS变量</a>- 克里斯科伊尔</li>
+<li>  <a target="_blank" rel="noopener" href="https://codepen.io/ramenhog/pen/yXYNzz?editors=1010">Slack主题与CSS自定义属性</a>- 斯蒂芬妮</li>
+<li>  <a target="_blank" rel="noopener" href="https://codepen.io/search/pens/?q=css+variables&limit=thebabydino">Ana Tudor在CodePen上的CSS变量演示</a>。</li>
+</ul>
+<p>你还在等什么？尝试使用CSS变量并通过评论让我知道你的想法！ 文章来源：<a target="_blank" rel="noopener" href="https://www.sitepoint.com/practical-guide-css-variables-custom-properties/">https://www.sitepoint.com/</a></p>
 
       
     </div>
@@ -1618,16 +2021,16 @@ this.energy = energy
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1678,6 +2081,7 @@ this.energy = energy
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="如果不处理对象，您就无法在 JavaScript 方面取得很大进展。它们几乎是 JavaScript 编程语言的所有方面的基础。事实上，学习如何创建对象可能是你刚开始学习的第一件事。话虽如此，为了最有效地学习 JavaScript 中的原型，我们将从基础开始。 首先，对象是键&#x2F;值对。创建对象的最常用方法是使用花括号{}，并使用点表示法向对象添加属性和方法。 let animal &#x3D; {}anima">
@@ -175,6 +175,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -437,19 +438,57 @@ this.energy = energy
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2018/10/05/javascript-prototype%E5%8E%9F%E5%9E%8B-%E5%88%9D%E5%AD%A6%E8%80%85%E6%8C%87%E5%8D%97/" title="JavaScript Prototype(原型) 初学者指南">https://xianzhiding.github.io/2018/10/05/javascript-prototype原型-初学者指南/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/hasOwnProperty/" rel="tag"># hasOwnProperty</a>
-              <a href="/tags/class/" rel="tag"># class</a>
-              <a href="/tags/constructor/" rel="tag"># constructor</a>
-              <a href="/tags/getPrototypeOf/" rel="tag"># getPrototypeOf</a>
-              <a href="/tags/instanceof/" rel="tag"># instanceof</a>
-              <a href="/tags/Object-create/" rel="tag"># Object.create</a>
-              <a href="/tags/prototype/" rel="tag"># prototype</a>
-              <a href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag"># 原型</a>
-              <a href="/tags/%E5%8F%AF%E6%9E%9A%E4%B8%BE%E5%B1%9E%E6%80%A7/" rel="tag"># 可枚举属性</a>
-              <a href="/tags/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" rel="tag"># 构造函数</a>
+              <a href="/tags/hasOwnProperty/" rel="tag"><i class="fa fa-tag"></i> hasOwnProperty</a>
+              <a href="/tags/class/" rel="tag"><i class="fa fa-tag"></i> class</a>
+              <a href="/tags/constructor/" rel="tag"><i class="fa fa-tag"></i> constructor</a>
+              <a href="/tags/getPrototypeOf/" rel="tag"><i class="fa fa-tag"></i> getPrototypeOf</a>
+              <a href="/tags/instanceof/" rel="tag"><i class="fa fa-tag"></i> instanceof</a>
+              <a href="/tags/Object-create/" rel="tag"><i class="fa fa-tag"></i> Object.create</a>
+              <a href="/tags/prototype/" rel="tag"><i class="fa fa-tag"></i> prototype</a>
+              <a href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag"><i class="fa fa-tag"></i> 原型</a>
+              <a href="/tags/%E5%8F%AF%E6%9E%9A%E4%B8%BE%E5%B1%9E%E6%80%A7/" rel="tag"><i class="fa fa-tag"></i> 可枚举属性</a>
+              <a href="/tags/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 构造函数</a>
           </div>
 
         
@@ -537,16 +576,16 @@ this.energy = energy
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -597,6 +636,7 @@ this.energy = energy
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

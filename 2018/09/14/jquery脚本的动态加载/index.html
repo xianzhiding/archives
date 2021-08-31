@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="我们平时如何挂载脚本?众所周知，在web应用中，我们时常需要使用js脚本对应用做这样或者那样的操作。而仙贝们为了解放大家的双手，降低大家的开发成本，创造了很多具有各种用途，或者针对对应问题的解决方案。这些解决方案，被称作框架和库。 而作为这些脚本的使用者，我们只需要简单而又传统的将脚本使用script标签插入我们的应用中就行了。     test       如上文所说，这是简单而又传统的使用方法">
@@ -170,6 +170,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -262,7 +263,7 @@
 <p>function jsHandler(src) {}</p>
 <p>function cssHandler(href) {}</p>
 <p>function fnHandler(fn) {}</p>
-<h4 id="如何填充我们的函数"><a href="#如何填充我们的函数" class="headerlink" title="如何填充我们的函数"></a>如何填充我们的函数</h4><p><img src="http://www.w3cbest.com/wp-content/uploads/2018/09/lhtfg.jpg"> 我们有了处理不同类型加载项的逻辑，但首先，我们还是要完善jsHandler函数</p>
+<h4 id="如何填充我们的函数"><a href="#如何填充我们的函数" class="headerlink" title="如何填充我们的函数"></a>如何填充我们的函数</h4><p><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/lhtfg.jpg"> 我们有了处理不同类型加载项的逻辑，但首先，我们还是要完善jsHandler函数</p>
 <h4 id="获取head元素"><a href="#获取head元素" class="headerlink" title="获取head元素"></a>获取head元素</h4><p>var doc = document;<br>var head = doc.head  doc.getElementsByTagName(“head”)[0]  doc.documentElement;</p>
 <p>将document和head缓存起来，以便多次使用，这可以提高一点点的性能… 为jsHandler完善加载部分</p>
 <p>function jsHandler(src, callback) {<br>var script = doc.createElement(‘script’);<br>script.async = true;<br>script.src = src;</p>
@@ -360,12 +361,50 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2018/09/14/jquery%E8%84%9A%E6%9C%AC%E7%9A%84%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/" title="jquery脚本的动态加载">https://xianzhiding.github.io/2018/09/14/jquery脚本的动态加载/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/javascript/" rel="tag"># javascript</a>
-              <a href="/tags/jquery/" rel="tag"># jquery</a>
-              <a href="/tags/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/" rel="tag"># 动态加载</a>
+              <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+              <a href="/tags/jquery/" rel="tag"><i class="fa fa-tag"></i> jquery</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/" rel="tag"><i class="fa fa-tag"></i> 动态加载</a>
           </div>
 
         
@@ -453,16 +492,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -513,6 +552,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

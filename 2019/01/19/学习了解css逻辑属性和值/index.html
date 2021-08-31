@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="在了解本文时可先查看本博客就是使用的新的语法样式搭建的， 2017年5月18日，W3C的 CSS工作组（CSS Working Group） 发布了 CSS逻辑属性和值（CSS Logical Properties and Values Level 1） 的首份工作草案（First Public Working Draft）。不同的书写模式（writing mode）中，可以抽取出共性的抽象概念（">
@@ -177,6 +177,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -262,7 +263,7 @@
 <p>如果我们使用的是手写是这样的：</p>
 <p>grid-row-start: 1;<br>grid-column-start: 2;<br>grid-row-end: 3;<br>grid-column-end: 4;</p>
 <p>我们设置两个起始行，首先是阻塞轴，然后是第二个内联轴，然后按照相同的模式设置每个维度中的结束行。无论网格布局如何，起始线和结束线都保持相对于网格和文档的写入模式。</p>
-<h2 id="块和内联维度"><a href="#块和内联维度" class="headerlink" title="块和内联维度"></a>块和内联维度</h2><p>我已经提到了一些对于理解新布局，块和内联维度的概念至关重要的东西。当你使用新的CSS时，这些术语将不断涌现。这两个维度在网格布局的上下文中相当容易理解，因为我们在网格布局中工作时总是使用块和内联轴，所以我将使用网格演示来解释。 块维度对应于在页面上布置块的顺序。比如你d的页面中有一大段文本内容。每个段落都是一个在另一段下面排列，这些排列的方向是块的维度，所以在网格布局中，这是块轴。 在CSS网格布局中，块轴也称为行轴，这就是块轴属性为<code>grid-row-start</code>和的原因<code>grid-row-end</code>。 <img src="http://file.w3cbest.com/file/images/block-row-axis.png"> 因此，内联轴将会穿过块轴，沿着词在句子中的方向分布。在英文语句中，这个轴从左到右。在网格布局中，内联轴属性是<code>grid-column-start</code>和<code>grid-column-end</code>。 <img src="http://file.w3cbest.com/file/images/inline-column-axis.png"> 如果我们把书写模式改变<code>vertical-lr</code>（垂直模式），这意味着块轴垂直运行，而内联轴沿着直线从上到下。 <img src="http://file.w3cbest.com/file/images/block-inline-vertical-column-axis.png"> 因此，如果我们谈论块维度，其实对应的是描述文本段落在普通文档流中布局的方向，内联维度是句子运行的方向。</p>
+<h2 id="块和内联维度"><a href="#块和内联维度" class="headerlink" title="块和内联维度"></a>块和内联维度</h2><p>我已经提到了一些对于理解新布局，块和内联维度的概念至关重要的东西。当你使用新的CSS时，这些术语将不断涌现。这两个维度在网格布局的上下文中相当容易理解，因为我们在网格布局中工作时总是使用块和内联轴，所以我将使用网格演示来解释。 块维度对应于在页面上布置块的顺序。比如你d的页面中有一大段文本内容。每个段落都是一个在另一段下面排列，这些排列的方向是块的维度，所以在网格布局中，这是块轴。 在CSS网格布局中，块轴也称为行轴，这就是块轴属性为<code>grid-row-start</code>和的原因<code>grid-row-end</code>。 <img data-src="http://file.w3cbest.com/file/images/block-row-axis.png"> 因此，内联轴将会穿过块轴，沿着词在句子中的方向分布。在英文语句中，这个轴从左到右。在网格布局中，内联轴属性是<code>grid-column-start</code>和<code>grid-column-end</code>。 <img data-src="http://file.w3cbest.com/file/images/inline-column-axis.png"> 如果我们把书写模式改变<code>vertical-lr</code>（垂直模式），这意味着块轴垂直运行，而内联轴沿着直线从上到下。 <img data-src="http://file.w3cbest.com/file/images/block-inline-vertical-column-axis.png"> 因此，如果我们谈论块维度，其实对应的是描述文本段落在普通文档流中布局的方向，内联维度是句子运行的方向。</p>
 <h2 id="逻辑属性"><a href="#逻辑属性" class="headerlink" title="逻辑属性"></a>逻辑属性</h2><p>所谓CSS逻辑属性，指的是<code>*-start</code>，<code>*-end</code>以及<code>*-inline-start</code>，<code>*-inline-end</code>，<code>*-block-start</code>，<code>*-block-start</code>这类CSS属性，其最终渲染的方向是有逻辑性在里面的。 例如<code>margin-left</code>方向是固定的，就左侧间距，没有逻辑；但是，<code>margin-start</code>有可能是左间距，也有可能是右间距，例如，对于内联元素，如果<code>direction</code>属性值是<code>rtl</code>，则<code>margin-start</code>的表现等同于<code>margin-right</code>，如果属性值是<code>ltr</code>，则<code>margin-start</code>的表现等同于<code>margin-left</code>，就表现出了逻辑判断在里面，因此，成为CSS逻辑属性。</p>
 <h2 id="逻辑维度"><a href="#逻辑维度" class="headerlink" title="逻辑维度"></a>逻辑维度</h2><p>逻辑属性定义块和内联维度的开始和结束属性。对于高度和宽度属性，我们改为使用<code>block-size</code>和<code>inline-size</code>。我们还可以设置<code>max-block-size</code>、<code>min-block-size</code>、<code>max-inline-size</code>和<code>min-inline-size</code>。如果您使用的是英语，则从上到下的横向语言<code>block-size</code>是指<code>height</code>屏幕上块<code>inline-size</code>的物理特性<code>width</code>，即物品的物理特性。如果您使用的是垂直运行的语言，那么当您查看屏幕时，<code>block-size</code>将会出现控制<code>width</code>和<code>inline-size</code>高度的情况。 您可以在下面的演示中看到这一点。我的块是<code>block-size: 150px</code>和<code>inline-size: 250px</code>组成。更改<code>writing-mode</code>属性以查看布局如何调整。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/paqZvz/">Block and Inline Size demo</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
@@ -352,7 +353,7 @@
 <li>  inline-end</li>
 </ul>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/XZoOGb/">floating with logical values</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>在演示中，我将紫色块浮动到逻辑版本中<code>inline-start</code>。我也使用逻辑属性作为保证金; 这样可以确保边距始终位于块之后，并且在包围它的内容之前。通过选择<code>vertical-rl</code>下拉列表中的值，您可以看到物理示例中的边距如何在块的右侧结束，而不是在<code>-end</code>方向上应用。 <img src="http://file.w3cbest.com/file/images/float-margins-side.png"> 还有<code>start</code>和<code>end</code>值<code>text-align</code>。对齐要启动的内容将使其与内联轴的起点对齐，直到内联轴<code>end</code>的末端，无论写入模式是水平还是垂直。</p>
+<p>在演示中，我将紫色块浮动到逻辑版本中<code>inline-start</code>。我也使用逻辑属性作为保证金; 这样可以确保边距始终位于块之后，并且在包围它的内容之前。通过选择<code>vertical-rl</code>下拉列表中的值，您可以看到物理示例中的边距如何在块的右侧结束，而不是在<code>-end</code>方向上应用。 <img data-src="http://file.w3cbest.com/file/images/float-margins-side.png"> 还有<code>start</code>和<code>end</code>值<code>text-align</code>。对齐要启动的内容将使其与内联轴的起点对齐，直到内联轴<code>end</code>的末端，无论写入模式是水平还是垂直。</p>
 <h2 id="今天使用逻辑属性和值"><a href="#今天使用逻辑属性和值" class="headerlink" title="今天使用逻辑属性和值"></a>今天使用逻辑属性和值</h2><p><a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-logical-props">Can I Use css-logical-props?</a> Data on support for the css-logical-props feature across the major browsers from caniuse.com.</p>
 <p>如前所述，目前逻辑属性和值的浏览器支持很少。但是，如果您现在想要开始使用它们，并且选项是使用它们编写CSS，然后使用PostCSS插件将逻辑属性和值转换为它们的物理对应物。<a target="_blank" rel="noopener" href="https://github.com/jonathantneal/postcss-logical-properties">Jonathan Neal的这个插件</a>涵盖了我在本文中描述的所有属性和值。 即使您现在决定不使用这些属性，了解它们的工作方式也是使用新布局的关键理解。将Grid或Flex布局描述为具有起始和结束线，考虑块和内联维度，这些将使得更容易理解布局的工作原理。 进一步阅读</p>
 <ul>
@@ -367,16 +368,54 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/01/19/%E5%AD%A6%E4%B9%A0%E4%BA%86%E8%A7%A3css%E9%80%BB%E8%BE%91%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC/" title="学习了解CSS逻辑属性和值（CSS Logical Properties and Values）">https://xianzhiding.github.io/2019/01/19/学习了解css逻辑属性和值/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/block-end/" rel="tag"># *-block-end</a>
-              <a href="/tags/block-start/" rel="tag"># *-block-start</a>
-              <a href="/tags/inline-end/" rel="tag"># *-inline-end</a>
-              <a href="/tags/inline-start/" rel="tag"># *-inline-start</a>
-              <a href="/tags/CSS-Logical/" rel="tag"># CSS Logical</a>
-              <a href="/tags/css%E9%80%BB%E8%BE%91/" rel="tag"># css逻辑</a>
-              <a href="/tags/wrioting-mode/" rel="tag"># wrioting-mode</a>
+              <a href="/tags/block-end/" rel="tag"><i class="fa fa-tag"></i> *-block-end</a>
+              <a href="/tags/block-start/" rel="tag"><i class="fa fa-tag"></i> *-block-start</a>
+              <a href="/tags/inline-end/" rel="tag"><i class="fa fa-tag"></i> *-inline-end</a>
+              <a href="/tags/inline-start/" rel="tag"><i class="fa fa-tag"></i> *-inline-start</a>
+              <a href="/tags/CSS-Logical/" rel="tag"><i class="fa fa-tag"></i> CSS Logical</a>
+              <a href="/tags/css%E9%80%BB%E8%BE%91/" rel="tag"><i class="fa fa-tag"></i> css逻辑</a>
+              <a href="/tags/wrioting-mode/" rel="tag"><i class="fa fa-tag"></i> wrioting-mode</a>
           </div>
 
         
@@ -464,16 +503,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -524,6 +563,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

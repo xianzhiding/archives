@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
@@ -164,6 +164,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -173,361 +174,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">JavaScript中Array方法的正确打开方式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-08 07:00:26" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:26+08:00">2018-12-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>在过去的几个月，我发现我的拉取请求中存在四个完全相同的 JavaScript 错误。于是我写了这篇文章，总结了如何在 JavaScript 中正确使用地使用 Array 的方法！</p>
-</blockquote>
-<h3 id="用-Array-includes-代替-Array-indexOf"><a href="#用-Array-includes-代替-Array-indexOf" class="headerlink" title="用 Array.includes 代替 Array.indexOf"></a>用 <code>Array.includes</code> 代替 <code>Array.indexOf</code></h3><p>“如果你要在数组中查找元素，请使用 Array.indexOf”。我记得在学习 JavaScript 的时候，在教材中读到这样的一句话。毫无疑问，这句话是真的！ MDN 文档写道，<code>Array.indexOf</code> 将“返回第一次出现给定元素的索引”。因此，如果我们稍后要在代码中使用这个返回的索引，那么使用 <code>Array.indexOf</code> 找到索引就对了。 但是，如果我们只想知道数组是否包含某个值，该怎么办？这似乎是一个是与否的问题，或者说是一个布尔值问题。对于这种情况，我建议使用返回布尔值的 <code>Array.includes</code>。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>‘ironman’,<br>‘black_widow’,<br>‘hulk’,<br>‘captain_america’,<br>‘hulk’,<br>‘thor’,<br>];</p>
-<p>console.log(characters.indexOf(‘hulk’));<br>// 2<br>console.log(characters.indexOf(‘batman’));<br>// -1</p>
-<p>console.log(characters.includes(‘hulk’));<br>// true<br>console.log(characters.includes(‘batman’));<br>// false</p>
-<h3 id="使用-Array-find-而不是-Array-filter"><a href="#使用-Array-find-而不是-Array-filter" class="headerlink" title="使用 Array.find 而不是 Array.filter"></a>使用 <code>Array.find</code> 而不是 <code>Array.filter</code></h3><p><code>Array.filter</code> 是一个非常有用的方法。它接受一个回调函数作为参数，基于一个包含所有元素的数组创建出一个新的数组。正如它的名字一样，我们使用这个方法来过滤元素，获得更短的数组。 但是，如果回调函数只能返回一个元素，那么我就不推荐使用这个方法，例如使用回调函数来过滤唯一 ID。在这种情况下，<code>Array.includes</code> 将返回一个只包含一个元素的新数组。我们的意图可能是通过查找特定的 ID 找到数组中包含的唯一值。 我们来看看这个方法的性能。要返回与回调函数匹配的所有元素，<code>Array.filter</code> 必须遍历整个数组。此外，我们假设有数百个元素可以满足回调参数，那么过滤后的数组会非常大。 为了避免这种情况，我建议使用 <code>Array.find</code>。它需要一个像 <code>Array.filter</code> 一样的回调函数作为参数，并返回满足回调函数的第一个元素的值。此外，只要找到第一个满足回调函数的元素，<code>Array.find</code> 就会停止，无需遍历整个数组。通过 <code>Array.find</code> 来查找元素，我们可以更好地理解我们的意图。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>{ id: 1, name: ‘ironman’ },<br>{ id: 2, name: ‘black_widow’ },<br>{ id: 3, name: ‘captain_america’ },<br>{ id: 4, name: ‘captain_america’ },<br>];</p>
-<p>function getCharacter(name) {<br>return character =&gt; character.name === name;<br>}</p>
-<p>console.log(characters.filter(getCharacter(‘captain_america’)));<br>// [<br>// { id: 3, name: ‘captain_america’ },<br>// { id: 4, name: ‘captain_america’ },<br>// ]</p>
-<p>console.log(characters.find(getCharacter(‘captain_america’)));<br>// { id: 3, name: ‘captain_america’ }</p>
-<h3 id="用-Array-some-代替-Array-find"><a href="#用-Array-some-代替-Array-find" class="headerlink" title="用 Array.some 代替 Array.find"></a>用 <code>Array.some</code> 代替 <code>Array.find</code></h3><p>我承认这个错误我犯了很多次。然后，一位善良的朋友告诉我，最好可以先参考 MDN 文档。这与上面的 <code>Array.indexOf</code>/<code>Array.includes</code> 非常相似。 在前面的例子中，我们看到 <code>Array.find</code> 需要一个回调函数作为参数，并返回一个元素。如果我们想要知道数组是否包含某个值，<code>Array.find</code> 是最好的解决方案吗？可能不是，因为它返回的是一个元素值，而不是一个布尔值。 对于这种情况，我建议使用 <code>Array.some</code>，它返回所需的布尔值。另外，从语义上看，<code>Array.some</code> 表示我们只想知道某个元素是否存在，而不需要得到这个元素。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>{ id: 1, name: ‘ironman’, env: ‘marvel’ },<br>{ id: 2, name: ‘black_widow’, env: ‘marvel’ },<br>{ id: 3, name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
-<p>function hasCharacterFrom(env) {<br>return character =&gt; character.env === env;<br>}</p>
-<p>console.log(characters.find(hasCharacterFrom(‘marvel’)));<br>// { id: 1, name: ‘ironman’, env: ‘marvel’ }</p>
-<p>console.log(characters.some(hasCharacterFrom(‘marvel’)));<br>// true</p>
-<h3 id="使用-Array-reduce-而不是链接-Array-filter-和-Array-map"><a href="#使用-Array-reduce-而不是链接-Array-filter-和-Array-map" class="headerlink" title="使用 Array.reduce 而不是链接 Array.filter 和 Array.map"></a>使用 <code>Array.reduce</code> 而不是链接 <code>Array.filter</code> 和 <code>Array.map</code></h3><p>让我们面对现实吧，<code>Array.reduce</code> 不容易理解。事实确实如此！但是，如果我们使用 <code>Array.filter</code> 和 Array.map的组合，感觉缺少了什么，对吧？ 我的意思是，我们遍历了两次数组。第一次过滤数组并创建一个较短的数组，第二次又基于 <code>Array.filter</code> 获得数组创建一个包含新值的数组。为了获得我们想要的新数组，我们使用了两个 Array 方法。每个方法都有自己的回调函数和一个用不到的数组——由 <code>Array.filter</code> 创建的那个数组。 为了避免这种性能损耗，我的建议是使用 <code>Array.reduce</code>。结果是一样的，代码却更简单！ 我们可以使用 <code>Array.reduce</code> 进行过滤，并将目标元素添加到累加器中。累加器可以是递增的数字、要填充的对象、要连接的字符串或数组。 在我们的例子中，因为之前使用了 <code>Array.map</code>，所以我建议使用 <code>Array.reduce</code> 将满足条件的数组元素加入到累加器中。在下面的示例中，根据 env 值的具体情况，我们将它添加到累加器中或保持累加器不变。</p>
-<p>‘use strict’;</p>
-<p>const characters = [<br>{ name: ‘ironman’, env: ‘marvel’ },<br>{ name: ‘black_widow’, env: ‘marvel’ },<br>{ name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
-<p>console.log(<br>characters<br>.filter(character =&gt; character.env === ‘marvel’)<br>.map(character =&gt; Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))<br>);<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</p>
-<dl><dt>console.log(<br>characters<br>.reduce((acc, character) =&gt; {<br>return character.env === ‘marvel’<br>? acc.concat(Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))</dt><dd>acc;<br>}, [])<br>)<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</dd></dl><p>英文原文 <a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c">https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/" class="post-title-link" itemprop="url">background-attachment 背景图片固定文字滚动</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-08 07:00:00" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:00+08:00">2018-12-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>关于background-attachment 也不算是一个比较生僻的属性，基本上在做背景图片固定特别是全屏页面时用时就会用到。</p>
-<h3 id="概述节"><a href="#概述节" class="headerlink" title="概述节"></a>概述节</h3><p>如果指定了 background-image ，那么 background-attachment 决定背景是在视口中固定的还是随包含它的区块滚动的。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>background-attachment: scroll;<br>background-attachment: fixed;<br>background-attachment: local;<br>background-attachment: inherit;</p>
-<h3 id="取值节"><a href="#取值节" class="headerlink" title="取值节"></a>取值节</h3><h4 id="fixed"><a href="#fixed" class="headerlink" title="fixed"></a>fixed</h4><p>此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。</p>
-<h4 id="local"><a href="#local" class="headerlink" title="local"></a>local</h4><p>此关键字表示背景相对于元素的内容固定。如果一个元素拥有滚动机制，背景将会随着元素的内容滚动，且背景的绘制区域和定位区域是相对于可滚动的区域而不是包含他们的边框。</p>
-<h4 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h4><p>此关键字表示背景相对于元素本身固定， 而不是随着它的内容滚动（对元素边框是有效的）。</p>
-<blockquote>
-<p>注意： fixed是相对视口固定，而scroll是相对元素本身固定，它和 position 定位的 absolute 和 fixed有点像。</p>
-</blockquote>
-<p> </p>
-<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>section {<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;">https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;</a>);<br>background-attachment: fixed;<br>}</p>
-<section>
-<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
-<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
-<p>子曰：“巧言令色，鲜矣仁！”</p>
-<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
-<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
-<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
-</section>
-
-<p> </p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/qQzQaP/">单背景支持</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h3 id="多背景图支持"><a href="#多背景图支持" class="headerlink" title="多背景图支持"></a>多背景图支持</h3><p>此属性支持多张背景图片。你可以用逗号分隔来为每一张背景图片指定不同的<attachment>。每一张背景图片顺序对应相应的attachment 类型。</p>
-<p>section{<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;">https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;</a>), url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;">https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;</a>);<br>background-attachment: fixed, scroll;<br>background-repeat: no-repeat, repeat-y;<br>}</p>
-<section>
-<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
-<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
-<p>子曰：“巧言令色，鲜矣仁！”</p>
-<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
-<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
-<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
-</section>
-
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/vQqQga/">多背景图支持节</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h3 id="使用-fixed-实现多模块背景固定效果"><a href="#使用-fixed-实现多模块背景固定效果" class="headerlink" title="使用 fixed 实现多模块背景固定效果"></a>使用 fixed 实现多模块背景固定效果</h3><p>fixed 此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。也就是说，背景图从一开始就已经被固定死在初始所在的位置。  </p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zMVMdw/">视差效果</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>)on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/07/%E5%86%99%E5%A5%BD%E7%9A%84javascript%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/07/%E5%86%99%E5%A5%BD%E7%9A%84javascript%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81/" class="post-title-link" itemprop="url">写好的JavaScript代码为什么非常重要</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-07 08:16:36" itemprop="dateCreated datePublished" datetime="2018-12-07T08:16:36+08:00">2018-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本文将通过简单的术语和真实世界的例子解释 JavaScript 中 this 及其用途，并告诉你写出好的代码为何如此重要。</p>
-</blockquote>
-<h3 id="this-适合你吗？"><a href="#this-适合你吗？" class="headerlink" title="this 适合你吗？"></a>this 适合你吗？</h3><p>我看到许多文章在介绍 JavaScript 的 this 时都会假设你学过某种面向对象的编程语言，比如 Java、C++ 或 Python 等。但这篇文章面向的读者是那些不知道 this 是什么的人。我尽量不用任何术语来解释 this 是什么，以及 this 的用法。 也许你一直不敢解开 this 的秘密，因为它看起来挺奇怪也挺吓人的。或许你只在 StackOverflow 说你需要用它的时候（比如在 React 里实现某个功能）才会使用。 在深入介绍 this 之前，我们首先需要理解函数式编程和面向对象编程之间的区别。  </p>
-<h3 id="函数式编程-vs-面向对象编程"><a href="#函数式编程-vs-面向对象编程" class="headerlink" title="函数式编程 vs 面向对象编程"></a>函数式编程 vs 面向对象编程</h3><p>你可能不知道，JavaScript 同时拥有面向对象和函数式的结构，所以你可以自己选择用哪种风格，或者两者都用。 我在很早以前使用 JavaScript 时就喜欢函数式编程，而且会像躲避瘟疫一样避开面向对象编程，因为我不理解面向对象中的关键字，比如 this。我不知道为什么要用 this。似乎没有它我也可以做好所有的工作。 而且我是对的。 在某种意义上 。也许你可以只专注于一种结构并且完全忽略另一种，但这样你只能是一个 JavaScript 开发者。为了解释函数式和面向对象之间的区别，下面我们通过一个数组来举例说明，数组的内容是 Facebook 的好友列表。 假设你要做一个 Web 应用，当用户使用 Facebook 登录你的 Web 应用时，需要显示他们的 Facebook 的好友信息。你需要访问 Facebook 并获得用户的好友数据。这些数据可能是 firstName、lastName、username、numFriends、friendData、birthday 和 lastTenPosts 等信息。</p>
-<p>const data = [<br>{<br>firstName: ‘Bob’,<br>lastName: ‘Ross’,<br>username: ‘bob.ross’,<br>numFriends: 125,<br>birthday: ‘2/23/1985’,<br>lastTenPosts: [‘What a nice day’, ‘I love Kanye West’, …],<br>},<br>…<br>]</p>
-<p>假设上述数据是你通过 Facebook API 获得的。现在需要将其转换成方便你的项目使用的格式。我们假设你想显示的好友信息如下：</p>
-<ul>
-<li>  姓名，格式为`${firstName} ${lastName}`</li>
-<li>  三篇随机文章</li>
-<li>  距离生日的天数</li>
-</ul>
-<p> </p>
-<h3 id="函数式方式"><a href="#函数式方式" class="headerlink" title="函数式方式"></a>函数式方式</h3><p>函数式的方式就是将整个数组或者数组中的某个元素传递给某个函数，然后返回你需要的信息：</p>
-<p>const fullNames = getFullNames(data)<br>// [‘Ross, Bob’, ‘Smith, Joanna’, …]</p>
-<p>首先我们有 Facebook API 返回的原始数据。为了将其转换成需要的格式，首先要将数据传递给一个函数，函数的输出是（或者包含）经过修改的数据，这些数据可以在应用中向用户展示。 我们可以用类似的方法获得随机三篇文章，并且计算距离好友生日的天数。 函数式的方式是：将原始数据传递给一个函数或者多个函数，获得对你的项目有用的数据格式。  </p>
-<h3 id="面向对象的方式"><a href="#面向对象的方式" class="headerlink" title="面向对象的方式"></a>面向对象的方式</h3><p>对于编程初学者和 JavaScript 初学者，面向对象的概念可能有点难以理解。其思想是，我们要将每个好友变成一个对象，这个对象能够生成你一切开发者需要的东西。 你可以创建一个对象，这个对象对应于某个好友，它有 fullName 属性，还有两个函数 getThreeRandomPosts 和 getDaysUntilBirthday。</p>
-<p>function initializeFriend(data) {<br>return {<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from data.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use data.birthday to get the num days until birthday<br>}<br>};<br>}<br>const objectFriends = data.map(initializeFriend)<br>objectFriends[0].getThreeRandomPosts()<br>// Gets three of Bob Ross’s posts</p>
-<p>面向对象的方式就是为数据创建对象，每个对象都有自己的状态，并且包含必要的信息，能够生成需要的数据。  </p>
-<h3 id="这跟-this-有什么关系？"><a href="#这跟-this-有什么关系？" class="headerlink" title="这跟 this 有什么关系？"></a>这跟 this 有什么关系？</h3><p>你也许从来没想过要写上面的 initializeFriend 代码，而且你也许认为，这种代码可能会很有用。但你也注意到，这并不是真正的面向对象。 其原因就是，上面例子中的 getThreeRandomPosts 或 getdaysUntilBirtyday 能够正常工作的原因其实是闭包。因为使用了闭包，它们在 initializeFriend 返回之后依然能访问 data。关于闭包的更多信息可以看看这篇文章：作用域和闭包（<a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md%EF%BC%89%E3%80%82">https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md）。</a> 还有一个方法该怎么处理？我们假设这个方法叫做 greeting。注意方法（与 JavaScript 的对象有关的方法）其实只是一个属性，只不过属性值是函数而已。我们想在 greeting 中实现以下功能：</p>
-<p>function initializeFriend(data) {<br>return {<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from data.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use data.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>return `Hello, this is ${fullName}’s data!`<br>}<br>};<br>}</p>
-<p>这样能正常工作吗？ 不能！ 我们新建的对象能够访问 initializeFriend 中的一切变量，但不能访问这个对象本身的属性或方法。当然你会问，</p>
-<blockquote>
-<p>难道不能在 greeting 中直接用 data.firstName 和 data.lastName 吗？</p>
-</blockquote>
-<p>当然可以。但要是想在 greeting 中加入距离好友生日的天数怎么办？我们最好还是有办法在 greeting 中调用 getDaysUntilBirthday。 这时轮到 this 出场了！  </p>
-<h3 id="终于——this-是什么"><a href="#终于——this-是什么" class="headerlink" title="终于——this 是什么"></a>终于——this 是什么</h3><p>this 在不同的环境中可以指代不同的东西。默认的全局环境中 this 指代的是全局对象（在浏览器中 this 是 window 对象），这没什么太大的用途。而在 this 的规则中具有实用性的是这一条： 如果在对象的方法中使用 this，而该方法在该对象的上下文中调用，那么 this 指代该对象本身。</p>
-<blockquote>
-<p>你会说“在该对象的上下文中调用”……是啥意思？</p>
-</blockquote>
-<p>别着急，我们一会儿就说。 所以，如果我们想从 greeting 中调用 getDaysUntilBirtyday 我们只需要写 this.getDaysUntilBirthday，因为此时的 this 就是对象本身。 附注：不要在全局作用域的普通函数或另一个函数的作用域中使用 this！this 是个面向对象的东西，它只在对象的上下文（或类的上下文）中有意义。 我们利用 this 来重写 initializeFriend：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const numDays = this.getDaysUntilBirthday()<br>return `Hello, this is ${this.fullName}’s data! It is ${numDays} until ${this.fullName}’s birthday!`<br>}<br>};<br>}</p>
-<p>现在，在 initializeFriend 执行结束后，该对象需要的一切都位于对象本身的作用域之内了。我们的方法不需要再依赖于闭包，它们只会用到对象本身包含的信息。 好吧，这是 this 的用法之一，但你说过 this 在不同的上下文中有不同的含义。那是什么意思？为什么不一定会指向对象自己？ 有时候，你需要将 this 指向某个特定的东西。一种情况就是事件处理函数。比如我们希望在用户点击好友时打开好友的 Facebook 首页。我们会给对象添加下面的 onClick 方法：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const numDays = this.getDaysUntilBirthday()<br>return `Hello, this is ${this.fullName}’s data! It is ${numDays} until ${this.fullName}’s birthday!`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
-<p>注意我们在对象中添加了 username 属性，这样 onFriendClick 就能访问它，从而在新窗口中打开该好友的 Facebook 首页。现在只需要编写 HTML：</p>
-<button id="Bob\_Ross">
-<!-- A bunch of info associated with Bob Ross -->
-</button>
-
-<p>还有 JavaScript：</p>
-<p>const bobRossObj = initializeFriend(data[0])<br>const bobRossDOMEl = document.getElementById(‘Bob_Ross’)<br>bobRossDOMEl.addEventListener(“onclick”, bobRossObj.onFriendClick)</p>
-<p>在上述代码中，我们给 Bob Ross 创建了一个对象。然后我们拿到了 Bob Ross 对应的 DOM 元素。然后执行 onFriendClick 方法来打开 Bob 的 Facebook 主页。似乎没问题，对吧？ 有问题！ 哪里出错了？ 注意我们调用 onclick 处理程序的代码是 bobRossObj.onFriendClick。看到问题了吗？要是写成这样的话能看出来吗？</p>
-<p>bobRossDOMEl.addEventListener(“onclick”, function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>})</p>
-<p>现在看到问题了吗？如果把事件处理程序写成 bobRossObj.onFriendClick，实际上是把 bobRossObj.onFriendClick 上保存的函数拿出来，然后作为参数传递。它不再“依附”在 bobRossObj 上，也就是说，this 不再指向 bobRossObj。它实际指向全局对象，也就是说 this.username 不存在。似乎我们没什么办法了。 轮到绑定上场了！  </p>
-<h3 id="明确绑定-this"><a href="#明确绑定-this" class="headerlink" title="明确绑定 this"></a>明确绑定 this</h3><p>我们需要明确地将 this 绑定到 bobRossObj 上。我们可以通过 bind 实现：</p>
-<p>const bobRossObj = initializeFriend(data[0])<br>const bobRossDOMEl = document.getElementById(‘Bob_Ross’)<br>bobRossObj.onFriendClick = bobRossObj.onFriendClick.bind(bobRossObj)<br>bobRossDOMEl.addEventListener(“onclick”, bobRossObj.onFriendClick)</p>
-<p>之前，this 是按照默认的规则设置的。但使用 bind 之后，我们明确地将 bobRossObj.onFriendClick 中的 this 的值设置为 bobRossObj 对象本身。 到此为止，我们看到了为什么要使用 this，以及为什么要明确地绑定 this。最后我们来介绍一下，this 实际上是箭头函数。  </p>
-<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>你也许注意到了箭头函数最近很流行。人们喜欢箭头函数，因为很简洁、很优雅。而且你还知道箭头函数和普通函数有点区别，尽管不太清楚具体区别是什么。 简而言之，两者的区别在于： <strong>在定义箭头函数时，不管 this 指向谁，箭头函数内部的 this 永远指向同一个东西。</strong></p>
-<blockquote>
-<p>嗯……这貌似没什么用……似乎跟普通函数的行为一样啊？</p>
-</blockquote>
-<p>我们通过 initializeFriend 举例说明。假设我们想添加一个名为 greeting 的函数：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>function getLastPost() {<br>return this.lastTenPosts[0]<br>}<br>const lastPost = getLastPost()<br>return `Hello, this is ${this.fullName}’s data!<br>${this.fullName}’s last post was ${lastPost}.`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
-<p>这样能运行吗？如果不能，怎样修改才能运行？ 答案是不能。因为 getLastPost 没有在对象的上下文中调用，因此getLastPost 中的 this 按照默认规则指向了全局对象。</p>
-<blockquote>
-<p>你说没有“在对象的上下文中调用”……难道它不是从 initializeFriend 返回的内部调用的吗？如果这还不叫“在对象的上下文中调用”，那我就不知道什么才算了。</p>
-</blockquote>
-<p>  我知道“在对象的上下文中调用”这个术语很模糊。也许，判断函数是否“在对象的上下文中调用”的好方法就是检查一遍函数的调用过程，看看是否有个对象“依附”到了函数上。 我们来检查下执行 bobRossObj.onFriendClick() 时的情况。“给我对象 bobRossObj，找到其中的 onFriendClick 然后调用该属性对应的函数”。 我们同样检查下执行 getLastPost() 时的情况。“给我名为 getLastPost 的函数然后执行。”看到了吗？我们根本没有提到对象。 好了，这里有个难题来测试你的理解程度。假设有个函数名为 functionCaller，它的功能就是调用一个函数： functionCaller(fn) { fn() } 如果调用 functionCaller(bobRossObj.onFriendClick) 会怎样？你会认为 onFriendClick 是“在对象的上下文中调用”的吗？this.username有定义吗？ 我们来检查一遍：“给我 bobRosObj 对象然后查找其属性 onFriendClick。取出其中的值（这个值碰巧是个函数），然后将它传递给 functionCaller，取名为 fn。然后，执行名为 fn 的函数。”注意该函数在调用之前已经从 bobRossObj 对象上“脱离”了，因此并不是“在对象的上下文中调用”的，所以 this.username 没有定义。 这时可以用箭头函数解决这个问题：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const getLastPost = () =&gt; {<br>return this.lastTenPosts[0]<br>}<br>const lastPost = getLastPost()<br>return `Hello, this is ${this.fullName}’s data!<br>${this.fullName}’s last post was ${lastPost}.`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
-<p>上述代码的规则是： <strong>在定义箭头函数时，不管 this 指向谁，箭头函数内部的 this 永远指向同一个东西。</strong> 箭头函数是在 greeting 中定义的。我们知道，在 greeting 内部的 this 指向对象本身。因此，箭头函数内部的 this 也指向对象本身，这正是我们需要的结果。  </p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>this 有时很不好理解，但它对于开发 JavaScript 应用非常有用。本文当然没能介绍 this 的所有方面。一些没有涉及到的话题包括：</p>
-<ul>
-<li>  call 和 apply；</li>
-<li>  使用 new 时 this 会怎样；</li>
-<li>  在 ES6 的 class 中 this 会怎样。</li>
-</ul>
-<p>我建议你首先问问自己在这些情况下的 this，然后在浏览器中执行代码来检验你的结果。   想学习更多关 于this 的内容，可参考《你不知道的 JS：this 和对象原型》： <a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes">https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes</a> 如果你想测试自己的知识，可参考《你不知道的JS练习：this和对象原型》： <a target="_blank" rel="noopener" href="https://ydkjs-exercises.com/this-object-prototypes">https://ydkjs-exercises.com/this-object-prototypes</a> 原文：<a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/a-deep-dive-into-this-in-javascript-why-its-critical-to-writing-good-code-7dca7eb489e7">https://medium.freecodecamp.org/a-deep-dive-into-this-in-javascript-why-its-critical-to-writing-good-code-7dca7eb489e7</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -836,7 +482,7 @@
   <article class="location-listing">
     <a class="location-title" href="#"></a>
     <a class="location-image" href="#">
-        <img src="">
+        <img data-src="">
     </a>
   </article>
 </div>
@@ -849,21 +495,21 @@
 <h3 id="覆盖标题"><a href="#覆盖标题" class="headerlink" title="覆盖标题"></a>覆盖标题</h3><p>要叠加标题，我们需要定位它，所以我们首先要将<article>设置position: relative;和标题position: absolute;。我们将其背景填充为红色背景：</p>
 <p>.location-listing {<br>  position: relative;<br>}</p>
 <p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);<br>}</p>
-<p>已经很好的显示了<img src="http://file.w3cbest.com/file/images/columns.gif"></p>
+<p>已经很好的显示了<img data-src="http://file.w3cbest.com/file/images/columns.gif"></p>
 <h3 id="标题的风格"><a href="#标题的风格" class="headerlink" title="标题的风格"></a>标题的风格</h3><p>一些印刷样式将改善我们的标题的外观，并且三行flexbox魔术将集中为我们对齐：</p>
 <p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);</p>
 <p>  color: white;<br>  font-size: 1.5em;<br>  font-weight: bold;<br>  text-decoration: none;</p>
 <p>  display: flex;<br>  align-items: center;<br>  justify-content: center;<br>}</p>
-<p>好多了： <img src="http://file.w3cbest.com/file/images/align-items.gif"></p>
+<p>好多了： <img data-src="http://file.w3cbest.com/file/images/align-items.gif"></p>
 <h3 id="隐藏标题"><a href="#隐藏标题" class="headerlink" title="隐藏标题"></a>隐藏标题</h3><p>现在让我们通过设置它的不透明度隐藏标题，这样我们可以在悬停时看到它。.location-title应该这样做：</p>
 <p>opacity: 0;<br>transition: opacity .5s;</p>
 <p>在这里，我们还设置了一个transition规则，以便当我们将不透明度恢复时，它将有0.5秒的延时过程。我们现在将hover悬停时不透明度设置为1</p>
 <p>.location-listing:hover .location-title {<br>  opacity: 1;<br>}</p>
-<p>到这里我们标题悬停效果已经完美实现了： <img src="http://file.w3cbest.com/file/images/transition.jpg"></p>
+<p>到这里我们标题悬停效果已经完美实现了： <img data-src="http://file.w3cbest.com/file/images/transition.jpg"></p>
 <h3 id="模糊效果"><a href="#模糊效果" class="headerlink" title="模糊效果"></a>模糊效果</h3><p>我们已经创造了一个漂亮的悬停效果，接下来为图像添加模糊滤镜。首先将模糊滤镜设置为正常状态，以便为我们提供一些过渡。然后我们会为悬停状态模糊设置为2px（这里你可以根据你的意愿设置，但我认为2px是一个很棒的视觉效果）：</p>
 <p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>}</p>
 <p>.location-listing:hover .location-image img {<br>  filter: blur(2px);<br>}</p>
-<p>这就是效果了： <img src="http://file.w3cbest.com/file/images/filter.jpg"></p>
+<p>这就是效果了： <img data-src="http://file.w3cbest.com/file/images/filter.jpg"></p>
 <h3 id="需要注意的两件事："><a href="#需要注意的两件事：" class="headerlink" title="需要注意的两件事："></a>需要注意的两件事：</h3><ul>
 <li>  标题已经消失，因为浏览器现在正在顶部呈现模糊的图形。</li>
 <li>  模糊效果看起来不错，但它也有边缘模糊效果。(可以把它去掉)</li>
@@ -871,12 +517,12 @@
 <p>因为层级的关系标题被遮住了把.location-title设置z-index:1 把边缘模糊去掉，首先我们对图像进行缩放，使其稍微大一些，然后对图像容器（.location-list）设置overflow: hidden;以便当较大的图像模糊时，有效地裁剪其边缘。下面是两个元素已设置的属性：</p>
 <p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>  transform: scale(1.1);<br>}</p>
 <p>.location-listing {<br>  position: relative;<br>  overflow: hidden;<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/transform-scale.jpg"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/transform-scale.jpg"></p>
 <h2 id="触摸屏问题"><a href="#触摸屏问题" class="headerlink" title="触摸屏问题"></a>触摸屏问题</h2><p>有些网页应用都有很多悬停效果，而且是都被隐藏，在不触发的时候是看不到的(大量的平板电脑和智能手机不能模仿悬停“按下”动作)，这是不容易访问的。 幸运的是，CSS有一些非常有用的交互媒体查询可以帮助我们（他们也享受相当不错的浏览器支持）。这些查询将检测浏览器的输入机制 - 指针设备质量，悬停能力以及一些其他特殊定义 - 因此我们可以相当准确地确定是否在触摸屏设备上查看我们的缩略图。 以此媒体查询为例（它完全符合我们的预期）</p>
 <p>@media (hover: none) { }</p>
 <p>在这些花括号中，我们将我们想要应用的任何样式应用于无法处理的浏览器:hover。我们将声明对于悬停不可能或至少不方便的设备，缩略图图像将始终模糊，标题将始终可见：</p>
 <p>@media (hover: none) {<br>  .location-title {<br>     opacity: 1;<br>  }<br>  .location-image img {<br>    filter: blur(2px);<br>  }<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/screen-devices.jpg"> 注意：如上所述，对此的支持非常合理，但有关交互媒体查询实施的讨论仍在进行中。这个规范很可能会改变或删除部分。</p>
+<p><img data-src="http://file.w3cbest.com/file/images/screen-devices.jpg"> 注意：如上所述，对此的支持非常合理，但有关交互媒体查询实施的讨论仍在进行中。这个规范很可能会改变或删除部分。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/oQVGaa/">创建CSS Grid 图像库</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 
       
@@ -1225,107 +871,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/16/wordpress%E5%BC%95%E7%94%A8%E8%84%9A%E6%9C%ACjs%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E4%BD%B3%E5%87%BD%E6%95%B0wp-enqueue-script/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/16/wordpress%E5%BC%95%E7%94%A8%E8%84%9A%E6%9C%ACjs%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E4%BD%B3%E5%87%BD%E6%95%B0wp-enqueue-script/" class="post-title-link" itemprop="url">wordpress引用脚本js文件的最佳函数wp_enqueue_script()</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-16 17:24:08" itemprop="dateCreated datePublished" datetime="2018-11-16T17:24:08+08:00">2018-11-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>相信大部分人在制作wordpress主题引用js文件时，会直接在header.php或footer.php文件中或通过<code>bloginfo()</code>函数调用js文件，其实wordpress主题最佳引用js文件的方法是使用wordpress内置的<code>wp_enqueue_script()</code>函数，通过该函数可以安全地将javascript代码加入到WordPress创建的页面中，不仅可以最大限度地保证兼容性，还是提高wordpress性能效率的一个方法。</p>
-<h2 id="函数代码："><a href="#函数代码：" class="headerlink" title="函数代码："></a>函数代码：</h2><?php wp\_enqueue\_script( string $handle, string $src = '', array $deps = array(), stringboolnull $ver = false, bool $in\_footer = false ) ?>
-
-<h3 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h3><ul>
-<li>  <code>$handle</code> (string)(必需) 调用的脚本名称，用于区分其它脚本js，因此不能和其它脚本js文件命名相同；</li>
-<li>  <code>$src</code> (字符串)(可选) 脚本的完整路径，或脚本相对于WordPress根目录的路径。 默认值: ‘’；</li>
-<li>  <code>$deps</code> 依赖关系，加载的js文件所依存的其它js的标识字串数组（array:string），即需要在本代码之前加载的代码的名称（如js脚本依赖jquery库，那么这里要用数组的形式写上jquery），非必需;</li>
-<li>  <code>$ver</code> 加载js文件的版本号，作为查询字串附加在路径的末尾，作用是确保正确的版本信息传递给了客户端，以免受到缓存的影响（如js脚本发生变化时，通过更改版本号可以强制客户浏览器更新缓存），默认为false，调用当前wordpress程序的版本号，如果不想显示，则设置为NULL（不推荐）;</li>
-<li>  <code>$in_footer</code> boolean类型，设置调用js文件放置的位置，设置为ture则放在</body>之前，设置为false则放置在head部分;</li>
-</ul>
-<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><p>通过<code>wp_enqueue_script</code>函数加载js文件时，应该将它分配给一个钩子，如只在前台调用，使用钩子<code>wp_enqueue_script</code>；只在后台调用，使用<code>admin_enqueue_scripts</code>。</p>
-<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><p>只在前台调用</p>
-<?php
-function dui\_theme\_scripts() {  
-wp\_enqueue\_script( 'dui', get\_template\_directory\_uri() . '/assets/js/dui.js', array(), '1.0.0', true );
-}
-add\_action( 'wp\_enqueue\_scripts', 'dui\_theme\_scripts' );
-?>
-
-<p>只在后台调用</p>
-<?php
-function dui\_theme\_scripts() {  
-wp\_enqueue\_script( 'dui', get\_template\_directory\_uri() . '/assets/js/dui.js', array(), '1.0.0', true );
-}
-add\_action( 'admin\_enqueue\_scripts', 'dui\_theme\_scripts' );
-?>
-
-<p>附：函数位置wp-includes/functions.wp-scripts.php文件</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/14/%E4%BD%A0%E7%9C%9F%E7%9A%84%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8Bcss%E5%8F%98%E9%87%8F-var/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1446,6 +991,464 @@ add\_action( 'admin\_enqueue\_scripts', 'dui\_theme\_scripts' );
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/" class="post-title-link" itemprop="url">Echarts 改变markPoint标注(气泡)颜色</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-12 11:36:37" itemprop="dateCreated datePublished" datetime="2018-11-12T11:36:37+08:00">2018-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>改变markPoint 标注(气泡)颜色的方法很简单，其实还是多翻文档，markPoint属性有很多下面列了几个也不一一介绍了，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint">自己翻文档。</a> <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/11/echartimg.jpg"></p>
+<p>markPoint:{<br>  symbol: ‘pin’, //标记(气泡)的图形<br>  symbolSize: 50, //标记(气泡)的大小<br>  …<br>  itemStyle: {…}, //标注(气泡)的样式<br>}</p>
+<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>标记的图形，默认是个气泡型的，看上图很清晰，</p>
+<h3 id="symbolSize"><a href="#symbolSize" class="headerlink" title="symbolSize"></a>symbolSize</h3><p>标记的大小，设置标记的大小，可根据自己的嗜好设置大小</p>
+<h3 id="itemStyle"><a href="#itemStyle" class="headerlink" title="itemStyle"></a>itemStyle</h3><p>标注(气泡)的样式就是这个属性，其实文档讲的都很清晰，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.itemStyle">只是有的人真的很懒只会问不会找</a></p>
+<p>itemStyle:{<br>  color: ‘#4587E7’,<br>  borderColor: ‘#000’,<br>  borderWidth: 0,<br>  borderType: ‘solid’,<br>  …<br>}</p>
+<h4 id="color-default-自适应"><a href="#color-default-自适应" class="headerlink" title="color [ default: 自适应 ]"></a>color [ default: 自适应 ]</h4><p>图形的颜色。</p>
+<h4 id="borderColor-default-“-000”"><a href="#borderColor-default-“-000”" class="headerlink" title="borderColor [ default: “#000” ]"></a>borderColor [ default: “#000” ]</h4><p>图形的描边颜色。支持的颜色格式同 color，不支持回调函数。</p>
+<h4 id="borderWidth-default-0"><a href="#borderWidth-default-0" class="headerlink" title="borderWidth [ default: 0 ]"></a>borderWidth [ default: 0 ]</h4><p>描边线宽。为 0 时无描边。</p>
+<h4 id="borderType-default-‘solid’"><a href="#borderType-default-‘solid’" class="headerlink" title="borderType [ default: ‘solid’ ]"></a>borderType [ default: ‘solid’ ]</h4><p>柱条的描边类型，默认为实线，支持 ‘solid’, ‘dashed’, ‘dotted’。   在结束之前，提一下如何给每个值都加上标注(气泡)，在文档代码看到的气泡是在最大值或最小值上，那么如何给每个值都加上标注(气泡)呢，其实这些值就是你的坐标轴上data值，如果想在每个值的上面显示标注，就要循环你的data值，但是在那循环呢，还是在markPoint对象里面，看文档API里面markPoint还有个<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.data">data数组对象属性</a>，文档是这样说的；</p>
+<h3 id="series-i-line-markPoint-data-i"><a href="#series-i-line-markPoint-data-i" class="headerlink" title="series[i]-line.markPoint.data[i]"></a>series[i]-line.markPoint.data[i]</h3><p>标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。</p>
+<ul>
+<li>  通过 x, y 属性指定相对容器的屏幕坐标，单位像素，支持百分比。</li>
+<li>  用 coord 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 ‘min’, ‘max’, ‘average’。</li>
+<li>  直接用 type 属性标注系列中的最大值，最小值。这时候可以使用 valueIndex 指定是在哪个维度上的最大值、最小值、平均值。或者可以使用 valueDim 指定在哪个维度上的最大值、最小值、平均值。</li>
+</ul>
+<p>当多个属性同时存在时，优先级按上述的顺序。 那么我们可以把数据组装成多个对象，例如我有一个数组</p>
+<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {…},<br>}</p>
+<p>那么我要在markPoint里面应该是这样组装的</p>
+<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {<br>    …<br>    data: [<br>      {value: 820, xAxis: 0, yAxis: 820},<br>      {value: 932, xAxis: 1, yAxis: 932},<br>      {value: 901, xAxis: 2, yAxis: 901},<br>      {value: 934, xAxis: 3, yAxis: 934},<br>      {value: 129, xAxis: 4, yAxis: 129},<br>      {value: 670, xAxis: 5, yAxis: 670}<br>    ]<br>  }<br>  …<br>}</p>
+<p>这样就如上图一样效果就出来了 来个?，假设一组数组，大于50显示红色，小于则显示绿色</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/gVwvqQ/">echarts markPoint 气泡</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">JavaScript Class 类的私有和公共属性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-08 17:18:23" itemprop="dateCreated datePublished" datetime="2018-11-08T17:18:23+08:00">2018-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文为<a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>续篇。</p>
+</blockquote>
+<p>我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。” 在 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">上一篇文章</a> 中，我们学习了如何在 ES5 和 ES6 中创建 JavaScript 类。 我们还讨论了如何通过构造函数向这些类的实例添加 state(状态) ，以及如何通过类的原型在实例之间共享方法。 这是一个简单的 Player 类，它包含了我们讨论的有关 ES6 类的所有内容。</p>
+<p>class Player {<br>  constructor() {<br>    this.points = 0<br>    this.assists = 0<br>    this.rebounds = 0<br>    this.steals = 0<br>  }<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
+<p>我们看看这段代码，我们能不能让它更直观一点呢？方法很好理解，都很自然。那么构造函数呢？什么是 constructor ？为什么我们必须在这里定义实例值？现在，这些问题已经有了答案，但是为什么我们不能向实例中添加 state(状态) ，就像方法那样？比如：</p>
+<p>class Player {<br>  points = 0<br>  assists = 0<br>  rebounds = 0<br>  steals = 0<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
+<p>事实上，这是 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-class-fields">Class Fields Declaration</a> 提案的基础，该提案目前处于 TC-39 流程的 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/ecmascript/">第3阶段</a> 。 此提议允许您直接将实例属性添加为类的属性，而无需使用构造方法。 非常漂亮，但是如果我们看一些 React 代码，这个提案真的很棒。 这是一个典型的 React 组件。 它具有本地 state(状态) ，一些方法以及一些静态属性被添加到类中。</p>
+<p>class PlayerInput extends Component {<br>  constructor(props) {<br>    super(props)<br>    this.state = {<br>      username: ‘’<br>    }</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
+<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
+<p>让我们看看新的 Class Fields 提议如何改进上面的代码首先，我们可以将 state(状态) 变量从构造函数中取出，并将其直接定义为类的属性（或“字段”）。</p>
+<p>class PlayerInput extends Component {<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
+<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
+<p>很酷，但没什么好兴奋的。 我们继续吧。 在上一篇文章中，我们讨论了如何使用 static 关键字向类本身添加静态方法。 但是，根据 ES6 类规范，这只对方法有效，对于值则无效。 这就是为什么在上面的代码中，我们必须在我们定义完 PlayerInput 之后，再在 class 外面将 propTypes 和 defaultProps 添加到 PlayerInput ，而不是在 class 体内定义他们的原因。 再说一遍，它们不能像静态方法那样直接放入 class 体内呢? 好消息是，这也包含在 Class Fields 提案中。 所以现在不仅可以在类体中定义静态方法，还可以定义静态值。 这对我们的代码意味着我们可以将 propTypes 和 defaultProps 移动到 class 体内定义。</p>
+<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>这样代码看上去好多了，但我们仍然有丑陋的 constructor 方法和 super 调用。 同样，我们现在需要构造函数的原因是为了将 handleChange 方法绑定到恰当的上下文中。 如果我们能找到另一种方法来确保始终在恰当的上下文中调用 handleChange ，那么我们可以摆脱掉 constructor 。 如果您以前使用过箭头函数，就会知道它们没有自己的 this 关键字。相反，this 关键字是按 lexically(词法) 绑定的。这是一种奇特的说法，当你在箭头函数中使用 this 关键字时，事情会按照你所期望的方式运行。利用这些知识并将其与 “Class Fields” 提案相结合起来，如果我们将 handleChange 方法替换为箭头函数呢？这看起来有点奇怪，但是通过这样做，我们可以解决绑定问题，因为，箭头函数是通过 lexically(词法) 绑定 this 的。</p>
+<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  handleChange = (event) =&gt; {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>你看上面的代码，这比我们开始的原始类要好得多，这都要感谢 “Class Fields” 提案，它将很快成为 EcmaScript 规范的一部分。 从开发者体验的角度来看，Class Fields 提案优势很明显。 然而，他们有一些缺点，很少被谈论。 在上一篇文章中，我们讨论了 ES6 类实际上只是 Pseudoclassical Instantiation(伪类实例化) 模式的语法糖。也就是说，当你向类添加方法时，这就像在函数原型中添加方法一样。</p>
+<p>class Animal {<br>  eat() {}<br>}</p>
+<p>// 等价于</p>
+<p>function Animal () {}<br>Animal.prototype.eat = function () {}</p>
+<p>这是高效的，因为 eat 定义一次并在类的所有实例之间共享。 这与 Class Fields 有什么关系？ 好吧，正如我们上面所看到的， Class Fields 被添加到实例中。 这意味着对于我们创建的每个实例，我们将创建一个新的 eat 方法。</p>
+<p>class Animal {<br>  eat() {}<br>  sleep = () =&gt; {}<br>}</p>
+<p>// 等价于</p>
+<p>function Animal () {<br>  this.sleep = function () {}<br>}</p>
+<p>Animal.prototype.eat = function () {}</p>
+<p>请注意 sleep 如何放在实例上，而不是放在 Animal.prototype 上。这是件坏事吗？嗯，有可能。在不进行度量的情况下对性能进行宽泛的描述通常不是一个好主意。您需要在应用程序中回答的问题是，您从 Class Fields 中获得的开发人员体验是否超过了潜在的性能损失。</p>
+<blockquote>
+<p>如果你想在你的应用程序中使用我们之前谈到的任何内容，你需要使用 <a target="_blank" rel="noopener" href="https://babeljs.io/docs/en/babel-plugin-proposal-class-properties">babel-plugin-transform-class-properties</a> 插件。</p>
+</blockquote>
+<h2 id="Private-私有-属性"><a href="#Private-私有-属性" class="headerlink" title="Private(私有) 属性"></a>Private(私有) 属性</h2><p>Class Fields 提案的另一个内容时是 “private fields (私有属性)” 。 有时，当您构建一个类时，您希望拥有不暴露给外界的私有值。 从历史上看， JavaScript 缺乏真正私有值 的能力，所以我们通过约定，用下划线标记它们。</p>
+<p>class Car {<br>  _milesDriven = 0<br>  drive(distance) {<br>    this._milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this._milesDriven<br>  }<br>}</p>
+<p>在上面的示例中，我们依靠 Car class（类）的实例通过调用 getMilesDriven 方法来获取汽车的里程数。但是，因为没有什么能使 _milesDriven成为私有的，所以任何实例都可以访问它。</p>
+<p>const tesla = new Car()<br>tesla.drive(10)<br>console.log(tesla._milesDriven)</p>
+<p>有个奇特的（hacky）方法，就是使用 WeakMaps 可以解决这个问题，但如果存在更简单的解决方案，那将会很好。 同样，Class Fields 提案正在拯救我们。 根据提议，您可以使用 ＃ 创建私有字段。 是的，你没有看错， ＃ 。 我们来看看它对我们的代码有什么影响，</p>
+<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    this.#milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this.#milesDriven<br>  }<br>}</p>
+<p>我们可以用速记语法更进一步简化</p>
+<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    #milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return #milesDriven<br>  }<br>}</p>
+<p>const tesla = new Car()<br>tesla.drive(10)<br>tesla.getMilesDriven() // 10<br>tesla.#milesDriven // Invalid</p>
+<p>如果您对私有属性背后的更多细节/决策感兴趣，那么这里有一篇 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-private-fields/blob/master/FAQ.md">很好的文章</a>。</p>
+<blockquote>
+<p>目前 <a target="_blank" rel="noopener" href="https://github.com/babel/proposals/issues/12">有一个 PR</a> 将私有属性添加到 Babel ，以便您可以在应用中使用它们。</p>
+</blockquote>
+<p>文章来源：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/javascript-private-and-public-class-fields/">https://tylermcginnis.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/08/%E4%BD%BF%E7%94%A8css%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8B%BC%E6%8E%A5html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/08/%E4%BD%BF%E7%94%A8css%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8B%BC%E6%8E%A5html/" class="post-title-link" itemprop="url">使用CSS属性选择器拼接html</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-08 08:18:22" itemprop="dateCreated datePublished" datetime="2018-11-08T08:18:22+08:00">2018-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>属性选择器非常神奇。它们可以使你摆脱棘手的问题，帮助你避免添加类，并指出代码中的一些问题。但是不要担心，虽然属性选择器非常复杂和强大，但是它们很容易学习和使用。在本文中，我们将讨论它们是如何运行的，并给出一些如何使用它们的想法。</p>
+</blockquote>
+<p>通常将 HTML 属性放在方括号中，称为属性选择器，如下：</p>
+<p>[href] {<br>    color: red;<br>}</p>
+<p>这样任何具有href属性的且没有更特定选择器的元素的文本颜色都会是红色的。属性选择器的特性与类相同。 <strong>注:更多关于笼匹配的CSS特异性，你可以阅读<a href="https://link.juejin.im/?target=https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">CSS特性:你应该知道的事情</a>，或者如果你喜欢星球大战:<a href="https://link.juejin.im/?target=http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html">CSS特性战争</a>。</strong> 但是你可以使用属性选择器做得更多。就像你的 DNA 一样，它们有内在的逻辑来帮助你选择各种属性组合和值。它们可以匹配属性中的任何属性，甚至字符串值，而不是像标签、类或id选择器那样精确匹配。</p>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>属性选择器可以独立存在，更具体地说，如果需要选择所有具有title属性的div标签，可以这么做：</p>
+<p>div[title]</p>
+<p>但你也可以通过以下操作选择具有 title 属性的 div 的子元素</p>
+<p>div [title]</p>
+<p>需要说明的是，它们之间没有空格意味着属性位于相同的元素上(就像元素和类之间没有空格一样)，而它们之间的空格意味着后代选择器，即选择具有该属性的元素的子元素。 你可以更精细地选择具体属性值的属性。</p>
+<p>div[title=”dna”]</p>
+<p>上面选择了所有具有确切名称dna的div,虽然有选择器算法可以处理每种情况（以及更多），但这里不会选择**“dna is awesome”或“dnamutation”**的标题。 **注意:**在大多数情况下，属性选择器中不需要引号，但是我使用它们，因为我相信它可以提高清代码的可读性，并确保边界用例能够正常工作。 如果你想选择 title 包含 dna的元素，如 “my beautiful dna” 或者 “mutating dna is fun!” ，可以使用波浪号（~）。</p>
+<p>div[title~=”dna”]</p>
+<p>如果你想匹配以 dna 结尾的 title,如  “dontblamemeblamemydna” 或 “his-stupidity-is-from-upbringing-not-dna” ，刚可以使用$标志符：</p>
+<p>[title$=”dna”]</p>
+<p>如果你想匹配以 dna 开头的 title,如  “dnamutants” 或 “dna-splicing-for-all” ，刚可以使用^标志符：</p>
+<p>[title^=”dna”]</p>
+<p>虽然精确匹配是有帮助的，但它可能选择太紧，并且^符号匹配可能太宽而无法满足你的需要。 例如，可能不想选择 “genealogy” 的标题，但仍然选择“gene”和“gene-data”。 管道特征()就是这样，属性中必须是完整且唯一的单词，或者以-分隔开。</p>
+<p>[title=”gene”]</p>
+<p>最后，还有一个匹配任何子字符串的模糊搜索属性操作符，属性中做字符串拆分，只要能拆出来dna这个词就行:</p>
+<p>[title*=”dna”]</p>
+<p>使这些属性选择器更加强大的是，它们是可堆叠的，允许你选择具有多个匹配因子的元素。 如果你需要找到一个a 标签，它有一个 title ，并且有一个以“genes” 结尾的 class,可以使用如下方式：</p>
+<p>a[title][class$=”genes”]</p>
+<p>你不仅可以选择 HTML 元素的属性，还可以使用伪类型元素来打印出文本：</p>
+<p><span class="joke" title="Gene Editing!">What’s the first thing a biotech journalist does after finishing the first draft of an article?</span></p>
+<p>.joke:hover:after {<br>    content: “Answer:”attr(title);<br>    display: block;<br>}</p>
+<p>上面的代码在鼠标悬停时将显示一串自定义的字符串。 最后要知道的是，您可以添加一个标志，让属性搜索不区分大小写。 在结束方括号之前添加i：</p>
+<p>[title*=”DNA” i]</p>
+<p>因此它会匹配dna, DNA, dnA等。 现在我们已经看到了如何使用属性选择器进行选择，让我们看看一些用例。 我将它们分为两类：一般用途和诊断。</p>
+<h2 id="一般用途"><a href="#一般用途" class="headerlink" title="一般用途"></a>一般用途</h2><h3 id="输入类型样式的设置"><a href="#输入类型样式的设置" class="headerlink" title="输入类型样式的设置"></a>输入类型样式的设置</h3><p>你可以对输入类型使用不同的样式，例如电子邮件和电话。</p>
+<p>input[type=”email”] {<br>    color: papayawhip;<br>}<br>input[type=”tel”] {<br>    color: thistle;<br>}</p>
+<h3 id="显示电话链接"><a href="#显示电话链接" class="headerlink" title="显示电话链接"></a>显示电话链接</h3><p>你可以隐藏特定尺寸的电话号码并显示电话链接，以便在手机上轻松拨打电话。</p>
+<p>span.phone {<br>    display: none;<br>}<br>a[href^=”tel”] {<br>    display: block;<br>}</p>
+<h3 id="内部链接-vs-外部链接，安全链接-vs-非安全链接"><a href="#内部链接-vs-外部链接，安全链接-vs-非安全链接" class="headerlink" title="内部链接 vs 外部链接，安全链接 vs 非安全链接"></a>内部链接 vs 外部链接，安全链接 vs 非安全链接</h3><p>你可以区别对待内部和外部链接，并将安全链接设置为与不安全链接不同：</p>
+<p>a[href^=”http”] {<br>    color: bisque;<br>}<br>a:not([href^=”http”]) {<br>    color: darksalmon;<br>}</p>
+<p>a[href^=”http://“]:after {<br>    content: url(unlock-icon.svg);<br>}<br>a[href^=”https://“]:after {<br>    content: url(lock-icon.svg);<br>}</p>
+<h3 id="下载图标"><a href="#下载图标" class="headerlink" title="下载图标"></a>下载图标</h3><p>HTML5 给我们的一个属性是“下载”，它告诉浏览器，你猜对了，下载该文件而不是试图打开它。这对于你希望人们访问但不希望它们立即打开的 PDF 和 DOC 非常有用。它还使得连续下载大量文件的工作流程更加容易。下载属性的缺点是没有默认的视觉效果将其与更传统的链接区分开来。通常这是你想要的，但如果不是，你可以做类似下面的事情：</p>
+<p>a[download]:after {<br>    content: url(download-arrow.svg);<br>}</p>
+<p>还可以使用不同的图标（如PDF与DOCX与ODF等）来表示文件类型，等等。</p>
+<p>a[href$=”pdf”]:after {<br>    content: url(pdf-icon.svg);<br>}<br>a[href$=”docx”]:after {<br>    content: url(docx-icon.svg);<br>}<br>a[href$=”odf”]:after {<br>    content: url(open-office-icon.svg);<br>}</p>
+<p>你还可以通过叠加属性选择器来确保这些图标只出现在可下载链接上。</p>
+<p>a[download][href$=”pdf”]:after {<br>    content: url(pdf-icon.svg);<br>}</p>
+<h3 id="覆盖或重新使用已废弃-弃用的代码"><a href="#覆盖或重新使用已废弃-弃用的代码" class="headerlink" title="覆盖或重新使用已废弃/弃用的代码"></a>覆盖或重新使用已废弃/弃用的代码</h3><p>我们都遇到过时代码过时的旧网站，在 HTML5 之前，你可能需要覆盖甚至重新应用作为属性实现的样式。</p>
+<div bgcolor="#000000"color="#FFFFFF">Old,holey genes</div>
+
+<p>div[bgcolor=”#000000”] {<br>    /*override*/<br>    background-color: #222222 !important;<br>}<br>div[color=”#FFFFFF”] {<br>    /*reapply*/<br>    color: #FFFFFF;<br>}</p>
+<h3 id="重写特定的内联样式"><a href="#重写特定的内联样式" class="headerlink" title="重写特定的内联样式"></a>重写特定的内联样式</h3><p>有时候你会遇到一些内联样式，这些样式会影响布局，但这些内联样式我们又没修改。那么以下是一种方法。 如果你道要覆盖的确切属性和值，并且希望在它出现的任何地方覆盖它，那么这种方法的效果最好。 对于此示例，元素的边距以像素为单位设置，但需要在 em 中进行扩展和设置，以便在用户更改默认字体大小时可以正确地重新调整元素。</p>
+<div style="color: #222222; margin: 8px; background-color: #EFEFEF;"Teenage Mutant Ninja Myrtle</div>
+
+<p>div[style*=”margin: 8px”] {<br>    margin: 1em !important;<br>}</p>
+<h3 id="显示文件类型"><a href="#显示文件类型" class="headerlink" title="显示文件类型"></a>显示文件类型</h3><p>默认情况下，文件输入的可接受文件列表是不可见的。 通常，我们使用伪元素来暴露它们：</p>
+<p>&lt;input type=”file”accept=”pdf,doc,docx”&gt;</p>
+<p>[accept]:after {<br>    content: “Acceptable file types: “attr(accept);<br>}</p>
+<h3 id="html-手风琴菜单"><a href="#html-手风琴菜单" class="headerlink" title="html 手风琴菜单"></a>html 手风琴菜单</h3><p>details和summary标签是一种只用HTML做扩展/手风琴菜单的方法，details 包括了summary标签和手风琴打开时要展示的内容。点击summary会展开details标签并添加open属性，我们可以通过open属性轻松地为打开的details标签设置样式：</p>
+<p>details[open] {<br>    background-color: hotpink;<br>}</p>
+<h3 id="打印链接"><a href="#打印链接" class="headerlink" title="打印链接"></a>打印链接</h3><p>在打印样式中显示URL使我走上了理解属性选择器的道路。 你现在应该知道如何自己构建它， 你只需选择带有href的所有标签，添加伪元素，然后使用attr()和content打印它们。</p>
+<p>a[href]:after {<br>    content: “ (“attr(href) “) “;<br>}</p>
+<h3 id="自定义提示"><a href="#自定义提示" class="headerlink" title="自定义提示"></a>自定义提示</h3><p>使用属性选择器创建自定义工具提示既有趣又简单：</p>
+<p>[title] {<br>    position: relative;<br>    display: block;<br>}<br>[title]:hover:after {<br>    content: attr(title);<br>    color: hotpink;<br>    background-color: slateblue;<br>    display: block;<br>    padding: .225em .35em;<br>    position: absolute;<br>    right: -5px;<br>    bottom: -5px;<br>}</p>
+<h3 id="便捷键"><a href="#便捷键" class="headerlink" title="便捷键"></a>便捷键</h3><p>web 的一大优点是它提供了许多不同的信息访问选项。一个很少使用的属性是设置accesskey的能力，这样就可以通过键组合和accesskey设置的字母直接访问该项目(确切的键组合取决于浏览器)。但是要想知道网站上设置了哪些键并不是件容易的事下面的代码将显示这些键:focus。我不使用鼠标悬停，因为大多数时候需要accesskey的人是那些使用鼠标有困难的人。你可以将其添加为第二个选项，但要确保它不是惟一的选项。</p>
+<p>a[accesskey]:focus:after {<br>    content: “ AccessKey: “attr(accesskey);<br>}</p>
+<h2 id="诊断"><a href="#诊断" class="headerlink" title="诊断"></a>诊断</h2><p>这些选项用于帮助我们在构建过程中或在尝试修复问题时在本地识别问题。将这些内容放在我们的生产网站上会使用户产生错误。</p>
+<h3 id="没有-controls-属性的-audio"><a href="#没有-controls-属性的-audio" class="headerlink" title="没有 controls 属性的 audio"></a>没有 controls 属性的 audio</h3><p>我不经常使用audio标签，但是当我使用它时，我经常忘记包含controls属性。 结果：没有显示任何内容。 如果你在 Firefox，如果隐藏了音频元素，或者语法或其他一些问题阻止它出现（仅适用于Firefox），此代码可以帮助你解决问题：</p>
+<p>audio:not([controls]) {<br>    width: 100px;<br>    height: 20px;<br>    background-color: chartreuse;<br>    display: block;<br>}</p>
+<h3 id="没有-alt-文本"><a href="#没有-alt-文本" class="headerlink" title="没有 alt 文本"></a><strong>没有</strong> alt <strong>文本</strong></h3><p>没有 alt 文本的图像是可访问性的噩梦。只需查看页面就很难找到它们，但如果添加它们，它们就会弹出来（当页面图片加载失败时，alt文字可以更好的解释图片的作用）：</p>
+<p>img:not([alt]) {<br>    /* no alt attribute */<br>    outline: 2em solid chartreuse;<br>}<br>img[alt=””] {<br>    /* alt attribute is blank */<br>    outline: 2em solid cadetblue;<br>}</p>
+<h3 id="异步-Javascript-文件"><a href="#异步-Javascript-文件" class="headerlink" title="异步 Javascript 文件"></a>异步 Javascript 文件</h3><p>网页可以是内容管理系统和插件，框架和代码的集合，确定哪些JavaScript异步加载以及哪些不加载可以帮助你专注于提高页面性能。</p>
+<p>script[src]:not([async]) {<br>    display: block;<br>    width: 100%;<br>    height: 1em;<br>    background-color: red;<br>}<br>script:after {<br>    content: attr(src);<br>}</p>
+<h3 id="JavaScript-事件元素"><a href="#JavaScript-事件元素" class="headerlink" title="JavaScript 事件元素"></a>JavaScript 事件元素</h3><p>你可以突出显示具有JavaScript事件属性的元素，以便将它们重构到JavaScript文件中。这里我主要关注OnMouseOver属性，但是它适用于任何JavaScript事件属性。</p>
+<p>[OnMouseOver] {<br>    color: burlywood;<br>}<br>[OnMouseOver]:after {<br>    content: “JS: “attr(OnMouseOver);<br>}</p>
+<h3 id="隐藏项"><a href="#隐藏项" class="headerlink" title="隐藏项"></a>隐藏项</h3><p>如果需要查看隐藏元素或隐藏输入的位置，可以使用它们来显示</p>
+<p>[hidden], [type=”hidden”] {<br>    display: block;<br>}</p>
+<p>  文章来源：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/10/attribute-selectors-splicing-html-dna-css">https://www.smashingmagazine.com/2018/10/attribute-selectors-splicing-html-dna-css</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/07/echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E7%82%B9%E5%87%BB%E6%9F%B1%E5%AD%90%E6%94%B9%E5%8F%98%E9%A2%9C%E8%89%B2%E5%B9%B6%E4%B8%94%E5%9B%9E%E8%B0%83%E6%9F%B1%E5%AD%90%E7%9A%84%E4%BD%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/07/echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E7%82%B9%E5%87%BB%E6%9F%B1%E5%AD%90%E6%94%B9%E5%8F%98%E9%A2%9C%E8%89%B2%E5%B9%B6%E4%B8%94%E5%9B%9E%E8%B0%83%E6%9F%B1%E5%AD%90%E7%9A%84%E4%BD%8D%E7%BD%AE/" class="post-title-link" itemprop="url">ECharts柱状图点击柱子改变颜色并且回调柱子的位置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-07 14:10:06" itemprop="dateCreated datePublished" datetime="2018-11-07T14:10:06+08:00">2018-11-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在项目开发中用到echarts有这样的需求，点击点击柱子改变颜色并且回调柱子的信息，看官网方法很简单，就是<a target="_blank" rel="noopener" href="http://www.echartsjs.com/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA">官网的例子</a></p>
+<p>myChart.on(‘click’, function (params) {<br>//params 就是点击柱子的返回信息<br>});</p>
+<p>那么如何改变柱子的颜色呢？请在 如何给ECharts柱状图设置一个高亮色 文中阅读，讲的是如何设置高亮色，其实实现方法是一样的，只不过这里只是添加了点击事件而已，实现方法如下：</p>
+<p>var curInt = null;<br>option = {<br>  …<br>  series:[{<br>    …<br>    data:[…],<br>    itemStyle:{<br>      color: function(params){<br>        var key = params.dataIndex;<br>        if(key === curInt){<br>          return ‘#E062AE’<br>        }else{<br>          return ‘#37A2DA’<br>        }<br>      }<br>    },<br>    …<br>   }],<br>   …<br>};</p>
+<p>myChart.on(‘click’, function (params) {<br>curInt = params.dataIndex;<br>myChart.setOption(option)<br>});</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/aXPabg/">Echarts给柱子设置不同颜色点击变色</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>我用的是4.0.0版本，测试了一下4.2版本以上有bug，无法重新绘制颜色</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1515,16 +1518,16 @@ add\_action( 'admin\_enqueue\_scripts', 'dui\_theme\_scripts' );
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1575,6 +1578,7 @@ add\_action( 'admin\_enqueue\_scripts', 'dui\_theme\_scripts' );
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

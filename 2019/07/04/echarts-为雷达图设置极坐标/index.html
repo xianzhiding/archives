@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="ECharts 雷达图可以使用 series[i]-radar设置 ，雷达图主要用于表现多变量的数据，例如玩”和平精英”战况的各个属性分析，雷达图依赖radar组件。 关于雷达图其他的一些属性自行去查看官网，我们在这里讲的是在雷达图上设置极坐标。 首先要了解极坐标系，因为实现极坐标需要一个系列三个属性完成，分别是polar:&amp;#123;&amp;#125;极坐标系、radiusAxis:&amp;#123;&amp;#1">
@@ -168,6 +168,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -242,18 +243,117 @@
   on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">var max &#x3D; 4, min &#x3D; -4;</span><br><span class="line">option &#x3D; &#123;</span><br><span class="line">    ...</span><br><span class="line">    radar: &#123;</span><br><span class="line">        ...</span><br><span class="line">        indicator: [&#123;</span><br><span class="line">                name: &#39;销售&#39;,</span><br><span class="line">                max: max,</span><br><span class="line">                min: min</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: &#39;管理&#39;,</span><br><span class="line">                max: max,</span><br><span class="line">                min: min</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: &#39;技术&#39;,</span><br><span class="line">                max: max,</span><br><span class="line">                min: min</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        splitArea: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    polar: &#123;&#125;,</span><br><span class="line">    angleAxis: &#123;</span><br><span class="line">        min: 0,</span><br><span class="line">        max: 360,</span><br><span class="line">        interval: 5,</span><br><span class="line">        clockwise: false,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    radiusAxis: &#123;</span><br><span class="line">        min: min,</span><br><span class="line">        max: max,</span><br><span class="line">        interval: 2,</span><br><span class="line">        splitArea: &#123;</span><br><span class="line">            show: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        ...</span><br><span class="line">        data: [&#123;</span><br><span class="line">            value: [4, -4, 1]</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">var max &#x3D; 4, min &#x3D; -4;
+option &#x3D; &#123;
+    ...
+    radar: &#123;
+        ...
+        indicator: [&#123;
+                name: &#39;销售&#39;,
+                max: max,
+                min: min
+            &#125;,
+            &#123;
+                name: &#39;管理&#39;,
+                max: max,
+                min: min
+            &#125;,
+            &#123;
+                name: &#39;技术&#39;,
+                max: max,
+                min: min
+            &#125;
+        ],
+        splitArea: &#123;
+            show: false
+        &#125;,
+        splitLine: &#123;
+            show: false
+        &#125;
+    &#125;,
+    polar: &#123;&#125;,
+    angleAxis: &#123;
+        min: 0,
+        max: 360,
+        interval: 5,
+        clockwise: false,
+        axisTick: &#123;
+            show: false
+        &#125;,
+        axisLabel: &#123;
+            show: false
+        &#125;,
+        axisLine: &#123;
+            show: false
+        &#125;,
+        splitLine: &#123;
+            show: false
+        &#125;
+    &#125;,
+    radiusAxis: &#123;
+        min: min,
+        max: max,
+        interval: 2,
+        splitArea: &#123;
+            show: true
+        &#125;
+    &#125;,
+    series: [&#123;
+        ...
+        data: [&#123;
+            value: [4, -4, 1]
+        &#125;]
+    &#125;]
+&#125;;</code></pre>
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/07/04/echarts-%E4%B8%BA%E9%9B%B7%E8%BE%BE%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%9E%81%E5%9D%90%E6%A0%87/" title="echarts 为雷达图设置极坐标">https://xianzhiding.github.io/2019/07/04/echarts-为雷达图设置极坐标/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/echarts/" rel="tag"># echarts</a>
-              <a href="/tags/echarts-%E5%9D%90%E6%A0%87/" rel="tag"># echarts 坐标</a>
-              <a href="/tags/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE/" rel="tag"># echarts 雷达图</a>
+              <a href="/tags/echarts/" rel="tag"><i class="fa fa-tag"></i> echarts</a>
+              <a href="/tags/echarts-%E5%9D%90%E6%A0%87/" rel="tag"><i class="fa fa-tag"></i> echarts 坐标</a>
+              <a href="/tags/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> echarts 雷达图</a>
           </div>
 
         
@@ -266,7 +366,7 @@
       <i class="fa fa-chevron-left"></i> echarts 雷达图遇到负值中心点偏移的设置
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/07/18/css3-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/" rel="next" title="CSS3线性渐变（Linear Gradients）">
+    <a href="/2019/07/18/css3%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/" rel="next" title="CSS3线性渐变（Linear Gradients）">
       CSS3线性渐变（Linear Gradients） <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -340,16 +440,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -400,6 +500,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

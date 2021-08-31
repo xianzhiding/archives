@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="不久以前，所有 HTML 页面的布局还都是通过 tables、floats 以及其他的 CSS 属性来完成的。面对复杂页面的布局，却没有很好的办法。 然而 Flexbox 的出现，便轻松的解决了复杂的 Web 布局。它是一种专注于创建稳定的响应式页面的布局模式，并可以轻松地正确对齐元素及其内容。如今已是大多数 Web 开发人员首选的 CSS 布局方式。 现在，又出现了一个构建 HTML 最佳布局体">
@@ -174,6 +174,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -242,7 +243,7 @@
 
       
         <p>不久以前，所有 HTML 页面的布局还都是通过 tables、floats 以及其他的 CSS 属性来完成的。面对复杂页面的布局，却没有很好的办法。 然而 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/490.html">Flexbox</a> 的出现，便轻松的解决了复杂的 Web 布局。它是一种专注于创建稳定的响应式页面的布局模式，并可以轻松地正确对齐元素及其内容。如今已是大多数 Web 开发人员首选的 CSS 布局方式。 现在，又出现了一个构建 HTML 最佳布局体系的新竞争者。（霸主地位正在争夺中…）它就是强大的 CSS <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">Grid 布局</a>。直到本月月底，它也将在 Firefox 52 和 Chrome 57 上得到原生支持，相信不久也会得到其他浏览器兼容性的支持。</p>
-<h2 id="基本布局测试"><a href="#基本布局测试" class="headerlink" title="基本布局测试"></a>基本布局测试</h2><p>要了解这两个体系构建布局的方式，我们将通过相同的 HTML 页面，利用不同的布局方式 （即 Flexbox 与 CSS Grid）为大家区分。同时，你也可以通过文章顶部附近的下载按钮，下载演示项目进行对比，或者通过在线演示来察看它们： <a target="_blank" rel="noopener" href="https://demo.tutorialzine.com/2017/03/css-grid-vs-flexbox/"><img src="http://file.w3cbest.com/file/images/html-layout.png"></a> 该页面的设计相对比较简单 – 它是由一个居中的容器组成，在其内部则包含了标头、主要内容部分、侧边栏和页脚。接下来，我们要完成同时保持 CSS 和 HTML 尽可能整洁的挑战事项：</p>
+<h2 id="基本布局测试"><a href="#基本布局测试" class="headerlink" title="基本布局测试"></a>基本布局测试</h2><p>要了解这两个体系构建布局的方式，我们将通过相同的 HTML 页面，利用不同的布局方式 （即 Flexbox 与 CSS Grid）为大家区分。同时，你也可以通过文章顶部附近的下载按钮，下载演示项目进行对比，或者通过在线演示来察看它们： <a target="_blank" rel="noopener" href="https://demo.tutorialzine.com/2017/03/css-grid-vs-flexbox/"><img data-src="http://file.w3cbest.com/file/images/html-layout.png"></a> 该页面的设计相对比较简单 – 它是由一个居中的容器组成，在其内部则包含了标头、主要内容部分、侧边栏和页脚。接下来，我们要完成同时保持 CSS 和 HTML 尽可能整洁的挑战事项：</p>
 <ol>
 <li> 在布局中将四个主要的部分进行定位。</li>
 <li> 将页面变为响应式页面；</li>
@@ -308,7 +309,7 @@ grid-gap: 60px;
 <p>header nav {<br>    display: flex;<br>    align-items: baseline;<br>}</p>
 <p>仅两行代码就搞定了！ 还不错吧。接下来让我们看看如何使用 CSS Grid 解决它。 <strong>CSS Grid 解决方案</strong> 为了拆分导航和按钮，我们要为标头定义 display: grid 属性，并设置一个 2 列的网格。同时，我们还需要两行额外的 CSS 代码，将它们定位在相应的边界上。</p>
 <p>header {<br>    display: grid;<br>    grid-template-columns: 1fr 1fr;<br>}<br>header nav {<br>    justify-self: start;<br>}<br>header button {<br>    justify-self: end;<br>}</p>
-<p>至于导航中的内链 – 这是我们使用 CSS grid 最好的布局展示： <img src="http://file.w3cbest.com/file/images/css-grid-header.png"> 虽然链接为内链形式，但它们不能正确的对齐。由于 CSS grid 不具备基线选项（不像 Flexbox 具备的 align-items 属性），所以我们只能再定义一个子网格。</p>
+<p>至于导航中的内链 – 这是我们使用 CSS grid 最好的布局展示： <img data-src="http://file.w3cbest.com/file/images/css-grid-header.png"> 虽然链接为内链形式，但它们不能正确的对齐。由于 CSS grid 不具备基线选项（不像 Flexbox 具备的 align-items 属性），所以我们只能再定义一个子网格。</p>
 <p>header nav {<br>    display: grid;<br>    grid-template-columns: auto 1fr 1fr;<br>    align-items: end;<br>}</p>
 <p>CSS grid 在此步骤中，存在一些明显的布局上的缺陷。但你也不必过于惊讶。因为它的目标是对齐容器，而不是内部的内容。所以，用它来处理收尾工作，或许不是很好的选择哦。</p>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>如果你已经浏览完整篇文章，那么结论不会让你感到意外。事实上，并不存在最好的布局方式。Flexbox 和 CSS grid 是两种不同的布局形式，我们应该根据具体的场景将它们搭配使用，而不是相互替代。 对于那些跳过文章只想看结论的朋友（不用担心，我们也这样做），这里是通过实例比较后的总结：</p>
@@ -326,15 +327,53 @@ grid-gap: 60px;
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/04/25/css-grid-vs-flexbox%EF%BC%9A%E5%AE%9E%E7%94%A8%E6%AF%94%E8%BE%83/" title="CSS Grid VS Flexbox：实用比较">https://xianzhiding.github.io/2019/04/25/css-grid-vs-flexbox：实用比较/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/css/" rel="tag"># css</a>
-              <a href="/tags/flexbox/" rel="tag"># flexbox</a>
-              <a href="/tags/grid/" rel="tag"># grid</a>
-              <a href="/tags/Flexbox-%E5%B8%83%E5%B1%80/" rel="tag"># Flexbox 布局</a>
-              <a href="/tags/Grid-%E5%B8%83%E5%B1%80/" rel="tag"># Grid 布局</a>
-              <a href="/tags/tables-%E5%B8%83%E5%B1%80/" rel="tag"># tables 布局</a>
+              <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
+              <a href="/tags/flexbox/" rel="tag"><i class="fa fa-tag"></i> flexbox</a>
+              <a href="/tags/grid/" rel="tag"><i class="fa fa-tag"></i> grid</a>
+              <a href="/tags/Flexbox-%E5%B8%83%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> Flexbox 布局</a>
+              <a href="/tags/Grid-%E5%B8%83%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> Grid 布局</a>
+              <a href="/tags/tables-%E5%B8%83%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> tables 布局</a>
           </div>
 
         
@@ -422,16 +461,16 @@ grid-gap: 60px;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -482,6 +521,7 @@ grid-gap: 60px;
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

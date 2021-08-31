@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="随着Web平台的发展，它也获得了类似原生应用的特点。其中一个功能是CSS Scroll Snap Module。Scroll snap允许开发人员定义界面在滚动操作期间应该移动的距离。您可以使用它来构建幻灯片放映或分页界面 - 目前需要JavaScript和DOM操作才能完成。 Scroll snap作为一项功能经历了很多变化。早期的2013版规范 - 当时称为Scroll Snap Points">
@@ -176,6 +176,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -249,11 +250,11 @@
       
         <p>随着Web平台的发展，它也获得了类似原生应用的特点。其中一个功能是<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-scroll-snap-1/">CSS Scroll Snap Module</a>。Scroll snap允许开发人员定义界面在滚动操作期间应该移动的距离。您可以使用它来构建幻灯片放映或分页界面 - 目前需要JavaScript和DOM操作才能完成。 Scroll snap作为一项功能经历了很多变化。早期的2013版规范 - 当时称为Scroll Snap Points–定义了一种基于坐标和像素的方法来指定滚动距离。此版本的规范是在Microsoft Edge，Internet Explorer 11和Firefox中实现的。 Chrome 69+和Safari 11+实现了规范的最新版本，该版本使用了盒子对齐模型。这就是我们将在本节中关注的内容。 警告： 当前浮动在Web上的许多滚动快照教程都基于早期的CSS Scroll Snap Points规范。标题中“points”一词的出现是教程可能依赖于旧规范的一个标志。然而，更可靠的指标是存在scroll-snap-points-x或scroll-snap-points-y属性。 由于滚动捕捉非常适合幻灯片放映布局，这就是我们要构建的内容。这是我们的标记。</p>
 <div class="slideshow">
-<img src="avocado-and-bacon-salad.jpg">
-<img src="salad-eggs-and-scallops.jpg">
-<img src="seafood-and-noodles.jpg">
-<img src="grilled-salmon-and-side-salad.jpg">
-<img src="avocado-toast-with-egg.jpg">
+<img data-src="avocado-and-bacon-salad.jpg">
+<img data-src="salad-eggs-and-scallops.jpg">
+<img data-src="seafood-and-noodles.jpg">
+<img data-src="grilled-salmon-and-side-salad.jpg">
+<img data-src="avocado-toast-with-egg.jpg">
 </div>
 
 <p>这就是我们所需要的一切。我们不需要具有外部包裹元件和内部滑动容器。我们也不需要任何JavaScript。 现在我们的CSS：</p>
@@ -261,20 +262,58 @@
 <p>html, body {<br>padding: 0;<br>margin: 0;<br>}</p>
 <p>.slideshow {<br>scroll-snap-type: x mandatory; /* Indicates scroll axis and behavior */<br>overflow-x: auto; /* Should be either `scroll` or `auto` */<br>display: flex;<br>height: 100vh;<br>}</p>
 <p>.slideshow img {<br>width: 100vw;<br>height: 100vh;<br>scroll-snap-align: center;<br>}</p>
-<p>添加scroll-snap-type以.slideshow创建滚动容器。此属性的值x mandatory描述了我们要滚动的方向以及滚动快照严格性。在这种情况下，该mandatory值告诉浏览器，当没有活动的滚动操作时，它必须捕捉到捕捉位置。使用display: flex只是确保我们的所有图像水平堆叠。 现在我们需要的另一个属性是scroll-snap-align。此属性指示如何在滚动容器的捕捉端口内对齐每个图像的滚动捕捉区域。它接受三个值：start，end，和center。在这种情况下，我们使用了center这意味着每个图像将在视口中居中，如下所示。 <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/ScrollSnap.png"></p>
+<p>添加scroll-snap-type以.slideshow创建滚动容器。此属性的值x mandatory描述了我们要滚动的方向以及滚动快照严格性。在这种情况下，该mandatory值告诉浏览器，当没有活动的滚动操作时，它必须捕捉到捕捉位置。使用display: flex只是确保我们的所有图像水平堆叠。 现在我们需要的另一个属性是scroll-snap-align。此属性指示如何在滚动容器的捕捉端口内对齐每个图像的滚动捕捉区域。它接受三个值：start，end，和center。在这种情况下，我们使用了center这意味着每个图像将在视口中居中，如下所示。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/ScrollSnap.png"></p>
 
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2018/09/28/css3%E4%B8%AD%E7%9A%84-scroll-snap%EF%BC%9A%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E5%8A%A8%E4%BD%9C%EF%BC%88%E7%B1%BB%E4%BC%BC%E6%BB%9A%E5%8A%A8%E5%9B%BE%E7%89%87%EF%BC%89/" title="CSS3中的 Scroll Snap：控制滚动动作（类似滚动图片）">https://xianzhiding.github.io/2018/09/28/css3中的-scroll-snap：控制滚动动作（类似滚动图片）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/css/" rel="tag"># css</a>
-              <a href="/tags/css3/" rel="tag"># css3</a>
-              <a href="/tags/scroll-snap-align/" rel="tag"># scroll-snap-align</a>
-              <a href="/tags/scroll-snap-type/" rel="tag"># scroll-snap-type</a>
+              <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
+              <a href="/tags/css3/" rel="tag"><i class="fa fa-tag"></i> css3</a>
+              <a href="/tags/scroll-snap-align/" rel="tag"><i class="fa fa-tag"></i> scroll-snap-align</a>
+              <a href="/tags/scroll-snap-type/" rel="tag"><i class="fa fa-tag"></i> scroll-snap-type</a>
           </div>
 
         
@@ -361,16 +400,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -421,6 +460,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

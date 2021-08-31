@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="多数编程语言都支持变量。但是CSS从最初就一直缺少对原生变量的功能支持。 你写CSS吧？那你就没办法用变量。不过，你还可以用Sass这样的预编译器。 Sass这样的预编译器就把变量作为一个巨大的卖点，一个尝试新东西的原因。你知道吗？我们还真的很吃这一套。 不过互联网还在飞速前行。所以我也很开心的宣布CSS现在终于支持变量了。 预编译器支持更多的特性，其中CSS变量就是一个不错的卖点。这些工作让互联">
@@ -69,8 +69,8 @@
 <meta property="article:published_time" content="2018-09-18T14:34:30.000Z">
 <meta property="article:modified_time" content="2021-08-30T02:43:26.842Z">
 <meta property="article:author" content="Tom">
-<meta property="article:tag" content="css3">
 <meta property="article:tag" content="css var()">
+<meta property="article:tag" content="css3">
 <meta property="article:tag" content="CSS Variables">
 <meta property="article:tag" content="前端开发">
 <meta property="article:tag" content="var()">
@@ -212,6 +212,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -281,9 +282,9 @@
       
         <p>多数编程语言都支持变量。但是CSS从最初就一直缺少对原生变量的功能支持。 你写CSS吧？那你就没办法用变量。不过，你还可以用Sass这样的预编译器。 Sass这样的预编译器就把变量作为一个巨大的卖点，一个尝试新东西的原因。你知道吗？我们还真的很吃这一套。 不过互联网还在飞速前行。所以我也很开心的宣布CSS现在终于支持变量了。 预编译器支持更多的特性，其中CSS变量就是一个不错的卖点。这些工作让互联网更加接近未来。 在这篇指南里，我会展示如何使用CSS原生变量，以及如何在日常工作里使用它们，让生活变的更美好。</p>
 <h2 id="你会学到这些"><a href="#你会学到这些" class="headerlink" title="你会学到这些"></a>你会学到这些</h2><p>首先，我会介绍一些CSS变量的基础知识。我相信理解CSS变量应该从这里开始。 学习基础知识是非常酷的一件事。更酷的把这些基础知识应用到现实应用当中去。 所以我会用三个例子来展示如何方便的使用CSS变量。下面我们简单过一下这三个例子。</p>
-<h3 id="例1：使用CSS变量创建可变组件"><a href="#例1：使用CSS变量创建可变组件" class="headerlink" title="例1：使用CSS变量创建可变组件"></a>例1：使用CSS变量创建可变组件</h3><p>今天你可能已经在构建自己可变组件了。无论你是在使用React，Angular，或者Vue，CSS变量都能使这个过程简洁许多。 <img src="http://file.w3cbest.com/file/images/1_qElS3I43_SdpdRA8-m2iew.gif"> 参见 <a target="_blank" rel="noopener" href="https://codepen.io/ohansemmanuel/full/PQYzvv/">Codepen的这个例子</a>;</p>
-<h3 id="例2-带有CSS变量的主题样式"><a href="#例2-带有CSS变量的主题样式" class="headerlink" title="例2: 带有CSS变量的主题样式"></a>例2: 带有CSS变量的主题样式</h3><p>你可能已经在别处看到过这样的用法。我接下来要展示的是CSS变量如何使得创建站点级别的主题样式更加简便。 <img src="http://file.w3cbest.com/file/images/1_r2TrlsC-gWRD5Hu6Tp2gjQ.gif"> 参见 <a target="_blank" rel="noopener" href="https://codepen.io/ohansemmanuel/full/xYKgwE/">Codepen的这个例子</a></p>
-<h3 id="例3-创建CSS变量盒"><a href="#例3-创建CSS变量盒" class="headerlink" title="例3: 创建CSS变量盒"></a>例3: 创建CSS变量盒</h3><p>恩，这是最后一个例子。请忽略这个名字，我想不到更好的了… <img src="http://file.w3cbest.com/file/images/1_E6H-wT6a0BDR9OJK7Z0dTA.gif"> 注意这些盒子的颜色是动态更新的，盒子容器也是可以3D旋转的。 <img src="http://file.w3cbest.com/file/images/1_iy_MjZVlp-H0KUQa7H7fUg.gif"> 这个例子让我们看到如何使用JavaScript更新CSS变量，并展示出一个很好的交互效果。</p>
+<h3 id="例1：使用CSS变量创建可变组件"><a href="#例1：使用CSS变量创建可变组件" class="headerlink" title="例1：使用CSS变量创建可变组件"></a>例1：使用CSS变量创建可变组件</h3><p>今天你可能已经在构建自己可变组件了。无论你是在使用React，Angular，或者Vue，CSS变量都能使这个过程简洁许多。 <img data-src="http://file.w3cbest.com/file/images/1_qElS3I43_SdpdRA8-m2iew.gif"> 参见 <a target="_blank" rel="noopener" href="https://codepen.io/ohansemmanuel/full/PQYzvv/">Codepen的这个例子</a>;</p>
+<h3 id="例2-带有CSS变量的主题样式"><a href="#例2-带有CSS变量的主题样式" class="headerlink" title="例2: 带有CSS变量的主题样式"></a>例2: 带有CSS变量的主题样式</h3><p>你可能已经在别处看到过这样的用法。我接下来要展示的是CSS变量如何使得创建站点级别的主题样式更加简便。 <img data-src="http://file.w3cbest.com/file/images/1_r2TrlsC-gWRD5Hu6Tp2gjQ.gif"> 参见 <a target="_blank" rel="noopener" href="https://codepen.io/ohansemmanuel/full/xYKgwE/">Codepen的这个例子</a></p>
+<h3 id="例3-创建CSS变量盒"><a href="#例3-创建CSS变量盒" class="headerlink" title="例3: 创建CSS变量盒"></a>例3: 创建CSS变量盒</h3><p>恩，这是最后一个例子。请忽略这个名字，我想不到更好的了… <img data-src="http://file.w3cbest.com/file/images/1_E6H-wT6a0BDR9OJK7Z0dTA.gif"> 注意这些盒子的颜色是动态更新的，盒子容器也是可以3D旋转的。 <img data-src="http://file.w3cbest.com/file/images/1_iy_MjZVlp-H0KUQa7H7fUg.gif"> 这个例子让我们看到如何使用JavaScript更新CSS变量，并展示出一个很好的交互效果。</p>
 <h2 id="接下来的更有趣！"><a href="#接下来的更有趣！" class="headerlink" title="接下来的更有趣！"></a>接下来的更有趣！</h2><p>花点时间尝试一下 <a target="_blank" rel="noopener" href="https://codepen.io/ohansemmanuel/full/EoBLgd/">Codepen上的这个例子</a>。 请注意：本文假设你已经熟练掌握了CSS。如果你还不了解CSS，或者想学习创造让人瞠目结舌的UI，我建议你上一下我的这堂高级<a target="_blank" rel="noopener" href="https://bit.ly/learn_css">CSS课程</a>（付费课程，包括85节课）。本文是其中一课的摘录（不害臊脸）。</p>
 <h2 id="为何变量如此重要"><a href="#为何变量如此重要" class="headerlink" title="为何变量如此重要"></a>为何变量如此重要</h2><p>如果你刚开始学预编译器的变量，或者熟悉原生CSS，下面便是一些你要了解变量的原因：</p>
 <h3 id="原因1-提高代码可读性"><a href="#原因1-提高代码可读性" class="headerlink" title="原因1:提高代码可读性"></a>原因1:提高代码可读性</h3><p>无需赘言，变量让代码可读性更强，可维护性更好。</p>
@@ -295,10 +296,10 @@
 <p>amAwesome = “awesome string”</p>
 <p>CSS中，一个CSS变量是任意一个以两个破折号开头的”属性“值，</p>
 <p>/*能找到这里定义变量么? */<br>.block {<br>color: #8cacea;<br>–color: blue<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/0_2Pl5qBF8DCTGL_np.png"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/0_2Pl5qBF8DCTGL_np.png"></p>
 <h2 id="CSS变量作用域"><a href="#CSS变量作用域" class="headerlink" title="CSS变量作用域"></a>CSS变量作用域</h2><p>还有一点你需要注意。 在JavaScript里，变量都有一个作用域。它们或是一个全局变量，或是一个局部变量。 CSS变量也一样。请看下面的例子：</p>
 <p>:root {<br>–main-color: red<br>}</p>
-<p><code>:root</code>选择器能让我们选择DOM树里的最顶级的元素，也就是文档树。所以，这样定义的变量，也就相当于全局变量了。理解了么？ <img src="http://file.w3cbest.com/file/images/0_GLjARI5CCGA3xJAx.png"></p>
+<p><code>:root</code>选择器能让我们选择DOM树里的最顶级的元素，也就是文档树。所以，这样定义的变量，也就相当于全局变量了。理解了么？ <img data-src="http://file.w3cbest.com/file/images/0_GLjARI5CCGA3xJAx.png"></p>
 <h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p>假设你想设置一个存储网站主题样式的CSS变量，你会怎么做？</p>
 <h4 id="1，你需要使用范围选择器。用-root来定义一个全局变量。"><a href="#1，你需要使用范围选择器。用-root来定义一个全局变量。" class="headerlink" title="1，你需要使用范围选择器。用:root来定义一个全局变量。"></a>1，你需要使用范围选择器。用<code>:root</code>来定义一个全局变量。</h4><p>:root {}</p>
 <h4 id="2，定义变量"><a href="#2，定义变量" class="headerlink" title="2，定义变量"></a>2，定义变量</h4><p>:root {<br>–primary-color: red<br>}</p>
@@ -307,27 +308,27 @@
 <p>$font-size: 20px<br>.test {<br>font-size: $font-size<br>}</p>
 <p>CSS变量和这稍有不同。 你需要使用<code>var()</code>这个函数引用变量。 上面的例子中，CSS变量是这样引用的：</p>
 <p>:root {<br>–font-size: 20px<br>}<br>.test {<br>font-size: var(–font-size)<br>}</p>
-<p>非常不同。 <img src="http://file.w3cbest.com/file/images/0_Gv8Nci9VTrJBxpBe.png"> 一旦你习惯了这样的方式，你就会爱上CSS变量的，非常爱！ 另一个重要的提示是，不像Sass或者其他预编译器中的变量，你可以在很多地方使用变量。CSS的变量需要小心谨慎，如果需要你还能做数学运算。多数情况下你应该把它们当作属性值来使用。</p>
+<p>非常不同。 <img data-src="http://file.w3cbest.com/file/images/0_Gv8Nci9VTrJBxpBe.png"> 一旦你习惯了这样的方式，你就会爱上CSS变量的，非常爱！ 另一个重要的提示是，不像Sass或者其他预编译器中的变量，你可以在很多地方使用变量。CSS的变量需要小心谨慎，如果需要你还能做数学运算。多数情况下你应该把它们当作属性值来使用。</p>
 <p>/*下面这样是不对的*/<br>.margin {<br>–side: margin-top;<br> var(–side): 20px;<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/0_vtIhP9EGm_vTxeio.png"> 你也无法直接使用数学运算功能。运算功能需要使用<code>calc()</code>函数。后面遇到时我会加以讨论。</p>
+<p><img data-src="http://file.w3cbest.com/file/images/0_vtIhP9EGm_vTxeio.png"> 你也无法直接使用数学运算功能。运算功能需要使用<code>calc()</code>函数。后面遇到时我会加以讨论。</p>
 <p>/*下面这样也不对 */<br>.margin {<br>–space: 20px * 2;<br>font-size:  var(–space);  //这不是 40px<br>}</p>
 <p>如果你一定需要用数学计算，那么请使用 calc()函数，如下：</p>
 <p>.margin {<br>–space: calc(20px * 2);<br>font-size:  var(–space);  /*equals 40px*/<br>}</p>
 <h2 id="值得一提的属性"><a href="#值得一提的属性" class="headerlink" title="值得一提的属性"></a>值得一提的属性</h2><p>有一些行为是值得提醒注意的。</p>
-<h3 id="1-自定义属性是普通属性值，因此它们可以定义在任意元素上。"><a href="#1-自定义属性是普通属性值，因此它们可以定义在任意元素上。" class="headerlink" title="1. 自定义属性是普通属性值，因此它们可以定义在任意元素上。"></a>1. 自定义属性是普通属性值，因此它们可以定义在任意元素上。</h3><p>在段落p元素，section，aside元素或者root根元素，甚至是伪元素上使用变量，都是可以的。 <img src="http://file.w3cbest.com/file/images/0_plpQVof3v3JrzC1P.png"></p>
+<h3 id="1-自定义属性是普通属性值，因此它们可以定义在任意元素上。"><a href="#1-自定义属性是普通属性值，因此它们可以定义在任意元素上。" class="headerlink" title="1. 自定义属性是普通属性值，因此它们可以定义在任意元素上。"></a>1. 自定义属性是普通属性值，因此它们可以定义在任意元素上。</h3><p>在段落p元素，section，aside元素或者root根元素，甚至是伪元素上使用变量，都是可以的。 <img data-src="http://file.w3cbest.com/file/images/0_plpQVof3v3JrzC1P.png"></p>
 <h3 id="2-CSS变量和普通CSS继承和叠加的规则相同"><a href="#2-CSS变量和普通CSS继承和叠加的规则相同" class="headerlink" title="2. CSS变量和普通CSS继承和叠加的规则相同"></a>2. CSS变量和普通CSS继承和叠加的规则相同</h3><p>看这个例子：</p>
 <p>div {<br>–color: red;<br>}<br>div.test {<br>color: var(–color)<br>}<br>div.ew {<br>color: var(–color)<br>}</p>
-<p>和普通变量相同，<code>--color</code>的值也会从其他的div元素继承下来。 <img src="http://file.w3cbest.com/file/images/0_GNSU5IDdk7dx3B8t.png"></p>
+<p>和普通变量相同，<code>--color</code>的值也会从其他的div元素继承下来。 <img data-src="http://file.w3cbest.com/file/images/0_GNSU5IDdk7dx3B8t.png"></p>
 <h3 id="3-CSS变量也可以和-media或其他条件选择的规则同时使用"><a href="#3-CSS变量也可以和-media或其他条件选择的规则同时使用" class="headerlink" title="3. CSS变量也可以和@media或其他条件选择的规则同时使用"></a>3. CSS变量也可以和<code>@media</code>或其他条件选择的规则同时使用</h3><p>和其他属性一样，你也可以使用<code>@media</code>或其他的条件规则里使用变量， 例如，下面的代码改变了变量的值，在不同的设备上使用不同值。</p>
 <p>:root {<br>–gutter: 10px<br>}<br>@media screen and (min-width: 768px) {<br>    –gutter: 30px<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/0_qmsVGjnWjLCKfyvt.png"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/0_qmsVGjnWjLCKfyvt.png"></p>
 <h3 id="4-CSS变量可以在HTML的style属性中使用"><a href="#4-CSS变量可以在HTML的style属性中使用" class="headerlink" title="4. CSS变量可以在HTML的style属性中使用"></a>4. CSS变量可以在HTML的style属性中使用</h3><p>你也可以在内联样式里使用变量，它们也正常工作。</p>
 <html style="--color: red">
 body {
 color: var(--color)
 }
 
-<p><img src="http://file.w3cbest.com/file/images/0_EQiFgdDyNBQ1AfDk.png"> CSS变量大小写敏感。请注意这一点。我为了省事全部都用小写。你的情况可能不一样。</p>
+<p><img data-src="http://file.w3cbest.com/file/images/0_EQiFgdDyNBQ1AfDk.png"> CSS变量大小写敏感。请注意这一点。我为了省事全部都用小写。你的情况可能不一样。</p>
 <p>/*这是两个不同的变量*/<br>:root {<br>   –color: blue;<br>–COLOR: red;<br>}</p>
 <h2 id="解决多重定义"><a href="#解决多重定义" class="headerlink" title="解决多重定义"></a>解决多重定义</h2><p>和其他属性是一样的，重定义变量也遵循标准级联规则。 下面来看个例子：</p>
 <p>/*变量定义*/<br>:root { –color: blue; }<br>div { –color: green; }<br>#alert { –color: red; }</p>
@@ -350,7 +351,7 @@ color: var(--color)
 <p>:root { –color: blue; }</p>
 <p>和其他属性一样，CSS变量也是可继承的。这个值也会从其父节点上获得。</p>
 <p>#alert { –color: red; }</p>
-<p><img src="http://file.w3cbest.com/file/images/1_lGioVJqkKo0N91R9eMvywQ.png"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/1_lGioVJqkKo0N91R9eMvywQ.png"></p>
 <h2 id="解决循环依赖"><a href="#解决循环依赖" class="headerlink" title="解决循环依赖"></a>解决循环依赖</h2><p>循环依赖通常会在下面几种情况下发生： 变量需要依赖其自身值。也就是说，定义时就使用了var()引用其值。</p>
 <p>:root {<br>    –m: var(–m)<br>}<br>body {<br>    margin: var(–m)<br>}</p>
 <p>多个变量相互引用时。</p>
@@ -358,7 +359,7 @@ color: var(--color)
 <p>请注意，不要在代码中创建这样的循环引用。</p>
 <h2 id="使用无效变量会怎样？"><a href="#使用无效变量会怎样？" class="headerlink" title="使用无效变量会怎样？"></a>使用无效变量会怎样？</h2><p>语法错误会被忽略，但是无效的使用<code>var()</code>会导致错误的初始值或者是继承到有问题的值。 看下面的代码：</p>
 <p>:root {–color: 20px;}<br>p {background-color: red;}<br>p {background-color: var(–color);}</p>
-<p><img src="http://file.w3cbest.com/file/images/0_fa59XRLGKo5Rsqm4.png"> <code>--color</code>会被代入<code>var()</code>，但是这条属性值，<code>background-color: 20px</code> 在变量代入后是无效的（译者注：错误的颜色值）。因为<code>backgroud-color</code>不是继承属性，那么它的值就会是这个属性的初始值 <code>transparent</code>。 <img src="http://file.w3cbest.com/file/images/0_uVic7R1o96n-T1l5.png"> 请注意，如果你直接写<code>backgroud-color: 20px</code>，那么这个属性声明就是无效的。这一行之前的定义就正常工作了。 <img src="http://file.w3cbest.com/file/images/0_9HzCVQdyvqeo5dZq.png"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/0_fa59XRLGKo5Rsqm4.png"> <code>--color</code>会被代入<code>var()</code>，但是这条属性值，<code>background-color: 20px</code> 在变量代入后是无效的（译者注：错误的颜色值）。因为<code>backgroud-color</code>不是继承属性，那么它的值就会是这个属性的初始值 <code>transparent</code>。 <img data-src="http://file.w3cbest.com/file/images/0_uVic7R1o96n-T1l5.png"> 请注意，如果你直接写<code>backgroud-color: 20px</code>，那么这个属性声明就是无效的。这一行之前的定义就正常工作了。 <img data-src="http://file.w3cbest.com/file/images/0_9HzCVQdyvqeo5dZq.png"></p>
 <h2 id="创建单一标记时，请注意"><a href="#创建单一标记时，请注意" class="headerlink" title="创建单一标记时，请注意"></a>创建单一标记时，请注意</h2><p>当你设置一个类似下面的属性的变量时，20px就被编译成一个单一标记。</p>
 <p>font-size: 20px</p>
 <p>简单理解就是，20px 就是一个单独的整体。 使用CSS变量构建独立单一标记需要十分小心。 例如，看下面的代码：</p>
@@ -366,7 +367,7 @@ color: var(--color)
 <p>div {<br>font-size: var(–size)px **/*错了*/**<br>}</p>
 <p>你也许会认为，font-size的值是20px，但你错了。浏览器会解析成 20 px， 注意20和px之间的空格。 因此，如果你一定需要创建独立标记，那么就一定要用变量表示这个整体。例如： <code>--size: 20px</code>,或者是用 <code>calc()</code> 这个函数，例如， <code>calc(var(--size) * 1px)</code>，然后其中的<code>--size</code> 值就是20。 不要着急。如果你还不太能理解这一点，后面的例子中我会解释的更具体。</p>
 <h2 id="一起来动手吧！"><a href="#一起来动手吧！" class="headerlink" title="一起来动手吧！"></a>一起来动手吧！</h2><p>下面就是本文里我们最期待的一部分。 我会带着大家做一些有用的例子，把实际应用中的概念都过一遍。我们开始吧。</p>
-<h3 id="例1-使用CSS变量创建可变组件"><a href="#例1-使用CSS变量创建可变组件" class="headerlink" title="例1: 使用CSS变量创建可变组件"></a>例1: 使用CSS变量创建可变组件</h3><p>假设你需要创建两个不同的按钮。基本样式相同，只有一点小小的区别。 <img src="http://file.w3cbest.com/file/images/1_qElS3I43_SdpdRA8-m2iew.gif"> 在这个例子里，不同的属性只有 <code>background-color</code>和<code>border-color</code> 。 那怎样处理这种情况呢？下面是一种典型的解决方案： 创建一个基类，比如 .btn，然后加上其他的不同类，例如：</p>
+<h3 id="例1-使用CSS变量创建可变组件"><a href="#例1-使用CSS变量创建可变组件" class="headerlink" title="例1: 使用CSS变量创建可变组件"></a>例1: 使用CSS变量创建可变组件</h3><p>假设你需要创建两个不同的按钮。基本样式相同，只有一点小小的区别。 <img data-src="http://file.w3cbest.com/file/images/1_qElS3I43_SdpdRA8-m2iew.gif"> 在这个例子里，不同的属性只有 <code>background-color</code>和<code>border-color</code> 。 那怎样处理这种情况呢？下面是一种典型的解决方案： 创建一个基类，比如 .btn，然后加上其他的不同类，例如：</p>
 <p><button class="btn">Hello</button><br><button class="btn red">Hello</button></p>
 <p>.btn 包含了按钮的基本样式，例如：</p>
 <p>.btn {<br>padding: 2rem 4rem;<br>border: 2px solid black;<br>background: transparent;<br>font-size: 0.6em;<br>border-radius: 2px;<br>}</p>
@@ -380,27 +381,27 @@ color: var(--color)
 <p> /*on hover*/<br>.btn:hover {<br>cursor: pointer;<br>background: var(–color, black);<br>color: white;<br>}</p>
 <p>你这样设置<code>background: **var(--color, black)**</code>时，也就是说把背景设置为变量–color的值。如果这个变量不存在，那就用默认值黑色**black**替代 。 这就是设置默认值的方法，和JavaScript或者其他语言一样。 下面是有趣的部分了。 有了变量，你就可以像下面这样设置新的变量值了：</p>
 <p>.btn.red {<br>–color: red<br>}</p>
-<p>这就可以了。如果元素class中使用了<code>.red</code>，那么浏览器就能注意到不同的<code>--color</code>值，这样就使得不同的按钮有不同的颜色了。 这样你就可以省下来很多时间，创建可复用的组件了。 下图是简单的对比： <img src="http://file.w3cbest.com/file/images/1_bdT9ITBx1wpXjLOYoWBI7w.png"> 哦，对了，如果你有更多的变量，那还能省下很多打字的时间： <img src="http://file.w3cbest.com/file/images/1_erZb3Z5FtTIR8EV9fl0QOA.png"></p>
-<h3 id="例2：使用CSS变量制作网站主题"><a href="#例2：使用CSS变量制作网站主题" class="headerlink" title="例2：使用CSS变量制作网站主题"></a>例2：使用CSS变量制作网站主题</h3><p>我想你肯定遇到过这样的情况。有主题的网站可以让用户有自己定制的感觉，就像是由他们来控制一样。 下面这个例子就是我们要做的。   <img src="http://file.w3cbest.com/file/images/1_r2TrlsC-gWRD5Hu6Tp2gjQ.gif"> 那么CSS变量是如何让这件事变得简单一点的呢？ 让我们一起来看。 在这之前，我想提醒你，这个例子非常重要。在这个例子里，我会介绍如何使用JavaScript更新CSS变量。超有趣！你肯定会喜欢的。</p>
-<h2 id="我们实际要做的"><a href="#我们实际要做的" class="headerlink" title="我们实际要做的"></a>我们实际要做的</h2><p>CSS变量的美妙是它们的互动性。一旦它们的值发生了变化，对应CSS的属性也会相应的进行更新。 下图从概念上解释了在本例中这个过程是如何发生的 。 <img src="http://file.w3cbest.com/file/images/1_ZONC-xXCXnGc8nr_QMv8rg.png"> 所以，我们需要增加一些JavaScript来监听点击事件。 在这个例子里，背景颜色和文字颜色是基于CSS变量的。 当你点击上面任何一个按钮时，它们就将对应的CSS变量设置成另一种颜色。于是，页面的背景颜色也更新了。 你看，这就是所有的内容了。 哦，还有一件事。 当我说把CSS变量设置成另一个值的时候，这又是怎样做到的呢？ <img src="http://file.w3cbest.com/file/images/1_FeTfEPsJuDQNGDuZQQBIew.png"> 即便是设置在inline style中，CSS变量也会生效。和JavaScript一起，我们就可以控制整个root文档，这样也就能设置CSS变量的值了。 理解了么？ 不过前面都是说的，下面我们来看代码。</p>
+<p>这就可以了。如果元素class中使用了<code>.red</code>，那么浏览器就能注意到不同的<code>--color</code>值，这样就使得不同的按钮有不同的颜色了。 这样你就可以省下来很多时间，创建可复用的组件了。 下图是简单的对比： <img data-src="http://file.w3cbest.com/file/images/1_bdT9ITBx1wpXjLOYoWBI7w.png"> 哦，对了，如果你有更多的变量，那还能省下很多打字的时间： <img data-src="http://file.w3cbest.com/file/images/1_erZb3Z5FtTIR8EV9fl0QOA.png"></p>
+<h3 id="例2：使用CSS变量制作网站主题"><a href="#例2：使用CSS变量制作网站主题" class="headerlink" title="例2：使用CSS变量制作网站主题"></a>例2：使用CSS变量制作网站主题</h3><p>我想你肯定遇到过这样的情况。有主题的网站可以让用户有自己定制的感觉，就像是由他们来控制一样。 下面这个例子就是我们要做的。   <img data-src="http://file.w3cbest.com/file/images/1_r2TrlsC-gWRD5Hu6Tp2gjQ.gif"> 那么CSS变量是如何让这件事变得简单一点的呢？ 让我们一起来看。 在这之前，我想提醒你，这个例子非常重要。在这个例子里，我会介绍如何使用JavaScript更新CSS变量。超有趣！你肯定会喜欢的。</p>
+<h2 id="我们实际要做的"><a href="#我们实际要做的" class="headerlink" title="我们实际要做的"></a>我们实际要做的</h2><p>CSS变量的美妙是它们的互动性。一旦它们的值发生了变化，对应CSS的属性也会相应的进行更新。 下图从概念上解释了在本例中这个过程是如何发生的 。 <img data-src="http://file.w3cbest.com/file/images/1_ZONC-xXCXnGc8nr_QMv8rg.png"> 所以，我们需要增加一些JavaScript来监听点击事件。 在这个例子里，背景颜色和文字颜色是基于CSS变量的。 当你点击上面任何一个按钮时，它们就将对应的CSS变量设置成另一种颜色。于是，页面的背景颜色也更新了。 你看，这就是所有的内容了。 哦，还有一件事。 当我说把CSS变量设置成另一个值的时候，这又是怎样做到的呢？ <img data-src="http://file.w3cbest.com/file/images/1_FeTfEPsJuDQNGDuZQQBIew.png"> 即便是设置在inline style中，CSS变量也会生效。和JavaScript一起，我们就可以控制整个root文档，这样也就能设置CSS变量的值了。 理解了么？ 不过前面都是说的，下面我们来看代码。</p>
 <h2 id="初始代码"><a href="#初始代码" class="headerlink" title="初始代码"></a>初始代码</h2><p>最初代码像这样： <div class="theme"> <button value="dark">dark</button> <button value="calm">calm</button> <button value="light">light</button> </div> <article> . . . </article> 这段代码由三个button和一个 class是<code>.theme</code> 父元素组成。为了简洁一点我去掉了中间的内容部分，只用article元素替代。article元素内就是页面内容。</p>
 <h2 id="页面样式"><a href="#页面样式" class="headerlink" title="页面样式"></a>页面样式</h2><p>这个小项目的成功点就是页面的样式。技巧其实很简单。 没必要为每种风格设置<code>background-color</code>和 <code>color</code>，我们只需要使用变量来设置即可。 就像下面这样：</p>
 <p>body {<br>    background-color: **var(–bg, white)**;<br>    color: **var(–bg-text, black)**<br>}</p>
-<p>这样做目的很明显。点击每个button时，这个页面的背景和文字颜色就可以随之变化。 基于这个改变，整体的页面就很容易改变了。小菜一碟。 <img src="http://file.w3cbest.com/file/images/1_HmDLDbOPHpEE2F8x4aSDYA.png"> 接下来我们就来增加处理更新值的JavaScript脚本部分。</p>
+<p>这样做目的很明显。点击每个button时，这个页面的背景和文字颜色就可以随之变化。 基于这个改变，整体的页面就很容易改变了。小菜一碟。 <img data-src="http://file.w3cbest.com/file/images/1_HmDLDbOPHpEE2F8x4aSDYA.png"> 接下来我们就来增加处理更新值的JavaScript脚本部分。</p>
 <h2 id="涉及JavaScript的部分"><a href="#涉及JavaScript的部分" class="headerlink" title="涉及JavaScript的部分"></a>涉及JavaScript的部分</h2><p>接下来我会把项目需要的JavaScript逐步分析。</p>
 <p>const root = document.documentElement<br>const themeBtns = document.querySelectorAll(‘.theme &gt; button’)<br>themeBtns.forEach((btn) =&gt; {<br>  btn.addEventListener(‘click’, handleThemeUpdate)<br>})</p>
 <p>function handleThemeUpdate(e) {<br>  switch(e.target.value) {<br>    case ‘dark’:<br>      root.style.setProperty(‘–bg’, ‘black’)<br>      root.style.setProperty(‘–bg-text’, ‘white’)<br>      break<br>    case ‘calm’:<br>       root.style.setProperty(‘–bg’, ‘#B3E5FC’)<br>       root.style.setProperty(‘–bg-text’, ‘#37474F’)<br>      break<br>    case ‘light’:<br>      root.style.setProperty(‘–bg’, ‘white’)<br>      root.style.setProperty(‘–bg-text’, ‘black’)<br>      break<br>  }<br>}</p>
 <p>别被吓到了。代码其实比你想的简单的多。 首先，创建一个对root元素的引用， <code>const root = document.documentElement</code>。 这里的root元素就是 HTML。一会你就明白为什么这一点很重要了。如果你很好奇，就先理解这是为了设置CSS变量使用的。 然后，对不同button也保存对应的引用， <code>const themeBtns = document.querySelectorAll(&#39;.theme &gt; button&#39;)</code>。 <code>querySelectorAll</code>会返回一个可以遍历的数组结构。这样我们就可以遍历每个按钮给它们增加对应的点击事件。 就像这样：</p>
 <p>themeBtns.forEach((btn) =&gt; {<br>    btn.addEventListener(‘click’, handleThemeUpdate)<br>})</p>
 <p><code>handleThemeUpdate</code> 在哪呢？接下来就是。 点击按钮时，对应的<code>handleThemeUpdate</code>就会触发。因此要记下哪个按钮点击了，应该执行对应什么样的操作。 因此，这里用了一个<code>switch</code>的<code>operator</code>，不同的按钮的点击事件在这里有了区别。 现在你再回去看一下前面的JavaScript的代码。你应该能更好的理解它了。</p>
-<h3 id="例3-创建CSS变量盒-1"><a href="#例3-创建CSS变量盒-1" class="headerlink" title="例3: 创建CSS变量盒"></a>例3: 创建CSS变量盒</h3><p>假如你忘了，那再提一下，我们要做的例子是这样的: <img src="http://file.w3cbest.com/file/images/1_E6H-wT6a0BDR9OJK7Z0dTA.gif"> 请记住，盒子的颜色是动态变化的，盒子可以根据用户的输入进行3D的旋转。 <img src="http://file.w3cbest.com/file/images/1_iy_MjZVlp-H0KUQa7H7fUg.gif"> 你可以在<a target="_blank" rel="noopener" href="https://codepen.io/ohansemmanuel/full/EoBLgd/">Codepen</a>上玩一下。 这是使用CSS变量和JavaScript共同创造出的一个即有交互性又很美妙的例子。 我们一起看看怎么做的。</p>
+<h3 id="例3-创建CSS变量盒-1"><a href="#例3-创建CSS变量盒-1" class="headerlink" title="例3: 创建CSS变量盒"></a>例3: 创建CSS变量盒</h3><p>假如你忘了，那再提一下，我们要做的例子是这样的: <img data-src="http://file.w3cbest.com/file/images/1_E6H-wT6a0BDR9OJK7Z0dTA.gif"> 请记住，盒子的颜色是动态变化的，盒子可以根据用户的输入进行3D的旋转。 <img data-src="http://file.w3cbest.com/file/images/1_iy_MjZVlp-H0KUQa7H7fUg.gif"> 你可以在<a target="_blank" rel="noopener" href="https://codepen.io/ohansemmanuel/full/EoBLgd/">Codepen</a>上玩一下。 这是使用CSS变量和JavaScript共同创造出的一个即有交互性又很美妙的例子。 我们一起看看怎么做的。</p>
 <h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><p>我们需要下面一些元素：</p>
 <ol>
 <li> 一个范围输入</li>
 <li> 一个容器来显示说明部分</li>
 <li> 一个部分用来列出不同的盒子和每一种输入</li>
 </ol>
-<p><img src="http://file.w3cbest.com/file/images/1_39k9sbEsldtRtJ1-Woq0rQ.png"> 代码部分很简单，下面就是:</p>
+<p><img data-src="http://file.w3cbest.com/file/images/1_39k9sbEsldtRtJ1-Woq0rQ.png"> 代码部分很简单，下面就是:</p>
 <main class="booth">
     <aside class="slider">
         <label>Move this ? </label>
@@ -430,7 +431,7 @@ color: var(--color)
 <li> 注意外层带有<code>.color-boxes</code>类的容器，它包含了<code>.color-box</code>的容器，再其中就是各种输入了。</li>
 <li> 或许应该提一下，第一个输入框的默认值是红色。</li>
 </ol>
-<p>理解了页面的结构，接下来我们看一下页面样式： <img src="http://file.w3cbest.com/file/images/1_LbgNgLeTjACXCfDBExkqgg.png"></p>
+<p>理解了页面的结构，接下来我们看一下页面样式： <img data-src="http://file.w3cbest.com/file/images/1_LbgNgLeTjACXCfDBExkqgg.png"></p>
 <ol>
 <li> 首先把<code>.slider</code>和<code>.instructions</code>的元素移出文档流，进行绝对定位。</li>
 <li> 然后给body元素添加日出的背景颜色，再用一朵花的背景图做装饰，放在页面的左下角。</li>
@@ -443,8 +444,8 @@ color: var(--color)
 <p>这段代码非常简单。我想你肯定能读懂，如果不懂就发评论或者发推。 给 body元素加上样式就复杂一些了。希望你能很好的理解这部分CSS。 因为我们需要设置元素的背景颜色和背景图像，那么我们最好使用简化的background属性来增加多种不同的背景。代码如下：</p>
 <p>body {<br>    margin: 0;<br>    color: rgba(255,255,255,0.9);<br>    background: url(‘<a target="_blank" rel="noopener" href="http://bit.ly/2FiPrRA&#39;">http://bit.ly/2FiPrRA&#39;</a>) 0 100%/340px no-repeat, var(–primary-color);<br>    font-family: ‘Shadows Into Light Two’, cursive;<br>}</p>
 <p>url部分设置向日葵图片的链接。 接下来<code>0``100%</code>代表图像在背景中的位置。 这里有对于CSS中background属性定位的具体阐释：</p>
-<p><img src="http://file.w3cbest.com/file/images/1_uFlBKNdQ-FOcZ-XaACi4uA.png"> 来源：<a target="_blank" rel="noopener" href="http://bit.ly/learn_css">the advanced guide to CSS</a></p>
-<p><img src="http://file.w3cbest.com/file/images/1_NOPEnEV_H2RB8XYFxEcFpA.png"> 来源：<a target="_blank" rel="noopener" href="http://bit.ly/learn_css">the advanced guide to CSS</a></p>
+<p><img data-src="http://file.w3cbest.com/file/images/1_uFlBKNdQ-FOcZ-XaACi4uA.png"> 来源：<a target="_blank" rel="noopener" href="http://bit.ly/learn_css">the advanced guide to CSS</a></p>
+<p><img data-src="http://file.w3cbest.com/file/images/1_NOPEnEV_H2RB8XYFxEcFpA.png"> 来源：<a target="_blank" rel="noopener" href="http://bit.ly/learn_css">the advanced guide to CSS</a></p>
 <p>在斜线后的另一部分是代表<code>background-size</code>，这个值是340px。如果这个值小一些，那图片也会更小一点。 你也许会想no-repeat是什么意思，它意味着背景不允许重复。 最后，逗号之后的部分就是第二种背景声明。这次我们把<code>background-color</code>设置成<code>var(primary-color)</code>。 哦，它是一个变量。 这就意味着你需要定义这个变量，就像这样：</p>
 <p>:root {<br>    –primary-color: rgba(241,196,15 ,1)<br>}</p>
 <p>现在的颜色是日出的黄色。不是什么大问题。接下来我们会设置更多的变量。 然后，把<code>color-boxes</code>居中对齐。</p>
@@ -459,13 +460,13 @@ color: var(--color)
 <p>:root {<br>    –primary-color: rgba(241,196,15 ,1);<br>    –secondary-color: red;<br>}</p>
 <p>这里的<code>secondary-color</code>是红色。这样就使得容器有一个红色的背景。 但你可能对下面的部分感到疑惑，</p>
 <p>/* Color Boxes */<br>.color-boxes {<br>    transform: perspective(500px) rotateY( calc(var(–slider) * 1deg));<br>    transition: transform 0.3s<br>}</p>
-<p>我们可以暂时简化上面代码里<code>transfrom</code>的属性。 <img src="http://file.w3cbest.com/file/images/1_oNaNYDRDRZPSEga9Oo4bPw.png"> 例如：</p>
+<p>我们可以暂时简化上面代码里<code>transfrom</code>的属性。 <img data-src="http://file.w3cbest.com/file/images/1_oNaNYDRDRZPSEga9Oo4bPw.png"> 例如：</p>
 <p>transform: perspective(500px) rotateY( 30deg);</p>
-<p><code>transform</code>合并了两个不同的函数。一个是透视，一个是以Y轴为标准的旋转。 不过，<code>perspective</code>和<code>rotateY</code>又起了什么样的作用呢？ <code>perspective()</code>函数可以使元素在3D的空间内变形。它会激活一个三维空间，使元素增加一个z轴。 你可以在 codrops看到更多关于<code>perspective</code>函数的介绍。 那么rotateY函数又有什么用呢？ 激活了三维空间后，元素就有了x，y，z三个轴。 rotateY函数就意味着把元素以 Y 轴为中心进行旋转。 codrops的这幅图可以帮我们直观的理解这一点。 <img src="http://file.w3cbest.com/file/images/1_kFdzSl4wwyPJt_Crmbtuow.png"></p>
+<p><code>transform</code>合并了两个不同的函数。一个是透视，一个是以Y轴为标准的旋转。 不过，<code>perspective</code>和<code>rotateY</code>又起了什么样的作用呢？ <code>perspective()</code>函数可以使元素在3D的空间内变形。它会激活一个三维空间，使元素增加一个z轴。 你可以在 codrops看到更多关于<code>perspective</code>函数的介绍。 那么rotateY函数又有什么用呢？ 激活了三维空间后，元素就有了x，y，z三个轴。 rotateY函数就意味着把元素以 Y 轴为中心进行旋转。 codrops的这幅图可以帮我们直观的理解这一点。 <img data-src="http://file.w3cbest.com/file/images/1_kFdzSl4wwyPJt_Crmbtuow.png"></p>
 <p><a target="_blank" rel="noopener" href="https://tympanus.net/codrops/css_reference/transform/#section_rotate3d">Codrops</a></p>
-<p>希望这能帮你拨开云雾见天日。 回到前面的主题。 <img src="http://file.w3cbest.com/file/images/1_oNaNYDRDRZPSEga9Oo4bPw.png"> 移动滑块的时候，你知道是哪个函数影响了<code>.container-box</code>的旋转效果么？ 是的，就是这个 rotateY函数被调用了。因此这个盒元素就沿着Y轴进行旋转。 因为这个值可以通过JavaScript传给函数，所以这个值就用一个变量来表示。 <img src="http://file.w3cbest.com/file/images/1_oL_Ik1Xg_ByTc28g2B1ESg.png"> 那为什么要用这个变量乘以1deg呢？ 按通常的经验来说，也为了自由定义变量，我们建议在创建变量时，不带单位。 这样你就可以在任何需要使用单位的时候通过calc函数达成目标。 <img src="http://file.w3cbest.com/file/images/1_jsB27oUUYY48n3s9wAmd_Q.png"> 这就使得你可以在需要时任意使用了。它即可以转化成deg， 也可以转化成一个相对于用户视窗单位vw的比例 ，你可以想怎么做就怎么做。 在这个例子中，我们把一个数字通过乘以一个1deg的值，得到了一个有单位的数值。 <img src="http://file.w3cbest.com/file/images/1_5j1qhUmE2pB99qw17Zp4iA.png"> 因为CSS并不理解数学计算，因此你需要把这个算术放在calc函数里才能得到CSS属性需要的对应数值。 这些都完成，我们就可以开始下一步了。现在我们要用JavaScript来更新这个变量值。 不过还剩下一点CSS的代码。这就是了：</p>
+<p>希望这能帮你拨开云雾见天日。 回到前面的主题。 <img data-src="http://file.w3cbest.com/file/images/1_oNaNYDRDRZPSEga9Oo4bPw.png"> 移动滑块的时候，你知道是哪个函数影响了<code>.container-box</code>的旋转效果么？ 是的，就是这个 rotateY函数被调用了。因此这个盒元素就沿着Y轴进行旋转。 因为这个值可以通过JavaScript传给函数，所以这个值就用一个变量来表示。 <img data-src="http://file.w3cbest.com/file/images/1_oL_Ik1Xg_ByTc28g2B1ESg.png"> 那为什么要用这个变量乘以1deg呢？ 按通常的经验来说，也为了自由定义变量，我们建议在创建变量时，不带单位。 这样你就可以在任何需要使用单位的时候通过calc函数达成目标。 <img data-src="http://file.w3cbest.com/file/images/1_jsB27oUUYY48n3s9wAmd_Q.png"> 这就使得你可以在需要时任意使用了。它即可以转化成deg， 也可以转化成一个相对于用户视窗单位vw的比例 ，你可以想怎么做就怎么做。 在这个例子中，我们把一个数字通过乘以一个1deg的值，得到了一个有单位的数值。 <img data-src="http://file.w3cbest.com/file/images/1_5j1qhUmE2pB99qw17Zp4iA.png"> 因为CSS并不理解数学计算，因此你需要把这个算术放在calc函数里才能得到CSS属性需要的对应数值。 这些都完成，我们就可以开始下一步了。现在我们要用JavaScript来更新这个变量值。 不过还剩下一点CSS的代码。这就是了：</p>
 <p>/* Handle colors for each color box */<br>.color-box:nth-child(1) {<br>    background: var(–bg-1)<br>}<br>.color-box:nth-child(2) {<br>    background: var(–bg-2)<br>}<br>.color-box:nth-child(3) {<br>    background: var(–bg-3)<br>}<br>.color-box:nth-child(4) {<br>    background: var(–bg-4)<br>}<br>.color-box:nth-child(5) {<br>    background: var(–bg-5)<br>}<br>.color-box:nth-child(6) {<br>    background: var(–bg-6)<br>}</p>
-<p>这又是什么鬼? 首先，<code>nth-child</code>选择器用来选择不同的子元素。 <img src="http://file.w3cbest.com/file/images/1_T5oqa3Kh5ChIcgi5ldqXKg.png"> 这里我们需要看深入一点。我们已经了解需要更新每个盒子的颜色，也知道每盒子的颜色需要用一个变量以便使用JavaScript更新，对把？ 因此，我们就这样设置：</p>
+<p>这又是什么鬼? 首先，<code>nth-child</code>选择器用来选择不同的子元素。 <img data-src="http://file.w3cbest.com/file/images/1_T5oqa3Kh5ChIcgi5ldqXKg.png"> 这里我们需要看深入一点。我们已经了解需要更新每个盒子的颜色，也知道每盒子的颜色需要用一个变量以便使用JavaScript更新，对把？ 因此，我们就这样设置：</p>
 <p>.color-box:nth-child(1) {<br>    background: var(–bg-1)<br>}</p>
 <p>简单吧？ 不过还有一个问题，如果这个变量不存在，那会怎么样呢？ 我们需要默认值。 这样就没问题了：</p>
 <p>.color-box:nth-child(1) {<br>    background: var(–bg-1, red)<br>}</p>
@@ -473,7 +474,7 @@ color: var(--color)
 <p>const root = document.documentElement<br>const range = document.querySelector(‘.booth-slider’)</p>
 <p>//as slider range’s value changes, do something<br>range.addEventListener(‘input’, handleSlider)</p>
 <p>function handleSlider (e) {<br>    let value = e.target.value<br>    root.style.setProperty(‘–slider’, value)<br>}</p>
-<p>很简单吧？ 不过我还是要解释一下，以防我把你搞糊涂了。 首先，保存一个对slider元素的引用，<code>const range = document.querySelector(&#39;.booth-slider&#39;)</code>。 <img src="http://file.w3cbest.com/file/images/1_bQwZp0psRdiNn2harZW-HQ.png"> 然后给它增加一个事件，用来处理滑块值变化，<code>range.addEventListener(&#39;input&#39;, handleSlider)</code>。 接下来就是这个回调事件handleSlider：</p>
+<p>很简单吧？ 不过我还是要解释一下，以防我把你搞糊涂了。 首先，保存一个对slider元素的引用，<code>const range = document.querySelector(&#39;.booth-slider&#39;)</code>。 <img data-src="http://file.w3cbest.com/file/images/1_bQwZp0psRdiNn2harZW-HQ.png"> 然后给它增加一个事件，用来处理滑块值变化，<code>range.addEventListener(&#39;input&#39;, handleSlider)</code>。 接下来就是这个回调事件handleSlider：</p>
 <p>function handleSlider (e) {<br>    let value = e.target.value<br>    root.style.setProperty(‘–slider’, value)<br>}</p>
 <p><code>root.style.setProperty(&#39;--slider&#39;, value)</code> 是指把root元素的style属性设置成对应值。 处理颜色变化 这和处理滑块值的变化一样简单。下面就是：</p>
 <p>const inputs = document.querySelectorAll(‘.color-box &gt; input’)<br>//as the value in the input changes, do something.<br>inputs.forEach(input =&gt; {<br>    input.addEventListener(‘input’, handleInputChange)<br>})</p>
@@ -482,7 +483,7 @@ color: var(--color)
 <p>inputs.forEach(input =&gt; {<br>    input.addEventListener(‘input’, handleInputChange)<br>})</p>
 <p>接下来是 handleInputChange 函数：</p>
 <p>function handleInputChange (e) {<br>    let value = e.target.value<br>    let inputId = e.target.parentNode.id<br>    let inputBg = `–bg-${inputId}`<br>    root.style.setProperty(inputBg, value)<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/1_A3e4duLT1V1-8_NqVF1DGg.png"> 嗯… 这就没了！ 样例做完了！ 我怎么能忘记这些呢？ 我写完这篇文章还改了初稿之后，才想起来我还没提到浏览器的兼容性。所以，让我补上这一部分。 CSS变量的浏览器支持并不差。可以说相当好了，几乎所有的现代浏览器都能支持（我写这篇文章的时候超过87%）。 <img src="http://file.w3cbest.com/file/images/20190118223123.jpg"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/1_A3e4duLT1V1-8_NqVF1DGg.png"> 嗯… 这就没了！ 样例做完了！ 我怎么能忘记这些呢？ 我写完这篇文章还改了初稿之后，才想起来我还没提到浏览器的兼容性。所以，让我补上这一部分。 CSS变量的浏览器支持并不差。可以说相当好了，几乎所有的现代浏览器都能支持（我写这篇文章的时候超过87%）。 <img data-src="http://file.w3cbest.com/file/images/20190118223123.jpg"></p>
 <p><a target="_blank" rel="noopener" href="https://caniuse.com/#search=css%20var">caniuse</a></p>
 <p>所以，你可以在生产环境中使用么？我当然说是啦！不过你还是要检查一下适用的比例。 往好的方向面看，你也可以使用 Myth类似的预编译器。它可以把你现在使用的CSS变成未来可期的CSS，超酷的，对吧？ 如果你有用过postCSS的经验，那这也是一个现在使用未来CSS的不错的方法。这里有一些使用postCSS的例子。 好啦，我都讲完了。 原文翻译：<a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/everything-you-need-to-know-about-css-variables-c74d922ea855">https://medium.freecodecamp.org</a></p>
 
@@ -491,16 +492,54 @@ color: var(--color)
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2018/09/18/%E5%85%B3%E4%BA%8Ecss%E5%8F%98%E9%87%8F%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%80%E5%88%87/" title="关于CSS变量你需要知道的一切">https://xianzhiding.github.io/2018/09/18/关于css变量你需要知道的一切/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/css3/" rel="tag"># css3</a>
-              <a href="/tags/css-var/" rel="tag"># css var()</a>
-              <a href="/tags/CSS-Variables/" rel="tag"># CSS Variables</a>
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag"># 前端开发</a>
-              <a href="/tags/var/" rel="tag"># var()</a>
-              <a href="/tags/web%E5%BC%80%E5%8F%91/" rel="tag"># web开发</a>
-              <a href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag"># 设计</a>
+              <a href="/tags/css-var/" rel="tag"><i class="fa fa-tag"></i> css var()</a>
+              <a href="/tags/css3/" rel="tag"><i class="fa fa-tag"></i> css3</a>
+              <a href="/tags/CSS-Variables/" rel="tag"><i class="fa fa-tag"></i> CSS Variables</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 前端开发</a>
+              <a href="/tags/var/" rel="tag"><i class="fa fa-tag"></i> var()</a>
+              <a href="/tags/web%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> web开发</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag"><i class="fa fa-tag"></i> 设计</a>
           </div>
 
         
@@ -588,16 +627,16 @@ color: var(--color)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -648,6 +687,7 @@ color: var(--color)
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

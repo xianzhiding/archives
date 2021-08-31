@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="相信大家对于本地存储的 localStorage 和 sessionStorage 对象已经非常熟悉了。那么首先花点小篇幅稍微回顾一下。 localStorage 数据存储也是跨浏览器会话。localStorage 类似于sessionStorage。区别在于，数据存储在 localStorage 是无期限的，而当页面会话结束——也就是说当页面被关闭时,数据存储在 sessionStorage 会">
@@ -176,6 +176,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -248,7 +249,7 @@
 <p>// 读取 localStorage ‘myCat’ 数据项<br>let cat = localStorage.getItem(‘myCat’);</p>
 <p>// 移除 localStorage ‘myCat’ 数据项<br>localStorage.removeItem(‘myCat’);</p>
 <p>// 移除所有的 localStorage 数据项<br>localStorage.clear();</p>
-<p>相信大家对这些已经非常熟悉了，也没什么好说的，我们接下来说说大家可能陌生的，不常用的一些东西。 localStorage 对象 和 Storage 对象 首先来说说 <code>Storage</code> 对象，<code>Storage</code> 提供了访问特定域名下的会话存储（session storage）或本地存储（local storage）的功能，例如，可以添加、修改或删除存储的数据项。 <code>Storage</code> 对象通过 <code>Window.sessionStorage</code> 和 <code>Window.localStorage</code> 属性使用（更确切的说，在支持的浏览器中 <code>Window</code> 对象实现了 <code>WindowLocalStorage</code> 和 <code>WindowSessionStorage</code> 对象并挂在其 <code>localStorage</code> 和 <code>sessionStorage</code> 属性下）—— 调用其中任一对象会创建相应的 <code>Storage</code> 对象，通过 <code>Storage</code> 对象，可以设置、获取和移除数据项。对于每个源（origin）sessionStorage 和 localStorage 使用不同的 <code>Storage</code> 对象——独立运行和控制。 有点绕口是吧？我们说的直接一点。 <code>localStorage</code> 对象其实就是 <code>Storage</code> 对象的实例对象。我们可以在 Firefox 的开发者工具的控制台(Console)面板中输入 <code>Storage</code>，<code>localStorage</code>，查看这两个对象，再输入 <code>localStorage instanceof Storage</code> 或者 <code>localStorage.constructor == Storage</code> 查看这两个对象的关系： <img src="http://file.w3cbest.com/file/images/1543401637592.jpg"> Chrome 控制台(Console)面板中输入 <code>Storage</code> 看不到内容，但是原理是一样的： <img src="http://file.w3cbest.com/file/images/WeChat42ea82bb9fbae5a615243d1b718fb27c.png"> 我们可以看出 <strong><code>localStorage</code> 是 <code>Storage</code> 对象的实例对象！</strong> 那么这就和我们所理解的 JavaScript 实例对象和原型继承完全是同一套逻辑了，是吧？也就是说我们接下来可以和我们自己编写的实例对象一样，随意使用 <code>localStorage</code> 对象。</p>
+<p>相信大家对这些已经非常熟悉了，也没什么好说的，我们接下来说说大家可能陌生的，不常用的一些东西。 localStorage 对象 和 Storage 对象 首先来说说 <code>Storage</code> 对象，<code>Storage</code> 提供了访问特定域名下的会话存储（session storage）或本地存储（local storage）的功能，例如，可以添加、修改或删除存储的数据项。 <code>Storage</code> 对象通过 <code>Window.sessionStorage</code> 和 <code>Window.localStorage</code> 属性使用（更确切的说，在支持的浏览器中 <code>Window</code> 对象实现了 <code>WindowLocalStorage</code> 和 <code>WindowSessionStorage</code> 对象并挂在其 <code>localStorage</code> 和 <code>sessionStorage</code> 属性下）—— 调用其中任一对象会创建相应的 <code>Storage</code> 对象，通过 <code>Storage</code> 对象，可以设置、获取和移除数据项。对于每个源（origin）sessionStorage 和 localStorage 使用不同的 <code>Storage</code> 对象——独立运行和控制。 有点绕口是吧？我们说的直接一点。 <code>localStorage</code> 对象其实就是 <code>Storage</code> 对象的实例对象。我们可以在 Firefox 的开发者工具的控制台(Console)面板中输入 <code>Storage</code>，<code>localStorage</code>，查看这两个对象，再输入 <code>localStorage instanceof Storage</code> 或者 <code>localStorage.constructor == Storage</code> 查看这两个对象的关系： <img data-src="http://file.w3cbest.com/file/images/1543401637592.jpg"> Chrome 控制台(Console)面板中输入 <code>Storage</code> 看不到内容，但是原理是一样的： <img data-src="http://file.w3cbest.com/file/images/WeChat42ea82bb9fbae5a615243d1b718fb27c.png"> 我们可以看出 <strong><code>localStorage</code> 是 <code>Storage</code> 对象的实例对象！</strong> 那么这就和我们所理解的 JavaScript 实例对象和原型继承完全是同一套逻辑了，是吧？也就是说我们接下来可以和我们自己编写的实例对象一样，随意使用 <code>localStorage</code> 对象。</p>
 <h2 id="localStorage-一些不为人知的方法"><a href="#localStorage-一些不为人知的方法" class="headerlink" title="localStorage 一些不为人知的方法"></a>localStorage 一些不为人知的方法</h2><p>上面已经说过的，我们熟知的 <code>localStorage.setItem()</code>，<code>localStorage.getItem()</code>，<code>localStorage.removeItem()</code>，<code>localStorage.clear()</code> 方法我们不再赘述。</p>
 <h3 id="访问和设置数据"><a href="#访问和设置数据" class="headerlink" title="访问和设置数据"></a>访问和设置数据</h3><p><code>localStorage</code> 对象是简单的键值存储，类似于对象。 <strong>键和值始终是字符串</strong>。 您可以像对象一样，使用点语法<code>.</code>或者中括号<code>[]</code>的形式访问这些值，也可以使用 <code>localStorage.getItem()</code> 和 <code>localStorage.setItem()</code> 方法访问或者设置这些值。 下面的代码是等价的：</p>
 <p>// 设置值<br>localStorage.myCat = ‘Tom’;<br>localStorage[‘myCat’] = ‘Tom’;<br>localStorage.setItem(‘myCat’, ‘Tom’);</p>
@@ -258,8 +259,8 @@
 <p>localStorage.getItem(‘youCat’) //null</p>
 <p>有了 <code>hasOwnProperty()</code> 方法就简单多了：</p>
 <p>localStorage.hasOwnProperty(‘myCat’) // true<br>localStorage.hasOwnProperty(‘youCat’) // false</p>
-<p><img src="http://file.w3cbest.com/file/images/WeChat22313c6712c57a7db3542a013c0ccd64.png"></p>
-<h3 id="Object-keys-localStorage-查看-localStorage-中存储数据所有的键"><a href="#Object-keys-localStorage-查看-localStorage-中存储数据所有的键" class="headerlink" title="Object.keys(localStorage) 查看 localStorage 中存储数据所有的键"></a>Object.keys(localStorage) 查看 localStorage 中存储数据所有的键</h3><p>想知道<code>localStorage</code>中存储了哪些值，我们可以直接使用<code>Object.keys(localStorage)</code>查看，很方便。 <img src="http://file.w3cbest.com/file/images/WeChat59edf3d5c4c34793b1c961b69569aa98.png"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/WeChat22313c6712c57a7db3542a013c0ccd64.png"></p>
+<h3 id="Object-keys-localStorage-查看-localStorage-中存储数据所有的键"><a href="#Object-keys-localStorage-查看-localStorage-中存储数据所有的键" class="headerlink" title="Object.keys(localStorage) 查看 localStorage 中存储数据所有的键"></a>Object.keys(localStorage) 查看 localStorage 中存储数据所有的键</h3><p>想知道<code>localStorage</code>中存储了哪些值，我们可以直接使用<code>Object.keys(localStorage)</code>查看，很方便。 <img data-src="http://file.w3cbest.com/file/images/WeChat59edf3d5c4c34793b1c961b69569aa98.png"></p>
 <h3 id="localStorage-key-index-方法"><a href="#localStorage-key-index-方法" class="headerlink" title="localStorage.key(index) 方法"></a>localStorage.key(index) 方法</h3><p>读取第<code>index</code>个数据的名字或键经常(从0开始索引)，感觉这个方法没什么用。</p>
 <p>localStorage.key(5); // “myCat”</p>
 <h3 id="localStorage-length属性"><a href="#localStorage-length属性" class="headerlink" title="localStorage.length属性"></a><code>localStorage.length</code>属性</h3><p>localStorage 存储了多少个数具，感觉用处不大。</p>
@@ -282,15 +283,53 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/02/20/localstorage-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-localstorage/" title="localStorage 使用指南-你所不知道的 localStorage">https://xianzhiding.github.io/2019/02/20/localstorage-使用指南-你所不知道的-localstorage/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/API%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/" rel="tag"># API过期时间</a>
-              <a href="/tags/hasOwnProperty/" rel="tag"># hasOwnProperty</a>
-              <a href="/tags/localStorage/" rel="tag"># localStorage</a>
-              <a href="/tags/sessionStorage/" rel="tag"># sessionStorage</a>
-              <a href="/tags/storage-%E4%BA%8B%E4%BB%B6/" rel="tag"># storage 事件</a>
-              <a href="/tags/web-Storage/" rel="tag"># web Storage</a>
+              <a href="/tags/API%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/" rel="tag"><i class="fa fa-tag"></i> API过期时间</a>
+              <a href="/tags/hasOwnProperty/" rel="tag"><i class="fa fa-tag"></i> hasOwnProperty</a>
+              <a href="/tags/localStorage/" rel="tag"><i class="fa fa-tag"></i> localStorage</a>
+              <a href="/tags/sessionStorage/" rel="tag"><i class="fa fa-tag"></i> sessionStorage</a>
+              <a href="/tags/storage-%E4%BA%8B%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> storage 事件</a>
+              <a href="/tags/web-Storage/" rel="tag"><i class="fa fa-tag"></i> web Storage</a>
           </div>
 
         
@@ -378,16 +417,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -438,6 +477,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

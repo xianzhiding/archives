@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="前言有很多人搞不清匿名函数和闭包这两个概念，经常混用。闭包是指有权访问另一个函数作用域中的变量的函数。匿名函数就是没有实际名字的函数。 闭包概念 闭包，其实是一种语言特性，它是指的是程序设计语言中，允许将函数看作对象，然后能像在对象中的操作搬在函数中定义实例（局部）变量，而这些变量能在函数中保存到函数的实例对象销毁为止，其它代码块能通过某种方式获取这些实例（局部）变量的值并进行应用扩展。 条件 闭">
@@ -174,6 +174,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -263,11 +264,11 @@
 </blockquote>
 <p>可以拿本文的之前代码（只做注释修改）来分析一下。</p>
 <p>1  //全局作用域<br>2  function fn() {<br>3      var max = 10;<br>4      // fn作用域<br>5      return function bar(x) {<br>6          if (x &gt; max) {<br>7              console.log(x);<br>8          }<br>9      }; //bar作用域<br>10 }<br>11 var f1 = fn();<br>12 f1(15);</p>
-<p>全局作用域为：代码1-12行；fn作用域为：代码2-10行；<code>bar</code>作用域为：代码5-9行。 <strong>举例</strong> 第一步，代码执行前生成全局上下文环境，并在执行时对其中的变量进行赋值。此时全局上下文环境是活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-1.jpg"> 第二步，执行第17行代码时，调用fn()，产生fn()执行上下文环境，压栈，并设置为活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-2.jpg"> 第三步，执行完第17行，<code>fn()</code>调用完成。按理说应该销毁掉<code>fn()</code>的执行上下文环境，但是这里不能这么做。注意，重点来了：</p>
+<p>全局作用域为：代码1-12行；fn作用域为：代码2-10行；<code>bar</code>作用域为：代码5-9行。 <strong>举例</strong> 第一步，代码执行前生成全局上下文环境，并在执行时对其中的变量进行赋值。此时全局上下文环境是活动状态。 <img data-src="http://file.w3cbest.com/file/images/js-closure-1.jpg"> 第二步，执行第17行代码时，调用fn()，产生fn()执行上下文环境，压栈，并设置为活动状态。 <img data-src="http://file.w3cbest.com/file/images/js-closure-2.jpg"> 第三步，执行完第17行，<code>fn()</code>调用完成。按理说应该销毁掉<code>fn()</code>的执行上下文环境，但是这里不能这么做。注意，重点来了：</p>
 <blockquote>
 <p>因为执行<code>fn()</code>时，返回的是一个函数。函数的特别之处在于可以创建一个独立的作用域。而正巧合的是，返回的这个函数体中，还有一个自由变量<code>max</code>要引用<code>fn</code>作用域下的<code>fn()</code>上下文环境中的max。因此，这个max不能被销毁，销毁了之后bar函数中的max就找不到值了。</p>
 </blockquote>
-<p>因此，这里的fn()上下文环境不能被销毁，还依然存在与执行上下文栈中。 ——即，执行到第18行时，全局上下文环境将变为活动状态，但是<code>fn()</code>上下文环境依然会在执行上下文栈中。另外，执行完第18行，全局上下文环境中的<code>max</code>被赋值为<code>100</code>。如下图： <img src="http://file.w3cbest.com/file/images/js-closure-3.jpg"> 第四步，执行到第20行，执行f1(15)，即执行bar(15)，创建bar(15)上下文环境，并将其设置为活动状态。 <img src="http://file.w3cbest.com/file/images/js-closure-4.jpg"> 执行<code>bar(15)</code>时，<code>max</code>是自由变量，需要向创建<code>bar</code>函数的作用域中查找，找到了<code>max</code>的值为10。这个过程在作用域链一节已经讲过。 这里的重点就在于，创建bar函数是在执行<code>fn()</code>时创建的。<code>fn()</code>早就执行结束了，但是fn()执行上下文环境还存在与栈中，因此<code>bar(15)</code>时，<code>max</code>可以查找到。如果<code>fn()</code>上下文环境销毁了，那么<code>max</code>就找不到了。</p>
+<p>因此，这里的fn()上下文环境不能被销毁，还依然存在与执行上下文栈中。 ——即，执行到第18行时，全局上下文环境将变为活动状态，但是<code>fn()</code>上下文环境依然会在执行上下文栈中。另外，执行完第18行，全局上下文环境中的<code>max</code>被赋值为<code>100</code>。如下图： <img data-src="http://file.w3cbest.com/file/images/js-closure-3.jpg"> 第四步，执行到第20行，执行f1(15)，即执行bar(15)，创建bar(15)上下文环境，并将其设置为活动状态。 <img data-src="http://file.w3cbest.com/file/images/js-closure-4.jpg"> 执行<code>bar(15)</code>时，<code>max</code>是自由变量，需要向创建<code>bar</code>函数的作用域中查找，找到了<code>max</code>的值为10。这个过程在作用域链一节已经讲过。 这里的重点就在于，创建bar函数是在执行<code>fn()</code>时创建的。<code>fn()</code>早就执行结束了，但是fn()执行上下文环境还存在与栈中，因此<code>bar(15)</code>时，<code>max</code>可以查找到。如果<code>fn()</code>上下文环境销毁了，那么<code>max</code>就找不到了。</p>
 <blockquote>
 <p>总结：使用闭包会增加内容开销</p>
 </blockquote>
@@ -358,13 +359,51 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/04/24/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%97%AD%E5%8C%85/" title="JavaScript高级程序设计——闭包">https://xianzhiding.github.io/2019/04/24/JavaScript高级程序设计——闭包/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/javascript/" rel="tag"># javascript</a>
-              <a href="/tags/javascript-%E9%97%AD%E5%8C%85/" rel="tag"># javascript 闭包</a>
-              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"># javascript教程</a>
-              <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag"># 作用域</a>
+              <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+              <a href="/tags/javascript-%E9%97%AD%E5%8C%85/" rel="tag"><i class="fa fa-tag"></i> javascript 闭包</a>
+              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> javascript教程</a>
+              <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag"><i class="fa fa-tag"></i> 作用域</a>
           </div>
 
         
@@ -452,16 +491,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -512,6 +551,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

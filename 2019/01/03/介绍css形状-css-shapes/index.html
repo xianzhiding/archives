@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="CSS Shapes 简介CSS Shapes 允许我们通过定义文本内容可以环绕的几何形状、图像和渐变，来创建有趣且独特的布局。本次教程会教你如何使用它们。 在 CSS Shapes 问世之前，为网页设计文本自由环绕的杂志式布局几乎是不可能的。相反，网页设计布局传统上一直用网格、盒子和直线构造。 CSS Shapes 允许我们定义文本环绕的几何形状。这些形状可以是圆、椭圆、简单或复杂的多边形，甚至">
@@ -191,6 +191,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -281,72 +282,72 @@
 
 <p>在circle 样式中，我们将元素浮动到左边，给它一个相等的高度和宽度，并将shape-outside设置为circle()。</p>
 <p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>}</p>
-<p>如果我们访问页面，会看到如下场景。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle1.jpg"> 正如你所看到的，文字围绕着圆形流动，但我们实际上看不到任何形状。将鼠标悬停在Developer Tools中的元素上，将向我们显示正在设置的实际形状。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle2.jpg"> 此时，你可能会认为可以给元素 background 设置颜色或者图片就能看到形状了。我们来试一下。</p>
+<p>如果我们访问页面，会看到如下场景。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle1.jpg"> 正如你所看到的，文字围绕着圆形流动，但我们实际上看不到任何形状。将鼠标悬停在Developer Tools中的元素上，将向我们显示正在设置的实际形状。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle2.jpg"> 此时，你可能会认为可以给元素 background 设置颜色或者图片就能看到形状了。我们来试一下。</p>
 <p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
-<p>不幸的是，给 circle 设置 background 后会显示一个矩形，这是我们一直试图避免的事情。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle3.jpg"> 我们可以清晰地看到文本在它周围环绕，但是元素本身并没有形状。如果我们想要真实地显示形状函数，就必须使用 clip-path 属性。clip-path 采用许多和 shape-outside 相同的值，所以我们可以给它相同的circle()值。</p>
+<p>不幸的是，给 circle 设置 background 后会显示一个矩形，这是我们一直试图避免的事情。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle3.jpg"> 我们可以清晰地看到文本在它周围环绕，但是元素本身并没有形状。如果我们想要真实地显示形状函数，就必须使用 clip-path 属性。clip-path 采用许多和 shape-outside 相同的值，所以我们可以给它相同的circle()值。</p>
 <p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>    clip-path: circle();<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
-<p>  <img src="http://file.w3cbest.com/file/images/cssshapes_circle4.jpg"></p>
+<p>  <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle4.jpg"></p>
 <blockquote>
 <p>在本文剩下的部分，我将使用 clip-path 帮助我们辨认形状。</p>
 </blockquote>
 <p>circle() 函数接收可选的 radius 参数。在我们的例子中，默认 radius 是 50% 或者 100px。使用 circle(50%) 或者 circle(100px) 都将产生和我们已经完成样例的同样结果。 你可能会注意到文本刚好和形状贴合。我们可以使用 shape-margin 属性给形状添加 margin，它可以设置为px、em、% 和任何其他标准的 CSS 测量单位。</p>
 <p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle(25%);<br>    shape-margin: 1rem;<br>    clip-path: circle(25%);<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
-<p>下面是一个circle radius 设置 25% 并且使用 shape-margin 的例子。 <img src="http://file.w3cbest.com/file/images/cssshapes_circle5.jpg"> 除了 radius，形状函数可以使用 at 定位。默认位置是圆的中心，因此 circle() 也可以被显式设置为 circle(50% at 50% 50%) 或 circle(100px at 100px 100px)，这两个值分别是水平和垂直位置。 为了搞清楚 position 的作用，我们可以设置水平位置值为 0 来创造一个完美的半圆。</p>
+<p>下面是一个circle radius 设置 25% 并且使用 shape-margin 的例子。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle5.jpg"> 除了 radius，形状函数可以使用 at 定位。默认位置是圆的中心，因此 circle() 也可以被显式设置为 circle(50% at 50% 50%) 或 circle(100px at 100px 100px)，这两个值分别是水平和垂直位置。 为了搞清楚 position 的作用，我们可以设置水平位置值为 0 来创造一个完美的半圆。</p>
 <p>circle(50% at 0 50%);</p>
 <p>这种坐标定位系统称为参考框。</p>
-<p><img src="http://file.w3cbest.com/file/images/cssshapes_circle6.jpg"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_circle6.jpg"></p>
 <p>稍后我们将学习如何使用图像代替形状或者渐变。现在我们将继续进行下一个形状函数。</p>
 <h2 id="Ellipse"><a href="#Ellipse" class="headerlink" title="Ellipse"></a>Ellipse</h2><p>ellipse() 和 circle() 函数类似，只是它会创造椭圆。为了演示，我们创建一个 ellipse 元素和样式。</p>
 <div class="ellipse"></div>
 <p>Example text...</p>
 
 <p>.ellipse {<br>    float: left;<br>    shape-outside: ellipse();<br>    clip-path: ellipse();<br>    width: 150px;<br>    height: 300px;<br>    background: linear-gradient(to top right, #F17BB7, #AD84E3);<br>}</p>
-<p>这次，我们设置不同的 height 和 width 创建一个垂直拉长的椭圆。 <img src="http://file.w3cbest.com/file/images/cssshapes_ellipse1.jpg"> ellipse() 和 circle()的区别在于，ellipse有两个半径rx和ry，即x轴半径和y轴半径。因此，上述例子也可以写成:</p>
+<p>这次，我们设置不同的 height 和 width 创建一个垂直拉长的椭圆。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_ellipse1.jpg"> ellipse() 和 circle()的区别在于，ellipse有两个半径rx和ry，即x轴半径和y轴半径。因此，上述例子也可以写成:</p>
 <p>ellipse(75px 150px);</p>
 <p>circles 和 ellipses 的位置参数是一样的。除了是测量单位，半径也包括 farthest-side 和 closest-side 的选项。 closest-side 是指从参考框的中心到最近边的长度，相反，farthest-side 是指从参考框的中心到最远边的长度。这意味着如果未设置默认值以外的位置，这两个值将无效。 下面演示了在 ellipse() 上翻转 closest-side 和 farthest-side 的区别，在X轴和Y轴上偏移25%。</p>
 <p>ellipse(farthest-side closest-side at 25% 25%)</p>
-<p><img src="http://file.w3cbest.com/file/images/cssshapes_ellipse2.jpg"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_ellipse2.jpg"></p>
 <p>ellipse(farthest-side closest-side at 25% 25%)</p>
-<p><img src="http://file.w3cbest.com/file/images/cssshapes_ellipse3.jpg">  </p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_ellipse3.jpg">  </p>
 <h2 id="Inset"><a href="#Inset" class="headerlink" title="Inset"></a>Inset</h2><p>到目前为止我们只处理了圆形的形状，但是我们可以使用 inset() 函数定义内嵌矩形。</p>
 <div class="inset"></div>
 <p>Example text...</p>
 
 <p>.inset {<br>    float: left;<br>    shape-outside: inset(75px);<br>    clip-path: inset(75px);<br>    width: 300px;<br>    height: 300px;<br>    background: linear-gradient(#58C2ED, #1B85DC);<br>}</p>
-<p>在本例中，我们将创建一个300px×300px的矩形，并在所有边内嵌75px。这样我们就得到了150px×150px的图像周围有75px的空间。 <img src="http://file.w3cbest.com/file/images/cssshapes_inset1.jpg"> 我们可以看到矩形是内嵌的，文本忽略了内嵌区域。 <img src="http://file.w3cbest.com/file/images/cssshapes_inset2.jpg"> inset() 形状也可以使用 round 参数接收 border-radius，并且文本会识别圆角，就像本例中所有边都是 25px 内嵌和 75px 圆角。</p>
+<p>在本例中，我们将创建一个300px×300px的矩形，并在所有边内嵌75px。这样我们就得到了150px×150px的图像周围有75px的空间。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_inset1.jpg"> 我们可以看到矩形是内嵌的，文本忽略了内嵌区域。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_inset2.jpg"> inset() 形状也可以使用 round 参数接收 border-radius，并且文本会识别圆角，就像本例中所有边都是 25px 内嵌和 75px 圆角。</p>
 <p>inset(25px round 75px)</p>
-<p><img src="http://file.w3cbest.com/file/images/cssshapes_inset3.jpg"> 像 padding 或 margin 简写，inset 值以顺时针方式（inset(25px 25px 25px 25px)）接收 top right bottom left，并且只传一个值将使四条边都相同（inset(25px)）。  </p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_inset3.jpg"> 像 padding 或 margin 简写，inset 值以顺时针方式（inset(25px 25px 25px 25px)）接收 top right bottom left，并且只传一个值将使四条边都相同（inset(25px)）。  </p>
 <h2 id="Polygon"><a href="#Polygon" class="headerlink" title="Polygon"></a>Polygon</h2><p>形状函数中最有趣和最灵活的是 polygon()，它可以采用一系列 x 和 y 点来制作任何复杂形状。数组里的每个元素代表 _x_i _y_i，将被写成 polygon(x1 y1, x2 y2, x3 y3…) 等等。 我们可以为多边形设置的点集数量最少为 3，这将创建一个三角形。</p>
 <div class="polygon"></div>
 <p>Example text...</p>
 
 <p>.polygon {<br>    float: left;<br>    shape-outside: polygon(0 0, 0 300px, 200px 300px);<br>    clip-path: polygon(0 0, 0 300px, 200px 300px);<br>    height: 300px;<br>    width: 300px;<br>    background: linear-gradient(to top right, #86F7CC, #67D7F5);<br>}</p>
-<p>  在这个形状中，第一个点是 0 0，div 中最左上角的点。第二个点是 0 300px，它是 div 中最左下角的点。第三个也就是最后一个点是 200px 300px，它在 X 轴的 2/3 处并且也在底部。最终的形状是这样： <img src="http://file.w3cbest.com/file/images/cssshapes_polygon1.jpg"> polygon() 形状函数的一个有趣用法是文本内容可以在两个或以上形状中环绕。因为 polygon() 形状是如此灵活和动态，这给我们制作真正独特的杂志式布局提供了一个最好机会。在本例中，我们将把文本放在两个多边形中。</p>
+<p>  在这个形状中，第一个点是 0 0，div 中最左上角的点。第二个点是 0 300px，它是 div 中最左下角的点。第三个也就是最后一个点是 200px 300px，它在 X 轴的 2/3 处并且也在底部。最终的形状是这样： <img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon1.jpg"> polygon() 形状函数的一个有趣用法是文本内容可以在两个或以上形状中环绕。因为 polygon() 形状是如此灵活和动态，这给我们制作真正独特的杂志式布局提供了一个最好机会。在本例中，我们将把文本放在两个多边形中。</p>
 <div class="left"></div>
 <div class="right"></div>
 <p>Example text...</p>
 
 <p>.left {<br>    float: left;<br>    shape-outside: polygon(0 0, 0 300px, 200px 300px);<br>    clip-path: polygon(0 0, 0 300px, 200px 300px);<br>    background: linear-gradient(to top right, #67D7F5, #86F7CC);<br>    height: 300px;<br>    width: 300px;<br>}<br>.right {<br>    float: right;<br>    shape-outside: polygon(200px 300px, 300px 300px, 300px 0, 0 0);<br>    clip-path: polygon(200px 300px, 300px 300px, 300px 0, 0 0);<br>    background: linear-gradient(to bottom left, #67D7F5, #86F7CC);<br>    height: 300px;<br>    width: 300px;<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/cssshapes_polygon2.jpg"> 显然，想要手动创造你自己的复杂形状是非常困难的。幸运的是，你可以用一些工具来创建多边形。Firefox 有一个内置的形状编辑器，你可以在 Inspector 中通过点击多边形使用。 <img src="http://file.w3cbest.com/file/images/cssshapes_polygon3.jpg"> 目前，Chrome有一些可以使用的扩展，比如<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/css-shapes-editor/nenndldnbcncjmeacmnondmkkfedmgmp?hl=en-US">CSS shape Editor</a>。 多边形可以用来剪切图像或其他元素周围的形状。在另一个例子中，我们可以通过在大字母周围绘制多边形来创建首字下沉。</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon2.jpg"> 显然，想要手动创造你自己的复杂形状是非常困难的。幸运的是，你可以用一些工具来创建多边形。Firefox 有一个内置的形状编辑器，你可以在 Inspector 中通过点击多边形使用。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon3.jpg"> 目前，Chrome有一些可以使用的扩展，比如<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/css-shapes-editor/nenndldnbcncjmeacmnondmkkfedmgmp?hl=en-US">CSS shape Editor</a>。 多边形可以用来剪切图像或其他元素周围的形状。在另一个例子中，我们可以通过在大字母周围绘制多边形来创建首字下沉。</p>
 <div class="letter">R</div>
 <p>Example text...</p>
 
 <p>.letter {<br>    float: left;<br>    font-size: 400px;<br>    font-family: Georgia;<br>    line-height: .8;<br>    margin-top: 20px;<br>    margin-right: 20px;<br>    shape-outside: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px) content-box;<br>    clip-path: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px);<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/cssshapes_polygon4.jpg"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon4.jpg"></p>
 <h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>CSS Shapes 一个令人激动的特性是你不必每次都通过形状函数明确定义；你也可以使用半透明图像的 url 来定义形状，这样文本就会自动环绕它。 需要注意的是，所使用的图像必须与CORS兼容，否则您将得到如下所示的错误。</p>
 <p>Access to image at ‘file:///users/tania/star.png’ from origin ‘null’<br>has been blocked by CORS policy: The response is invalid.</p>
 <p>  在同一个服务器上提供图像将会保证你不会遇到上面的错误。 与其他示例不同，我们将使用 img 代替 div。这次的 CSS 很简单——只需将url()放到shape-outside属性中，就像使用 background-image 一样。</p>
-<img src="./star.png" class="star">
+<img data-src="./star.png" class="star">
 <p>Example text...</p>
 
 <p>.star {<br>float: left;<br>height: 350px;<br>width: 350px;<br>shape-outside: url(‘./star.png’)<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/cssshapes_image1.jpg"> 因为我使用了透明背景的星星图像，所以文本知道哪些区域是透明的，哪些区域是不透明的，并相应地对自己进行自适应布局。</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_image1.jpg"> 因为我使用了透明背景的星星图像，所以文本知道哪些区域是透明的，哪些区域是不透明的，并相应地对自己进行自适应布局。</p>
 <h3 id="Gradients"><a href="#Gradients" class="headerlink" title="Gradients"></a>Gradients</h3><p>最后，渐变也可以用来当成形状。渐变和图像一样，就像我们上面使用的图像示例一样，文本也将知道在透明部分环绕。 我们将使用渐变的一个新属性 —— shape-image-threshold。shape-image-threshold 定义形状的 alpha 通道阈值，或者图像透明的百分比值。 我们将制作一个渐变例子，它是 50％/50％ 的颜色和透明分割，并且设置 shape-image-threshold 为 .5，意味着超过 50％ 不透明的所有像素都应被视为图像的一部分。</p>
 <div class="gradient"></div>
 <p>Example text...</p>
 
 <p>.gradient {<br>    float: left;<br>    height: 300px;<br>    width: 100%;<br>    background: linear-gradient(to bottom right, #86F7CC, transparent);<br>    shape-outside: linear-gradient(to bottom right, #86F7CC, transparent);<br>    shape-image-threshold: .5;<br>}</p>
-<p>  <img src="http://file.w3cbest.com/file/images/cssshapes_gradient1.jpg"> 我们可以看到渐变在不透明和透明的中心完美地对角线分割。</p>
+<p>  <img data-src="http://file.w3cbest.com/file/images/cssshapes_gradient1.jpg"> 我们可以看到渐变在不透明和透明的中心完美地对角线分割。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在这篇文章中，我们学习了 CSS Shapes 的三个属性 shape-outside、shape-margin 和 shape-image-threshold。我们也了解到如何使用函数值创建可供文本环绕的圆、椭圆、内嵌矩形以及复杂的多边形，并且演示了形状如何检测图像和渐变的透明部分。 <strong>你可以在如下 <a target="_blank" rel="noopener" href="http://tympanus.net/Tutorials/CSSShapes/">demo</a> 中找到本文中用到的所有例子，也可以<a target="_blank" rel="noopener" href="http://tympanus.net/Tutorials/CSSShapes/CSSShapes.zip">下载源文件</a>。</strong></p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/JwpjzM/">CSS Shapes Examples</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>文章来源： <a target="_blank" rel="noopener" href="https://tympanus.net/codrops/2018/11/29/an-introduction-to-css-shapes/">https://tympanus.net/codrops/2018/11/29/an-introduction-to-css-shapes/</a> 相关阅读参考：<a target="_blank" rel="noopener" href="https://alistapart.com/article/css-shapes-101">https://alistapart.com/article/css-shapes-101</a> 相关阅读参考：<a target="_blank" rel="noopener" href="https://www.html5rocks.com/en/tutorials/shapes/getting-started/#toc-manual-shapes">https://www.html5rocks.com/en/tutorials/shapes/getting-started/#toc-manual-shapes</a></p>
@@ -356,15 +357,53 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/01/03/%E4%BB%8B%E7%BB%8Dcss%E5%BD%A2%E7%8A%B6-css-shapes/" title="CSS形状入门--自定义路径周围的内容包装（CSS Shapes）">https://xianzhiding.github.io/2019/01/03/介绍css形状-css-shapes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/basic-shape/" rel="tag"># basic-shape</a>
-              <a href="/tags/circle/" rel="tag"># circle</a>
-              <a href="/tags/css-shapes/" rel="tag"># css shapes</a>
-              <a href="/tags/CSS%E5%BD%A2%E7%8A%B6/" rel="tag"># CSS形状</a>
-              <a href="/tags/polygon/" rel="tag"># polygon</a>
-              <a href="/tags/shape-outside/" rel="tag"># shape-outside</a>
+              <a href="/tags/basic-shape/" rel="tag"><i class="fa fa-tag"></i> basic-shape</a>
+              <a href="/tags/circle/" rel="tag"><i class="fa fa-tag"></i> circle</a>
+              <a href="/tags/css-shapes/" rel="tag"><i class="fa fa-tag"></i> css shapes</a>
+              <a href="/tags/CSS%E5%BD%A2%E7%8A%B6/" rel="tag"><i class="fa fa-tag"></i> CSS形状</a>
+              <a href="/tags/polygon/" rel="tag"><i class="fa fa-tag"></i> polygon</a>
+              <a href="/tags/shape-outside/" rel="tag"><i class="fa fa-tag"></i> shape-outside</a>
           </div>
 
         
@@ -452,16 +491,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -512,6 +551,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

@@ -17,15 +17,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站 如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。 从本质上讲，CSS变量可以让你摆脱老式的样式设置： 1234567h1 &amp;#123;    font-size: 30px;&amp;#125;navbar&gt;a &amp;#123;    font">
+  <meta name="description" content="在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站 如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。 从本质上讲，CSS变量可以让你摆脱老式的样式设置： h1 &amp;#123;     font-size: 30px; &amp;#125;  navbar&gt;a &amp;#123;     font-size">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS变量创建网页响应布局">
 <meta property="og:url" content="https://xianzhiding.github.io/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
-<meta property="og:description" content="在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站 如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。 从本质上讲，CSS变量可以让你摆脱老式的样式设置： 1234567h1 &amp;#123;    font-size: 30px;&amp;#125;navbar&gt;a &amp;#123;    font">
+<meta property="og:description" content="在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站 如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。 从本质上讲，CSS变量可以让你摆脱老式的样式设置： h1 &amp;#123;     font-size: 30px; &amp;#125;  navbar&gt;a &amp;#123;     font-size">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-14T07:40:38.000Z">
 <meta property="article:modified_time" content="2021-04-20T04:30:40.877Z">
@@ -166,6 +166,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -227,26 +228,123 @@
         <p>在创新的2018年已经过去，在2019年看看如何简单做成响应性的网站</p>
 <p>如果你未曾听说过CSS变量，那么我告诉你，它就是CSS的一种新功能，可以让你拥有在样式表中使用变量的能力，这样做时并不需要什么特别的设置呦。</p>
 <p>从本质上讲，CSS变量可以让你摆脱老式的样式设置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">navbar&gt;a &#123;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">h1 <span class="token punctuation">&#123;</span>
+    font-size: 30px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+navbar<span class="token operator">></span>a <span class="token punctuation">&#123;</span>
+    font-size: 30px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
 <p>…而是主张这样写：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">    --base-font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line">h1 &#123;</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">&#125;</span><br><span class="line">navbar&gt;a &#123;</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">:root <span class="token punctuation">&#123;</span>
+    --base-font-size: 30px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+h1 <span class="token punctuation">&#123;</span>
+    font-size: var<span class="token punctuation">(</span>--base-font-size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+navbar<span class="token operator">></span>a <span class="token punctuation">&#123;</span>
+    font-size: var<span class="token punctuation">(</span>--base-font-size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>这样的语法看起来的确有点怪怪的，但有没有觉得它和less、sass中的变量有点类似呢，但如此一来，只要更改–base-font-size 变量，就能在整个应用中改变字号了。</p>
 <p>如果你想把CSS变量学明白，可以在Scrimba网站 这里有免费互动CSS变量课程，该课程包含8个互动截屏。</p>
 <h2 id="今天来讲一下如何用CSS变量创建响应布局"><a href="#今天来讲一下如何用CSS变量创建响应布局" class="headerlink" title="今天来讲一下如何用CSS变量创建响应布局"></a>今天来讲一下如何用CSS变量创建响应布局</h2><p>这是一段html</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=<span class="string">&quot;item&quot;</span>&gt;</span><br><span class="line">    &lt;li&gt;item 1&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;item 4&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>ul <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>li<span class="token operator">></span>item <span class="token operator"><span class="token file-descriptor important">1</span>&lt;</span>/li<span class="token operator">></span>
+    <span class="token operator">&lt;</span>li<span class="token operator">></span>item <span class="token operator"><span class="token file-descriptor important">2</span>&lt;</span>/li<span class="token operator">></span>
+    <span class="token operator">&lt;</span>li<span class="token operator">></span>item <span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>/li<span class="token operator">></span>
+    <span class="token operator">&lt;</span>li<span class="token operator">></span>item <span class="token operator"><span class="token file-descriptor important">4</span>&lt;</span>/li<span class="token operator">></span>
+<span class="token operator">&lt;</span>/ul<span class="token operator">></span></code></pre>
 
 
 
 <h3 id="老方法："><a href="#老方法：" class="headerlink" title="老方法："></a>老方法：</h3><p>在以前即使不使用CSS变量也可以把这些事情搞定。只是需要把要改变的属性在重新重置一下，需要在媒体查询中拥有自己的选择器，但会招致额外的大量代码，像下面这样：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">    flex-wrap: wrap;</span><br><span class="line">    justify-content: space-around;</span><br><span class="line">    padding: 10px;</span><br><span class="line"></span><br><span class="line">    li &#123;</span><br><span class="line">        background-color: <span class="comment">#ff6f69;</span></span><br><span class="line">        border: 1px solid <span class="comment">#fff;</span></span><br><span class="line">        font-size: 20px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        list-style-type: none;</span><br><span class="line">        width: 100%;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (min-width: 768px) &#123;</span><br><span class="line">    .item &#123;</span><br><span class="line">        flex-direction: row;</span><br><span class="line">        li &#123;</span><br><span class="line">            background-color: <span class="comment">#ffcc5c;</span></span><br><span class="line">            font-size: 50px;</span><br><span class="line">            height: 300px;</span><br><span class="line">            width: 50%;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media (min-width: 992px) &#123;</span><br><span class="line">    .item &#123;</span><br><span class="line">        flex-wrap: nowrap;</span><br><span class="line">        li &#123;</span><br><span class="line">            background-color: <span class="comment">#ffeead;</span></span><br><span class="line">            font-size: 100px;</span><br><span class="line">            height: 500px;</span><br><span class="line">            width: calc(100% / 4);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">.item <span class="token punctuation">&#123;</span>
+    display: flex<span class="token punctuation">;</span>
+    flex-direction: <span class="token function">column</span><span class="token punctuation">;</span>
+    flex-wrap: wrap<span class="token punctuation">;</span>
+    justify-content: space-around<span class="token punctuation">;</span>
+    padding: 10px<span class="token punctuation">;</span>
+
+    li <span class="token punctuation">&#123;</span>
+        background-color: <span class="token comment">#ff6f69;</span>
+        border: 1px solid <span class="token comment">#fff;</span>
+        font-size: 20px<span class="token punctuation">;</span>
+        height: 200px<span class="token punctuation">;</span>
+        list-style-type: none<span class="token punctuation">;</span>
+        width: <span class="token number">100</span>%<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+@media <span class="token punctuation">(</span>min-width: 768px<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    .item <span class="token punctuation">&#123;</span>
+        flex-direction: row<span class="token punctuation">;</span>
+        li <span class="token punctuation">&#123;</span>
+            background-color: <span class="token comment">#ffcc5c;</span>
+            font-size: 50px<span class="token punctuation">;</span>
+            height: 300px<span class="token punctuation">;</span>
+            width: <span class="token number">50</span>%<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+@media <span class="token punctuation">(</span>min-width: 992px<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    .item <span class="token punctuation">&#123;</span>
+        flex-wrap: nowrap<span class="token punctuation">;</span>
+        li <span class="token punctuation">&#123;</span>
+            background-color: <span class="token comment">#ffeead;</span>
+            font-size: 100px<span class="token punctuation">;</span>
+            height: 500px<span class="token punctuation">;</span>
+            width: calc<span class="token punctuation">(</span><span class="token number">100</span>% / <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
 <h3 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h3><p>下面让我们来看如何使用CSS变量来解决这个问题。首先，要把我们将重复利用和更改的数值存储在变量的内部：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">--base-color: <span class="comment">#ff6f69;</span></span><br><span class="line">--base-font-size: 20px;</span><br><span class="line">--direction: column;</span><br><span class="line">--width: 100%;</span><br><span class="line">--height: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">:root <span class="token punctuation">&#123;</span>
+--base-color: <span class="token comment">#ff6f69;</span>
+--base-font-size: 20px<span class="token punctuation">;</span>
+--direction: <span class="token function">column</span><span class="token punctuation">;</span>
+--width: <span class="token number">100</span>%<span class="token punctuation">;</span>
+--height: 200px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>然后，在整个页面中简单地使用这些变量就行了：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  padding: 10px;</span><br><span class="line">  justify-content: space-around;</span><br><span class="line">  flex-direction: var(--direction);</span><br><span class="line">  flex-wrap: var(--wrap);</span><br><span class="line">  li&#123;</span><br><span class="line">    list-style-type: none;</span><br><span class="line">    border: 1px solid <span class="comment">#fff;</span></span><br><span class="line">    height: var(--height);</span><br><span class="line">    width: var(--width);</span><br><span class="line">    background-color: var(--base-color);</span><br><span class="line">    font-size: var(--base-font-size);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">.item <span class="token punctuation">&#123;</span>
+  display: flex<span class="token punctuation">;</span>
+  padding: 10px<span class="token punctuation">;</span>
+  justify-content: space-around<span class="token punctuation">;</span>
+  flex-direction: var<span class="token punctuation">(</span>--direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  flex-wrap: var<span class="token punctuation">(</span>--wrap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  li<span class="token punctuation">&#123;</span>
+    list-style-type: none<span class="token punctuation">;</span>
+    border: 1px solid <span class="token comment">#fff;</span>
+    height: var<span class="token punctuation">(</span>--height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    width: var<span class="token punctuation">(</span>--width<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    background-color: var<span class="token punctuation">(</span>--base-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    font-size: var<span class="token punctuation">(</span>--base-font-size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>一旦进行了这样的设置之后，我们只要在媒体查询中简单地更改变量值就行了：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@media (min-width: 768px) &#123;</span><br><span class="line">  :root &#123;</span><br><span class="line">    --base-font-size: 60px;</span><br><span class="line">    --base-color: <span class="comment">#ffcc5c;</span></span><br><span class="line">    --direction: row;</span><br><span class="line">    --height: 300px;</span><br><span class="line">    --width: 50%;</span><br><span class="line">    --wrap:wrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-width: 992px) &#123;</span><br><span class="line">  :root &#123;</span><br><span class="line">    --base-font-size: 100px;</span><br><span class="line">    --base-color: <span class="comment">#ffeead;</span></span><br><span class="line">    --direction: row;</span><br><span class="line">    --height: 500px;</span><br><span class="line">    --width: calc(100% / 4);</span><br><span class="line">    --wrap:nowrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">@media <span class="token punctuation">(</span>min-width: 768px<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  :root <span class="token punctuation">&#123;</span>
+    --base-font-size: 60px<span class="token punctuation">;</span>
+    --base-color: <span class="token comment">#ffcc5c;</span>
+    --direction: row<span class="token punctuation">;</span>
+    --height: 300px<span class="token punctuation">;</span>
+    --width: <span class="token number">50</span>%<span class="token punctuation">;</span>
+    --wrap:wrap<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+@media <span class="token punctuation">(</span>min-width: 992px<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  :root <span class="token punctuation">&#123;</span>
+    --base-font-size: 100px<span class="token punctuation">;</span>
+    --base-color: <span class="token comment">#ffeead;</span>
+    --direction: row<span class="token punctuation">;</span>
+    --height: 500px<span class="token punctuation">;</span>
+    --width: calc<span class="token punctuation">(</span><span class="token number">100</span>% / <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    --wrap:nowrap<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
 <p>这比我们以往的方法简便多了。只需盯住 :root，而不必为所有的选择器指定值了。</p>
 <p>这只是一个简单的例子。设想成熟的网站会是什么样子吧，例如，用 –base-margin 来控制APP四周的多数自由空间。想翻转其值也是很容易的事情，不必用复杂的选择器来填充媒体查询了。</p>
@@ -257,10 +355,48 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/01/14/CSS%E5%8F%98%E9%87%8F%E5%88%9B%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%93%8D%E5%BA%94%E5%B8%83%E5%B1%80/" title="CSS变量创建网页响应布局">https://xianzhiding.github.io/2019/01/14/CSS变量创建网页响应布局/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/css-var/" rel="tag"># css var()</a>
+              <a href="/tags/css-var/" rel="tag"><i class="fa fa-tag"></i> css var()</a>
           </div>
 
         
@@ -348,16 +484,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -408,6 +544,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

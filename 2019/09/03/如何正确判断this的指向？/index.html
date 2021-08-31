@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="如果用一句话说明 this 的指向，那么即是: 谁调用它，this 就指向谁。 但是仅通过这句话，我们很多时候并不能准确判断 this 的指向。因此我们需要借助一些规则去帮助自己： this 的指向可以按照以下顺序判断: 1. 全局环境中的 this浏览器环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部）this 都指向全局对象 window; node 环境：无论是否在严格模式下，">
@@ -171,6 +171,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -241,10 +242,24 @@
         <p>如果用一句话说明 this 的指向，那么即是: 谁调用它，this 就指向谁。 但是仅通过这句话，我们很多时候并不能准确判断 this 的指向。因此我们需要借助一些规则去帮助自己： this 的指向可以按照以下顺序判断:</p>
 <h2 id="1-全局环境中的-this"><a href="#1-全局环境中的-this" class="headerlink" title="1. 全局环境中的 this"></a>1. 全局环境中的 this</h2><p>浏览器环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部）this 都指向全局对象 window; node 环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部），this 都是空对象 {};</p>
 <h2 id="2-是否是-new-绑定"><a href="#2-是否是-new-绑定" class="headerlink" title="2. 是否是 new 绑定"></a>2. 是否是 new 绑定</h2><p>如果是 new 绑定，并且构造函数中没有返回 function 或者是 object，那么 this 指向这个新对象。如下: 构造函数返回值不是 function 或 object。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function Super(age) &#123;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">&#125;</span><br><span class="line">let instance &#x3D; new Super(&#39;26&#39;);</span><br><span class="line">console.log(instance.age); &#x2F;&#x2F;26</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">
+function Super(age) &#123;
+    this.age &#x3D; age;
+&#125;
+let instance &#x3D; new Super(&#39;26&#39;);
+console.log(instance.age); &#x2F;&#x2F;26
+</code></pre>
 
 <p>构造函数返回值是 function 或 object，这种情况下 this 指向的是返回的对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function Super(age) &#123;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    let obj &#x3D; &#123;a: &#39;2&#39;&#125;;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br><span class="line">let instance &#x3D; new Super(&#39;hello&#39;);</span><br><span class="line">console.log(instance.age); &#x2F;&#x2F;undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">
+function Super(age) &#123;
+    this.age &#x3D; age;
+    let obj &#x3D; &#123;a: &#39;2&#39;&#125;;
+    return obj;
+&#125;
+let instance &#x3D; new Super(&#39;hello&#39;);
+console.log(instance.age); &#x2F;&#x2F;undefined
+</code></pre>
 
 <p>你可以想知道为什么会这样？我们来看一下 new 的实现原理:</p>
 <ol>
@@ -253,34 +268,151 @@
 <li> 属性和方法被加入到 this 引用的对象中。并执行了构造函数中的方法.</li>
 <li> 如果函数没有返回其他对象，那么 this 指向这个新对象，否则 this 指向构造函数中返回的对象。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function new(func) &#123;</span><br><span class="line">    let target &#x3D; &#123;&#125;;</span><br><span class="line">    target.__proto__ &#x3D; func.prototype;</span><br><span class="line">    let res &#x3D; func.call(target);</span><br><span class="line">    &#x2F;&#x2F;排除 null 的情况</span><br><span class="line">    if (res &amp;&amp; typeof(res) &#x3D;&#x3D; &quot;object&quot;  typeof(res) &#x3D;&#x3D; &quot;function&quot;) &#123;</span><br><span class="line">    return res;</span><br><span class="line">    &#125;</span><br><span class="line">    return target;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">
+function new(func) &#123;
+    let target &#x3D; &#123;&#125;;
+    target.__proto__ &#x3D; func.prototype;
+    let res &#x3D; func.call(target);
+    &#x2F;&#x2F;排除 null 的情况
+    if (res &amp;&amp; typeof(res) &#x3D;&#x3D; &quot;object&quot;  typeof(res) &#x3D;&#x3D; &quot;function&quot;) &#123;
+    return res;
+    &#125;
+    return target;
+&#125;
+</code></pre>
 
-<h2 id="3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"><a href="#3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。" class="headerlink" title="3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"></a>3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">var info &#x3D; person.info;</span><br><span class="line">info.call(person);   &#x2F;&#x2F;20</span><br><span class="line">info.apply(person);  &#x2F;&#x2F;20</span><br><span class="line">info.bind(person)(); &#x2F;&#x2F;20</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"><a href="#3-函数是否通过-call-apply-调用，或者使用了-bind-绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。" class="headerlink" title="3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。"></a>3. 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】。</h2><pre class="language-none"><code class="language-none">
+function info()&#123;
+    console.log(this.age);
+&#125;
+var person &#x3D; &#123;
+    age: 20,
+    info
+&#125;
+var age &#x3D; 28;
+var info &#x3D; person.info;
+info.call(person);   &#x2F;&#x2F;20
+info.apply(person);  &#x2F;&#x2F;20
+info.bind(person)(); &#x2F;&#x2F;20
+</code></pre>
 
 <p>这里同样需要注意一种特殊情况，如果 call,apply 或者 bind 传入的第一个参数值是 undefined 或者 null，严格模式下 this 的值为传入的值 null /undefined。非严格模式下，实际应用的默认绑定规则，this 指向全局对象(node环境为global，浏览器环境为window)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    &#x2F;&#x2F;node环境中:非严格模式 global，严格模式为null</span><br><span class="line">    &#x2F;&#x2F;浏览器环境中:非严格模式 window，严格模式为null</span><br><span class="line">    console.log(this);</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">var info &#x3D; person.info;</span><br><span class="line">&#x2F;&#x2F;严格模式抛出错误；</span><br><span class="line">&#x2F;&#x2F;非严格模式，node下输出undefined（因为全局的age不会挂在 global 上）</span><br><span class="line">&#x2F;&#x2F;非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）</span><br><span class="line">info.call(null);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">
+function info()&#123;
+    &#x2F;&#x2F;node环境中:非严格模式 global，严格模式为null
+    &#x2F;&#x2F;浏览器环境中:非严格模式 window，严格模式为null
+    console.log(this);
+    console.log(this.age);
+&#125;
+var person &#x3D; &#123;
+    age: 20,
+    info
+&#125;
+var age &#x3D; 28;
+var info &#x3D; person.info;
+&#x2F;&#x2F;严格模式抛出错误；
+&#x2F;&#x2F;非严格模式，node下输出undefined（因为全局的age不会挂在 global 上）
+&#x2F;&#x2F;非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）
+info.call(null);
+</code></pre>
 
-<h2 id="4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn"><a href="#4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn" class="headerlink" title="4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()"></a>4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">person.info(); &#x2F;&#x2F;20;执行的是隐式绑定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn"><a href="#4-隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为-xxx-fn" class="headerlink" title="4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()"></a>4. 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为: xxx.fn()</h2><pre class="language-none"><code class="language-none">
+function info()&#123;
+    console.log(this.age);
+&#125;
+var person &#x3D; &#123;
+    age: 20,
+    info
+&#125;
+var age &#x3D; 28;
+person.info(); &#x2F;&#x2F;20;执行的是隐式绑定
+</code></pre>
 
-<h2 id="5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"><a href="#5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。" class="headerlink" title="5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"></a>5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">非严格模式： node环境，执行全局对象 global，浏览器环境，执行全局对象 window。 严格模式：执行 undefined</span><br><span class="line"></span><br><span class="line">function info()&#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line">var age &#x3D; 28;</span><br><span class="line">&#x2F;&#x2F;严格模式；抛错</span><br><span class="line">&#x2F;&#x2F;非严格模式，node下输出 undefined（因为全局的age不会挂在 global 上）</span><br><span class="line">&#x2F;&#x2F;非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）</span><br><span class="line">&#x2F;&#x2F;严格模式抛出，因为 this 此时是 undefined</span><br><span class="line">info();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"><a href="#5-默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。" class="headerlink" title="5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。"></a>5. 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。</h2><pre class="language-none"><code class="language-none">
+非严格模式： node环境，执行全局对象 global，浏览器环境，执行全局对象 window。 严格模式：执行 undefined
+
+function info()&#123;
+    console.log(this.age);
+&#125;
+var age &#x3D; 28;
+&#x2F;&#x2F;严格模式；抛错
+&#x2F;&#x2F;非严格模式，node下输出 undefined（因为全局的age不会挂在 global 上）
+&#x2F;&#x2F;非严格模式。浏览器环境下输出 28（因为全局的age会挂在 window 上）
+&#x2F;&#x2F;严格模式抛出，因为 this 此时是 undefined
+info();
+</code></pre>
 
 <h2 id="6-箭头函数的情况："><a href="#6-箭头函数的情况：" class="headerlink" title="6. 箭头函数的情况："></a>6. 箭头函数的情况：</h2><p>箭头函数没有自己的this，继承外层上下文绑定的this。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let obj &#x3D; &#123;</span><br><span class="line">    age: 20,</span><br><span class="line">    info: function() &#123;</span><br><span class="line">        return () &#x3D;&gt; &#123;</span><br><span class="line">            console.log(this.age); &#x2F;&#x2F;this继承的是外层上下文绑定的this</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let person &#x3D; &#123;age: 28&#125;;</span><br><span class="line">let info &#x3D; obj.info();</span><br><span class="line">info(); &#x2F;&#x2F;20</span><br><span class="line"></span><br><span class="line">let info2 &#x3D; obj.info.call(person);</span><br><span class="line">info2(); &#x2F;&#x2F;28</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">
+let obj &#x3D; &#123;
+    age: 20,
+    info: function() &#123;
+        return () &#x3D;&gt; &#123;
+            console.log(this.age); &#x2F;&#x2F;this继承的是外层上下文绑定的this
+        &#125;
+    &#125;
+&#125;
+
+let person &#x3D; &#123;age: 28&#125;;
+let info &#x3D; obj.info();
+info(); &#x2F;&#x2F;20
+
+let info2 &#x3D; obj.info.call(person);
+info2(); &#x2F;&#x2F;28
+</code></pre>
 
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/09/03/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%88%A4%E6%96%ADthis%E7%9A%84%E6%8C%87%E5%90%91%EF%BC%9F/" title="如何正确判断this的指向？">https://xianzhiding.github.io/2019/09/03/如何正确判断this的指向？/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/Object/" rel="tag"># Object</a>
-              <a href="/tags/this/" rel="tag"># this</a>
-              <a href="/tags/function/" rel="tag"># function</a>
-              <a href="/tags/this%E7%9A%84%E6%8C%87%E5%90%91/" rel="tag"># this的指向</a>
-              <a href="/tags/window/" rel="tag"># window</a>
-              <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F/" rel="tag"># 对象字面量</a>
+              <a href="/tags/Object/" rel="tag"><i class="fa fa-tag"></i> Object</a>
+              <a href="/tags/this/" rel="tag"><i class="fa fa-tag"></i> this</a>
+              <a href="/tags/function/" rel="tag"><i class="fa fa-tag"></i> function</a>
+              <a href="/tags/this%E7%9A%84%E6%8C%87%E5%90%91/" rel="tag"><i class="fa fa-tag"></i> this的指向</a>
+              <a href="/tags/window/" rel="tag"><i class="fa fa-tag"></i> window</a>
+              <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 对象字面量</a>
           </div>
 
         
@@ -368,16 +500,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -428,6 +560,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

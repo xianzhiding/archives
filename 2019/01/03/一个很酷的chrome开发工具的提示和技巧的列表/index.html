@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="Chrome开发工具提供了一套非常棒的工具，可以帮助您在Web平台上进行开发。以下是一些你可能还不知道的建议 在ELEMENTS面板中拖放在Elements面板中，您可以拖放任何HTML元素并更改其在页面上的位置  引用控制台中当前选择的元素在Elements面板中选择一个节点，并在控制台中键入$0来引用它。   提示:如果使用jQuery，可以输入$($0)来访问这个元素上的jQuery API">
@@ -183,6 +183,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -255,19 +256,19 @@
 
       
         <p>Chrome开发工具提供了一套非常棒的工具，可以帮助您在Web平台上进行开发。以下是一些你可能还不知道的建议</p>
-<h3 id="在ELEMENTS面板中拖放"><a href="#在ELEMENTS面板中拖放" class="headerlink" title="在ELEMENTS面板中拖放"></a>在ELEMENTS面板中拖放</h3><p>在Elements面板中，您可以拖放任何HTML元素并更改其在页面上的位置 <img src="http://file.w3cbest.com/file/images/reference-elements.gif"></p>
-<h3 id="引用控制台中当前选择的元素"><a href="#引用控制台中当前选择的元素" class="headerlink" title="引用控制台中当前选择的元素"></a>引用控制台中当前选择的元素</h3><p>在Elements面板中选择一个节点，并在控制台中键入$0来引用它。 <img src="http://file.w3cbest.com/file/images/drag-and-drop.gif"></p>
+<h3 id="在ELEMENTS面板中拖放"><a href="#在ELEMENTS面板中拖放" class="headerlink" title="在ELEMENTS面板中拖放"></a>在ELEMENTS面板中拖放</h3><p>在Elements面板中，您可以拖放任何HTML元素并更改其在页面上的位置 <img data-src="http://file.w3cbest.com/file/images/reference-elements.gif"></p>
+<h3 id="引用控制台中当前选择的元素"><a href="#引用控制台中当前选择的元素" class="headerlink" title="引用控制台中当前选择的元素"></a>引用控制台中当前选择的元素</h3><p>在Elements面板中选择一个节点，并在控制台中键入$0来引用它。 <img data-src="http://file.w3cbest.com/file/images/drag-and-drop.gif"></p>
 <blockquote>
 <p>提示:如果使用jQuery，可以输入$($0)来访问这个元素上的jQuery API。</p>
 </blockquote>
-<h3 id="使用控制台中最后一个操作的值"><a href="#使用控制台中最后一个操作的值" class="headerlink" title="使用控制台中最后一个操作的值"></a>使用控制台中最后一个操作的值</h3><p>使用$_引用在控制台中执行的前一个操作的返回值 <img src="http://file.w3cbest.com/file/images/use-last-result.gif"></p>
-<h3 id="添加CSS并编辑元素状态"><a href="#添加CSS并编辑元素状态" class="headerlink" title="添加CSS并编辑元素状态"></a>添加CSS并编辑元素状态</h3><p>在元素面板中有两个超级有用的按钮。 第一个选项允许您添加一个新的CSS属性，使用您想要的任何选择器，但要预先填充当前选定的元素: <img src="http://file.w3cbest.com/file/images/add-css.gif"> 第二个选项允许您为所选元素触发一个状态，这样您就可以看到当它处于活动状态、悬停状态、焦点状态时应用的样式。 <img src="http://file.w3cbest.com/file/images/element-state.png"></p>
+<h3 id="使用控制台中最后一个操作的值"><a href="#使用控制台中最后一个操作的值" class="headerlink" title="使用控制台中最后一个操作的值"></a>使用控制台中最后一个操作的值</h3><p>使用$_引用在控制台中执行的前一个操作的返回值 <img data-src="http://file.w3cbest.com/file/images/use-last-result.gif"></p>
+<h3 id="添加CSS并编辑元素状态"><a href="#添加CSS并编辑元素状态" class="headerlink" title="添加CSS并编辑元素状态"></a>添加CSS并编辑元素状态</h3><p>在元素面板中有两个超级有用的按钮。 第一个选项允许您添加一个新的CSS属性，使用您想要的任何选择器，但要预先填充当前选定的元素: <img data-src="http://file.w3cbest.com/file/images/add-css.gif"> 第二个选项允许您为所选元素触发一个状态，这样您就可以看到当它处于活动状态、悬停状态、焦点状态时应用的样式。 <img data-src="http://file.w3cbest.com/file/images/element-state.png"></p>
 <h3 id="找到定义CSS属性的位置"><a href="#找到定义CSS属性的位置" class="headerlink" title="找到定义CSS属性的位置"></a>找到定义CSS属性的位置</h3><p>在元素面板中的CSS属性，DevTools将指向定义该属性的地方，即源面板</p>
-<p><img src="http://file.w3cbest.com/file/images/find-where-css-defined.gif">  </p>
-<h3 id="保存并归档修改后的CSS"><a href="#保存并归档修改后的CSS" class="headerlink" title="保存并归档修改后的CSS"></a>保存并归档修改后的CSS</h3><p>单击您编辑的CSS文件的名称。检查器将它打开到Sources窗格中，然后您可以在应用的实时编辑中保存它。 这个技巧不适用于使用+或元素添加的新选择器。样式属性，但仅适用于已修改的现有属性。 <img src="http://file.w3cbest.com/file/images/save-modified-css.gif"></p>
-<h3 id="屏幕截图一个元素"><a href="#屏幕截图一个元素" class="headerlink" title="屏幕截图一个元素"></a>屏幕截图一个元素</h3><p>选择一个元素并按下cmd-shift-p(或在Windows中按ctrl-shift-p)打开命令菜单，然后选择Capture node截图 <img src="http://file.w3cbest.com/file/images/screenshot-node.gif"></p>
-<h3 id="使用CSS选择器查找元素"><a href="#使用CSS选择器查找元素" class="headerlink" title="使用CSS选择器查找元素"></a>使用CSS选择器查找元素</h3><p>按下cmd-f(在Windows中ctrl-f)将在Elements面板中打开搜索框。 你可以在里面输入任何字符串来匹配源代码，或者你也可以使用CSS选择器让Chrome为你生成一个图像: <img src="http://file.w3cbest.com/file/images/find-elements-css-selectors.gif"></p>
-<h3 id="在控制台中SHIFT-ENTER"><a href="#在控制台中SHIFT-ENTER" class="headerlink" title="在控制台中SHIFT-ENTER"></a>在控制台中SHIFT-ENTER</h3><p>要在控制台中编写跨越多行代码的命令，请按shift-enter。 一旦你准备好了，按下回车在脚本的最后，以执行它: <img src="http://file.w3cbest.com/file/images/multiple-lines-commands.gif"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/find-where-css-defined.gif">  </p>
+<h3 id="保存并归档修改后的CSS"><a href="#保存并归档修改后的CSS" class="headerlink" title="保存并归档修改后的CSS"></a>保存并归档修改后的CSS</h3><p>单击您编辑的CSS文件的名称。检查器将它打开到Sources窗格中，然后您可以在应用的实时编辑中保存它。 这个技巧不适用于使用+或元素添加的新选择器。样式属性，但仅适用于已修改的现有属性。 <img data-src="http://file.w3cbest.com/file/images/save-modified-css.gif"></p>
+<h3 id="屏幕截图一个元素"><a href="#屏幕截图一个元素" class="headerlink" title="屏幕截图一个元素"></a>屏幕截图一个元素</h3><p>选择一个元素并按下cmd-shift-p(或在Windows中按ctrl-shift-p)打开命令菜单，然后选择Capture node截图 <img data-src="http://file.w3cbest.com/file/images/screenshot-node.gif"></p>
+<h3 id="使用CSS选择器查找元素"><a href="#使用CSS选择器查找元素" class="headerlink" title="使用CSS选择器查找元素"></a>使用CSS选择器查找元素</h3><p>按下cmd-f(在Windows中ctrl-f)将在Elements面板中打开搜索框。 你可以在里面输入任何字符串来匹配源代码，或者你也可以使用CSS选择器让Chrome为你生成一个图像: <img data-src="http://file.w3cbest.com/file/images/find-elements-css-selectors.gif"></p>
+<h3 id="在控制台中SHIFT-ENTER"><a href="#在控制台中SHIFT-ENTER" class="headerlink" title="在控制台中SHIFT-ENTER"></a>在控制台中SHIFT-ENTER</h3><p>要在控制台中编写跨越多行代码的命令，请按shift-enter。 一旦你准备好了，按下回车在脚本的最后，以执行它: <img data-src="http://file.w3cbest.com/file/images/multiple-lines-commands.gif"></p>
 <h3 id="清除控制台"><a href="#清除控制台" class="headerlink" title="清除控制台"></a>清除控制台</h3><p>您可以使用控制台左上角的clear按钮清除控制台，或者按ctrl-l或cmd-k。</p>
 <h3 id="GO-TO…"><a href="#GO-TO…" class="headerlink" title="GO TO…"></a>GO TO…</h3><p>在资源面板:</p>
 <ul>
@@ -275,22 +276,60 @@
 <li>  显示当前文件中的符号(属性、函数、类)。</li>
 <li>  ctrl-g转到特定的行。</li>
 </ul>
-<p><img src="http://file.w3cbest.com/file/images/files-list.png"></p>
-<h3 id="监视表达式"><a href="#监视表达式" class="headerlink" title="监视表达式"></a>监视表达式</h3><p>在调试过程中，您将多次检查变量名或表达式，而不是一次又一次地编写变量名或表达式，而是将其添加到监视表达式列表中。 <img src="http://file.w3cbest.com/file/images/watch-expressions.gif"></p>
-<h3 id="XHR-获取调试"><a href="#XHR-获取调试" class="headerlink" title="XHR /获取调试"></a>XHR /获取调试</h3><p>从调试器中打开XHR/Fetch断点面板。 您可以将它设置为在发送XHR / Fetch调用时断开，或者仅在特定的调用上: <img src="http://file.w3cbest.com/file/images/xhr-fetch-breakpoints.png"></p>
-<h3 id="对DOM修改的调试"><a href="#对DOM修改的调试" class="headerlink" title="对DOM修改的调试"></a>对DOM修改的调试</h3><p>右键单击元素并在子树修改上启用Break:每当脚本遍历该元素的子元素并修改它们时，调试器都会自动停止，以便让您检查发生了什么。 <img src="http://file.w3cbest.com/file/images/break-subtree-modifications.png"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/files-list.png"></p>
+<h3 id="监视表达式"><a href="#监视表达式" class="headerlink" title="监视表达式"></a>监视表达式</h3><p>在调试过程中，您将多次检查变量名或表达式，而不是一次又一次地编写变量名或表达式，而是将其添加到监视表达式列表中。 <img data-src="http://file.w3cbest.com/file/images/watch-expressions.gif"></p>
+<h3 id="XHR-获取调试"><a href="#XHR-获取调试" class="headerlink" title="XHR /获取调试"></a>XHR /获取调试</h3><p>从调试器中打开XHR/Fetch断点面板。 您可以将它设置为在发送XHR / Fetch调用时断开，或者仅在特定的调用上: <img data-src="http://file.w3cbest.com/file/images/xhr-fetch-breakpoints.png"></p>
+<h3 id="对DOM修改的调试"><a href="#对DOM修改的调试" class="headerlink" title="对DOM修改的调试"></a>对DOM修改的调试</h3><p>右键单击元素并在子树修改上启用Break:每当脚本遍历该元素的子元素并修改它们时，调试器都会自动停止，以便让您检查发生了什么。 <img data-src="http://file.w3cbest.com/file/images/break-subtree-modifications.png"></p>
 
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/" title="一些很酷的chorem开发工具的提示和技巧的列表">https://xianzhiding.github.io/2019/01/03/一个很酷的chrome开发工具的提示和技巧的列表/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/Chrome/" rel="tag"># Chrome</a>
-              <a href="/tags/Elements/" rel="tag"># Elements</a>
-              <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"># 浏览器</a>
+              <a href="/tags/Chrome/" rel="tag"><i class="fa fa-tag"></i> Chrome</a>
+              <a href="/tags/Elements/" rel="tag"><i class="fa fa-tag"></i> Elements</a>
+              <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 浏览器</a>
           </div>
 
         
@@ -378,16 +417,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -438,6 +477,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="为什么要做 HTML5 语义化HTML5的主要进步之一是引入了一组标准化的语义元素。 ”语义元素“是用于以更有意义的方式标记文档结构的元素，这种方式可以清楚地表明它们的用途和目的是什么。而且重要的是，由于它们是标准化的，定义文档的这些元素可以被每个人使用并理解，包括机器人。 在web无障碍开发领域，给视障用户使用的屏幕阅读器是视障群体访问网络的必备工具，合理的 HTML5 语义化元素，会让屏幕阅读">
@@ -176,6 +176,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -512,7 +513,7 @@ Contact us!
         <header>
             <h1>我的网站</h1>
             <nav> <a href="">首页</a> <a href="">文章</a> <a href="">留言</a> </nav>
-            <aside> <img src="https://via.placeholder.com/30.png/09f/fff" alt="用户头像"> </aside>
+            <aside> <img data-src="https://via.placeholder.com/30.png/09f/fff" alt="用户头像"> </aside>
         </header>
         <div>
             <main>
@@ -604,18 +605,56 @@ Contact us!
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/06/20/html5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/" title="HTML5语义化开发指南">https://xianzhiding.github.io/2019/06/20/html5语义化开发指南/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/footer/" rel="tag"># footer</a>
-              <a href="/tags/html5/" rel="tag"># html5</a>
-              <a href="/tags/html%E6%95%99%E7%A8%8B/" rel="tag"># html教程</a>
-              <a href="/tags/aside/" rel="tag"># aside</a>
-              <a href="/tags/datalist/" rel="tag"># datalist</a>
-              <a href="/tags/details/" rel="tag"># details</a>
-              <a href="/tags/dialog/" rel="tag"># dialog</a>
-              <a href="/tags/header/" rel="tag"># header</a>
-              <a href="/tags/option/" rel="tag"># option</a>
+              <a href="/tags/footer/" rel="tag"><i class="fa fa-tag"></i> footer</a>
+              <a href="/tags/html5/" rel="tag"><i class="fa fa-tag"></i> html5</a>
+              <a href="/tags/html%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> html教程</a>
+              <a href="/tags/aside/" rel="tag"><i class="fa fa-tag"></i> aside</a>
+              <a href="/tags/datalist/" rel="tag"><i class="fa fa-tag"></i> datalist</a>
+              <a href="/tags/details/" rel="tag"><i class="fa fa-tag"></i> details</a>
+              <a href="/tags/dialog/" rel="tag"><i class="fa fa-tag"></i> dialog</a>
+              <a href="/tags/header/" rel="tag"><i class="fa fa-tag"></i> header</a>
+              <a href="/tags/option/" rel="tag"><i class="fa fa-tag"></i> option</a>
           </div>
 
         
@@ -624,8 +663,8 @@ Contact us!
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/05/29/wordpress-%E8%BE%93%E5%87%BA-wp-nav-menu%E8%8F%9C%E5%8D%95%E5%87%BD%E6%95%B0/" rel="prev" title="wordpress 输出 wp_nav_menu()菜单函数">
-      <i class="fa fa-chevron-left"></i> wordpress 输出 wp_nav_menu()菜单函数
+    <a href="/2019/05/24/jquery%E7%9A%84deferred%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/" rel="prev" title="jQuery的deferred对象详解">
+      <i class="fa fa-chevron-left"></i> jQuery的deferred对象详解
     </a></div>
       <div class="post-nav-item">
     <a href="/2019/07/04/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE%E9%81%87%E5%88%B0%E8%B4%9F%E5%80%BC%E4%B8%AD%E5%BF%83%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E8%AE%BE%E7%BD%AE/" rel="next" title="echarts 雷达图遇到负值中心点偏移的设置">
@@ -703,16 +742,16 @@ Contact us!
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -763,6 +802,7 @@ Contact us!
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

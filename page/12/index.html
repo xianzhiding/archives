@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
@@ -164,6 +164,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -173,379 +174,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/13/%E7%94%A8css3%E5%92%8Cjquery%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%B8%A6%E6%9C%89%E6%96%9C%E8%A7%92%E7%9A%84%E9%80%89%E9%A1%B9%E5%8D%A1%E9%9D%A2%E6%9D%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/13/%E7%94%A8css3%E5%92%8Cjquery%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%B8%A6%E6%9C%89%E6%96%9C%E8%A7%92%E7%9A%84%E9%80%89%E9%A1%B9%E5%8D%A1%E9%9D%A2%E6%9D%BF/" class="post-title-link" itemprop="url">用css3和jquery制作一个带有斜角的选项卡面板</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-13 15:24:07" itemprop="dateCreated datePublished" datetime="2018-09-13T15:24:07+08:00">2018-09-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天我们将使用CSS 3 gradients技术创建一个好看的带有斜角的选项卡面板。 <img src="http://www.w3cbest.com/wp-content/uploads/2018/09/tabs1.jpg"> 下面就直接上代码</p>
-<h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><ul id="tabs">
-<li><a href="#" title="tab1">tab1</a></li>
-<li><a href="#" title="tab2">tab2</a></li>
-<li><a href="#" title="tab3">tab3</a></li>
-<li><a href="#" title="tab4">tab4</a></li>
-</ul>
-
-<div id="content">
-<div id="tab1">tab1 - content</div>
-<div id="tab2">tab2 - content</div>
-<div id="tab3">tab3 - content</div>
-<div id="tab4">tab4 - content</div>
-</div>
-
-<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><p>#tabs {<br>overflow: auto;<br>width: 100%;<br>list-style: none;<br>margin: 0;<br>padding: 0;<br>}</p>
-<p>#tabs li {<br>margin: 0;<br>padding: 0;<br>float: left;<br>}</p>
-<p>#tabs a {<br>box-shadow: -4px 0 0 rgba(0, 0, 0, .2);<br>background: #ad1c1c;<br>background: linear-gradient(225deg, transparent 10px, #ad1c1c 10px);<br>text-shadow: 0 1px 0 rgba(0,0,0,.5);<br>color: #fff;<br>float: left;<br>font: bold 12px/35px ‘Lucida sans’, Arial, Helvetica;<br>height: 35px;<br>padding: 0 30px;<br>text-decoration: none;<br>}</p>
-<p>#tabs a:hover {<br>background: #c93434;<br>background: linear-gradient(225deg, transparent 10px, #c93434 10px);<br>}</p>
-<p>#tabs a:focus {<br>outline: 0;<br>}</p>
-<p>#tabs #current a {<br>background: #fff;<br>background: linear-gradient(225deg, transparent 10px, #fff 10px);<br>text-shadow: none;<br>color: #333;<br>}</p>
-<p>#content {<br>background-color: #fff;<br>background-image: linear-gradient(top, #fff, #ddd);<br>border-radius: 0 2px 2px 2px;<br>box-shadow: 0 2px 2px #000, 0 -1px 0 #fff inset;<br>padding: 30px;<br>}</p>
-<p>/* 这里的高度可随意*/<br>#content div {<br>height: 220px;<br>}</p>
-<h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><p>下面的代码可能不是最好的，但我认为它相当不错</p>
-<p>$(document).ready(function() {<br>$(“#content div”).hide(); // 最初隐藏所有内容<br>$(“#tabs li:first”).attr(“id”,”current”); // 激活第一个选项卡<br>$(“#content div:first”).fadeIn(); // 显示第一个标签内容</p>
-<p>$(‘#tabs a’).click(function(e) {<br>e.preventDefault();<br>$(“#content div”).hide(); // 隐藏所有内容<br>$(“#tabs li”).attr(“id”,””); // 重置Id<br>$(this).parent().attr(“id”,”current”); // 这里点击后激活<br>$(‘#’ + $(this).attr(‘title’)).fadeIn(); // 显示当前选项卡的内容<br>});<br>})();</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/10/art-template-js%E5%85%B3%E4%BA%8Echeckbox%E3%80%81radio%E9%80%89%E4%B8%AD%E5%90%8E%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/10/art-template-js%E5%85%B3%E4%BA%8Echeckbox%E3%80%81radio%E9%80%89%E4%B8%AD%E5%90%8E%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93/" class="post-title-link" itemprop="url">art-template.js关于checkbox、radio选中后返回数据如何渲染</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-10 15:44:58" itemprop="dateCreated datePublished" datetime="2018-09-10T15:44:58+08:00">2018-09-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 11:20:17" itemprop="dateModified" datetime="2021-08-30T11:20:17+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>假如我们有一个多选和单选列表, 图片 我们从后端拿到数据后想在初始化的时候按照数据的值进行渲染，是选中的就显示选中状态，没有选中的就显示默认状态, 假如这是我们拿到的数据（理想中的数据应该是这样的）,如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot;, &quot;checked&quot;: false &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot;, &quot;checked&quot;: true &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot;, &quot;checked&quot;: true &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot;, &quot;checked&quot;: false &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>那么就很简单的了，就可以直接进行数据渲染，如下： html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;form-check&quot; id&#x3D;&quot;formCheckBox&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">res &#x3D; [</span><br><span class="line">    &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot;, &quot;checked&quot;: false &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot;, &quot;checked&quot;: true &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot;, &quot;checked&quot;: true &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot;, &quot;checked&quot;: false &#125;</span><br><span class="line">]</span><br><span class="line">document.getElementById(&#39;formCheckBox&#39;).innerHTML &#x3D; template(&#39;checkboxTemp&#39;, &#123; data: res &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>template</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;html&quot; id&#x3D;&quot;checkboxTemp&quot;&gt;</span><br><span class="line">&#123;&#123;each data item&#125;&#125;</span><br><span class="line">&lt;label for&#x3D;&quot;checkbox&#123;&#123;item.code&#125;&#125;&quot;&gt;</span><br><span class="line">    &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;checkbox&#123;&#123;item.code&#125;&#125;&quot; value&#x3D;&quot;&#123;&#123;item.content&#125;&#125;&quot; &#123;&#123;if item.checked &#x3D;&#x3D; true&#125;&#125;checked&#123;&#123;&#x2F;if&#125;&#125;&gt; &#123;&#123;item.name&#125;&#125;</span><br><span class="line">&lt;&#x2F;label&gt;</span><br><span class="line">&#123;&#123;&#x2F;each&#125;&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果拿到的数据是乱七八糟的后端给出来的怎么办，那我就需要处理一下数据，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;data&quot;: [</span><br><span class="line">    &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot; &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot; &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot; &#125;,</span><br><span class="line">    &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot; &#125;</span><br><span class="line">    ],</span><br><span class="line">&quot;select&quot;: [1, 4]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果是这种的话我们就先渲染，然后再用JQ的each循环改变选中状态，如下： html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;form-check&quot; id&#x3D;&quot;formCheckBox&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">res &#x3D; &#123;</span><br><span class="line">    &quot;data&quot;: [</span><br><span class="line">        &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot; &#125;,</span><br><span class="line">        &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot; &#125;,</span><br><span class="line">        &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot; &#125;,</span><br><span class="line">        &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot; &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;select&quot;: [1, 4]</span><br><span class="line">&#125;;</span><br><span class="line">document.getElementById(&#39;formCheckBox&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, &#123; data: res.data &#125;);</span><br><span class="line">$(&#39;#formCheckBox label&#39;).each(function() &#123;</span><br><span class="line">    var cont &#x3D; $(this).find(&#39;input&#39;).val();</span><br><span class="line">    for (var i &#x3D; 0; i &lt; check.value.length; i++) &#123;</span><br><span class="line">        if (check.select[i] &#x3D;&#x3D; val) &#123;</span><br><span class="line">            $(this).find(&#39;input&#39;).prop(&#39;checked&#39;, true)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>template</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;html&quot; id&#x3D;&quot;tpl&quot;&gt;</span><br><span class="line">    &#123;&#123;each data&#125;&#125;</span><br><span class="line">    &lt;label for&#x3D;&quot;checkbox&#123;&#123;$value.code&#125;&#125;&quot;&gt;</span><br><span class="line">    &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;checkbox&#123;&#123;$value.code&#125;&#125;&quot; value&#x3D;&quot;&#123;&#123;$value.content&#125;&#125;&quot;&gt; &#123;&#123;$value.name&#125;&#125;&lt;&#x2F;label&gt;</span><br><span class="line">    &#123;&#123;&#x2F;each&#125;&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>后记：其实拿到的数据基本上如果可以直接用的话就不必处理，但是有的数据是需要重新处理重新组合成我们用的那种结果，比如上面最后一个例子提到的，他有两个checkbox被选中，但是我们渲染的时候会用data数据渲染，那么你可以把select的两标记组合到data里面，如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">res &#x3D; &#123; </span><br><span class="line">    &quot;data&quot;: [</span><br><span class="line">        &#123; </span><br><span class="line">            &quot;code&quot;: &quot;1&quot;, </span><br><span class="line">            &quot;name&quot;: &quot;语文&quot;, </span><br><span class="line">            &quot;content&quot;: &quot;1&quot;, </span><br><span class="line">            &quot;select&quot;: true&#x2F;&#x2F; 这个就是标记被选中</span><br><span class="line">        &#125;,</span><br><span class="line">        ....</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以直接渲染数据了，方法有很多种，就看你怎么理解，想怎么用</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/06/%E7%94%A8display-flex%E6%96%B0%E5%B1%9E%E6%80%A7%E5%81%9A%E4%B8%AA%E5%AF%BC%E8%88%AA%E6%8E%92%E5%88%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/06/%E7%94%A8display-flex%E6%96%B0%E5%B1%9E%E6%80%A7%E5%81%9A%E4%B8%AA%E5%AF%BC%E8%88%AA%E6%8E%92%E5%88%97/" class="post-title-link" itemprop="url">用display:flex新属性做个导航排列</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-06 13:30:29" itemprop="dateCreated datePublished" datetime="2018-09-06T13:30:29+08:00">2018-09-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 11:22:06" itemprop="dateModified" datetime="2021-08-30T11:22:06+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>现在你得导航还在用float来设置水平排列吗？ 随着css的强大新的属性的增加，浏览器的内核升级，让我们的代码越写越简单，以前我们在写代码设置某一块水平排列用的最多的应该是float了吧，80后的程序员最有感受，深受低版本浏览器的残害(IE6)，乃至现在还会随手敲一个float出来(包括我)。不过现在好了，随着浏览器的内核升级，很多企业也已抛弃低版本浏览器，css的很多新属性就可以用到了，我们今天就用这个新属性flex做个导航水平排列,如下：</p>
-<ul>
-<li>  首页</li>
-<li>  关于我们</li>
-<li>  产品展示</li>
-<li>  客户支持</li>
-<li>  联系我们</li>
-</ul>
-<p>html</p>
-<ul class="navbar">
-  <li><a href="/">首页</a></li>
-  <li><a href="/">关于我们</a></li>
-  <li><a href="/">产品展示</a></li>
-  <li><a href="/">客户支持</a></li>
-  <li><a href="/">联系我们</a></li>
-</ul>
-
-<p>css</p>
-<p>.navbar{<br>  display: flex;<br>  flex-direction: row;<br>  flex-wrap: nowrap;<br>  justify-content: flex-start;<br>  align-items: stretch;<br>  align-content: stretch;<br>}</p>
-<p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。 我们来测试一下他的兼容性</p>
-<p>复制代码</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/05/%E6%A8%A1%E6%8B%9F%E4%B8%80%E4%B8%AAconsole-log%E6%89%93%E5%8D%B0%E4%BB%A3%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/05/%E6%A8%A1%E6%8B%9F%E4%B8%80%E4%B8%AAconsole-log%E6%89%93%E5%8D%B0%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">模拟一个console.log打印代码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-05 14:41:30" itemprop="dateCreated datePublished" datetime="2018-09-05T14:41:30+08:00">2018-09-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在网站开发中我们时常用console.log来打印我们想要的数据，或返回的一些我们想要知道的结果，在PC端我们可以得心应手的使用，但是在移动端开发的时候，不能用F12了，无法看到代码，哪里出问题了也不知道，其实也可以用alert()，不过呢每刷新一次页面就会弹一次弹框，自我感觉比较麻烦，所以就有下面这段代码，虽然很简单，但是感觉挺实用的，代码如下：</p>
-<p>// log打印<br>Tomd.log = function(s) {<br>  if (typeof s == ‘object’) {<br>    var s1 = ‘’;<br>    for (var a in s) {<br>      s1 += ‘{0}:{1}, ‘.format(a, s[a]);<br>    }<br>    s = s1;<br>  }<br>  var d = $(‘.dui-log’);<br>  if (d.length == 0) {<br>    $(‘body’).append(‘<div class="dui-log"></div>‘);<br>    d = $(‘.dui-log’);<br>  }<br>  d.append(‘<p>‘ + s + ‘</p>‘);<br>}<br>// 调用<br>Tomd.log(obj)</p>
-<p>/*<br>* 格式化字符串<br>* 用法：’my name is {0}, age {1}’.format(‘Tom’, 30)<br>*/<br>String.prototype.format = function() {<br>  var _this = this;<br>  for (var i = 0; i &lt; arguments.length; i++) {<br>    _this = _this.replace(new RegExp(‘\\{‘ + i + ‘\\}’, ‘g’), arguments[i]);<br>  }<br>  return _this;<br>};</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -734,7 +362,7 @@
 <li>  外部函数的变量</li>
 <li>  全局变量</li>
 </ul>
-<p><img src="http://file.w3cbest.com/file/images/closure-780w-opt.png"> 预处理器也是相同的，让我们用Sass来举个例子。因为这大概是今天最流行的预处理器了。 在Sass中有两种类型的变量：当前作用域变量(local) 和 全局变量。 一个全局变量能被申明在选择器和构造器（比如mixin）外，其他的变量就是当前作用域变量。 任何嵌套的代码块都可以访问封闭变量（如JavaScript）。 <img src="http://file.w3cbest.com/file/images/closure-scss-780w-opt.png"> 这意味着在Sass中变量的作用域完全依赖代码的嵌套结构。 然而CSS自定义属性完全和其他的CSS属性一样使用级联方式默认继承。 当然你也不能在CSS中定义一个在选择器外的属于全局的自定义属性变量，因为这不是有效的CSS。自定义属性的全局作用域实际上就是:root的作用域，这里面定义的属性就是全局的。 让我们用已知的语法知识和Sass的例子来创建一个使用原生的CSS自定义属性的例子，首先是HTML：</p>
+<p><img data-src="http://file.w3cbest.com/file/images/closure-780w-opt.png"> 预处理器也是相同的，让我们用Sass来举个例子。因为这大概是今天最流行的预处理器了。 在Sass中有两种类型的变量：当前作用域变量(local) 和 全局变量。 一个全局变量能被申明在选择器和构造器（比如mixin）外，其他的变量就是当前作用域变量。 任何嵌套的代码块都可以访问封闭变量（如JavaScript）。 <img data-src="http://file.w3cbest.com/file/images/closure-scss-780w-opt.png"> 这意味着在Sass中变量的作用域完全依赖代码的嵌套结构。 然而CSS自定义属性完全和其他的CSS属性一样使用级联方式默认继承。 当然你也不能在CSS中定义一个在选择器外的属于全局的自定义属性变量，因为这不是有效的CSS。自定义属性的全局作用域实际上就是:root的作用域，这里面定义的属性就是全局的。 让我们用已知的语法知识和Sass的例子来创建一个使用原生的CSS自定义属性的例子，首先是HTML：</p>
 <p>global</p>
 <div class="enclosing">
   enclosing
@@ -827,7 +455,7 @@
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/xgdEQp/">css-custom-properties-time-to-start-using 10</a> by Serg Hospodarets (<a target="_blank" rel="noopener" href="https://codepen.io/malyw">@malyw</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>基本上，我们只是更改了CSS自定义属性的值。其他（旋转和放大和缩小）都是由CSS完成的。 提示：调整CSS自定义属性值的最简单方法之一就是在CSS生成的内容中显示其内容（在简单的情况下，例如使用字符串），以便浏览器将自动显示当前应用的值：</p>
 <p>body:after {<br>  content: ‘–screen-category : ‘var(–screen-category);<br>}</p>
-<p>您可以在纯<a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/oBWMOY">CSS演示</a>（无HTML或JavaScript）中查看。 （调整窗口大小，查看浏览器会自动反映更改后的CSS自定义属性值。） 浏览器支持 主流<a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-variables">浏览器</a>都支持了CSS自定义属性: <img src="http://file.w3cbest.com/file/images/20190118223123.jpg"> 这意味着你可以自己开始使用它们。 如果您需要支持旧版浏览器，您可以学习语法和使用示例，并考虑并行切换或使用CSS和预处理器变量的可能方法。 当然，我们需要能够检测CSS和JavaScript中的支持，以便提供回退或增强功能。 这很容易对于CSS，您可以使用带有虚拟功能查询的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/CSS/@supports">@supports条件</a>：</p>
+<p>您可以在纯<a target="_blank" rel="noopener" href="https://codepen.io/malyw/pen/oBWMOY">CSS演示</a>（无HTML或JavaScript）中查看。 （调整窗口大小，查看浏览器会自动反映更改后的CSS自定义属性值。） 浏览器支持 主流<a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-variables">浏览器</a>都支持了CSS自定义属性: <img data-src="http://file.w3cbest.com/file/images/20190118223123.jpg"> 这意味着你可以自己开始使用它们。 如果您需要支持旧版浏览器，您可以学习语法和使用示例，并考虑并行切换或使用CSS和预处理器变量的可能方法。 当然，我们需要能够检测CSS和JavaScript中的支持，以便提供回退或增强功能。 这很容易对于CSS，您可以使用带有虚拟功能查询的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/CSS/@supports">@supports条件</a>：</p>
 <p>@supports ( (–a: 0)) {<br>  /* supported */<br>}</p>
 <p>@supports ( not (–a: 0)) {<br>  /* not supported */<br>}</p>
 <p>在JavaScript中，您可以使用与<code>CSS.supports()</code>静态方法相同的虚拟自定义属性：</p>
@@ -947,11 +575,11 @@
 
       
           <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在Flexbox Layout（柔性盒）模块（W3C候选推荐为2017年10月）的目的在于提供一种更有效的方式来布置，调整和项目之间在一个容器中分配空间，即使它们的大小是未知的和/或动态的（因此单词“flex”）。 flex布局背后的主要思想是让容器能够改变其项目的宽度/高度（和顺序），以最好地填充可用空间（主要是为了适应所有类型的显示设备和屏幕尺寸）。Flex容器扩展项目以填充可用空间，或缩小它们以防止溢出。 最重要的是，flexbox布局与方向无关，而不是常规布局（基于垂直的块和基于水平的内联块）。虽然这些页面适用于页面，但它们缺乏灵活性（没有双关语）来支持大型或复杂的应用程序（特别是在方向更改，调整大小，拉伸，缩小等方面）。 注意： Flexbox布局最适合应用程序的组件和小规模布局，而Grid布局则适用于更大规模的布局。</p>
-<h2 id="基础知识和术语"><a href="#基础知识和术语" class="headerlink" title="基础知识和术语"></a>基础知识和术语</h2><p><img src="http://file.w3cbest.com/file/images/01-container.svg"></p>
+<h2 id="基础知识和术语"><a href="#基础知识和术语" class="headerlink" title="基础知识和术语"></a>基础知识和术语</h2><p><img data-src="http://file.w3cbest.com/file/images/01-container.svg"></p>
 <h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><p>用来定义一个 flex 容器。如果设置为 flex 则容器呈现为块状元素，设置为inline-flex 则容器呈现为行内元素。它为所有直接子元素提供了 flex 上下文。</p>
 <p>.container {<br>  display: flex; /* or inline-flex */<br>}</p>
 <p>请注意，CSS 列对 flex 容器没有影响。当然这是 Flexbox 布局的开始。</p>
-<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><p><img src="http://file.w3cbest.com/file/images/flex-direction.svg"> flex-direction 属性确立了主轴，从而定义了 flex 项在 flex 容器中的排布方向。 Flexbox 是单向布局，有些时候我们也称作一维布局。 可以将 flex 项视为主要沿着水平行或垂直列排布。</p>
+<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><p><img data-src="http://file.w3cbest.com/file/images/flex-direction.svg"> flex-direction 属性确立了主轴，从而定义了 flex 项在 flex 容器中的排布方向。 Flexbox 是单向布局，有些时候我们也称作一维布局。 可以将 flex 项视为主要沿着水平行或垂直列排布。</p>
 <p>.container {<br>  flex-direction: row  row-reverse  column  column-reverse;<br>}</p>
 <ul>
 <li>  row (默认值) :行排布。在 ltr (left to right， 从左到右)排版方式下，flex 项从左到右排列，在 rtl (right to left， 从右到左)排版方式下，flex 项从右到左排列。</li>
@@ -959,7 +587,7 @@
 <li>  column: 列排布，与 row 相似，但是 flex 项从上到下排布。</li>
 <li>  column-reverse: 反向列排布，即 column 反方向，与 row-reverse 相似，只是 flex 项从上到下排布。</li>
 </ul>
-<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p><img src="http://file.w3cbest.com/file/images/flex-wrap.svg"> 默认情况下，flex 项会尽可能地尝试排在同一行上（行或列），通过设置 flex-wrap 来决定 flex 项是否允需要换行。</p>
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p><img data-src="http://file.w3cbest.com/file/images/flex-wrap.svg"> 默认情况下，flex 项会尽可能地尝试排在同一行上（行或列），通过设置 flex-wrap 来决定 flex 项是否允需要换行。</p>
 <p>.container{<br>  flex-wrap: nowrap  wrap  wrap-reverse;<br>}</p>
 <ul>
 <li>  nowrap (默认值) : 所有的 flex 项都会在同一行上排布，也就是我们常说的单行，或不换行。</li>
@@ -977,7 +605,7 @@
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/omvbEx/">Flex-wrap: demo</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <h3 id="flex-flow-（适用于父级-flex-容器）"><a href="#flex-flow-（适用于父级-flex-容器）" class="headerlink" title="flex-flow （适用于父级 flex 容器）"></a>flex-flow （适用于父级 flex 容器）</h3><p>这是 flex-direction 和 flex-wrap 属性的缩写形式。同时定义 flex 容器的主轴和交叉轴。默认是 row nowrap。</p>
 <p>flex-flow: &lt;’flex-direction’&gt;  &lt;’flex-wrap’&gt;</p>
-<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p><img src="http://file.w3cbest.com/file/images/justify-content.svg"> justify-content 属性定义了flex 项沿主轴方向的对齐方式。 当一行中的所有 flex 项都是固定大小，或者是灵活大小但已经达到最大 main size 时，它可以帮助分配主轴上的剩余空间。当 flex 项溢出主轴的时候，它还可以用来控制flex 项的对齐方式。</p>
+<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p><img data-src="http://file.w3cbest.com/file/images/justify-content.svg"> justify-content 属性定义了flex 项沿主轴方向的对齐方式。 当一行中的所有 flex 项都是固定大小，或者是灵活大小但已经达到最大 main size 时，它可以帮助分配主轴上的剩余空间。当 flex 项溢出主轴的时候，它还可以用来控制flex 项的对齐方式。</p>
 <p>.container {<br>  justify-content: flex-start  flex-end  center  space-between  space-around  space-evenly;<br>}</p>
 <ul>
 <li>  flex-start (默认值) : flex 项从主轴的开始位置（main-start）开始排布。</li>
@@ -987,7 +615,7 @@
 <li>  space-around: flex 项沿主轴均匀排布。要注意的是 flex 项看起来间隙是不均匀的，因为所有 flex 项两边的空间是相等的。第一项在容器边缘有一个单位的空间，但是在两个 flex 项之间有两个单位的间隙，因为每个 flex 项的两侧都有一个单位的间隙。</li>
 <li>  space-evenly: 任何两个 flex 项之间的间距（以及到 flex 容器边缘的空间）相等。</li>
 </ul>
-<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p><img src="http://file.w3cbest.com/file/images/align-items.svg"> align-items 定义了 flex 项如何沿当前行在交叉轴上排布的默认行为。可以将其视为交叉轴（垂直于主轴）上的对齐方式。</p>
+<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p><img data-src="http://file.w3cbest.com/file/images/align-items.svg"> align-items 定义了 flex 项如何沿当前行在交叉轴上排布的默认行为。可以将其视为交叉轴（垂直于主轴）上的对齐方式。</p>
 <p>.container {<br>  align-items: flex-start  flex-end  center  baseline  stretch;<br>}</p>
 <ul>
 <li>  flex-start: flex 项按照交叉轴的开始位置（cross-start）对齐。</li>
@@ -996,7 +624,7 @@
 <li>  baseline: flex 项按照他们的文字基线对齐。</li>
 </ul>
 <p>stretch (默认值) : 拉伸 flex 项以填充整个容器（这里特别要注意：如果 flex 项有尺寸属性（min-width / max-width / width / min-height / max-height / height），那么首先应用这些尺寸属性。）</p>
-<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p><img src="http://file.w3cbest.com/file/images/align-content.svg"> 当交叉轴上有剩余空间时，align-content 可以设置 flex 容器中的 行 在交叉轴上如何分配剩余空间，类似于 justify-content 在主轴上对齐单个 flex 项的方式。</p>
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p><img data-src="http://file.w3cbest.com/file/images/align-content.svg"> 当交叉轴上有剩余空间时，align-content 可以设置 flex 容器中的 行 在交叉轴上如何分配剩余空间，类似于 justify-content 在主轴上对齐单个 flex 项的方式。</p>
 <blockquote>
 <p>注意：当只有一行 flex 项时，此属性不起作用。</p>
 </blockquote>
@@ -1009,10 +637,10 @@
 <li>  space-around: 多行均匀分布，并且每行的间距（包括离容器边缘的间距）相同；</li>
 <li>  strech (默认值)：多行拉伸以填充满整个剩余空间</li>
 </ul>
-<h2 id="flex-项子属性-flex-items"><a href="#flex-项子属性-flex-items" class="headerlink" title="flex 项子属性(flex items)"></a>flex 项子属性(flex items)</h2><p><img src="http://file.w3cbest.com/file/images/02-items.svg"></p>
-<h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p><img src="http://file.w3cbest.com/file/images/order.svg"> 默认情况下，flex 项按源（HTML结构）顺序排布。但是，order 属性可以控制它们在 flex 容器中的显示顺序。</p>
+<h2 id="flex-项子属性-flex-items"><a href="#flex-项子属性-flex-items" class="headerlink" title="flex 项子属性(flex items)"></a>flex 项子属性(flex items)</h2><p><img data-src="http://file.w3cbest.com/file/images/02-items.svg"></p>
+<h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p><img data-src="http://file.w3cbest.com/file/images/order.svg"> 默认情况下，flex 项按源（HTML结构）顺序排布。但是，order 属性可以控制它们在 flex 容器中的显示顺序。</p>
 <p>.item {<br>  order: <integer>;  /* 默认值是 0 */<br>}</p>
-<h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p><img src="http://file.w3cbest.com/file/images/flex-grow.svg"> flex-grow 定义了 flex 项在有可用剩余空间时拉伸比例。它接受的值作为比例，无单位。它规定了 flex 项应该占 flex 容器中可用空间的比例。 如果所有 flex 项的 flex-grow 都设置为 1 ，则父容器中的剩余空间将平均分配给所有子项。 如果其中一个子项的值为 2 ，则该子项占用的剩余空间是其他子项的两倍（或者至少会尽力获得）。</p>
+<h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p><img data-src="http://file.w3cbest.com/file/images/flex-grow.svg"> flex-grow 定义了 flex 项在有可用剩余空间时拉伸比例。它接受的值作为比例，无单位。它规定了 flex 项应该占 flex 容器中可用空间的比例。 如果所有 flex 项的 flex-grow 都设置为 1 ，则父容器中的剩余空间将平均分配给所有子项。 如果其中一个子项的值为 2 ，则该子项占用的剩余空间是其他子项的两倍（或者至少会尽力获得）。</p>
 <p>.item {<br>  flex-grow: <number>; /* default 0 */<br>}</p>
 <blockquote>
 <p>注：负值对于 flex-grow 无效。</p>
@@ -1024,11 +652,11 @@
 </blockquote>
 <h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>flex-basis 定义了在分配剩余空间之前 flex 项默认的大小。可以设置为某个长度值（e.g. 20%, 5rem,等）或者关键字。关键字 auto 意味着 flex 项会按照其本来的大小显示（暂时由 main-size 关键字完成，直到弃用）。关键字 content 意味着根据内容来确定大小——这个关键字到目前没有被很好地支持，所以测试起来比较困难，与content的类似的关键字还有max-content, min-content, fit-content。</p>
 <p>.item {<br>  flex-basis: <length>  auto; /* default auto */<br>}</p>
-<p>如果设置为 0 , 则 flex 项内容周围的空隙不会根据 flex-grow 按比例分配，如果设置为 auto，则 flex 项周围额外的空袭会根据 flex-grow 按照比例分配，如下图： <img src="http://file.w3cbest.com/file/images/rel-vs-abs-flex.svg"></p>
+<p>如果设置为 0 , 则 flex 项内容周围的空隙不会根据 flex-grow 按比例分配，如果设置为 auto，则 flex 项周围额外的空袭会根据 flex-grow 按照比例分配，如下图： <img data-src="http://file.w3cbest.com/file/images/rel-vs-abs-flex.svg"></p>
 <h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p>flex 是 flex-grow、flex-shrink、flex-basis 三个属性的缩写。其中第二个和第三个参数(flex-shrink 和 flex-basis)是可选的。默认值为0 1 auto。</p>
 <p>.item {<br>  flex: none  [ &lt; ‘flex-grow’&gt; &lt; ‘flex-shrink’&gt;?  &lt; ‘flex-basis’&gt; ]<br>}</p>
 <p>推荐使用缩写形式而不是单独地设置每一个属性，缩写形式中会更加智能地计算出相关值。</p>
-<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p><img src="http://file.w3cbest.com/file/images/align-self.svg"> align-self 属性允许某个单独的 flex 项覆盖默认的对齐方式（或由 align-items 指定的对齐方式）。 具体的属性值得含义可以参考 align-items的解释。</p>
+<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p><img data-src="http://file.w3cbest.com/file/images/align-self.svg"> align-self 属性允许某个单独的 flex 项覆盖默认的对齐方式（或由 align-items 指定的对齐方式）。 具体的属性值得含义可以参考 align-items的解释。</p>
 <p>.item {<br>  align-self: auto  flex-start  flex-end  center  baseline  stretch;<br>}</p>
 <blockquote>
 <p>注：float,clear和vertical-align 对 flex 项没有任何作用。</p>
@@ -1148,12 +776,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [23, 3, 24, 67, 21, 60];</span><br></pre></td></tr></table></figure>
+          <pre class="language-none"><code class="language-none">var arr &#x3D; [23, 3, 24, 67, 21, 60];</code></pre>
 <p>1 冒泡排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for (let j &#x3D; arr.length - 1; j &gt; 0; j--) &#123;</span><br><span class="line">    for (let i &#x3D; 0; i &lt; j; i++) &#123;</span><br><span class="line">        if (arr[i] &gt; arr[i + 1]) &#123;</span><br><span class="line">            let temp &#x3D; arr[i];</span><br><span class="line">            arr[i] &#x3D; arr[i + 1];</span><br><span class="line">            arr[i + 1] &#x3D; temp</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#39;第&#39;+j+&#39;次循环&#39;,arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">for (let j &#x3D; arr.length - 1; j &gt; 0; j--) &#123;
+    for (let i &#x3D; 0; i &lt; j; i++) &#123;
+        if (arr[i] &gt; arr[i + 1]) &#123;
+            let temp &#x3D; arr[i];
+            arr[i] &#x3D; arr[i + 1];
+            arr[i + 1] &#x3D; temp
+        &#125;
+    &#125;
+    console.log(&#39;第&#39;+j+&#39;次循环&#39;,arr);
+&#125;</code></pre>
 
 <p>2 选择排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for (let j &#x3D; 0; j&lt;arr.length; j++)&#123;</span><br><span class="line">    for (let i &#x3D; 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">        if(arr[i] &gt; arr[j])&#123;</span><br><span class="line">            let temp &#x3D; arr[i];</span><br><span class="line">            arr[i] &#x3D; arr[j]</span><br><span class="line">            arr[j] &#x3D; temp</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#39;第&#39;+(j+1)+&#39;次循环&#39;,arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-none"><code class="language-none">for (let j &#x3D; 0; j&lt;arr.length; j++)&#123;
+    for (let i &#x3D; 0; i &lt; arr.length; i++) &#123;
+        if(arr[i] &gt; arr[j])&#123;
+            let temp &#x3D; arr[i];
+            arr[i] &#x3D; arr[j]
+            arr[j] &#x3D; temp
+        &#125;
+    &#125;
+    console.log(&#39;第&#39;+(j+1)+&#39;次循环&#39;,arr);
+&#125;</code></pre>
       
     </div>
 
@@ -1227,51 +873,51 @@
 
       
           <p><a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">Grid(网格)</a> 布局最终使我们能够在CSS中定义网格，并将网格项放置到网格单元格中。这本身就很棒，但事实上我们不需要指定每个网格轨道，也不必手动放置每一个网格项。因为 Grid(网格) 布局足够灵活，可以适应它们的网格项。 这些都由所谓的显式和隐式网格来处理的。 这篇文章中所有代码示例都附有图片，以显示网格线和轨道。 如果你想自己修改代码，我建议你下载<a target="_blank" rel="noopener" href="https://www.mozilla.org/en-US/firefox/channel/desktop/">Firefox Nightly</a>，因为它目前有调试网格最好的<a target="_blank" rel="noopener" href="https://hacks.mozilla.org/2017/06/new-css-grid-layout-panel-in-firefox-nightly/">DevTools</a>。</p>
-<h2 id="显式的-Grid-网格"><a href="#显式的-Grid-网格" class="headerlink" title="显式的 Grid(网格)"></a>显式的 Grid(网格)</h2><p>我们可以使用 grid-template-rows，grid-template-columns 和 grid-template-areas 属性来定义形成网格的固定数量的网格线和网格轨道。这种手动定义的 Grid 称为显式网格。 <img src="http://file.w3cbest.com/file/images/grid1.png"> 具有4个垂直轨道（列）和2个水平轨道（行）的显式网格。</p>
+<h2 id="显式的-Grid-网格"><a href="#显式的-Grid-网格" class="headerlink" title="显式的 Grid(网格)"></a>显式的 Grid(网格)</h2><p>我们可以使用 grid-template-rows，grid-template-columns 和 grid-template-areas 属性来定义形成网格的固定数量的网格线和网格轨道。这种手动定义的 Grid 称为显式网格。 <img data-src="http://file.w3cbest.com/file/images/grid1.png"> 具有4个垂直轨道（列）和2个水平轨道（行）的显式网格。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/OjMGMY/">CSS Grid Layout: The explicit grid</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>.grid {<br>  display: grid;<br>  grid-template-columns: 1fr 1fr 1fr 1fr;<br>  grid-template-rows: 100px 100px;<br>  grid-gap: 20px;<br>}</p>
 <h2 id="重复轨道"><a href="#重复轨道" class="headerlink" title="重复轨道"></a>重复轨道</h2><p>当我们定义<code>grid-template-columns: 1fr 1fr 1fr 1fr</code>; 时，我们得到<code>4</code>条垂直轨道，每条轨道的宽度为<code>1fr</code>。 我们可以通过使用<code>repeat()</code>表示法来自动化，如<code>grid-template-columns: repeat(4, 1fr)</code>;。第一个参数指定重复次数，第二个参数指定轨道列表。 轨道列表？ 是的，你实际上可以重复多个轨道。例如和上面代码等价的代码：grid-template-columns: repeat(2, 1fr 1fr);。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/yoerVa/">CSS Grid Layout: Repeating track lists</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h2 id="自动重复轨道"><a href="#自动重复轨道" class="headerlink" title="自动重复轨道"></a>自动重复轨道</h2><p><img src="http://file.w3cbest.com/file/images/grid6_.png"> 一个带有4个垂直轨道的显式网格，每个100px宽，由重复表示法生成。</p>
+<h2 id="自动重复轨道"><a href="#自动重复轨道" class="headerlink" title="自动重复轨道"></a>自动重复轨道</h2><p><img data-src="http://file.w3cbest.com/file/images/grid6_.png"> 一个带有4个垂直轨道的显式网格，每个100px宽，由重复表示法生成。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/VzeNpE/">CSS Grid Layout: Auto-fitting</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p><code>repeat()</code>函数非常有用，但它可以进一步自动化。我们可以使用<code>auto-fill</code>和<code>auto-fit</code>关键字，来替代设置固定数量的重复。</p>
-<h2 id="自动填充轨道（auto-fill）"><a href="#自动填充轨道（auto-fill）" class="headerlink" title="自动填充轨道（auto-fill）"></a>自动填充轨道（auto-fill）</h2><p>auto-fill 关键字创建适合网格容器的轨道数，而不会导致网格溢出。 <img src="http://file.w3cbest.com/file/images/grid7_.png"> 重复放入宽度为100px的垂直轨道，以适应网格容器。</p>
+<h2 id="自动填充轨道（auto-fill）"><a href="#自动填充轨道（auto-fill）" class="headerlink" title="自动填充轨道（auto-fill）"></a>自动填充轨道（auto-fill）</h2><p>auto-fill 关键字创建适合网格容器的轨道数，而不会导致网格溢出。 <img data-src="http://file.w3cbest.com/file/images/grid7_.png"> 重复放入宽度为100px的垂直轨道，以适应网格容器。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/PKZgmr/">CSS Grid Layout: auto-fill</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(auto-fill, 100px);<br>  grid-gap: 20px;<br>}</p>
 <p>注意：<code>repeat(auto-fill, 1fr)</code>; 只会创建一个轨道，因为宽度为<code>1fr</code>的单个轨道已经填满了整个网格容器。</p>
 <h2 id="自动调整轨道（auto-fit）"><a href="#自动调整轨道（auto-fit）" class="headerlink" title="自动调整轨道（auto-fit）"></a>自动调整轨道（auto-fit）</h2><p><code>auto-fit</code>关键字的行为与<code>auto-fill</code>相同，只是在网格项目放置后，它只会根据需要创建任意数量的轨道，并且任何空的重复轨道都会折叠在一起。</p>
 <p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(auto-fit, 100px);<br>  grid-gap: 20px;<br>}</p>
-<p>上例的代码，使用<code>repeat(auto-fit, 100px)</code>; 和<code>repeat(4, 100px)</code>创建的网格看上去相同。当有超过4个网格项时，就可以看到差异了。 如果有更多网格项，则<code>auto-fit</code>会创建更多列。 <img src="http://file.w3cbest.com/file/images/grid8.png"> 在 repeat() 中使用 auto-fit 关键词可根据需要创建尽可能多的轨道，并将轨道尽可能多地放入网格容器中。</p>
+<p>上例的代码，使用<code>repeat(auto-fit, 100px)</code>; 和<code>repeat(4, 100px)</code>创建的网格看上去相同。当有超过4个网格项时，就可以看到差异了。 如果有更多网格项，则<code>auto-fit</code>会创建更多列。 <img data-src="http://file.w3cbest.com/file/images/grid8.png"> 在 repeat() 中使用 auto-fit 关键词可根据需要创建尽可能多的轨道，并将轨道尽可能多地放入网格容器中。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/RZrOXw/">CSS Grid Layout: auto-fit</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>另一方面，如果在<code>repeat()</code>中使用固定数量的垂直轨道，并且网格项数超过该值，则添加更多行。您可以在下一节中阅读更多相关内容：<a href="#implicit-grids">隐式网格</a>。 <img src="http://file.w3cbest.com/file/images/grid9.png"> 如果网格项多于垂直轨道，则会添加更多行。</p>
+<p>另一方面，如果在<code>repeat()</code>中使用固定数量的垂直轨道，并且网格项数超过该值，则添加更多行。您可以在下一节中阅读更多相关内容：<a href="#implicit-grids">隐式网格</a>。 <img data-src="http://file.w3cbest.com/file/images/grid9.png"> 如果网格项多于垂直轨道，则会添加更多行。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/ZJQZgr/">CSS Grid Layout: implicit rows</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>为方便起见，我在上面的示例中使用了<code>grid-template-columns</code>，但所有规则也适用于<code>grid-template-rows</code>。</p>
 <p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(auto-fill, 100px);<br>  grid-template-rows: repeat(auto-fill, 100px);<br>  grid-gap: 20px;<br>  height: 100%;<br>}</p>
 <p>html, body {<br>  height: 100%;<br>}</p>
-<p><img src="http://file.w3cbest.com/file/images/grid10.png"> 在两个轴(行和列)上使用<code>auto-fill</code>关键字重复表示法。</p>
+<p><img data-src="http://file.w3cbest.com/file/images/grid10.png"> 在两个轴(行和列)上使用<code>auto-fill</code>关键字重复表示法。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/prgVmW/">CSS Grid Layout: auto-fill on both axes</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h2 id="隐式的-Grid-网格"><a href="#隐式的-Grid-网格" class="headerlink" title="隐式的 Grid(网格)"></a>隐式的 Grid(网格)</h2><p>如果网格项的数量多于网格单元格，或者网格项位于显式网格外部，则网格容器会通过向网格添加网格线自动生成网格轨道。 显式网格与这些额外的隐式轨道和网格线线一起形成所谓的隐式网格。 <img src="http://file.w3cbest.com/file/images/grid2.png"> 两个网格项放置在显式网格之外，导致创建隐式网格线条和网格轨道。</p>
+<h2 id="隐式的-Grid-网格"><a href="#隐式的-Grid-网格" class="headerlink" title="隐式的 Grid(网格)"></a>隐式的 Grid(网格)</h2><p>如果网格项的数量多于网格单元格，或者网格项位于显式网格外部，则网格容器会通过向网格添加网格线自动生成网格轨道。 显式网格与这些额外的隐式轨道和网格线线一起形成所谓的隐式网格。 <img data-src="http://file.w3cbest.com/file/images/grid2.png"> 两个网格项放置在显式网格之外，导致创建隐式网格线条和网格轨道。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/vJLwNY/">CSS Grid Layout: implicit tracks</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>.item:first-child {<br>  grid-column-start: -1;<br>}</p>
 <p>.item:nth-child(2) {<br>  grid-row-start: 4;<br>}</p>
 <p>隐式轨道的宽度和高度是自动设置。它们的大小足以适合放置的网格项，但可以更改其默认行为。</p>
 <h2 id="调整隐式轨道"><a href="#调整隐式轨道" class="headerlink" title="调整隐式轨道"></a>调整隐式轨道</h2><p><code>grid-auto-rows</code>和<code>grid-auto-columns</code>属性使我们可以控制隐式轨道的大小。</p>
 <p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(4, 1fr);<br>  grid-template-rows: 100px 100px;<br>  grid-gap: 20px;<br>  grid-auto-columns: 200px;<br>  grid-auto-rows: 60px;<br>}</p>
-<p>无论网格项是否适合，隐式轨道现在总是具有200px的宽度和60px的高度。 <img src="http://file.w3cbest.com/file/images/grid3.png"> 固定宽度和高度的隐式轨道。</p>
+<p>无论网格项是否适合，隐式轨道现在总是具有200px的宽度和60px的高度。 <img data-src="http://file.w3cbest.com/file/images/grid3.png"> 固定宽度和高度的隐式轨道。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/KvVLVy/">CSS Grid Layout: Sizing implicit tracks</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>通过使用 minmax() 函数来指定范围，可以使调整隐式轨道更灵活。</p>
 <p>.grid {<br>  grid-auto-columns: minmax(200px, auto);<br>  grid-auto-rows: minmax(60px, auto);<br>}</p>
 <p>隐式轨道现在至少有200px宽和60px高，但如果内容需要它将会扩展。</p>
-<h2 id="将网格扩展到开始"><a href="#将网格扩展到开始" class="headerlink" title="将网格扩展到开始"></a>将网格扩展到开始</h2><p>隐式轨道可能不仅仅被添加到显式网格的末尾。也可能扩展到显式网格的开始处。 <img src="http://file.w3cbest.com/file/images/grid4_.png"> 一个隐式网格，由一行和一列扩展到开头</p>
+<h2 id="将网格扩展到开始"><a href="#将网格扩展到开始" class="headerlink" title="将网格扩展到开始"></a>将网格扩展到开始</h2><p>隐式轨道可能不仅仅被添加到显式网格的末尾。也可能扩展到显式网格的开始处。 <img data-src="http://file.w3cbest.com/file/images/grid4_.png"> 一个隐式网格，由一行和一列扩展到开头</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/BdyJWR/">CSS Grid Layout: Implicit grid</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>.item:first-child {<br>  grid-row-end: 2;<br>  grid-row-start: span 2;<br>}</p>
 <p>.item:nth-child(2) {<br>  grid-column-end: 2;<br>  grid-column-start: span 2;<br>}</p>
 <p>每个网格项在第二行结束，并跨越2个单元格（一个垂直，另一个水平）。 由于在第二行之前只有一个单元，因此在每一侧的开始处将另一个隐式轨道添加到网格中。</p>
-<h2 id="自动放置"><a href="#自动放置" class="headerlink" title="自动放置"></a>自动放置</h2><p>如前所述，如果项目数超过单元格数，也会添加隐式轨道。 默认情况下，自动放置算法通过连续填充每一行来放置网格项，并根据需要添加新行。 我们可以使用 grid-auto-flow 属性来指定如何把网格项自动放置到网格容器。 <img src="http://file.w3cbest.com/file/images/grid11.png"> 如果网格项数超过单元格数量，则添加新列而不是行。</p>
+<h2 id="自动放置"><a href="#自动放置" class="headerlink" title="自动放置"></a>自动放置</h2><p>如前所述，如果项目数超过单元格数，也会添加隐式轨道。 默认情况下，自动放置算法通过连续填充每一行来放置网格项，并根据需要添加新行。 我们可以使用 grid-auto-flow 属性来指定如何把网格项自动放置到网格容器。 <img data-src="http://file.w3cbest.com/file/images/grid11.png"> 如果网格项数超过单元格数量，则添加新列而不是行。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/JyGqBP/">CSS Grid Layout: grid-auto-flow</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>.grid {<br>  display: grid;<br>  grid-template-columns: repeat(4, 1fr);<br>  grid-template-rows: 100px 100px;<br>  grid-gap: 20px;<br>  grid-auto-flow: column;<br>}</p>
 <p>使用网格项填充列，不是填充行，并创建其他隐式列。</p>
-<h2 id="未定义显式网格"><a href="#未定义显式网格" class="headerlink" title="未定义显式网格"></a>未定义显式网格</h2><p>由于可以使用<code>grid-auto-rows</code>和<code>grid-auto-columns</code>自动调整单元格大小，因此不必定义显式网格。 <img src="http://file.w3cbest.com/file/images/grid5.png"> 没有显式行和轨道的隐式网格。</p>
+<h2 id="未定义显式网格"><a href="#未定义显式网格" class="headerlink" title="未定义显式网格"></a>未定义显式网格</h2><p>由于可以使用<code>grid-auto-rows</code>和<code>grid-auto-columns</code>自动调整单元格大小，因此不必定义显式网格。 <img data-src="http://file.w3cbest.com/file/images/grid5.png"> 没有显式行和轨道的隐式网格。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/matuzo/pen/gxPzeY/">CSS Grid Layout: Implicit grid only</a> by Manuel Matuzovic (<a target="_blank" rel="noopener" href="https://codepen.io/matuzo">@matuzo</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <p>.grid {<br>  display: grid;<br>  grid-auto-columns: minmax(60px, 200px);<br>  grid-auto-rows: 60px;<br>  grid-gap: 20px;<br>}</p>
 <p>.item:first-child {<br>  grid-row: span 2;<br>}</p>
@@ -1353,31 +999,31 @@
 
       
           <p>很难追踪 JavaScript（ECMAScript）中的新功能。 想找到有用的代码示例更加困难。 因此，在本文中，我将介绍 TC39 已完成 ES2016，ES2017 和 ES2018（最终草案）提案中所有添加的 18 个功能，并展示有用的示例。 很难跟踪各种版本的ECMAScript中的新内容，而且如果没有跳转就更难获得有用的示例。因此，在本文中，我将介绍在ES2016，ES2017和ES2018（最终草案）中添加的TC39完成提案中列出的所有18个功能，并向他们展示有用的示例。</p>
-<h2 id="ECMAScript-2016"><a href="#ECMAScript-2016" class="headerlink" title="ECMAScript 2016"></a>ECMAScript 2016</h2><h3 id="1-Array-prototype-includes"><a href="#1-Array-prototype-includes" class="headerlink" title="1.Array.prototype.includes"></a>1.Array.prototype.includes</h3><p>includes 是 Array 上的一个简单实例方法，有助于轻松查找某项元素是否在数组中（包括NaN ,与 indexOf不同）。 <img src="http://file.w3cbest.com/file/images/1_OhhFTNabUEz8ZeI4vaCIJw.png"> 人们想要 contains 来命名该规范，但显然 Mootools 已经使用过这个命名，所以使用了 includes。</p>
-<h3 id="2-指数运算符"><a href="#2-指数运算符" class="headerlink" title="2.指数运算符"></a>2.指数运算符</h3><p>加法和减法等数学运算分别具有 + 和 - 等中缀运算符。与它们类似，** 中缀运算符通常用于指数运算。在 ECMAScript 2016 中，引入了 ** 代替 Math.pow 。 <img src="http://file.w3cbest.com/file/images/1_c1k1vgBgGaam7XA8xAp49w.png"></p>
-<h2 id="ECMAScript-2017"><a href="#ECMAScript-2017" class="headerlink" title="ECMAScript 2017"></a>ECMAScript 2017</h2><h3 id="1-Object-values"><a href="#1-Object-values" class="headerlink" title="1.Object.values()"></a>1.Object.values()</h3><p>Object.values() 是一个与 Object.keys() 类似的新函数，但返回 Object 自身属性的所有值，不包括原型链中的任何值。 <img src="http://file.w3cbest.com/file/images/1_OkcC2Sozg0MKvkaqZWxmnw.png"></p>
-<h3 id="2-Object-entries"><a href="#2-Object-entries" class="headerlink" title="2.Object.entries()"></a>2.Object.entries()</h3><p>Object.entries() 与 Object.keys 相关，但它不仅仅返回 keys ，而是以数组方式返回 keys 和 values 。这使得在循环中使用对象或将对象转换为 Maps 等操作变得非常简单。 <img src="http://file.w3cbest.com/file/images/1_23RYJzstZ7iMxKNYbfAAWg.png"> <img src="http://file.w3cbest.com/file/images/1_XAXiVkw2zKyBio4OX6DQoQ.png"></p>
+<h2 id="ECMAScript-2016"><a href="#ECMAScript-2016" class="headerlink" title="ECMAScript 2016"></a>ECMAScript 2016</h2><h3 id="1-Array-prototype-includes"><a href="#1-Array-prototype-includes" class="headerlink" title="1.Array.prototype.includes"></a>1.Array.prototype.includes</h3><p>includes 是 Array 上的一个简单实例方法，有助于轻松查找某项元素是否在数组中（包括NaN ,与 indexOf不同）。 <img data-src="http://file.w3cbest.com/file/images/1_OhhFTNabUEz8ZeI4vaCIJw.png"> 人们想要 contains 来命名该规范，但显然 Mootools 已经使用过这个命名，所以使用了 includes。</p>
+<h3 id="2-指数运算符"><a href="#2-指数运算符" class="headerlink" title="2.指数运算符"></a>2.指数运算符</h3><p>加法和减法等数学运算分别具有 + 和 - 等中缀运算符。与它们类似，** 中缀运算符通常用于指数运算。在 ECMAScript 2016 中，引入了 ** 代替 Math.pow 。 <img data-src="http://file.w3cbest.com/file/images/1_c1k1vgBgGaam7XA8xAp49w.png"></p>
+<h2 id="ECMAScript-2017"><a href="#ECMAScript-2017" class="headerlink" title="ECMAScript 2017"></a>ECMAScript 2017</h2><h3 id="1-Object-values"><a href="#1-Object-values" class="headerlink" title="1.Object.values()"></a>1.Object.values()</h3><p>Object.values() 是一个与 Object.keys() 类似的新函数，但返回 Object 自身属性的所有值，不包括原型链中的任何值。 <img data-src="http://file.w3cbest.com/file/images/1_OkcC2Sozg0MKvkaqZWxmnw.png"></p>
+<h3 id="2-Object-entries"><a href="#2-Object-entries" class="headerlink" title="2.Object.entries()"></a>2.Object.entries()</h3><p>Object.entries() 与 Object.keys 相关，但它不仅仅返回 keys ，而是以数组方式返回 keys 和 values 。这使得在循环中使用对象或将对象转换为 Maps 等操作变得非常简单。 <img data-src="http://file.w3cbest.com/file/images/1_23RYJzstZ7iMxKNYbfAAWg.png"> <img data-src="http://file.w3cbest.com/file/images/1_XAXiVkw2zKyBio4OX6DQoQ.png"></p>
 <h3 id="3-字符串填充"><a href="#3-字符串填充" class="headerlink" title="3.字符串填充"></a>3.字符串填充</h3><p>String 中添加了两个实例方法，String.prototype.padStart 和 String.prototype.padEnd – 允许将空字符串或其他字符串附加到原始字符串的开头或结尾。</p>
 <p>‘someString’.padStart(numberOfCharcters [,stringForPadding]);<br>‘5’.padStart(10) // ‘ 5’<br>‘5’.padStart(10, ‘=*‘) //‘=*=*=*=*=5’<br>‘5’.padEnd(10) // ‘5 ‘<br>‘5’.padEnd(10, ‘=*‘) //‘5=*=*=*=*=’</p>
-<h4 id="3-1-padStart-示例"><a href="#3-1-padStart-示例" class="headerlink" title="3.1 padStart 示例"></a>3.1 padStart 示例</h4><p>在下面的示例中，我们列出了不同长度的数字。我们希望前置“0”，以便所有项具有相同的 10 位数长度显示。我们可以使用 padStart(10, ‘0’) 轻松实现这一目标。 <img src="http://file.w3cbest.com/file/images/1_KLrT9Xmh43cIi2MFUmIfcw.png"></p>
-<h4 id="3-2-padEnd-示例"><a href="#3-2-padEnd-示例" class="headerlink" title="3.2 padEnd 示例"></a>3.2 padEnd 示例</h4><p>当我们打印不同长度的多个项并希望正确对齐它们时，padEnd 真的很方便。 下面的示例是 padEnd，padStart 和 Object.entries 组合在一起以产生漂亮输出的一个很好的现实示例。 <img src="http://file.w3cbest.com/file/images/1_fLXPci_E_yXK9uSqLz-axQ.png"></p>
+<h4 id="3-1-padStart-示例"><a href="#3-1-padStart-示例" class="headerlink" title="3.1 padStart 示例"></a>3.1 padStart 示例</h4><p>在下面的示例中，我们列出了不同长度的数字。我们希望前置“0”，以便所有项具有相同的 10 位数长度显示。我们可以使用 padStart(10, ‘0’) 轻松实现这一目标。 <img data-src="http://file.w3cbest.com/file/images/1_KLrT9Xmh43cIi2MFUmIfcw.png"></p>
+<h4 id="3-2-padEnd-示例"><a href="#3-2-padEnd-示例" class="headerlink" title="3.2 padEnd 示例"></a>3.2 padEnd 示例</h4><p>当我们打印不同长度的多个项并希望正确对齐它们时，padEnd 真的很方便。 下面的示例是 padEnd，padStart 和 Object.entries 组合在一起以产生漂亮输出的一个很好的现实示例。 <img data-src="http://file.w3cbest.com/file/images/1_fLXPci_E_yXK9uSqLz-axQ.png"></p>
 <p>const cars = {<br>    ‘?BMW’: ‘10’,<br>    ‘?Tesla’: ‘5’,<br>    ‘?Lamborghini’: ‘0’<br>}<br>Object.entries(cars).map(([name, count]) =&gt; {<br>    //padEnd appends ‘ -‘ until the name becomes 20 characters<br>    //padStart prepends ‘0’ until the count becomes 3 characters.<br>    console.log(`${name.padEnd(20, ‘ -‘)} Count: ${count.padStart(3, ‘0’)}`)<br>});<br>//Prints..<br>// ?BMW - - - - - - -  Count: 010<br>// ?Tesla - - - - - -  Count: 005<br>// ?Lamborghini - - -  Count: 000</p>
 <h4 id="3-3-⚠️padStart-和-padEnd-用于-Emojis-表情和其他双字节字符"><a href="#3-3-⚠️padStart-和-padEnd-用于-Emojis-表情和其他双字节字符" class="headerlink" title="3.3 ⚠️padStart 和 padEnd 用于 Emojis 表情和其他双字节字符"></a>3.3 ⚠️padStart 和 padEnd 用于 Emojis 表情和其他双字节字符</h4><p>Emojis 和其他双字节字符使用多个字节的 unicode 表示。 所以 padStart 和 padEnd 可能无法按预期工作！⚠️ 例如：假设我们把字符串 heart 通过 emoji表情 ❤️ 使用 padStart 延长到十个字节，这个时候我们得到如下的输出：</p>
 <p>//Notice that instead of 5 hearts, there are only 2 hearts and 1 heart that looks odd!<br>‘heart’.padStart(10, “❤️”); // prints.. ‘❤️❤️❤heart’</p>
 <p>这是因为 ❤️ 本身占据两个字节（\u2764\uFE0F），而 heart 本身有 5 个字节，所以我们只剩 5 个字节的位置可以填充，JS使用\u2764\uFE0F 来填充两颗心并产生 ❤️❤️ 。对于最后一个，它只使用 heart \u2764 的第一个字节产生 ❤ 所以我们最终得到：❤️❤️❤heart</p>
-<h4 id="4-Object-getOwnPropertyDescriptors"><a href="#4-Object-getOwnPropertyDescriptors" class="headerlink" title="4.Object.getOwnPropertyDescriptors"></a>4.Object.getOwnPropertyDescriptors</h4><p>此方法返回给定对象的所有属性的所有详细信息（包括 getter get 和 setter set方法）。 添加它的主要动机是允许浅复制/克隆对象到另一个对象，该对象也复制 getter 和 setter 函数而不像 Object.assign。 <strong>Object.assign 浅复制除原始源对象的 getter 和 setter 函数之外的所有信息。</strong> 下面的示例显示了 Object.assign 和 Object.getOwnPropertyDescriptors 以及 Object.defineProperties 之间的区别，以将原始对象 Car 复制到新对象 ElectricCar 中。 你将看到，通过使用 Object.getOwnPropertyDescriptors，discount getter 和 setter 函数也会复制到目标对象中。 之前… <img src="http://file.w3cbest.com/file/images/1_7r4pk8hfx5VQ9-ERu--xCw.png"> 以后… <img src="http://file.w3cbest.com/file/images/1_gvlG4DfnkiOrlgPsQrjLfg.png"></p>
+<h4 id="4-Object-getOwnPropertyDescriptors"><a href="#4-Object-getOwnPropertyDescriptors" class="headerlink" title="4.Object.getOwnPropertyDescriptors"></a>4.Object.getOwnPropertyDescriptors</h4><p>此方法返回给定对象的所有属性的所有详细信息（包括 getter get 和 setter set方法）。 添加它的主要动机是允许浅复制/克隆对象到另一个对象，该对象也复制 getter 和 setter 函数而不像 Object.assign。 <strong>Object.assign 浅复制除原始源对象的 getter 和 setter 函数之外的所有信息。</strong> 下面的示例显示了 Object.assign 和 Object.getOwnPropertyDescriptors 以及 Object.defineProperties 之间的区别，以将原始对象 Car 复制到新对象 ElectricCar 中。 你将看到，通过使用 Object.getOwnPropertyDescriptors，discount getter 和 setter 函数也会复制到目标对象中。 之前… <img data-src="http://file.w3cbest.com/file/images/1_7r4pk8hfx5VQ9-ERu--xCw.png"> 以后… <img data-src="http://file.w3cbest.com/file/images/1_gvlG4DfnkiOrlgPsQrjLfg.png"></p>
 <p>var Car = {<br>    name: ‘BMW’,<br>    price: 1000000,<br>    set discount(x) {<br>        this.d = x;<br>    },<br>    get discount() {<br>        return this.d;<br>    },<br>};<br>//Print details of Car object’s ‘discount’ property<br>console.log(Object.getOwnPropertyDescriptor(Car, ‘discount’));<br>//prints..<br>// {<br>//   get: [Function: get],<br>//   set: [Function: set],<br>//   enumerable: true,<br>//   configurable: true<br>// }<br>//Copy Car’s properties to ElectricCar using Object.assign<br>const ElectricCar = Object.assign({}, Car);<br>//Print details of ElectricCar object’s ‘discount’ property<br>console.log(Object.getOwnPropertyDescriptor(ElectricCar, ‘discount’));<br>//prints..<br>// {<br>//   value: undefined,<br>//   writable: true,<br>//   enumerable: true,<br>//   configurable: true </p>
 <p>// }<br>//⚠️Notice that getters and setters are missing in ElectricCar object for ‘discount’ property !??<br>//Copy Car’s properties to ElectricCar2 using Object.defineProperties<br>//and extract Car’s properties using Object.getOwnPropertyDescriptors<br>const ElectricCar2 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(Car));<br>//Print details of ElectricCar2 object’s ‘discount’ property<br>console.log(Object.getOwnPropertyDescriptor(ElectricCar2, ‘discount’));<br>//prints..<br>// { get: [Function: get],  ??????<br>//   set: [Function: set],  ??????<br>//   enumerable: true,<br>//   configurable: true<br>// }<br>// Notice that getters and setters are present in the ElectricCar2 object for ‘discount’ property!</p>
-<h3 id="5-在函数参数中添加尾逗号"><a href="#5-在函数参数中添加尾逗号" class="headerlink" title="5.在函数参数中添加尾逗号"></a>5.在函数参数中添加尾逗号</h3><p>这是一个小更新，允许我们在函数最后一个参数后面有逗号。 为什么？ 帮助使用像 git blame 这样的工具，防止添加一个参数却需要修改两行代码。 以下示例显示了问题和解决方案。 <img src="http://file.w3cbest.com/file/images/1_-SKZCxQdf8Rk48SSaPtDGg.png"></p>
-<h3 id="6-Async-Await"><a href="#6-Async-Await" class="headerlink" title="6. Async/Await"></a>6. Async/Await</h3><p>到目前为止，这个特性应该是目前为止是最重要和最有用的功能。async 函数解决了回调地狱的问题，并使整个代码看起来简单。 async 关键字告诉 JavaScript 编译器以不同方式处理函数。 只要到达该函数中的 await 关键字，编译器就会暂停。 它假定 await 之后的表达式返回一个 promise 并等待，直到 promise 被 resolved 或被 rejected ，然后才继续执行。 在下面的示例中，getAmount 函数调用两个异步函数 getUser 和 getBankBalance。 我们可以用 Promise 做到这一点，但是使用 async await 更加优雅和简单。 <img src="http://file.w3cbest.com/file/images/1_L3FZ0onbBD4ay6UhZvPoMw.png"></p>
-<h4 id="6-1-Async-函数本身返回一个-Promise-。"><a href="#6-1-Async-函数本身返回一个-Promise-。" class="headerlink" title="6.1 Async 函数本身返回一个 Promise 。"></a>6.1 Async 函数本身返回一个 Promise 。</h4><p>如果你正在等待 async 函数的结果，则需要使用 Promise 的 then 语法来捕获其结果。 在以下示例中，我们希望使用 console.log 但不在 doubleAndAdd 中记录结果。 所以我们想等待并使用 then 语法将结果传递给console.log 。 <img src="http://file.w3cbest.com/file/images/1_ylheY6gJawprWEVNL68mRQ.png"></p>
-<h4 id="6-2-并行调用-async-await"><a href="#6-2-并行调用-async-await" class="headerlink" title="6.2 并行调用 async/await"></a>6.2 并行调用 async/await</h4><p>在前面的例子中，我们调用 await 两次，但每次我们等待一秒钟（总共2秒）。相反，我们可以并行调用它，因为使用 Promise.all 并行调用 a 和 b 。 <img src="http://file.w3cbest.com/file/images/1_VEF_Sq067Liq4lfTV8Xv0A.png"></p>
+<h3 id="5-在函数参数中添加尾逗号"><a href="#5-在函数参数中添加尾逗号" class="headerlink" title="5.在函数参数中添加尾逗号"></a>5.在函数参数中添加尾逗号</h3><p>这是一个小更新，允许我们在函数最后一个参数后面有逗号。 为什么？ 帮助使用像 git blame 这样的工具，防止添加一个参数却需要修改两行代码。 以下示例显示了问题和解决方案。 <img data-src="http://file.w3cbest.com/file/images/1_-SKZCxQdf8Rk48SSaPtDGg.png"></p>
+<h3 id="6-Async-Await"><a href="#6-Async-Await" class="headerlink" title="6. Async/Await"></a>6. Async/Await</h3><p>到目前为止，这个特性应该是目前为止是最重要和最有用的功能。async 函数解决了回调地狱的问题，并使整个代码看起来简单。 async 关键字告诉 JavaScript 编译器以不同方式处理函数。 只要到达该函数中的 await 关键字，编译器就会暂停。 它假定 await 之后的表达式返回一个 promise 并等待，直到 promise 被 resolved 或被 rejected ，然后才继续执行。 在下面的示例中，getAmount 函数调用两个异步函数 getUser 和 getBankBalance。 我们可以用 Promise 做到这一点，但是使用 async await 更加优雅和简单。 <img data-src="http://file.w3cbest.com/file/images/1_L3FZ0onbBD4ay6UhZvPoMw.png"></p>
+<h4 id="6-1-Async-函数本身返回一个-Promise-。"><a href="#6-1-Async-函数本身返回一个-Promise-。" class="headerlink" title="6.1 Async 函数本身返回一个 Promise 。"></a>6.1 Async 函数本身返回一个 Promise 。</h4><p>如果你正在等待 async 函数的结果，则需要使用 Promise 的 then 语法来捕获其结果。 在以下示例中，我们希望使用 console.log 但不在 doubleAndAdd 中记录结果。 所以我们想等待并使用 then 语法将结果传递给console.log 。 <img data-src="http://file.w3cbest.com/file/images/1_ylheY6gJawprWEVNL68mRQ.png"></p>
+<h4 id="6-2-并行调用-async-await"><a href="#6-2-并行调用-async-await" class="headerlink" title="6.2 并行调用 async/await"></a>6.2 并行调用 async/await</h4><p>在前面的例子中，我们调用 await 两次，但每次我们等待一秒钟（总共2秒）。相反，我们可以并行调用它，因为使用 Promise.all 并行调用 a 和 b 。 <img data-src="http://file.w3cbest.com/file/images/1_VEF_Sq067Liq4lfTV8Xv0A.png"></p>
 <h4 id="6-3-async-await-函数的错误处理"><a href="#6-3-async-await-函数的错误处理" class="headerlink" title="6.3 async/await 函数的错误处理"></a>6.3 async/await 函数的错误处理</h4><p>使用 async/await 时，有多种方法可以处理错误。</p>
-<h5 id="选项1-在函数中使用try-catch"><a href="#选项1-在函数中使用try-catch" class="headerlink" title="选项1-在函数中使用try catch"></a>选项1-在函数中使用try catch</h5><p><img src="http://file.w3cbest.com/file/images/1_iP84ax2TOt5dbaIjW7kzcw.png"></p>
+<h5 id="选项1-在函数中使用try-catch"><a href="#选项1-在函数中使用try-catch" class="headerlink" title="选项1-在函数中使用try catch"></a>选项1-在函数中使用try catch</h5><p><img data-src="http://file.w3cbest.com/file/images/1_iP84ax2TOt5dbaIjW7kzcw.png"></p>
 <p>//Option 1 - Use try catch within the function<br>async function doubleAndAdd(a, b) {<br>    try {<br>        a = await doubleAfter1Sec(a);<br>        b = await doubleAfter1Sec(b);<br>    } catch (e) {<br>        return NaN; //return something<br>    }<br>    return a + b;<br>}<br>//?Usage:<br>doubleAndAdd(‘one’, 2).then(console.log); // NaN<br>doubleAndAdd(1, 2).then(console.log); // 6<br>function doubleAfter1Sec(param) {<br>    return new Promise((resolve, reject) =&gt; {<br>        setTimeout(function() {<br>            let val = param * 2;<br>            isNaN(val) ? reject(NaN) : resolve(val);<br>        }, 1000);<br>    });<br>}</p>
-<h5 id="选项2-捕获-Catch-await-表达式"><a href="#选项2-捕获-Catch-await-表达式" class="headerlink" title="选项2-捕获(Catch) await 表达式"></a>选项2-捕获(Catch) await 表达式</h5><p>由于每一个 await 表达式返回的都是 Promise，我们可以直接在每一行上面添加 catch。 <img src="http://file.w3cbest.com/file/images/1_Bkls3dXMIRGKAwFN2r--qg.png"></p>
+<h5 id="选项2-捕获-Catch-await-表达式"><a href="#选项2-捕获-Catch-await-表达式" class="headerlink" title="选项2-捕获(Catch) await 表达式"></a>选项2-捕获(Catch) await 表达式</h5><p>由于每一个 await 表达式返回的都是 Promise，我们可以直接在每一行上面添加 catch。 <img data-src="http://file.w3cbest.com/file/images/1_Bkls3dXMIRGKAwFN2r--qg.png"></p>
 <p>//Option 2 - *Catch* errors on  every await line<br>//as each await expression is a Promise in itself<br>async function doubleAndAdd(a, b) {<br>    a = await doubleAfter1Sec(a).catch(e =&gt; console.log(‘“a” is NaN’)); // ?<br>    b = await doubleAfter1Sec(b).catch(e =&gt; console.log(‘“b” is NaN’)); // ?<br>    if (!a  !b) {<br>        return NaN;<br>    }<br>    return a + b;<br>}<br>//?Usage:<br>doubleAndAdd(‘one’, 2).then(console.log); // NaN  and logs:  “a” is NaN<br>doubleAndAdd(1, 2).then(console.log); // 6<br>function doubleAfter1Sec(param) {<br>    return new Promise((resolve, reject) =&gt; {<br>        setTimeout(function() {<br>            let val = param * 2;<br>            isNaN(val) ? reject(NaN) : resolve(val);<br>        }, 1000);<br>    });<br>}</p>
-<h5 id="选项3-捕获-Catch-整个async-await函数"><a href="#选项3-捕获-Catch-整个async-await函数" class="headerlink" title="选项3-捕获(Catch) 整个async-await函数"></a>选项3-捕获(Catch) 整个async-await函数</h5><p><img src="http://file.w3cbest.com/file/images/1_hhkv5ZBOUYViCL2UP0sv5Q.png"></p>
+<h5 id="选项3-捕获-Catch-整个async-await函数"><a href="#选项3-捕获-Catch-整个async-await函数" class="headerlink" title="选项3-捕获(Catch) 整个async-await函数"></a>选项3-捕获(Catch) 整个async-await函数</h5><p><img data-src="http://file.w3cbest.com/file/images/1_hhkv5ZBOUYViCL2UP0sv5Q.png"></p>
 <p>//Option 3 - Dont do anything but handle outside the function<br>//since async / await returns a promise, we can catch the whole function’s error<br>async function doubleAndAdd(a, b) {<br>    a = await doubleAfter1Sec(a);<br>    b = await doubleAfter1Sec(b);<br>    return a + b;<br>}<br>//?Usage:<br>doubleAndAdd(‘one’, 2)<br>    .then(console.log)<br>    .catch(console.log); // ???&lt;——- use “catch”<br>function doubleAfter1Sec(param) {<br>    return new Promise((resolve, reject) =&gt; {<br>        setTimeout(function() {<br>            let val = param * 2;<br>            isNaN(val) ? reject(NaN) : resolve(val);<br>        }, 1000);<br>    });<br>}</p>
 <h2 id="ECMAScript-2018"><a href="#ECMAScript-2018" class="headerlink" title="ECMAScript 2018"></a>ECMAScript 2018</h2><h3 id="1-共享内存和-atomics"><a href="#1-共享内存和-atomics" class="headerlink" title="1. 共享内存和 atomics"></a>1. 共享内存和 atomics</h3><p>这是一个巨大的，非常先进的功能，并且是对 JS 引擎的核心增强。 这个特性的主要目的是给 JavaScript 提供多线程功能，以便JS开发人员通过自己管理内存来编写高性能的并发程序，而不是让JS引擎管理内存。 这是通过一种名为<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer">SharedArrayBuffer</a>的新型全局对象完成的，该对象实质上将数据存储在共享内存空间中。因此，这些数据可以在主JS线程和 Web-worker 线程之间共享。 之前，如果我们想在主JS线程和 web-worker 之间共享数据，我们必须复制数据并使用postMessage将其发送到另一个线程。 现在，你只需使用SharedArrayBuffer，主线程和多个web-worker线程都可以立即访问数据。 但是在线程之间共享内存会导致竞争条件(即多个进程同时操作一个内存)。为了帮助避免竞争条件，引入了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics">Atomics</a>全局对象。 Atomics提供了各种方法来在线程使用其数据时锁定共享内存。它还提供了安全地更新共享内存中的此类数据的方法。 建议通过某个库使用此功能，但是现在没有基于此功能构建的库。 如果你有兴趣，我建议阅读：</p>
 <ol>
@@ -1385,7 +1031,7 @@
 <li> <a target="_blank" rel="noopener" href="https://hacks.mozilla.org/category/code-cartoons/a-cartoon-intro-to-sharedarraybuffers/"><em>A cartoon intro to SharedArrayBuffers</em></a>_ — _<a target="_blank" rel="noopener" href="https://medium.com/@linclark"><em>Lin Clark</em></a></li>
 <li> <a target="_blank" rel="noopener" href="http://2ality.com/2017/01/shared-array-buffer.html"><em>Shared memory and atomics</em></a>_ — _<a target="_blank" rel="noopener" href="http://rauschma.de/"><em>Dr. Axel Rauschmayer</em></a></li>
 </ol>
-<h3 id="2-移除了标记模板字面量的限制"><a href="#2-移除了标记模板字面量的限制" class="headerlink" title="2.移除了标记模板字面量的限制"></a>2.移除了标记模板字面量的限制</h3><p>首先，我们需要澄清“标记模板字面量”是什么，以便我们更好地理解这个功能。 在 ES2015+ 中，有一个称为标记模板文字的功能，允许开发人员自定义字符串的插值方式。 例如，在标准方式中，字符串被插入如下… <img src="http://file.w3cbest.com/file/images/1_4EizdrE9LlRZ5GXRq4G3Yw.png"> 在标记的字面量中，你可以编写一个函数来接收字符串字面量的硬编码部分，例如 [‘Hello’，’！’] 并且替换变量，例如 [‘Raja’] ，作为参数进入一个自定义函数（例如 greet ），并从该自定义函数返回任何你想要的内容。 下面的示例显示我们的自定义 “Tag” 函数 greet，如“Good Morning” “Good afternoon”，等等，取决于当天到字符串字面量的时间，并返回自定义字符串。 <img src="http://file.w3cbest.com/file/images/1_PfeJ5R0h6SHx6SxSkPCLmg.png"></p>
+<h3 id="2-移除了标记模板字面量的限制"><a href="#2-移除了标记模板字面量的限制" class="headerlink" title="2.移除了标记模板字面量的限制"></a>2.移除了标记模板字面量的限制</h3><p>首先，我们需要澄清“标记模板字面量”是什么，以便我们更好地理解这个功能。 在 ES2015+ 中，有一个称为标记模板文字的功能，允许开发人员自定义字符串的插值方式。 例如，在标准方式中，字符串被插入如下… <img data-src="http://file.w3cbest.com/file/images/1_4EizdrE9LlRZ5GXRq4G3Yw.png"> 在标记的字面量中，你可以编写一个函数来接收字符串字面量的硬编码部分，例如 [‘Hello’，’！’] 并且替换变量，例如 [‘Raja’] ，作为参数进入一个自定义函数（例如 greet ），并从该自定义函数返回任何你想要的内容。 下面的示例显示我们的自定义 “Tag” 函数 greet，如“Good Morning” “Good afternoon”，等等，取决于当天到字符串字面量的时间，并返回自定义字符串。 <img data-src="http://file.w3cbest.com/file/images/1_PfeJ5R0h6SHx6SxSkPCLmg.png"></p>
 <p>//A “Tag” function returns a custom string literal.<br>//In this example, greet calls timeGreet() to append Good //Morning/Afternoon/Evening depending on the time of the day.<br>function greet(hardCodedPartsArray, …replacementPartsArray) {<br>    console.log(hardCodedPartsArray); //[ ‘Hello ‘, ‘!’ ]<br>    console.log(replacementPartsArray); //[ ‘Raja’ ]<br>    let str = ‘’;<br>    hardCodedPartsArray.forEach((string, i) =&gt; {<br>        if (i &lt; replacementPartsArray.length) {<br>            str += `${string} ${replacementPartsArray[i]  ‘’}`;<br>        } else {<br>            str += `${string} ${timeGreet()}`; //&lt;– append Good morning/afternoon/evening here<br>        }<br>    });<br>    return str;<br>}<br>//?Usage:<br>const firstName = ‘Raja’;<br>const greetings = greet `Hello ${firstName}!`; //??&lt;– Tagged literal<br>console.log(greetings); //‘Hello  Raja! Good Morning!’ ?<br>function timeGreet() {<br>    const hr = new Date().getHours();<br>    return hr &lt; 12 ?<br>        ‘Good Morning!’ :<br>        hr &lt; 18 ? ‘Good Afternoon!’ : ‘Good Evening!’;<br>}</p>
 <p>现在我们讨论了 “Tagged” 函数是什么，许多人想要在不同的场景下中使用此功能，例如在终端中使用命令和 HTTP 请求来编写 URI ，等等。</p>
 <h4 id="⚠️标签字符串模版存在的问题"><a href="#⚠️标签字符串模版存在的问题" class="headerlink" title="⚠️标签字符串模版存在的问题"></a>⚠️标签字符串模版存在的问题</h4><p>ES2015 和 ES2016 规范不允许使用转义字符，如 \u（unicode），\x（十六进制），除非它们看起来完全像 \u00A9 或 \u{2F804} 或 \xA9 。 因此，如果你有一个内部使用其他域规则（如终端规则）的 Tagged 函数，可能需要使用 \ubla123abla ，而不能是 \u0049 或 \u{@F804} ，这样你会得到一个语法错误。 在 ES2018 中，只要 Tagged 函数返回具有 “cooked” 属性（无效字符为 “undefined” ）的对象中的值，然后是 “raw” 属性（ 无论你想要什么）。</p>
@@ -1394,29 +1040,29 @@
 <p>//Before<br>/first.second/.test(‘first\nsecond’); //false</p>
 <p>此增强功能使点运算符可以匹配任何单个字符。为了确保不会破坏任何内容，我们需要在创建RegEx时使用 \s 标记才能使其正常工作。</p>
 <p>//ECMAScript 2018<br>/first.second/s.test(‘first\nsecond’); //true Notice: /s ??</p>
-<p><img src="http://file.w3cbest.com/file/images/1_t5xegqe5su6XgRDcBObyDw.png"></p>
+<p><img data-src="http://file.w3cbest.com/file/images/1_t5xegqe5su6XgRDcBObyDw.png"></p>
 <h3 id="4-正则表达式捕获命名组"><a href="#4-正则表达式捕获命名组" class="headerlink" title="4. 正则表达式捕获命名组"></a>4. 正则表达式捕获命名组</h3><p>这个增强功能带来了其他语言（如Python，Java等）的有用 RegExp 功能，称为“命名组”。这个功能允许允许正则表达式给每一个捕获组起一个名字(?<name>…)，然后，我们可以使用该名称轻松获取我们需要的任何群组。</p>
-<h4 id="4-1-基本的命名组例子"><a href="#4-1-基本的命名组例子" class="headerlink" title="4.1 基本的命名组例子"></a>4.1 基本的命名组例子</h4><p>在下面的例子中，我们使用(?<year>) (?<month>) and (?year)来为正则表达式中的不同部分分组，结果对象中会包含一个 groups 属性，其拥有 year month day 三个对象。 <img src="http://file.w3cbest.com/file/images/1_1ORiZapMHp_SV5gvOVT2WA.png"></p>
-<h4 id="4-2-在正则表达式本身内使用命名组"><a href="#4-2-在正则表达式本身内使用命名组" class="headerlink" title="4.2 在正则表达式本身内使用命名组"></a>4.2 在正则表达式本身内使用命名组</h4><p>我们可以使用\k<group name>格式来反向引用正则表达式本身中的组。以下示例显示了它的工作原理。 <img src="http://file.w3cbest.com/file/images/1_O6i-gXHBifD27qD73Sw7TA.png"></p>
-<h4 id="4-3-在-String-prototype-replace-中使用命名组"><a href="#4-3-在-String-prototype-replace-中使用命名组" class="headerlink" title="4.3 在 String.prototype.replace 中使用命名组"></a>4.3 在 String.prototype.replace 中使用命名组</h4><p>命名组也可以在 String 的 replace 方法中使用，比如用来交换一个字符串中各个部分的位置。 例如，将firstName, lastName 更改为 lastName, firstName。 <img src="http://file.w3cbest.com/file/images/1_weBLy9CAXFnWNwUqcwNMAg.png"></p>
+<h4 id="4-1-基本的命名组例子"><a href="#4-1-基本的命名组例子" class="headerlink" title="4.1 基本的命名组例子"></a>4.1 基本的命名组例子</h4><p>在下面的例子中，我们使用(?<year>) (?<month>) and (?year)来为正则表达式中的不同部分分组，结果对象中会包含一个 groups 属性，其拥有 year month day 三个对象。 <img data-src="http://file.w3cbest.com/file/images/1_1ORiZapMHp_SV5gvOVT2WA.png"></p>
+<h4 id="4-2-在正则表达式本身内使用命名组"><a href="#4-2-在正则表达式本身内使用命名组" class="headerlink" title="4.2 在正则表达式本身内使用命名组"></a>4.2 在正则表达式本身内使用命名组</h4><p>我们可以使用\k<group name>格式来反向引用正则表达式本身中的组。以下示例显示了它的工作原理。 <img data-src="http://file.w3cbest.com/file/images/1_O6i-gXHBifD27qD73Sw7TA.png"></p>
+<h4 id="4-3-在-String-prototype-replace-中使用命名组"><a href="#4-3-在-String-prototype-replace-中使用命名组" class="headerlink" title="4.3 在 String.prototype.replace 中使用命名组"></a>4.3 在 String.prototype.replace 中使用命名组</h4><p>命名组也可以在 String 的 replace 方法中使用，比如用来交换一个字符串中各个部分的位置。 例如，将firstName, lastName 更改为 lastName, firstName。 <img data-src="http://file.w3cbest.com/file/images/1_weBLy9CAXFnWNwUqcwNMAg.png"></p>
 <h3 id="5-对象的剩余属性"><a href="#5-对象的剩余属性" class="headerlink" title="5. 对象的剩余属性"></a>5. 对象的剩余属性</h3><p>Rest 运算符 …（三个点）允许我们提取 Object 的剩余属性。</p>
-<h4 id="5-1-我们可以使用展开运算符展开我们想要的属性："><a href="#5-1-我们可以使用展开运算符展开我们想要的属性：" class="headerlink" title="5.1 我们可以使用展开运算符展开我们想要的属性："></a>5.1 我们可以使用展开运算符展开我们想要的属性：</h4><p><img src="http://file.w3cbest.com/file/images/1_Uh4-1F3aeoy5k3hq8nVlfQ.png"></p>
-<h4 id="5-2-或者我们借助展开运算符，移除我们不想要的属性"><a href="#5-2-或者我们借助展开运算符，移除我们不想要的属性" class="headerlink" title="5.2 或者我们借助展开运算符，移除我们不想要的属性 ??"></a>5.2 或者我们借助展开运算符，移除我们不想要的属性 ??</h4><p><img src="http://file.w3cbest.com/file/images/1_43kFc4JJy8DSQiA_zQXZZA.png"></p>
-<h2 id="6-展开对象的属性"><a href="#6-展开对象的属性" class="headerlink" title="6.展开对象的属性"></a>6.展开对象的属性</h2><p>展开属性看起来就像 Rest 运算符，都是三个点 …，但不同之处在于你使用展开操作符来创建（重构）新对象。 提示：展开（spread）运算符用于等号的右侧。剩余（Rest）运算符用在等号的左侧。 <img src="http://file.w3cbest.com/file/images/1_QmSUhdHQiXaXL9vdE27Djg.png"></p>
-<h2 id="7-正则表达式后行断言-Lookbehind"><a href="#7-正则表达式后行断言-Lookbehind" class="headerlink" title="7.正则表达式后行断言(Lookbehind)"></a>7.正则表达式后行断言(Lookbehind)</h2><p>这是 RegEx 的一个增强，它允许我们确保某些子字符串恰好出现在某些子字符串之前。 你现在可以使用一个组 (?&lt;=…)（问号，小于，等于）来查看先行断言。 此外，你可以使用 (?&lt;!…)（问号，小于，感叹号）来查看后行断言。基本上，只要-ve断言通过，这将匹配。 肯定断言：假设我们要确保 # 符号存在于 winning 之前（即：#winning），并希望正则表达式只返回字符串 “winning” 。下面是我们的做法： <img src="http://file.w3cbest.com/file/images/1_MJuEF0dePb_NE8DHFm0XNw.png"> 否定断言：假设我们想要从具有 € 符号的行中提取数字，而不是 $ 。 <img src="http://file.w3cbest.com/file/images/1_e1N-waOWBc3ykLRFCIzXSA.png"></p>
-<h2 id="8-RegExp-Unicode属性转义"><a href="#8-RegExp-Unicode属性转义" class="headerlink" title="8. RegExp Unicode属性转义"></a>8. RegExp Unicode属性转义</h2><p>编写 RegEx 以匹配各种 unicode 字符并不容易。像 \w，\W，\d 等只匹配英文字符和数字。但是其他语言中的数字如印地语，希腊语等等该怎么办呢？ 这就是 Unicode 属性转义的用武之地。事实证明，Unicode 为每个符号（字符）添加元数据属性，并使用它来分组或表征各种符号。 例如，Unicode 数据库将所有印地语字符（??????）归为一个名为 Script 的属性，其值为 Devanagari ，另一个属性为Script_Extensions，其值为 Devanagari 。所以我们可以搜索 Script=Devanagari 并获得所有印地语字符。 梵文可以用于各种印度语言，如马拉地语，印地语，梵语等。 从 ECMAScript 2018 开始，我们可以使用 \p 来转义字符以及 {Script = Devanagari} 以匹配所有这些印度字符。也就是说，我们可以在 RegEx 中使用：\p{Script=Devanagari} 来匹配所有梵文字符。 <img src="http://file.w3cbest.com/file/images/1_c-bRDN8WERPUYevc38jZMg.png"></p>
+<h4 id="5-1-我们可以使用展开运算符展开我们想要的属性："><a href="#5-1-我们可以使用展开运算符展开我们想要的属性：" class="headerlink" title="5.1 我们可以使用展开运算符展开我们想要的属性："></a>5.1 我们可以使用展开运算符展开我们想要的属性：</h4><p><img data-src="http://file.w3cbest.com/file/images/1_Uh4-1F3aeoy5k3hq8nVlfQ.png"></p>
+<h4 id="5-2-或者我们借助展开运算符，移除我们不想要的属性"><a href="#5-2-或者我们借助展开运算符，移除我们不想要的属性" class="headerlink" title="5.2 或者我们借助展开运算符，移除我们不想要的属性 ??"></a>5.2 或者我们借助展开运算符，移除我们不想要的属性 ??</h4><p><img data-src="http://file.w3cbest.com/file/images/1_43kFc4JJy8DSQiA_zQXZZA.png"></p>
+<h2 id="6-展开对象的属性"><a href="#6-展开对象的属性" class="headerlink" title="6.展开对象的属性"></a>6.展开对象的属性</h2><p>展开属性看起来就像 Rest 运算符，都是三个点 …，但不同之处在于你使用展开操作符来创建（重构）新对象。 提示：展开（spread）运算符用于等号的右侧。剩余（Rest）运算符用在等号的左侧。 <img data-src="http://file.w3cbest.com/file/images/1_QmSUhdHQiXaXL9vdE27Djg.png"></p>
+<h2 id="7-正则表达式后行断言-Lookbehind"><a href="#7-正则表达式后行断言-Lookbehind" class="headerlink" title="7.正则表达式后行断言(Lookbehind)"></a>7.正则表达式后行断言(Lookbehind)</h2><p>这是 RegEx 的一个增强，它允许我们确保某些子字符串恰好出现在某些子字符串之前。 你现在可以使用一个组 (?&lt;=…)（问号，小于，等于）来查看先行断言。 此外，你可以使用 (?&lt;!…)（问号，小于，感叹号）来查看后行断言。基本上，只要-ve断言通过，这将匹配。 肯定断言：假设我们要确保 # 符号存在于 winning 之前（即：#winning），并希望正则表达式只返回字符串 “winning” 。下面是我们的做法： <img data-src="http://file.w3cbest.com/file/images/1_MJuEF0dePb_NE8DHFm0XNw.png"> 否定断言：假设我们想要从具有 € 符号的行中提取数字，而不是 $ 。 <img data-src="http://file.w3cbest.com/file/images/1_e1N-waOWBc3ykLRFCIzXSA.png"></p>
+<h2 id="8-RegExp-Unicode属性转义"><a href="#8-RegExp-Unicode属性转义" class="headerlink" title="8. RegExp Unicode属性转义"></a>8. RegExp Unicode属性转义</h2><p>编写 RegEx 以匹配各种 unicode 字符并不容易。像 \w，\W，\d 等只匹配英文字符和数字。但是其他语言中的数字如印地语，希腊语等等该怎么办呢？ 这就是 Unicode 属性转义的用武之地。事实证明，Unicode 为每个符号（字符）添加元数据属性，并使用它来分组或表征各种符号。 例如，Unicode 数据库将所有印地语字符（??????）归为一个名为 Script 的属性，其值为 Devanagari ，另一个属性为Script_Extensions，其值为 Devanagari 。所以我们可以搜索 Script=Devanagari 并获得所有印地语字符。 梵文可以用于各种印度语言，如马拉地语，印地语，梵语等。 从 ECMAScript 2018 开始，我们可以使用 \p 来转义字符以及 {Script = Devanagari} 以匹配所有这些印度字符。也就是说，我们可以在 RegEx 中使用：\p{Script=Devanagari} 来匹配所有梵文字符。 <img data-src="http://file.w3cbest.com/file/images/1_c-bRDN8WERPUYevc38jZMg.png"></p>
 <p>//The following matches multiple hindi character<br>/^\p{Script=Devanagari}+$/u.test(‘हिन्दी’); //true<br>//PS:there are 3 hindi characters h</p>
-<p>同样，Unicode 数据库将 Script_Extensions（和 Script ）属性下的所有希腊字符组合为希腊语。 所以我们可以使用 Script_Extensions=Greek 或 Script=Greek 搜索所有希腊字符。 也就是说，我们可以在RegEx中使用： \p{Script=Greek} 来匹配所有希腊字符。 <img src="http://file.w3cbest.com/file/images/1_DwP_VN4VUp7osFQC-I9OsQ.png"></p>
+<p>同样，Unicode 数据库将 Script_Extensions（和 Script ）属性下的所有希腊字符组合为希腊语。 所以我们可以使用 Script_Extensions=Greek 或 Script=Greek 搜索所有希腊字符。 也就是说，我们可以在RegEx中使用： \p{Script=Greek} 来匹配所有希腊字符。 <img data-src="http://file.w3cbest.com/file/images/1_DwP_VN4VUp7osFQC-I9OsQ.png"></p>
 <p>//The following matches a single Greek character<br>/\p{Script_Extensions=Greek}/u.test(‘π’); // true</p>
-<p>此外，Unicode数据库在布尔属性 Emoji ，Emoji_Component， Emoji_Presentation ，Emoji_Modifier 和 Emoji_Modifier_Base 下存储各种类型的 Emojis，其属性值为 true。 因此，我们只需选择 Emoji 符号即可搜索所有表情符号。 也就是说，我们可以使用：\p{Emoji}，\Emoji_Modifier 等来匹配各种 Emojis 。 以下示例将使一切清楚。 <img src="http://file.w3cbest.com/file/images/1_DsQryeDlp8fAKBS8k_ohqw.png"></p>
+<p>此外，Unicode数据库在布尔属性 Emoji ，Emoji_Component， Emoji_Presentation ，Emoji_Modifier 和 Emoji_Modifier_Base 下存储各种类型的 Emojis，其属性值为 true。 因此，我们只需选择 Emoji 符号即可搜索所有表情符号。 也就是说，我们可以使用：\p{Emoji}，\Emoji_Modifier 等来匹配各种 Emojis 。 以下示例将使一切清楚。 <img data-src="http://file.w3cbest.com/file/images/1_DsQryeDlp8fAKBS8k_ohqw.png"></p>
 <p>//The following matches an Emoji character<br>/\p{Emoji}/u.test(‘❤️’); //true<br>//The following fails because yellow emojis don’t need/have Emoji_Modifier!<br>/\p{Emoji}\p{Emoji_Modifier}/u.test(‘✌️’); //false<br>//The following matches an emoji character\p{Emoji} followed by \p{Emoji_Modifier}<br>/\p{Emoji}\p{Emoji_Modifier}/u.test(‘✌?’); //true<br>//Explaination:<br>//By default the victory emoji is yellow color.<br>//If we use a brown, black or other variations of the same emoji, they are considered<br>//as variations of the original Emoji and are represented using two unicode characters.<br>//One for the original emoji, followed by another unicode character for the color.<br>//<br>//So in the below example, although we only see a single brown victory emoji,<br>//it actually uses two unicode characters, one for the emoji and another<br>// for the brown color.<br>//<br>//In Unicode database, these colors have Emoji_Modifier property.<br>//So we need to use both \p{Emoji} and \p{Emoji_Modifier} to properly and<br>//completely match the brown emoji.<br>/\p{Emoji}\p{Emoji_Modifier}/u.test(‘✌?’); //true</p>
 <p>最后，我们可以使用大写“P”（ \P ）转义字符,而不是小写“p”（ \p ）来否定匹配。 参考阅读：</p>
 <ol>
 <li> <a target="_blank" rel="noopener" href="https://mathiasbynens.be/notes/es-unicode-property-escapes"><em>ECMAScript 2018 Proposal</em></a></li>
 <li> <a target="_blank" rel="noopener" href="https://mathiasbynens.be/notes/es-unicode-property-escapes"><em>https://mathiasbynens.be/notes/es-unicode-property-escapes</em></a></li>
 </ol>
-<h2 id="9-Promise-prototype-finally"><a href="#9-Promise-prototype-finally" class="headerlink" title="9.Promise.prototype.finally()"></a>9.Promise.prototype.finally()</h2><p>finally() 是一个添加到 Promise 实例的新方法。 主要考虑是允许在 resolve 或 reject 调用之后执行一些清理性质的代码。finally 被执行的时候不会被传入任何函数，并且无论什么时候都会被执行。 我们来看看各种情况。 <img src="http://file.w3cbest.com/file/images/1_P1V6c1ncEjeCgtS6zzR0gg.png"> <img src="http://file.w3cbest.com/file/images/1_tSbu3kZCkoGpXaWDuP6MPA.png"> <img src="http://file.w3cbest.com/file/images/1_kB6Ar5YJoAlwwhFqzMGBGg.png"> <img src="http://file.w3cbest.com/file/images/1_wCcbabJsS8UbFclumSISqg.png"></p>
-<h2 id="10-异步迭代"><a href="#10-异步迭代" class="headerlink" title="10.异步迭代"></a>10.异步迭代</h2><p>这是一个非常有用的特性。 基本上它允许我们轻松创建异步代码循环！ 此特性添加了一个新的“for-await-of”循环，允许我们在循环中调用返回 promises（或带有一堆 promise 的 Arrays ）的异步函数。 循环会等待每个 Promise 在进行下一个循环之前 resolve 。 <img src="http://file.w3cbest.com/file/images/1_liLeNfWxZ3x1sqrVmRUdRQ.png"></p>
+<h2 id="9-Promise-prototype-finally"><a href="#9-Promise-prototype-finally" class="headerlink" title="9.Promise.prototype.finally()"></a>9.Promise.prototype.finally()</h2><p>finally() 是一个添加到 Promise 实例的新方法。 主要考虑是允许在 resolve 或 reject 调用之后执行一些清理性质的代码。finally 被执行的时候不会被传入任何函数，并且无论什么时候都会被执行。 我们来看看各种情况。 <img data-src="http://file.w3cbest.com/file/images/1_P1V6c1ncEjeCgtS6zzR0gg.png"> <img data-src="http://file.w3cbest.com/file/images/1_tSbu3kZCkoGpXaWDuP6MPA.png"> <img data-src="http://file.w3cbest.com/file/images/1_kB6Ar5YJoAlwwhFqzMGBGg.png"> <img data-src="http://file.w3cbest.com/file/images/1_wCcbabJsS8UbFclumSISqg.png"></p>
+<h2 id="10-异步迭代"><a href="#10-异步迭代" class="headerlink" title="10.异步迭代"></a>10.异步迭代</h2><p>这是一个非常有用的特性。 基本上它允许我们轻松创建异步代码循环！ 此特性添加了一个新的“for-await-of”循环，允许我们在循环中调用返回 promises（或带有一堆 promise 的 Arrays ）的异步函数。 循环会等待每个 Promise 在进行下一个循环之前 resolve 。 <img data-src="http://file.w3cbest.com/file/images/1_liLeNfWxZ3x1sqrVmRUdRQ.png"></p>
 <h2 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h2><ul>
 <li>  <a href="/p/r1WOgVw-7/javascript-fundamentals-for-absolute-beginners-2018">JavaScript Fundamentals for Absolute Beginners 2018</a></li>
 <li>  <a href="/p/Skiy3aabX/top-10-javascript-questions">Top 10 JavaScript Questions</a></li>
@@ -1426,6 +1072,417 @@
 <li>  <a href="/p/Hk6qojzyM/functional-programming-in-javascript">Functional Programming In JavaScript</a></li>
 </ul>
 <p>文章来源：<a target="_blank" rel="noopener" href="https://school.geekwall.in/p/BkEFDtfoM/examples-of-everything-new-in-ecmascript-2016-2017-and-2018">https://school.geekwall.in</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/06/02/css3%E6%9D%A1%E7%BA%B9%E8%83%8C%E6%99%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/02/css3%E6%9D%A1%E7%BA%B9%E8%83%8C%E6%99%AF/" class="post-title-link" itemprop="url">CSS3条纹背景</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-02 17:29:19" itemprop="dateCreated datePublished" datetime="2018-06-02T17:29:19+08:00">2018-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>不论是在网页设计中，还是在其他传统媒介中（比如杂志和墙纸等），各种尺寸、颜色、角度的条纹图案在视觉设计中无处不在。要想在网页中实现条纹图案，其过程还远远不够理想。通常，我们的方法是创建一个单独的位图文件，然后每次需要做些调整时，都用图像编辑器来修改它。可能有人试过用 SVG 来取代位图，但这样还是会有一个独立的文件，而且它的语法也远远不够友好。如果可以直接在 CSS 中创建条纹图案，那该有多棒啊！你可能会惊讶地发现，我们居然真的可以。</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>假设我们有一条基本的垂直线性渐变，颜色从 #fb3 过渡到 #58a（参见图 1）：</p>
+<p>这是一个示例 (图1)</p>
+<p>渐变现在出现在总高的 60% 区域，剩下的部分显示为实色；色标的位置用虚线标示出来了  </p>
+<p>background: linear-gradient(#fb3, #58a);</p>
+<p>现在，让我们试着把这两个色标拉近一点（参见图 2）：</p>
+<p>这是一个示例 (图2)</p>
+<p> </p>
+<p>background: linear-gradient(#fb3 20%, #58a 80%);</p>
+<p>现在容器顶部的 20% 区域被填充为 #fb3 实色，而底部 20% 区域被填充为 #58a 实色。真正的渐变只出现在容器 60% 的高度区域。如果我们把两个色标继续拉近（分别改为 40% 和 60%，参见图 3），那真正的渐变区域就变得更窄了。你是不是开始好奇，如果我们把两个色标重合在一起，会发生什么？</p>
+<p>这是一个示例 (图3)</p>
+<p> </p>
+<p>background: linear-gradient(#fb3 50%, #58a 50%);</p>
+<p>“如果多个色标具有相同的位置，它们会产生一个无限小的过渡区域，过渡的起止色分别是第一个和最后一个指定值。从效果上看，颜色会在那个位置突然变化，而不是一个平滑的渐变过程。” ——CSS 图像（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-images%EF%BC%89">http://w3.org/TR/css3-images）</a> 你在图 3 中可以看到，已经没有任何渐变效果了，只有两块实色，各占据了 background-image 一半的面积。本质上，我们已经创建了两条巨大的水平条纹。 因为渐变是一种由代码生成的图像，我们能像对待其他任何背景图像那样对待它，而且还可以通过 background-size 来调整其尺寸：</p>
+<p>这是一个示例 (图4)</p>
+<p> </p>
+<p>background: linear-gradient(#fb3 50%, #58a 50%);<br>background-size: 100% 30px;</p>
+<p>在图 24 中可以看到，我们把这两条条纹的高度都缩小到了 15px。由于背景在默认情况下是重复平铺的，整个容器其实已经被填满了水平条纹（参见图 4）。 我们还可以用相同的方法来创建不等宽的条纹，只需调整色标的位置值即可（参见图 5）：</p>
+<p>这是一个示例 (图5)</p>
+<p> </p>
+<p>background: linear-gradient(#fb3 30%, #58a 30%);<br>background-size: 100% 30px;</p>
+<p>为了避免每次改动条纹宽度时都要修改两个数字，我们可以再次从规范那里找到捷径。 “如果某个色标的位置值比整个列表中在它之前的色标的位置值都要小，则该色标的位置值会被设置为它前面所有色标位置值的最大值。” ——CSS 图像（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-images%EF%BC%89">http://w3.org/TR/css3-images）</a> 这意味着，如果我们把第二个色标的位置值设置为 0，那它的位置就总是会被浏览器调整为前一个色标的位置值，这个结果正是我们想要的。 因此，下面的代码会产生跟图 5 完全一样的条纹背景，但代码会更加DRY：  </p>
+<p>background: linear-gradient(#fb3 30%, #58a 0);<br>background-size: 100% 30px;</p>
+<p>如果要创建超过两种颜色的条纹，也是很容易的。举例来说，下面的代码可以生成三种颜色的水平条纹（参见图 6）：</p>
+<p>这是一个示例 (图6)</p>
+<p> </p>
+<p>background: linear-gradient(#fb3 33.3%, #58a 0, #58a 66.6%, yellowgreen 0);<br>background-size: 100% 45px;</p>
+<p>垂直条纹 水平条纹是最容易用代码写出来的，但我们在网页上看到的条纹图案并不都是水平的。有些条纹是垂直的（参见图 7），而且某些形态的斜条纹或许更受欢迎，或者看起来更加有趣。幸运的是，CSS 渐变同样也能帮助我们创建出这些效果，只是难度稍有不同。 垂直条纹的代码跟水平条纹几乎是一样的，差别主要在于：我们需要在开头加上一个额外的参数来指定渐变的方向。在水平条纹的代码中，我们其实也可以加上这个参数，只不过它的默认值 to bottom 本来就跟我们的意图一致，于是就省略了。最后，我们还需要把 background-size 的值颠倒一下，原因应该不用多说了吧：</p>
+<p>这是一个示例 (图7)</p>
+<p> </p>
+<p>background: linear-gradient(to right, #fb3 50%, #58a 0);<br>background-size: 30px 100%;</p>
+<p>斜向条纹 在完成了水平和垂直条纹之后，我们可能会顺着往下想：如果我们再次改变 background-size的值和渐变的方向，是不是就可以得到斜向（比如45°）的条纹图案呢？比如这样（结果如图 8 所示）：</p>
+<p>这是一个示例 (图8)</p>
+<p> </p>
+<p>background: linear-gradient(45deg, #fb3 50%, #58a 0);<br>background-size: 30px 30px;</p>
+<p>可以发现，这个办法行不通。原因在于我们只是把每个“贴片”1①内部的渐变旋转了 45°，而不是把整个重复的背景都旋转了。试着回忆一下我们以前用位图来生成斜向条纹时是怎么做的吧，做法类似图 9。单个贴片包含了四条条纹，而不是两条，只有这样才有可能做到无缝拼接。它正是我们需要在 CSS 代码中重新实现的贴片，因此我们需要增加一些色标：</p>
+<p>这是一个示例 (图9)</p>
+<p>background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);<br>background-size: 30px 30px;</p>
+<p>我们可以在图 9 中看到结果。如你所见，我们成功地创建了斜向条纹，但这些条纹看起来要比我们在前面制作的水平和垂直条纹细一些。为了理解这其中的道理，我们需要再次回忆起在学校里学过的勾股定理，用它来计算直角三角形的斜边长度。这个定理表示，当 a 和 b 是直角三角形的直角边时，则斜边的长度等于 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153413.jpg"> 。对于一个 45°的直角三角形来说，它的两条直角边是等长的，因此这个算式会变成<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180902172701.jpg"> =a<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> 。在我们的斜向条纹中，背景尺寸指定的长度值决定了直角三角形的斜边长度，但条纹的宽度实际上是直角三角形的高。在图 10 中可以看到图形化的解释。 这意味着，如果想让条纹的宽度变化为我们原本想要的 15px，就需要把 background-size 指定为 2x 15<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> ≈ 42.426 406 871 像素：</p>
+<p>这是一个示例 (图10)</p>
+<p>background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);<br>background-size: 42.426406871px 42.426406871px;</p>
+<p>你可以在图 10 中看到最终效果。但是，除非有人拿枪顶着你的脑袋威胁你必须把斜向条纹的宽度设置为完全精确的 15 像素，我会强烈推荐你把这一长串数字取整，写成 42.4px，或者甚至是 42px。（当然，在上述情形之下，你还是会被干掉。因为 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> 不是整数，我们最终得到的条纹宽度永远都只能是一个近似值——尽管它已经相当精确了。）</p>
+<h4 id="更好的斜向条纹"><a href="#更好的斜向条纹" class="headerlink" title="更好的斜向条纹"></a>更好的斜向条纹</h4><p>在前面的段落中展示的方法还不够灵活。假设我们想让条纹不是 45°而是 60°怎么办？或者是 30°？又或者是 3.141 592 653 5°？如果我们只是把渐变的角度改一下，那么结果看起来会相当糟糕。（比如在图 10 中，我们尝试实现 60°条纹，但以失败告终。） 幸运的是，我们还有更好的方法来创建斜向条纹。一个鲜为人知的真相是 linear-gradient() 和 radial-gradient() 还各有一个循环式的加强版：repeating-linear-gradient() 和 repeating-radial-gradient()。它们的工作方式跟前两者类似，只有一点不同：色标是无限循环重复的，直到填满整个背景。下面是一个重复渐变的例子（效果参见图 10）：</p>
+<p>这是一个示例 (图10)</p>
+<p>background: repeating-linear-gradient(45deg, #fb3, #58a 30px);</p>
+<h4 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h4><p>CSS 图像 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-images">http://w3.org/TR/css-images</a> CSS 背景与边框 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-backgrounds">http://w3.org/TR/css-backgrounds</a> CSS 图像（第四版） <a target="_blank" rel="noopener" href="http://w3.org/TR/css4-images">http://w3.org/TR/css4-images</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/06/02/css%E5%A4%9A%E9%87%8D%E8%BE%B9%E6%A1%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/02/css%E5%A4%9A%E9%87%8D%E8%BE%B9%E6%A1%86/" class="post-title-link" itemprop="url">css多重边框</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-02 14:24:14" itemprop="dateCreated datePublished" datetime="2018-06-02T14:24:14+08:00">2018-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>回首往事，当背景与边框（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-background%EF%BC%89%E8%BF%98%E5%9C%A8%E8%8D%89%E6%A1%88%E9%98%B6%E6%AE%B5%E6%97%B6%EF%BC%8CCSS">http://w3.org/TR/css3-background）还在草案阶段时，CSS</a> 工作组内部有过很多讨论，关于是否应该允许多重边框，就像多重背景那样。不幸的是，当时一致认为这个特性并没有足够多的使用场景，而且网页开发者还可以使用 border-image 来达到相同的效果。然而工作组忽略了一点：我们通常希望在 CSS 代码层面以更灵活的方式来调整边框样式。因此，网页开发者们最终不得不折腾出各种丑陋的 hack，比如使用多个元素来模拟多重边框。不过，我们还有更好的办法来解决这个难题，并不需要添加无用的额外元素来污染我们的结构。</p>
+<h2 id="box-shadow-方案"><a href="#box-shadow-方案" class="headerlink" title="box-shadow 方案"></a>box-shadow 方案</h2><p>目前为止，我们大多数人可能已经用过（或滥用过）box-shadow 来生成投影。不太为人所知的是，它还接受第四个参数（称作“扩张半径”），通过指定正值或负值，可以让投影面积加大或者减小。一个正值的扩张半径加上两个为零的偏移量以及为零的模糊值，得到的“投影”其实就像一道实线边框。如图 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901141127.jpg"></p>
+<p>用 box-shadow 来模拟外框</p>
+<p>background: yellowgreen;<br>box-shadow: 0 0 0 10px #655;</p>
+<p>这并没有什么了不起的，因为你完全可以用 border 属性来生成完全一样的边框效果。不过 box-shadow 的好处在于，它支持逗号分隔语法，我们可以创建任意数量的投影。因此，我们可以非常轻松地在上面的示例中再加上一道 deeppink 颜色的“边框”：</p>
+<p>background: yellowgreen;<br>box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink;</p>
+<p>唯一需要注意的是，box-shadow 是层层叠加的，第一层投影位于最顶层，依次类推。因此，你需要按此规律调整扩张半径。比如说，在前面的代码中，我们想在外圈再加一道 5px 的外框，那就需要指定扩张半径的值为15px（10px+5px）。如果你愿意，甚至还可以在这些“边框”的底下再加一层常规的投影：</p>
+<p>background: yellowgreen;<br>box-shadow: 0 0 0 10px #655,0 0 0 15px deeppink,0 2px 5px 15px rgba(0,0,0,.6)</p>
+<p>多重投影解决方案在绝大多数场合都可以很好地工作，但有一些注意事项。</p>
+<ul>
+<li>  投影的行为跟边框不完全一致，因为它不会影响布局，而且也不会受到 box-sizing 属性的影响。不过，你还是可以通过内边距或外边距（这取决于投影是内嵌和还是外扩的）来额外模拟出边框所需要占据的空间。</li>
+<li>  上述方法所创建出的假“边框”出现在元素的外圈。它们并不会响应鼠标事件，比如悬停或点击。如果这一点非常重要，你可以给box-shadow 属性加上 inset 关键字，来使投影绘制在元素的内圈。请注意，此时你需要增加额外的内边距来腾出足够的空隙。</li>
+</ul>
+<h2 id="outline-方案"><a href="#outline-方案" class="headerlink" title="outline 方案"></a>outline 方案</h2><p>在某些情况下，你可能只需要两层边框，那就可以先设置一层常规边框，再加上 outline（描边）属性来产生外层的边框。这种方法的一大优点在于边框样式十分灵活，不像上面的 box-shadow 方案只能模拟实线边框（假设我们需要产生虚线边框效果，box-shadow 就没辙了）。如果要得到下图的效果，代码可以这样写： <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901141716.jpg"></p>
+<p>使用 box-shadow 来模拟双层外框</p>
+<p>background: yellowgreen;<br>border: 10px solid #655;<br>outline: 5px solid deeppink;</p>
+<p>描边的另一个好处在于，你可以通过 outline-offset 属性来控制它跟元素边缘之间的间距，这个属性甚至可以接受负值。这对于某些效果来说非常有用。举个例子，下图就实现了简单的缝边效果。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901141906.jpg"></p>
+<p>对一层 dashed（虚线）描边使用负 的 outline-offset 后， 可 以得到简单的缝边效果</p>
+<p>这个方案同样也有一些需要注意的地方。</p>
+<ul>
+<li>  如上所述，它只适用于双层“边框”的场景，因为 outline 并不能接受用逗号分隔的多个值。如果我们需要获得更多层的边框，前一种方案就是我们唯一的选择了。</li>
+<li>  边框不一定会贴合 border-radius 属性产生的圆角，因此如果元素是圆角的，它的描边可能还是直角的（参见下图）。请注意，这种行为被 CSS 工作组认为是一个 bug，因此未来可能会改为贴合 border-radius 圆角。</li>
+</ul>
+<p><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901142225.jpg"> 通 过 outline 属 性 实 现 的“ 边框”不会贴合元素的圆角，不过这一行为在未来可能会发生变化</p>
+<ul>
+<li>  根据 CSS 基本 UI 特性（第三版）规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-ui%EF%BC%89%E6%89%80%E8%BF%B0%EF%BC%8C%E2%80%9C%E6%8F%8F%E8%BE%B9%E5%8F%AF%E4%BB%A5%E4%B8%8D%E6%98%AF%E7%9F%A9%E5%BD%A2%E2%80%9D%E3%80%82%E5%B0%BD%E7%AE%A1%E5%9C%A8%E7%BB%9D%E5%A4%A7%E5%A4%9A%E6%95%B0%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%8F%8F%E8%BE%B9%E9%83%BD%E6%98%AF%E7%9F%A9%E5%BD%A2%E7%9A%84%EF%BC%8C%E4%BD%86%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%83%B3%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%8C%E8%AF%B7%E5%88%87%E8%AE%B0%EF%BC%9A%E6%9C%80%E5%A5%BD%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%AE%8C%E6%95%B4%E5%9C%B0%E6%B5%8B%E8%AF%95%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%E3%80%82">http://w3.org/TR/css3-ui）所述，“描边可以不是矩形”。尽管在绝大多数情况下，描边都是矩形的，但如果你想使用这个方法，请切记：最好在不同浏览器中完整地测试最终效果。</a></li>
+</ul>
+<h4 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h4><p>CSS 背景与边框： <a target="_blank" rel="noopener" href="http://w3.org/TR/css-backgrounds">http://w3.org/TR/css-backgrounds</a> CSS 基本 UI 特性： <a target="_blank" rel="noopener" href="http://w3.org/TR/css3-ui">http://w3.org/TR/css3-ui</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/06/01/css%E8%BE%B9%E6%A1%86%E5%86%85%E5%9C%86%E8%A7%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/01/css%E8%BE%B9%E6%A1%86%E5%86%85%E5%9C%86%E8%A7%92/" class="post-title-link" itemprop="url">CSS边框内圆角</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-01 15:40:58" itemprop="dateCreated datePublished" datetime="2018-06-01T15:40:58+08:00">2018-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有时我们需要一个容器，只在内侧有圆角，而边框或描边的四个角在外部仍然保持直角的形状，如图(1)。这是一个有趣的效果，目前还没有被滥用。用两个元素可以实现这个效果，这并没有什么特别的：</p>
+<p>这是一个实例 (图1)</p>
+<p>容器外围有一道边框，但只在内侧有圆角</p>
+<div class="demo"><div>这是一个实例</div></div>
+.demo {
+background: #655;
+padding: .8em;
+}
+.demo > div {
+background: tan;
+border-radius: .8em;
+padding: 1em;
+}
+
+<p>这个方法很好，但要求我们使用两个元素，而我们只需要一个元素。有没有办法可以只用一个元素达成同样的效果呢？</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>其实上述方案要更加灵活一些，因为它允许我们充分运用背景的能力。举个例子，如果我们希望这一圈“边框”不只是纯色的，而是要加一层淡淡的纹理，它也可以很容易地做到。不过，如果只需要达成简单的实色效果，那我们就还有另一条路可走，只需用到一个元素（但这个办法有一些 hack的味道）。我们来看看以下 CSS 代码：</p>
+<p>background: tan;<br>border-radius: .8em;<br>padding: 1em;<br>box-shadow: 0 0 0 .6em #655;<br>outline: .6em solid #655;</p>
+<p>你能猜到视觉效果是怎样的吗？它产生的效果正如上图所示。我们基本上受益于两个事实：描边并不会跟着元素的圆角走（因而显示出直角，参见图 2），但 box-shadow 却是会的（参见图 3）。因此，如果我 把这两者叠加到一起，box-shadow 会刚好填补描边和容器圆角之间的空隙，这两者的组合达成了我们想要的效果。图4 把投影和描边显示为不同的颜色，从而在视觉上提供了更清晰的解释。</p>
+<p>这是一个实例 (图2)</p>
+<p>对一个有圆角的元素使用 outli-ne 属性</p>
+<p>这是一个实例 (图3)</p>
+<p>对一个有圆角的元素使用没有偏移量、没有模糊效果的 box-shadow 属性</p>
+<p>这是一个实例 (图4)</p>
+<p>为了事情的真相看起来更清楚，我们把描边显示为黑色，把投影显示为品红色；请注意描边是绘制在上层的</p>
+<p>请注意，我们为 box-shadow 属性指定的扩张值并不一定等于描边的宽度，我们只需要指定一个足够填补“空隙”的扩张值就可以了。事实上，指定一个等于描边宽度的扩张值在某些浏览器中可能会得到渲染异常，因此我推荐一个稍小些的值。这又引出了另一个问题：到底多大的投影扩张值可以填补这些空隙呢？ 为了解答这个问题，我们需要回忆起中学时学过的勾股定理，用来计算直角三角形各边的长度。勾股定理表明，如果直角边分别是 a 和 b，则斜边（正对着直角的最长边）等于 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153413.jpg">。当两条直角边的长度相等时，这 算式会演化为<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153429.jpg">。 你可能还很纳闷，中学几何到底是怎么跟我们的内圆角效果扯上关系的？关于怎样用它来计算我们需要的最小扩张值，请看下图中图形化的解释。在我们的例子中，border-radius 是 .8em，那么最小的扩张值就是 0.8 (<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">-1 ) ≈ 0.331 370 85 em 。我们要做的就是把稍微向上取个整， 把 .34em 设置为投影的扩张半径。为了避免每次都要计算，你可以直接使用圆角半径的一半，因为 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">—1 &lt; 0.5 。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901150033-300x190.jpg"> 请注意，该计算过程揭示了这个方法的另一个限制：为了让这个效果得以达成，扩张半径需要比描边的宽度值小，但它同时又要比 (<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 大（这里的 r 表示 border-radius）。这意味着，如果描边的宽度比 ( <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 小，那我们是不可能用这个方法达成该效果的。</p>
+<h4 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h4><p>CSS 背景与边框 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-backgrounds">http://w3.org/TR/css-backgrounds</a> CSS 基本 UI 特性 <a target="_blank" rel="noopener" href="http://w3.org/TR/css3-ui">http://w3.org/TR/css3-ui</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/06/01/css%E7%81%B5%E6%B4%BB%E7%9A%84%E8%83%8C%E6%99%AF%E5%AE%9A%E4%BD%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/01/css%E7%81%B5%E6%B4%BB%E7%9A%84%E8%83%8C%E6%99%AF%E5%AE%9A%E4%BD%8D/" class="post-title-link" itemprop="url">CSS灵活的背景定位</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-01 14:41:57" itemprop="dateCreated datePublished" datetime="2018-06-01T14:41:57+08:00">2018-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很多时候，我们想针对容器某个角对背景图片做偏移定位，如右下角。在 CSS 2.1 中，我们只能指定距离左上角的偏移量，或者干脆完全靠齐到其他三个角。但是，我们有时希望图片和容器的边角之间能留出一定的空隙（类似内边距的效果），以免得到像下图这样的效果。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901143342.jpg"></p>
+<p>background-position: bottom right; 通常不会产生在审美上让人非常舒服的结果，因为图片跟容器的边缘之间没有空隙</p>
+<p>对于具有固定尺寸的容器来说，使用 CSS 2.1 来做到这一点是可能的，但很麻烦：可以基于它自身的尺寸以及我们期望它距离右下角的偏移量，计算出背景图片距离左上角的偏移量，然后再把计算结果设置给 background-position。当容器元素的尺寸不固定时（因为内容往往是可变的），这就不可能做到了。网页开发者通常只能把 background-position 设置为某个接近 100% 的百分比值，以便近似地得到想要的效果。如你所愿，借助现代的CSS 特性，我们已经拥有了更好的解决方案！</p>
+<h4 id="background-position-的扩展语法方案"><a href="#background-position-的扩展语法方案" class="headerlink" title="background-position 的扩展语法方案"></a>background-position 的扩展语法方案</h4><p>在 CSS 背景与边框（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-background%EF%BC%89%E4%B8%AD%EF%BC%8Cbackground-position">http://w3.org/TR/css3-background）中，background-position</a> 属性已经得到扩展，它允许我们指定背景图片距离任意角的偏移量，只要我们在偏移量前面指定关键字。举例来说，如果想让背景图片跟右边缘保持 20px 的偏移量，同时跟底边保持 10px 的偏移量，可以这样做（结果如图所示）： <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901143405.jpg"></p>
+<p>我们可以指定距离其他各边的偏移量；为了更清楚地看到偏移是怎么工作的，背景图片的外圈加了一层虚线框</p>
+<p>background: url(code-pirate.svg) no-repeat #58a;<br>background-position: right 20px bottom 10px;</p>
+<p>最后一步，我们还需要提供一个合适的回退方案。因为对上述方案来说，在不支持 background-position 扩展语法的浏览器中，背景图片会紧贴在左上角（背景图片的默认位置）。这看起来会很奇怪，而且它会干扰到文字的可读性（参见下图）。提供一个回退方案也很简单，就是把老套的bottom right 定位值写进 background 的简写属性中： <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901143424.jpg"></p>
+<p>如果我们不希望旧版浏览器的用户看到这个结果，还需要指定一个回退方案</p>
+<p>background: url(code-pirate.svg) no-repeat bottom right #58a;<br>background-position: right 20px bottom 10px;</p>
+<h4 id="background-origin-方案"><a href="#background-origin-方案" class="headerlink" title="background-origin 方案"></a>background-origin 方案</h4><p>在给背景图片设置距离某个角的偏移量时，有一种情况极其常见：偏移量与容器的内边距一致。如果采用上面提到的 background-position 的扩展语法方案，代码看起来会是这样的：</p>
+<p>padding: 10px;<br>background: url(code-pirate.svg) no-repeat #58a;<br>background-position: right 10px bottom 10px;</p>
+<p>我们可以在下图中看到结果。如你所见，它起作用了，但代码不够DRY：每次改动内边距的值时，我们都需要在三个地方更新这个值！谢天谢地，还有一个更简单的办法可以实现这个需求：让它自动地跟着我们设定的内边距走，不用另外声明偏移量的值。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901143446.jpg"></p>
+<p>对背景图片应用的偏移量往往跟内边距的值正好一致</p>
+<p>在网页开发生涯中，你很可能多次写过类似 background-position:top left; 这样的代码。你是否曾经有过疑惑：这个 top left 到底是哪个左上角？你可能知道，每个元素身上都存在三个矩形框（参见下图）：border box（边框的外沿框）、padding box（内边距的外沿框）和 content box（内容区的外沿框）。那 background-position 这个属性指定的到底是哪个矩形框的左上角？默认情况下，background-position 是以 padding box 为准的，这样边框才不会遮住背景图片。因此，top left 默认指的是 padding box 的左上角。不过，在背景与边框（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-background%EF%BC%89%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E5%BE%97%E5%88%B0%E4%BA%86%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%B1%9E%E6%80%A7">http://w3.org/TR/css3-background）中，我们得到了一个新的属性</a> background-origin，可以用它来改变这种行为。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901143511.jpg">   在默认情况下，它的值是（闭着眼睛也猜得到）padding-box。如果把它的值改成 content-box（参见下面的代码），我们在 background-position 属性中使用的边角关键字将会以内容区的边缘作为基准（也就是说，此时背景图片距离边角的偏移量就跟内边距保持一致了）：</p>
+<p>padding: 10px;<br>background: url(“code-pirate.svg”) no-repeat #58a<br>bottom right; /* 或 100% 100% */<br>background-origin: content-box;</p>
+<p>它的视觉效果跟图 4 是完全一样的，但我们的代码变得更加 DRY了。另外别忘了，在必要时可以把这两种技巧组合起来！如果你想让偏移量与内边距稍稍有些不同（比如稍微收敛或超出），那么可以在使用background-origin: content-box 的同时，再通过 background-position的扩展语法来设置这些额外的偏移量。</p>
+<h4 id="calc-方案"><a href="#calc-方案" class="headerlink" title="calc() 方案"></a>calc() 方案</h4><p>让我们回顾一下本节开头的挑战：把背景图片定位到距离底边 10px 且距离右边 20px 的位置。如果我们仍然以左上角偏移的思路来考虑，其实就是希望它有一个 100% - 20px 的水平偏移量，以及 100% - 10px 的垂直偏移量。谢天谢地，calc() 函数允许我们执行此类运算，它可以完美地在background-position 属性中使用：</p>
+<p>background: url(“code-pirate.svg”) no-repeat;<br>background-position: calc(100% - 20px) calc(100% - 10px);</p>
+<h4 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h4><p>CSS 背景与边框 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-backgrounds">http://w3.org/TR/css-backgrounds</a> CSS 值与单位 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-values">http://w3.org/TR/css-values</a></p>
 
       
     </div>
@@ -1510,16 +1567,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1570,6 +1627,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

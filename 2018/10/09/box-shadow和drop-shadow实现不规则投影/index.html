@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="当我们想给一个矩形或其他能用 border-radius 生成的形状（在“自适应的椭圆”一节中可以看到一些示例）加投影时，box-shadow 的表现都堪称完美。但是，当元素添加了一些伪元素或半透明的装饰之后，它就有些力不从心了，因为 border-radius 会无耻地忽视透明部分。这类情况包括：    半透明图像、背景图像、或者 border-image（比如老式的金质像框）；   元素设置了">
@@ -173,6 +173,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -246,13 +247,13 @@
 <li>  元素设置了点状、虚线或半透明的边框，但没有背景（或者当background-clip 不是 border-box 时）；</li>
 <li>  对话气泡，它的小尾巴通常是用伪元素生成的；</li>
 </ul>
-<p>如果我们打算对这类元素直接应用 box-shadow，那只能得到不完全投影的结果。难道我们只能完全放弃投影效果吗？有没有办法可以解决这个难题？ <img src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131023.png"> 滤镜效果规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/filter-effects%EF%BC%89%E4%B8%BA%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%82%E5%AE%83%E5%BC%95%E5%85%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E5%8F%AB%E4%BD%9C">http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。它引入了一个叫作</a> filter 的新属性，这个属性也是从 SVG 那里借鉴过来的。尽管 CSS 滤镜基本上就是 SVG 滤镜，但我们并不需要掌握任何SVG 知识。相反，只需要一些函数就可以很方便地指定滤镜效果了，比如blur()、grayscale() 以及我们需要的 drop-shadow() ！如果你喜欢，甚至可以把多个滤镜串连起来，只要用空格把它们分隔开就可以了，比如：</p>
+<p>如果我们打算对这类元素直接应用 box-shadow，那只能得到不完全投影的结果。难道我们只能完全放弃投影效果吗？有没有办法可以解决这个难题？ <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131023.png"> 滤镜效果规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/filter-effects%EF%BC%89%E4%B8%BA%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%82%E5%AE%83%E5%BC%95%E5%85%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E5%8F%AB%E4%BD%9C">http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。它引入了一个叫作</a> filter 的新属性，这个属性也是从 SVG 那里借鉴过来的。尽管 CSS 滤镜基本上就是 SVG 滤镜，但我们并不需要掌握任何SVG 知识。相反，只需要一些函数就可以很方便地指定滤镜效果了，比如blur()、grayscale() 以及我们需要的 drop-shadow() ！如果你喜欢，甚至可以把多个滤镜串连起来，只要用空格把它们分隔开就可以了，比如：</p>
 <p>filter: blur() grayscale() drop-shadow();</p>
 <p>drop-shadow() 滤镜可接受的参数基本上跟 box-shadow 属性是一样的，但不包括扩张半径，不包括 inset 关键字，也不支持逗号分割的多层投影语法。举个例子，上面的投影：</p>
 <p>box-shadow: 2px 2px 10px rgba(0,0,0,.5);</p>
 <p>可以这样来写：</p>
 <p>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
-<p><img src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131101.png"> CSS 滤镜最大的好处在于，它们可以平稳退化：当浏览器不支持时，不会出现问题，只不过没有任何效果而已。如果你确实需要这个效果在尽可能多的浏览器中显示出来，可以同时附上一个 SVG 滤镜，这样可以得到稍微好一些的浏览器支持度。你可以在滤镜效果规范（<a target="_blank" rel="noopener" href="http://www.w3.org/TR/filter-effects/%EF%BC%89%E4%B8%AD%E4%B8%BA%E6%AF%8F%E4%B8%AA%E6%BB%A4%E9%95%9C%E5%87%BD%E6%95%B0%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84">http://www.w3.org/TR/filter-effects/）中为每个滤镜函数找到对应的</a> SVG 滤镜版本。你可以把 SVG滤镜和简化的 CSS 滤镜放在一起使用，让层叠机制来决定哪一行最终生效：</p>
+<p><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131101.png"> CSS 滤镜最大的好处在于，它们可以平稳退化：当浏览器不支持时，不会出现问题，只不过没有任何效果而已。如果你确实需要这个效果在尽可能多的浏览器中显示出来，可以同时附上一个 SVG 滤镜，这样可以得到稍微好一些的浏览器支持度。你可以在滤镜效果规范（<a target="_blank" rel="noopener" href="http://www.w3.org/TR/filter-effects/%EF%BC%89%E4%B8%AD%E4%B8%BA%E6%AF%8F%E4%B8%AA%E6%BB%A4%E9%95%9C%E5%87%BD%E6%95%B0%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84">http://www.w3.org/TR/filter-effects/）中为每个滤镜函数找到对应的</a> SVG 滤镜版本。你可以把 SVG滤镜和简化的 CSS 滤镜放在一起使用，让层叠机制来决定哪一行最终生效：</p>
 <p>filter: url(drop-shadow.svg#drop-shadow);<br>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
 <p>不幸的是，如果 SVG 滤镜是存放在一个独立文件里的，那它就无法像一个简洁易用的函数那样在 CSS 代码中进行随意配置；如果它是内联的，则又会搅乱你的代码。参数需要写死在文件内部，因此每当我们新加一种哪怕是大同小异的投影效果时，都需要多准备一个文件，这显然是难以接受的。当然，我们还可以使用 data URI（它也会省掉额外的 HTTP 请求），但这个方法仍然会带来文件体积的增长。总的来说，这个方法只是一种回退方案，因此只要我们把SVG 滤镜控制在一定数量以内，哪怕它们的效果大同小异，也是说得过去的。 另外一件需要牢记的事情就是，任何非透明的部分都会被一视同仁地打上投影，包括文本（如果背景是透明的），正如我们刚刚看到的那样。你可能会想，是不是可以通过 text-shadow: none; 来取消掉文本上的投影呢？其实 text-shadow 跟它是完全不相干的两码事，因此这样做并不能取消文本上的 drop-shadow() 效果。此外，如果你已经用 textshadow在文本上加了投影效果，文本投影还会被 drop-shadow() 滤镜再加上投影，这本质上是给投影打了投影！看看下面这段示例代码（请原谅它惨不忍睹的效果，这样只是为了凸显这个怪异的问题）：</p>
 <p>color: deeppink;<br>border: 2px solid;<br>text-shadow: .1em .2em yellow;<br>filter: drop-shadow(.05em .05em .1em gray);</p>
@@ -263,14 +264,52 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/" title="box-shadow和drop-shadow实现不规则投影">https://xianzhiding.github.io/2018/10/09/box-shadow和drop-shadow实现不规则投影/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/css/" rel="tag"># css</a>
-              <a href="/tags/filter/" rel="tag"># filter</a>
-              <a href="/tags/css3/" rel="tag"># css3</a>
-              <a href="/tags/box-shadow/" rel="tag"># box-shadow</a>
-              <a href="/tags/text-shadow/" rel="tag"># text-shadow</a>
+              <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
+              <a href="/tags/filter/" rel="tag"><i class="fa fa-tag"></i> filter</a>
+              <a href="/tags/css3/" rel="tag"><i class="fa fa-tag"></i> css3</a>
+              <a href="/tags/box-shadow/" rel="tag"><i class="fa fa-tag"></i> box-shadow</a>
+              <a href="/tags/text-shadow/" rel="tag"><i class="fa fa-tag"></i> text-shadow</a>
           </div>
 
         
@@ -357,16 +396,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -417,6 +456,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

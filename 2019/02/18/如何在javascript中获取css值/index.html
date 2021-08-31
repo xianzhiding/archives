@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="有时候单独的使用CSS是不够的。您可能需要使用JavaScript控制CSS值。但是你如何在JavaScript中获得CSS值？ 有两种可能的方式，取决于您是尝试获取内联样式还是计算样式。 获取内联样式内联样式是存在于 HTML style 属性(attribute)中的样式。 Red hot chili pepper!  要获取内联样式，可以使用 style 属性(property)。 cons">
@@ -34,8 +34,8 @@
 <meta property="article:modified_time" content="2021-08-30T02:43:27.018Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="javascript">
-<meta property="article:tag" content="css3教程">
 <meta property="article:tag" content="javascript教程">
+<meta property="article:tag" content="css3教程">
 <meta property="article:tag" content="css教程">
 <meta property="article:tag" content="ECMAScript教程">
 <meta property="article:tag" content="js教程">
@@ -175,6 +175,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -258,11 +259,11 @@
 
 <p>首先，您需要使用 querySelector 选择元素。然后，使用 getComputedStyle 获取元素的样式。</p>
 <p>const element = document.querySelector(‘.element’)<br>const style = getComputedStyle(element)</p>
-<p>如果你用 console.log(style) 打印，您应该看到一个包含每个CSS属性及其各自值的对象。 <img src="http://file.w3cbest.com/file/images/all-properties.png"></p>
+<p>如果你用 console.log(style) 打印，您应该看到一个包含每个CSS属性及其各自值的对象。 <img data-src="http://file.w3cbest.com/file/images/all-properties.png"></p>
 <p>图注：getComputedStyle 返回一个包含每个CSS属性及其各自值的对象</p>
-<p>您还可以在Chrome和Firefox的开发工具中看到此对象。 对于Firefox开发工具，请查看 “Inspector”，“Computed”。 <img src="http://file.w3cbest.com/file/images/firefox.png"></p>
+<p>您还可以在Chrome和Firefox的开发工具中看到此对象。 对于Firefox开发工具，请查看 “Inspector”，“Computed”。 <img data-src="http://file.w3cbest.com/file/images/firefox.png"></p>
 <p>图注：Firefox dev工具计算样式选项卡</p>
-<p>对于Chrome开发工具，请查看“Elements” 面板。 如果开发工具窗口很大，您可以在右侧面板上看到计算出的样式。 如果开发工具窗口很小，您可以在“Computed”选项卡下查看。 <img src="http://file.w3cbest.com/file/images/chrome.png"></p>
+<p>对于Chrome开发工具，请查看“Elements” 面板。 如果开发工具窗口很大，您可以在右侧面板上看到计算出的样式。 如果开发工具窗口很小，您可以在“Computed”选项卡下查看。 <img data-src="http://file.w3cbest.com/file/images/chrome.png"></p>
 <p>图注：Chrome dev工具计算样式选项卡</p>
 <p>要获取CSS属性的值，请以驼峰形式编写属性。</p>
 <p>const style = getComputedStyle(element)</p>
@@ -286,15 +287,53 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/02/18/%E5%A6%82%E4%BD%95%E5%9C%A8javascript%E4%B8%AD%E8%8E%B7%E5%8F%96css%E5%80%BC/" title="如何在JavaScript中获取CSS值">https://xianzhiding.github.io/2019/02/18/如何在javascript中获取css值/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/javascript/" rel="tag"># javascript</a>
-              <a href="/tags/css3%E6%95%99%E7%A8%8B/" rel="tag"># css3教程</a>
-              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"># javascript教程</a>
-              <a href="/tags/css%E6%95%99%E7%A8%8B/" rel="tag"># css教程</a>
-              <a href="/tags/ECMAScript%E6%95%99%E7%A8%8B/" rel="tag"># ECMAScript教程</a>
-              <a href="/tags/js%E6%95%99%E7%A8%8B/" rel="tag"># js教程</a>
+              <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+              <a href="/tags/javascript%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> javascript教程</a>
+              <a href="/tags/css3%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> css3教程</a>
+              <a href="/tags/css%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> css教程</a>
+              <a href="/tags/ECMAScript%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> ECMAScript教程</a>
+              <a href="/tags/js%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> js教程</a>
           </div>
 
         
@@ -382,16 +421,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -442,6 +481,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

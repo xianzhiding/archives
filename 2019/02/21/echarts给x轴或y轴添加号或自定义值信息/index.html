@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="如何给Echarts的xAxis轴或yAxis轴添加%号或自定义值信息，首先得需要了解xAxis轴或yAxis轴的一些配置项，不然是不知道该如何下手的，如下图：  现在看来显然是axisLabel项了，xAxis.axisLabel 坐标轴刻度标签的相关设置。  那我们再往下看，xAxis.axisLabel.formatter，刻度标签的内容格式器，支持字符串模板和回调函数两种形式。 看官网示例">
@@ -174,6 +174,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -241,7 +242,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>如何给Echarts的xAxis轴或yAxis轴添加%号或自定义值信息，首先得需要了解<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#xAxis">xAxis轴</a>或<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#yAxis">yAxis</a>轴的一些配置项，不然是不知道该如何下手的，如下图： <img src="http://file.w3cbest.com/file/images/20190221163332.jpg"> 现在看来显然是<code>axisLabel</code>项了，<code>xAxis.axisLabel</code> 坐标轴刻度标签的相关设置。 <img src="http://file.w3cbest.com/file/images/20190221164332.jpg"> 那我们再往下看，<code>xAxis.axisLabel.formatter</code>，刻度标签的内容格式器，支持字符串模板和回调函数两种形式。 看官网示例：</p>
+        <p>如何给Echarts的xAxis轴或yAxis轴添加%号或自定义值信息，首先得需要了解<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#xAxis">xAxis轴</a>或<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#yAxis">yAxis</a>轴的一些配置项，不然是不知道该如何下手的，如下图： <img data-src="http://file.w3cbest.com/file/images/20190221163332.jpg"> 现在看来显然是<code>axisLabel</code>项了，<code>xAxis.axisLabel</code> 坐标轴刻度标签的相关设置。 <img data-src="http://file.w3cbest.com/file/images/20190221164332.jpg"> 那我们再往下看，<code>xAxis.axisLabel.formatter</code>，刻度标签的内容格式器，支持字符串模板和回调函数两种形式。 看官网示例：</p>
 <p>// 使用字符串模板，模板变量为刻度默认标签 {value}<br>formatter: ‘{value} kg’</p>
 <p>// 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引<br>formatter: function(value, index) {<br>    // 格式化成月/日，只在第一个刻度显示年份<br>    var date = new Date(value);<br>    var texts = [(date.getMonth() + 1), date.getDate()];<br>    if (index === 0) {<br>        texts.unshift(date.getYear());<br>    }<br>    return texts.join(‘/‘);<br>}</p>
 <p>通过示例我们知道它有两种形式，一种是字符串模板，另一种是函数模板。一般情况下我们使用第一种字符串模板，第二种函数模板参杂的信息量比较大，适合较复杂的一些自定义配置这里就不多讲了。</p>
@@ -252,15 +253,53 @@
     
     
     
+        <div class="reward-container">
+  <div>坚持技术创作分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Tom 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Tom 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tom
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xianzhiding.github.io/2019/02/21/echarts%E7%BB%99x%E8%BD%B4%E6%88%96y%E8%BD%B4%E6%B7%BB%E5%8A%A0%E5%8F%B7%E6%88%96%E8%87%AA%E5%AE%9A%E4%B9%89%E5%80%BC%E4%BF%A1%E6%81%AF/" title="Echarts给X轴或Y轴添加%号或自定义值信息">https://xianzhiding.github.io/2019/02/21/echarts给x轴或y轴添加号或自定义值信息/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/axisLabel/" rel="tag"># axisLabel</a>
-              <a href="/tags/Echarts-xAxis/" rel="tag"># Echarts xAxis</a>
-              <a href="/tags/Echarts-x%E8%BD%B4/" rel="tag"># Echarts x轴</a>
-              <a href="/tags/formatter/" rel="tag"># formatter</a>
-              <a href="/tags/xAxis/" rel="tag"># xAxis</a>
-              <a href="/tags/yAxis/" rel="tag"># yAxis</a>
+              <a href="/tags/axisLabel/" rel="tag"><i class="fa fa-tag"></i> axisLabel</a>
+              <a href="/tags/Echarts-xAxis/" rel="tag"><i class="fa fa-tag"></i> Echarts xAxis</a>
+              <a href="/tags/Echarts-x%E8%BD%B4/" rel="tag"><i class="fa fa-tag"></i> Echarts x轴</a>
+              <a href="/tags/formatter/" rel="tag"><i class="fa fa-tag"></i> formatter</a>
+              <a href="/tags/xAxis/" rel="tag"><i class="fa fa-tag"></i> xAxis</a>
+              <a href="/tags/yAxis/" rel="tag"><i class="fa fa-tag"></i> yAxis</a>
           </div>
 
         
@@ -347,16 +386,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">348</span>
+        <span class="site-state-item-count">336</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -407,6 +446,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
