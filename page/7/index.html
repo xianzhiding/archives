@@ -178,6 +178,171 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%BB%8B%E7%BB%8Dcss%E5%BD%A2%E7%8A%B6-css-shapes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/03/%E4%BB%8B%E7%BB%8Dcss%E5%BD%A2%E7%8A%B6-css-shapes/" class="post-title-link" itemprop="url">CSS形状入门--自定义路径周围的内容包装（CSS Shapes）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-03 17:13:24" itemprop="dateCreated datePublished" datetime="2019-01-03T17:13:24+08:00">2019-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="CSS-Shapes-简介"><a href="#CSS-Shapes-简介" class="headerlink" title="CSS Shapes 简介"></a>CSS Shapes 简介</h2><p>CSS Shapes 允许我们通过定义文本内容可以环绕的几何形状、图像和渐变，来创建有趣且独特的布局。本次教程会教你如何使用它们。 在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Shapes">CSS Shapes</a> 问世之前，为网页设计文本自由环绕的杂志式布局几乎是不可能的。相反，网页设计布局传统上一直用网格、盒子和直线构造。 CSS Shapes 允许我们定义文本环绕的几何形状。这些形状可以是圆、椭圆、简单或复杂的多边形，甚至图像和渐变。Shapes 的一些实际设计应用可能是圆形头像周围显示圆形环绕文本，全屏背景图片的简单部位上面展示文本，以及在文章中显示首字下沉。 现在 CSS Shapes 已经获得了现代浏览器的广泛支持，值得一看的是它们提供的灵活性和功能，以确定它们在你的下一个设计项目中是否能派上用场。</p>
+<blockquote>
+<p>注意：截至攥写本文时，CSS Shapes 支持 Firefox、Chrome、Safari 和 Opera，以及 iOS Safari 和 Chrome for Android 等移动浏览器。Shapes 不支持 IE，对 Microsoft Edge 的支持<a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/microsoft-edge/platform/status/shapes/">正在考虑中</a>。</p>
+</blockquote>
+<h2 id="CSS-Shapes-初探"><a href="#CSS-Shapes-初探" class="headerlink" title="CSS Shapes 初探"></a>CSS Shapes 初探</h2><p>CSS Shapes 的当前实现是 <a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-shapes/">CSS Shapes Module Level 1</a>，它主要包含 [shape-outside]属性。<a target="_blank" rel="noopener" href="https://tympanus.net/codrops/css_reference/shape-outside/">shape-outside</a> 定义了文本环绕的形状。 考虑到有 shape-outside 属性，你可能会想到还有一个相应的 shape-inside 属性，它包含形状内的文本。shape-inside 属性可能会在将来实现，目前它只是 <a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-shapes-2/">CSS Shapes Module Level 2</a>里面的一个草案，并没有被任何浏览器实现。 在本文中，我们将演示如何使用&lt;<a target="_blank" rel="noopener" href="https://tympanus.net/codrops/css_reference/basic-shape/">basic-shape</a>&gt;数据类型并使用形状函数值设置它，以及使用半透明URL或渐变设置形状。  </p>
+<h3 id="基本形状函数"><a href="#基本形状函数" class="headerlink" title="基本形状函数"></a>基本形状函数</h3><p>我们可以通过对shape-outside属性应用以下函数值来定义CSS中的各种基本形状:</p>
+<ul>
+<li>  circle()</li>
+<li>  ellipse()</li>
+<li>  inset()</li>
+<li>  polygon()</li>
+</ul>
+<p>为了将shape-outside属性应用到元素上，元素必须是浮动的，并且具有定义的高度和宽度。让我们逐一介绍这四个基本形状，并演示如何使用它们。</p>
+<h2 id="circle"><a href="#circle" class="headerlink" title="circle"></a>circle</h2><p>我们将从 circle() 函数开始。设想如下场景，有一个圆形的作者头像，我们想让头像左浮动并且作者的描述文本环绕它。仅对头像元素使用 border-radius: 50% 不足以使文本呈圆形；文本仍将把头像当成矩形元素。 通过圆形，我们可以演示文本如何按圆形环绕。 首先我们在一个普通的 div 上创建 circle 样式，并且写几段文字（我使用 Bob Ross 语录作为 Lorem Ipsum 文本）。</p>
+<div class="circle"></div>
+<p>Example text...</p>
+
+<p>在circle 样式中，我们将元素浮动到左边，给它一个相等的高度和宽度，并将shape-outside设置为circle()。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>}</p>
+<p>如果我们访问页面，会看到如下场景。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle1.jpg"> 正如你所看到的，文字围绕着圆形流动，但我们实际上看不到任何形状。将鼠标悬停在Developer Tools中的元素上，将向我们显示正在设置的实际形状。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle2.jpg"> 此时，你可能会认为可以给元素 background 设置颜色或者图片就能看到形状了。我们来试一下。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
+<p>不幸的是，给 circle 设置 background 后会显示一个矩形，这是我们一直试图避免的事情。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle3.jpg"> 我们可以清晰地看到文本在它周围环绕，但是元素本身并没有形状。如果我们想要真实地显示形状函数，就必须使用 clip-path 属性。clip-path 采用许多和 shape-outside 相同的值，所以我们可以给它相同的circle()值。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle();<br>    clip-path: circle();<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
+<p>  <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle4.jpg"></p>
+<blockquote>
+<p>在本文剩下的部分，我将使用 clip-path 帮助我们辨认形状。</p>
+</blockquote>
+<p>circle() 函数接收可选的 radius 参数。在我们的例子中，默认 radius 是 50% 或者 100px。使用 circle(50%) 或者 circle(100px) 都将产生和我们已经完成样例的同样结果。 你可能会注意到文本刚好和形状贴合。我们可以使用 shape-margin 属性给形状添加 margin，它可以设置为px、em、% 和任何其他标准的 CSS 测量单位。</p>
+<p>.circle {<br>    float: left;<br>    height: 200px;<br>    width: 200px;<br>    shape-outside: circle(25%);<br>    shape-margin: 1rem;<br>    clip-path: circle(25%);<br>    background: linear-gradient(to top right, #FDB171, #FD987D);<br>}</p>
+<p>下面是一个circle radius 设置 25% 并且使用 shape-margin 的例子。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_circle5.jpg"> 除了 radius，形状函数可以使用 at 定位。默认位置是圆的中心，因此 circle() 也可以被显式设置为 circle(50% at 50% 50%) 或 circle(100px at 100px 100px)，这两个值分别是水平和垂直位置。 为了搞清楚 position 的作用，我们可以设置水平位置值为 0 来创造一个完美的半圆。</p>
+<p>circle(50% at 0 50%);</p>
+<p>这种坐标定位系统称为参考框。</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_circle6.jpg"></p>
+<p>稍后我们将学习如何使用图像代替形状或者渐变。现在我们将继续进行下一个形状函数。</p>
+<h2 id="Ellipse"><a href="#Ellipse" class="headerlink" title="Ellipse"></a>Ellipse</h2><p>ellipse() 和 circle() 函数类似，只是它会创造椭圆。为了演示，我们创建一个 ellipse 元素和样式。</p>
+<div class="ellipse"></div>
+<p>Example text...</p>
+
+<p>.ellipse {<br>    float: left;<br>    shape-outside: ellipse();<br>    clip-path: ellipse();<br>    width: 150px;<br>    height: 300px;<br>    background: linear-gradient(to top right, #F17BB7, #AD84E3);<br>}</p>
+<p>这次，我们设置不同的 height 和 width 创建一个垂直拉长的椭圆。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_ellipse1.jpg"> ellipse() 和 circle()的区别在于，ellipse有两个半径rx和ry，即x轴半径和y轴半径。因此，上述例子也可以写成:</p>
+<p>ellipse(75px 150px);</p>
+<p>circles 和 ellipses 的位置参数是一样的。除了是测量单位，半径也包括 farthest-side 和 closest-side 的选项。 closest-side 是指从参考框的中心到最近边的长度，相反，farthest-side 是指从参考框的中心到最远边的长度。这意味着如果未设置默认值以外的位置，这两个值将无效。 下面演示了在 ellipse() 上翻转 closest-side 和 farthest-side 的区别，在X轴和Y轴上偏移25%。</p>
+<p>ellipse(farthest-side closest-side at 25% 25%)</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_ellipse2.jpg"></p>
+<p>ellipse(farthest-side closest-side at 25% 25%)</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_ellipse3.jpg">  </p>
+<h2 id="Inset"><a href="#Inset" class="headerlink" title="Inset"></a>Inset</h2><p>到目前为止我们只处理了圆形的形状，但是我们可以使用 inset() 函数定义内嵌矩形。</p>
+<div class="inset"></div>
+<p>Example text...</p>
+
+<p>.inset {<br>    float: left;<br>    shape-outside: inset(75px);<br>    clip-path: inset(75px);<br>    width: 300px;<br>    height: 300px;<br>    background: linear-gradient(#58C2ED, #1B85DC);<br>}</p>
+<p>在本例中，我们将创建一个300px×300px的矩形，并在所有边内嵌75px。这样我们就得到了150px×150px的图像周围有75px的空间。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_inset1.jpg"> 我们可以看到矩形是内嵌的，文本忽略了内嵌区域。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_inset2.jpg"> inset() 形状也可以使用 round 参数接收 border-radius，并且文本会识别圆角，就像本例中所有边都是 25px 内嵌和 75px 圆角。</p>
+<p>inset(25px round 75px)</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_inset3.jpg"> 像 padding 或 margin 简写，inset 值以顺时针方式（inset(25px 25px 25px 25px)）接收 top right bottom left，并且只传一个值将使四条边都相同（inset(25px)）。  </p>
+<h2 id="Polygon"><a href="#Polygon" class="headerlink" title="Polygon"></a>Polygon</h2><p>形状函数中最有趣和最灵活的是 polygon()，它可以采用一系列 x 和 y 点来制作任何复杂形状。数组里的每个元素代表 _x_i _y_i，将被写成 polygon(x1 y1, x2 y2, x3 y3…) 等等。 我们可以为多边形设置的点集数量最少为 3，这将创建一个三角形。</p>
+<div class="polygon"></div>
+<p>Example text...</p>
+
+<p>.polygon {<br>    float: left;<br>    shape-outside: polygon(0 0, 0 300px, 200px 300px);<br>    clip-path: polygon(0 0, 0 300px, 200px 300px);<br>    height: 300px;<br>    width: 300px;<br>    background: linear-gradient(to top right, #86F7CC, #67D7F5);<br>}</p>
+<p>  在这个形状中，第一个点是 0 0，div 中最左上角的点。第二个点是 0 300px，它是 div 中最左下角的点。第三个也就是最后一个点是 200px 300px，它在 X 轴的 2/3 处并且也在底部。最终的形状是这样： <img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon1.jpg"> polygon() 形状函数的一个有趣用法是文本内容可以在两个或以上形状中环绕。因为 polygon() 形状是如此灵活和动态，这给我们制作真正独特的杂志式布局提供了一个最好机会。在本例中，我们将把文本放在两个多边形中。</p>
+<div class="left"></div>
+<div class="right"></div>
+<p>Example text...</p>
+
+<p>.left {<br>    float: left;<br>    shape-outside: polygon(0 0, 0 300px, 200px 300px);<br>    clip-path: polygon(0 0, 0 300px, 200px 300px);<br>    background: linear-gradient(to top right, #67D7F5, #86F7CC);<br>    height: 300px;<br>    width: 300px;<br>}<br>.right {<br>    float: right;<br>    shape-outside: polygon(200px 300px, 300px 300px, 300px 0, 0 0);<br>    clip-path: polygon(200px 300px, 300px 300px, 300px 0, 0 0);<br>    background: linear-gradient(to bottom left, #67D7F5, #86F7CC);<br>    height: 300px;<br>    width: 300px;<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon2.jpg"> 显然，想要手动创造你自己的复杂形状是非常困难的。幸运的是，你可以用一些工具来创建多边形。Firefox 有一个内置的形状编辑器，你可以在 Inspector 中通过点击多边形使用。 <img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon3.jpg"> 目前，Chrome有一些可以使用的扩展，比如<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/css-shapes-editor/nenndldnbcncjmeacmnondmkkfedmgmp?hl=en-US">CSS shape Editor</a>。 多边形可以用来剪切图像或其他元素周围的形状。在另一个例子中，我们可以通过在大字母周围绘制多边形来创建首字下沉。</p>
+<div class="letter">R</div>
+<p>Example text...</p>
+
+<p>.letter {<br>    float: left;<br>    font-size: 400px;<br>    font-family: Georgia;<br>    line-height: .8;<br>    margin-top: 20px;<br>    margin-right: 20px;<br>    shape-outside: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px) content-box;<br>    clip-path: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px);<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_polygon4.jpg"></p>
+<h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>CSS Shapes 一个令人激动的特性是你不必每次都通过形状函数明确定义；你也可以使用半透明图像的 url 来定义形状，这样文本就会自动环绕它。 需要注意的是，所使用的图像必须与CORS兼容，否则您将得到如下所示的错误。</p>
+<p>Access to image at ‘file:///users/tania/star.png’ from origin ‘null’<br>has been blocked by CORS policy: The response is invalid.</p>
+<p>  在同一个服务器上提供图像将会保证你不会遇到上面的错误。 与其他示例不同，我们将使用 img 代替 div。这次的 CSS 很简单——只需将url()放到shape-outside属性中，就像使用 background-image 一样。</p>
+<img data-src="./star.png" class="star">
+<p>Example text...</p>
+
+<p>.star {<br>float: left;<br>height: 350px;<br>width: 350px;<br>shape-outside: url(‘./star.png’)<br>}</p>
+<p><img data-src="http://file.w3cbest.com/file/images/cssshapes_image1.jpg"> 因为我使用了透明背景的星星图像，所以文本知道哪些区域是透明的，哪些区域是不透明的，并相应地对自己进行自适应布局。</p>
+<h3 id="Gradients"><a href="#Gradients" class="headerlink" title="Gradients"></a>Gradients</h3><p>最后，渐变也可以用来当成形状。渐变和图像一样，就像我们上面使用的图像示例一样，文本也将知道在透明部分环绕。 我们将使用渐变的一个新属性 —— shape-image-threshold。shape-image-threshold 定义形状的 alpha 通道阈值，或者图像透明的百分比值。 我们将制作一个渐变例子，它是 50％/50％ 的颜色和透明分割，并且设置 shape-image-threshold 为 .5，意味着超过 50％ 不透明的所有像素都应被视为图像的一部分。</p>
+<div class="gradient"></div>
+<p>Example text...</p>
+
+<p>.gradient {<br>    float: left;<br>    height: 300px;<br>    width: 100%;<br>    background: linear-gradient(to bottom right, #86F7CC, transparent);<br>    shape-outside: linear-gradient(to bottom right, #86F7CC, transparent);<br>    shape-image-threshold: .5;<br>}</p>
+<p>  <img data-src="http://file.w3cbest.com/file/images/cssshapes_gradient1.jpg"> 我们可以看到渐变在不透明和透明的中心完美地对角线分割。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在这篇文章中，我们学习了 CSS Shapes 的三个属性 shape-outside、shape-margin 和 shape-image-threshold。我们也了解到如何使用函数值创建可供文本环绕的圆、椭圆、内嵌矩形以及复杂的多边形，并且演示了形状如何检测图像和渐变的透明部分。 <strong>你可以在如下 <a target="_blank" rel="noopener" href="http://tympanus.net/Tutorials/CSSShapes/">demo</a> 中找到本文中用到的所有例子，也可以<a target="_blank" rel="noopener" href="http://tympanus.net/Tutorials/CSSShapes/CSSShapes.zip">下载源文件</a>。</strong></p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/JwpjzM/">CSS Shapes Examples</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>文章来源： <a target="_blank" rel="noopener" href="https://tympanus.net/codrops/2018/11/29/an-introduction-to-css-shapes/">https://tympanus.net/codrops/2018/11/29/an-introduction-to-css-shapes/</a> 相关阅读参考：<a target="_blank" rel="noopener" href="https://alistapart.com/article/css-shapes-101">https://alistapart.com/article/css-shapes-101</a> 相关阅读参考：<a target="_blank" rel="noopener" href="https://www.html5rocks.com/en/tutorials/shapes/getting-started/#toc-manual-shapes">https://www.html5rocks.com/en/tutorials/shapes/getting-started/#toc-manual-shapes</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%BB%8E%E7%BD%91%E7%AB%99%E5%8F%91%E9%80%81http%EF%BC%8C%E4%BD%A0%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%BF%BD%E7%95%A5%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,11 +548,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
             </span>
 
@@ -671,11 +836,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
             </span>
 
@@ -755,7 +920,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 11:22:19" itemprop="dateModified" datetime="2021-08-30T11:22:19+08:00">2021-08-30</time>
+                <time title="修改时间：2021-09-03 09:37:43" itemprop="dateModified" datetime="2021-09-03T09:37:43+08:00">2021-09-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -796,23 +961,53 @@
 
 <p>然后再用一些基本的 CSS 来设置背景、内边距等样式，运行一下就可以看到效果了。我们将以此作为起点。  </p>
 <h2 id="基于绝对定位的解决方案"><a href="#基于绝对定位的解决方案" class="headerlink" title="基于绝对定位的解决方案"></a>基于绝对定位的解决方案</h2><p>我们先来看一个早期的垂直居中方法，它要求元素具有固定的宽度和高度：</p>
-<p>main {<br>position: absolute;<br>top: 50%;<br>left: 50%;<br>margin-top: -3em; /* 6/2 = 3 */<br>margin-left: -9em; /* 18/2 = 9 */<br>width: 18em;<br>height: 6em;<br>}</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -3em; &#x2F;* 6&#x2F;2 &#x3D; 3 *&#x2F;
+  margin-left: -9em; &#x2F;* 18&#x2F;2 &#x3D; 9 *&#x2F;
+  width: 18em;
+  height: 6em;
+&#125;</code></pre>
+
 <p>这段代码在本质上做了这样几件事情：先把这个元素的左上角放置在视口（或最近的、具有定位属性的祖先元素）的正中心，然后再利用负外边距把它向左、向上移动（移动距离相当于它自身宽高的一半），从而把元素的正中心放置在视口的正中心。借助强大的 calc() 函数，这段代码还可以省掉两行声明：</p>
-<p>main {<br>position: absolute;<br>top: calc(50% - 3em);<br>left: calc(50% - 9em);<br>width: 18em;<br>height: 6em;<br>}</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  position: absolute;
+  top: calc(50% - 3em);
+  left: calc(50% - 9em);
+  width: 18em;
+  height: 6em;
+&#125;</code></pre>
+
 <p>显然，这个方法最大的局限在于它要求元素的宽高是固定的。在通常情况下，对那些需要居中的元素来说，其尺寸往往是由其内容来决定的。如果能找到一个属性的百分比值以元素自身的宽高作为解析基准，那我们的难题就迎刃而解了！遗憾的是，对于绝大多数 CSS 属性（包括 margin）来说，百分比都是以其父元素的尺寸为基准进行解析的。 CSS 领域有一个很常见的现象，真正的解决方案往往来自于我们最意想不到的地方。在这个例子中，答案来自于 CSS 变形属性。当我们在translate() 变形函数中使用百分比值时，是以这个元素自身的宽度和高度为基准进行换算和移动的，而这正是我们所需要的。接下来，只要换用基于百分比的 CSS 变形来对元素进行偏移，就不需要在偏移量中把元素的尺寸写死了。这样我们就可以彻底解除对固定尺寸的依赖：</p>
-<p>main {<br>position: absolute;<br>top: 50%;<br>left: 50%;<br>transform: translate(-50%, -50%);<br>}</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+&#125;</code></pre>
+
 <p>你可以在下面demo中看到结果：这个容器已经完美居中了，完全满足我们的期望。 当然，没有任何技巧是十全十美的，上面这个方法也有一些需要注意的地方。</p>
 <ul>
 <li>  我们有时不能选用绝对定位，因为它对整个布局的影响太过强烈。</li>
 <li>  如果需要居中的元素已经在高度上超过了视口，那它的顶部会被视口裁切掉。有一些办法可以绕过这个问题，但 hack味道过浓。</li>
 <li>  在某些浏览器中，这个方法可能会导致元素的显示有一些模糊，因为元素可能被放置在半个像素上。这个问题可以用 transformstyle:preserve-3d 来修复，不过这个修复手段也可以认为是一个hack，而且很难保证它在未来不会出问题。</li>
 </ul>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/QJXewK/">translate居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<iframe id="cp_embed_QJXewK" src="//codepen.io/xianzhiding/embed/QJXewK?height=[265]]&theme-id=dark&slug-hash=QJXewK&default-tab=[css,result" scrolling="no" frameborder="no" height="[265]]" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
 <blockquote>
 <p>实践证明，想要找到最先提出这个实用技巧的人确实不容易，不过所能挖掘到的最早起源似乎是 Stack Overflow（<a target="_blank" rel="noopener" href="http://stackoverflow.com)的用户“charlie”(http//stackoverflow.com/users/479836/charlie%EF%BC%89%EF%BC%8C%E4%BB%96%E5%9C%A82013%E5%B9%B44%E6%9C%8816%E6%97%A5%E5%9B%9E%E7%AD%94%E4%BA%86%E2%80%9C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8">http://stackoverflow.com）的用户“Charlie”（http://stackoverflow.com/users/479836/charlie），他在2013年4月16日回答了“如何使用</a> CSS3 实现垂直对齐”（<a target="_blank" rel="noopener" href="http://stackoverflow.com/a/16026893/90826%EF%BC%89%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82">http://stackoverflow.com/a/16026893/90826）这个问题。</a></p>
 </blockquote>
 <h2 id="基于视口单位的解决方案"><a href="#基于视口单位的解决方案" class="headerlink" title="基于视口单位的解决方案"></a>基于视口单位的解决方案</h2><p>假设我们不想使用绝对定位，仍然可以采用 translate() 技巧来把这个元素以其自身宽高的一半为距离进行移动；但是在缺少 left 和 top 的情况下，如何把这个元素的左上角放置在容器的正中心呢？ 我们的第一反应很可能是用 margin 属性的百分比值来实现，就像这样：</p>
-<p>main {<br>width: 18em;<br>padding: 1em 1.5em;<br>margin: 50% auto 0;<br>transform: translateY(-50%);<br>}</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  width: 18em;
+  padding: 1em 1.5em;
+  margin: 50% auto 0;
+  transform: translateY(-50%);
+&#125;</code></pre>
+
 <p>不过，这段代码会产生十分离谱的结果。原因在于margin 的百分比值是以父元素的宽度作为解析基准的。没错，即使对于margin-top 和 margin-bottom 来说也是这样！ 不过幸运的是，如果只是想把元素相对于视口进行居中，仍然是有希望 的。CSS 值 与 单 位（ 第 三 版 ）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-values-3/#viewportrelative-lengths%EF%BC%89%E5%AE%9A%E4%B9%89%E4%BA%86%E4%B8%80%E5%A5%97%E6%96%B0%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E7%A7%B0%E4%B8%BA%E8%A7%86%E5%8F%A3%E7%9B%B8%E5%85%B3%E7%9A%84%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D%E3%80%82">http://w3.org/TR/css-values-3/#viewportrelative-lengths）定义了一套新的单位，称为视口相关的长度单位。</a></p>
 <ul>
 <li>  vw 是与视口宽度相关的。与常人的直觉不符的是，1vw 实际上表示视口宽度的 1%，而不是 100%。</li>
@@ -821,20 +1016,44 @@
 <li>  当视口宽度大于高度时，1vmax 等于 1vw，否则等于 1vh。</li>
 </ul>
 <p>在我们的这个例子中，适用于外边距的是 vh 单位：</p>
-<p>main {<br>width: 18em;<br>padding: 1em 1.5em;<br>margin: 50vh auto 0;<br>transform: translateY(-50%);<br>}</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  width: 18em;
+  padding: 1em 1.5em;
+  margin: 50vh auto 0;
+  transform: translateY(-50%);
+&#125;</code></pre>
+
 <blockquote>
 <p>“使用视口相关的长度单位，我们还可以生成一个正好铺满视口的区块，无需脚本的辅助。更多细节请参阅“用一行 CSS 实现全屏区块”（<a target="_blank" rel="noopener" href="https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd%EF%BC%89%E3%80%82%E2%80%9D">https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd）。”</a></p>
 </blockquote>
 <p>在下面DEMO中可以看到，其效果堪称完美。当然，这个技巧的实用性是相当有限的，因为它只适用于在视口中居中的场景。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/BGgEYQ/">transform-translateY居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<iframe id="cp_embed_BGgEYQ" src="//codepen.io/xianzhiding/embed/BGgEYQ?height=[265]]&theme-id=dark&slug-hash=BGgEYQ&default-tab=[css,result" scrolling="no" frameborder="no" height="[265]]" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
 <h2 id="基于-Flexbox-的解决方案"><a href="#基于-Flexbox-的解决方案" class="headerlink" title="基于 Flexbox 的解决方案"></a>基于 Flexbox 的解决方案</h2><p>这是毋庸置疑的最佳解决方案，因为 Flexbox（伸缩盒）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox%EF%BC%89%E6%98%AF%E4%B8%93%E9%97%A8%E9%92%88%E5%AF%B9%E8%BF%99%E7%B1%BB%E9%9C%80%E6%B1%82%E6%89%80%E8%AE%BE%E8%AE%A1%E7%9A%84%E3%80%82%E6%88%91%E4%BB%AC%E4%B9%8B%E6%89%80%E4%BB%A5%E8%A6%81%E8%AE%A8%E8%AE%BA%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88%EF%BC%8C%E4%BB%85%E4%BB%85%E6%98%AF%E5%9B%A0%E4%B8%BA%E9%82%A3%E4%BA%9B%E6%96%B9%E6%A1%88%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%94%AF%E6%8C%81%E7%A8%8B%E5%BA%A6%E4%B8%8A%E7%A8%8D%E5%BE%AE%E5%A5%BD%E4%B8%80%E4%BA%9B%E8%80%8C%E5%B7%B2%E3%80%82%E5%85%B6%E5%AE%9E%E7%9B%AE%E5%89%8D%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9">http://w3.org/TR/css-flexbox）是专门针对这类需求所设计的。我们之所以要讨论其他方案，仅仅是因为那些方案在浏览器的支持程度上稍微好一些而已。其实目前现代浏览器对</a> Flexbox 的支持度已经相当不错了。 我们只需写两行声明即可：先给这个待居中元素的父元素设置 display:flex（在这个例子中是 <body> 元素），再给这个元素自身设置我们再熟悉不过的 margin: auto（在这个例子中是 <main> 元素）：</p>
-<p>body {<br>display: flex;<br>min-height: 100vh;<br>margin: 0;<br>}<br>main {<br>margin: auto;<br>}</p>
+<pre class="language-none"><code class="language-none">body &#123;
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+&#125;
+main &#123;
+  margin: auto;
+&#125;</code></pre>
+
 <p>请注意，当我们使用 Flexbox 时，margin: auto 不仅在水平方向上将元素居中，垂直方向上也是如此。还有一点，我们甚至不需要指定任何宽度（当然，如果需要的话，也是可以指定的）：这个居中元素分配到的宽度等于 maxcontent。（还记得“自适应内部元素”中提到的那些内部尺寸关键字吗？） 如果浏览器不支持 Flexbox，页面渲染结果看起来就跟我们的开篇代码是一样的了（如果设置了宽度的话）。虽然没有垂直居中效果，但也是完全可以接受的。 Flexbox 的另一个好处在于，它还可以将匿名容器（即没有被标签包裹的文本节点）垂直居中。举个例子，假设我们的结构代码是：</p>
 <main>我居中了吗?</main>
 
 <p>我们先给这个 main 元素指定一个固定的尺寸，然后借助 Flexbox 规范所引入的 align-items 和 justify-content 属性，我们可以让它内部的文本也实现居中（参见图 7-22）：</p>
-<p>main {<br>display: flex;<br>align-items: center;<br>justify-content: center;<br>width: 18em;<br>height: 10em;<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/RqzOZN/">用 Flexbox 居中</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18em;
+  height: 10em;
+&#125;</code></pre>
+
+<iframe id="cp_embed_RqzOZN" src="//codepen.io/xianzhiding/embed/RqzOZN?height=[265]]&theme-id=dark&slug-hash=RqzOZN&default-tab=[css,result" scrolling="no" frameborder="no" height="[265]]" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
 <blockquote>
 <p>根据盒对齐模型（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-align-3%EF%BC%89%E7%9A%84%E8%AE%A1%E5%88%92%EF%BC%8C%E5%9C%A8%E6%9C%AA%E6%9D%A5%EF%BC%8C%E5%AF%B9%E4%BA%8E%E7%AE%80%E5%8D%95%E7%9A%84%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%9C%80%E6%B1%82%EF%BC%8C%E6%88%91%E4%BB%AC%E5%AE%8C%E5%85%A8%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8A%A8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%9A%84%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F%E4%BA%86%E3%80%82%E5%9B%A0%E4%B8%BA%E5%8F%AA%E9%9C%80%E8%A6%81%E4%B8%8B%E9%9D%A2%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%90%9E%E5%AE%9A%EF%BC%9A">http://w3.org/TR/css-align-3）的计划，在未来，对于简单的垂直居中需求，我们完全不需要动用特殊的布局模式了。因为只需要下面这行代码就可以搞定：</a> align-self: center; 不管这个元素上还应用了其他什么属性，这样写就够了。这听起来可能如美梦一般令人难以置信，但或许你手边的浏览器很快就会让它成为现实！</p>
 </blockquote>
@@ -1071,150 +1290,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/07/%E5%86%99%E5%A5%BD%E7%9A%84javascript%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/07/%E5%86%99%E5%A5%BD%E7%9A%84javascript%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81/" class="post-title-link" itemprop="url">写好的JavaScript代码为什么非常重要</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-07 08:16:36" itemprop="dateCreated datePublished" datetime="2018-12-07T08:16:36+08:00">2018-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本文将通过简单的术语和真实世界的例子解释 JavaScript 中 this 及其用途，并告诉你写出好的代码为何如此重要。</p>
-</blockquote>
-<h3 id="this-适合你吗？"><a href="#this-适合你吗？" class="headerlink" title="this 适合你吗？"></a>this 适合你吗？</h3><p>我看到许多文章在介绍 JavaScript 的 this 时都会假设你学过某种面向对象的编程语言，比如 Java、C++ 或 Python 等。但这篇文章面向的读者是那些不知道 this 是什么的人。我尽量不用任何术语来解释 this 是什么，以及 this 的用法。 也许你一直不敢解开 this 的秘密，因为它看起来挺奇怪也挺吓人的。或许你只在 StackOverflow 说你需要用它的时候（比如在 React 里实现某个功能）才会使用。 在深入介绍 this 之前，我们首先需要理解函数式编程和面向对象编程之间的区别。  </p>
-<h3 id="函数式编程-vs-面向对象编程"><a href="#函数式编程-vs-面向对象编程" class="headerlink" title="函数式编程 vs 面向对象编程"></a>函数式编程 vs 面向对象编程</h3><p>你可能不知道，JavaScript 同时拥有面向对象和函数式的结构，所以你可以自己选择用哪种风格，或者两者都用。 我在很早以前使用 JavaScript 时就喜欢函数式编程，而且会像躲避瘟疫一样避开面向对象编程，因为我不理解面向对象中的关键字，比如 this。我不知道为什么要用 this。似乎没有它我也可以做好所有的工作。 而且我是对的。 在某种意义上 。也许你可以只专注于一种结构并且完全忽略另一种，但这样你只能是一个 JavaScript 开发者。为了解释函数式和面向对象之间的区别，下面我们通过一个数组来举例说明，数组的内容是 Facebook 的好友列表。 假设你要做一个 Web 应用，当用户使用 Facebook 登录你的 Web 应用时，需要显示他们的 Facebook 的好友信息。你需要访问 Facebook 并获得用户的好友数据。这些数据可能是 firstName、lastName、username、numFriends、friendData、birthday 和 lastTenPosts 等信息。</p>
-<p>const data = [<br>{<br>firstName: ‘Bob’,<br>lastName: ‘Ross’,<br>username: ‘bob.ross’,<br>numFriends: 125,<br>birthday: ‘2/23/1985’,<br>lastTenPosts: [‘What a nice day’, ‘I love Kanye West’, …],<br>},<br>…<br>]</p>
-<p>假设上述数据是你通过 Facebook API 获得的。现在需要将其转换成方便你的项目使用的格式。我们假设你想显示的好友信息如下：</p>
-<ul>
-<li>  姓名，格式为`${firstName} ${lastName}`</li>
-<li>  三篇随机文章</li>
-<li>  距离生日的天数</li>
-</ul>
-<p> </p>
-<h3 id="函数式方式"><a href="#函数式方式" class="headerlink" title="函数式方式"></a>函数式方式</h3><p>函数式的方式就是将整个数组或者数组中的某个元素传递给某个函数，然后返回你需要的信息：</p>
-<p>const fullNames = getFullNames(data)<br>// [‘Ross, Bob’, ‘Smith, Joanna’, …]</p>
-<p>首先我们有 Facebook API 返回的原始数据。为了将其转换成需要的格式，首先要将数据传递给一个函数，函数的输出是（或者包含）经过修改的数据，这些数据可以在应用中向用户展示。 我们可以用类似的方法获得随机三篇文章，并且计算距离好友生日的天数。 函数式的方式是：将原始数据传递给一个函数或者多个函数，获得对你的项目有用的数据格式。  </p>
-<h3 id="面向对象的方式"><a href="#面向对象的方式" class="headerlink" title="面向对象的方式"></a>面向对象的方式</h3><p>对于编程初学者和 JavaScript 初学者，面向对象的概念可能有点难以理解。其思想是，我们要将每个好友变成一个对象，这个对象能够生成你一切开发者需要的东西。 你可以创建一个对象，这个对象对应于某个好友，它有 fullName 属性，还有两个函数 getThreeRandomPosts 和 getDaysUntilBirthday。</p>
-<p>function initializeFriend(data) {<br>return {<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from data.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use data.birthday to get the num days until birthday<br>}<br>};<br>}<br>const objectFriends = data.map(initializeFriend)<br>objectFriends[0].getThreeRandomPosts()<br>// Gets three of Bob Ross’s posts</p>
-<p>面向对象的方式就是为数据创建对象，每个对象都有自己的状态，并且包含必要的信息，能够生成需要的数据。  </p>
-<h3 id="这跟-this-有什么关系？"><a href="#这跟-this-有什么关系？" class="headerlink" title="这跟 this 有什么关系？"></a>这跟 this 有什么关系？</h3><p>你也许从来没想过要写上面的 initializeFriend 代码，而且你也许认为，这种代码可能会很有用。但你也注意到，这并不是真正的面向对象。 其原因就是，上面例子中的 getThreeRandomPosts 或 getdaysUntilBirtyday 能够正常工作的原因其实是闭包。因为使用了闭包，它们在 initializeFriend 返回之后依然能访问 data。关于闭包的更多信息可以看看这篇文章：作用域和闭包（<a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md%EF%BC%89%E3%80%82">https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md）。</a> 还有一个方法该怎么处理？我们假设这个方法叫做 greeting。注意方法（与 JavaScript 的对象有关的方法）其实只是一个属性，只不过属性值是函数而已。我们想在 greeting 中实现以下功能：</p>
-<p>function initializeFriend(data) {<br>return {<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from data.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use data.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>return `Hello, this is ${fullName}’s data!`<br>}<br>};<br>}</p>
-<p>这样能正常工作吗？ 不能！ 我们新建的对象能够访问 initializeFriend 中的一切变量，但不能访问这个对象本身的属性或方法。当然你会问，</p>
-<blockquote>
-<p>难道不能在 greeting 中直接用 data.firstName 和 data.lastName 吗？</p>
-</blockquote>
-<p>当然可以。但要是想在 greeting 中加入距离好友生日的天数怎么办？我们最好还是有办法在 greeting 中调用 getDaysUntilBirthday。 这时轮到 this 出场了！  </p>
-<h3 id="终于——this-是什么"><a href="#终于——this-是什么" class="headerlink" title="终于——this 是什么"></a>终于——this 是什么</h3><p>this 在不同的环境中可以指代不同的东西。默认的全局环境中 this 指代的是全局对象（在浏览器中 this 是 window 对象），这没什么太大的用途。而在 this 的规则中具有实用性的是这一条： 如果在对象的方法中使用 this，而该方法在该对象的上下文中调用，那么 this 指代该对象本身。</p>
-<blockquote>
-<p>你会说“在该对象的上下文中调用”……是啥意思？</p>
-</blockquote>
-<p>别着急，我们一会儿就说。 所以，如果我们想从 greeting 中调用 getDaysUntilBirtyday 我们只需要写 this.getDaysUntilBirthday，因为此时的 this 就是对象本身。 附注：不要在全局作用域的普通函数或另一个函数的作用域中使用 this！this 是个面向对象的东西，它只在对象的上下文（或类的上下文）中有意义。 我们利用 this 来重写 initializeFriend：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const numDays = this.getDaysUntilBirthday()<br>return `Hello, this is ${this.fullName}’s data! It is ${numDays} until ${this.fullName}’s birthday!`<br>}<br>};<br>}</p>
-<p>现在，在 initializeFriend 执行结束后，该对象需要的一切都位于对象本身的作用域之内了。我们的方法不需要再依赖于闭包，它们只会用到对象本身包含的信息。 好吧，这是 this 的用法之一，但你说过 this 在不同的上下文中有不同的含义。那是什么意思？为什么不一定会指向对象自己？ 有时候，你需要将 this 指向某个特定的东西。一种情况就是事件处理函数。比如我们希望在用户点击好友时打开好友的 Facebook 首页。我们会给对象添加下面的 onClick 方法：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const numDays = this.getDaysUntilBirthday()<br>return `Hello, this is ${this.fullName}’s data! It is ${numDays} until ${this.fullName}’s birthday!`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
-<p>注意我们在对象中添加了 username 属性，这样 onFriendClick 就能访问它，从而在新窗口中打开该好友的 Facebook 首页。现在只需要编写 HTML：</p>
-<button id="Bob\_Ross">
-<!-- A bunch of info associated with Bob Ross -->
-</button>
-
-<p>还有 JavaScript：</p>
-<p>const bobRossObj = initializeFriend(data[0])<br>const bobRossDOMEl = document.getElementById(‘Bob_Ross’)<br>bobRossDOMEl.addEventListener(“onclick”, bobRossObj.onFriendClick)</p>
-<p>在上述代码中，我们给 Bob Ross 创建了一个对象。然后我们拿到了 Bob Ross 对应的 DOM 元素。然后执行 onFriendClick 方法来打开 Bob 的 Facebook 主页。似乎没问题，对吧？ 有问题！ 哪里出错了？ 注意我们调用 onclick 处理程序的代码是 bobRossObj.onFriendClick。看到问题了吗？要是写成这样的话能看出来吗？</p>
-<p>bobRossDOMEl.addEventListener(“onclick”, function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>})</p>
-<p>现在看到问题了吗？如果把事件处理程序写成 bobRossObj.onFriendClick，实际上是把 bobRossObj.onFriendClick 上保存的函数拿出来，然后作为参数传递。它不再“依附”在 bobRossObj 上，也就是说，this 不再指向 bobRossObj。它实际指向全局对象，也就是说 this.username 不存在。似乎我们没什么办法了。 轮到绑定上场了！  </p>
-<h3 id="明确绑定-this"><a href="#明确绑定-this" class="headerlink" title="明确绑定 this"></a>明确绑定 this</h3><p>我们需要明确地将 this 绑定到 bobRossObj 上。我们可以通过 bind 实现：</p>
-<p>const bobRossObj = initializeFriend(data[0])<br>const bobRossDOMEl = document.getElementById(‘Bob_Ross’)<br>bobRossObj.onFriendClick = bobRossObj.onFriendClick.bind(bobRossObj)<br>bobRossDOMEl.addEventListener(“onclick”, bobRossObj.onFriendClick)</p>
-<p>之前，this 是按照默认的规则设置的。但使用 bind 之后，我们明确地将 bobRossObj.onFriendClick 中的 this 的值设置为 bobRossObj 对象本身。 到此为止，我们看到了为什么要使用 this，以及为什么要明确地绑定 this。最后我们来介绍一下，this 实际上是箭头函数。  </p>
-<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>你也许注意到了箭头函数最近很流行。人们喜欢箭头函数，因为很简洁、很优雅。而且你还知道箭头函数和普通函数有点区别，尽管不太清楚具体区别是什么。 简而言之，两者的区别在于： <strong>在定义箭头函数时，不管 this 指向谁，箭头函数内部的 this 永远指向同一个东西。</strong></p>
-<blockquote>
-<p>嗯……这貌似没什么用……似乎跟普通函数的行为一样啊？</p>
-</blockquote>
-<p>我们通过 initializeFriend 举例说明。假设我们想添加一个名为 greeting 的函数：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>function getLastPost() {<br>return this.lastTenPosts[0]<br>}<br>const lastPost = getLastPost()<br>return `Hello, this is ${this.fullName}’s data!<br>${this.fullName}’s last post was ${lastPost}.`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
-<p>这样能运行吗？如果不能，怎样修改才能运行？ 答案是不能。因为 getLastPost 没有在对象的上下文中调用，因此getLastPost 中的 this 按照默认规则指向了全局对象。</p>
-<blockquote>
-<p>你说没有“在对象的上下文中调用”……难道它不是从 initializeFriend 返回的内部调用的吗？如果这还不叫“在对象的上下文中调用”，那我就不知道什么才算了。</p>
-</blockquote>
-<p>  我知道“在对象的上下文中调用”这个术语很模糊。也许，判断函数是否“在对象的上下文中调用”的好方法就是检查一遍函数的调用过程，看看是否有个对象“依附”到了函数上。 我们来检查下执行 bobRossObj.onFriendClick() 时的情况。“给我对象 bobRossObj，找到其中的 onFriendClick 然后调用该属性对应的函数”。 我们同样检查下执行 getLastPost() 时的情况。“给我名为 getLastPost 的函数然后执行。”看到了吗？我们根本没有提到对象。 好了，这里有个难题来测试你的理解程度。假设有个函数名为 functionCaller，它的功能就是调用一个函数： functionCaller(fn) { fn() } 如果调用 functionCaller(bobRossObj.onFriendClick) 会怎样？你会认为 onFriendClick 是“在对象的上下文中调用”的吗？this.username有定义吗？ 我们来检查一遍：“给我 bobRosObj 对象然后查找其属性 onFriendClick。取出其中的值（这个值碰巧是个函数），然后将它传递给 functionCaller，取名为 fn。然后，执行名为 fn 的函数。”注意该函数在调用之前已经从 bobRossObj 对象上“脱离”了，因此并不是“在对象的上下文中调用”的，所以 this.username 没有定义。 这时可以用箭头函数解决这个问题：</p>
-<p>function initializeFriend(data) {<br>return {<br>lastTenPosts: data.lastTenPosts,<br>birthday: data.birthday,<br>username: data.username,<br>fullName: `${data.firstName} ${data.lastName}`,<br>getThreeRandomPosts: function() {<br>// get three random posts from this.lastTenPosts<br>},<br>getDaysUntilBirthday: function() {<br>// use this.birthday to get the num days until birthday<br>},<br>greeting: function() {<br>const getLastPost = () =&gt; {<br>return this.lastTenPosts[0]<br>}<br>const lastPost = getLastPost()<br>return `Hello, this is ${this.fullName}’s data!<br>${this.fullName}’s last post was ${lastPost}.`<br>},<br>onFriendClick: function() {<br>window.open(`<a target="_blank" rel="noopener" href="https://facebook.com/$%7Bthis.username%7D/%60">https://facebook.com/${this.username}\`</a>)<br>}<br>};<br>}</p>
-<p>上述代码的规则是： <strong>在定义箭头函数时，不管 this 指向谁，箭头函数内部的 this 永远指向同一个东西。</strong> 箭头函数是在 greeting 中定义的。我们知道，在 greeting 内部的 this 指向对象本身。因此，箭头函数内部的 this 也指向对象本身，这正是我们需要的结果。  </p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>this 有时很不好理解，但它对于开发 JavaScript 应用非常有用。本文当然没能介绍 this 的所有方面。一些没有涉及到的话题包括：</p>
-<ul>
-<li>  call 和 apply；</li>
-<li>  使用 new 时 this 会怎样；</li>
-<li>  在 ES6 的 class 中 this 会怎样。</li>
-</ul>
-<p>我建议你首先问问自己在这些情况下的 this，然后在浏览器中执行代码来检验你的结果。   想学习更多关 于this 的内容，可参考《你不知道的 JS：this 和对象原型》： <a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes">https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes</a> 如果你想测试自己的知识，可参考《你不知道的JS练习：this和对象原型》： <a target="_blank" rel="noopener" href="https://ydkjs-exercises.com/this-object-prototypes">https://ydkjs-exercises.com/this-object-prototypes</a> 原文：<a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/a-deep-dive-into-this-in-javascript-why-its-critical-to-writing-good-code-7dca7eb489e7">https://medium.freecodecamp.org/a-deep-dive-into-this-in-javascript-why-its-critical-to-writing-good-code-7dca7eb489e7</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1284,16 +1359,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">336</span>
+        <span class="site-state-item-count">338</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

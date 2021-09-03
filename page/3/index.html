@@ -178,6 +178,82 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/04/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE%E9%81%87%E5%88%B0%E8%B4%9F%E5%80%BC%E4%B8%AD%E5%BF%83%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E8%AE%BE%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/04/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE%E9%81%87%E5%88%B0%E8%B4%9F%E5%80%BC%E4%B8%AD%E5%BF%83%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">echarts 雷达图遇到负值中心点偏移的设置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-04 16:18:37" itemprop="dateCreated datePublished" datetime="2019-07-04T16:18:37+08:00">2019-07-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ECharts 雷达图可以使用<code>series[i]-radar</code>设置 ，雷达图主要用于表现多变量的数据，例如玩”和平精英”战况的各个属性分析，雷达图依赖<code>radar</code>组件。 关于雷达图其他的一些属性自行去查看官网，我们在这里讲的是在遇到负值的时候如何设置雷达图的中心点，通过官网的例子来设置的话，遇到负值无法找到中心位置，使得雷达图的内部图形发生变异。 下面我们就来说说如何设置，想要设置负值还需要从<code>radar</code>组件出发，<code>radar</code>组件下面有一个<code>indicator</code>属性， 它是雷达图的指示器，用来指定雷达图中的多个变量（维度）。 然后我们它的最大值<code>radar.indicator[i].max</code>和最小值<code>radar.indicator[i].min</code>设为统一的值，要注意它的这里的最大值要大于或等于你的数据的最大值，最小值要小于或等于你的数据的最小值 下面是用雷达图表现的示例。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/dBjymx/">echarts 雷达图遇到负值中心点偏移的设置</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>var max = 100, min = -50;<br>option = {<br>    …<br>    radar: {<br>        …<br>        indicator: [{<br>                name: ‘销售’,<br>                max: max,<br>                min: min<br>            },<br>            {<br>                name: ‘管理’,<br>                max: max,<br>                min: min<br>            },<br>            {<br>                name: ‘技术’,<br>                max: max,<br>                min: min<br>            }<br>        ],<br>    },<br>    series: [{<br>        …<br>        data: [{<br>            value: [100, 80, -40]<br>        }]<br>    }]<br>};</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/06/20/html5%E8%AF%AD%E4%B9%89%E5%8C%96%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1679,141 +1755,6 @@ Contact us!
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/01/%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AF%B9%E8%B1%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/01/%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">从数组中删除重复的对象</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-01 07:00:50" itemprop="dateCreated datePublished" datetime="2019-05-01T07:00:50+08:00">2019-05-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>假设我们有一个对象数组，如下所示：</p>
-<p>const books = [<br>    {<br>        name: “My Sister the Serial Killer”,<br>        author: “Oyinkan Braithwaite”<br>    },<br>    {<br>        name: “Educated”,<br>        author: “Tara Westover”<br>    },<br>    {<br>        name: “My Sister the Serial Killer”,<br>        author: “Oyinkan Braithwaite”<br>    }<br>];</p>
-<p>数组中的第一个和最后一个对象是相同的。那么如果我们想从数组中删除这些重复的对象呢？令人惊讶的是，这是一个非常难以解决的问题。为了理解原因，让我们看一下如何从平面项目数组中删除重复项，例如字符串。</p>
-<h2 id="从数组中删除重复的项"><a href="#从数组中删除重复的项" class="headerlink" title="从数组中删除重复的项"></a>从数组中删除重复的项</h2><p>假设我们有一个字符串数组，如下所示：</p>
-<p>const strings = [<br>    “My Sister the Serial Killer”,<br>    “Educated”,<br>    “My Sister the Serial Killer”<br>];</p>
-<p>如果我们想从这个数组中删除任何重复项，我们可以使用该<code>filter()</code>方法以及<code>indexOf()</code>方法来检查任何给定项是否重复。</p>
-<p>const filteredStrings = strings.filter((item, index) =&gt; {<br>    // Return to new array if the index of the current item is the same<br>    // as the first occurence of the item<br>    return strings.indexOf(item) === index;<br>});</p>
-<p>由于<code>strings.indexOf(item)</code>将始终返回第一次出现的索引<code>item</code>，我们可以判断过滤器循环中的当前项是否重复。如果是，我们不会将其返回到由该<code>filter()</code>方法创建的新数组</p>
-<h2 id="对象的工作方式不同"><a href="#对象的工作方式不同" class="headerlink" title="对象的工作方式不同"></a>对象的工作方式不同</h2><p>这个方法不适用于对象的原因是因为任何具有相同属性和值的2个对象实际上并不相同。</p>
-<p>const a = {<br>    name: “My Sister the Serial Killer”,<br>    author: “Oyinkan Braithwaite”<br>};<br>const b = {<br>    name: “My Sister the Serial Killer”,<br>    author: “Oyinkan Braithwaite”<br>};</p>
-<p>a === b // false</p>
-<p>这是因为基于参考而不是结构来比较对象。在比较两个对象时，不考虑两个对象具有相同的orperties和value的事实。因此，即使存在具有完全相同属性和值的另一个对象<code>indexOf(object)</code>，对象数组内也将始终返回精确<code>object</code>传递的索引。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>给定此信息，检查两个对象是否具有相同属性和值的唯一方法是实际检查每个对象的属性和值。我提出的解决方案涉及进行此手动检查，但有一些改进性能并减少不必要的嵌套循环。 需要注意3点：</p>
-<ol>
-<li> 仅检查数组中的每个项目与其后的每个其他项目，以避免多次比较相同的对象</li>
-<li> 仅检查未找到与任何其他项目重复的项目</li>
-<li> 在检查每个属性的值是否相同之前，请检查两个对象是否具有相同的键</li>
-</ol>
-<p>这是最后的功能：</p>
-<p>function removeDuplicates(arr) {</p>
-<pre><code>const result = \[\];
-const duplicatesIndices = \[\];
-
-// Loop through each item in the original array
-arr.forEach((current, index) =&gt; &#123;
-
-    if (duplicatesIndices.includes(index)) return;
-
-    result.push(current);
-
-    // Loop through each other item on array after the current one
-    for (let comparisonIndex = index + 1; comparisonIndex &lt; arr.length; comparisonIndex++) &#123;
-    
-        const comparison = arr\[comparisonIndex\];
-        const currentKeys = Object.keys(current);
-        const comparisonKeys = Object.keys(comparison);
-        
-        // Check number of keys in objects
-        if (currentKeys.length !== comparisonKeys.length) continue;
-        
-        // Check key names
-        const currentKeysString = currentKeys.sort().join(&quot;&quot;).toLowerCase();
-        const comparisonKeysString = comparisonKeys.sort().join(&quot;&quot;).toLowerCase();
-        if (currentKeysString !== comparisonKeysString) continue;
-        
-        // Check values
-        let valuesEqual = true;
-        for (let i = 0; i &lt; currentKeys.length; i++) &#123;
-            const key = currentKeys\[i\];
-            if ( current\[key\] !== comparison\[key\] ) &#123;
-                valuesEqual = false;
-                break;
-            &#125;
-        &#125;
-        if (valuesEqual) duplicatesIndices.push(comparisonIndex);
-        
-    &#125; // end for loop
-
-&#125;); // end arr.forEach()
-return result;
-</code></pre>
-<p>}</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1883,16 +1824,16 @@ return result;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">336</span>
+        <span class="site-state-item-count">338</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

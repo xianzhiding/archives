@@ -178,6 +178,141 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/01/%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/01/%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">从数组中删除重复的对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-01 07:00:50" itemprop="dateCreated datePublished" datetime="2019-05-01T07:00:50+08:00">2019-05-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>假设我们有一个对象数组，如下所示：</p>
+<p>const books = [<br>    {<br>        name: “My Sister the Serial Killer”,<br>        author: “Oyinkan Braithwaite”<br>    },<br>    {<br>        name: “Educated”,<br>        author: “Tara Westover”<br>    },<br>    {<br>        name: “My Sister the Serial Killer”,<br>        author: “Oyinkan Braithwaite”<br>    }<br>];</p>
+<p>数组中的第一个和最后一个对象是相同的。那么如果我们想从数组中删除这些重复的对象呢？令人惊讶的是，这是一个非常难以解决的问题。为了理解原因，让我们看一下如何从平面项目数组中删除重复项，例如字符串。</p>
+<h2 id="从数组中删除重复的项"><a href="#从数组中删除重复的项" class="headerlink" title="从数组中删除重复的项"></a>从数组中删除重复的项</h2><p>假设我们有一个字符串数组，如下所示：</p>
+<p>const strings = [<br>    “My Sister the Serial Killer”,<br>    “Educated”,<br>    “My Sister the Serial Killer”<br>];</p>
+<p>如果我们想从这个数组中删除任何重复项，我们可以使用该<code>filter()</code>方法以及<code>indexOf()</code>方法来检查任何给定项是否重复。</p>
+<p>const filteredStrings = strings.filter((item, index) =&gt; {<br>    // Return to new array if the index of the current item is the same<br>    // as the first occurence of the item<br>    return strings.indexOf(item) === index;<br>});</p>
+<p>由于<code>strings.indexOf(item)</code>将始终返回第一次出现的索引<code>item</code>，我们可以判断过滤器循环中的当前项是否重复。如果是，我们不会将其返回到由该<code>filter()</code>方法创建的新数组</p>
+<h2 id="对象的工作方式不同"><a href="#对象的工作方式不同" class="headerlink" title="对象的工作方式不同"></a>对象的工作方式不同</h2><p>这个方法不适用于对象的原因是因为任何具有相同属性和值的2个对象实际上并不相同。</p>
+<p>const a = {<br>    name: “My Sister the Serial Killer”,<br>    author: “Oyinkan Braithwaite”<br>};<br>const b = {<br>    name: “My Sister the Serial Killer”,<br>    author: “Oyinkan Braithwaite”<br>};</p>
+<p>a === b // false</p>
+<p>这是因为基于参考而不是结构来比较对象。在比较两个对象时，不考虑两个对象具有相同的orperties和value的事实。因此，即使存在具有完全相同属性和值的另一个对象<code>indexOf(object)</code>，对象数组内也将始终返回精确<code>object</code>传递的索引。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>给定此信息，检查两个对象是否具有相同属性和值的唯一方法是实际检查每个对象的属性和值。我提出的解决方案涉及进行此手动检查，但有一些改进性能并减少不必要的嵌套循环。 需要注意3点：</p>
+<ol>
+<li> 仅检查数组中的每个项目与其后的每个其他项目，以避免多次比较相同的对象</li>
+<li> 仅检查未找到与任何其他项目重复的项目</li>
+<li> 在检查每个属性的值是否相同之前，请检查两个对象是否具有相同的键</li>
+</ol>
+<p>这是最后的功能：</p>
+<p>function removeDuplicates(arr) {</p>
+<pre><code>const result = \[\];
+const duplicatesIndices = \[\];
+
+// Loop through each item in the original array
+arr.forEach((current, index) =&gt; &#123;
+
+    if (duplicatesIndices.includes(index)) return;
+
+    result.push(current);
+
+    // Loop through each other item on array after the current one
+    for (let comparisonIndex = index + 1; comparisonIndex &lt; arr.length; comparisonIndex++) &#123;
+    
+        const comparison = arr\[comparisonIndex\];
+        const currentKeys = Object.keys(current);
+        const comparisonKeys = Object.keys(comparison);
+        
+        // Check number of keys in objects
+        if (currentKeys.length !== comparisonKeys.length) continue;
+        
+        // Check key names
+        const currentKeysString = currentKeys.sort().join(&quot;&quot;).toLowerCase();
+        const comparisonKeysString = comparisonKeys.sort().join(&quot;&quot;).toLowerCase();
+        if (currentKeysString !== comparisonKeysString) continue;
+        
+        // Check values
+        let valuesEqual = true;
+        for (let i = 0; i &lt; currentKeys.length; i++) &#123;
+            const key = currentKeys\[i\];
+            if ( current\[key\] !== comparison\[key\] ) &#123;
+                valuesEqual = false;
+                break;
+            &#125;
+        &#125;
+        if (valuesEqual) duplicatesIndices.push(comparisonIndex);
+        
+    &#125; // end for loop
+
+&#125;); // end arr.forEach()
+return result;
+</code></pre>
+<p>}</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/30/javascript%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8D%95%E8%A1%8C%E7%A8%8B%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1386,11 +1521,11 @@ console.log(isAllRed); // false
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1410,122 +1545,6 @@ console.log(isAllRed); // false
 
       
           <p><a target="_blank" rel="noopener" href="https://cube.dev/"><img data-src="http://file.w3cbest.com/file/images/cubejs.png"></a> <a target="_blank" rel="noopener" href="https://cube.dev/">Cube.js</a> 强大的开源框架，用于开发复杂的，定制的分析系统。由前端SDK和API后端组成，适用于大多数数据库，包括MySQL，Postreges和MongoDB。 <a target="_blank" rel="noopener" href="https://github.com/kognise/water.css"><img data-src="http://file.w3cbest.com/file/images/watercss.png"></a> <a target="_blank" rel="noopener" href="https://github.com/kognise/water.css">Water.css</a> 一个just-add-css框架，它可以应用样式而无需定义元素类。只需通过CDN将其包含在您的项目中，您的所有页面都会自动显示得更好。包括明暗主题，可通过SCSS定制。 <a target="_blank" rel="noopener" href="https://codex.so/editor"><img data-src="http://file.w3cbest.com/file/images/editorjs.png"></a> <a target="_blank" rel="noopener" href="https://codex.so/editor">Editor.js</a> 富文本和媒体编辑器，以JSON格式输出数据。它是完全模块化的，由“块”组成，这意味着每个结构单元都是它自己的块（例如Paragraph，Heading，Image都是块），用户可以轻松编写自己的插件来进一步扩展编辑器。 <a target="_blank" rel="noopener" href="https://github.com/alikinvv/stepper"><img data-src="http://file.w3cbest.com/file/images/stepper.png"></a> <a target="_blank" rel="noopener" href="https://github.com/alikinvv/stepper">Stepper</a> 漂亮的数字Stepper组件，非常适合upvote / downvote控件或其他计数器元素。非常精美的动画，点击箭头时有一个黄油般的CSS效果。 <a target="_blank" rel="noopener" href="https://github.com/leeoniya/dropcss"><img data-src="http://file.w3cbest.com/file/images/dropcsss.png"></a> <a target="_blank" rel="noopener" href="https://github.com/leeoniya/dropcss">DropCSS</a> 彻底的CSS清理器，它可以获取HTML和CSS并仅返回实际使用的样式。它删除所有未使用的样式块，重复选择器，@ keyframes等。高度优化，速度极快。 <a target="_blank" rel="noopener" href="https://github.com/twitter/twemoji"><img data-src="http://file.w3cbest.com/file/images/twemoji.png"></a> <a target="_blank" rel="noopener" href="https://github.com/twitter/twemoji">Twemoji</a> Twitter团队提供的优秀图书馆，可在所有平台上提供标准的Unicode表情符号支持。拥有超过3000个emojis和一个可靠的API，当您想要将emojis添加到您的应用程序时，它可以是完美的解决方案。 <a target="_blank" rel="noopener" href="https://foreseaz.github.io/react-loadcon/"><img data-src="http://file.w3cbest.com/file/images/react-loadcon.png"></a> <a target="_blank" rel="noopener" href="https://foreseaz.github.io/react-loadcon/">React LoadCon</a> React组件，允许您使用一系列动态生成的图像为网站的图标设置动画。此效果可以用作进度或加载指示器，或者只是作为一个很酷的小动画来使您的页面脱颖而出。 <a target="_blank" rel="noopener" href="https://github.com/matvp91/indigo-player"><img data-src="http://file.w3cbest.com/file/images/indigoplayer.png"></a> <a target="_blank" rel="noopener" href="https://github.com/matvp91/indigo-player">Indigo Player</a> 基于React的视频播放器，具有开箱即用的功能，如字幕，缩略图，质量选择等。高度可扩展，现代化，并支持大多数流行的视频格式和编解码器。 <a target="_blank" rel="noopener" href="https://github.com/niklasvh/html2canvas"><img data-src="http://file.w3cbest.com/file/images/html2canvas.png"></a> <a target="_blank" rel="noopener" href="https://github.com/niklasvh/html2canvas">html2canvas</a> 这个很酷的脚本获取页面中的元素和样式，并通过呈现DOM的副本来捕获“屏幕截图”。由于屏幕截图基于DOM，因此它们可能不是100％准确，但该库仍然是调试和自动化测试的绝佳工具。 <a target="_blank" rel="noopener" href="https://github.com/jshjohnson/Choices"><img data-src="http://file.w3cbest.com/file/images/choices.png"></a> <a target="_blank" rel="noopener" href="https://github.com/jshjohnson/Choices">Choices</a> 轻量级库，用于制作高度可自定义的选择框，文本区域和其他表单输入。类似于<a target="_blank" rel="noopener" href="https://select2.org/">Select2</a>和<a target="_blank" rel="noopener" href="https://selectize.github.io/selectize.js/">Selectize</a>但没有jQuery依赖。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/09/%E7%90%86%E8%A7%A3-css-%E5%B8%83%E5%B1%80%E5%92%8C-bfc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/09/%E7%90%86%E8%A7%A3-css-%E5%B8%83%E5%B1%80%E5%92%8C-bfc/" class="post-title-link" itemprop="url">理解 CSS 布局和 BFC</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-09 14:35:24" itemprop="dateCreated datePublished" datetime="2019-04-09T14:35:24+08:00">2019-04-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>CSS布局中有一些概念，一旦你理解了它们，就能真正提高你的 CSS 布局能力。本文是关于块格式化上下文(BFC)的。你可能从未听说过这个术语，但是如果你曾经用CSS做过布局，你可能知道它是什么，理解什么是 BFC，怎么工作以及如何创建 BFC 非常有用，这些可以帮助你理解CSS中的布局是如何工作的。 在本文中，通过熟悉的示例来解释什么是 BFC。然后说明 display 的一个新值，只有当你理解了什么是 BFC 以及为什么需要它时，它才有意义。</p>
-<h2 id="什么是-BFC"><a href="#什么是-BFC" class="headerlink" title="什么是 BFC"></a>什么是 BFC</h2><p>在一个Web页面的CSS渲染中，块级格式化上下文 (Block Fromatting Context)是按照块级盒子布局的。W3C对BFC的定义如下： 浮动元素和绝对定位元素，非块级盒子的块级容器（例如 inline-blocks, table-cells, 和 table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们的内容创建新的BFC（块级格式上下文）。 BFC是一个独立的布局环境，其中的元素布局是不受外界的影响，并且在一个 BFC 中，块盒与行盒（行盒由一行中所有的内联元素所组成）都会垂直的沿着其父元素的边框排列。 块格式化上下文(BFC)的行为通过一个简单的float示例很容易理解。在下面的示例中，我有一个框，其中包含向左浮动的图像和一些文本。如果我们有足够多的文本，它会环绕浮动的图像和边框，然后环绕整个区域。</p>
-<div class="outer">
-<div class="float">I am a floated element.</div>
-I am text inside the outer box.
-</div>
-
-<p>.outer {<br>    border: 5 px dotted rgb(214, 129, 137);<br>    border - radius: 5 px;<br>    width: 450 px;<br>    padding: 10 px;<br>    margin - bottom: 40 px;<br>}<br>.float {<br>    padding: 10 px;<br>    border: 5 px solid rgba(214, 129, 137, .4);<br>    border - radius: 5 px;<br>    background - color: rgba(233, 78, 119, .4);<br>    color: #fff;<br>    float: left;<br>    width: 200 px;<br>    margin: 0 20 px 0 0;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/floats1-800w-opt.png"> 如果我删除了一些文本，那么就没有足够的内容来包围图像，而且由于浮动被从文档流中脱离，所以边框会上升，并在图像下方，直到文本的高度。 <img data-src="http://file.w3cbest.com/file/images/floats2-800w-opt.png"> 这是因为当我们浮动一个元素时，文本所在的框的宽度保持不变，为给浮动元素腾出空间而缩短的是文本的行框。这就是为什么背景和边框会出现在浮动后面的原因。 我们通常有两种方法来解决这个布局问题。一种方法是使用 <a target="_blank" rel="noopener" href="https://css-tricks.com/snippets/css/clear-fix/">clearfix hack</a>，它的作用是在文本和图像下面插入一个元素，并将其设置为 clear:both。另一种方法是使用 overflow 属性，其值不是缺省值 visible。</p>
-<p>.outer {<br>    overflow: auto;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/floats3-800w-opt.png"> overflow 以这种方式工作的原因是，使用 visible 的初值以外的任何值都会创建一个块格式化上下文，而 BFC 的一个特性是它包含浮动。</p>
-<h2 id="BFC-是布局中的一个迷你布局"><a href="#BFC-是布局中的一个迷你布局" class="headerlink" title="BFC 是布局中的一个迷你布局"></a>BFC 是布局中的一个迷你布局</h2><p>你可以将 BFC 看作是页面内的一个迷你布局。一旦一个元素创建了一个 BFC，它就包含了所有的内容。正如我们所看到的，这包括浮动的元素，它们不再从盒子底部伸出来。BFC 还会导致一些其他有用的行为。 <strong>BFC 可以防止 margin 折叠</strong> 了解边距合并是另一个被低估的 CSS 技能。在下一个示例中，假设有一个背景颜色为灰色的 div。 这个 div 包含两个标签 p。外部 <code>div</code> 元素的 <code>margin-bottom</code> 为 40 像素，标签 p 的顶部和底部 margin 都是 20 像素。</p>
-<p>// html</p>
-<div class="outer">
-    <p>I am paragraph one and I have a margin top and bottom of 20px;</p>
-    <p>I am paragraph one and I have a margin top and bottom of 20px;</p>
-</div>
-
-<p>// css<br>.outer {<br>    background-color: #ccc;<br>    margin: 0 0 40px 0;<br>}<br>p {<br>    padding: 0;<br>    margin: 20px 0 20px 0;<br>    background-color: rgb(233, 78, 119);<br>    color: #fff;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/margins1-800w-opt.png"> 因为 p 元素的 <code>margin</code> 和外部 div 上的 <code>margin</code> 之间没有任何东西，所以两个会折叠，因此 p 最终与 div 的顶部和底部齐平。 我们在 p 的上方和下方看不到任何灰色。 在CSS当中，相邻的两个盒子（可能是兄弟关系也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距称为折叠外边距。折叠的结果按照如下规则计算： 两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。 两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。 两个外边距一正一负时，折叠结果是两者的相加的和。 <strong>产生折叠的必备条件：margin必须是邻接的!</strong> 如果我们把盒子设为 BFC，它现在包含了标签 p 和它们的边距，这样它们就不会折叠，我们可以看到边距后面容器的灰色背景。</p>
-<p>.outer {<br>    background-color: #ccc;<br>    margin: 0 0 40px 0;<br>    overflow: auto;<br>}</p>
-<p>再一次，BFC 的工作是把东西装在盒子里，防止它们从盒子里跑出来。 <strong>BFC 可以阻止元素被浮动元素覆盖</strong> 你将熟悉 BFC 的这种行为，因为使用浮动的任何列类型布局都是这样工作的。如果一个项目创建了一个 BFC，那么该项目将不会包裹任何浮动元素。在下面的例子中，有如下 html 结构：</p>
-<div class="outer">
-    <div class="float">I am a floated element.</div>
-    <div class="text">I am text</div>
-</div>
-
-<p><img data-src="http://file.w3cbest.com/file/images/margins2-800w-opt.png"> 带有 <code>float</code> 类的项被向左浮动，因此 <code>div</code> 中的文本在它环绕 <code>float</code> 之后。 我可以通过将包裹文本的 div 设置为 BFC 来防止这种包裹行为。</p>
-<p>.text {<br>    overflow: auto;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/wrap2-800w-opt.png"> 这实际上是我们创建具有多个列的浮动布局的方法。浮动项还为该项创建了一个 BFC，因此，如果右边的列比左边的列高，那么我们的列就不会相互环绕。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/qVKEpJ/">A BFC preventing wrapping of floats.</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h2 id="还有什么能创建-BFC"><a href="#还有什么能创建-BFC" class="headerlink" title="还有什么能创建 BFC?"></a>还有什么能创建 BFC?</h2><p>除了使用 <code>overflow</code> 创建 BFC 外，其他一些 CSS 属性还创建 <code>BFC</code>。正如我们所看到的，浮动元素创建了 BFC。你的浮动项将包含它里面的任何东西。 使用以下方式都能创建 BFC</p>
-<ul>
-<li>  float 的值不是 none。</li>
-<li>  position 的值不是 static 或者 relative。</li>
-<li>  display 的值是 inline-block、table-cell、flex、table-caption 或者inline-flex</li>
-<li>  overflow 的值不是 visible</li>
-</ul>
-<h2 id="创建-BFC-的新方式"><a href="#创建-BFC-的新方式" class="headerlink" title="创建 BFC 的新方式"></a>创建 BFC 的新方式</h2><p>使用<code>overflow</code>或其他的方法创建BFC时会有两个问题。首先，这些方法本身是有自身的设计目的，所以在使用它们创建BFC时可能会产生副作用。例如，使用<code>overflow</code>创建BFC后在某些情况下可能会看到出现一个滚动条或者元素内容被裁切。 这是由于<code>overflow</code>属性的设计是用来让你告诉浏览器如何定义元素的溢出状态的。浏览器执行了它最基本的定义。 即使在没有任何不想要的副作用的情况下，使用 <code>overflow</code> 也可能会让其他开发人员感到困惑。为什么 overflow 设置为 auto 或 scroll?最初的开发者的意图是什么?他们想要这个组件上的滚动条吗? 最安全的做法应该是创建一个 BFC 时并不会带来任何副作用，它内部的元素都安全的呆在这个迷你布局中，这种方法不会引起任何意想不到的问题，也可以理解开发者的意图。CSS 工作组也十分认同这种想法，所以他们定制了一个新的属性值：display:flow-root。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/WXyvpd/">Using display: flow-root for common tasks</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p><strong>flow-root 浏览器支持情况</strong> 你可以使用<code>display:flow-root</code>安全的创建BFC，来解决上文中提到的各种问题：包裹浮动元素、阻止外边距叠加和阻止围绕浮动元素。</p>
-<p><a target="_blank" rel="noopener" href="http://caniuse.com/#feat=flow-root">Can I Use flow-root?</a> Data on support for the flow-root feature across the major browsers from caniuse.com.</p>
-<p>浏览器对该属性的支持目前还是有限的，如果你觉得这个属性值很方便，请投票去让Edge也支持它。不过无论如何，你现在应该已经理解了什么是 BFC，以及如何使用 <code>overflow</code> 或其他方法来包裹浮动，以及知道了 BFC 可以阻止元素去环绕浮动元素，如果你想使用弹性或网格布局可以在一些不支持他们的浏览器中使用 BFC 的这些特性做降级处理。 理解浏览器如何布置网页是非常基础的。 虽然有时看起来无关紧要，但是这些小知识可以加快创建和调试 CSS 布局所需的时间。</p>
 
       
     </div>
@@ -1610,16 +1629,16 @@ I am text inside the outer box.
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">336</span>
+        <span class="site-state-item-count">338</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

@@ -178,6 +178,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/05/%E4%BD%BF%E7%94%A8css3-%E9%80%89%E6%8B%A9%E5%99%A8target%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BC%B8%E7%BC%A9%E7%9A%84%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/05/%E4%BD%BF%E7%94%A8css3-%E9%80%89%E6%8B%A9%E5%99%A8target%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BC%B8%E7%BC%A9%E7%9A%84%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95/" class="post-title-link" itemprop="url">使用CSS3 选择器:target制作一个可伸缩的导航菜单</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-05 20:00:14" itemprop="dateCreated datePublished" datetime="2018-10-05T20:00:14+08:00">2018-10-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们使用CSS3 选择器:target制作一个可伸缩的导航菜单。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target">先理解一下:target</a></p>
+<h4 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h4><p>URL 带有后面跟有锚名称 #，指向文档内某个具体的元素。这个被链接的元素就是目标元素(target element)。 :target 选择器可用于选取当前活动的目标元素。 那么我就看一下代码如何做可伸缩的导航菜单</p>
+<nav id="menu">
+<ul id="menu-closed">
+<li><a href="#">首页</a></li>
+<li><a href="#">html/css</a></li>
+<li><a href="#">javascript</a></li>
+<li><a href="#">vue</a></li>
+<li><a href="#">anjular</a></li>
+<li><a href="#">react</a></li>
+<li><a href="#">php</a></li>
+<li><a href="#">python</a></li>
+<li><a href="#">highcharts</a></li>
+<li><a href="#">echarts</a></li>
+<li><a href="#menu-closed">&#215;</a></li>
+<li><a href="#menu">&#9776;</a></li>
+</ul>
+</nav>
+
+<p>CSS代码</p>
+<p>nav {<br>font-size: 12px;<br>background-color: rgb(19, 51, 61);<br>box-shadow: 0 1px 2px rgba(19, 51, 61, 0.5);<br>margin: 3em 0 6em;<br>padding: 0 1em;<br>height: 44px;<br>overflow: hidden;<br>}</p>
+<p>nav ul {<br>margin: 0;<br>padding: 0;<br>list-style-type: none;<br>max-height: 88px;<br>position: relative;<br>}</p>
+<p>nav li {<br>display: inline-block;<br>}</p>
+<p>nav a {<br>display: inline-block;<br>padding: 0 1em;<br>color: rgb(236, 236, 236);<br>font-weight: 700;<br>letter-spacing: 0.1em;<br>text-decoration: none;<br>text-transform: uppercase;<br>white-space: nowrap;<br>line-height: 44px;<br>height: 44px;<br>}</p>
+<p>nav a:hover {<br>background-color: rgba(255, 255, 255, 0.08);<br>}</p>
+<p>nav li:last-child {<br>/* 菜单按钮 */<br>position: absolute;<br>right: 0;<br>bottom: 44px;<br>background-image: linear-gradient(to right, rgba(19, 51, 61, 0) 0, rgba(19, 51, 61, 1) 2em);<br>padding-left: 3em;<br>}</p>
+<p>nav li:nth-last-child(2) {<br>/* 先关闭按钮 */<br>display: none;<br>}</p>
+<p>nav#menu:target {<br>height: auto;<br>padding: 0;<br>}</p>
+<p>nav#menu:target ul {<br>max-height: none;<br>}</p>
+<p>nav#menu:target li {<br>display: block;<br>}</p>
+<p>nav#menu:target a {<br>display: block;<br>padding: 0 2em;<br>background-color: rgba(255, 255, 255, 0.05);<br>}</p>
+<p>nav#menu:target a:hover {<br>background-color: rgba(255, 255, 255, 0.08);<br>}</p>
+<p>nav#menu:target li:not(:first-child) {<br>margin-top: 2px;<br>}</p>
+<p>nav#menu:target li:last-child {<br>display: none;<br>}</p>
+<p>nav#menu:target li:nth-last-child(2) {<br>display: inline-block;<br>position: absolute;<br>top: 0;<br>right: 0;<br>margin: 0;<br>border-left: 2px solid rgb(19, 51, 61);<br>}</p>
+<p><a target="_blank" rel="noopener" href="https://jshare.com.cn/temp/HpJ1bg/share/pure">查看demo</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/05/javascript-prototype%E5%8E%9F%E5%9E%8B-%E5%88%9D%E5%AD%A6%E8%80%85%E6%8C%87%E5%8D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -479,11 +588,11 @@ this.energy = energy
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -915,11 +1024,11 @@ this.energy = energy
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
             </span>
 
@@ -1771,187 +1880,6 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/19/css%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/19/css%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%EF%BC%89/" class="post-title-link" itemprop="url">CSS变量使用指南（自定义属性）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-19 22:47:24" itemprop="dateCreated datePublished" datetime="2018-09-19T22:47:24+08:00">2018-09-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:26" itemprop="dateModified" datetime="2021-08-30T10:43:26+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>CSS预处理器，如Sass和Less，使得CSS代码易于组织和维护。通过提供变量、混合、循环等特性，使得CSS具有动态编写的能力，从而减少重复性工作，提高开发速度。 最近，CSS开始添加一些动态特性。<a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-variables/">CSS变量</a> （自定义属性）已经加入规范，并且获得了大多数浏览器的支持。但是<a target="_blank" rel="noopener" href="https://tabatkins.github.io/specs/css-apply-rule/">CSS混合特性还在进行中</a>。 在这篇文章中，我们将会向你展示怎么把CSS变量应用到开发中，从而使得样式表更加可维护和<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> (Don’t Repeat Yourself)。 让我们现在开始！</p>
-<h2 id="CSS变量是什么？"><a href="#CSS变量是什么？" class="headerlink" title="CSS变量是什么？"></a>CSS变量是什么？</h2><p>如果你使用过任何编程语言，你肯定熟悉变量这个概念。变量让你存储和更新程序运行需要的值。 例如，考虑下面的JavaScript片段：</p>
-<p>let number1 = 2;<br>let number2 = 3;<br>let total = number1 + number2;<br>console.log(total); // 5<br>number1 = 4;<br>total = number1 + number2;<br>console.log(total); // 7</p>
-<p>number1和number2是两个变量，分别存储数字2和3。 total也是一个变量，存储<code>number1</code>和<code>number2</code>变量的和，在这个例子中是5。你可以动态更新这些变量的值，并且在程序的任何地方使用更新后的值。在上面的代码片段中，我把<code>number1</code>的值更新为<code>4</code>，当我使用相同的变量再次执行加法操作时，存储在<code>total</code>中的值就变成7，而不是5了。 变量的好处在于你可以把值存储在一个地方，然后在你需要的地方修改它。这样你就不用在程序的不同地方为不同的值添加不同的变量：所有变量更新使用同一个存储地址，比如你的变量。 CSS主要是一门声明式语言，缺乏动态性。你可能会说给CSS添加变量会与CSS本身相矛盾。如果前端开发仅仅关注语义，那么给CSS添加变量确实会与CSS本身矛盾。幸运的是，网络语言更像动态语言，它会随着周围环境和开发者的需求不断变化。CSS也不例外。 总而言之，变量已经成为CSS中令人激动的实现，你很快也会发现，学习和使用它非常直观。</p>
-<h2 id="使用CSS变量有什么好处？"><a href="#使用CSS变量有什么好处？" class="headerlink" title="使用CSS变量有什么好处？"></a>使用CSS变量有什么好处？</h2><p>在CSS中使用变量的好处和在编程语言中没有特别大的不同。 下面是规范对上述问题的回答：</p>
-<blockquote>
-<p>[使用CSS变量]使大文件更易于阅读，因为看起来很随意的值有了一个提示信息的名字，并且编辑这些文件更加简单，更不易于出错。因为你只需要在自定义属性处修改一次，然后这个修改就会自动应用到使用该变量的任何地方。 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-variables/#intro">W3C规范</a>。</p>
-</blockquote>
-<p>换句话说： 通过与项目相关的方式命名变量，管理和维护代码会变得更加容易。例如，如果项目的主色调保存在<code>--primary-color</code>中，修改项目的主色调就会变得很容易，仅仅改变该变量的值就可以，而不用去修改遍布在代码各处、不同CSS属性中的颜色值。</p>
-<h2 id="CSS变量和预处理器变量的不同之处？"><a href="#CSS变量和预处理器变量的不同之处？" class="headerlink" title="CSS变量和预处理器变量的不同之处？"></a>CSS变量和预处理器变量的不同之处？</h2><p>在给网站添加样式时，你可能已经通过预处理器，如<a target="_blank" rel="noopener" href="http://sass-lang.com/">Sass</a>和<a target="_blank" rel="noopener" href="http://lesscss.org/">Less</a>，体验过变量的灵活性带来的好处。 预处理器可以让你设置变量，并且在函数、循环和数学操作等中使用。这是不是意味着CSS变量就没有什么用处了？ 不完全是，主要是因为CSS变量和预处理器变量并不一样。 不同之处在于CSS变量是运行在浏览器中的动态CSS属性，而预处理器变量会被编译成普通的CSS代码。因此，浏览器并不知道预处理器变量的存在。 这就意味着你可以更改样式表、行内样式属性和SVG展示型属性中的CSS变量，或者使用JavaScript操作它们。这是预处理器变量做不到的。CSS变量提供了更多可能性！ 但这并不是说你需要在二者之间选择其一：你可以同时使用CSS变量和预处理器变量的强大功能。</p>
-<h2 id="CSS变量的语法"><a href="#CSS变量的语法" class="headerlink" title="CSS变量的语法"></a>CSS变量的语法</h2><p>为了简单起见，在这篇文章中我使用了CSS变量这个术语，但是官方文档给出的是级联变量的CSS自定义属性。CSS自定义属性形式如下：</p>
-<p>--my-cool-background: #73a4f4;</p>
-<p>在自定义属性前面添加两个短横线，然后像普通的CSS属性一样给它赋值。在上面的代码片段中，给<code>--my-cool-background</code>自定义属性赋了一个颜色值。 级联变量部分包括使用<code>var()</code>函数应用自定义属性，形式如下：</p>
-<p>var(–my-cool-background)</p>
-<p>自定义属性的使用范围是CSS选择器的内部，<code>var()</code>像一个真正的CSS属性值被使用。</p>
-<p>:root {<br>  –my-cool-background: #73a4f4;<br>}<br>/* CSS文件的其他部分 */<br>#foo {<br>  background-color: var(–my-cool-background);<br>}</p>
-<p>上面的代码片段把<code>--my-cool-background</code>自定义属性定义在<code>:root</code>伪元素内，这使得自定义属性的值全局可用（:root匹配元素内的任何元素）。然后使用var()函数把值应用到ID是foo的容器的background-color属性上，然后这个容器就会得到一个淡蓝色背景。 除此之外，还可以把淡蓝色应用到多个HTML元素的其他颜色属性上，如<code>color</code>，<code>border-color</code>等。你需要做得仅仅是通过<code>var(--my-cool-background)</code>获取自定义属性的值，然后应用到相应的属性上。当然，你需要好好考虑CSS变量的命名规范，使你的变量名能更好地反映变量的内容。</p>
-<p>p {<br>    color: var(–my-cool-background);<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/gRMaJw/">Basic Workings of CSS Variables</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>你也可以在CSS变量中使用另一个CSS变量，举例如下：</p>
-<p>--top-color: orange;<br>–bottom-color: yellow;<br>–my-gradient: linear-gradient(var(–top-color), var(–bottom-color));</p>
-<p>上面的代码片段创建了<code>--my-gradient</code>变量，它的值是使用<code>--top-color</code>和<code>--bottom-color</code>变量创建的一个渐变。现在，你可以在任何地方通过仅仅改变变量的值来修改渐变，而不必到处在样式表中创建渐变实例。 下面是一个在线CodePen演示。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/RgRrba/">Setting Value of CSS Variable with Another CSS Variable</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>最后，在使用CSS变量的时候，还可以添加一个或多个后备值，举例如下：</p>
-<p>var(–main-color, #333);</p>
-<p>在上面的代码片段中，<code>#333</code>是一个后备值。如果没有提供后备值，当自定义属性无效或者没有赋值的时候，会使用继承值。</p>
-<h2 id="CSS变量是大小写敏感的"><a href="#CSS变量是大小写敏感的" class="headerlink" title="CSS变量是大小写敏感的"></a>CSS变量是大小写敏感的</h2><p>和一般的CSS属性不一样，CSS变量是大小写敏感的。 例如，<code>var(--foo)</code>和<code>var(--Foo)</code>使用的是两个不同的自定义属性，分别是<code>--foo</code>和<code>--Foo</code>。</p>
-<h2 id="CSS变量是级联的"><a href="#CSS变量是级联的" class="headerlink" title="CSS变量是级联的"></a>CSS变量是级联的</h2><p>类似一般的CSS属性，CSS变量也会继承。例如，我们定义一个值是blue的自定义属性：</p>
-<p>:root {<br>    –main-color: blue;<br>}</p>
-<p><code>&lt;html&gt;</code>根元素内的所有元素如果应用<code>--main-color</code>就会继承值<code>blue</code>。 如果你在另一个元素里面给自定义属性赋了一个不同的值，这个元素的所有子元素就会继承这个新值，举例如下：</p>
-<p>:root {<br>    –main-color: blue;<br>}</p>
-<p>.alert {<br>    –main-color: red;<br>}</p>
-<p>p {<br>    color: var(–main-color);<br>}</p>
-<p>&lt;–! HTML –&gt;</p>
-<html>
-  <head>
-    <!-- head code here -->
-  </head>
-  <body>
-    <div>
-      <p>blue paragraph.</p>
-      <div class="alert">
-        <p>red paragraph.</p>
-      </div>
-    </div>
-  </body>
-</html>
-
-<p>上面的标记语言中的第一个段落会继承全局<code>--main-color</code>的值，所以字体颜色是蓝色。 具有<code>.alert</code>类的div元素内部的段落元素的字体颜色是红色的，因为它继承了局部范围内的<code>--main-color</code>变量，这个变量的值是red。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/vZKLOG/">Simple Example of CSS Variables Inheritance</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>现在了解了规则，让我们开始实践吧！</p>
-<h2 id="在SVG中使用CSS变量"><a href="#在SVG中使用CSS变量" class="headerlink" title="在SVG中使用CSS变量"></a>在SVG中使用CSS变量</h2><p>CSS变量和SVG可以很好的一起工作！你可以使用CSS变量来修改内联SVG中的样式和展示型属性。 比如，你想通过SVG图标元素的父元素来给它一个不同的颜色。你可以在父元素内设置一个局部的CSS变量，然后把它赋值成你想要的颜色，然后，父元素内的图标就能从父元素继承到合适的颜色。 下面是相关代码：</p>
-<p>/* 图标的内联SVG symbol */<br><svg><br>  <symbol id="close-icon" viewbox="0 0 200 200"><br>    <circle cx="96" cy="96" r="88" fill="none" stroke="var(--icon-color)" stroke-width="15" /><br>    <text x="100" y="160" fill="var(--icon-color)" text-anchor="middle" style="font-size:250px;">x</text><br>  </symbol><br></svg></p>
-<p>/* 图标的第一个实例  */<br><svg><br>  <use xlink:href="#close-icon" /><br></svg></p>
-<p>上面的标记语言使用了标签，使用它可以创建不可见的SVG图形。然后使用标签实例化了一个上述图形的可见版本。使用这种方式通过简单地引用元素的ID(<code>#close-icon</code>)就能创建大量的图标，然后再根据你的喜好对图标进行自定义。这比重复的写同一段代码要简便的多。如果你想复习这个技术，Massimo Cassandro在他的创造你<a target="_blank" rel="noopener" href="https://www.sitepoint.com/build-svg-icons/">自己的SVG图标</a>中提供了一个快速教程。 注意SVG中的圆形元素的stroke属性值和文本元素的fill属性值：它们都使用了一个CSS变量，<code>--icon-color</code>，这个变量定义在CSS文档的<code>:root</code>选择器上，如下所示：</p>
-<p>:root {<br>  –icon-color: black;<br>}</p>
-<p>图标现在的样子如下： <img data-src="http://file.w3cbest.com/file/images/1497293805default-svg-icon.png"> 如果你现在把SVG图标放到不同的容器中，然后在每个父元素的选择器中给这个变量赋不同的颜色值，你就能在不添加任何样式规则的情况下创建不同颜色的图标。真酷！ 举个例子，把上面图标的一个实例放在一个有类<code>.success</code>的div中。</p>
-<div class="success">
-  <svg>
-    <use xlink:href="#close-icon" />
-  </svg> 
-</div>
-
-<p>现在，在.success选择器内给–icon-color变量赋值green，然后看下效果。</p>
-<p>.success {<br>    –icon-color: green;<br>}</p>
-<p>现在，图标的颜色变成了绿色： <img data-src="http://file.w3cbest.com/file/images/1497293895success-icon.png"> 查看下面完整的演示示例：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/JJKGbj/">Basic Use of SVG Icon and CSS Variables</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h2 id="在-keyframes动画中使用CSS变量"><a href="#在-keyframes动画中使用CSS变量" class="headerlink" title="在@keyframes动画中使用CSS变量"></a>在@keyframes动画中使用CSS变量</h2><p>CSS变量可以和CSS动画一起使用，不论是在一般的HTML元素还是内联SVG元素上。只需要记住在想添加动画的元素的选择器上定义自定义属性，然后使用<code>var()</code>函数在<code>@keyframes</code>中引用。 比如，给SVG的一个有类<code>.bubble</code>的元素添加动画，CSS代码如下：</p>
-<p>.bubble {<br>  –direction-y: 30px;<br>  –transparency: 0;<br>  animation: bubbling 3s forwards infinite;<br>}</p>
-<p>@keyframes bubbling {<br>  0% {<br>    transform: translatey(var(–direction-y));<br>    opacity: var(–transparency);<br>  }<br>  40% {<br>    opacity: calc(var(–transparency) + 0.2);<br>  }<br>  70% {<br>    opacity: calc(var(–transparency) + 0.1);<br>  }<br>  100% {<br>    opacity: var(–transparency);<br>  }<br>}</p>
-<p>你可能已经注意到我们可以使用CSS的<code>calc()</code>通过<code>var()</code>函数对变量进行计算，这使代码更加灵活。 这个例子中使用CSS变量的灵活之处是通过简单的改变相应选择器内部的变量值，就可以改变动画效果，而不必查找<code>@keyframes</code>指令中的每个属性。 下面是完整的CodePen演示：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/zzBrNV/">Simple Animation with CSS Variables and SVG</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h2 id="使用JavaScript操作CSS变量"><a href="#使用JavaScript操作CSS变量" class="headerlink" title="使用JavaScript操作CSS变量"></a>使用JavaScript操作CSS变量</h2><p>一件更酷的事情是你可以直接通过JavaScript代码访问CSS变量。 假设有一个叫<code>--left-pos</code>的CSS变量，它的值的<code>100px</code>，定义在CSS文档的<code>.sidebar</code>类中：</p>
-<p>.sidebar {<br>  –left-pos: 100px;<br>}</p>
-<p>使用类似下面的JavaScript代码获取<code>--left-pos</code>的值：</p>
-<p>// 获取你想添加动画的元素<br>const sidebarElement = document.querySelector(‘.sidebar’);</p>
-<p>// 把侧边栏元素的样式存储在cssStyles变量中<br>const cssStyles = getComputedStyle(sidebarElement);</p>
-<p>// 获取CSS变量–left-pos的值<br>const cssVal = String(cssStyles.getPropertyValue(‘–left-pos’)).trim();</p>
-<p>// 在控制台打印CSS变量的值<br>// 控制台会输出变量的值为100px<br>console.log(cssVal);</p>
-<p>使用类似下面的JavaScript代码给CSS变量赋值：</p>
-<p>sidebarElement.style.setProperty(‘–left-pos’, ‘200px’);</p>
-<p>上面的代码片段把侧边栏元素的<code>--left-pos</code>变量设置成<code>200px</code>。 相对于改变大量的类或者重写全部的CSS规则，使用CSS变量给网站添加交互更直接，也更易于维护。 查看下面的CodePen演示，你可以通过侧边栏来改变<a target="_blank" rel="noopener" href="https://www.sitepoint.com/close-up-css-mix-blend-mode-property/">混合模式</a>属性和背景颜色，而这仅仅需要CSS变量和JavaScript:</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/NgrxvM/">Blend Modes, CSS Variables and JavaScript</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h2 id="浏览器对CSS变量的支持情况"><a href="#浏览器对CSS变量的支持情况" class="headerlink" title="浏览器对CSS变量的支持情况"></a>浏览器对CSS变量的支持情况</h2><p>除了IE11（不支持）和Microsoft Edge（buggy支持），在本文编写的时候，所有主流浏览器都完全<a target="_blank" rel="noopener" href="http://caniuse.com/#feat=css-variables">支持CSS变量</a>。 适配有问题的浏览器的方式之一是使用@supports进行条件查询：</p>
-<p>section {<br>  color: gray;<br>}</p>
-<p>@supports(–css: variables) {<br>  section {<br>    –my-color: blue;<br>    color: var(–my-color, ‘blue’);<br>}<br>}</p>
-<p>因为IE/Edge支持<code>@supports</code>，所以上面的代码会生效。如果在<code>var()</code>函数中添加一个后备值，你的代码将会更加健壮，在支持的更加不好的浏览器中也能优雅降级。 所以，在Chrome和其他支持CSS变量的浏览器中， 元素内部的文本是蓝色的： <img data-src="http://file.w3cbest.com/file/images/1497294865browser-with-css-variables-support.png"> IE11不支持CSS变量，文本会被渲染成灰色： <img data-src="http://file.w3cbest.com/file/images/1497294899browser-without-css-variables-support.png"> 查看在线演示：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/SitePoint/pen/zzBrWY/">@supports with CSS Variables</a> by SitePoint (<a target="_blank" rel="noopener" href="https://codepen.io/SitePoint">@SitePoint</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>这种方式的缺点是如果你在项目中使用了大量的CSS变量，但是该项目主要通过不支持CSS变量的浏览器打开，那么代码不仅会变得有点儿复杂，维护也将会是噩梦。 在这种情况下，你可以选择使用支持cssnext的<a target="_blank" rel="noopener" href="http://cssnext.io/">PostCSS</a>，然后你就可以编写尖端的CSS代码了，兼容不支持的浏览器交给PostCSS去做就可以了，这有点儿像JavaScript的编译器。如果你想了解PostCSS，SitePoint Premium为其所有成员提供了有关此主题的精彩<a target="_blank" rel="noopener" href="https://www.sitepoint.com/premium/courses/kick-starting-postcss-2948">视频课程</a>。</p>
-<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>想了解更多CSS变量的细节，包括浏览器兼容问题的解决方案和有趣的例子，查看下面的资源：</p>
-<ul>
-<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-variables/">用于级联变量的CSS自定义属性模块级别1</a> - W3C规范</li>
-<li>  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">使用CSS变量</a> - MDN</li>
-<li>  <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=kZOJCVvyF-4">Lea Verou为CSSConf Asia 2016谈论CSS变量</a>（视频）</li>
-<li>  <a target="_blank" rel="noopener" href="https://css-tricks.com/difference-between-types-of-css-variables/">CSS变量和预处理器变量之间有什么区别？</a> - Chris Coyier（CSS-Tricks）</li>
-<li>  <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2017/04/start-using-css-custom-properties/">现在是时候开始使用CSS自定义属性</a> - Serg Hospodarets（Smashing Magazine）</li>
-<li>  <a target="_blank" rel="noopener" href="https://una.im/local-css-vars/">本地范围的CSS变量：什么，如何以及为什么</a> - Una Kravets</li>
-<li>  <a target="_blank" rel="noopener" href="https://csswizardry.com/2016/10/pragmatic-practical-progressive-theming-with-custom-properties/">自定义属性的实用，实用和渐进式主题</a> - Harry Roberts（CSS Wizardry）</li>
-<li>  <a target="_blank" rel="noopener" href="https://codepen.io/AmeliaBR/post/customizable-svg-icons-css-variables">带CSS变量的可定制SVG图标</a> - Amelia Bellamy-Royds（CodePen）。</li>
-</ul>
-<h2 id="有趣的例子"><a href="#有趣的例子" class="headerlink" title="有趣的例子"></a>有趣的例子</h2><ul>
-<li>  <a target="_blank" rel="noopener" href="https://codepen.io/wesbos/pen/gPZBZQ?editors=0010">CSS变量的动画</a>- Wes Bos</li>
-<li>  <a target="_blank" rel="noopener" href="https://codepen.io/wesbos/pen/adQjoY?editors=0110">使用JS更新CSS变量</a>- Wes Bos</li>
-<li>  <a target="_blank" rel="noopener" href="https://codepen.io/chriscoyier/pen/ORdLvq?editors=0110">简单的响应网格与CSS变量</a>- 克里斯科伊尔</li>
-<li>  <a target="_blank" rel="noopener" href="https://codepen.io/ramenhog/pen/yXYNzz?editors=1010">Slack主题与CSS自定义属性</a>- 斯蒂芬妮</li>
-<li>  <a target="_blank" rel="noopener" href="https://codepen.io/search/pens/?q=css+variables&limit=thebabydino">Ana Tudor在CodePen上的CSS变量演示</a>。</li>
-</ul>
-<p>你还在等什么？尝试使用CSS变量并通过评论让我知道你的想法！ 文章来源：<a target="_blank" rel="noopener" href="https://www.sitepoint.com/practical-guide-css-variables-custom-properties/">https://www.sitepoint.com/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2021,16 +1949,16 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">336</span>
+        <span class="site-state-item-count">338</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

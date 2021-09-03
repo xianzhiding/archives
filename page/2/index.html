@@ -178,6 +178,142 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/11/18/%E4%BD%BF%E7%94%A8css-grid%E8%BD%BB%E6%9D%BE%E6%90%9E%E5%AE%9A%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/18/%E4%BD%BF%E7%94%A8css-grid%E8%BD%BB%E6%9D%BE%E6%90%9E%E5%AE%9A%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">使用CSS Grid轻松搞定响应式布局</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-18 10:13:51" itemprop="dateCreated datePublished" datetime="2019-11-18T10:13:51+08:00">2019-11-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 11:04:13" itemprop="dateModified" datetime="2021-08-30T11:04:13+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在这篇文章中，我将教你如何使用 CSS Grid 来创建一个超酷的图像网格图，它将根据屏幕的宽度来改变列的数量。最精彩的地方在于：所有的响应特性被添加到了一行 css 代码中。这意味着我们不必将 HTML 与丑陋的类名(如col-sm-4, col-md-8)混杂在一起，也不必为每个屏幕创建媒体查询。ok，让我们发车吧。</p>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>在本文中，我将继续使用我在第一篇 <a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/learn-css-grid-in-5-minutes-f582e87b1228/">CSS Grid 布局教程文章</a>中的网格布局。然后，我们将在文章末尾添加图片。下面是我们初始化网格的外观： <img data-src="http://file.w3cbest.com/file/images/1_fJNIdDiScjhI9CZjdxv3Eg.png"> HTML 代码：</p>
+<pre class="language-none"><code class="language-none">&lt;div class&#x3D;&quot;container&quot;&gt;
+  &lt;div&gt;1&lt;&#x2F;div&gt;
+  &lt;div&gt;2&lt;&#x2F;div&gt;
+  &lt;div&gt;3&lt;&#x2F;div&gt;
+  &lt;div&gt;4&lt;&#x2F;div&gt;
+  &lt;div&gt;5&lt;&#x2F;div&gt;
+  &lt;div&gt;6&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;</code></pre>
+
+<p>CSS 代码：</p>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-template-columns: 100px 100px 100px;
+grid-template-rows: 50px 50px;
+&#125;</code></pre>
+
+<p>注意: 示例中有一些基础的样式，但我在这里没有写出来，因为这对 CSS 网格布局没有任何影响 如果这段代码让你感到困惑，我建议你去好好读下我的这篇文章<a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/learn-css-grid-in-5-minutes-f582e87b1228/">Learn CSS Grid in 5 minutes</a>，其中就详细的解释了布局的基础知识。 让我们让列开始具有自适应特性吧。 基础响应单位: fraction CSS 栅格布局带来了一个全新的值:fraction单位，fraction单位通常简写为fr，它允许你根据需要将容器拆分为多个块。 让我们将每一列更改为一个 fraction 单位宽:</p>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 50px 50px;
+&#125;</code></pre>
+
+<p>结果是栅格布局将会把整个宽度分成三个 fraction，每列占据一个 fraction 单位，效果如下： <img data-src="http://file.w3cbest.com/file/images/1_JgGPqT2AfFNDD8DhG2wPdQ.gif"> 如果我们将grid-template-columns的值更改为1fr 2fr 1fr，第二列的宽度将会是其它两列的两倍。总宽现在是四个 fraction 单位，第二列占据两个 fraction 单位，其它列各占一个 fraction。效果如下： <img data-src="http://file.w3cbest.com/file/images/1_cpfokc1HBgCwOTNhRU9SHg.gif"> 总的来说，fraction 单位值将使你可以很容易的更改列的宽度。 高级响应 然而，上面列子并没有给出我们想要的响应性，因为网格总是三列宽。我们希望网格能根据容器的宽度改变列的数量。要做到这一点，你必须学习如下三个概念：</p>
+<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><p>首先我们学习repeat()函数。这是一个强大的指定列和行的方法。让我们使用repeat()函数来更改网格:</p>
+<pre class="language-none"><code class="language-none">.container &#123;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(2, 50px);
+  &#125;</code></pre>
+
+<p>在上面代码中，repeat(3, 100px)等于100px 100px 100px。第一个参数指定行与列的数量，第二个参数指定它们的宽度，因此它将为我们提供与开始时完全相同的布局： <img data-src="http://file.w3cbest.com/file/images/1_fJNIdDiScjhI9CZjdxv3Eg.png"></p>
+<h2 id="auto-fit"><a href="#auto-fit" class="headerlink" title="auto-fit"></a>auto-fit</h2><p>然后是auto-fit。让我们跳过固定数量的列，将3替换为自适应数量：</p>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-gap: 5px;
+grid-template-columns: repeat(auto-fit, 100px);
+grid-template-rows: repeat(2, 100px);
+&#125;</code></pre>
+
+<p>效果如下: <img data-src="http://file.w3cbest.com/file/images/v2-e9df20fc5a27960605959ba296042ffa_b.webp"> 现在，栅格将会根据容器的宽度调整其数量。它会尝试在容器中容纳尽可能多的 100px 宽的列。但如果我们将所有列硬写为 100px，我们将永远没法获得所需的弹性，因为它们很难填充整个宽度。正如你在上图看到的，网格通常在右侧留有空白。</p>
+<h2 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a>minmax()</h2><p>为了解决上述问题，我们需要minmax()。我们将 100px 替换为 minmax(100px, 1fr)，代码如下：</p>
+<pre class="language-none"><code class="language-none">.container &#123;
+display: grid;
+grid-gap: 5px;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+grid-template-rows: repeat(2, 100px);
+&#125;</code></pre>
+
+<p>请注意，所有响应都发生在一行 css 代码中 效果如下： <img data-src="http://file.w3cbest.com/file/images/v2-4c968663383dbf14b08e22c45c1ddbd8_b.webp"> 正如你所见，效果完美。minmax()函数定义的范围大于或等于 min， 小于或等于 max。 因此，现在每列将至少为 100px。但如果有更多的可用空间，栅格布局将简单地将其均分给每列，因为这些列变成了 fraction 单位，而不是 100px。</p>
+<h2 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h2><p>最后一步是添加图片。这与 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">CSS Grid</a> 布局无关，但让我们看下代码。 我们在每个网格中添加一个图片标签：</p>
+<pre class="language-none"><code class="language-none">&lt;div&gt;&lt;img src&#x3D;&quot;img&#x2F;forest.jpg&quot;&#x2F;&gt;&lt;&#x2F;div&gt;</code></pre>
+
+<p>为了使图片适应于每个条目，我们将其宽、高设置为与条目本身一样，我们使用object-fit:cover。这将使图片覆盖它的整个容器，根据需要，浏览器将会对其进行裁剪。</p>
+<pre class="language-none"><code class="language-none">.container &gt; div &gt; img &#123;
+width: 100%;
+height: 100%;
+object-fit: cover;
+&#125;</code></pre>
+<p>效果如下： <img data-src="http://file.w3cbest.com/file/images/v2-5589cdec01ac4734366b7d38ebac182a_b.webp"> ok！现在你已经了解了 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/494.html">CSS Grid</a> 布局中最复杂的概念之一了，请给自己一个赞吧。</p>
+<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><p>在结束本文前，我提下浏览器支持情况，在撰写本文时，全球77%的网站将支持 CSS Grid，而且比例还在逐步攀升。 2018将是 CSS 网格布局的元年。它将获得突破，并成为前端开发者的必备技能，就像过去几年 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/490.html">CSS Flexbox</a> 布局发生的情况一样。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/09/17/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BD%A0%E7%9A%84-js-%E5%86%99%E5%BE%97%E6%9B%B4%E6%BC%82%E4%BA%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1528,82 +1664,6 @@ option &#x3D; &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/04/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE%E9%81%87%E5%88%B0%E8%B4%9F%E5%80%BC%E4%B8%AD%E5%BF%83%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E8%AE%BE%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/04/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE%E9%81%87%E5%88%B0%E8%B4%9F%E5%80%BC%E4%B8%AD%E5%BF%83%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">echarts 雷达图遇到负值中心点偏移的设置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-04 16:18:37" itemprop="dateCreated datePublished" datetime="2019-07-04T16:18:37+08:00">2019-07-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-30 10:43:27" itemprop="dateModified" datetime="2021-08-30T10:43:27+08:00">2021-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>ECharts 雷达图可以使用<code>series[i]-radar</code>设置 ，雷达图主要用于表现多变量的数据，例如玩”和平精英”战况的各个属性分析，雷达图依赖<code>radar</code>组件。 关于雷达图其他的一些属性自行去查看官网，我们在这里讲的是在遇到负值的时候如何设置雷达图的中心点，通过官网的例子来设置的话，遇到负值无法找到中心位置，使得雷达图的内部图形发生变异。 下面我们就来说说如何设置，想要设置负值还需要从<code>radar</code>组件出发，<code>radar</code>组件下面有一个<code>indicator</code>属性， 它是雷达图的指示器，用来指定雷达图中的多个变量（维度）。 然后我们它的最大值<code>radar.indicator[i].max</code>和最小值<code>radar.indicator[i].min</code>设为统一的值，要注意它的这里的最大值要大于或等于你的数据的最大值，最小值要小于或等于你的数据的最小值 下面是用雷达图表现的示例。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/dBjymx/">echarts 雷达图遇到负值中心点偏移的设置</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>var max = 100, min = -50;<br>option = {<br>    …<br>    radar: {<br>        …<br>        indicator: [{<br>                name: ‘销售’,<br>                max: max,<br>                min: min<br>            },<br>            {<br>                name: ‘管理’,<br>                max: max,<br>                min: min<br>            },<br>            {<br>                name: ‘技术’,<br>                max: max,<br>                min: min<br>            }<br>        ],<br>    },<br>    series: [{<br>        …<br>        data: [{<br>            value: [100, 80, -40]<br>        }]<br>    }]<br>};</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1673,16 +1733,16 @@ option &#x3D; &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">336</span>
+        <span class="site-state-item-count">338</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
