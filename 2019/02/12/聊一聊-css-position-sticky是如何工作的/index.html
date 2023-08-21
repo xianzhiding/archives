@@ -27,9 +27,9 @@
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="CSS position sticky具有非常好的浏览器支持，但大多数开发人员都没有使用它。 究其原因有两个：    第一，受到浏览器的良好支持需要漫长的等待：浏览器的支持往往需要很长的时间才能完成，到时候它的功能已经被人们遗忘了。   第二个原因是很多开发者并不能完全理解其工作原理背后的逻辑，这就是我的切入点。  我假设你们都知道什么事CSS定位，不过还是先简单回顾一下比较好： 在3年前，有四种">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/342842461-5c601033ed793_articlex.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/342842461-5c601033ed793_articlex.png">
 <meta property="article:published_time" content="2019-02-12T05:58:17.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.026Z">
+<meta property="article:modified_time" content="2023-08-21T03:11:51.154Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="css3教程">
 <meta property="article:tag" content="css 布局">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="css 粘性定位">
 <meta property="article:tag" content="css粘性布局">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://file.w3cbest.com/file/images/342842461-5c601033ed793_articlex.png">
+<meta name="twitter:image" content="https://file.w3cbest.com/file/images/342842461-5c601033ed793_articlex.png">
 
 <link rel="canonical" href="https://xianzhiding.github.io/2019/02/12/%E8%81%8A%E4%B8%80%E8%81%8A-css-position-sticky%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/">
 
@@ -259,7 +259,7 @@
 <h3 id="这是为什么？"><a href="#这是为什么？" class="headerlink" title="这是为什么？"></a>这是为什么？</h3><p>这是因为当一个元素被赋予 <code>position: sticky</code> 样式时，粘性项目的容器是它可以粘贴的唯一区域。 粘性元素没有任何要浮动的元素，因为它只能浮动在同级元素上，作为唯一的子元素，它不能浮动。</p>
 <h2 id="怎样才能让-CSS-粘性定位起作用"><a href="#怎样才能让-CSS-粘性定位起作用" class="headerlink" title="怎样才能让 CSS 粘性定位起作用"></a>怎样才能让 CSS 粘性定位起作用</h2><p>CSS 粘性定位有两个主要部分，粘性元素（<code>sticky item</code>）和 粘性容器（<code>sticky container</code>）。 粘性元素 —— 是我们用位置定义的<code>position: sticky</code>样式。 当视口位置与位置定义匹配时，该元素将会浮动，例如：<code>top: 0px</code> 。 例：</p>
 <p>.some-component{<br>    position: sticky;<br>    top: 0px;<br>}</p>
-<p>粘性容器 —— 是包装粘性元素的 HTML 元素。 这是粘性元素可以浮动的最大区域。 当你定义一个具有<code>position:sticky</code>样式的元素时，父元素会被自动定义为粘性容器！ 记住这一点非常重要！ 容器是粘性元素的范围，并且该元素无法离开其所在的粘性容器。 这就是为什么在前面的例子中，粘性元素没有被粘住的原因：这个粘性元素是粘性容器中唯一的子元素。 CSS 粘性定位的示意图： <img data-src="http://file.w3cbest.com/file/images/342842461-5c601033ed793_articlex.png"></p>
+<p>粘性容器 —— 是包装粘性元素的 HTML 元素。 这是粘性元素可以浮动的最大区域。 当你定义一个具有<code>position:sticky</code>样式的元素时，父元素会被自动定义为粘性容器！ 记住这一点非常重要！ 容器是粘性元素的范围，并且该元素无法离开其所在的粘性容器。 这就是为什么在前面的例子中，粘性元素没有被粘住的原因：这个粘性元素是粘性容器中唯一的子元素。 CSS 粘性定位的示意图： <img data-src="https://file.w3cbest.com/file/images/342842461-5c601033ed793_articlex.png"></p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/elad2412/pen/QYLEdK/">Positon Sticky</a> by Elad Shechter (<a target="_blank" rel="noopener" href="https://codepen.io/elad2412">@elad2412</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <h2 id="理解-CSS-的粘性行为"><a href="#理解-CSS-的粘性行为" class="headerlink" title="理解 CSS 的粘性行为"></a>理解 CSS 的粘性行为</h2><p>正如我前面说过的那样，CSS 粘性定位的行为与所有其他 CSS 定位不一样，但从另一个角度来说，它们也有一些相似之处。我来解释一下：</p>
 <ul>
@@ -325,7 +325,6 @@
   </li>
 </ul>
 </div>
-
 
       <footer class="post-footer">
           
@@ -422,21 +421,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -458,7 +456,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -495,7 +493,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

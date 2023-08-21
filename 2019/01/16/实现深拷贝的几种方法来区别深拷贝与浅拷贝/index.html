@@ -27,27 +27,27 @@
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="以前面试的时候面试官总是会问深拷贝与浅拷贝，那个时候回答不上来，其实是在工作中没涉及到这个问题，基本上都是拿到数据修改一下有还给后端了，没有在本地做过处理停留。 经过时间的积累工作年份的增加，这个深拷贝与浅拷贝问题也就开始涉及到了，如何区分深拷贝与浅拷贝，简单点来说，就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 我们来举一个例子">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163428.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163429.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163430.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163435.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163441.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163450.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163440.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163428.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163429.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163430.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163435.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163441.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163442.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163450.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163440.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163442.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/deepclone20190116163442.jpg">
 <meta property="article:published_time" content="2019-01-16T10:11:18.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.005Z">
+<meta property="article:modified_time" content="2023-08-21T03:11:50.845Z">
 <meta property="article:author" content="Tom">
+<meta property="article:tag" content="$.extend()">
 <meta property="article:tag" content="JSON.parse()">
 <meta property="article:tag" content="JSON.stringify()">
-<meta property="article:tag" content="$.extend()">
 <meta property="article:tag" content="js递归">
 <meta property="article:tag" content="浅拷贝">
 <meta property="article:tag" content="深拷贝">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://file.w3cbest.com/file/images/deepclone20190116163428.jpg">
+<meta name="twitter:image" content="https://file.w3cbest.com/file/images/deepclone20190116163428.jpg">
 
 <link rel="canonical" href="https://xianzhiding.github.io/2019/01/16/%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95%E6%9D%A5%E5%8C%BA%E5%88%AB%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">
 
@@ -245,29 +245,29 @@
       
         <p>以前面试的时候面试官总是会问深拷贝与浅拷贝，那个时候回答不上来，其实是在工作中没涉及到这个问题，基本上都是拿到数据修改一下有还给后端了，没有在本地做过处理停留。 经过时间的积累工作年份的增加，这个深拷贝与浅拷贝问题也就开始涉及到了，如何区分深拷贝与浅拷贝，简单点来说，就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，如果B没变，那就是深拷贝。 我们来举一个例子</p>
 <p>var a = [0,1,2,3,4],<br>b = a;<br>a[0] = 6<br>console.log(a, b)</p>
-<p><img data-src="http://file.w3cbest.com/file/images/deepclone20190116163428.jpg"> 然后看打印结果b复制了a，可是修改了a后b也跟着变化了，为什么呢？那么这里，就得引入基本数据类型与引用数据类型的概念了。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/deepclone20190116163428.jpg"> 然后看打印结果b复制了a，可是修改了a后b也跟着变化了，为什么呢？那么这里，就得引入基本数据类型与引用数据类型的概念了。</p>
 <h2 id="基本数据类型（存放在栈中）"><a href="#基本数据类型（存放在栈中）" class="headerlink" title="基本数据类型（存放在栈中）"></a>基本数据类型（存放在栈中）</h2><p>基本数据类型(值类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。 基本数据类型是指存放在栈中的简单数据段，数据大小确定，内存空间大小可以分配，它们是直接按值存放的，所以可以直接按值访问</p>
 <p>var a = 10,<br>b = a,<br>b = 20;<br>console.log(a); // 10值<br>console.log(b); // 20值</p>
-<p>下图演示了这种基本数据类型赋值的过程： <img data-src="http://file.w3cbest.com/file/images/deepclone20190116163429.jpg">  </p>
+<p>下图演示了这种基本数据类型赋值的过程： <img data-src="https://file.w3cbest.com/file/images/deepclone20190116163429.jpg">  </p>
 <h2 id="引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）"><a href="#引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）" class="headerlink" title="引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）"></a>引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）</h2><p>引用数据类型：对象(Object)、数组(Array)、函数(Function)。 引用类型是存放在堆内存中的对象，变量其实是保存的在栈内存中的一个指针（保存的是堆内存中的引用地址），这个指针指向堆内存。 引用类型数据在栈内存中保存的实际上是对象在堆内存中的引用地址。通过这个引用地址可以快速查找到保存中堆内存中的对象</p>
 <p>var obj1 = new Object();<br>var obj2 = obj1;<br>obj2.name = “我有名字了”;<br>console.log(obj1.name); // 我有名字了</p>
-<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给obj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象，所以修改obj2其实就是修改那个对象，所以通过obj1访问也能访问的到。 <img data-src="http://file.w3cbest.com/file/images/deepclone20190116163430.jpg"></p>
+<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给obj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象，所以修改obj2其实就是修改那个对象，所以通过obj1访问也能访问的到。 <img data-src="https://file.w3cbest.com/file/images/deepclone20190116163430.jpg"></p>
 <p>var a = [1,2,3,4,5];<br>var b = a;//传址 ,对象中传给变量的数据是引用类型的，会存储在堆中；<br>var c = a[0];//传值，把对象中的属性/数组中的数组项赋值给变量，这时变量C是基本数据类型，存储在栈内存中；改变栈中的数据不会影响堆中的数据<br>alert(b);//1,2,3,4,5<br>alert(c);//1<br>//改变数值<br>b[4] = 6;<br>c = 7;<br>alert(a[4]);//6<br>alert(a[0]);//1</p>
-<p>从上面我们可以得知，当我改变b中的数据时，a中数据也发生了变化；但是当我改变c的数据值时，a却没有发生改变。 这就是传值与传址的区别。因为a是数组，属于引用类型，所以它赋予给b的时候传的是栈中的地址（相当于新建了一个不同名“指针”），而不是堆内存中的对象。而c仅仅是从a堆内存中获取的一个数据值，并保存在栈中。所以b修改的时候，会根据地址回到a堆中修改，c则直接在栈中修改，并且不能指向a堆内存中。 <img data-src="http://file.w3cbest.com/file/images/deepclone20190116163435.jpg"></p>
+<p>从上面我们可以得知，当我改变b中的数据时，a中数据也发生了变化；但是当我改变c的数据值时，a却没有发生改变。 这就是传值与传址的区别。因为a是数组，属于引用类型，所以它赋予给b的时候传的是栈中的地址（相当于新建了一个不同名“指针”），而不是堆内存中的对象。而c仅仅是从a堆内存中获取的一个数据值，并保存在栈中。所以b修改的时候，会根据地址回到a堆中修改，c则直接在栈中修改，并且不能指向a堆内存中。 <img data-src="https://file.w3cbest.com/file/images/deepclone20190116163435.jpg"></p>
 <h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><h3 id="通过slice方法"><a href="#通过slice方法" class="headerlink" title="通过slice方法"></a>通过slice方法</h3><p>var a = [1,2,3,4],<br>    b = a.slice(0);<br>a[0] = 2;<br>console.log(a,b);</p>
-<p><img data-src="http://file.w3cbest.com/file/images/deepclone20190116163441.jpg"> 看到打印结果说明slice方法已经进行拷贝了，毕竟b没有受a的影响，我们把a改一下</p>
+<p><img data-src="https://file.w3cbest.com/file/images/deepclone20190116163441.jpg"> 看到打印结果说明slice方法已经进行拷贝了，毕竟b没有受a的影响，我们把a改一下</p>
 <p>var a = [0,1,[2,3],4],<br>    b = a.slice(0);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
-<p><img data-src="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg"> 看到打印结果说明拷贝的不彻底，b对象的一级属性没有受到影响，但是二级属性还是没能拷贝成功，没有脱离a的控制，说明slice()只能进行浅拷贝。 这里引用知乎问答里面的一张图 <img data-src="http://file.w3cbest.com/file/images/deepclone20190116163450.jpg"> 第一层的属性确实深拷贝，拥有了独立的内存，但更深的属性却仍然公用了地址，所以才会造成上面的问题。 同理，concat()方法与slice()也存在这样的情况，他们都不是真正的深拷贝，这里需要注意。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/deepclone20190116163442.jpg"> 看到打印结果说明拷贝的不彻底，b对象的一级属性没有受到影响，但是二级属性还是没能拷贝成功，没有脱离a的控制，说明slice()只能进行浅拷贝。 这里引用知乎问答里面的一张图 <img data-src="https://file.w3cbest.com/file/images/deepclone20190116163450.jpg"> 第一层的属性确实深拷贝，拥有了独立的内存，但更深的属性却仍然公用了地址，所以才会造成上面的问题。 同理，concat()方法与slice()也存在这样的情况，他们都不是真正的深拷贝，这里需要注意。</p>
 <h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>我们怎么去实现深拷贝呢，这里可以利用递归去复制所有层级属性。我们封装一个深拷贝的函数</p>
 <p>function deepClone(obj){<br>    var objClone = Array.isArray(obj)?[]:{};<br>    if(obj &amp;&amp; typeof obj===”object”){<br>        for(key in obj){<br>            if(obj.hasOwnProperty(key)){<br>                //判断ojb子元素是否为对象，如果是，递归复制<br>                if(obj[key]&amp;&amp;typeof obj[key] ===”object”){<br>                    objClone[key] = deepClone(obj[key]);<br>                }else{<br>                    //如果不是，简单复制<br>                    objClone[key] = obj[key];<br>                }<br>            }<br>        }<br>    }<br>    return objClone;<br>}<br>var a = [1,2,3,4],<br>b = deepClone(a);<br>a[0] = 2;<br>console.log(a,b);</p>
 <p>var a = [0,1,[2,3],4],<br>    b = deepClone(a);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
-<p>可以看到 <img data-src="http://file.w3cbest.com/file/images/deepclone20190116163440.jpg"> 跟之前想象的一样，现在b脱离了a的控制，不受a影响了。所以说深拷贝就是拷贝对象各个层级的属性</p>
+<p>可以看到 <img data-src="https://file.w3cbest.com/file/images/deepclone20190116163440.jpg"> 跟之前想象的一样，现在b脱离了a的控制，不受a影响了。所以说深拷贝就是拷贝对象各个层级的属性</p>
 <h3 id="借用JSON对象的parse和stringify"><a href="#借用JSON对象的parse和stringify" class="headerlink" title="借用JSON对象的parse和stringify"></a>借用JSON对象的parse和stringify</h3><p>function deepClone(obj){<br>    return JSON.parse(JSON.stringify(obj));<br>}<br>var a = [0,1,[2,3],4],<br>    b = deepClone(a);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
-<p><img data-src="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg"> 可以看到，这下b是完全不受a的影响了。 有可能还不太明白JSON.stringify() 和 JSON.parse() 拷贝的时候是怎么样的一个原理，其实首先得明白JSON.stringify()与JSON.parse()的作用，我们可以这样理解，前者能将一个对象转为json字符串(基本类型)，后者能将json字符串还原成一个对象(引用类型)。 基本类型拷贝是直接在栈内存新开空间，直接复制一份名-值，两者互不影响。 而引用数据类型，比如对象，变量名在栈内存，值在堆内存，拷贝只是拷贝了堆内存提供的指向值的地址，而JSON.stringify()巧就巧在能将一个对象转换成字符串，也就是基本类型，那这里的原理就是先利用JSON.stringify()将对象转变成基本数据类型，然后使用了基本类型的拷贝方式，再利用JSON.parse()将这个字符串还原成一个对象，达到了深拷贝的目的。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/deepclone20190116163442.jpg"> 可以看到，这下b是完全不受a的影响了。 有可能还不太明白JSON.stringify() 和 JSON.parse() 拷贝的时候是怎么样的一个原理，其实首先得明白JSON.stringify()与JSON.parse()的作用，我们可以这样理解，前者能将一个对象转为json字符串(基本类型)，后者能将json字符串还原成一个对象(引用类型)。 基本类型拷贝是直接在栈内存新开空间，直接复制一份名-值，两者互不影响。 而引用数据类型，比如对象，变量名在栈内存，值在堆内存，拷贝只是拷贝了堆内存提供的指向值的地址，而JSON.stringify()巧就巧在能将一个对象转换成字符串，也就是基本类型，那这里的原理就是先利用JSON.stringify()将对象转变成基本数据类型，然后使用了基本类型的拷贝方式，再利用JSON.parse()将这个字符串还原成一个对象，达到了深拷贝的目的。</p>
 <h3 id="借用JQ的extend方法"><a href="#借用JQ的extend方法" class="headerlink" title="借用JQ的extend方法"></a>借用JQ的extend方法</h3><p>$.extend( [deep ], target, object1 [, objectN ] )</p>
 <p>deep表示是否深拷贝，为true为深拷贝，为false，则为浅拷贝 target Object类型 目标对象，其他对象的成员属性将被附加到该对象上。 object1 objectN可选。 Object类型 第一个以及第N个被合并的对象。</p>
 <p>let a = [0,1,[2,3],4],<br>    b = $.extend(true,[],a);<br>a[0] = 1;<br>a[2][0] = 1;<br>console.log(a,b);</p>
-<p>可以看到，效果与上面方法一样，只是需要依赖JQ库。 <img data-src="http://file.w3cbest.com/file/images/deepclone20190116163442.jpg">   在实际开发中也是非常有用的。例如后台返回了一堆数据，你需要对这堆数据做操作，但多人开发情况下，你是没办法明确这堆数据是否有其它功能也需要使用，直接修改可能会造成隐性问题，深拷贝能帮你更安全安心的去操作数据，根据实际情况来使用深拷贝，大概就是这个意思。</p>
+<p>可以看到，效果与上面方法一样，只是需要依赖JQ库。 <img data-src="https://file.w3cbest.com/file/images/deepclone20190116163442.jpg">   在实际开发中也是非常有用的。例如后台返回了一堆数据，你需要对这堆数据做操作，但多人开发情况下，你是没办法明确这堆数据是否有其它功能也需要使用，直接修改可能会造成隐性问题，深拷贝能帮你更安全安心的去操作数据，根据实际情况来使用深拷贝，大概就是这个意思。</p>
 
     </div>
 
@@ -311,13 +311,12 @@
 </ul>
 </div>
 
-
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/extend/" rel="tag"><i class="fa fa-tag"></i> $.extend()</a>
               <a href="/tags/JSON-parse/" rel="tag"><i class="fa fa-tag"></i> JSON.parse()</a>
               <a href="/tags/JSON-stringify/" rel="tag"><i class="fa fa-tag"></i> JSON.stringify()</a>
-              <a href="/tags/extend/" rel="tag"><i class="fa fa-tag"></i> $.extend()</a>
               <a href="/tags/js%E9%80%92%E5%BD%92/" rel="tag"><i class="fa fa-tag"></i> js递归</a>
               <a href="/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D/" rel="tag"><i class="fa fa-tag"></i> 浅拷贝</a>
               <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="tag"><i class="fa fa-tag"></i> 深拷贝</a>
@@ -408,21 +407,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -444,7 +442,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -481,7 +479,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

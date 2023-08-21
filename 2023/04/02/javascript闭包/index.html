@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+  <meta name="description" content="闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数具有定义在外部函数中的所有变量和函数（以及外部函数能访问的所有变量和函数）的完全访问权限。 但是，外部函数却不能访问定义在内部函数中的变量和函数。这给内部函数的变量提供了一种封装。 此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数的生存周期将">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue-ref">
-<meta property="og:url" content="https://xianzhiding.github.io/2020/09/02/vue-ref/index.html">
+<meta property="og:title" content="闭包，什么是JavaScript闭包">
+<meta property="og:url" content="https://xianzhiding.github.io/2023/04/02/javascript%E9%97%AD%E5%8C%85/index.html">
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
-<meta property="og:description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+<meta property="og:description" content="闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数具有定义在外部函数中的所有变量和函数（以及外部函数能访问的所有变量和函数）的完全访问权限。 但是，外部函数却不能访问定义在内部函数中的变量和函数。这给内部函数的变量提供了一种封装。 此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数的生存周期将">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-02T06:55:00.000Z">
-<meta property="article:modified_time" content="2021-09-02T07:03:53.035Z">
+<meta property="article:published_time" content="2023-04-02T06:07:06.000Z">
+<meta property="article:modified_time" content="2023-08-21T03:27:08.899Z">
 <meta property="article:author" content="Tom">
-<meta property="article:tag" content="vue">
-<meta property="article:tag" content="ref">
+<meta property="article:tag" content="闭包">
+<meta property="article:tag" content="JavaScript闭包">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://xianzhiding.github.io/2020/09/02/vue-ref/">
+<link rel="canonical" href="https://xianzhiding.github.io/2023/04/02/javascript%E9%97%AD%E5%8C%85/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>vue-ref | 前端开发 大前端 W3Cbest</title>
+  <title>闭包，什么是JavaScript闭包 | 前端开发 大前端 W3Cbest</title>
   
 
 
@@ -182,7 +182,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2020/09/02/vue-ref/">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2023/04/02/javascript%E9%97%AD%E5%8C%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -195,7 +195,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vue-ref
+          闭包，什么是JavaScript闭包
         </h1>
 
         <div class="post-meta">
@@ -205,16 +205,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-02 14:55:00" itemprop="dateCreated datePublished" datetime="2020-09-02T14:55:00+08:00">2020-09-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
-                </span>
+              <time title="创建时间：2023-04-02 14:07:06" itemprop="dateCreated datePublished" datetime="2023-04-02T14:07:06+08:00">2023-04-02</time>
             </span>
 
           
@@ -228,7 +219,82 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数具有定义在外部函数中的所有变量和函数（以及外部函数能访问的所有变量和函数）的完全访问权限。</p>
+<p>但是，外部函数却不能访问定义在内部函数中的变量和函数。这给内部函数的变量提供了一种封装。</p>
+<p>此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数的生存周期将比内部函数执行的持续时间要长。当内部函数以某一种方式被任何一个外部函数之外的任何作用域访问时，就会创建闭包。</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; 外部函数定义了一个名为“name”的变量
+const pet &#x3D; function (name) &#123;
+  const getName &#x3D; function () &#123;
+    &#x2F;&#x2F; 内部函数可以访问外部函数的“name”变量
+    return name;
+  &#125;;
+  return getName; &#x2F;&#x2F; 返回内部函数，从而将其暴露给外部作用域
+&#125;;
+const myPet &#x3D; pet(&quot;Vivie&quot;);
+
+console.log(myPet()); &#x2F;&#x2F; &quot;Vivie&quot;</code></pre>
+
+<p>实际上可能会比上面的代码复杂的多。它可以返回一个包含用于操作外部函数的内部变量的方法的对象。</p>
+<pre class="language-none"><code class="language-none">const createPet &#x3D; function (name) &#123;
+  let sex;
+
+  const pet &#x3D; &#123;
+    &#x2F;&#x2F; 在这个上下文中：setName(newName) 等价于 setName: function (newName)
+    setName(newName) &#123;
+      name &#x3D; newName;
+    &#125;,
+
+    getName() &#123;
+      return name;
+    &#125;,
+
+    getSex() &#123;
+      return sex;
+    &#125;,
+
+    setSex(newSex) &#123;
+      if (
+        typeof newSex &#x3D;&#x3D;&#x3D; &quot;string&quot; &amp;&amp;
+        (newSex.toLowerCase() &#x3D;&#x3D;&#x3D; &quot;male&quot; || newSex.toLowerCase() &#x3D;&#x3D;&#x3D; &quot;female&quot;)
+      ) &#123;
+        sex &#x3D; newSex;
+      &#125;
+    &#125;,
+  &#125;;
+
+  return pet;
+&#125;;
+
+const pet &#x3D; createPet(&quot;Vivie&quot;);
+console.log(pet.getName()); &#x2F;&#x2F; Vivie
+
+pet.setName(&quot;Oliver&quot;);
+pet.setSex(&quot;male&quot;);
+console.log(pet.getSex()); &#x2F;&#x2F; male
+console.log(pet.getName()); &#x2F;&#x2F; Oliver</code></pre>
+
+<p>在上面的代码中，外部函数的 name 变量对内部函数来说是可访问的，而除了通过内部函数本身，没有其他任何方法可以取得内部的变量。内部函数的内部变量就像对外部参数和变量的保险柜。它们会为内部函数保留“稳定”而又“被封装”的数据参与运行。而这些内部函数甚至不会被分配给一个变量，或者有个名称。</p>
+<pre class="language-none"><code class="language-none">const getCode &#x3D; (function () &#123;
+  const apiCode &#x3D; &quot;0]Eal(eh&amp;2&quot;; &#x2F;&#x2F; 我们不希望外部能够修改的代码......
+
+  return function () &#123;
+    return apiCode;
+  &#125;;
+&#125;)();
+
+console.log(getCode()); &#x2F;&#x2F; &quot;0]Eal(eh&amp;2&quot;</code></pre>
+
+<p>备注： 使用闭包时需要注意许多陷阱！</p>
+<p>如果一个闭包的函数定义了一个和外部外部的某个变量名称相同的变量，那么这个闭包将无法引用外部作用域中的这个变量。（内部作用域的变量“覆盖”外部作用域，直至程序退出内部作用域。可以将其视作命名冲突。）</p>
+<pre class="language-none"><code class="language-none">const createPet &#x3D; function (name) &#123;
+  &#x2F;&#x2F; 外部函数定义了一个名为“name”的变量。
+  return &#123;
+    setName(name) &#123;
+      &#x2F;&#x2F; 闭包函数还定义了一个名为“name”的变量。
+      name &#x3D; name; &#x2F;&#x2F; 我们如何访问外部函数定义的“name”？
+    &#125;,
+  &#125;;
+&#125;;</code></pre>
     </div>
 
     
@@ -263,7 +329,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xianzhiding.github.io/2020/09/02/vue-ref/" title="vue-ref">https://xianzhiding.github.io/2020/09/02/vue-ref/</a>
+    <a href="https://xianzhiding.github.io/2023/04/02/javascript%E9%97%AD%E5%8C%85/" title="闭包，什么是JavaScript闭包">https://xianzhiding.github.io/2023/04/02/javascript闭包/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -271,12 +337,11 @@
 </ul>
 </div>
 
-
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
-              <a href="/tags/ref/" rel="tag"><i class="fa fa-tag"></i> ref</a>
+              <a href="/tags/%E9%97%AD%E5%8C%85/" rel="tag"><i class="fa fa-tag"></i> 闭包</a>
+              <a href="/tags/JavaScript%E9%97%AD%E5%8C%85/" rel="tag"><i class="fa fa-tag"></i> JavaScript闭包</a>
           </div>
 
         
@@ -285,13 +350,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/" rel="prev" title="什么是防抖和节流？有什么区别？如何实现？">
-      <i class="fa fa-chevron-left"></i> 什么是防抖和节流？有什么区别？如何实现？
+    <a href="/2021/08/25/%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/" rel="prev" title="前端缓存技术">
+      <i class="fa fa-chevron-left"></i> 前端缓存技术
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/23/%E8%BF%996%E4%B8%AA%E5%BC%BA%E5%A4%A7%E7%9A%84css%E9%80%89%E6%8B%A9%E5%99%A8%E5%AD%A6%E4%BC%9A%EF%BC%8C%E5%B0%86%E7%9C%9F%E6%AD%A3%E5%B8%AE%E4%BD%A0%E5%86%99%E5%87%BA%E5%B9%B2%E5%87%80%E7%9A%84css/" rel="next" title="这6个强大的CSS选择器学会，将真正帮你写出干净的CSS代码！">
-      这6个强大的CSS选择器学会，将真正帮你写出干净的CSS代码！ <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -363,21 +425,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -399,7 +460,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -436,7 +497,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

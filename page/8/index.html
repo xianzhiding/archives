@@ -210,11 +210,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
             </span>
 
@@ -490,37 +490,129 @@
 <blockquote>
 <p>注意，许多浏览器通过一个更旧的、带前缀的伪类:any()来支持这个功能，包括旧版本的Chrome、Firefox和Safari。这与<code>:matches()</code>的工作方式完全相同，只是它需要厂商前缀，不支持复杂的选择器。</p>
 </blockquote>
-<p>/* 选择header, main, footer里的任意一个悬浮状态的段落(p标签) */<br>:matches(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
-<p>/* 以上内容相当于以下内容 */<br>header p:hover,<br>main p:hover,<br>footer p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
-<p>/* 向后兼容的版本:-*-any() */<br>:-moz-any(header, main, footer) p:hover,<br>:-webkit-any(header, main, footer) p:hover,<br>:matches(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
-<h4 id="来个例子："><a href="#来个例子：" class="headerlink" title="来个例子："></a>来个例子：</h4><header>
-<p>一段标题信息</p>
-</header>
+<pre class="language-none"><code class="language-none">&#x2F;* 选择header, main, footer里的任意一个悬浮状态的段落(p标签) *&#x2F;
+:matches(header, main, footer) p:hover &#123;
+color: red;
+cursor: pointer;
+&#125;</code></pre>
 
-<main>
-<ul>
-<li><p>一段列表</p><p>列表项</p></li>
-<li><p>一段列表</p><p>列表项</p></li>
-</ul>
-</main>
+<pre class="language-none"><code class="language-none">&#x2F;* 以上内容相当于以下内容 *&#x2F;
+header p:hover,
+main p:hover,
+footer p:hover &#123;
+color: red;
+cursor: pointer;
+&#125;</code></pre>
 
-<footer>
-<p>一段底部信息</p>
-</footer>
+<pre class="language-none"><code class="language-none">&#x2F;* 向后兼容的版本:-*-any() *&#x2F;
+:-moz-any(header, main, footer) p:hover,
+:-webkit-any(header, main, footer) p:hover,
+:matches(header, main, footer) p:hover &#123;
+color: red;
+cursor: pointer;
+&#125;</code></pre>
 
-<p>:matches(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
-<p>:-webkit-any(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
-<p>:-moz-any(header, main, footer) p:hover {<br>color: red;<br>cursor: pointer;<br>}</p>
+<h4 id="来个例子："><a href="#来个例子：" class="headerlink" title="来个例子："></a>来个例子：</h4><pre class="language-none"><code class="language-none">&lt;header&gt;
+  &lt;p&gt;一段标题信息&lt;&#x2F;p&gt;
+&lt;&#x2F;header&gt;
+
+&lt;main&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;p&gt;一段列表&lt;&#x2F;p&gt;&lt;p&gt;列表项&lt;&#x2F;p&gt;&lt;&#x2F;li&gt;
+    &lt;li&gt;&lt;p&gt;一段列表&lt;&#x2F;p&gt;&lt;p&gt;列表项&lt;&#x2F;p&gt;&lt;&#x2F;li&gt;
+  &lt;&#x2F;ul&gt;
+&lt;&#x2F;main&gt;
+
+&lt;footer&gt;
+&lt;p&gt;一段底部信息&lt;&#x2F;p&gt;
+&lt;&#x2F;footer&gt;
+
+:matches(header, main, footer) p:hover &#123;
+  color: red;
+  cursor: pointer;
+&#125;
+
+:-webkit-any(header, main, footer) p:hover &#123;
+  color: red;
+  cursor: pointer;
+&#125;
+
+:-moz-any(header, main, footer) p:hover &#123;
+  color: red;
+  cursor: pointer;
+&#125;</code></pre>
+
 <h3 id="选择器列表简化"><a href="#选择器列表简化" class="headerlink" title="选择器列表简化"></a>选择器列表简化</h3><p><code>:matches()</code> 伪类可以大大简化CSS选择器。例如，下面的CSS:</p>
-<p>/* 多层无须列表 */<br>ol ol ul, ol ul ul, ol menu ul, ol dir ul,<br>ol ol menu, ol ul menu, ol menu menu, ol dir menu,<br>ol ol dir, ol ul dir, ol menu dir, ol dir dir,<br>ul ol ul, ul ul ul, ul menu ul, ul dir ul,<br>ul ol menu, ul ul menu, ul menu menu, ul dir menu,<br>ul ol dir, ul ul dir, ul menu dir, ul dir dir,<br>menu ol ul, menu ul ul, menu menu ul, menu dir ul,<br>menu ol menu, menu ul menu, menu menu menu, menu dir menu,<br>menu ol dir, menu ul dir, menu menu dir, menu dir dir,<br>dir ol ul, dir ul ul, dir menu ul, dir dir ul,<br>dir ol menu, dir ul menu, dir menu menu, dir dir menu,<br>dir ol dir, dir ul dir, dir menu dir, dir dir dir {<br>list-style-type: square;<br>}</p>
-<p>可以被替换为：</p>
-<p>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) ul,<br>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) menu,<br>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) dir {<br>list-style-type: square;<br>}</p>
-<p>但是，不要像下面那么做: (参见 the section on performance 。)</p>
-<p>:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) :matches(ul, menu, dir) {<br>list-style-type: square;<br>}</p>
-<h3 id="简化部分选择器"><a href="#简化部分选择器" class="headerlink" title="简化部分选择器"></a>简化部分选择器</h3><p><code>:matches</code> 伪类在处理HTML5 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Sections_and_Outlines_of_an_HTML5_document">sections and headings</a>特别有用。 由于 <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;nav&gt;</code> 经常嵌套在一起, 没有 <code>:matches()</code>的话匹配其他元素将会很棘手。 例如, 在没有 :matches()的情况下, 在不同深度对所有<h1> 素进行样式化可能非常复杂:</p>
-<p>/* Level 0 */<br>h1 {<br>font-size: 30px;<br>}<br>/* Level 1 */<br>section h1, article h1, aside h1, nav h1 {<br>font-size: 25px;<br>}<br>/* Level 2 */<br>section section h1, section article h1, section aside h1, section nav h1,<br>article section h1, article article h1, article aside h1, article nav h1,<br>aside section h1, aside article h1, aside aside h1, aside nav h1,<br>nav section h1, nav article h1, nav aside h1, nav nav h1, {<br>font-size: 20px;<br>}<br>/* Level 3 */<br>/* … */</p>
-<p>使用 :matches()之后,它变的非常简单:</p>
-<p>/* Level 0 */<br>h1 {<br>font-size: 30px;<br>}<br>/* Level 1 */<br>:matches(section, article, aside, nav) h1 {<br>font-size: 25px;<br>}<br>/* Level 2 */<br>:matches(section, article, aside, nav)<br>:matches(section, article, aside, nav) h1 {<br>font-size: 20px;<br>}<br>/* Level 3 */<br>:matches(section, article, aside, nav)<br>:matches(section, article, aside, nav)<br>:matches(section, article, aside, nav) h1 {<br>font-size: 15px;<br>}</p>
+<pre class="language-none"><code class="language-none">&#x2F;* 多层无须列表 *&#x2F;
+ol ol ul, ol ul ul, ol menu ul, ol dir ul,
+ol ol menu, ol ul menu, ol menu menu, ol dir menu,
+ol ol dir, ol ul dir, ol menu dir, ol dir dir,
+ul ol ul, ul ul ul, ul menu ul, ul dir ul,
+ul ol menu, ul ul menu, ul menu menu, ul dir menu,
+ul ol dir, ul ul dir, ul menu dir, ul dir dir,
+menu ol ul, menu ul ul, menu menu ul, menu dir ul,
+menu ol menu, menu ul menu, menu menu menu, menu dir menu,
+menu ol dir, menu ul dir, menu menu dir, menu dir dir,
+dir ol ul, dir ul ul, dir menu ul, dir dir ul,
+dir ol menu, dir ul menu, dir menu menu, dir dir menu,
+dir ol dir, dir ul dir, dir menu dir, dir dir dir &#123;
+  list-style-type: square;
+&#125;</code></pre>
+
+<pre class="language-none"><code class="language-none">可以被替换为：
+
+:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) ul,
+:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) menu,
+:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) dir &#123;
+  list-style-type: square;
+&#125;
+
+但是，不要像下面那么做: (参见 the section on performance 。)
+
+:matches(ol, ul, menu, dir) :matches(ol, ul, menu, dir) :matches(ul, menu, dir) &#123;
+  list-style-type: square;
+&#125;</code></pre>
+
+<h3 id="简化部分选择器"><a href="#简化部分选择器" class="headerlink" title="简化部分选择器"></a>简化部分选择器</h3><p><code>:matches</code> 伪类在处理HTML5 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Sections_and_Outlines_of_an_HTML5_document">sections and headings</a>特别有用。 由于 <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;nav&gt;</code> 经常嵌套在一起, 没有 <code>:matches()</code>的话匹配其他元素将会很棘手。 例如, 在没有 :matches()的情况下, 在不同深度对所有素进行样式化可能非常复杂:</p>
+<pre class="language-none"><code class="language-none">&#x2F;* Level 0 *&#x2F;
+h1 &#123;
+  font-size: 30px;
+&#125;
+&#x2F;* Level 1 *&#x2F;
+section h1, article h1, aside h1, nav h1 &#123;
+  font-size: 25px;
+&#125;
+&#x2F;* Level 2 *&#x2F;
+section section h1, section article h1, section aside h1, section nav h1,
+article section h1, article article h1, article aside h1, article nav h1,
+aside section h1, aside article h1, aside aside h1, aside nav h1,
+nav section h1, nav article h1, nav aside h1, nav nav h1, &#123;
+  font-size: 20px;
+&#125;
+&#x2F;* Level 3 *&#x2F;
+&#x2F;* ... *&#x2F;</code></pre>
+
+
+<h3 id="使用-matches-之后-它变的非常简单"><a href="#使用-matches-之后-它变的非常简单" class="headerlink" title="使用 :matches()之后,它变的非常简单:"></a>使用 :matches()之后,它变的非常简单:</h3><pre class="language-none"><code class="language-none">&#x2F;* Level 0 *&#x2F;
+h1 &#123;
+  font-size: 30px;
+&#125;
+&#x2F;* Level 1 *&#x2F;
+:matches(section, article, aside, nav) h1 &#123;
+  font-size: 25px;
+&#125;
+&#x2F;* Level 2 *&#x2F;
+:matches(section, article, aside, nav)
+:matches(section, article, aside, nav) h1 &#123;
+  font-size: 20px;
+&#125;
+&#x2F;* Level 3 *&#x2F;
+:matches(section, article, aside, nav)
+:matches(section, article, aside, nav)
+:matches(section, article, aside, nav) h1 &#123;
+  font-size: 15px;
+&#125;</code></pre>
+
 <p>这个函数暂时还不被完全支持，相信不久的将来一定会被完美支持</p>
 
       
@@ -611,21 +703,21 @@
 <h3 id="覆盖标题"><a href="#覆盖标题" class="headerlink" title="覆盖标题"></a>覆盖标题</h3><p>要叠加标题，我们需要定位它，所以我们首先要将<article>设置position: relative;和标题position: absolute;。我们将其背景填充为红色背景：</p>
 <p>.location-listing {<br>  position: relative;<br>}</p>
 <p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);<br>}</p>
-<p>已经很好的显示了<img data-src="http://file.w3cbest.com/file/images/columns.gif"></p>
+<p>已经很好的显示了<img data-src="https://file.w3cbest.com/file/images/columns.gif"></p>
 <h3 id="标题的风格"><a href="#标题的风格" class="headerlink" title="标题的风格"></a>标题的风格</h3><p>一些印刷样式将改善我们的标题的外观，并且三行flexbox魔术将集中为我们对齐：</p>
 <p>.location-title {<br>  position: absolute;<br>  top: 0;<br>  left: 0;<br>  height: 100%;<br>  width: 100%;<br>  background: rgba(90, 0, 10, 0.4);</p>
 <p>  color: white;<br>  font-size: 1.5em;<br>  font-weight: bold;<br>  text-decoration: none;</p>
 <p>  display: flex;<br>  align-items: center;<br>  justify-content: center;<br>}</p>
-<p>好多了： <img data-src="http://file.w3cbest.com/file/images/align-items.gif"></p>
+<p>好多了： <img data-src="https://file.w3cbest.com/file/images/align-items.gif"></p>
 <h3 id="隐藏标题"><a href="#隐藏标题" class="headerlink" title="隐藏标题"></a>隐藏标题</h3><p>现在让我们通过设置它的不透明度隐藏标题，这样我们可以在悬停时看到它。.location-title应该这样做：</p>
 <p>opacity: 0;<br>transition: opacity .5s;</p>
 <p>在这里，我们还设置了一个transition规则，以便当我们将不透明度恢复时，它将有0.5秒的延时过程。我们现在将hover悬停时不透明度设置为1</p>
 <p>.location-listing:hover .location-title {<br>  opacity: 1;<br>}</p>
-<p>到这里我们标题悬停效果已经完美实现了： <img data-src="http://file.w3cbest.com/file/images/transition.jpg"></p>
+<p>到这里我们标题悬停效果已经完美实现了： <img data-src="https://file.w3cbest.com/file/images/transition.jpg"></p>
 <h3 id="模糊效果"><a href="#模糊效果" class="headerlink" title="模糊效果"></a>模糊效果</h3><p>我们已经创造了一个漂亮的悬停效果，接下来为图像添加模糊滤镜。首先将模糊滤镜设置为正常状态，以便为我们提供一些过渡。然后我们会为悬停状态模糊设置为2px（这里你可以根据你的意愿设置，但我认为2px是一个很棒的视觉效果）：</p>
 <p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>}</p>
 <p>.location-listing:hover .location-image img {<br>  filter: blur(2px);<br>}</p>
-<p>这就是效果了： <img data-src="http://file.w3cbest.com/file/images/filter.jpg"></p>
+<p>这就是效果了： <img data-src="https://file.w3cbest.com/file/images/filter.jpg"></p>
 <h3 id="需要注意的两件事："><a href="#需要注意的两件事：" class="headerlink" title="需要注意的两件事："></a>需要注意的两件事：</h3><ul>
 <li>  标题已经消失，因为浏览器现在正在顶部呈现模糊的图形。</li>
 <li>  模糊效果看起来不错，但它也有边缘模糊效果。(可以把它去掉)</li>
@@ -633,12 +725,12 @@
 <p>因为层级的关系标题被遮住了把.location-title设置z-index:1 把边缘模糊去掉，首先我们对图像进行缩放，使其稍微大一些，然后对图像容器（.location-list）设置overflow: hidden;以便当较大的图像模糊时，有效地裁剪其边缘。下面是两个元素已设置的属性：</p>
 <p>.location-image img {<br>  filter: blur(0px);<br>  transition: filter 0.3s ease-in;<br>  transform: scale(1.1);<br>}</p>
 <p>.location-listing {<br>  position: relative;<br>  overflow: hidden;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/transform-scale.jpg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/transform-scale.jpg"></p>
 <h2 id="触摸屏问题"><a href="#触摸屏问题" class="headerlink" title="触摸屏问题"></a>触摸屏问题</h2><p>有些网页应用都有很多悬停效果，而且是都被隐藏，在不触发的时候是看不到的(大量的平板电脑和智能手机不能模仿悬停“按下”动作)，这是不容易访问的。 幸运的是，CSS有一些非常有用的交互媒体查询可以帮助我们（他们也享受相当不错的浏览器支持）。这些查询将检测浏览器的输入机制 - 指针设备质量，悬停能力以及一些其他特殊定义 - 因此我们可以相当准确地确定是否在触摸屏设备上查看我们的缩略图。 以此媒体查询为例（它完全符合我们的预期）</p>
 <p>@media (hover: none) { }</p>
 <p>在这些花括号中，我们将我们想要应用的任何样式应用于无法处理的浏览器:hover。我们将声明对于悬停不可能或至少不方便的设备，缩略图图像将始终模糊，标题将始终可见：</p>
 <p>@media (hover: none) {<br>  .location-title {<br>     opacity: 1;<br>  }<br>  .location-image img {<br>    filter: blur(2px);<br>  }<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/screen-devices.jpg"> 注意：如上所述，对此的支持非常合理，但有关交互媒体查询实施的讨论仍在进行中。这个规范很可能会改变或删除部分。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/screen-devices.jpg"> 注意：如上所述，对此的支持非常合理，但有关交互媒体查询实施的讨论仍在进行中。这个规范很可能会改变或删除部分。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/oQVGaa/">创建CSS Grid 图像库</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 
       
@@ -1508,21 +1600,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -1544,7 +1635,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1581,7 +1672,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

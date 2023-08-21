@@ -27,34 +27,34 @@
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="Transforms允许我们创建不可能的效果和交互。与过渡和动画结合使用时，我们可以创建旋转，dance和zoom的元素和界面。特别是三维变换使得模仿物体成为可能。在本文中，我们将介绍2D变换函数（此处介绍了3D函数）。 有四种主要的二维变换函数：rotate，scale，skew，和translate。其他六个函数让我们在一个维度上转换元素：scaleX和scaleY; skewX和skewY;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/1TransformRotate.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/2TransformScale.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/3Translate.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/4TransformSkew.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/5skewX.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/6skewY.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/7ScaleAndRotate.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/8SkewAndRotate.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/9RotateThenSkew.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/1536071956matrix4x4.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/1536071982matrix.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/1536072076TranslateAndScale.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/1TransformRotate.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/2TransformScale.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/3Translate.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/4TransformSkew.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/5skewX.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/6skewY.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/7ScaleAndRotate.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/8SkewAndRotate.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/9RotateThenSkew.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/1536071956matrix4x4.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/1536071982matrix.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/1536072076TranslateAndScale.png">
 <meta property="article:published_time" content="2018-09-28T07:57:04.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:26.866Z">
+<meta property="article:modified_time" content="2023-08-21T03:11:50.723Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="css3">
 <meta property="article:tag" content="transforms">
-<meta property="article:tag" content="css 布局">
 <meta property="article:tag" content="css教程">
-<meta property="article:tag" content="translate">
 <meta property="article:tag" content="html教程">
 <meta property="article:tag" content="前端教程">
+<meta property="article:tag" content="css 布局">
+<meta property="article:tag" content="translate">
 <meta property="article:tag" content="rotate">
 <meta property="article:tag" content="skew">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://file.w3cbest.com/file/images/1TransformRotate.png">
+<meta name="twitter:image" content="https://file.w3cbest.com/file/images/1TransformRotate.png">
 
 <link rel="canonical" href="https://xianzhiding.github.io/2018/09/28/%E5%A6%82%E4%BD%95%E5%9C%A8css%E4%B8%AD%E4%BD%BF%E7%94%A82d-transformation%E5%8A%9F%E8%83%BD/">
 
@@ -251,17 +251,17 @@
 
       
         <p>Transforms允许我们创建不可能的效果和交互。与过渡和动画结合使用时，我们可以创建旋转，dance和zoom的元素和界面。特别是三维变换使得模仿物体成为可能。在本文中，我们将介绍2D变换函数（此处介绍了3D函数）。 有四种主要的二维变换函数：rotate，scale，skew，和translate。其他六个函数让我们在一个维度上转换元素：scaleX和scaleY; skewX和skewY; 和translateX和translateY。</p>
-<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h2><p>旋转变换围绕该transform-origin点围绕指定的角度旋转元素。使用rotate()顺时针（正角度值）或逆时针（负角度值）倾斜元素。它的效果很像风车或风车，如下所示。 紫色框从其起始位置旋转了55度，如虚线所示 <img data-src="http://file.w3cbest.com/file/images/1TransformRotate.png"> 该rotate()函数接受角度单位的值。角度单位由CSS值和单位模块级别3定义。这些可以是deg（度），rad（弧度），grad（梯度）或turn单位。一个完整旋转等于360deg，6.28rad，400grad，或1turn。 超过一个旋转（例如，540deg或1.5turn）的旋转值将根据其剩余值进行渲染，除非设置为动画或过渡。换句话说，540deg渲染与180deg（540度减去360度）相同，并且渲染与（1.5-1）1.5turn相同.5turn。但是，从一个过渡或动画0deg来540deg或1turn以1.5turn将旋转元素一个和倍半。</p>
-<h2 id="2D缩放功能：scale，scaleX，和scaleY"><a href="#2D缩放功能：scale，scaleX，和scaleY" class="headerlink" title="2D缩放功能：scale，scaleX，和scaleY"></a>2D缩放功能：scale，scaleX，和scaleY</h2><p>使用缩放功能，我们可以在X维度（scaleX），Y维度（scaleY）或两者（scale）中增加或减少元素的渲染大小。缩放如下图所示，其中边框表示框的原始边界，+标记其中心点。 一个方框（左）缩放2倍（右） <img data-src="http://file.w3cbest.com/file/images/2TransformScale.png"> 每个比例函数都接受乘数或因子作为其参数。这个乘数可以是任何正数或负数。不支持百分比值。正乘数大于1增加元素的大小。例如，scale(1.5)将元素在X和Y方向上的尺寸增加1.5倍。之间的正乘数0和1将降低元素的大小。 小于的值0也会导致元素向上或向下缩放并创建反射（翻转）变换。 警告：使用scale(0)将导致元素消失，因为将数字乘以零会产生零。 使用scale(1)创建标识转换，这意味着它被绘制到屏幕，就像没有应用缩放转换一样。使用scale(-1)不会更改元素的绘制大小，但负值将导致元素被反射。即使元素没有出现变换，它仍会触发新的堆叠上下文并包含块。 可以使用该scale功能分别缩放X和Y尺寸。只需传递两个参数：scale(1.5, 2)。第一个参数缩放X维度; 第二个缩放Y维度。例如，我们可以单独使用X轴反射物体scale(-1, 1)。传递单个参数可以按相同因子缩放两个维度。</p>
-<h2 id="2D转换功能：translateX，translateY，和translate"><a href="#2D转换功能：translateX，translateY，和translate" class="headerlink" title="2D转换功能：translateX，translateY，和translate"></a>2D转换功能：translateX，translateY，和translate</h2><p>平移元素会将其绘制位置与布局位置偏移指定的距离。如同其它变换，平移一个元件不改变其offsetLeft或offsetTop位置。但是，它会影响它在屏幕上的可视位置。 每个2D平移函数translateX- translateY，和 - translate接受参数的长度或百分比。长度单位包括像素（px）， ，em，rem和视口单元（vw和vh）。 该translateX函数更改元素的水平渲染位置。如果元素位于左侧零像素处，则将transform: transitionX(50px)其渲染位置移动50个像素到其起始位置的右侧。同样，translateY更改元素的垂直渲染位置。transform: transitionY(50px)将元素垂直偏移50个像素的变换。 使用translate()，我们可以使用单个函数垂直和水平移动元素。它最多接受两个参数：X转换值和Y转换值。下图显示了一个元件与效果transform的值translate(120%, -50px)，其中，所述左绿色正方形是在原来的位置，而右侧绿色正方形水平平移120％，并从它的含有元素（虚线框）垂直-50px。 <img data-src="http://file.w3cbest.com/file/images/3Translate.png"> 具有转换值为translate的元素的效果（120％， - 50px） 传递单个参数translate相当于使用translateX; Y转换值将设置为0。使用translate()是更简洁的选择。申请translate(100px, 200px)相当于translateX(100px) translateY(200px)。 正转换值将元素向右移动（for translateX）或向下移动（for translateY）。负值将元素移动到左（translateX）或向上（translateY）。 翻译对于向左，向右，向上或向下移动项目特别有用。更新的值left，right，top，和bottom属性强制浏览器重新计算整个文档布局信息。但是在计算布局之后计算变换。它们影响其中的元素出现在屏幕上，而不是他们的实际尺寸。是的，将文档布局和渲染视为单独的概念是很奇怪的，但就浏览器而言，它们是。 转换属性可能会到达您附近的浏览器 在CSS的最新版本来变换规范增加translate，rotate以及scale 性能的CSS。变换属性的工作方式与其对应的变换函数非常相似，但值是以空格分隔的，而不是以逗号分隔的。例如，我们可以transform: rotate3d(1, 1, 1, 45deg)使用该rotate属性表达：rotate: 1 1 1 45deg。同样，translate: 15% 10% 300px在视觉上与之相同transform: translate3d(15%, 10%, 300px)并且scale: 1.5 1.5 3相同transform: scale3d(1.5, 1.5, 3)。通过这些属性，我们可以与其他转换分开管理旋转，平移或缩放转换。 在撰写本文时，浏览器对转换属性的支持仍然非常稀少。Chrome和三星互联网支持开箱即用。在Firefox 60及更高版本中，支持隐藏在标志后面; 访问about: config并设置layout.css.individual-transform.enabled为true。</p>
-<h2 id="skew，skewX和skewY"><a href="#skew，skewX和skewY" class="headerlink" title="skew，skewX和skewY"></a>skew，skewX和skewY</h2><p>歪斜变换会使点之间的角度和距离发生偏移，同时将它们保持在同一平面内。歪斜变换也称为剪切变换，它们会扭曲元素的形状，如下所示，其中虚线表示元素的原始边界框。 矩形沿其X维度倾斜45度 <img data-src="http://file.w3cbest.com/file/images/4TransformSkew.png"> 偏斜函数skew- skewX，和 - skewY接受大多数角度单位作为参数。度，渐变和弧度是倾斜函数的有效角度单位，而转弯单位可能显然不是。 该skewX功能在X或水平方向上剪切元素（参见下面的图像）。它接受一个参数，该参数也必须是一个角度单位。正值将元素向左移动，负值将元素向右移动。 左图像未被变换，而右图像显示变换的效果：skewX（30deg） <img data-src="http://file.w3cbest.com/file/images/5skewX.png"> 同样，skewY剪切Y或垂直方向的元素。下图显示了效果transform: skewY(30deg)。原点右侧的点向下移动，带有正值。负值将这些点向上移动。 同样，左图像保持未变换，右图像垂直偏斜30度 <img data-src="http://file.w3cbest.com/file/images/6skewY.png"> 这带给我们的skew功能。该skew函数需要一个参数，但最多可接受两个参数。第一个参数在X方向上扭曲一个元素，第二个参数在Y方向上扭曲它。如果只提供一个参数，则假定第二个值为零，使其相当于单独在X方向上的倾斜。换句话说，skew(45deg)渲染相同skewX(45deg)。</p>
+<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h2><p>旋转变换围绕该transform-origin点围绕指定的角度旋转元素。使用rotate()顺时针（正角度值）或逆时针（负角度值）倾斜元素。它的效果很像风车或风车，如下所示。 紫色框从其起始位置旋转了55度，如虚线所示 <img data-src="https://file.w3cbest.com/file/images/1TransformRotate.png"> 该rotate()函数接受角度单位的值。角度单位由CSS值和单位模块级别3定义。这些可以是deg（度），rad（弧度），grad（梯度）或turn单位。一个完整旋转等于360deg，6.28rad，400grad，或1turn。 超过一个旋转（例如，540deg或1.5turn）的旋转值将根据其剩余值进行渲染，除非设置为动画或过渡。换句话说，540deg渲染与180deg（540度减去360度）相同，并且渲染与（1.5-1）1.5turn相同.5turn。但是，从一个过渡或动画0deg来540deg或1turn以1.5turn将旋转元素一个和倍半。</p>
+<h2 id="2D缩放功能：scale，scaleX，和scaleY"><a href="#2D缩放功能：scale，scaleX，和scaleY" class="headerlink" title="2D缩放功能：scale，scaleX，和scaleY"></a>2D缩放功能：scale，scaleX，和scaleY</h2><p>使用缩放功能，我们可以在X维度（scaleX），Y维度（scaleY）或两者（scale）中增加或减少元素的渲染大小。缩放如下图所示，其中边框表示框的原始边界，+标记其中心点。 一个方框（左）缩放2倍（右） <img data-src="https://file.w3cbest.com/file/images/2TransformScale.png"> 每个比例函数都接受乘数或因子作为其参数。这个乘数可以是任何正数或负数。不支持百分比值。正乘数大于1增加元素的大小。例如，scale(1.5)将元素在X和Y方向上的尺寸增加1.5倍。之间的正乘数0和1将降低元素的大小。 小于的值0也会导致元素向上或向下缩放并创建反射（翻转）变换。 警告：使用scale(0)将导致元素消失，因为将数字乘以零会产生零。 使用scale(1)创建标识转换，这意味着它被绘制到屏幕，就像没有应用缩放转换一样。使用scale(-1)不会更改元素的绘制大小，但负值将导致元素被反射。即使元素没有出现变换，它仍会触发新的堆叠上下文并包含块。 可以使用该scale功能分别缩放X和Y尺寸。只需传递两个参数：scale(1.5, 2)。第一个参数缩放X维度; 第二个缩放Y维度。例如，我们可以单独使用X轴反射物体scale(-1, 1)。传递单个参数可以按相同因子缩放两个维度。</p>
+<h2 id="2D转换功能：translateX，translateY，和translate"><a href="#2D转换功能：translateX，translateY，和translate" class="headerlink" title="2D转换功能：translateX，translateY，和translate"></a>2D转换功能：translateX，translateY，和translate</h2><p>平移元素会将其绘制位置与布局位置偏移指定的距离。如同其它变换，平移一个元件不改变其offsetLeft或offsetTop位置。但是，它会影响它在屏幕上的可视位置。 每个2D平移函数translateX- translateY，和 - translate接受参数的长度或百分比。长度单位包括像素（px）， ，em，rem和视口单元（vw和vh）。 该translateX函数更改元素的水平渲染位置。如果元素位于左侧零像素处，则将transform: transitionX(50px)其渲染位置移动50个像素到其起始位置的右侧。同样，translateY更改元素的垂直渲染位置。transform: transitionY(50px)将元素垂直偏移50个像素的变换。 使用translate()，我们可以使用单个函数垂直和水平移动元素。它最多接受两个参数：X转换值和Y转换值。下图显示了一个元件与效果transform的值translate(120%, -50px)，其中，所述左绿色正方形是在原来的位置，而右侧绿色正方形水平平移120％，并从它的含有元素（虚线框）垂直-50px。 <img data-src="https://file.w3cbest.com/file/images/3Translate.png"> 具有转换值为translate的元素的效果（120％， - 50px） 传递单个参数translate相当于使用translateX; Y转换值将设置为0。使用translate()是更简洁的选择。申请translate(100px, 200px)相当于translateX(100px) translateY(200px)。 正转换值将元素向右移动（for translateX）或向下移动（for translateY）。负值将元素移动到左（translateX）或向上（translateY）。 翻译对于向左，向右，向上或向下移动项目特别有用。更新的值left，right，top，和bottom属性强制浏览器重新计算整个文档布局信息。但是在计算布局之后计算变换。它们影响其中的元素出现在屏幕上，而不是他们的实际尺寸。是的，将文档布局和渲染视为单独的概念是很奇怪的，但就浏览器而言，它们是。 转换属性可能会到达您附近的浏览器 在CSS的最新版本来变换规范增加translate，rotate以及scale 性能的CSS。变换属性的工作方式与其对应的变换函数非常相似，但值是以空格分隔的，而不是以逗号分隔的。例如，我们可以transform: rotate3d(1, 1, 1, 45deg)使用该rotate属性表达：rotate: 1 1 1 45deg。同样，translate: 15% 10% 300px在视觉上与之相同transform: translate3d(15%, 10%, 300px)并且scale: 1.5 1.5 3相同transform: scale3d(1.5, 1.5, 3)。通过这些属性，我们可以与其他转换分开管理旋转，平移或缩放转换。 在撰写本文时，浏览器对转换属性的支持仍然非常稀少。Chrome和三星互联网支持开箱即用。在Firefox 60及更高版本中，支持隐藏在标志后面; 访问about: config并设置layout.css.individual-transform.enabled为true。</p>
+<h2 id="skew，skewX和skewY"><a href="#skew，skewX和skewY" class="headerlink" title="skew，skewX和skewY"></a>skew，skewX和skewY</h2><p>歪斜变换会使点之间的角度和距离发生偏移，同时将它们保持在同一平面内。歪斜变换也称为剪切变换，它们会扭曲元素的形状，如下所示，其中虚线表示元素的原始边界框。 矩形沿其X维度倾斜45度 <img data-src="https://file.w3cbest.com/file/images/4TransformSkew.png"> 偏斜函数skew- skewX，和 - skewY接受大多数角度单位作为参数。度，渐变和弧度是倾斜函数的有效角度单位，而转弯单位可能显然不是。 该skewX功能在X或水平方向上剪切元素（参见下面的图像）。它接受一个参数，该参数也必须是一个角度单位。正值将元素向左移动，负值将元素向右移动。 左图像未被变换，而右图像显示变换的效果：skewX（30deg） <img data-src="https://file.w3cbest.com/file/images/5skewX.png"> 同样，skewY剪切Y或垂直方向的元素。下图显示了效果transform: skewY(30deg)。原点右侧的点向下移动，带有正值。负值将这些点向上移动。 同样，左图像保持未变换，右图像垂直偏斜30度 <img data-src="https://file.w3cbest.com/file/images/6skewY.png"> 这带给我们的skew功能。该skew函数需要一个参数，但最多可接受两个参数。第一个参数在X方向上扭曲一个元素，第二个参数在Y方向上扭曲它。如果只提供一个参数，则假定第二个值为零，使其相当于单独在X方向上的倾斜。换句话说，skew(45deg)渲染相同skewX(45deg)。</p>
 <h2 id="当前变换矩阵"><a href="#当前变换矩阵" class="headerlink" title="当前变换矩阵"></a>当前变换矩阵</h2><p>到目前为止，我们已经分别讨论了变换函数，但它们也可以组合在一起。想要缩放和旋转对象？没问题：使用转换列表。例如：</p>
 <p>.rotatescale {<br>transform: rotate(45deg) scale(2);<br>}</p>
-<p>这将产生您在下面看到的结果。 <img data-src="http://file.w3cbest.com/file/images/7ScaleAndRotate.png"> 应用原始元素（左）和组合旋转和缩放变换后（右） 使用转换函数时，顺序很重要。这是一个比谈论更好的一点，所以让我们看一个例子来说明。以下CSS倾斜并旋转元素：</p>
+<p>这将产生您在下面看到的结果。 <img data-src="https://file.w3cbest.com/file/images/7ScaleAndRotate.png"> 应用原始元素（左）和组合旋转和缩放变换后（右） 使用转换函数时，顺序很重要。这是一个比谈论更好的一点，所以让我们看一个例子来说明。以下CSS倾斜并旋转元素：</p>
 <p>.transformEl {<br>transform: skew(10deg, 15deg) rotate(45deg);<br>}</p>
-<p>它为我们提供了您在下面看到的结果。 <img data-src="http://file.w3cbest.com/file/images/8SkewAndRotate.png"> 歪斜变换后的元素（10度，15度）旋转（45度） 如果首先旋转元素然后将其倾斜会发生什么？</p>
+<p>它为我们提供了您在下面看到的结果。 <img data-src="https://file.w3cbest.com/file/images/8SkewAndRotate.png"> 歪斜变换后的元素（10度，15度）旋转（45度） 如果首先旋转元素然后将其倾斜会发生什么？</p>
 <p>.transformEl {<br>transform: rotate(45deg) skew(10deg, 15deg);<br>}</p>
-<p>如下所示，效果完全不同。 <img data-src="http://file.w3cbest.com/file/images/9RotateThenSkew.png"> 旋转后然后倾斜的元素 这些变换中的每一个具有由其变换函数的顺序创建的不同的当前变换矩阵。为了完全理解为什么这样，我们需要学习一点矩阵乘法。这也有助于我们理解matrix和matrix3d功能。 矩阵乘法和矩阵函数 甲矩阵是排列成行和列的矩形号码或表达式的阵列。所有变换可以使用4×4矩阵表示，如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536071956matrix4x4.png"> 用于3D变换的4×4矩阵 该矩阵对应于matrix3d函数，该函数接受16个参数，每个参数用于4×4矩阵的每个值。二维变换也可以使用3×3矩阵表示，如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536071982matrix.png"> 用于2D变换的3×3矩阵 该3×3矩阵对应于matrix变换函数。该matrix()函数接受六个参数，每个参数对应于值a到f。 可以使用矩阵和/ matrix或matrix3d函数来描述每个变换函数。下图显示了scale3d函数的4×4矩阵，其中sx，sy和sz分别是X，Y和Z维度的缩放因子。 <img data-src="http://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png"> 当我们组合变换时 - 例如transform: scale(2) translate(30px, 50px)- 浏览器将每个函数的矩阵相乘以创建新矩阵。这个新矩阵是应用于元素的。 但这是关于矩阵乘法的事情：它不是可交换的。使用简单值，3×2的乘积与2×3相同。但是，对于矩阵，A × B的乘积不一定与B × A的乘积相同。我们来看一个例子。我们将计算出的矩阵乘积transform: scale(2) translate(30px, 50px)。 <img data-src="http://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png"> 我们的元素按比例缩放了两倍，然后水平翻译60像素，垂直翻译100像素。我们也可以使用以下matrix功能表达此产品：transform: matrix(2, 0, 0, 2, 60, 100)。现在让我们切换这些变换的顺序 - 即transform: translate(30px, 50px) scale(2)。结果如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536072076TranslateAndScale.png"> 用于平移（30px，50px）和刻度（2）的矩阵的乘积 请注意，我们的对象仍然按比例缩放了两倍，但在这里它被水平翻译了30个像素而垂直翻译了50个像素。使用该matrix函数表示，这是transform: matrix(2, 0, 0, 2, 30, 50)。 值得注意的是，继承转换的功能与转换列表类似。每个子变换乘以应用于其父变换的任何变换。例如，请使用以下代码：</p>
+<p>如下所示，效果完全不同。 <img data-src="https://file.w3cbest.com/file/images/9RotateThenSkew.png"> 旋转后然后倾斜的元素 这些变换中的每一个具有由其变换函数的顺序创建的不同的当前变换矩阵。为了完全理解为什么这样，我们需要学习一点矩阵乘法。这也有助于我们理解matrix和matrix3d功能。 矩阵乘法和矩阵函数 甲矩阵是排列成行和列的矩形号码或表达式的阵列。所有变换可以使用4×4矩阵表示，如下所示。 <img data-src="https://file.w3cbest.com/file/images/1536071956matrix4x4.png"> 用于3D变换的4×4矩阵 该矩阵对应于matrix3d函数，该函数接受16个参数，每个参数用于4×4矩阵的每个值。二维变换也可以使用3×3矩阵表示，如下所示。 <img data-src="https://file.w3cbest.com/file/images/1536071982matrix.png"> 用于2D变换的3×3矩阵 该3×3矩阵对应于matrix变换函数。该matrix()函数接受六个参数，每个参数对应于值a到f。 可以使用矩阵和/ matrix或matrix3d函数来描述每个变换函数。下图显示了scale3d函数的4×4矩阵，其中sx，sy和sz分别是X，Y和Z维度的缩放因子。 <img data-src="https://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png"> 当我们组合变换时 - 例如transform: scale(2) translate(30px, 50px)- 浏览器将每个函数的矩阵相乘以创建新矩阵。这个新矩阵是应用于元素的。 但这是关于矩阵乘法的事情：它不是可交换的。使用简单值，3×2的乘积与2×3相同。但是，对于矩阵，A × B的乘积不一定与B × A的乘积相同。我们来看一个例子。我们将计算出的矩阵乘积transform: scale(2) translate(30px, 50px)。 <img data-src="https://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png"> 我们的元素按比例缩放了两倍，然后水平翻译60像素，垂直翻译100像素。我们也可以使用以下matrix功能表达此产品：transform: matrix(2, 0, 0, 2, 60, 100)。现在让我们切换这些变换的顺序 - 即transform: translate(30px, 50px) scale(2)。结果如下所示。 <img data-src="https://file.w3cbest.com/file/images/1536072076TranslateAndScale.png"> 用于平移（30px，50px）和刻度（2）的矩阵的乘积 请注意，我们的对象仍然按比例缩放了两倍，但在这里它被水平翻译了30个像素而垂直翻译了50个像素。使用该matrix函数表示，这是transform: matrix(2, 0, 0, 2, 30, 50)。 值得注意的是，继承转换的功能与转换列表类似。每个子变换乘以应用于其父变换的任何变换。例如，请使用以下代码：</p>
 <div style="transform: skewX(25deg)">
 <p style="transform: rotate(-15deg)"></p>
 </div>
@@ -315,17 +315,16 @@
 </ul>
 </div>
 
-
       <footer class="post-footer">
           
           <div class="post-tags">
               <a href="/tags/css3/" rel="tag"><i class="fa fa-tag"></i> css3</a>
               <a href="/tags/transforms/" rel="tag"><i class="fa fa-tag"></i> transforms</a>
-              <a href="/tags/css-%E5%B8%83%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> css 布局</a>
               <a href="/tags/css%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> css教程</a>
-              <a href="/tags/translate/" rel="tag"><i class="fa fa-tag"></i> translate</a>
               <a href="/tags/html%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> html教程</a>
               <a href="/tags/%E5%89%8D%E7%AB%AF%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 前端教程</a>
+              <a href="/tags/css-%E5%B8%83%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> css 布局</a>
+              <a href="/tags/translate/" rel="tag"><i class="fa fa-tag"></i> translate</a>
               <a href="/tags/rotate/" rel="tag"><i class="fa fa-tag"></i> rotate</a>
               <a href="/tags/skew/" rel="tag"><i class="fa fa-tag"></i> skew</a>
           </div>
@@ -415,21 +414,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -451,7 +449,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -488,7 +486,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

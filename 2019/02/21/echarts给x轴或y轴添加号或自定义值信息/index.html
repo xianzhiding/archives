@@ -27,10 +27,10 @@
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="如何给Echarts的xAxis轴或yAxis轴添加%号或自定义值信息，首先得需要了解xAxis轴或yAxis轴的一些配置项，不然是不知道该如何下手的，如下图：  现在看来显然是axisLabel项了，xAxis.axisLabel 坐标轴刻度标签的相关设置。  那我们再往下看，xAxis.axisLabel.formatter，刻度标签的内容格式器，支持字符串模板和回调函数两种形式。 看官网示例">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/20190221163332.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/20190221164332.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/20190221163332.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/20190221164332.jpg">
 <meta property="article:published_time" content="2019-02-21T08:59:23.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.032Z">
+<meta property="article:modified_time" content="2023-08-21T03:11:50.469Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="axisLabel">
 <meta property="article:tag" content="Echarts xAxis">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="xAxis">
 <meta property="article:tag" content="yAxis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://file.w3cbest.com/file/images/20190221163332.jpg">
+<meta name="twitter:image" content="https://file.w3cbest.com/file/images/20190221163332.jpg">
 
 <link rel="canonical" href="https://xianzhiding.github.io/2019/02/21/echarts%E7%BB%99x%E8%BD%B4%E6%88%96y%E8%BD%B4%E6%B7%BB%E5%8A%A0%E5%8F%B7%E6%88%96%E8%87%AA%E5%AE%9A%E4%B9%89%E5%80%BC%E4%BF%A1%E6%81%AF/">
 
@@ -235,7 +235,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>如何给Echarts的xAxis轴或yAxis轴添加%号或自定义值信息，首先得需要了解<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#xAxis">xAxis轴</a>或<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#yAxis">yAxis</a>轴的一些配置项，不然是不知道该如何下手的，如下图： <img data-src="http://file.w3cbest.com/file/images/20190221163332.jpg"> 现在看来显然是<code>axisLabel</code>项了，<code>xAxis.axisLabel</code> 坐标轴刻度标签的相关设置。 <img data-src="http://file.w3cbest.com/file/images/20190221164332.jpg"> 那我们再往下看，<code>xAxis.axisLabel.formatter</code>，刻度标签的内容格式器，支持字符串模板和回调函数两种形式。 看官网示例：</p>
+        <p>如何给Echarts的xAxis轴或yAxis轴添加%号或自定义值信息，首先得需要了解<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#xAxis">xAxis轴</a>或<a target="_blank" rel="noopener" href="https://www.echartsjs.com/option.html#yAxis">yAxis</a>轴的一些配置项，不然是不知道该如何下手的，如下图： <img data-src="https://file.w3cbest.com/file/images/20190221163332.jpg"> 现在看来显然是<code>axisLabel</code>项了，<code>xAxis.axisLabel</code> 坐标轴刻度标签的相关设置。 <img data-src="https://file.w3cbest.com/file/images/20190221164332.jpg"> 那我们再往下看，<code>xAxis.axisLabel.formatter</code>，刻度标签的内容格式器，支持字符串模板和回调函数两种形式。 看官网示例：</p>
 <p>// 使用字符串模板，模板变量为刻度默认标签 {value}<br>formatter: ‘{value} kg’</p>
 <p>// 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引<br>formatter: function(value, index) {<br>    // 格式化成月/日，只在第一个刻度显示年份<br>    var date = new Date(value);<br>    var texts = [(date.getMonth() + 1), date.getDate()];<br>    if (index === 0) {<br>        texts.unshift(date.getYear());<br>    }<br>    return texts.join(‘/‘);<br>}</p>
 <p>通过示例我们知道它有两种形式，一种是字符串模板，另一种是函数模板。一般情况下我们使用第一种字符串模板，第二种函数模板参杂的信息量比较大，适合较复杂的一些自定义配置这里就不多讲了。</p>
@@ -282,7 +282,6 @@
   </li>
 </ul>
 </div>
-
 
       <footer class="post-footer">
           
@@ -379,21 +378,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -415,7 +413,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -452,7 +450,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

@@ -567,15 +567,15 @@ this.energy = energy
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
             </span>
 
@@ -903,17 +903,17 @@ this.energy = energy
 
       
           <p>Transforms允许我们创建不可能的效果和交互。与过渡和动画结合使用时，我们可以创建旋转，dance和zoom的元素和界面。特别是三维变换使得模仿物体成为可能。在本文中，我们将介绍2D变换函数（此处介绍了3D函数）。 有四种主要的二维变换函数：rotate，scale，skew，和translate。其他六个函数让我们在一个维度上转换元素：scaleX和scaleY; skewX和skewY; 和translateX和translateY。</p>
-<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h2><p>旋转变换围绕该transform-origin点围绕指定的角度旋转元素。使用rotate()顺时针（正角度值）或逆时针（负角度值）倾斜元素。它的效果很像风车或风车，如下所示。 紫色框从其起始位置旋转了55度，如虚线所示 <img data-src="http://file.w3cbest.com/file/images/1TransformRotate.png"> 该rotate()函数接受角度单位的值。角度单位由CSS值和单位模块级别3定义。这些可以是deg（度），rad（弧度），grad（梯度）或turn单位。一个完整旋转等于360deg，6.28rad，400grad，或1turn。 超过一个旋转（例如，540deg或1.5turn）的旋转值将根据其剩余值进行渲染，除非设置为动画或过渡。换句话说，540deg渲染与180deg（540度减去360度）相同，并且渲染与（1.5-1）1.5turn相同.5turn。但是，从一个过渡或动画0deg来540deg或1turn以1.5turn将旋转元素一个和倍半。</p>
-<h2 id="2D缩放功能：scale，scaleX，和scaleY"><a href="#2D缩放功能：scale，scaleX，和scaleY" class="headerlink" title="2D缩放功能：scale，scaleX，和scaleY"></a>2D缩放功能：scale，scaleX，和scaleY</h2><p>使用缩放功能，我们可以在X维度（scaleX），Y维度（scaleY）或两者（scale）中增加或减少元素的渲染大小。缩放如下图所示，其中边框表示框的原始边界，+标记其中心点。 一个方框（左）缩放2倍（右） <img data-src="http://file.w3cbest.com/file/images/2TransformScale.png"> 每个比例函数都接受乘数或因子作为其参数。这个乘数可以是任何正数或负数。不支持百分比值。正乘数大于1增加元素的大小。例如，scale(1.5)将元素在X和Y方向上的尺寸增加1.5倍。之间的正乘数0和1将降低元素的大小。 小于的值0也会导致元素向上或向下缩放并创建反射（翻转）变换。 警告：使用scale(0)将导致元素消失，因为将数字乘以零会产生零。 使用scale(1)创建标识转换，这意味着它被绘制到屏幕，就像没有应用缩放转换一样。使用scale(-1)不会更改元素的绘制大小，但负值将导致元素被反射。即使元素没有出现变换，它仍会触发新的堆叠上下文并包含块。 可以使用该scale功能分别缩放X和Y尺寸。只需传递两个参数：scale(1.5, 2)。第一个参数缩放X维度; 第二个缩放Y维度。例如，我们可以单独使用X轴反射物体scale(-1, 1)。传递单个参数可以按相同因子缩放两个维度。</p>
-<h2 id="2D转换功能：translateX，translateY，和translate"><a href="#2D转换功能：translateX，translateY，和translate" class="headerlink" title="2D转换功能：translateX，translateY，和translate"></a>2D转换功能：translateX，translateY，和translate</h2><p>平移元素会将其绘制位置与布局位置偏移指定的距离。如同其它变换，平移一个元件不改变其offsetLeft或offsetTop位置。但是，它会影响它在屏幕上的可视位置。 每个2D平移函数translateX- translateY，和 - translate接受参数的长度或百分比。长度单位包括像素（px）， ，em，rem和视口单元（vw和vh）。 该translateX函数更改元素的水平渲染位置。如果元素位于左侧零像素处，则将transform: transitionX(50px)其渲染位置移动50个像素到其起始位置的右侧。同样，translateY更改元素的垂直渲染位置。transform: transitionY(50px)将元素垂直偏移50个像素的变换。 使用translate()，我们可以使用单个函数垂直和水平移动元素。它最多接受两个参数：X转换值和Y转换值。下图显示了一个元件与效果transform的值translate(120%, -50px)，其中，所述左绿色正方形是在原来的位置，而右侧绿色正方形水平平移120％，并从它的含有元素（虚线框）垂直-50px。 <img data-src="http://file.w3cbest.com/file/images/3Translate.png"> 具有转换值为translate的元素的效果（120％， - 50px） 传递单个参数translate相当于使用translateX; Y转换值将设置为0。使用translate()是更简洁的选择。申请translate(100px, 200px)相当于translateX(100px) translateY(200px)。 正转换值将元素向右移动（for translateX）或向下移动（for translateY）。负值将元素移动到左（translateX）或向上（translateY）。 翻译对于向左，向右，向上或向下移动项目特别有用。更新的值left，right，top，和bottom属性强制浏览器重新计算整个文档布局信息。但是在计算布局之后计算变换。它们影响其中的元素出现在屏幕上，而不是他们的实际尺寸。是的，将文档布局和渲染视为单独的概念是很奇怪的，但就浏览器而言，它们是。 转换属性可能会到达您附近的浏览器 在CSS的最新版本来变换规范增加translate，rotate以及scale 性能的CSS。变换属性的工作方式与其对应的变换函数非常相似，但值是以空格分隔的，而不是以逗号分隔的。例如，我们可以transform: rotate3d(1, 1, 1, 45deg)使用该rotate属性表达：rotate: 1 1 1 45deg。同样，translate: 15% 10% 300px在视觉上与之相同transform: translate3d(15%, 10%, 300px)并且scale: 1.5 1.5 3相同transform: scale3d(1.5, 1.5, 3)。通过这些属性，我们可以与其他转换分开管理旋转，平移或缩放转换。 在撰写本文时，浏览器对转换属性的支持仍然非常稀少。Chrome和三星互联网支持开箱即用。在Firefox 60及更高版本中，支持隐藏在标志后面; 访问about: config并设置layout.css.individual-transform.enabled为true。</p>
-<h2 id="skew，skewX和skewY"><a href="#skew，skewX和skewY" class="headerlink" title="skew，skewX和skewY"></a>skew，skewX和skewY</h2><p>歪斜变换会使点之间的角度和距离发生偏移，同时将它们保持在同一平面内。歪斜变换也称为剪切变换，它们会扭曲元素的形状，如下所示，其中虚线表示元素的原始边界框。 矩形沿其X维度倾斜45度 <img data-src="http://file.w3cbest.com/file/images/4TransformSkew.png"> 偏斜函数skew- skewX，和 - skewY接受大多数角度单位作为参数。度，渐变和弧度是倾斜函数的有效角度单位，而转弯单位可能显然不是。 该skewX功能在X或水平方向上剪切元素（参见下面的图像）。它接受一个参数，该参数也必须是一个角度单位。正值将元素向左移动，负值将元素向右移动。 左图像未被变换，而右图像显示变换的效果：skewX（30deg） <img data-src="http://file.w3cbest.com/file/images/5skewX.png"> 同样，skewY剪切Y或垂直方向的元素。下图显示了效果transform: skewY(30deg)。原点右侧的点向下移动，带有正值。负值将这些点向上移动。 同样，左图像保持未变换，右图像垂直偏斜30度 <img data-src="http://file.w3cbest.com/file/images/6skewY.png"> 这带给我们的skew功能。该skew函数需要一个参数，但最多可接受两个参数。第一个参数在X方向上扭曲一个元素，第二个参数在Y方向上扭曲它。如果只提供一个参数，则假定第二个值为零，使其相当于单独在X方向上的倾斜。换句话说，skew(45deg)渲染相同skewX(45deg)。</p>
+<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h2><p>旋转变换围绕该transform-origin点围绕指定的角度旋转元素。使用rotate()顺时针（正角度值）或逆时针（负角度值）倾斜元素。它的效果很像风车或风车，如下所示。 紫色框从其起始位置旋转了55度，如虚线所示 <img data-src="https://file.w3cbest.com/file/images/1TransformRotate.png"> 该rotate()函数接受角度单位的值。角度单位由CSS值和单位模块级别3定义。这些可以是deg（度），rad（弧度），grad（梯度）或turn单位。一个完整旋转等于360deg，6.28rad，400grad，或1turn。 超过一个旋转（例如，540deg或1.5turn）的旋转值将根据其剩余值进行渲染，除非设置为动画或过渡。换句话说，540deg渲染与180deg（540度减去360度）相同，并且渲染与（1.5-1）1.5turn相同.5turn。但是，从一个过渡或动画0deg来540deg或1turn以1.5turn将旋转元素一个和倍半。</p>
+<h2 id="2D缩放功能：scale，scaleX，和scaleY"><a href="#2D缩放功能：scale，scaleX，和scaleY" class="headerlink" title="2D缩放功能：scale，scaleX，和scaleY"></a>2D缩放功能：scale，scaleX，和scaleY</h2><p>使用缩放功能，我们可以在X维度（scaleX），Y维度（scaleY）或两者（scale）中增加或减少元素的渲染大小。缩放如下图所示，其中边框表示框的原始边界，+标记其中心点。 一个方框（左）缩放2倍（右） <img data-src="https://file.w3cbest.com/file/images/2TransformScale.png"> 每个比例函数都接受乘数或因子作为其参数。这个乘数可以是任何正数或负数。不支持百分比值。正乘数大于1增加元素的大小。例如，scale(1.5)将元素在X和Y方向上的尺寸增加1.5倍。之间的正乘数0和1将降低元素的大小。 小于的值0也会导致元素向上或向下缩放并创建反射（翻转）变换。 警告：使用scale(0)将导致元素消失，因为将数字乘以零会产生零。 使用scale(1)创建标识转换，这意味着它被绘制到屏幕，就像没有应用缩放转换一样。使用scale(-1)不会更改元素的绘制大小，但负值将导致元素被反射。即使元素没有出现变换，它仍会触发新的堆叠上下文并包含块。 可以使用该scale功能分别缩放X和Y尺寸。只需传递两个参数：scale(1.5, 2)。第一个参数缩放X维度; 第二个缩放Y维度。例如，我们可以单独使用X轴反射物体scale(-1, 1)。传递单个参数可以按相同因子缩放两个维度。</p>
+<h2 id="2D转换功能：translateX，translateY，和translate"><a href="#2D转换功能：translateX，translateY，和translate" class="headerlink" title="2D转换功能：translateX，translateY，和translate"></a>2D转换功能：translateX，translateY，和translate</h2><p>平移元素会将其绘制位置与布局位置偏移指定的距离。如同其它变换，平移一个元件不改变其offsetLeft或offsetTop位置。但是，它会影响它在屏幕上的可视位置。 每个2D平移函数translateX- translateY，和 - translate接受参数的长度或百分比。长度单位包括像素（px）， ，em，rem和视口单元（vw和vh）。 该translateX函数更改元素的水平渲染位置。如果元素位于左侧零像素处，则将transform: transitionX(50px)其渲染位置移动50个像素到其起始位置的右侧。同样，translateY更改元素的垂直渲染位置。transform: transitionY(50px)将元素垂直偏移50个像素的变换。 使用translate()，我们可以使用单个函数垂直和水平移动元素。它最多接受两个参数：X转换值和Y转换值。下图显示了一个元件与效果transform的值translate(120%, -50px)，其中，所述左绿色正方形是在原来的位置，而右侧绿色正方形水平平移120％，并从它的含有元素（虚线框）垂直-50px。 <img data-src="https://file.w3cbest.com/file/images/3Translate.png"> 具有转换值为translate的元素的效果（120％， - 50px） 传递单个参数translate相当于使用translateX; Y转换值将设置为0。使用translate()是更简洁的选择。申请translate(100px, 200px)相当于translateX(100px) translateY(200px)。 正转换值将元素向右移动（for translateX）或向下移动（for translateY）。负值将元素移动到左（translateX）或向上（translateY）。 翻译对于向左，向右，向上或向下移动项目特别有用。更新的值left，right，top，和bottom属性强制浏览器重新计算整个文档布局信息。但是在计算布局之后计算变换。它们影响其中的元素出现在屏幕上，而不是他们的实际尺寸。是的，将文档布局和渲染视为单独的概念是很奇怪的，但就浏览器而言，它们是。 转换属性可能会到达您附近的浏览器 在CSS的最新版本来变换规范增加translate，rotate以及scale 性能的CSS。变换属性的工作方式与其对应的变换函数非常相似，但值是以空格分隔的，而不是以逗号分隔的。例如，我们可以transform: rotate3d(1, 1, 1, 45deg)使用该rotate属性表达：rotate: 1 1 1 45deg。同样，translate: 15% 10% 300px在视觉上与之相同transform: translate3d(15%, 10%, 300px)并且scale: 1.5 1.5 3相同transform: scale3d(1.5, 1.5, 3)。通过这些属性，我们可以与其他转换分开管理旋转，平移或缩放转换。 在撰写本文时，浏览器对转换属性的支持仍然非常稀少。Chrome和三星互联网支持开箱即用。在Firefox 60及更高版本中，支持隐藏在标志后面; 访问about: config并设置layout.css.individual-transform.enabled为true。</p>
+<h2 id="skew，skewX和skewY"><a href="#skew，skewX和skewY" class="headerlink" title="skew，skewX和skewY"></a>skew，skewX和skewY</h2><p>歪斜变换会使点之间的角度和距离发生偏移，同时将它们保持在同一平面内。歪斜变换也称为剪切变换，它们会扭曲元素的形状，如下所示，其中虚线表示元素的原始边界框。 矩形沿其X维度倾斜45度 <img data-src="https://file.w3cbest.com/file/images/4TransformSkew.png"> 偏斜函数skew- skewX，和 - skewY接受大多数角度单位作为参数。度，渐变和弧度是倾斜函数的有效角度单位，而转弯单位可能显然不是。 该skewX功能在X或水平方向上剪切元素（参见下面的图像）。它接受一个参数，该参数也必须是一个角度单位。正值将元素向左移动，负值将元素向右移动。 左图像未被变换，而右图像显示变换的效果：skewX（30deg） <img data-src="https://file.w3cbest.com/file/images/5skewX.png"> 同样，skewY剪切Y或垂直方向的元素。下图显示了效果transform: skewY(30deg)。原点右侧的点向下移动，带有正值。负值将这些点向上移动。 同样，左图像保持未变换，右图像垂直偏斜30度 <img data-src="https://file.w3cbest.com/file/images/6skewY.png"> 这带给我们的skew功能。该skew函数需要一个参数，但最多可接受两个参数。第一个参数在X方向上扭曲一个元素，第二个参数在Y方向上扭曲它。如果只提供一个参数，则假定第二个值为零，使其相当于单独在X方向上的倾斜。换句话说，skew(45deg)渲染相同skewX(45deg)。</p>
 <h2 id="当前变换矩阵"><a href="#当前变换矩阵" class="headerlink" title="当前变换矩阵"></a>当前变换矩阵</h2><p>到目前为止，我们已经分别讨论了变换函数，但它们也可以组合在一起。想要缩放和旋转对象？没问题：使用转换列表。例如：</p>
 <p>.rotatescale {<br>transform: rotate(45deg) scale(2);<br>}</p>
-<p>这将产生您在下面看到的结果。 <img data-src="http://file.w3cbest.com/file/images/7ScaleAndRotate.png"> 应用原始元素（左）和组合旋转和缩放变换后（右） 使用转换函数时，顺序很重要。这是一个比谈论更好的一点，所以让我们看一个例子来说明。以下CSS倾斜并旋转元素：</p>
+<p>这将产生您在下面看到的结果。 <img data-src="https://file.w3cbest.com/file/images/7ScaleAndRotate.png"> 应用原始元素（左）和组合旋转和缩放变换后（右） 使用转换函数时，顺序很重要。这是一个比谈论更好的一点，所以让我们看一个例子来说明。以下CSS倾斜并旋转元素：</p>
 <p>.transformEl {<br>transform: skew(10deg, 15deg) rotate(45deg);<br>}</p>
-<p>它为我们提供了您在下面看到的结果。 <img data-src="http://file.w3cbest.com/file/images/8SkewAndRotate.png"> 歪斜变换后的元素（10度，15度）旋转（45度） 如果首先旋转元素然后将其倾斜会发生什么？</p>
+<p>它为我们提供了您在下面看到的结果。 <img data-src="https://file.w3cbest.com/file/images/8SkewAndRotate.png"> 歪斜变换后的元素（10度，15度）旋转（45度） 如果首先旋转元素然后将其倾斜会发生什么？</p>
 <p>.transformEl {<br>transform: rotate(45deg) skew(10deg, 15deg);<br>}</p>
-<p>如下所示，效果完全不同。 <img data-src="http://file.w3cbest.com/file/images/9RotateThenSkew.png"> 旋转后然后倾斜的元素 这些变换中的每一个具有由其变换函数的顺序创建的不同的当前变换矩阵。为了完全理解为什么这样，我们需要学习一点矩阵乘法。这也有助于我们理解matrix和matrix3d功能。 矩阵乘法和矩阵函数 甲矩阵是排列成行和列的矩形号码或表达式的阵列。所有变换可以使用4×4矩阵表示，如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536071956matrix4x4.png"> 用于3D变换的4×4矩阵 该矩阵对应于matrix3d函数，该函数接受16个参数，每个参数用于4×4矩阵的每个值。二维变换也可以使用3×3矩阵表示，如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536071982matrix.png"> 用于2D变换的3×3矩阵 该3×3矩阵对应于matrix变换函数。该matrix()函数接受六个参数，每个参数对应于值a到f。 可以使用矩阵和/ matrix或matrix3d函数来描述每个变换函数。下图显示了scale3d函数的4×4矩阵，其中sx，sy和sz分别是X，Y和Z维度的缩放因子。 <img data-src="http://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png"> 当我们组合变换时 - 例如transform: scale(2) translate(30px, 50px)- 浏览器将每个函数的矩阵相乘以创建新矩阵。这个新矩阵是应用于元素的。 但这是关于矩阵乘法的事情：它不是可交换的。使用简单值，3×2的乘积与2×3相同。但是，对于矩阵，A × B的乘积不一定与B × A的乘积相同。我们来看一个例子。我们将计算出的矩阵乘积transform: scale(2) translate(30px, 50px)。 <img data-src="http://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png"> 我们的元素按比例缩放了两倍，然后水平翻译60像素，垂直翻译100像素。我们也可以使用以下matrix功能表达此产品：transform: matrix(2, 0, 0, 2, 60, 100)。现在让我们切换这些变换的顺序 - 即transform: translate(30px, 50px) scale(2)。结果如下所示。 <img data-src="http://file.w3cbest.com/file/images/1536072076TranslateAndScale.png"> 用于平移（30px，50px）和刻度（2）的矩阵的乘积 请注意，我们的对象仍然按比例缩放了两倍，但在这里它被水平翻译了30个像素而垂直翻译了50个像素。使用该matrix函数表示，这是transform: matrix(2, 0, 0, 2, 30, 50)。 值得注意的是，继承转换的功能与转换列表类似。每个子变换乘以应用于其父变换的任何变换。例如，请使用以下代码：</p>
+<p>如下所示，效果完全不同。 <img data-src="https://file.w3cbest.com/file/images/9RotateThenSkew.png"> 旋转后然后倾斜的元素 这些变换中的每一个具有由其变换函数的顺序创建的不同的当前变换矩阵。为了完全理解为什么这样，我们需要学习一点矩阵乘法。这也有助于我们理解matrix和matrix3d功能。 矩阵乘法和矩阵函数 甲矩阵是排列成行和列的矩形号码或表达式的阵列。所有变换可以使用4×4矩阵表示，如下所示。 <img data-src="https://file.w3cbest.com/file/images/1536071956matrix4x4.png"> 用于3D变换的4×4矩阵 该矩阵对应于matrix3d函数，该函数接受16个参数，每个参数用于4×4矩阵的每个值。二维变换也可以使用3×3矩阵表示，如下所示。 <img data-src="https://file.w3cbest.com/file/images/1536071982matrix.png"> 用于2D变换的3×3矩阵 该3×3矩阵对应于matrix变换函数。该matrix()函数接受六个参数，每个参数对应于值a到f。 可以使用矩阵和/ matrix或matrix3d函数来描述每个变换函数。下图显示了scale3d函数的4×4矩阵，其中sx，sy和sz分别是X，Y和Z维度的缩放因子。 <img data-src="https://file.w3cbest.com/file/images/1536072012scalingmatrix4x4.png"> 当我们组合变换时 - 例如transform: scale(2) translate(30px, 50px)- 浏览器将每个函数的矩阵相乘以创建新矩阵。这个新矩阵是应用于元素的。 但这是关于矩阵乘法的事情：它不是可交换的。使用简单值，3×2的乘积与2×3相同。但是，对于矩阵，A × B的乘积不一定与B × A的乘积相同。我们来看一个例子。我们将计算出的矩阵乘积transform: scale(2) translate(30px, 50px)。 <img data-src="https://file.w3cbest.com/file/images/1536072046ScaleAndTranslate.png"> 我们的元素按比例缩放了两倍，然后水平翻译60像素，垂直翻译100像素。我们也可以使用以下matrix功能表达此产品：transform: matrix(2, 0, 0, 2, 60, 100)。现在让我们切换这些变换的顺序 - 即transform: translate(30px, 50px) scale(2)。结果如下所示。 <img data-src="https://file.w3cbest.com/file/images/1536072076TranslateAndScale.png"> 用于平移（30px，50px）和刻度（2）的矩阵的乘积 请注意，我们的对象仍然按比例缩放了两倍，但在这里它被水平翻译了30个像素而垂直翻译了50个像素。使用该matrix函数表示，这是transform: matrix(2, 0, 0, 2, 30, 50)。 值得注意的是，继承转换的功能与转换列表类似。每个子变换乘以应用于其父变换的任何变换。例如，请使用以下代码：</p>
 <div style="transform: skewX(25deg)">
 <p style="transform: rotate(-15deg)"></p>
 </div>
@@ -1425,10 +1425,10 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
   <div class="item"></div>
 </div>
 
-<h3 id="网格线-Grid-Line"><a href="#网格线-Grid-Line" class="headerlink" title="网格线(Grid Line)"></a>网格线(Grid Line)</h3><p>构成网格结构的分界线。它们既可以是垂直的（“列网格线(column grid lines)”），也可以是水平的（“行网格线(row grid lines)”），并位于行或列的任一侧。例如，这里的黄线就是一条列网格线。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-line.svg"></p>
-<h3 id="网格轨道-Grid-Track"><a href="#网格轨道-Grid-Track" class="headerlink" title="网格轨道(Grid Track)"></a>网格轨道(Grid Track)</h3><p>两条相邻网格线之间的空间。你可以把它们想象成网格的列或行。下图是第二条和第三条 行网格线 之间的 网格轨道(Grid Track)。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-track.svg"></p>
-<h3 id="网格单元格-Grid-Cell"><a href="#网格单元格-Grid-Cell" class="headerlink" title="网格单元格(Grid Cell)"></a>网格单元格(Grid Cell)</h3><p>两个相邻的行和两个相邻的列网格线之间的空间。这是 Grid(网格) 系统的一个“单元”。下图是第 1 至第 2 条 行网格线 和第 2 至第 3 条 列网格线 交汇构成的 网格单元格(Grid Cell)。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-cell.svg"></p>
-<h3 id="网格区域-Grid-Area"><a href="#网格区域-Grid-Area" class="headerlink" title="网格区域(Grid Area)"></a>网格区域(Grid Area)</h3><p>4条网格线包围的总空间。一个 网格区域(Grid Area) 可以由任意数量的 网格单元格(Grid Cell) 组成。下图是 行网格线1和3，以及列网格线1和3 之间的网格区域。 <img data-src="http://file.w3cbest.com/file/images/terms-grid-area.svg"></p>
+<h3 id="网格线-Grid-Line"><a href="#网格线-Grid-Line" class="headerlink" title="网格线(Grid Line)"></a>网格线(Grid Line)</h3><p>构成网格结构的分界线。它们既可以是垂直的（“列网格线(column grid lines)”），也可以是水平的（“行网格线(row grid lines)”），并位于行或列的任一侧。例如，这里的黄线就是一条列网格线。 <img data-src="https://file.w3cbest.com/file/images/terms-grid-line.svg"></p>
+<h3 id="网格轨道-Grid-Track"><a href="#网格轨道-Grid-Track" class="headerlink" title="网格轨道(Grid Track)"></a>网格轨道(Grid Track)</h3><p>两条相邻网格线之间的空间。你可以把它们想象成网格的列或行。下图是第二条和第三条 行网格线 之间的 网格轨道(Grid Track)。 <img data-src="https://file.w3cbest.com/file/images/terms-grid-track.svg"></p>
+<h3 id="网格单元格-Grid-Cell"><a href="#网格单元格-Grid-Cell" class="headerlink" title="网格单元格(Grid Cell)"></a>网格单元格(Grid Cell)</h3><p>两个相邻的行和两个相邻的列网格线之间的空间。这是 Grid(网格) 系统的一个“单元”。下图是第 1 至第 2 条 行网格线 和第 2 至第 3 条 列网格线 交汇构成的 网格单元格(Grid Cell)。 <img data-src="https://file.w3cbest.com/file/images/terms-grid-cell.svg"></p>
+<h3 id="网格区域-Grid-Area"><a href="#网格区域-Grid-Area" class="headerlink" title="网格区域(Grid Area)"></a>网格区域(Grid Area)</h3><p>4条网格线包围的总空间。一个 网格区域(Grid Area) 可以由任意数量的 网格单元格(Grid Cell) 组成。下图是 行网格线1和3，以及列网格线1和3 之间的网格区域。 <img data-src="https://file.w3cbest.com/file/images/terms-grid-area.svg"></p>
 <h3 id="Grid-网格-属性目录"><a href="#Grid-网格-属性目录" class="headerlink" title="Grid(网格) 属性目录"></a>Grid(网格) 属性目录</h3><p>网格容器(Grid Container) 属性</p>
 <p>格项(Grid Items) 属性</p>
 <p><a href="#prop-display">display</a></p>
@@ -1476,9 +1476,9 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  grid-template-columns: <track-size> …  <line-name> <track-size> …;<br>  grid-template-rows: <track-size> …  <line-name> <track-size> …;<br>}</p>
 <p>例子： 当你在 网格轨道(Grid Track) 值之间留出空格时，网格线会自动分配正数和负数名称：</p>
 <p>.container {<br>  grid-template-columns: 40px 50px auto 50px 40px;<br>  grid-template-rows: 25% 100px auto;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/template-columns-rows-01.svg"> 但是你可以明确的指定网格线(Grid Line)名称，例如 <line-name> 值。请注意网格线名称的括号语法：</p>
+<p><img data-src="https://file.w3cbest.com/file/images/template-columns-rows-01.svg"> 但是你可以明确的指定网格线(Grid Line)名称，例如 <line-name> 值。请注意网格线名称的括号语法：</p>
 <p>.container {<br>  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];<br>  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/template-column-rows-02.svg"> 请注意，一条网格线(Grid Line)可以有多个名称。例如，这里的第二条 行网格线(row grid lines) 将有两个名字：row1-end 和 row2-start ：</p>
+<p><img data-src="https://file.w3cbest.com/file/images/template-column-rows-02.svg"> 请注意，一条网格线(Grid Line)可以有多个名称。例如，这里的第二条 行网格线(row grid lines) 将有两个名字：row1-end 和 row2-start ：</p>
 <p>.container {<br>  grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];<br>}</p>
 <p>如果你的定义包含多个重复值，则可以使用 repeat() 表示法来简化定义：</p>
 <p>.container {<br>  grid-template-columns: repeat(3, 20px [col-start]);<br>}</p>
@@ -1500,7 +1500,7 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>示例：</p>
 <p>.item-a {<br>  grid-area: header;<br>}<br>.item-b {<br>  grid-area: main;<br>}<br>.item-c {<br>  grid-area: sidebar;<br>}<br>.item-d {<br>  grid-area: footer;<br>}</p>
 <p>.container {<br>  grid-template-columns: 50px 50px 50px 50px;<br>  grid-template-rows: auto;<br>  grid-template-areas:<br>    “header header header header”<br>    “main main . sidebar”<br>    “footer footer footer footer”;<br>}</p>
-<p>上面的代码将创建一个 4 列宽 3 行高的网格。整个顶行将由 header 区域组成。中间一排将由两个 main 区域，一个是空单元格，一个 sidebar 区域组成。最后一行全是 footer 区域组成。 <img data-src="http://file.w3cbest.com/file/images/dddgrid-template-areas.svg"> 你的声明中的每一行都需要有相同数量的单元格。 你可以使用任意数量的相邻的 点. 来声明单个空单元格。 只要这些点.之间没有空隙隔开，他们就代表一个单独的单元格。 注意你 不能 用这个语法来命名网格线，只是命名 网格区域 。当你使用这种语法时，区域两端的网格线实际上会自动命名。如果你的网格区域的名字是 foo，该区域的起始行网格线 和 起始列网格线 的名称将为 foo-start，而最后一条行网格线 和 最后一条列网格线 的名称将为 foo-end。这意味着某些网格线可能有多个名字，如上例中最左边的网格线，它将有三个名称：header-start，main-start 和 footer-start 。 </p>
+<p>上面的代码将创建一个 4 列宽 3 行高的网格。整个顶行将由 header 区域组成。中间一排将由两个 main 区域，一个是空单元格，一个 sidebar 区域组成。最后一行全是 footer 区域组成。 <img data-src="https://file.w3cbest.com/file/images/dddgrid-template-areas.svg"> 你的声明中的每一行都需要有相同数量的单元格。 你可以使用任意数量的相邻的 点. 来声明单个空单元格。 只要这些点.之间没有空隙隔开，他们就代表一个单独的单元格。 注意你 不能 用这个语法来命名网格线，只是命名 网格区域 。当你使用这种语法时，区域两端的网格线实际上会自动命名。如果你的网格区域的名字是 foo，该区域的起始行网格线 和 起始列网格线 的名称将为 foo-start，而最后一条行网格线 和 最后一条列网格线 的名称将为 foo-end。这意味着某些网格线可能有多个名字，如上例中最左边的网格线，它将有三个名称：header-start，main-start 和 footer-start 。 </p>
 <h3 id="grid-template"><a href="#grid-template" class="headerlink" title="grid-template"></a>grid-template</h3><p>用于定义grid-template-rows ，grid-template-columns ，grid-template-areas 简写属性。 值：</p>
 <ul>
 <li>  none：将所有三个属性设置为其初始值</li>
@@ -1519,7 +1519,7 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  grid-column-gap: <line-size>;<br>  grid-row-gap: <line-size>;<br>}</p>
 <p>示例：</p>
 <p>.container {<br>  grid-template-columns: 100px 50px 100px;<br>  grid-template-rows: 80px auto 80px;<br>  grid-column-gap: 10px;<br>  grid-row-gap: 15px;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/dddgrid-gap.svg"> 只能在 列/行 之间创建间距，网格外部边缘不会有这个间距。 注意：这两个属性将删除 grid- 前缀，就是将 grid-column-gap 和 grid-row-gap重命名为 column-gap 和 row-gap。 Chrome 68+，Safari 11.2 Release 50+ 和Opera 54+ 已经支持无前缀的属性。  </p>
+<p><img data-src="https://file.w3cbest.com/file/images/dddgrid-gap.svg"> 只能在 列/行 之间创建间距，网格外部边缘不会有这个间距。 注意：这两个属性将删除 grid- 前缀，就是将 grid-column-gap 和 grid-row-gap重命名为 column-gap 和 row-gap。 Chrome 68+，Safari 11.2 Release 50+ 和Opera 54+ 已经支持无前缀的属性。  </p>
 <h3 id="grid-gap"><a href="#grid-gap" class="headerlink" title="grid-gap"></a>grid-gap</h3><p>grid-column-gap 和 grid-row-gap 的简写语法 值：</p>
 <ul>
 <li>  <grid-row-gap> <grid-column-gap>：长度值</li>
@@ -1542,13 +1542,13 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  justify-items: start  end  center  stretch;<br>}</p>
 <p>示例：</p>
 <p>.container {<br>  justify-items: start;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-items-start.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-items-start.svg"></p>
 <p>.container{<br>  justify-items: end;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-items-end.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-items-end.svg"></p>
 <p>.container{<br>  justify-items: center;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-items-center.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-items-center.svg"></p>
 <p>.container{<br>  justify-items: stretch;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-items-stretch.svg"> 这些行为也可以通过每个单独网格项(grid items) 的 justify-self 属性设置。 </p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-items-stretch.svg"> 这些行为也可以通过每个单独网格项(grid items) 的 justify-self 属性设置。 </p>
 <h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p>沿着 block（列）轴线对齐网格项(grid items)（相反的属性是 justify-items 沿着 inline（行）轴线对齐）。此值适用于容器内的所有网格项。 值：</p>
 <ul>
 <li>  start：将网格项对齐到其单元格的顶部起始边缘（顶部对齐）</li>
@@ -1559,13 +1559,13 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  align-items: start  end  center  stretch;<br>}</p>
 <p>示例：</p>
 <p>.container {<br>  align-items: start;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-items-start.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-items-start.svg"></p>
 <p>.container {<br>  align-items: end;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-items-end.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-items-end.svg"></p>
 <p>.container {<br>  align-items: center;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-items-center.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-items-center.svg"></p>
 <p>.container {<br>  align-items: stretch;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-items-stretch.svg"> 这些行为也可以通过每个单独网格项(grid items) 的 align-self 属性设置。 </p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-items-stretch.svg"> 这些行为也可以通过每个单独网格项(grid items) 的 align-self 属性设置。 </p>
 <h3 id="place-items"><a href="#place-items" class="headerlink" title="place-items"></a>place-items</h3><p>place-items 是设置 align-items 和 justify-items 的简写形式。 值：</p>
 <ul>
 <li>  <align-items> <justify-items>：第一个值设置 align-items 属性，第二个值设置 justify-items 属性。如果省略第二个值，则将第一个值同时分配给这两个属性。</li>
@@ -1584,19 +1584,19 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  justify-content: start  end  center  stretch  space-around  space-between  space-evenly;<br>}</p>
 <p>示例：</p>
 <p>.container {<br>  justify-content: start;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-content-start.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-content-start.svg"></p>
 <p>.container {<br>  justify-content: end;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-content-end.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-content-end.svg"></p>
 <p>.container {<br>  justify-content: center;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-content-center.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-content-center.svg"></p>
 <p>.container {<br>  justify-content: stretch;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-content-stretch.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-content-stretch.svg"></p>
 <p>.container {<br>  justify-content: space-around;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-content-space-around.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-content-space-around.svg"></p>
 <p>.container {<br>  justify-content: space-between;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-content-space-between.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-content-space-between.svg"></p>
 <p>.container {<br>  justify-content: space-evenly;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-content-space-evenly.svg"> </p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-content-space-evenly.svg"> </p>
 <h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>有时，你的网格合计大小可能小于其 网格容器(grid container) 大小。 如果你的所有 网格项(grid items) 都使用像 px 这样的非灵活单位设置大小，就可能出现这种情况。在这种情况下，您可以设置网格容器内的网格的对齐方式。 此属性沿着 block（列）轴线对齐网格（相反的属性是 justify-content ，沿着 inline（行）轴线对齐网格）。 值：</p>
 <ul>
 <li>  start：将网格对齐到 网格容器(grid container) 的顶部起始边缘（顶部对齐）</li>
@@ -1610,19 +1610,19 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  align-content: start  end  center  stretch  space-around  space-between  space-evenly;<br>}</p>
 <p>示例：</p>
 <p>.container {<br>  align-content: start;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-content-start.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-content-start.svg"></p>
 <p>.container {<br>  align-content: end;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-content-end.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-content-end.svg"></p>
 <p>.container {<br>  align-content: center;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-content-center.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-content-center.svg"></p>
 <p>.container {<br>  align-content: stretch;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-content-stretch.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-content-stretch.svg"></p>
 <p>.container {<br>  align-content: space-around;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-content-space-around.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-content-space-around.svg"></p>
 <p>.container {<br>  align-content: space-between;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-content-space-between.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-content-space-between.svg"></p>
 <p>.container {<br>align-content: space-evenly;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-content-space-evenly.svg"> </p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-content-space-evenly.svg"> </p>
 <h2 id="place-content"><a href="#place-content" class="headerlink" title="place-content"></a>place-content</h2><p>place-content 是设置 align-content 和 justify-content 的简写形式。 值：</p>
 <ul>
 <li>  <align-content> <justify-content>：第一个值设置 align-content 属性，第二个值设置 justify-content 属性。如果省略第二个值，则将第一个值同时分配给这两个属性。</li>
@@ -1635,11 +1635,11 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  grid-auto-columns: <track-size> …;<br>  grid-auto-rows: <track-size> …;<br>}</p>
 <p>为了说明如何创建隐式网格轨道，请考虑一下以下的代码：</p>
 <p>.container {<br>  grid-template-columns: 60px 60px;<br>  grid-template-rows: 90px 90px<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-columns-rows-01.svg"> 这将生成了一个 2×2 的网格。 但现在想象一下，你使用 grid-column 和 grid-row 来定位你的网格项，像这样：</p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-auto-columns-rows-01.svg"> 这将生成了一个 2×2 的网格。 但现在想象一下，你使用 grid-column 和 grid-row 来定位你的网格项，像这样：</p>
 <p>.item-a {<br>  grid-column: 1 / 2;<br>  grid-row: 2 / 3;<br>}<br>.item-b {<br>  grid-column: 5 / 6;<br>  grid-row: 2 / 3;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-columns-rows-02.svg"> 我们告诉 .item-b 从第 5 条列网格线开始到第 6 条列网格线结束，但我们从来没有定义过 第5 或 第6 列网格线。 因为我们引用的网格线不存在，所以创建宽度为 0 的隐式网格轨道以填补空缺。我们可以使用 grid-auto-columns 和 grid-auto-rows 来指定这些隐式轨道的大小：</p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-auto-columns-rows-02.svg"> 我们告诉 .item-b 从第 5 条列网格线开始到第 6 条列网格线结束，但我们从来没有定义过 第5 或 第6 列网格线。 因为我们引用的网格线不存在，所以创建宽度为 0 的隐式网格轨道以填补空缺。我们可以使用 grid-auto-columns 和 grid-auto-rows 来指定这些隐式轨道的大小：</p>
 <p>.container {<br>  grid-auto-columns: 60px;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-columns-rows-03.svg">  </p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-auto-columns-rows-03.svg">  </p>
 <h3 id="grid-auto-flow"><a href="#grid-auto-flow" class="headerlink" title="grid-auto-flow"></a>grid-auto-flow</h3><p>如果你有一些没有明确放置在网格上的网格项(grid items)，自动放置算法 会自动放置这些网格项。该属性控制自动布局算法如何工作。 值：</p>
 <ul>
 <li>  row：告诉自动布局算法依次填充每行，根据需要添加新行 （默认）</li>
@@ -1660,9 +1660,9 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.container {<br>  display: grid;<br>  grid-template-columns: 60px 60px 60px 60px 60px;<br>  grid-template-rows: 30px 30px;<br>  grid-auto-flow: row;<br>}</p>
 <p>将网格项放在网格上时，只能为其中的两个指定位置：</p>
 <p>.item-a {<br>  grid-column: 1;<br>  grid-row: 1 / 3;<br>}<br>.item-e {<br>  grid-column: 5;<br>  grid-row: 1 / 3;<br>}</p>
-<p>因为我们把 grid-auto-flow 设成了 row ，所以我们的网格看起来会是这样。注意 我们没有进行定位的网格项（item-b，item-c，item-d）会这样排列在可用的行中： <img data-src="http://file.w3cbest.com/file/images/grid-auto-flow-01.svg"> 相反地，如果我们把 grid-auto-flow 设成了 column ，那么 item-b，item-c，item-d 会沿着列向下排列：</p>
+<p>因为我们把 grid-auto-flow 设成了 row ，所以我们的网格看起来会是这样。注意 我们没有进行定位的网格项（item-b，item-c，item-d）会这样排列在可用的行中： <img data-src="https://file.w3cbest.com/file/images/grid-auto-flow-01.svg"> 相反地，如果我们把 grid-auto-flow 设成了 column ，那么 item-b，item-c，item-d 会沿着列向下排列：</p>
 <p>.container {<br>  display: grid;<br>  grid-template-columns: 60px 60px 60px 60px 60px;<br>  grid-template-rows: 30px 30px;<br>  grid-auto-flow: column;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-auto-flow-02.svg"> </p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-auto-flow-02.svg"> </p>
 <h3 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h3><p>在一个声明中设置所有以下属性的简写： grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, 和 grid-auto-flow 。（注意：您只能在单个网格声明中指定显式或隐式网格属性）。 值：</p>
 <ul>
 <li>  none：将所有子属性设置为其初始值。</li>
@@ -1697,9 +1697,9 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.item {<br>  grid-column-start: <number>  <name>  span <number>  span <name>  auto<br>  grid-column-end: <number>  <name>  span <number>  span <name>  auto<br>  grid-row-start: <number>  <name>  span <number>  span <name>  auto<br>  grid-row-end: <number>  <name>  span <number>  span <name>  auto<br>}</p>
 <p>示例：</p>
 <p>.item-a {<br>  grid-column-start: 2;<br>  grid-column-end: five;<br>  grid-row-start: row1-start<br>  grid-row-end: 3;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-column-row-start-end-01.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-column-row-start-end-01.svg"></p>
 <p>.item-b {<br>  grid-column-start: 1;<br>  grid-column-end: span col4-start;<br>  grid-row-start: 2<br>  grid-row-end: span 2<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-column-row-start-end-02.svg"> 如果没有声明指定 grid-column-end / grid-row-end，默认情况下，该网格项将占据 1 个轨道。 项目可以相互重叠。您可以使用 z-index 来控制它们的重叠顺序。  </p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-column-row-start-end-02.svg"> 如果没有声明指定 grid-column-end / grid-row-end，默认情况下，该网格项将占据 1 个轨道。 项目可以相互重叠。您可以使用 z-index 来控制它们的重叠顺序。  </p>
 <h3 id="grid-column-grid-row"><a href="#grid-column-grid-row" class="headerlink" title="grid-column / grid-row"></a>grid-column / grid-row</h3><p>分别为 grid-column-start + grid-column-end 和 grid-row-start + grid-row-end 的简写形式。 值：</p>
 <ul>
 <li>  <start-line> / <end-line>：每个网格项都接受所有相同的值，作为普通书写的版本，包括跨度</li>
@@ -1707,7 +1707,7 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.item {<br>  grid-column: <start-line> / <end-line>  <start-line> / span <value>;<br>  grid-row: <start-line> / <end-line>  <start-line> / span <value>;<br>}</p>
 <p>示例：</p>
 <p>.item-c {<br>  grid-column: 3 / span 2;<br>  grid-row: third-line / 4;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-column-row.svg"> 如果没有声明分隔线结束位置，则该网格项默认占据 1 个网格轨道。 </p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-column-row.svg"> 如果没有声明分隔线结束位置，则该网格项默认占据 1 个网格轨道。 </p>
 <h3 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h3><p>为网格项提供一个名称，以便可以 被使用网格容器 grid-template-areas 属性创建的模板进行引用。 另外，这个属性可以用作grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写。 值：</p>
 <ul>
 <li>  <name>：你所选的名称</li>
@@ -1718,7 +1718,7 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.item-d {<br>  grid-area: header<br>}</p>
 <p>作为grid-row-start + grid-column-start + grid-row-end + grid-column-end 属性的简写形式</p>
 <p>.item-d {<br>    grid-area: 1 / col4-start / last-line / 6<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/grid-area.svg"> </p>
+<p><img data-src="https://file.w3cbest.com/file/images/grid-area.svg"> </p>
 <h3 id="justify-self"><a href="#justify-self" class="headerlink" title="justify-self"></a>justify-self</h3><p>沿着 inline（行）轴线对齐网格项（ 相反的属性是 align-self ，沿着 block（列）轴线对齐）。此值适用于单个网格项内的内容。 值：</p>
 <ul>
 <li>  start：将网格项对齐到其单元格的左侧起始边缘（左侧对齐）</li>
@@ -1729,13 +1729,13 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.item {<br>  justify-self: start  end  center  stretch;<br>}</p>
 <p>示例：</p>
 <p>.item-a {<br>  justify-self: start;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-self-start.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-self-start.svg"></p>
 <p>.item-a {<br>  justify-self: end;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-self-end.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-self-end.svg"></p>
 <p>.item-a {<br>  justify-self: center;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-self-center.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-self-center.svg"></p>
 <p>.item-a {<br>  justify-self: stretch;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/justify-self-stretch.svg"> 要为网格中的所有网格项设置 行轴线(row axis) 线上对齐方式，也可以在 网格容器 上设置 <a href="#prop-justify-items">justify-items</a> 属性。 </p>
+<p><img data-src="https://file.w3cbest.com/file/images/justify-self-stretch.svg"> 要为网格中的所有网格项设置 行轴线(row axis) 线上对齐方式，也可以在 网格容器 上设置 <a href="#prop-justify-items">justify-items</a> 属性。 </p>
 <h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>沿着 block（列）轴线对齐网格项(grid items)（ 相反的属性是 justify-self ，沿着 inline（行）轴线对齐）。此值适用于单个网格项内的内容。 值：</p>
 <ul>
 <li>  start：将网格项对齐到其单元格的顶部起始边缘（顶部对齐）</li>
@@ -1746,13 +1746,13 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <p>.item{<br>  align-self: start  end  center  stretch;<br>}</p>
 <p>示例：</p>
 <p>.item-a {<br>  align-self: start;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-self-start.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-self-start.svg"></p>
 <p>.item-a {<br>  align-self: end;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-self-end.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-self-end.svg"></p>
 <p>.item-a {<br>  align-self: center;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-self-center.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-self-center.svg"></p>
 <p>.item-a {<br>  align-self: stretch;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/align-self-stretch.svg"> 要为网格中的所有网格项设置 列轴线(column axis) 上的对齐方式，也可以在 网格容器 上设置<a href="#prop-align-items">align-items</a>属性。  </p>
+<p><img data-src="https://file.w3cbest.com/file/images/align-self-stretch.svg"> 要为网格中的所有网格项设置 列轴线(column axis) 上的对齐方式，也可以在 网格容器 上设置<a href="#prop-align-items">align-items</a>属性。  </p>
 <h3 id="place-self"><a href="#place-self" class="headerlink" title="place-self"></a>place-self</h3><p>place-self 是设置 align-self 和 justify-self 的简写形式。 值：</p>
 <ul>
 <li>  auto – 布局模式的 “默认” 对齐方式。</li>
@@ -1760,9 +1760,9 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 </ul>
 <p>示例：</p>
 <p>.item-a {<br>  place-self: center;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/place-self-center.svg"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/place-self-center.svg"></p>
 <p>.item-a {<br>  place-self: center stretch;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/place-self-center-stretch.svg"> 除 Edge 之外的所有主要浏览器都支持 place-self 简写属性。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/place-self-center-stretch.svg"> 除 Edge 之外的所有主要浏览器都支持 place-self 简写属性。</p>
 <h2 id="动画（Animation）"><a href="#动画（Animation）" class="headerlink" title="动画（Animation）"></a>动画（Animation）</h2><p>根据 CSS Grid 布局模块 Level 1 规范，有 5 个可应用动画的网格属性：</p>
 <ul>
 <li>  grid-gap， grid-row-gap，grid-column-gap 作为长度，百分比或 calc。</li>
@@ -1879,21 +1879,20 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -1915,7 +1914,7 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1952,7 +1951,6 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

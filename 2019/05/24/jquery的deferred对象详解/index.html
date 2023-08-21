@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="一、什么是deferred对象？开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。 通常的做法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。 但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQue">
+  <meta name="description" content="什么是deferred对象？开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。 通常的做法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。 但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQuery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery的deferred对象详解">
 <meta property="og:url" content="https://xianzhiding.github.io/2019/05/24/jquery%E7%9A%84deferred%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
-<meta property="og:description" content="一、什么是deferred对象？开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。 通常的做法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。 但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQue">
+<meta property="og:description" content="什么是deferred对象？开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。 通常的做法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。 但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQuery">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-24T09:09:13.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.106Z">
+<meta property="article:modified_time" content="2021-09-24T02:51:55.412Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content=".den()">
 <meta property="article:tag" content=".fail()">
@@ -232,55 +232,165 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、什么是deferred对象？"><a href="#一、什么是deferred对象？" class="headerlink" title="一、什么是deferred对象？"></a>一、什么是deferred对象？</h2><p>开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。 通常的做法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。 但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQuery开发团队就设计了<a target="_blank" rel="noopener" href="http://api.jquery.com/category/deferred-object/">deferred对象</a>。 简单说，deferred对象就是jQuery的回调函数解决方案。在英语中，defer的意思是”延迟”，所以deferred对象的含义就是”延迟”到未来某个点再执行。 它解决了如何处理耗时操作的问题，对那些操作提供了更好的控制，以及统一的编程接口。它的主要功能，可以归结为四点。下面我们通过示例代码，一步步来学习。</p>
-<h2 id="二、ajax操作的链式写法"><a href="#二、ajax操作的链式写法" class="headerlink" title="二、ajax操作的链式写法"></a>二、ajax操作的链式写法</h2><p>首先，回顾一下jQuery的ajax操作的传统写法：</p>
-<p>$.ajax({<br>    url: “test.html”,<br>    success: function() {<br>        console.log(“success”);<br>    },<br>    error: function() {<br>        console.log(“error”);<br>    }<br>});</p>
-<p>在上面的代码中，$.ajax()接受一个对象参数，这个对象包含两个方法：success方法指定操作成功后的回调函数，error方法指定操作失败后的回调函数。 $.ajax()操作完成后，如果使用的是低于1.5.0版本的jQuery，返回的是XHR对象，你没法进行链式操作；如果高于1.5.0版本，返回的是deferred对象，可以进行链式操作。 现在，新的写法是这样的：</p>
-<p>$.ajax({<br>url: ‘/path/to/file’,<br>type: ‘default GET (Other values: POST)’,<br>dataType: ‘default: Intelligent Guess (Other values: xml, json, script, or html)’,<br>data: {param1: ‘value1’},<br>})<br>.done(function() {<br>console.log(“success”);<br>})<br>.fail(function() {<br>console.log(“error”);<br>})<br>.always(function() {<br>console.log(“complete”);<br>});</p>
-<p>可以看到，<a target="_blank" rel="noopener" href="http://api.jquery.com/deferred.done/">done()</a>相当于success方法，<a target="_blank" rel="noopener" href="http://api.jquery.com/deferred.fail/">fail()</a>相当于error方法。采用链式写法以后，代码的可读性大大提高。</p>
-<h2 id="三、指定同一操作的多个回调函数"><a href="#三、指定同一操作的多个回调函数" class="headerlink" title="三、指定同一操作的多个回调函数"></a>三、指定同一操作的多个回调函数</h2><p>deferred对象的一大好处，就是它允许你自由添加多个回调函数。 还是以上面的代码为例，如果ajax操作成功后，除了原来的回调函数，我还想再运行一个回调函数，怎么办？ 很简单，直接把它加在后面就行了。</p>
-<p>$.ajax(“test.html”)</p>
-<p>.done(function(){ console.log(“哈哈，成功了！”);} )</p>
-<p>.fail(function(){ console.log(“出错啦！”); } )</p>
-<p>.done(function(){ console.log(“第二个回调函数！”);} );</p>
-<p>回调函数可以添加任意多个，它们按照添加顺序执行。</p>
-<h2 id="四、为多个操作指定回调函数"><a href="#四、为多个操作指定回调函数" class="headerlink" title="四、为多个操作指定回调函数"></a>四、为多个操作指定回调函数</h2><p>deferred对象的另一大好处，就是它允许你为多个事件指定一个回调函数，这是传统写法做不到的。 请看下面的代码，它用到了一个新的方法<a target="_blank" rel="noopener" href="http://api.jquery.com/jQuery.when/">$.when()</a>：</p>
-<p>$.when($.ajax(“test1.html”), $.ajax(“test2.html”))</p>
-<p>.done(function(){ console.log(“哈哈，成功了！”); })</p>
-<p>.fail(function(){ console.log(“出错啦！”); });</p>
-<p>这段代码的意思是，先执行两个操作$.ajax(“test1.html”)和$.ajax(“test2.html”)，如果都成功了，就运行done()指定的回调函数；如果有一个失败或都失败了，就执行fail()指定的回调函数。</p>
-<h2 id="五、普通操作的回调函数接口（上）"><a href="#五、普通操作的回调函数接口（上）" class="headerlink" title="五、普通操作的回调函数接口（上）"></a>五、普通操作的回调函数接口（上）</h2><p>deferred对象的最大优点，就是它把这一套回调函数接口，从ajax操作扩展到了所有操作。也就是说，任何一个操作—-不管是ajax操作还是本地操作，也不管是异步操作还是同步操作—-都可以使用deferred对象的各种方法，指定回调函数。 我们来看一个具体的例子。假定有一个很耗时的操作wait：</p>
-<p>　　var wait = function() {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>    };<br>    setTimeout(tasks, 5000);<br>};</p>
-<p>我们为它指定回调函数，应该怎么做呢？ 很自然的，你会想到，可以使用$.when()：</p>
-<p>$.when(wait())</p>
-<p>.done(function(){ console.log(“哈哈，成功了！”); })</p>
-<p>.fail(function(){ console.log(“出错啦！”); });</p>
-<p>但是，这样写的话，done()方法会立即执行，起不到回调函数的作用。原因在于$.when()的参数只能是deferred对象，所以必须对wait()进行改写：</p>
-<p>var dtd = $.Deferred(); // 新建一个deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd;<br>};</p>
-<p>现在，wait()函数返回的是deferred对象，这就可以加上链式操作了。</p>
-<p>$.when(wait(dtd))</p>
-<p>.done(function(){ console.log(“哈哈，成功了！”); })</p>
-<p>.fail(function(){ console.log(“出错啦！”); });</p>
-<p>wait()函数运行完，就会自动运行done()方法指定的回调函数。</p>
-<h2 id="六、deferred-resolve-方法和deferred-reject-方法"><a href="#六、deferred-resolve-方法和deferred-reject-方法" class="headerlink" title="六、deferred.resolve()方法和deferred.reject()方法"></a>六、deferred.resolve()方法和deferred.reject()方法</h2><p>如果仔细看，你会发现在上面的wait()函数中，还有一个地方我没讲解。那就是dtd.resolve()的作用是什么？ 要说清楚这个问题，就要引入一个新概念”执行状态”。jQuery规定，deferred对象有三种执行状态—-未完成，已完成和已失败。如果执行状态是”已完成”（resolved）,deferred对象立刻调用done()方法指定的回调函数；如果执行状态是”已失败”，调用fail()方法指定的回调函数；如果执行状态是”未完成”，则继续等待，或者调用progress()方法指定的回调函数（jQuery1.7版本添加）。 前面部分的ajax操作时，deferred对象会根据返回结果，自动改变自身的执行状态；但是，在wait()函数中，这个执行状态必须由程序员手动指定。dtd.resolve()的意思是，将dtd对象的执行状态从”未完成”改为”已完成”，从而触发done()方法。 类似的，还存在一个deferred.reject()方法，作用是将dtd对象的执行状态从”未完成”改为”已失败”，从而触发fail()方法。</p>
-<p>var dtd = $.Deferred(); // 新建一个Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.reject(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd;<br>};</p>
-<p>$.when(wait(dtd))<br> .done(function() { console.log(“哈哈，成功了！”); })<br> .fail(function() { console.log(“出错啦！”); });</p>
-<h2 id="七、deferred-promise-方法"><a href="#七、deferred-promise-方法" class="headerlink" title="七、deferred.promise()方法"></a>七、deferred.promise()方法</h2><p>上面这种写法，还是有问题。那就是dtd是一个全局对象，所以它的执行状态可以从外部改变。 请看下面的代码：</p>
-<p>var dtd = $.Deferred(); // 新建一个Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd;<br>};</p>
-<p>$.when(wait(dtd))<br>.done(function() { console.log(“哈哈，成功了！”); })<br>.fail(function() { console.log(“出错啦！”); });<br>dtd.resolve();</p>
-<p>我在代码的尾部加了一行dtd.resolve()，这就改变了dtd对象的执行状态，因此导致done()方法立刻执行，跳出”哈哈，成功了！”的提示框，等5秒之后再跳出”执行完毕！”的提示框。 为了避免这种情况，jQuery提供了deferred.promise()方法。它的作用是，在原来的deferred对象上返回另一个deferred对象，后者只开放与改变执行状态无关的方法（比如done()方法和fail()方法），屏蔽与改变执行状态有关的方法（比如resolve()方法和reject()方法），从而使得执行状态不能被改变。 请看下面的代码：</p>
-<p>var dtd = $.Deferred(); // 新建一个Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd.promise(); // 返回promise对象<br>};</p>
-<p>var d = wait(dtd); // 新建一个d对象，改为对这个对象进行操作<br>$.when(d)<br>    .done(function() { console.log(“哈哈，成功了！”); })<br>    .fail(function() { console.log(“出错啦！”); });<br>d.resolve(); // 此时，这个语句是无效的</p>
-<p>在上面的这段代码中，wait()函数返回的是promise对象。然后，我们把回调函数绑定在这个对象上面，而不是原来的deferred对象上面。这样的好处是，无法改变这个对象的执行状态，要想改变执行状态，只能操作原来的deferred对象。 不过，更好的写法是allenm所指出的，将dtd对象变成wait(）函数的内部对象。</p>
-<p>var dtd = $.Deferred(); //在函数内部，新建一个Deferred对象<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>    return dtd.promise(); // 返回promise对象<br>};</p>
-<p>$.when(wait())<br>    .done(function() { console.log(“哈哈，成功了！”); })<br>    .fail(function() { console.log(“出错啦！”); });</p>
-<h2 id="八、普通操作的回调函数接口（中）"><a href="#八、普通操作的回调函数接口（中）" class="headerlink" title="八、普通操作的回调函数接口（中）"></a>八、普通操作的回调函数接口（中）</h2><p>另一种防止执行状态被外部改变的方法，是使用deferred对象的建构函数$.Deferred()。 这时，wait函数还是保持不变，我们直接把它传入$.Deferred()：</p>
-<p>$.Deferred(wait)<br>　　.done(function(){ console.log(“哈哈，成功了！”); })<br>　　.fail(function(){ console.log(“出错啦！”); });</p>
-<p>jQuery规定，$.Deferred()可以接受一个函数名（注意，是函数名）作为参数，$.Deferred()所生成的deferred对象将作为这个函数的默认参数。</p>
-<h2 id="九、普通操作的回调函数接口（下）"><a href="#九、普通操作的回调函数接口（下）" class="headerlink" title="九、普通操作的回调函数接口（下）"></a>九、普通操作的回调函数接口（下）</h2><p>除了上面两种方法以外，我们还可以直接在wait对象上部署deferred接口。</p>
-<p>var dtd = $.Deferred(); // 生成Deferred对象<br>var wait = function(dtd) {<br>    var tasks = function() {<br>        console.log(“执行完毕！”);<br>        dtd.resolve(); // 改变Deferred对象的执行状态<br>    };<br>    setTimeout(tasks, 5000);<br>};</p>
-<p>dtd.promise(wait);<br>wait.done(function() { console.log(“哈哈，成功了！”); })<br>    .fail(function() { console.log(“出错啦！”); });<br>wait(dtd);</p>
+        <h2 id="什么是deferred对象？"><a href="#什么是deferred对象？" class="headerlink" title="什么是deferred对象？"></a>什么是deferred对象？</h2><p>开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。 通常的做法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。 但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQuery开发团队就设计了<a target="_blank" rel="noopener" href="http://api.jquery.com/category/deferred-object/">deferred对象</a>。 简单说，deferred对象就是jQuery的回调函数解决方案。在英语中，defer的意思是”延迟”，所以deferred对象的含义就是”延迟”到未来某个点再执行。 它解决了如何处理耗时操作的问题，对那些操作提供了更好的控制，以及统一的编程接口。它的主要功能，可以归结为四点。下面我们通过示例代码，一步步来学习。</p>
+<h2 id="ajax操作的链式写法"><a href="#ajax操作的链式写法" class="headerlink" title="ajax操作的链式写法"></a>ajax操作的链式写法</h2><p>首先，回顾一下jQuery的ajax操作的传统写法：</p>
+<pre class="language-none"><code class="language-none">$.ajax(&#123;
+    url: &quot;test.html&quot;,
+    success: function() &#123;
+        console.log(&quot;success&quot;);
+    &#125;,
+    error: function() &#123;
+        console.log(&quot;error&quot;);
+    &#125;
+&#125;);</code></pre>
 
+
+<p>在上面的代码中，$.ajax()接受一个对象参数，这个对象包含两个方法：success方法指定操作成功后的回调函数，error方法指定操作失败后的回调函数。 $.ajax()操作完成后，如果使用的是低于1.5.0版本的jQuery，返回的是XHR对象，你没法进行链式操作；如果高于1.5.0版本，返回的是deferred对象，可以进行链式操作。 现在，新的写法是这样的：</p>
+<pre class="language-none"><code class="language-none">$.ajax(&#123;
+    url: &#39;&#x2F;path&#x2F;to&#x2F;file&#39;,
+    type: &#39;default GET (Other values: POST)&#39;,
+    dataType: &#39;default: Intelligent Guess (Other values: xml, json, script, or html)&#39;,
+    data: &#123;param1: &#39;value1&#39;&#125;,
+&#125;)
+.done(function() &#123;
+    console.log(&quot;success&quot;);
+&#125;)
+.fail(function() &#123;
+    console.log(&quot;error&quot;);
+&#125;)
+.always(function() &#123;
+    console.log(&quot;complete&quot;);
+&#125;);</code></pre>
+
+<p>可以看到，<a target="_blank" rel="noopener" href="http://api.jquery.com/deferred.done/">done()</a>相当于success方法，<a target="_blank" rel="noopener" href="http://api.jquery.com/deferred.fail/">fail()</a>相当于error方法。采用链式写法以后，代码的可读性大大提高。</p>
+<h2 id="指定同一操作的多个回调函数"><a href="#指定同一操作的多个回调函数" class="headerlink" title="指定同一操作的多个回调函数"></a>指定同一操作的多个回调函数</h2><p>deferred对象的一大好处，就是它允许你自由添加多个回调函数。 还是以上面的代码为例，如果ajax操作成功后，除了原来的回调函数，我还想再运行一个回调函数，怎么办？ 很简单，直接把它加在后面就行了。</p>
+<pre class="language-none"><code class="language-none">$.ajax(&quot;test.html&quot;)
+.done(function()&#123; console.log(&quot;哈哈，成功了！&quot;);&#125; )
+.fail(function()&#123; console.log(&quot;出错啦！&quot;); &#125; )
+.done(function()&#123; console.log(&quot;第二个回调函数！&quot;);&#125; );</code></pre>
+
+<p>回调函数可以添加任意多个，它们按照添加顺序执行。</p>
+<h2 id="为多个操作指定回调函数"><a href="#为多个操作指定回调函数" class="headerlink" title="为多个操作指定回调函数"></a>为多个操作指定回调函数</h2><p>deferred对象的另一大好处，就是它允许你为多个事件指定一个回调函数，这是传统写法做不到的。 请看下面的代码，它用到了一个新的方法<a target="_blank" rel="noopener" href="http://api.jquery.com/jQuery.when/">$.when()</a>：</p>
+<pre class="language-none"><code class="language-none">$.when($.ajax(&quot;test1.html&quot;), $.ajax(&quot;test2.html&quot;))
+.done(function()&#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+.fail(function()&#123; console.log(&quot;出错啦！&quot;); &#125;);</code></pre>
+
+<p>这段代码的意思是，先执行两个操作$.ajax(“test1.html”)和$.ajax(“test2.html”)，如果都成功了，就运行done()指定的回调函数；如果有一个失败或都失败了，就执行fail()指定的回调函数。</p>
+<h2 id="普通操作的回调函数接口（上）"><a href="#普通操作的回调函数接口（上）" class="headerlink" title="普通操作的回调函数接口（上）"></a>普通操作的回调函数接口（上）</h2><p>deferred对象的最大优点，就是它把这一套回调函数接口，从ajax操作扩展到了所有操作。也就是说，任何一个操作—-不管是ajax操作还是本地操作，也不管是异步操作还是同步操作—-都可以使用deferred对象的各种方法，指定回调函数。 我们来看一个具体的例子。假定有一个很耗时的操作wait：</p>
+<pre class="language-none"><code class="language-none">var wait &#x3D; function() &#123;
+    var tasks &#x3D; function() &#123;
+        console.log(&quot;执行完毕！&quot;);
+    &#125;;
+    setTimeout(tasks, 5000);
+&#125;;</code></pre>
+
+
+<p>我们为它指定回调函数，应该怎么做呢？ 很自然的，你会想到，可以使用$.when()：</p>
+<pre class="language-none"><code class="language-none">$.when(wait())
+.done(function()&#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+.fail(function()&#123; console.log(&quot;出错啦！&quot;); &#125;);</code></pre>
+
+<p>但是，这样写的话，done()方法会立即执行，起不到回调函数的作用。原因在于$.when()的参数只能是deferred对象，所以必须对wait()进行改写：</p>
+<pre class="language-none"><code class="language-none">var dtd &#x3D; $.Deferred(); &#x2F;&#x2F; 新建一个deferred对象
+var wait &#x3D; function(dtd) &#123;
+    var tasks &#x3D; function() &#123;
+        console.log(&quot;执行完毕！&quot;);
+        dtd.resolve(); &#x2F;&#x2F; 改变deferred对象的执行状态
+    &#125;;
+    setTimeout(tasks, 5000);
+    return dtd;
+&#125;;</code></pre>
+
+<p>现在，wait()函数返回的是deferred对象，这就可以加上链式操作了。</p>
+<pre class="language-none"><code class="language-none">$.when(wait(dtd))
+.done(function()&#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+.fail(function()&#123; console.log(&quot;出错啦！&quot;); &#125;);</code></pre>
+
+<p>wait()函数运行完，就会自动运行done()方法指定的回调函数。</p>
+<h2 id="deferred-resolve-方法和deferred-reject-方法"><a href="#deferred-resolve-方法和deferred-reject-方法" class="headerlink" title="deferred.resolve()方法和deferred.reject()方法"></a>deferred.resolve()方法和deferred.reject()方法</h2><p>如果仔细看，你会发现在上面的wait()函数中，还有一个地方我没讲解。那就是dtd.resolve()的作用是什么？ 要说清楚这个问题，就要引入一个新概念”执行状态”。jQuery规定，deferred对象有三种执行状态—-未完成，已完成和已失败。如果执行状态是”已完成”（resolved）,deferred对象立刻调用done()方法指定的回调函数；如果执行状态是”已失败”，调用fail()方法指定的回调函数；如果执行状态是”未完成”，则继续等待，或者调用progress()方法指定的回调函数（jQuery1.7版本添加）。 前面部分的ajax操作时，deferred对象会根据返回结果，自动改变自身的执行状态；但是，在wait()函数中，这个执行状态必须由程序员手动指定。dtd.resolve()的意思是，将dtd对象的执行状态从”未完成”改为”已完成”，从而触发done()方法。 类似的，还存在一个deferred.reject()方法，作用是将dtd对象的执行状态从”未完成”改为”已失败”，从而触发fail()方法。</p>
+<pre class="language-none"><code class="language-none">var dtd &#x3D; $.Deferred(); &#x2F;&#x2F; 新建一个Deferred对象
+var wait &#x3D; function(dtd) &#123;
+    var tasks &#x3D; function() &#123;
+        console.log(&quot;执行完毕！&quot;);
+        dtd.reject(); &#x2F;&#x2F; 改变Deferred对象的执行状态
+    &#125;;
+    setTimeout(tasks, 5000);
+    return dtd;
+&#125;;
+
+$.when(wait(dtd))
+ .done(function() &#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+ .fail(function() &#123; console.log(&quot;出错啦！&quot;); &#125;);</code></pre>
+
+
+<h2 id="deferred-promise-方法"><a href="#deferred-promise-方法" class="headerlink" title="deferred.promise()方法"></a>deferred.promise()方法</h2><p>上面这种写法，还是有问题。那就是dtd是一个全局对象，所以它的执行状态可以从外部改变。 请看下面的代码：</p>
+<pre class="language-none"><code class="language-none">var dtd &#x3D; $.Deferred(); &#x2F;&#x2F; 新建一个Deferred对象
+var wait &#x3D; function(dtd) &#123;
+    var tasks &#x3D; function() &#123;
+        console.log(&quot;执行完毕！&quot;);
+        dtd.resolve(); &#x2F;&#x2F; 改变Deferred对象的执行状态
+    &#125;;
+    setTimeout(tasks, 5000);
+    return dtd;
+&#125;;
+
+$.when(wait(dtd))
+.done(function() &#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+.fail(function() &#123; console.log(&quot;出错啦！&quot;); &#125;);
+dtd.resolve();</code></pre>
+
+<p>我在代码的尾部加了一行dtd.resolve()，这就改变了dtd对象的执行状态，因此导致done()方法立刻执行，跳出”哈哈，成功了！”的提示框，等5秒之后再跳出”执行完毕！”的提示框。 为了避免这种情况，jQuery提供了deferred.promise()方法。它的作用是，在原来的deferred对象上返回另一个deferred对象，后者只开放与改变执行状态无关的方法（比如done()方法和fail()方法），屏蔽与改变执行状态有关的方法（比如resolve()方法和reject()方法），从而使得执行状态不能被改变。 请看下面的代码：</p>
+<pre class="language-none"><code class="language-none">var dtd &#x3D; $.Deferred(); &#x2F;&#x2F; 新建一个Deferred对象
+var wait &#x3D; function(dtd) &#123;
+    var tasks &#x3D; function() &#123;
+        console.log(&quot;执行完毕！&quot;);
+        dtd.resolve(); &#x2F;&#x2F; 改变Deferred对象的执行状态
+    &#125;;
+    setTimeout(tasks, 5000);
+    return dtd.promise(); &#x2F;&#x2F; 返回promise对象
+&#125;;
+
+var d &#x3D; wait(dtd); &#x2F;&#x2F; 新建一个d对象，改为对这个对象进行操作
+$.when(d)
+    .done(function() &#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+    .fail(function() &#123; console.log(&quot;出错啦！&quot;); &#125;);
+d.resolve(); &#x2F;&#x2F; 此时，这个语句是无效的</code></pre>
+
+
+<p>在上面的这段代码中，wait()函数返回的是promise对象。然后，我们把回调函数绑定在这个对象上面，而不是原来的deferred对象上面。这样的好处是，无法改变这个对象的执行状态，要想改变执行状态，只能操作原来的deferred对象。 不过，更好的写法是allenm所指出的，将dtd对象变成wait(）函数的内部对象。</p>
+<pre class="language-none"><code class="language-none">var dtd &#x3D; $.Deferred(); &#x2F;&#x2F;在函数内部，新建一个Deferred对象
+    var tasks &#x3D; function() &#123;
+        console.log(&quot;执行完毕！&quot;);
+        dtd.resolve(); &#x2F;&#x2F; 改变Deferred对象的执行状态
+    &#125;;
+    setTimeout(tasks, 5000);
+    return dtd.promise(); &#x2F;&#x2F; 返回promise对象
+&#125;;
+
+$.when(wait())
+    .done(function() &#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+    .fail(function() &#123; console.log(&quot;出错啦！&quot;); &#125;);</code></pre>
+
+<h2 id="普通操作的回调函数接口（中）"><a href="#普通操作的回调函数接口（中）" class="headerlink" title="普通操作的回调函数接口（中）"></a>普通操作的回调函数接口（中）</h2><p>另一种防止执行状态被外部改变的方法，是使用deferred对象的建构函数$.Deferred()。 这时，wait函数还是保持不变，我们直接把它传入$.Deferred()：</p>
+<pre class="language-none"><code class="language-none">$.Deferred(wait)
+　　.done(function()&#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+　　.fail(function()&#123; console.log(&quot;出错啦！&quot;); &#125;);</code></pre>
+
+<p>jQuery规定，$.Deferred()可以接受一个函数名（注意，是函数名）作为参数，$.Deferred()所生成的deferred对象将作为这个函数的默认参数。</p>
+<h2 id="普通操作的回调函数接口（下）"><a href="#普通操作的回调函数接口（下）" class="headerlink" title="普通操作的回调函数接口（下）"></a>普通操作的回调函数接口（下）</h2><p>除了上面两种方法以外，我们还可以直接在wait对象上部署deferred接口。</p>
+<pre class="language-none"><code class="language-none">var dtd &#x3D; $.Deferred(); &#x2F;&#x2F; 生成Deferred对象
+var wait &#x3D; function(dtd) &#123;
+    var tasks &#x3D; function() &#123;
+        console.log(&quot;执行完毕！&quot;);
+        dtd.resolve(); &#x2F;&#x2F; 改变Deferred对象的执行状态
+    &#125;;
+    setTimeout(tasks, 5000);
+&#125;;
+
+dtd.promise(wait);
+wait.done(function() &#123; console.log(&quot;哈哈，成功了！&quot;); &#125;)
+    .fail(function() &#123; console.log(&quot;出错啦！&quot;); &#125;);
+wait(dtd);</code></pre>
     </div>
 
     
@@ -322,7 +432,6 @@
   </li>
 </ul>
 </div>
-
 
       <footer class="post-footer">
           
@@ -406,7 +515,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFdeferred%E5%AF%B9%E8%B1%A1%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">一、什么是deferred对象？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81ajax%E6%93%8D%E4%BD%9C%E7%9A%84%E9%93%BE%E5%BC%8F%E5%86%99%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二、ajax操作的链式写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%8C%87%E5%AE%9A%E5%90%8C%E4%B8%80%E6%93%8D%E4%BD%9C%E7%9A%84%E5%A4%9A%E4%B8%AA%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">三、指定同一操作的多个回调函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%BA%E5%A4%9A%E4%B8%AA%E6%93%8D%E4%BD%9C%E6%8C%87%E5%AE%9A%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">四、为多个操作指定回调函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%99%AE%E9%80%9A%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">五、普通操作的回调函数接口（上）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81deferred-resolve-%E6%96%B9%E6%B3%95%E5%92%8Cdeferred-reject-%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">六、deferred.resolve()方法和deferred.reject()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81deferred-promise-%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">七、deferred.promise()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%99%AE%E9%80%9A%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%B8%AD%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">八、普通操作的回调函数接口（中）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E6%99%AE%E9%80%9A%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">九、普通操作的回调函数接口（下）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFdeferred%E5%AF%B9%E8%B1%A1%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是deferred对象？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax%E6%93%8D%E4%BD%9C%E7%9A%84%E9%93%BE%E5%BC%8F%E5%86%99%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">ajax操作的链式写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E5%90%8C%E4%B8%80%E6%93%8D%E4%BD%9C%E7%9A%84%E5%A4%9A%E4%B8%AA%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">指定同一操作的多个回调函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E5%A4%9A%E4%B8%AA%E6%93%8D%E4%BD%9C%E6%8C%87%E5%AE%9A%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">为多个操作指定回调函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">普通操作的回调函数接口（上）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deferred-resolve-%E6%96%B9%E6%B3%95%E5%92%8Cdeferred-reject-%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">deferred.resolve()方法和deferred.reject()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deferred-promise-%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">deferred.promise()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%B8%AD%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">普通操作的回调函数接口（中）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">普通操作的回调函数接口（下）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -420,21 +529,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -456,7 +564,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -493,7 +601,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

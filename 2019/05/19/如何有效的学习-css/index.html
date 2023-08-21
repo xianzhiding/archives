@@ -27,20 +27,20 @@
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="很多人想让我给他们推荐有关CSS部分的教程，或者问我如何学习CSS。 我也看到很多人对CSS的部分内容感到困惑，一部分原因是由于对语言的过时认识。 鉴于CSS在过去几年中发生了相当大的变化，这是一个更新知识的好时机。 即使CSS只是你所做工作的一小部分（因为你使用其他技术栈），CSS是你最终希望在屏幕上显示的结果，所以值得合理去学习。 因此，本文旨在概述CSS的关键基础和资源，以便进一步阅读现代C">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/smashing-css-specificity.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/smashing-css-box-model.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/smashing-css-specificity.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/smashing-css-box-model.png">
 <meta property="article:published_time" content="2019-05-19T13:30:54.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.098Z">
+<meta property="article:modified_time" content="2023-08-21T03:11:50.748Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="css">
 <meta property="article:tag" content="css3">
 <meta property="article:tag" content="css3教程">
+<meta property="article:tag" content="css伪类">
+<meta property="article:tag" content="css选择器">
 <meta property="article:tag" content="css 布局">
 <meta property="article:tag" content="css 排版">
-<meta property="article:tag" content="css选择器">
-<meta property="article:tag" content="css伪类">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://file.w3cbest.com/file/images/smashing-css-specificity.png">
+<meta name="twitter:image" content="https://file.w3cbest.com/file/images/smashing-css-specificity.png">
 
 <link rel="canonical" href="https://xianzhiding.github.io/2019/05/19/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0-css/">
 
@@ -246,10 +246,10 @@
 </blockquote>
 <p>如果你正在尝试将一些CSS应用于一个元素，那么你的浏览器开发者工具是开始最好的地方。看看下面的例子，我用元素选择器 <code>h1</code> 将 <code>h1</code> 标题设置为橙色。同时，我也使用类选择器设置<code>h1</code> 设置为紫色。 由于类更具体，因此<code>h1</code>是紫色的。 在开发者工具中，您可以看到元素选择器被划掉，因为它没有被应用。 一旦你看到浏览器正在获取你的CSS（但其他东西已经推翻了它），那么你可以开始找出原因。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/yGbMoL/">specificity</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p><img data-src="http://file.w3cbest.com/file/images/smashing-css-specificity.png"></p>
+<p><img data-src="https://file.w3cbest.com/file/images/smashing-css-specificity.png"></p>
 <h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>CSS里一切都是盒子。 屏幕上显示的所有内容都有一个框，盒模型描述了如何计算该框的大小 - 将外边距，内边距和边框考虑进去。 标准的CSS框模型接受给定元素的宽度，然后将内边框和边框添加到该宽度上——这意味着元素占用的空间大于给定的宽度。 最近，我们已经能够选择使用IE盒模型，使得元素上的给定宽度作为屏幕上可见元素的宽度。 任何内边距或边框都会从边缘插入框的内容。 这对许多布局更有意义。 在下面的演示中，我有两个盒子。 两者的宽度均为200像素，边框为5像素，内边距为20像素。 第一个框使用标准框模型，因此占用总宽度为250像素，第二个框使用IE盒模型，因此实际上是200像素宽。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/xmdqjd/">box models</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>浏览器开发者工具可以再次帮助你了解正在使用的盒子模型。 在下图中，我使用火狐浏览器的开发者工具使用默认的内容框框模型检查框。 工具告诉我这是正在使用的盒模型，我可以看到大小以及如何将边框和内边框添加到指定的宽度。 <img data-src="http://file.w3cbest.com/file/images/smashing-css-box-model.png"></p>
+<p>浏览器开发者工具可以再次帮助你了解正在使用的盒子模型。 在下图中，我使用火狐浏览器的开发者工具使用默认的内容框框模型检查框。 工具告诉我这是正在使用的盒模型，我可以看到大小以及如何将边框和内边框添加到指定的宽度。 <img data-src="https://file.w3cbest.com/file/images/smashing-css-box-model.png"></p>
 <blockquote>
 <p>注意：在IE6之前，Internet Explorer<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug">使用IE盒模型</a>，内边框和边框插入给定宽度的内容里。 所以有一段时间浏览器使用不同的盒模型！ 如果今天的互操作性问题感到沮丧，现在已经有所改善，那么我们就不会处理浏览器以不同的方式计算元素的宽度。</p>
 </blockquote>
@@ -311,17 +311,16 @@
 </ul>
 </div>
 
-
       <footer class="post-footer">
           
           <div class="post-tags">
               <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
               <a href="/tags/css3/" rel="tag"><i class="fa fa-tag"></i> css3</a>
               <a href="/tags/css3%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> css3教程</a>
+              <a href="/tags/css%E4%BC%AA%E7%B1%BB/" rel="tag"><i class="fa fa-tag"></i> css伪类</a>
+              <a href="/tags/css%E9%80%89%E6%8B%A9%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> css选择器</a>
               <a href="/tags/css-%E5%B8%83%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> css 布局</a>
               <a href="/tags/css-%E6%8E%92%E7%89%88/" rel="tag"><i class="fa fa-tag"></i> css 排版</a>
-              <a href="/tags/css%E9%80%89%E6%8B%A9%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> css选择器</a>
-              <a href="/tags/css%E4%BC%AA%E7%B1%BB/" rel="tag"><i class="fa fa-tag"></i> css伪类</a>
           </div>
 
         
@@ -409,21 +408,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -445,7 +443,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -482,7 +480,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

@@ -27,21 +27,21 @@
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="CSS布局中有一些概念，一旦你理解了它们，就能真正提高你的 CSS 布局能力。本文是关于块格式化上下文(BFC)的。你可能从未听说过这个术语，但是如果你曾经用CSS做过布局，你可能知道它是什么，理解什么是 BFC，怎么工作以及如何创建 BFC 非常有用，这些可以帮助你理解CSS中的布局是如何工作的。 在本文中，通过熟悉的示例来解释什么是 BFC。然后说明 display 的一个新值，只有当你理解了">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/floats1-800w-opt.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/floats2-800w-opt.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/floats3-800w-opt.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/margins1-800w-opt.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/margins2-800w-opt.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/wrap2-800w-opt.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/floats1-800w-opt.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/floats2-800w-opt.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/floats3-800w-opt.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/margins1-800w-opt.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/margins2-800w-opt.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/wrap2-800w-opt.png">
 <meta property="article:published_time" content="2019-04-09T06:35:24.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.050Z">
+<meta property="article:modified_time" content="2023-08-21T03:11:51.090Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="css">
 <meta property="article:tag" content="css3">
 <meta property="article:tag" content="css3教程">
 <meta property="article:tag" content="css bfc">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://file.w3cbest.com/file/images/floats1-800w-opt.png">
+<meta name="twitter:image" content="https://file.w3cbest.com/file/images/floats1-800w-opt.png">
 
 <link rel="canonical" href="https://xianzhiding.github.io/2019/04/09/%E7%90%86%E8%A7%A3-css-%E5%B8%83%E5%B1%80%E5%92%8C-bfc/">
 
@@ -245,9 +245,9 @@ I am text inside the outer box.
 </div>
 
 <p>.outer {<br>    border: 5 px dotted rgb(214, 129, 137);<br>    border - radius: 5 px;<br>    width: 450 px;<br>    padding: 10 px;<br>    margin - bottom: 40 px;<br>}<br>.float {<br>    padding: 10 px;<br>    border: 5 px solid rgba(214, 129, 137, .4);<br>    border - radius: 5 px;<br>    background - color: rgba(233, 78, 119, .4);<br>    color: #fff;<br>    float: left;<br>    width: 200 px;<br>    margin: 0 20 px 0 0;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/floats1-800w-opt.png"> 如果我删除了一些文本，那么就没有足够的内容来包围图像，而且由于浮动被从文档流中脱离，所以边框会上升，并在图像下方，直到文本的高度。 <img data-src="http://file.w3cbest.com/file/images/floats2-800w-opt.png"> 这是因为当我们浮动一个元素时，文本所在的框的宽度保持不变，为给浮动元素腾出空间而缩短的是文本的行框。这就是为什么背景和边框会出现在浮动后面的原因。 我们通常有两种方法来解决这个布局问题。一种方法是使用 <a target="_blank" rel="noopener" href="https://css-tricks.com/snippets/css/clear-fix/">clearfix hack</a>，它的作用是在文本和图像下面插入一个元素，并将其设置为 clear:both。另一种方法是使用 overflow 属性，其值不是缺省值 visible。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/floats1-800w-opt.png"> 如果我删除了一些文本，那么就没有足够的内容来包围图像，而且由于浮动被从文档流中脱离，所以边框会上升，并在图像下方，直到文本的高度。 <img data-src="https://file.w3cbest.com/file/images/floats2-800w-opt.png"> 这是因为当我们浮动一个元素时，文本所在的框的宽度保持不变，为给浮动元素腾出空间而缩短的是文本的行框。这就是为什么背景和边框会出现在浮动后面的原因。 我们通常有两种方法来解决这个布局问题。一种方法是使用 <a target="_blank" rel="noopener" href="https://css-tricks.com/snippets/css/clear-fix/">clearfix hack</a>，它的作用是在文本和图像下面插入一个元素，并将其设置为 clear:both。另一种方法是使用 overflow 属性，其值不是缺省值 visible。</p>
 <p>.outer {<br>    overflow: auto;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/floats3-800w-opt.png"> overflow 以这种方式工作的原因是，使用 visible 的初值以外的任何值都会创建一个块格式化上下文，而 BFC 的一个特性是它包含浮动。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/floats3-800w-opt.png"> overflow 以这种方式工作的原因是，使用 visible 的初值以外的任何值都会创建一个块格式化上下文，而 BFC 的一个特性是它包含浮动。</p>
 <h2 id="BFC-是布局中的一个迷你布局"><a href="#BFC-是布局中的一个迷你布局" class="headerlink" title="BFC 是布局中的一个迷你布局"></a>BFC 是布局中的一个迷你布局</h2><p>你可以将 BFC 看作是页面内的一个迷你布局。一旦一个元素创建了一个 BFC，它就包含了所有的内容。正如我们所看到的，这包括浮动的元素，它们不再从盒子底部伸出来。BFC 还会导致一些其他有用的行为。 <strong>BFC 可以防止 margin 折叠</strong> 了解边距合并是另一个被低估的 CSS 技能。在下一个示例中，假设有一个背景颜色为灰色的 div。 这个 div 包含两个标签 p。外部 <code>div</code> 元素的 <code>margin-bottom</code> 为 40 像素，标签 p 的顶部和底部 margin 都是 20 像素。</p>
 <p>// html</p>
 <div class="outer">
@@ -256,7 +256,7 @@ I am text inside the outer box.
 </div>
 
 <p>// css<br>.outer {<br>    background-color: #ccc;<br>    margin: 0 0 40px 0;<br>}<br>p {<br>    padding: 0;<br>    margin: 20px 0 20px 0;<br>    background-color: rgb(233, 78, 119);<br>    color: #fff;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/margins1-800w-opt.png"> 因为 p 元素的 <code>margin</code> 和外部 div 上的 <code>margin</code> 之间没有任何东西，所以两个会折叠，因此 p 最终与 div 的顶部和底部齐平。 我们在 p 的上方和下方看不到任何灰色。 在CSS当中，相邻的两个盒子（可能是兄弟关系也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距称为折叠外边距。折叠的结果按照如下规则计算： 两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。 两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。 两个外边距一正一负时，折叠结果是两者的相加的和。 <strong>产生折叠的必备条件：margin必须是邻接的!</strong> 如果我们把盒子设为 BFC，它现在包含了标签 p 和它们的边距，这样它们就不会折叠，我们可以看到边距后面容器的灰色背景。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/margins1-800w-opt.png"> 因为 p 元素的 <code>margin</code> 和外部 div 上的 <code>margin</code> 之间没有任何东西，所以两个会折叠，因此 p 最终与 div 的顶部和底部齐平。 我们在 p 的上方和下方看不到任何灰色。 在CSS当中，相邻的两个盒子（可能是兄弟关系也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距称为折叠外边距。折叠的结果按照如下规则计算： 两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。 两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。 两个外边距一正一负时，折叠结果是两者的相加的和。 <strong>产生折叠的必备条件：margin必须是邻接的!</strong> 如果我们把盒子设为 BFC，它现在包含了标签 p 和它们的边距，这样它们就不会折叠，我们可以看到边距后面容器的灰色背景。</p>
 <p>.outer {<br>    background-color: #ccc;<br>    margin: 0 0 40px 0;<br>    overflow: auto;<br>}</p>
 <p>再一次，BFC 的工作是把东西装在盒子里，防止它们从盒子里跑出来。 <strong>BFC 可以阻止元素被浮动元素覆盖</strong> 你将熟悉 BFC 的这种行为，因为使用浮动的任何列类型布局都是这样工作的。如果一个项目创建了一个 BFC，那么该项目将不会包裹任何浮动元素。在下面的例子中，有如下 html 结构：</p>
 <div class="outer">
@@ -264,9 +264,9 @@ I am text inside the outer box.
     <div class="text">I am text</div>
 </div>
 
-<p><img data-src="http://file.w3cbest.com/file/images/margins2-800w-opt.png"> 带有 <code>float</code> 类的项被向左浮动，因此 <code>div</code> 中的文本在它环绕 <code>float</code> 之后。 我可以通过将包裹文本的 div 设置为 BFC 来防止这种包裹行为。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/margins2-800w-opt.png"> 带有 <code>float</code> 类的项被向左浮动，因此 <code>div</code> 中的文本在它环绕 <code>float</code> 之后。 我可以通过将包裹文本的 div 设置为 BFC 来防止这种包裹行为。</p>
 <p>.text {<br>    overflow: auto;<br>}</p>
-<p><img data-src="http://file.w3cbest.com/file/images/wrap2-800w-opt.png"> 这实际上是我们创建具有多个列的浮动布局的方法。浮动项还为该项创建了一个 BFC，因此，如果右边的列比左边的列高，那么我们的列就不会相互环绕。</p>
+<p><img data-src="https://file.w3cbest.com/file/images/wrap2-800w-opt.png"> 这实际上是我们创建具有多个列的浮动布局的方法。浮动项还为该项创建了一个 BFC，因此，如果右边的列比左边的列高，那么我们的列就不会相互环绕。</p>
 <p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew/pen/qVKEpJ/">A BFC preventing wrapping of floats.</a> by rachelandrew (<a target="_blank" rel="noopener" href="https://codepen.io/rachelandrew">@rachelandrew</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
 <h2 id="还有什么能创建-BFC"><a href="#还有什么能创建-BFC" class="headerlink" title="还有什么能创建 BFC?"></a>还有什么能创建 BFC?</h2><p>除了使用 <code>overflow</code> 创建 BFC 外，其他一些 CSS 属性还创建 <code>BFC</code>。正如我们所看到的，浮动元素创建了 BFC。你的浮动项将包含它里面的任何东西。 使用以下方式都能创建 BFC</p>
 <ul>
@@ -322,7 +322,6 @@ I am text inside the outer box.
   </li>
 </ul>
 </div>
-
 
       <footer class="post-footer">
           
@@ -418,21 +417,20 @@ I am text inside the outer box.
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -454,7 +452,7 @@ I am text inside the outer box.
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -491,7 +489,6 @@ I am text inside the outer box.
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

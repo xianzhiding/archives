@@ -27,21 +27,21 @@
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
 <meta property="og:description" content="相信大家对于本地存储的 localStorage 和 sessionStorage 对象已经非常熟悉了。那么首先花点小篇幅稍微回顾一下。 localStorage 数据存储也是跨浏览器会话。localStorage 类似于sessionStorage。区别在于，数据存储在 localStorage 是无期限的，而当页面会话结束——也就是说当页面被关闭时,数据存储在 sessionStorage 会">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/1543401637592.jpg">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/WeChat42ea82bb9fbae5a615243d1b718fb27c.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/WeChat22313c6712c57a7db3542a013c0ccd64.png">
-<meta property="og:image" content="http://file.w3cbest.com/file/images/WeChat59edf3d5c4c34793b1c961b69569aa98.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/1543401637592.jpg">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/WeChat42ea82bb9fbae5a615243d1b718fb27c.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/WeChat22313c6712c57a7db3542a013c0ccd64.png">
+<meta property="og:image" content="https://file.w3cbest.com/file/images/WeChat59edf3d5c4c34793b1c961b69569aa98.png">
 <meta property="article:published_time" content="2019-02-20T09:29:24.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:27.029Z">
+<meta property="article:modified_time" content="2023-08-21T03:11:50.675Z">
 <meta property="article:author" content="Tom">
-<meta property="article:tag" content="API过期时间">
 <meta property="article:tag" content="hasOwnProperty">
+<meta property="article:tag" content="API过期时间">
 <meta property="article:tag" content="localStorage">
 <meta property="article:tag" content="sessionStorage">
 <meta property="article:tag" content="storage 事件">
 <meta property="article:tag" content="web Storage">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://file.w3cbest.com/file/images/1543401637592.jpg">
+<meta name="twitter:image" content="https://file.w3cbest.com/file/images/1543401637592.jpg">
 
 <link rel="canonical" href="https://xianzhiding.github.io/2019/02/20/localstorage-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-localstorage/">
 
@@ -237,38 +237,98 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>相信大家对于本地存储的 <code>localStorage</code> 和 <code>sessionStorage</code> 对象已经非常熟悉了。那么首先花点小篇幅稍微回顾一下。 localStorage 数据存储也是跨浏览器会话。localStorage 类似于sessionStorage。区别在于，数据存储在 localStorage 是无期限的，而当页面会话结束——也就是说当页面被关闭时,数据存储在 sessionStorage 会被清除。 常用的四个 API 也很简单 ：</p>
-<p>// 增加了一个 localStorage ‘myCat’ 数据项<br>localStorage.setItem(‘myCat’, ‘Tom’);</p>
-<p>// 读取 localStorage ‘myCat’ 数据项<br>let cat = localStorage.getItem(‘myCat’);</p>
-<p>// 移除 localStorage ‘myCat’ 数据项<br>localStorage.removeItem(‘myCat’);</p>
-<p>// 移除所有的 localStorage 数据项<br>localStorage.clear();</p>
-<p>相信大家对这些已经非常熟悉了，也没什么好说的，我们接下来说说大家可能陌生的，不常用的一些东西。 localStorage 对象 和 Storage 对象 首先来说说 <code>Storage</code> 对象，<code>Storage</code> 提供了访问特定域名下的会话存储（session storage）或本地存储（local storage）的功能，例如，可以添加、修改或删除存储的数据项。 <code>Storage</code> 对象通过 <code>Window.sessionStorage</code> 和 <code>Window.localStorage</code> 属性使用（更确切的说，在支持的浏览器中 <code>Window</code> 对象实现了 <code>WindowLocalStorage</code> 和 <code>WindowSessionStorage</code> 对象并挂在其 <code>localStorage</code> 和 <code>sessionStorage</code> 属性下）—— 调用其中任一对象会创建相应的 <code>Storage</code> 对象，通过 <code>Storage</code> 对象，可以设置、获取和移除数据项。对于每个源（origin）sessionStorage 和 localStorage 使用不同的 <code>Storage</code> 对象——独立运行和控制。 有点绕口是吧？我们说的直接一点。 <code>localStorage</code> 对象其实就是 <code>Storage</code> 对象的实例对象。我们可以在 Firefox 的开发者工具的控制台(Console)面板中输入 <code>Storage</code>，<code>localStorage</code>，查看这两个对象，再输入 <code>localStorage instanceof Storage</code> 或者 <code>localStorage.constructor == Storage</code> 查看这两个对象的关系： <img data-src="http://file.w3cbest.com/file/images/1543401637592.jpg"> Chrome 控制台(Console)面板中输入 <code>Storage</code> 看不到内容，但是原理是一样的： <img data-src="http://file.w3cbest.com/file/images/WeChat42ea82bb9fbae5a615243d1b718fb27c.png"> 我们可以看出 <strong><code>localStorage</code> 是 <code>Storage</code> 对象的实例对象！</strong> 那么这就和我们所理解的 JavaScript 实例对象和原型继承完全是同一套逻辑了，是吧？也就是说我们接下来可以和我们自己编写的实例对象一样，随意使用 <code>localStorage</code> 对象。</p>
+        <p>相信大家对于本地存储的 <code>localStorage</code> 和 <code>sessionStorage</code> 对象已经非常熟悉了。那么首先花点小篇幅稍微回顾一下。 <code>localStorage</code> 数据存储也是跨浏览器会话。<code>localStorage</code> 类似于<code>sessionStorage</code>。区别在于，数据存储在 <code>localStorage</code> 是无期限的，而当页面会话结束——也就是说当页面被关闭时,数据存储在 <code>sessionStorage</code> 会被清除。 常用的四个 API 也很简单 ：</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; 增加了一个 localStorage ‘myCat’ 数据项
+localStorage.setItem(&#39;myCat&#39;, &#39;Tom&#39;);
+
+&#x2F;&#x2F; 读取 localStorage ‘myCat’ 数据项
+let cat &#x3D; localStorage.getItem(&#39;myCat&#39;);
+
+&#x2F;&#x2F; 移除 localStorage ‘myCat’ 数据项
+localStorage.removeItem(&#39;myCat&#39;);
+
+&#x2F;&#x2F; 移除所有的 localStorage 数据项
+localStorage.clear();</code></pre>
+
+<p>相信大家对这些已经非常熟悉了，也没什么好说的，我们接下来说说大家可能陌生的，不常用的一些东西。 <code>localStorage</code> 对象 和 <code>Storage</code> 对象 首先来说说 <code>Storage</code> 对象，<code>Storage</code> 提供了访问特定域名下的会话存储（session storage）或本地存储（local storage）的功能，例如，可以添加、修改或删除存储的数据项。 <code>Storage</code> 对象通过 <code>Window.sessionStorage</code> 和 <code>Window.localStorage</code> 属性使用（更确切的说，在支持的浏览器中 <code>Window</code> 对象实现了 <code>WindowLocalStorage</code> 和 <code>WindowSessionStorage</code> 对象并挂在其 <code>localStorage</code> 和 <code>sessionStorage</code> 属性下）—— 调用其中任一对象会创建相应的 <code>Storage</code> 对象，通过 <code>Storage</code> 对象，可以设置、获取和移除数据项。对于每个源（origin）sessionStorage 和 <code>localStorage</code> 使用不同的 <code>Storage</code> 对象——独立运行和控制。 有点绕口是吧？我们说的直接一点。 <code>localStorage</code> 对象其实就是 <code>Storage</code> 对象的实例对象。我们可以在 Firefox 的开发者工具的控制台(Console)面板中输入 <code>Storage</code>，<code>localStorage</code>，查看这两个对象，再输入 <code>localStorage instanceof Storage</code> 或者 <code>localStorage.constructor == Storage</code> 查看这两个对象的关系： <img data-src="https://file.w3cbest.com/file/images/1543401637592.jpg"> Chrome 控制台(Console)面板中输入 <code>Storage</code> 看不到内容，但是原理是一样的： <img data-src="https://file.w3cbest.com/file/images/WeChat42ea82bb9fbae5a615243d1b718fb27c.png"> 我们可以看出 <strong><code>localStorage</code> 是 <code>Storage</code> 对象的实例对象！</strong> 那么这就和我们所理解的 JavaScript 实例对象和原型继承完全是同一套逻辑了，是吧？也就是说我们接下来可以和我们自己编写的实例对象一样，随意使用 <code>localStorage</code> 对象。</p>
 <h2 id="localStorage-一些不为人知的方法"><a href="#localStorage-一些不为人知的方法" class="headerlink" title="localStorage 一些不为人知的方法"></a>localStorage 一些不为人知的方法</h2><p>上面已经说过的，我们熟知的 <code>localStorage.setItem()</code>，<code>localStorage.getItem()</code>，<code>localStorage.removeItem()</code>，<code>localStorage.clear()</code> 方法我们不再赘述。</p>
 <h3 id="访问和设置数据"><a href="#访问和设置数据" class="headerlink" title="访问和设置数据"></a>访问和设置数据</h3><p><code>localStorage</code> 对象是简单的键值存储，类似于对象。 <strong>键和值始终是字符串</strong>。 您可以像对象一样，使用点语法<code>.</code>或者中括号<code>[]</code>的形式访问这些值，也可以使用 <code>localStorage.getItem()</code> 和 <code>localStorage.setItem()</code> 方法访问或者设置这些值。 下面的代码是等价的：</p>
-<p>// 设置值<br>localStorage.myCat = ‘Tom’;<br>localStorage[‘myCat’] = ‘Tom’;<br>localStorage.setItem(‘myCat’, ‘Tom’);</p>
-<p>// 获取值<br>localStorage.myCat; // ‘Tom’<br>localStorage[‘myCat’]; // ‘Tom’<br>localStorage.getItem(‘myCat’); // ‘Tom’</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; 设置值
+localStorage.myCat &#x3D; &#39;Tom&#39;; 
+localStorage[&#39;myCat&#39;] &#x3D; &#39;Tom&#39;; 
+localStorage.setItem(&#39;myCat&#39;, &#39;Tom&#39;);
+
+&#x2F;&#x2F; 获取值
+localStorage.myCat; &#x2F;&#x2F; &#39;Tom&#39; 
+localStorage[&#39;myCat&#39;]; &#x2F;&#x2F; &#39;Tom&#39; 
+localStorage.getItem(&#39;myCat&#39;); &#x2F;&#x2F; &#39;Tom&#39;</code></pre>
+
 <p>我一般都使用点语法，但是官方建议使用 <code>setItem</code>, <code>getItem</code>, <code>removeItem</code> 这些API，来防止与使用普通对象作为键值存储相关的 <a target="_blank" rel="noopener" href="http://www.2ality.com/2012/01/objects-as-maps.html">陷阱</a>。</p>
 <h3 id="使用localStorage-hasOwnProperty-检查localStorage中存储的数据里是否保存某个值"><a href="#使用localStorage-hasOwnProperty-检查localStorage中存储的数据里是否保存某个值" class="headerlink" title="使用localStorage.hasOwnProperty()检查localStorage中存储的数据里是否保存某个值"></a>使用<code>localStorage.hasOwnProperty()</code>检查<code>localStorage</code>中存储的数据里是否保存某个值</h3><p><code>hasOwnProperty()</code> 方法检查对象自身属性中是否具有指定的属性，返回一个布尔值。换句话说就是检查<code>localStorage</code>中存储的数据里是否保存某个值。 假设，我们得本地存储了<code>myCat</code>数据，没存<code>youCat</code>数据。之前你要判断本地是否存储了<code>youCat</code>数据，你可能需要这么做：</p>
-<p>localStorage.getItem(‘youCat’) //null</p>
+<pre class="language-none"><code class="language-none">localStorage.getItem(&#39;youCat&#39;) &#x2F;&#x2F;null</code></pre>
+
 <p>有了 <code>hasOwnProperty()</code> 方法就简单多了：</p>
-<p>localStorage.hasOwnProperty(‘myCat’) // true<br>localStorage.hasOwnProperty(‘youCat’) // false</p>
-<p><img data-src="http://file.w3cbest.com/file/images/WeChat22313c6712c57a7db3542a013c0ccd64.png"></p>
-<h3 id="Object-keys-localStorage-查看-localStorage-中存储数据所有的键"><a href="#Object-keys-localStorage-查看-localStorage-中存储数据所有的键" class="headerlink" title="Object.keys(localStorage) 查看 localStorage 中存储数据所有的键"></a>Object.keys(localStorage) 查看 localStorage 中存储数据所有的键</h3><p>想知道<code>localStorage</code>中存储了哪些值，我们可以直接使用<code>Object.keys(localStorage)</code>查看，很方便。 <img data-src="http://file.w3cbest.com/file/images/WeChat59edf3d5c4c34793b1c961b69569aa98.png"></p>
+<pre class="language-none"><code class="language-none">localStorage.hasOwnProperty(&#39;myCat&#39;) &#x2F;&#x2F; true
+localStorage.hasOwnProperty(&#39;youCat&#39;) &#x2F;&#x2F; false</code></pre>
+
+<p><img data-src="https://file.w3cbest.com/file/images/WeChat22313c6712c57a7db3542a013c0ccd64.png"></p>
+<h3 id="Object-keys-localStorage-查看-localStorage-中存储数据所有的键"><a href="#Object-keys-localStorage-查看-localStorage-中存储数据所有的键" class="headerlink" title="Object.keys(localStorage) 查看 localStorage 中存储数据所有的键"></a>Object.keys(localStorage) 查看 localStorage 中存储数据所有的键</h3><p>想知道<code>localStorage</code>中存储了哪些值，我们可以直接使用<code>Object.keys(localStorage)</code>查看，很方便。 <img data-src="https://file.w3cbest.com/file/images/WeChat59edf3d5c4c34793b1c961b69569aa98.png"></p>
 <h3 id="localStorage-key-index-方法"><a href="#localStorage-key-index-方法" class="headerlink" title="localStorage.key(index) 方法"></a>localStorage.key(index) 方法</h3><p>读取第<code>index</code>个数据的名字或键经常(从0开始索引)，感觉这个方法没什么用。</p>
-<p>localStorage.key(5); // “myCat”</p>
-<h3 id="localStorage-length属性"><a href="#localStorage-length属性" class="headerlink" title="localStorage.length属性"></a><code>localStorage.length</code>属性</h3><p>localStorage 存储了多少个数具，感觉用处不大。</p>
-<p>localStorage.length; // 6</p>
+<pre class="language-none"><code class="language-none">localStorage.key(5); &#x2F;&#x2F; &quot;myCat&quot;</code></pre>
+
+<h3 id="localStorage-length属性"><a href="#localStorage-length属性" class="headerlink" title="localStorage.length属性"></a><code>localStorage.length</code>属性</h3><pre class="language-none"><code class="language-none">localStorage 存储了多少个数具，感觉用处不大。
+
+localStorage.length; &#x2F;&#x2F; 6</code></pre>
+
 <h2 id="其他实用技巧"><a href="#其他实用技巧" class="headerlink" title="其他实用技巧"></a>其他实用技巧</h2><p>接下来再来说说实际应用的技巧。</p>
 <h3 id="将-JSON-存储到-localStorage-里"><a href="#将-JSON-存储到-localStorage-里" class="headerlink" title="将 JSON 存储到 localStorage 里"></a>将 JSON 存储到 localStorage 里</h3><p>为了方便起见，我们通常会将一个大数组或者对象存储到<code>localStorage</code>中。而<code>localStorage</code>只能存储字符串，所以我们可以使用JSON方法对存取值进行转换：</p>
-<p>var users = [{<br>        name: “xiaoming”,<br>        grade: 1<br>    },<br>    {<br>        name: “teemo”,<br>        grade: 3<br>    }<br>];</p>
-<p>// 存数据<br>usersStr = JSON.stringify(users); //将JSON转为字符串<br>localStorage.users = usersStr; // 将字符串存到 localStorage users 键下</p>
-<p>// 取数据<br>var newUsers = JSON.parse(localStorage.users); // 转为JSON<br>console.log(newUsers); // 打印出原先对象</p>
+<pre class="language-none"><code class="language-none">var users &#x3D; [&#123;
+        name: &quot;xiaoming&quot;,
+        grade: 1
+    &#125;,
+    &#123;
+        name: &quot;teemo&quot;,
+        grade: 3
+    &#125;
+];
+
+&#x2F;&#x2F; 存数据
+usersStr &#x3D; JSON.stringify(users); &#x2F;&#x2F;将JSON转为字符串
+localStorage.users &#x3D; usersStr; &#x2F;&#x2F; 将字符串存到 localStorage users 键下
+
+&#x2F;&#x2F; 取数据
+var newUsers &#x3D; JSON.parse(localStorage.users); &#x2F;&#x2F; 转为JSON
+console.log(newUsers); &#x2F;&#x2F; 打印出原先对象</code></pre>
+
 <h3 id="为-localStorage-设置过期时间"><a href="#为-localStorage-设置过期时间" class="headerlink" title="为 localStorage 设置过期时间"></a>为 localStorage 设置过期时间</h3><p><code>localstorage</code>原生是不支持设置过期时间的，想要设置的话，就只能自己来封装一层逻辑来实现：</p>
-<p>function set(key, value) {<br>    var curtime = new Date().getTime(); //获取当前时间<br>    localStorage.setItem(key, JSON.stringify({ val: value, time: curtime })); //转换成json字符串序列<br>}</p>
-<p>function get(key, exp) //exp是设置的过期时间<br>{<br>    var val = localStorage.getItem(key); //获取存储的元素<br>    var dataobj = JSON.parse(val); //解析出json对象<br>    if (new Date().getTime() - dataobj.time &gt; exp) //如果当前时间-减去存储的元素在创建时候设置的时间 &gt; 过期时间<br>    {<br>        console.log(“expires”); //提示过期<br>    } else {<br>        console.log(“val=” + dataobj.val);<br>    }<br>}</p>
+<pre class="language-none"><code class="language-none">function set(key, value) &#123;
+    var curtime &#x3D; new Date().getTime(); &#x2F;&#x2F;获取当前时间
+    localStorage.setItem(key, JSON.stringify(&#123; val: value, time: curtime &#125;)); &#x2F;&#x2F;转换成json字符串序列
+&#125;
+
+function get(key, exp) &#x2F;&#x2F;exp是设置的过期时间
+&#123;
+    var val &#x3D; localStorage.getItem(key); &#x2F;&#x2F;获取存储的元素
+    var dataobj &#x3D; JSON.parse(val); &#x2F;&#x2F;解析出json对象
+    if (new Date().getTime() - dataobj.time &gt; exp) &#x2F;&#x2F;如果当前时间-减去存储的元素在创建时候设置的时间 &gt; 过期时间
+    &#123;
+        console.log(&quot;expires&quot;); &#x2F;&#x2F;提示过期
+    &#125; else &#123;
+        console.log(&quot;val&#x3D;&quot; + dataobj.val);
+    &#125;
+&#125;</code></pre>
+
 <p>原理就是在存值得时候附带一个设置的时间，取值的时候传一个时间过期时间（毫秒），和存的时间做比较，然后做相应的操作。</p>
 <h3 id="storage-事件"><a href="#storage-事件" class="headerlink" title="storage 事件"></a>storage 事件</h3><p>当存储数据发生变化时，会触发<code>storage</code>事件。值得特别注意的是，该事件不在导致数据变化的当前页面触发。如果浏览器同时打开一个域名下面的多个页面，当其中的一个页面改变<code>sessionStorage</code>或<code>localStorage</code>的数据时，其他所有页面的<code>storage</code>事件会被触发，而原始页面并不触发<code>storage</code>事件。可以通过这种机制，实现多个窗口之间的通信。（当然 ie 这个特例除外，它包含自己本事也会触发storage事件）。 例如我们全局下监storage事件，</p>
-<p>window.addEventListener(“storage”, function onStorageChange(event) {<br>    // event 对象中几个主要属性：<br>    console.log(event.key); //更新值得键<br>    console.log(event.oldValue); //更新前的值。如果该键为新增加，则这个属性为null。<br>    console.log(event.newValue); //更新后的值。如果该键被删除，则这个属性为null。<br>    // 如果 Storage 调用的是 clear 方法，则事件中的 key 、oldValue 、newValue 都是为 null<br>    console.log(event.url); //原始触发storage事件的那个网页的网址。<br>});</p>
+<pre class="language-none"><code class="language-none">window.addEventListener(&quot;storage&quot;, function onStorageChange(event) &#123;
+    &#x2F;&#x2F; event 对象中几个主要属性：
+    console.log(event.key); &#x2F;&#x2F;更新值得键
+    console.log(event.oldValue); &#x2F;&#x2F;更新前的值。如果该键为新增加，则这个属性为null。 
+    console.log(event.newValue); &#x2F;&#x2F;更新后的值。如果该键被删除，则这个属性为null。
+    &#x2F;&#x2F; 如果 Storage 调用的是 clear 方法，则事件中的 key 、oldValue 、newValue 都是为 null
+    console.log(event.url); &#x2F;&#x2F;原始触发storage事件的那个网页的网址。
+&#125;);</code></pre>
+
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文列出了<code>localStorage</code>中一些常用和不常用的方法，<code>sessionStorage</code>也是一样的原理，只是会话结束后<code>sessionStorage</code>会被清空。</p>
 
     </div>
@@ -313,12 +373,11 @@
 </ul>
 </div>
 
-
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/API%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/" rel="tag"><i class="fa fa-tag"></i> API过期时间</a>
               <a href="/tags/hasOwnProperty/" rel="tag"><i class="fa fa-tag"></i> hasOwnProperty</a>
+              <a href="/tags/API%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/" rel="tag"><i class="fa fa-tag"></i> API过期时间</a>
               <a href="/tags/localStorage/" rel="tag"><i class="fa fa-tag"></i> localStorage</a>
               <a href="/tags/sessionStorage/" rel="tag"><i class="fa fa-tag"></i> sessionStorage</a>
               <a href="/tags/storage-%E4%BA%8B%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> storage 事件</a>
@@ -410,21 +469,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -446,7 +504,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -483,7 +541,6 @@
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

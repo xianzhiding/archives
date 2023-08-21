@@ -282,7 +282,7 @@
 <li>  如果需要居中的元素已经在高度上超过了视口，那它的顶部会被视口裁切掉。有一些办法可以绕过这个问题，但 hack味道过浓。</li>
 <li>  在某些浏览器中，这个方法可能会导致元素的显示有一些模糊，因为元素可能被放置在半个像素上。这个问题可以用 transformstyle:preserve-3d 来修复，不过这个修复手段也可以认为是一个hack，而且很难保证它在未来不会出问题。</li>
 </ul>
-<iframe id="cp_embed_QJXewK" src="//codepen.io/xianzhiding/embed/QJXewK?height=[265]]&theme-id=dark&slug-hash=QJXewK&default-tab=[css,result" scrolling="no" frameborder="no" height="[265]]" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_QJXewK" src="//codepen.io/xianzhiding/embed/QJXewK?height=300&theme-id=dark&slug-hash=QJXewK&default-tab=[css,result&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 
 <blockquote>
@@ -315,7 +315,7 @@
 <p>“使用视口相关的长度单位，我们还可以生成一个正好铺满视口的区块，无需脚本的辅助。更多细节请参阅“用一行 CSS 实现全屏区块”（<a target="_blank" rel="noopener" href="https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd%EF%BC%89%E3%80%82%E2%80%9D">https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd）。”</a></p>
 </blockquote>
 <p>在下面DEMO中可以看到，其效果堪称完美。当然，这个技巧的实用性是相当有限的，因为它只适用于在视口中居中的场景。</p>
-<iframe id="cp_embed_BGgEYQ" src="//codepen.io/xianzhiding/embed/BGgEYQ?height=[265]]&theme-id=dark&slug-hash=BGgEYQ&default-tab=[css,result" scrolling="no" frameborder="no" height="[265]]" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_BGgEYQ" src="//codepen.io/xianzhiding/embed/BGgEYQ?height=300&theme-id=dark&slug-hash=BGgEYQ&default-tab=[css,result&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <h2 id="基于-Flexbox-的解决方案"><a href="#基于-Flexbox-的解决方案" class="headerlink" title="基于 Flexbox 的解决方案"></a>基于 Flexbox 的解决方案</h2><p>这是毋庸置疑的最佳解决方案，因为 Flexbox（伸缩盒）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox%EF%BC%89%E6%98%AF%E4%B8%93%E9%97%A8%E9%92%88%E5%AF%B9%E8%BF%99%E7%B1%BB%E9%9C%80%E6%B1%82%E6%89%80%E8%AE%BE%E8%AE%A1%E7%9A%84%E3%80%82%E6%88%91%E4%BB%AC%E4%B9%8B%E6%89%80%E4%BB%A5%E8%A6%81%E8%AE%A8%E8%AE%BA%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88%EF%BC%8C%E4%BB%85%E4%BB%85%E6%98%AF%E5%9B%A0%E4%B8%BA%E9%82%A3%E4%BA%9B%E6%96%B9%E6%A1%88%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%94%AF%E6%8C%81%E7%A8%8B%E5%BA%A6%E4%B8%8A%E7%A8%8D%E5%BE%AE%E5%A5%BD%E4%B8%80%E4%BA%9B%E8%80%8C%E5%B7%B2%E3%80%82%E5%85%B6%E5%AE%9E%E7%9B%AE%E5%89%8D%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9">http://w3.org/TR/css-flexbox）是专门针对这类需求所设计的。我们之所以要讨论其他方案，仅仅是因为那些方案在浏览器的支持程度上稍微好一些而已。其实目前现代浏览器对</a> Flexbox 的支持度已经相当不错了。 我们只需写两行声明即可：先给这个待居中元素的父元素设置 display:flex（在这个例子中是 <body> 元素），再给这个元素自身设置我们再熟悉不过的 margin: auto（在这个例子中是 <main> 元素）：</p>
 <pre class="language-none"><code class="language-none">body &#123;
@@ -339,7 +339,7 @@ main &#123;
   height: 10em;
 &#125;</code></pre>
 
-<iframe id="cp_embed_RqzOZN" src="//codepen.io/xianzhiding/embed/RqzOZN?height=[265]]&theme-id=dark&slug-hash=RqzOZN&default-tab=[css,result" scrolling="no" frameborder="no" height="[265]]" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_RqzOZN" src="//codepen.io/xianzhiding/embed/RqzOZN?height=300&theme-id=dark&slug-hash=RqzOZN&default-tab=[css,result&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 
 <blockquote>
@@ -394,7 +394,6 @@ main &#123;
   </li>
 </ul>
 </div>
-
 
       <footer class="post-footer">
           
@@ -491,21 +490,20 @@ main &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -527,7 +525,7 @@ main &#123;
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -564,7 +562,6 @@ main &#123;
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

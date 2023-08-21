@@ -178,6 +178,138 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2023/04/02/javascript%E9%97%AD%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/04/02/javascript%E9%97%AD%E5%8C%85/" class="post-title-link" itemprop="url">闭包，什么是JavaScript闭包</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-02 14:07:06" itemprop="dateCreated datePublished" datetime="2023-04-02T14:07:06+08:00">2023-04-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数具有定义在外部函数中的所有变量和函数（以及外部函数能访问的所有变量和函数）的完全访问权限。</p>
+<p>但是，外部函数却不能访问定义在内部函数中的变量和函数。这给内部函数的变量提供了一种封装。</p>
+<p>此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数的生存周期将比内部函数执行的持续时间要长。当内部函数以某一种方式被任何一个外部函数之外的任何作用域访问时，就会创建闭包。</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; 外部函数定义了一个名为“name”的变量
+const pet &#x3D; function (name) &#123;
+  const getName &#x3D; function () &#123;
+    &#x2F;&#x2F; 内部函数可以访问外部函数的“name”变量
+    return name;
+  &#125;;
+  return getName; &#x2F;&#x2F; 返回内部函数，从而将其暴露给外部作用域
+&#125;;
+const myPet &#x3D; pet(&quot;Vivie&quot;);
+
+console.log(myPet()); &#x2F;&#x2F; &quot;Vivie&quot;</code></pre>
+
+<p>实际上可能会比上面的代码复杂的多。它可以返回一个包含用于操作外部函数的内部变量的方法的对象。</p>
+<pre class="language-none"><code class="language-none">const createPet &#x3D; function (name) &#123;
+  let sex;
+
+  const pet &#x3D; &#123;
+    &#x2F;&#x2F; 在这个上下文中：setName(newName) 等价于 setName: function (newName)
+    setName(newName) &#123;
+      name &#x3D; newName;
+    &#125;,
+
+    getName() &#123;
+      return name;
+    &#125;,
+
+    getSex() &#123;
+      return sex;
+    &#125;,
+
+    setSex(newSex) &#123;
+      if (
+        typeof newSex &#x3D;&#x3D;&#x3D; &quot;string&quot; &amp;&amp;
+        (newSex.toLowerCase() &#x3D;&#x3D;&#x3D; &quot;male&quot; || newSex.toLowerCase() &#x3D;&#x3D;&#x3D; &quot;female&quot;)
+      ) &#123;
+        sex &#x3D; newSex;
+      &#125;
+    &#125;,
+  &#125;;
+
+  return pet;
+&#125;;
+
+const pet &#x3D; createPet(&quot;Vivie&quot;);
+console.log(pet.getName()); &#x2F;&#x2F; Vivie
+
+pet.setName(&quot;Oliver&quot;);
+pet.setSex(&quot;male&quot;);
+console.log(pet.getSex()); &#x2F;&#x2F; male
+console.log(pet.getName()); &#x2F;&#x2F; Oliver</code></pre>
+
+<p>在上面的代码中，外部函数的 name 变量对内部函数来说是可访问的，而除了通过内部函数本身，没有其他任何方法可以取得内部的变量。内部函数的内部变量就像对外部参数和变量的保险柜。它们会为内部函数保留“稳定”而又“被封装”的数据参与运行。而这些内部函数甚至不会被分配给一个变量，或者有个名称。</p>
+<pre class="language-none"><code class="language-none">const getCode &#x3D; (function () &#123;
+  const apiCode &#x3D; &quot;0]Eal(eh&amp;2&quot;; &#x2F;&#x2F; 我们不希望外部能够修改的代码......
+
+  return function () &#123;
+    return apiCode;
+  &#125;;
+&#125;)();
+
+console.log(getCode()); &#x2F;&#x2F; &quot;0]Eal(eh&amp;2&quot;</code></pre>
+
+<p>备注： 使用闭包时需要注意许多陷阱！</p>
+<p>如果一个闭包的函数定义了一个和外部外部的某个变量名称相同的变量，那么这个闭包将无法引用外部作用域中的这个变量。（内部作用域的变量“覆盖”外部作用域，直至程序退出内部作用域。可以将其视作命名冲突。）</p>
+<pre class="language-none"><code class="language-none">const createPet &#x3D; function (name) &#123;
+  &#x2F;&#x2F; 外部函数定义了一个名为“name”的变量。
+  return &#123;
+    setName(name) &#123;
+      &#x2F;&#x2F; 闭包函数还定义了一个名为“name”的变量。
+      name &#x3D; name; &#x2F;&#x2F; 我们如何访问外部函数定义的“name”？
+    &#125;,
+  &#125;;
+&#125;;</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2021/08/25/%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -279,7 +411,7 @@ render(data)&#123;
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/12/%E5%B0%81%E8%A3%85Promise%E8%AF%B7%E6%B1%82request/" class="post-title-link" itemprop="url">封装Promise请求</a>
+            <a href="/2021/07/12/%E5%B0%81%E8%A3%85Promise%E8%AF%B7%E6%B1%82request/" class="post-title-link" itemprop="url">小程序封装Promise请求</a>
         </h2>
 
         <div class="post-meta">
@@ -717,72 +849,6 @@ var qrcodeObj <span class="token operator">=</span> new QRCode<span class="token
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2020/09/02/vue-ref/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/02/vue-ref/" class="post-title-link" itemprop="url">vue-ref</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-02 14:55:00" itemprop="dateCreated datePublished" datetime="2020-09-02T14:55:00+08:00">2020-09-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2020/08/14/%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1002,16 +1068,16 @@ window.addEventListener(&#39;resize&#39;, throttle(sayHi));
           <p>使用微信开发工具手写css真的每次都很浪费时间；现在终于可以用scss在微信开发者工具上自编译出wxss了</p>
 <h3 id="主要配置流程如下"><a href="#主要配置流程如下" class="headerlink" title="主要配置流程如下"></a>主要配置流程如下</h3><p>1，下载EasySass插件复制到微信开发者工具，可以在vscode扩展里面找，然后安装，安装后可以在C盘 <code>用户目录/.vscode/extensions</code> 找到下载的扩展包</p>
 <p>2，打开微信开发工具 找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 拓展 &gt; 编辑器自定义扩展 </code>打开扩展文件夹， 将vscode安装的扩展包复制到这里，然后重启微信开发工具，然后找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 拓展 &gt; 编辑器自定义扩展</code> 就能看到扩展文件，点击开启</p>
-<img data-src="http://file.w3cbest.com/file/images/20210421105100.png">
+<img data-src="https://file.w3cbest.com/file/images/20210421105100.png">
 
-<img data-src="http://file.w3cbest.com/file/images/20210421105148.png">
+<img data-src="https://file.w3cbest.com/file/images/20210421105148.png">
 
 <p>3，配置编辑器，找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 编辑器 &gt; 更多及工作区设置</code> 进入设置页面，点击扩展 找到 <code>EasySass configuration</code> 看到 <code>formats</code> 在 <code>setting.json</code> 中编辑进入后就会看到生成的配置信息，将.css改为.wxss,如果不想要压缩版可删除</p>
-<img data-src="http://file.w3cbest.com/file/images/20210421105431.png">
+<img data-src="https://file.w3cbest.com/file/images/20210421105431.png">
 
-<img data-src="http://file.w3cbest.com/file/images/20210421105501.png">
+<img data-src="https://file.w3cbest.com/file/images/20210421105501.png">
 
-<img data-src="http://file.w3cbest.com/file/images/20210421105528.png">
+<img data-src="https://file.w3cbest.com/file/images/20210421105528.png">
 
 <pre class="language-none"><code class="language-none">&quot;easysass.formats&quot;: [
     &#123;
@@ -1330,21 +1396,20 @@ myAwesomeArray.flat().map(arr &#x3D;&gt; arr * 10)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -1366,7 +1431,7 @@ myAwesomeArray.flat().map(arr &#x3D;&gt; arr * 10)
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1403,7 +1468,6 @@ myAwesomeArray.flat().map(arr &#x3D;&gt; arr * 10)
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 

@@ -287,11 +287,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
             </span>
 
@@ -307,13 +307,20 @@
 
       
           <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>先安装babel-cli</p>
-<p>npm install –save-dev babel-cli</p>
+<pre class="language-none"><code class="language-none">npm install --save-dev babel-cli</code></pre>
+
 <h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>在sublime text 中<a target="_blank" rel="noopener" href="https://packagecontrol.io/packages/Babel">安装babel插件</a> 插件如何安装这里就不多解释，不过记住一定是babel</p>
-<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>安装好后来配置一下安装的babel插件 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/babel-cil.jpg"> <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/babel-cil-url.jpg"> 这里的地址要配置好，<strong>也就是你安装的babel-cli的目录地址</strong>，让插件可以在此寻找 babel或babel-core 命令，否则就会报错 <a target="_blank" rel="noopener" href="https://github.com/babel/babel-sublime/issues/171">Couldn’t find babel or babel-core</a></p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>安装好后来配置一下安装的babel插件<br><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/babel-cil.jpg"><br><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/babel-cil-url.jpg"><br>这里的地址要配置好，<strong>也就是你安装的babel-cli的目录地址</strong>，让插件可以在此寻找 babel或babel-core 命令，否则就会报错 <a target="_blank" rel="noopener" href="https://github.com/babel/babel-sublime/issues/171">Couldn’t find babel or babel-core</a></p>
 <h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>在当前目录配置好.babelrc文件，定义转码规则，在当前目录放置好依赖包（因为这里找不到全局的）</p>
-<p>npm install –save babel-preset-es2015</p>
+<pre class="language-none"><code class="language-none">npm install --save babel-preset-es2015</code></pre>
+
 <p>比如我只用了babel编译es5，就在.babelrc文件里添加</p>
-<p>{<br>“presets”: [<br>“es2015”<br>]<br>}</p>
+<pre class="language-none"><code class="language-none">&#123;
+  &quot;presets&quot;: [
+    &quot;es2015&quot;
+  ]
+&#125;</code></pre>
+
 <p>然后在js文件里编写es6的代码，按下快捷键Ctrl+Shift+P，输入babel，选择 babel transform 执行即可，如果顺利的话，就能看到es6文件已经转换为es5语法，然而有一个很大的缺陷就是只能生成匿名文件，具体如何解决还没找到方法。 其他一些<a target="_blank" rel="noopener" href="https://www.babeljs.cn/docs/editors.html">编辑器的安装方法</a></p>
 
       
@@ -366,15 +373,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
             </span>
 
@@ -443,11 +450,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
                 </span>
             </span>
 
@@ -583,102 +590,210 @@ moreBtn.setAttribute('aria-expanded', container.classList.contains('show-seconda
       
           <p>当我们在写页面时经常会遇到页面内容少的时候，footer会戳在页面中间或什么？反正就是不在最底部显示，反正就是很难看，下面要讲的布局就是解决如何使元素粘住浏览器底部，</p>
 <h3 id="方法一：footer高度固定-绝对定位"><a href="#方法一：footer高度固定-绝对定位" class="headerlink" title="方法一：footer高度固定+绝对定位"></a>方法一：footer高度固定+绝对定位</h3><p>html</p>
-<div class="dui-container">
-<header>Header</header>
-<main class="content">
-<h1>使用position定位footer布局</h1>
-<button id="add">Add Content</button>
-</main>
-<footer class="footer">
-Footer
-</footer>
-</div>
+<pre class="language-none"><code class="language-none">&lt;div class&#x3D;&quot;dui-container&quot;&gt;
+  &lt;header&gt;Header&lt;&#x2F;header&gt;
+  &lt;main class&#x3D;&quot;content&quot;&gt;
+    &lt;h1&gt;使用position定位footer布局&lt;&#x2F;h1&gt;
+  &lt;&#x2F;main&gt;
+  &lt;footer class&#x3D;&quot;footer&quot;&gt;
+    Footer
+  &lt;&#x2F;footer&gt;
+&lt;&#x2F;div&gt;</code></pre>
 
 <p>CSS</p>
-<p>.dui-container{<br>position: relative;<br>min-height: 100%;<br>}<br>header,main, footer{<br>padding: 0 calc(50% - 450px);<br>}<br>main {<br>padding-bottom: 100px;<br>}<br>header, footer{<br>font-size: 30px;<br>background-color: #333;<br>color: white;<br>line-height: 100px;<br>height: 100px;<br>}<br>footer{<br>width: 100%;<br>position: absolute;<br>bottom: 0<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/MZXbXO/">position-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p> </p>
+<pre class="language-none"><code class="language-none">.dui-container&#123;
+  position: relative;
+  min-height: 100%;
+&#125;
+  header,main, footer&#123;
+  padding: 0 calc(50% - 450px);
+&#125;
+main &#123;
+  padding-bottom: 100px;
+&#125;
+header, footer&#123;
+  font-size: 30px;
+  background-color: #333;
+  color: white;
+  line-height: 100px;
+  height: 100px;
+&#125;
+footer&#123;
+  width: 100%;
+  position: absolute;
+  bottom: 0
+&#125;</code></pre>
+
+
+<iframe id="cp_embed_MZXbXO" src="//codepen.io/xianzhiding/embed/MZXbXO?height=300&theme-id=dark&slug-hash=MZXbXO&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
 <h3 id="方法二：在主体content上的下边距增加一个负值等于底部高度"><a href="#方法二：在主体content上的下边距增加一个负值等于底部高度" class="headerlink" title="方法二：在主体content上的下边距增加一个负值等于底部高度"></a>方法二：在主体content上的下边距增加一个负值等于底部高度</h3><p>html</p>
-<body>
-<header>Header</header>
-<main>Content</main>
-<footer>Footer</footer>
-</body>
+<pre class="language-none"><code class="language-none">&lt;body&gt;
+&lt;header&gt;Header&lt;&#x2F;header&gt;
+&lt;main&gt;Content&lt;&#x2F;main&gt;
+&lt;footer&gt;Footer&lt;&#x2F;footer&gt;
+&lt;&#x2F;body&gt;</code></pre>
 
 <p>CSS</p>
-<p>html, body {<br>height: 100%;<br>}<br>main {<br>min-height: 100%;<br>padding-top: 100px;<br>padding-bottom: 100px;<br>margin-top: -100px;<br>margin-bottom: -100px;<br>}<br>header, footer{<br>line-height: 100px;<br>height: 100px;<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/JwZbra/">margin And padding-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p> </p>
+<pre class="language-none"><code class="language-none">html, body &#123;
+  height: 100%;
+&#125;
+main &#123;
+  min-height: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-top: -100px;
+  margin-bottom: -100px;
+&#125;
+header, footer&#123;
+  line-height: 100px;
+  height: 100px;
+&#125;</code></pre>
+
+<iframe id="cp_embed_JwZbra" src="//codepen.io/xianzhiding/embed/JwZbra?height=300&theme-id=dark&slug-hash=JwZbra&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
 <h3 id="方法三：将页脚的margin-top设为负数"><a href="#方法三：将页脚的margin-top设为负数" class="headerlink" title="方法三：将页脚的margin-top设为负数"></a>方法三：将页脚的margin-top设为负数</h3><p>html</p>
-<header>Header</header>
-<main class="content">
-<button id="add">添加内容试试</button>
-</main>
-<footer class="footer">
+<pre class="language-none"><code class="language-none">&lt;header&gt;Header&lt;&#x2F;header&gt;
+&lt;main class&#x3D;&quot;content&quot;&gt;
+&lt;button id&#x3D;&quot;add&quot;&gt;添加内容试试&lt;&#x2F;button&gt;
+&lt;&#x2F;main&gt;
+&lt;footer class&#x3D;&quot;footer&quot;&gt;
 Footer
-</footer>
+&lt;&#x2F;footer&gt;</code></pre>
 
 <p>CSS</p>
-<p>main {<br>min-height: 100%;<br>padding-top: 100px;<br>padding-bottom: 100px;<br>}<br>header, footer{<br>font-size: 30px;<br>background-color: #333;<br>color: white;<br>line-height: 100px;<br>height: 100px;<br>}<br>header{<br>margin-bottom: -100px;<br>}<br>footer{<br>margin-top: -100px;<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/VqdPdK/">footer负值-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  min-height: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+&#125;
+header, footer&#123;
+  font-size: 30px;
+  background-color: #333;
+  color: white;
+  line-height: 100px;
+  height: 100px;
+&#125;
+header&#123;
+  margin-bottom: -100px;
+&#125;
+footer&#123;
+  margin-top: -100px;
+&#125;</code></pre>
+
+<iframe id="cp_embed_VqdPdK" src="//codepen.io/xianzhiding/embed/VqdPdK?height=300&theme-id=dark&slug-hash=VqdPdK&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 <p> </p>
 <h3 id="方法四：-通过设置flex，将footer的margin-top设置为auto"><a href="#方法四：-通过设置flex，将footer的margin-top设置为auto" class="headerlink" title="方法四： 通过设置flex，将footer的margin-top设置为auto"></a>方法四： 通过设置flex，将footer的margin-top设置为auto</h3><p>html</p>
-<header>Header</header>
-<main>
-<h1>在主体content上的下边距增加一个负值等于底部高度</h1>
-<button id="add">添加内容</button>
-</main>
-<footer>Footer</footer>
+<pre class="language-none"><code class="language-none">&lt;header&gt;Header&lt;&#x2F;header&gt;
+&lt;main&gt;
+  &lt;h1&gt;在主体content上的下边距增加一个负值等于底部高度&lt;&#x2F;h1&gt;
+&lt;&#x2F;main&gt;
+&lt;footer&gt;Footer&lt;&#x2F;footer&gt;</code></pre>
 
 <p>CSS</p>
-<p>body{<br>display: flex;<br>min-height: 100vh;<br>flex-direction: column;<br>}<br>header,main, footer{<br>padding: 0 calc(50% - 450px);<br>}<br>header,footer{<br>font-size: 30px;<br>background-color: #333;<br>color: white;<br>line-height: 100px;<br>height: 100px;<br>}<br>footer{margin-top: auto;}</p>
+<pre class="language-none"><code class="language-none">body&#123;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+&#125;
+header,main, footer&#123;
+  padding: 0 calc(50% - 450px);
+&#125;
+header,footer&#123;
+  font-size: 30px;
+  background-color: #333;
+  color: white;
+  line-height: 100px;
+  height: 100px;
+&#125;
+footer&#123;
+  margin-top: auto
+&#125;</code></pre>
 <p> </p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/EGRNbL/">flex and margin-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<iframe id="cp_embed_EGRNbL" src="//codepen.io/xianzhiding/embed/EGRNbL?height=300&theme-id=dark&slug-hash=EGRNbL&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 <p> </p>
 <h3 id="方法五：-通过函数calc-计算内容的高度"><a href="#方法五：-通过函数calc-计算内容的高度" class="headerlink" title="方法五： 通过函数calc()计算内容的高度"></a>方法五： 通过函数calc()计算内容的高度</h3><p>html代码</p>
-<body>
-<header>Header</header>
-<main>Content</main>
-<footer>Footer</footer>
-</body>
+<pre class="language-none"><code class="language-none">&lt;body&gt;
+&lt;header&gt;Header&lt;&#x2F;header&gt;
+&lt;main&gt;Content&lt;&#x2F;main&gt;
+&lt;footer&gt;Footer&lt;&#x2F;footer&gt;
+&lt;&#x2F;body&gt;</code></pre>
 
 <p>CSS代码</p>
-<p>main{<br>min-height: calc(100vh - 200px); /* 这个200px是header和footer的高度 */<br>}<br>header,footer{<br>height: 100px;<br>line-height: 100px;<br>}</p>
+<pre class="language-none"><code class="language-none">main&#123;
+  min-height: calc(100vh - 200px); &#x2F;* 这个200px是header和footer的高度 *&#x2F;
+&#125;
+header,footer&#123;
+  height: 100px;
+  line-height: 100px;
+&#125;</code></pre>
 <p> </p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/BqWMGJ/">calc-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<iframe id="cp_embed_BqWMGJ" src="//codepen.io/xianzhiding/embed/BqWMGJ?height=300&theme-id=dark&slug-hash=BqWMGJ&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 <p> </p>
 <h3 id="方法六：-通过设置flexbox，将主体main设置为flex"><a href="#方法六：-通过设置flexbox，将主体main设置为flex" class="headerlink" title="方法六： 通过设置flexbox，将主体main设置为flex"></a>方法六： 通过设置flexbox，将主体main设置为flex</h3><p>关于flexbox还请查看具体<a target="_blank" rel="noopener" href="http://www.w3cbest.com/?page_id=118">怎么使用</a></p>
-<body>
-<header>Header</header>
-<main>Content</main>
-<footer>Footer</footer>
-</body>
+<pre class="language-none"><code class="language-none">&lt;body&gt;
+&lt;header&gt;Header&lt;&#x2F;header&gt;
+&lt;main&gt;Content&lt;&#x2F;main&gt;
+&lt;footer&gt;Footer&lt;&#x2F;footer&gt;
+&lt;&#x2F;body&gt;</code></pre>
 
 <p>CSS代码</p>
-<p>body{<br>display: flex;<br>min-height: 100vh;<br>flex-direction: column;<br>}<br>main{<br>flex: 1<br>}</p>
+<pre class="language-none"><code class="language-none">body&#123;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+&#125;
+main&#123;
+  flex: 1
+&#125;</code></pre>
 <p> </p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/pxeGQQ/">flex-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<iframe id="cp_embed_pxeGQQ" src="//codepen.io/xianzhiding/embed/pxeGQQ?height=300&theme-id=dark&slug-hash=pxeGQQ&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 <p> </p>
 <h3 id="方法七：-使用grid布局"><a href="#方法七：-使用grid布局" class="headerlink" title="方法七： 使用grid布局"></a>方法七： 使用grid布局</h3><p>Html代码</p>
-<body>
-<header>Header</header>
-<main>Content</main>
-<footer>Footer</footer>
-</body>
+<pre class="language-none"><code class="language-none">&lt;body&gt;
+  &lt;header&gt;Header&lt;&#x2F;header&gt;
+  &lt;main&gt;Content&lt;&#x2F;main&gt;
+  &lt;footer&gt;Footer&lt;&#x2F;footer&gt;
+&lt;&#x2F;body&gt;</code></pre>
 
 <p>CSS代码</p>
-<p>html {<br>height: 100%;<br>}<br>body {<br>min-height: 100%;<br>display: grid;<br>grid-template-rows: auto 1fr auto;<br>}<br>.footer {<br>grid-row-start: 3;<br>grid-row-end: 4;<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/bmqzOv/">grid-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<pre class="language-none"><code class="language-none">html &#123;
+  height: 100%;
+&#125;
+body &#123;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+&#125;
+.footer &#123;
+  grid-row-start: 3;
+  grid-row-end: 4;
+&#125;</code></pre>
+
+<iframe id="cp_embed_bmqzOv" src="//codepen.io/xianzhiding/embed/bmqzOv?height=300&theme-id=dark&slug-hash=bmqzOv&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 <p> </p>
 <h3 id="方法八：-display"><a href="#方法八：-display" class="headerlink" title="方法八： display-*"></a>方法八： display-*</h3><p>html</p>
-<header>Header</header>
-<button id="add">添加内容试试</button>
-<footer class="footer">Footer</footer>
+<pre class="language-none"><code class="language-none">&lt;header&gt;Header&lt;&#x2F;header&gt;
+&lt;button id&#x3D;&quot;add&quot;&gt;添加内容试试&lt;&#x2F;button&gt;
+&lt;footer class&#x3D;&quot;footer&quot;&gt;Footer&lt;&#x2F;footer&gt;</code></pre>
 
 <p>CSS</p>
-<p>body {<br>min-height: 100%;<br>display: table;<br>width: 100%;<br>}<br>main {<br>display: table-row;<br>height: 100%;<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/ebKvKz/">display:table-sticky-footer</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>  参考：<a target="_blank" rel="noopener" href="https://css-tricks.com/couple-takes-sticky-footer/">https://css-tricks.com/couple-takes-sticky-footer/</a></p>
+<pre class="language-none"><code class="language-none">body &#123;
+  min-height: 100%;
+  display: table;
+  width: 100%;
+&#125;
+main &#123;
+  display: table-row;
+  height: 100%;
+&#125;</code></pre>
+
+<iframe id="cp_embed_ebKvKz" src="//codepen.io/xianzhiding/embed/ebKvKz?height=300&theme-id=dark&slug-hash=ebKvKz&default-tab=[css,result]&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
+<p>参考：<a target="_blank" rel="noopener" href="https://css-tricks.com/couple-takes-sticky-footer">Sticky Footer, Five Ways </a></p>
 
       
     </div>
@@ -964,11 +1079,11 @@ Footer
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
                 </span>
             </span>
 
@@ -1370,21 +1485,20 @@ Footer
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">338</span>
+        <span class="site-state-item-count">337</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
-
 
 
       </div>
@@ -1406,7 +1520,7 @@ Footer
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1443,7 +1557,6 @@ Footer
 
 
 <script src="/js/next-boot.js"></script>
-
 
 
 
