@@ -178,6 +178,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/" class="post-title-link" itemprop="url">background-attachment 背景图片固定文字滚动</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-08 07:00:00" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:00+08:00">2018-12-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>关于background-attachment 也不算是一个比较生僻的属性，基本上在做背景图片固定特别是全屏页面时用时就会用到。</p>
+<h3 id="概述节"><a href="#概述节" class="headerlink" title="概述节"></a>概述节</h3><p>如果指定了 background-image ，那么 background-attachment 决定背景是在视口中固定的还是随包含它的区块滚动的。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>background-attachment: scroll;<br>background-attachment: fixed;<br>background-attachment: local;<br>background-attachment: inherit;</p>
+<h3 id="取值节"><a href="#取值节" class="headerlink" title="取值节"></a>取值节</h3><h4 id="fixed"><a href="#fixed" class="headerlink" title="fixed"></a>fixed</h4><p>此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。</p>
+<h4 id="local"><a href="#local" class="headerlink" title="local"></a>local</h4><p>此关键字表示背景相对于元素的内容固定。如果一个元素拥有滚动机制，背景将会随着元素的内容滚动，且背景的绘制区域和定位区域是相对于可滚动的区域而不是包含他们的边框。</p>
+<h4 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h4><p>此关键字表示背景相对于元素本身固定， 而不是随着它的内容滚动（对元素边框是有效的）。</p>
+<blockquote>
+<p>注意： fixed是相对视口固定，而scroll是相对元素本身固定，它和 position 定位的 absolute 和 fixed有点像。</p>
+</blockquote>
+<p> </p>
+<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>section {<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;">https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;</a>);<br>background-attachment: fixed;<br>}</p>
+<section>
+<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
+<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
+<p>子曰：“巧言令色，鲜矣仁！”</p>
+<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
+<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
+<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
+</section>
+
+<p> </p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/qQzQaP/">单背景支持</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h3 id="多背景图支持"><a href="#多背景图支持" class="headerlink" title="多背景图支持"></a>多背景图支持</h3><p>此属性支持多张背景图片。你可以用逗号分隔来为每一张背景图片指定不同的<attachment>。每一张背景图片顺序对应相应的attachment 类型。</p>
+<p>section{<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;">https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;</a>), url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;">https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;</a>);<br>background-attachment: fixed, scroll;<br>background-repeat: no-repeat, repeat-y;<br>}</p>
+<section>
+<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
+<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
+<p>子曰：“巧言令色，鲜矣仁！”</p>
+<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
+<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
+<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
+</section>
+
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/vQqQga/">多背景图支持节</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<h3 id="使用-fixed-实现多模块背景固定效果"><a href="#使用-fixed-实现多模块背景固定效果" class="headerlink" title="使用 fixed 实现多模块背景固定效果"></a>使用 fixed 实现多模块背景固定效果</h3><p>fixed 此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。也就是说，背景图从一开始就已经被固定死在初始所在的位置。  </p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zMVMdw/">视差效果</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>)on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/07/%E5%86%99%E5%A5%BD%E7%9A%84javascript%E4%BB%A3%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1391,146 +1493,6 @@ h1 &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/08/%E4%BD%BF%E7%94%A8css%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8B%BC%E6%8E%A5html/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/08/%E4%BD%BF%E7%94%A8css%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8B%BC%E6%8E%A5html/" class="post-title-link" itemprop="url">使用CSS属性选择器拼接html</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-08 08:18:22" itemprop="dateCreated datePublished" datetime="2018-11-08T08:18:22+08:00">2018-11-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>属性选择器非常神奇。它们可以使你摆脱棘手的问题，帮助你避免添加类，并指出代码中的一些问题。但是不要担心，虽然属性选择器非常复杂和强大，但是它们很容易学习和使用。在本文中，我们将讨论它们是如何运行的，并给出一些如何使用它们的想法。</p>
-</blockquote>
-<p>通常将 HTML 属性放在方括号中，称为属性选择器，如下：</p>
-<p>[href] {<br>    color: red;<br>}</p>
-<p>这样任何具有href属性的且没有更特定选择器的元素的文本颜色都会是红色的。属性选择器的特性与类相同。 <strong>注:更多关于笼匹配的CSS特异性，你可以阅读<a href="https://link.juejin.im/?target=https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">CSS特性:你应该知道的事情</a>，或者如果你喜欢星球大战:<a href="https://link.juejin.im/?target=http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html">CSS特性战争</a>。</strong> 但是你可以使用属性选择器做得更多。就像你的 DNA 一样，它们有内在的逻辑来帮助你选择各种属性组合和值。它们可以匹配属性中的任何属性，甚至字符串值，而不是像标签、类或id选择器那样精确匹配。</p>
-<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>属性选择器可以独立存在，更具体地说，如果需要选择所有具有title属性的div标签，可以这么做：</p>
-<p>div[title]</p>
-<p>但你也可以通过以下操作选择具有 title 属性的 div 的子元素</p>
-<p>div [title]</p>
-<p>需要说明的是，它们之间没有空格意味着属性位于相同的元素上(就像元素和类之间没有空格一样)，而它们之间的空格意味着后代选择器，即选择具有该属性的元素的子元素。 你可以更精细地选择具体属性值的属性。</p>
-<p>div[title=”dna”]</p>
-<p>上面选择了所有具有确切名称dna的div,虽然有选择器算法可以处理每种情况（以及更多），但这里不会选择**“dna is awesome”或“dnamutation”**的标题。 **注意:**在大多数情况下，属性选择器中不需要引号，但是我使用它们，因为我相信它可以提高清代码的可读性，并确保边界用例能够正常工作。 如果你想选择 title 包含 dna的元素，如 “my beautiful dna” 或者 “mutating dna is fun!” ，可以使用波浪号（~）。</p>
-<p>div[title~=”dna”]</p>
-<p>如果你想匹配以 dna 结尾的 title,如  “dontblamemeblamemydna” 或 “his-stupidity-is-from-upbringing-not-dna” ，刚可以使用$标志符：</p>
-<p>[title$=”dna”]</p>
-<p>如果你想匹配以 dna 开头的 title,如  “dnamutants” 或 “dna-splicing-for-all” ，刚可以使用^标志符：</p>
-<p>[title^=”dna”]</p>
-<p>虽然精确匹配是有帮助的，但它可能选择太紧，并且^符号匹配可能太宽而无法满足你的需要。 例如，可能不想选择 “genealogy” 的标题，但仍然选择“gene”和“gene-data”。 管道特征()就是这样，属性中必须是完整且唯一的单词，或者以-分隔开。</p>
-<p>[title=”gene”]</p>
-<p>最后，还有一个匹配任何子字符串的模糊搜索属性操作符，属性中做字符串拆分，只要能拆出来dna这个词就行:</p>
-<p>[title*=”dna”]</p>
-<p>使这些属性选择器更加强大的是，它们是可堆叠的，允许你选择具有多个匹配因子的元素。 如果你需要找到一个a 标签，它有一个 title ，并且有一个以“genes” 结尾的 class,可以使用如下方式：</p>
-<p>a[title][class$=”genes”]</p>
-<p>你不仅可以选择 HTML 元素的属性，还可以使用伪类型元素来打印出文本：</p>
-<p><span class="joke" title="Gene Editing!">What’s the first thing a biotech journalist does after finishing the first draft of an article?</span></p>
-<p>.joke:hover:after {<br>    content: “Answer:”attr(title);<br>    display: block;<br>}</p>
-<p>上面的代码在鼠标悬停时将显示一串自定义的字符串。 最后要知道的是，您可以添加一个标志，让属性搜索不区分大小写。 在结束方括号之前添加i：</p>
-<p>[title*=”DNA” i]</p>
-<p>因此它会匹配dna, DNA, dnA等。 现在我们已经看到了如何使用属性选择器进行选择，让我们看看一些用例。 我将它们分为两类：一般用途和诊断。</p>
-<h2 id="一般用途"><a href="#一般用途" class="headerlink" title="一般用途"></a>一般用途</h2><h3 id="输入类型样式的设置"><a href="#输入类型样式的设置" class="headerlink" title="输入类型样式的设置"></a>输入类型样式的设置</h3><p>你可以对输入类型使用不同的样式，例如电子邮件和电话。</p>
-<p>input[type=”email”] {<br>    color: papayawhip;<br>}<br>input[type=”tel”] {<br>    color: thistle;<br>}</p>
-<h3 id="显示电话链接"><a href="#显示电话链接" class="headerlink" title="显示电话链接"></a>显示电话链接</h3><p>你可以隐藏特定尺寸的电话号码并显示电话链接，以便在手机上轻松拨打电话。</p>
-<p>span.phone {<br>    display: none;<br>}<br>a[href^=”tel”] {<br>    display: block;<br>}</p>
-<h3 id="内部链接-vs-外部链接，安全链接-vs-非安全链接"><a href="#内部链接-vs-外部链接，安全链接-vs-非安全链接" class="headerlink" title="内部链接 vs 外部链接，安全链接 vs 非安全链接"></a>内部链接 vs 外部链接，安全链接 vs 非安全链接</h3><p>你可以区别对待内部和外部链接，并将安全链接设置为与不安全链接不同：</p>
-<p>a[href^=”http”] {<br>    color: bisque;<br>}<br>a:not([href^=”http”]) {<br>    color: darksalmon;<br>}</p>
-<p>a[href^=”http://“]:after {<br>    content: url(unlock-icon.svg);<br>}<br>a[href^=”https://“]:after {<br>    content: url(lock-icon.svg);<br>}</p>
-<h3 id="下载图标"><a href="#下载图标" class="headerlink" title="下载图标"></a>下载图标</h3><p>HTML5 给我们的一个属性是“下载”，它告诉浏览器，你猜对了，下载该文件而不是试图打开它。这对于你希望人们访问但不希望它们立即打开的 PDF 和 DOC 非常有用。它还使得连续下载大量文件的工作流程更加容易。下载属性的缺点是没有默认的视觉效果将其与更传统的链接区分开来。通常这是你想要的，但如果不是，你可以做类似下面的事情：</p>
-<p>a[download]:after {<br>    content: url(download-arrow.svg);<br>}</p>
-<p>还可以使用不同的图标（如PDF与DOCX与ODF等）来表示文件类型，等等。</p>
-<p>a[href$=”pdf”]:after {<br>    content: url(pdf-icon.svg);<br>}<br>a[href$=”docx”]:after {<br>    content: url(docx-icon.svg);<br>}<br>a[href$=”odf”]:after {<br>    content: url(open-office-icon.svg);<br>}</p>
-<p>你还可以通过叠加属性选择器来确保这些图标只出现在可下载链接上。</p>
-<p>a[download][href$=”pdf”]:after {<br>    content: url(pdf-icon.svg);<br>}</p>
-<h3 id="覆盖或重新使用已废弃-弃用的代码"><a href="#覆盖或重新使用已废弃-弃用的代码" class="headerlink" title="覆盖或重新使用已废弃/弃用的代码"></a>覆盖或重新使用已废弃/弃用的代码</h3><p>我们都遇到过时代码过时的旧网站，在 HTML5 之前，你可能需要覆盖甚至重新应用作为属性实现的样式。</p>
-<div bgcolor="#000000"color="#FFFFFF">Old,holey genes</div>
-
-<p>div[bgcolor=”#000000”] {<br>    /*override*/<br>    background-color: #222222 !important;<br>}<br>div[color=”#FFFFFF”] {<br>    /*reapply*/<br>    color: #FFFFFF;<br>}</p>
-<h3 id="重写特定的内联样式"><a href="#重写特定的内联样式" class="headerlink" title="重写特定的内联样式"></a>重写特定的内联样式</h3><p>有时候你会遇到一些内联样式，这些样式会影响布局，但这些内联样式我们又没修改。那么以下是一种方法。 如果你道要覆盖的确切属性和值，并且希望在它出现的任何地方覆盖它，那么这种方法的效果最好。 对于此示例，元素的边距以像素为单位设置，但需要在 em 中进行扩展和设置，以便在用户更改默认字体大小时可以正确地重新调整元素。</p>
-<div style="color: #222222; margin: 8px; background-color: #EFEFEF;"Teenage Mutant Ninja Myrtle</div>
-
-<p>div[style*=”margin: 8px”] {<br>    margin: 1em !important;<br>}</p>
-<h3 id="显示文件类型"><a href="#显示文件类型" class="headerlink" title="显示文件类型"></a>显示文件类型</h3><p>默认情况下，文件输入的可接受文件列表是不可见的。 通常，我们使用伪元素来暴露它们：</p>
-<p>&lt;input type=”file”accept=”pdf,doc,docx”&gt;</p>
-<p>[accept]:after {<br>    content: “Acceptable file types: “attr(accept);<br>}</p>
-<h3 id="html-手风琴菜单"><a href="#html-手风琴菜单" class="headerlink" title="html 手风琴菜单"></a>html 手风琴菜单</h3><p>details和summary标签是一种只用HTML做扩展/手风琴菜单的方法，details 包括了summary标签和手风琴打开时要展示的内容。点击summary会展开details标签并添加open属性，我们可以通过open属性轻松地为打开的details标签设置样式：</p>
-<p>details[open] {<br>    background-color: hotpink;<br>}</p>
-<h3 id="打印链接"><a href="#打印链接" class="headerlink" title="打印链接"></a>打印链接</h3><p>在打印样式中显示URL使我走上了理解属性选择器的道路。 你现在应该知道如何自己构建它， 你只需选择带有href的所有标签，添加伪元素，然后使用attr()和content打印它们。</p>
-<p>a[href]:after {<br>    content: “ (“attr(href) “) “;<br>}</p>
-<h3 id="自定义提示"><a href="#自定义提示" class="headerlink" title="自定义提示"></a>自定义提示</h3><p>使用属性选择器创建自定义工具提示既有趣又简单：</p>
-<p>[title] {<br>    position: relative;<br>    display: block;<br>}<br>[title]:hover:after {<br>    content: attr(title);<br>    color: hotpink;<br>    background-color: slateblue;<br>    display: block;<br>    padding: .225em .35em;<br>    position: absolute;<br>    right: -5px;<br>    bottom: -5px;<br>}</p>
-<h3 id="便捷键"><a href="#便捷键" class="headerlink" title="便捷键"></a>便捷键</h3><p>web 的一大优点是它提供了许多不同的信息访问选项。一个很少使用的属性是设置accesskey的能力，这样就可以通过键组合和accesskey设置的字母直接访问该项目(确切的键组合取决于浏览器)。但是要想知道网站上设置了哪些键并不是件容易的事下面的代码将显示这些键:focus。我不使用鼠标悬停，因为大多数时候需要accesskey的人是那些使用鼠标有困难的人。你可以将其添加为第二个选项，但要确保它不是惟一的选项。</p>
-<p>a[accesskey]:focus:after {<br>    content: “ AccessKey: “attr(accesskey);<br>}</p>
-<h2 id="诊断"><a href="#诊断" class="headerlink" title="诊断"></a>诊断</h2><p>这些选项用于帮助我们在构建过程中或在尝试修复问题时在本地识别问题。将这些内容放在我们的生产网站上会使用户产生错误。</p>
-<h3 id="没有-controls-属性的-audio"><a href="#没有-controls-属性的-audio" class="headerlink" title="没有 controls 属性的 audio"></a>没有 controls 属性的 audio</h3><p>我不经常使用audio标签，但是当我使用它时，我经常忘记包含controls属性。 结果：没有显示任何内容。 如果你在 Firefox，如果隐藏了音频元素，或者语法或其他一些问题阻止它出现（仅适用于Firefox），此代码可以帮助你解决问题：</p>
-<p>audio:not([controls]) {<br>    width: 100px;<br>    height: 20px;<br>    background-color: chartreuse;<br>    display: block;<br>}</p>
-<h3 id="没有-alt-文本"><a href="#没有-alt-文本" class="headerlink" title="没有 alt 文本"></a><strong>没有</strong> alt <strong>文本</strong></h3><p>没有 alt 文本的图像是可访问性的噩梦。只需查看页面就很难找到它们，但如果添加它们，它们就会弹出来（当页面图片加载失败时，alt文字可以更好的解释图片的作用）：</p>
-<p>img:not([alt]) {<br>    /* no alt attribute */<br>    outline: 2em solid chartreuse;<br>}<br>img[alt=””] {<br>    /* alt attribute is blank */<br>    outline: 2em solid cadetblue;<br>}</p>
-<h3 id="异步-Javascript-文件"><a href="#异步-Javascript-文件" class="headerlink" title="异步 Javascript 文件"></a>异步 Javascript 文件</h3><p>网页可以是内容管理系统和插件，框架和代码的集合，确定哪些JavaScript异步加载以及哪些不加载可以帮助你专注于提高页面性能。</p>
-<p>script[src]:not([async]) {<br>    display: block;<br>    width: 100%;<br>    height: 1em;<br>    background-color: red;<br>}<br>script:after {<br>    content: attr(src);<br>}</p>
-<h3 id="JavaScript-事件元素"><a href="#JavaScript-事件元素" class="headerlink" title="JavaScript 事件元素"></a>JavaScript 事件元素</h3><p>你可以突出显示具有JavaScript事件属性的元素，以便将它们重构到JavaScript文件中。这里我主要关注OnMouseOver属性，但是它适用于任何JavaScript事件属性。</p>
-<p>[OnMouseOver] {<br>    color: burlywood;<br>}<br>[OnMouseOver]:after {<br>    content: “JS: “attr(OnMouseOver);<br>}</p>
-<h3 id="隐藏项"><a href="#隐藏项" class="headerlink" title="隐藏项"></a>隐藏项</h3><p>如果需要查看隐藏元素或隐藏输入的位置，可以使用它们来显示</p>
-<p>[hidden], [type=”hidden”] {<br>    display: block;<br>}</p>
-<p>  文章来源：<a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2018/10/attribute-selectors-splicing-html-dna-css">https://www.smashingmagazine.com/2018/10/attribute-selectors-splicing-html-dna-css</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1600,7 +1562,7 @@ h1 &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1609,7 +1571,7 @@ h1 &#123;
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">337</span>
+        <span class="site-state-item-count">339</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

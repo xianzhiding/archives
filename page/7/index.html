@@ -178,6 +178,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/03/%E4%B8%80%E4%B8%AA%E5%BE%88%E9%85%B7%E7%9A%84chrome%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7%E7%9A%84%E5%88%97%E8%A1%A8/" class="post-title-link" itemprop="url">一些很酷的chorem开发工具的提示和技巧的列表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-03 17:45:01" itemprop="dateCreated datePublished" datetime="2019-01-03T17:45:01+08:00">2019-01-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Chrome开发工具提供了一套非常棒的工具，可以帮助您在Web平台上进行开发。以下是一些你可能还不知道的建议</p>
+<h3 id="在ELEMENTS面板中拖放"><a href="#在ELEMENTS面板中拖放" class="headerlink" title="在ELEMENTS面板中拖放"></a>在ELEMENTS面板中拖放</h3><p>在Elements面板中，您可以拖放任何HTML元素并更改其在页面上的位置 <img data-src="https://file.w3cbest.com/file/images/reference-elements.gif"></p>
+<h3 id="引用控制台中当前选择的元素"><a href="#引用控制台中当前选择的元素" class="headerlink" title="引用控制台中当前选择的元素"></a>引用控制台中当前选择的元素</h3><p>在Elements面板中选择一个节点，并在控制台中键入$0来引用它。 <img data-src="https://file.w3cbest.com/file/images/drag-and-drop.gif"></p>
+<blockquote>
+<p>提示:如果使用jQuery，可以输入$($0)来访问这个元素上的jQuery API。</p>
+</blockquote>
+<h3 id="使用控制台中最后一个操作的值"><a href="#使用控制台中最后一个操作的值" class="headerlink" title="使用控制台中最后一个操作的值"></a>使用控制台中最后一个操作的值</h3><p>使用$_引用在控制台中执行的前一个操作的返回值 <img data-src="https://file.w3cbest.com/file/images/use-last-result.gif"></p>
+<h3 id="添加CSS并编辑元素状态"><a href="#添加CSS并编辑元素状态" class="headerlink" title="添加CSS并编辑元素状态"></a>添加CSS并编辑元素状态</h3><p>在元素面板中有两个超级有用的按钮。 第一个选项允许您添加一个新的CSS属性，使用您想要的任何选择器，但要预先填充当前选定的元素: <img data-src="https://file.w3cbest.com/file/images/add-css.gif"> 第二个选项允许您为所选元素触发一个状态，这样您就可以看到当它处于活动状态、悬停状态、焦点状态时应用的样式。 <img data-src="https://file.w3cbest.com/file/images/element-state.png"></p>
+<h3 id="找到定义CSS属性的位置"><a href="#找到定义CSS属性的位置" class="headerlink" title="找到定义CSS属性的位置"></a>找到定义CSS属性的位置</h3><p>在元素面板中的CSS属性，DevTools将指向定义该属性的地方，即源面板</p>
+<p><img data-src="https://file.w3cbest.com/file/images/find-where-css-defined.gif">  </p>
+<h3 id="保存并归档修改后的CSS"><a href="#保存并归档修改后的CSS" class="headerlink" title="保存并归档修改后的CSS"></a>保存并归档修改后的CSS</h3><p>单击您编辑的CSS文件的名称。检查器将它打开到Sources窗格中，然后您可以在应用的实时编辑中保存它。 这个技巧不适用于使用+或元素添加的新选择器。样式属性，但仅适用于已修改的现有属性。 <img data-src="https://file.w3cbest.com/file/images/save-modified-css.gif"></p>
+<h3 id="屏幕截图一个元素"><a href="#屏幕截图一个元素" class="headerlink" title="屏幕截图一个元素"></a>屏幕截图一个元素</h3><p>选择一个元素并按下cmd-shift-p(或在Windows中按ctrl-shift-p)打开命令菜单，然后选择Capture node截图 <img data-src="https://file.w3cbest.com/file/images/screenshot-node.gif"></p>
+<h3 id="使用CSS选择器查找元素"><a href="#使用CSS选择器查找元素" class="headerlink" title="使用CSS选择器查找元素"></a>使用CSS选择器查找元素</h3><p>按下cmd-f(在Windows中ctrl-f)将在Elements面板中打开搜索框。 你可以在里面输入任何字符串来匹配源代码，或者你也可以使用CSS选择器让Chrome为你生成一个图像: <img data-src="https://file.w3cbest.com/file/images/find-elements-css-selectors.gif"></p>
+<h3 id="在控制台中SHIFT-ENTER"><a href="#在控制台中SHIFT-ENTER" class="headerlink" title="在控制台中SHIFT-ENTER"></a>在控制台中SHIFT-ENTER</h3><p>要在控制台中编写跨越多行代码的命令，请按shift-enter。 一旦你准备好了，按下回车在脚本的最后，以执行它: <img data-src="https://file.w3cbest.com/file/images/multiple-lines-commands.gif"></p>
+<h3 id="清除控制台"><a href="#清除控制台" class="headerlink" title="清除控制台"></a>清除控制台</h3><p>您可以使用控制台左上角的clear按钮清除控制台，或者按ctrl-l或cmd-k。</p>
+<h3 id="GO-TO…"><a href="#GO-TO…" class="headerlink" title="GO TO…"></a>GO TO…</h3><p>在资源面板:</p>
+<ul>
+<li>  显示页面加载的所有文件。</li>
+<li>  显示当前文件中的符号(属性、函数、类)。</li>
+<li>  ctrl-g转到特定的行。</li>
+</ul>
+<p><img data-src="https://file.w3cbest.com/file/images/files-list.png"></p>
+<h3 id="监视表达式"><a href="#监视表达式" class="headerlink" title="监视表达式"></a>监视表达式</h3><p>在调试过程中，您将多次检查变量名或表达式，而不是一次又一次地编写变量名或表达式，而是将其添加到监视表达式列表中。 <img data-src="https://file.w3cbest.com/file/images/watch-expressions.gif"></p>
+<h3 id="XHR-获取调试"><a href="#XHR-获取调试" class="headerlink" title="XHR /获取调试"></a>XHR /获取调试</h3><p>从调试器中打开XHR/Fetch断点面板。 您可以将它设置为在发送XHR / Fetch调用时断开，或者仅在特定的调用上: <img data-src="https://file.w3cbest.com/file/images/xhr-fetch-breakpoints.png"></p>
+<h3 id="对DOM修改的调试"><a href="#对DOM修改的调试" class="headerlink" title="对DOM修改的调试"></a>对DOM修改的调试</h3><p>右键单击元素并在子树修改上启用Break:每当脚本遍历该元素的子元素并修改它们时，调试器都会自动停止，以便让您检查发生了什么。 <img data-src="https://file.w3cbest.com/file/images/break-subtree-modifications.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/01/03/%E4%BB%8B%E7%BB%8Dcss%E5%BD%A2%E7%8A%B6-css-shapes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1118,108 +1213,6 @@ main &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/" class="post-title-link" itemprop="url">background-attachment 背景图片固定文字滚动</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-08 07:00:00" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:00+08:00">2018-12-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>关于background-attachment 也不算是一个比较生僻的属性，基本上在做背景图片固定特别是全屏页面时用时就会用到。</p>
-<h3 id="概述节"><a href="#概述节" class="headerlink" title="概述节"></a>概述节</h3><p>如果指定了 background-image ，那么 background-attachment 决定背景是在视口中固定的还是随包含它的区块滚动的。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>background-attachment: scroll;<br>background-attachment: fixed;<br>background-attachment: local;<br>background-attachment: inherit;</p>
-<h3 id="取值节"><a href="#取值节" class="headerlink" title="取值节"></a>取值节</h3><h4 id="fixed"><a href="#fixed" class="headerlink" title="fixed"></a>fixed</h4><p>此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。</p>
-<h4 id="local"><a href="#local" class="headerlink" title="local"></a>local</h4><p>此关键字表示背景相对于元素的内容固定。如果一个元素拥有滚动机制，背景将会随着元素的内容滚动，且背景的绘制区域和定位区域是相对于可滚动的区域而不是包含他们的边框。</p>
-<h4 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h4><p>此关键字表示背景相对于元素本身固定， 而不是随着它的内容滚动（对元素边框是有效的）。</p>
-<blockquote>
-<p>注意： fixed是相对视口固定，而scroll是相对元素本身固定，它和 position 定位的 absolute 和 fixed有点像。</p>
-</blockquote>
-<p> </p>
-<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><p>section {<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;">https://picjumbo.com/wp-content/uploads/christmas-backgrounds-2210x1473.jpg&quot;</a>);<br>background-attachment: fixed;<br>}</p>
-<section>
-<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
-<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
-<p>子曰：“巧言令色，鲜矣仁！”</p>
-<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
-<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
-<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
-</section>
-
-<p> </p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/qQzQaP/">单背景支持</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h3 id="多背景图支持"><a href="#多背景图支持" class="headerlink" title="多背景图支持"></a>多背景图支持</h3><p>此属性支持多张背景图片。你可以用逗号分隔来为每一张背景图片指定不同的<attachment>。每一张背景图片顺序对应相应的attachment 类型。</p>
-<p>section{<br>background-image: url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;">https://picjumbo.com/wp-content/uploads/gingerbread-decorating-1080x1620.jpg&quot;</a>), url(“<a target="_blank" rel="noopener" href="https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;">https://picjumbo.com/wp-content/uploads/woman-working-in-modern-office-space-2210x3315.jpg&quot;</a>);<br>background-attachment: fixed, scroll;<br>background-repeat: no-repeat, repeat-y;<br>}</p>
-<section>
-<p>子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”</p>
-<p>有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为仁之本与！”</p>
-<p>子曰：“巧言令色，鲜矣仁！”</p>
-<p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”</p>
-<p>子曰：“道千乘之国，敬事而信，节用而爱人，使民以时。”</p>
-<p>子曰：“弟子入则孝，出则弟，谨而信，泛爱众，而亲仁，行有余力，则以学文。”</p>
-</section>
-
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding/pen/vQqQga/">多背景图支持节</a> by xianzhiding (<a target="_blank" rel="noopener" href="https://codepen.io/xianzhiding">@xianzhiding</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<h3 id="使用-fixed-实现多模块背景固定效果"><a href="#使用-fixed-实现多模块背景固定效果" class="headerlink" title="使用 fixed 实现多模块背景固定效果"></a>使用 fixed 实现多模块背景固定效果</h3><p>fixed 此关键字表示背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。也就是说，背景图从一开始就已经被固定死在初始所在的位置。  </p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zMVMdw/">视差效果</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>)on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1289,7 +1282,7 @@ main &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1298,7 +1291,7 @@ main &#123;
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">337</span>
+        <span class="site-state-item-count">339</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

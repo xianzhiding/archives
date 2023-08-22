@@ -178,6 +178,140 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/04/echarts-%E4%B8%BA%E9%9B%B7%E8%BE%BE%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%9E%81%E5%9D%90%E6%A0%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/04/echarts-%E4%B8%BA%E9%9B%B7%E8%BE%BE%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%9E%81%E5%9D%90%E6%A0%87/" class="post-title-link" itemprop="url">echarts 为雷达图设置极坐标</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-04 16:45:33" itemprop="dateCreated datePublished" datetime="2019-07-04T16:45:33+08:00">2019-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ECharts 雷达图可以使用 <code>series[i]-radar</code>设置 ，雷达图主要用于表现多变量的数据，例如玩”和平精英”战况的各个属性分析，雷达图依赖<code>radar</code>组件。 关于雷达图其他的一些属性自行去查看官网，我们在这里讲的是在雷达图上设置极坐标。 首先要了解极坐标系，因为实现极坐标需要一个系列三个属性完成，分别是<code>polar:&#123;&#125;</code>极坐标系、<code>radiusAxis:&#123;&#125;</code>极坐标系的径向轴、<code>angleAxis:&#123;&#125;</code>极坐标系的角度轴完成，<a target="_blank" rel="noopener" href="https://www.echartsjs.com/gallery/editor.html?c=doc-example/polar-start-angle">查看示例</a> 如何把极坐标系和雷达图合并呢，下面我们就来说说如何设置，还是需要用到<code>radar</code>组件，<code>radar</code>组件下面有一个<code>indicator</code>属性， 它是雷达图的指示器，用来指定雷达图中的多个变量（维度）。 然后我们它的最大值<code>radar.indicator[i].max</code>和最小值<code>radar.indicator[i].min</code>设为统一的值，要注意它的这里的最大值要大于或等于你的数据的最大值，最小值要小于或等于你的数据的最小值。 下面是用雷达图表现的示例。</p>
+<p class="codepen" data-height="460" data-theme-id="0" data-default-tab="result" data-user="w3cbest" data-slug-hash="zVLxKV" style="height: 456px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="echarts 雷达图设置极坐标">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/zVLxKV/">
+  echarts 雷达图设置极坐标</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+<pre class="language-none"><code class="language-none">var max &#x3D; 4, min &#x3D; -4;
+option &#x3D; &#123;
+    ...
+    radar: &#123;
+        ...
+        indicator: [&#123;
+                name: &#39;销售&#39;,
+                max: max,
+                min: min
+            &#125;,
+            &#123;
+                name: &#39;管理&#39;,
+                max: max,
+                min: min
+            &#125;,
+            &#123;
+                name: &#39;技术&#39;,
+                max: max,
+                min: min
+            &#125;
+        ],
+        splitArea: &#123;
+            show: false
+        &#125;,
+        splitLine: &#123;
+            show: false
+        &#125;
+    &#125;,
+    polar: &#123;&#125;,
+    angleAxis: &#123;
+        min: 0,
+        max: 360,
+        interval: 5,
+        clockwise: false,
+        axisTick: &#123;
+            show: false
+        &#125;,
+        axisLabel: &#123;
+            show: false
+        &#125;,
+        axisLine: &#123;
+            show: false
+        &#125;,
+        splitLine: &#123;
+            show: false
+        &#125;
+    &#125;,
+    radiusAxis: &#123;
+        min: min,
+        max: max,
+        interval: 2,
+        splitArea: &#123;
+            show: true
+        &#125;
+    &#125;,
+    series: [&#123;
+        ...
+        data: [&#123;
+            value: [4, -4, 1]
+        &#125;]
+    &#125;]
+&#125;;</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/04/echarts-%E9%9B%B7%E8%BE%BE%E5%9B%BE%E9%81%87%E5%88%B0%E8%B4%9F%E5%80%BC%E4%B8%AD%E5%BF%83%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E8%AE%BE%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1685,116 +1819,6 @@ wait(dtd);</code></pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/02/for-in%E4%B8%8Efor-of%E5%BE%AA%E7%8E%AF%E5%AF%B9%E6%AF%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/02/for-in%E4%B8%8Efor-of%E5%BE%AA%E7%8E%AF%E5%AF%B9%E6%AF%94/" class="post-title-link" itemprop="url">for..in与for..of循环对比</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-02 08:00:06" itemprop="dateCreated datePublished" datetime="2019-05-02T08:00:06+08:00">2019-05-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Javascript中最基本的迭代方法是<code>for</code>循环。它需要三个表达式：变量声明、在每次迭代之前要计算的表达式以及在每次迭代结束时要计算的表达式。例如，这个<code>for</code>循环将<code>console.log</code>数组中的每个项。</p>
-<p>const array = [‘a’, ‘b’, ‘c’, ‘d’];<br>for (let i = 0; i &lt; array.length; i++) {<br>console.log(array[i]);<br>}<br>// Result: a, b, c, d</p>
-<p>除了<code>for</code>循环之外，我们还可以使用另外两种<code>for</code>迭代方法：<code>for..in</code>和<code>for..of</code>。</p>
-<h2 id="for-in"><a href="#for-in" class="headerlink" title="for..in"></a>for..in</h2><p><code>for..in</code>是一种迭代对象的“可枚举”属性的方法。因此，它适用于所有具有这些属性的对象(不仅是<code>object()</code>)。 可枚举属性定义为可枚举值为<code>true</code>的对象的属性。从本质上讲，如果一个属性是可枚举的，它就是“可枚举的”。我们可以通过调用<code>property.Enumerable</code>来检查属性是否可枚举，它将返回<code>true</code>或<code>false</code>。 我们使用<code>for..in</code>循环与以下语法一起使用</p>
-<p>for (variable in enumerable) {<br>// do stuff<br>}</p>
-<p>例如，要循环遍历<code>console.log</code>此<code>Object</code>中的所有值，我们可以执行以下操作 -</p>
-<p>const obj = {<br>a: 1,<br>b: 2,<br>c: 3,<br>d: 4<br>}<br>for (const key in obj) {<br>console.log( obj[key] )<br>}</p>
-<p><code>for…in</code>循环也将迭代继承的属性，只要它们是可枚举的属性。<code>for…in</code>迭代以任意顺序发生。因此，如果需要按照定义的顺序发生，则不应使用它。</p>
-<h3 id="for-in-和-Object"><a href="#for-in-和-Object" class="headerlink" title="for..in 和 Object"></a>for..in 和 Object</h3><p><code>for..in</code>方法为我们提供了循环对象键和值的最简单方法，因为对象不能访问数组所使用的<code>forEach</code>方法。</p>
-<h3 id="for-in-和-Array"><a href="#for-in-和-Array" class="headerlink" title="for..in 和 Array"></a>for..in 和 Array</h3><p>数组中值的“键”是数字索引。因此，这些索引本质上只是可枚举的属性，就像<code>Object</code>键一样，只是它们是整数而不是字符串。 这意味着我们可以通过使用<code>for..in</code>来检索数组中的索引来循环数组中的所有值。</p>
-<p>const array = [‘a’, ‘b’, ‘c’, ‘d’];</p>
-<p>for (const index in array) {<br>console.log(array[index])<br>}</p>
-<p>// Result: a, b, c, d</p>
-<p>但是，一般建议不要将<code>for..in</code>与数组一起使用，特别是因为不能保证迭代按顺序进行，这通常对数组很重要。</p>
-<h3 id="for-in-和-String"><a href="#for-in-和-String" class="headerlink" title="for..in 和 String"></a>for..in 和 String</h3><p>字符串中的每个字符都有一个索引。因此，与<code>Array</code>类似，索引是可枚举的属性，恰好是整数。</p>
-<p>const string = ‘Ire Aderinokun’;</p>
-<p>for (const index in string) {<br>console.log(string[index])<br>}</p>
-<p>// Result: I, r, e, , A, d, e, r, i, n, o, k, u, n</p>
-<h2 id="for-of"><a href="#for-of" class="headerlink" title="for..of"></a>for..of</h2><p><code>for..of</code>是在ES2015中引入的一种方法，用于迭代“iterable collections”。这些对象具有<code>[symbol.iterator]</code>属性。 <code>[symbol.iterator]</code>属性允许我们通过调用<code>[symbol.iterator]().next()</code>方法来检索集合中的下一项，从而手动迭代集合。</p>
-<p>const array = [‘a’,’b’,’c’, ‘d’];<br>const iterator = array[Symbol.iterator]();<br>console.log( iterator.next().value )<br>console.log( iterator.next().value )<br>console.log( iterator.next().value )<br>console.log( iterator.next().value )</p>
-<p>// Result: a, b, c, d</p>
-<p><code>for..of</code>语法实质上是围绕<code>[symbol.iterator]</code>的包装，以创建循环。它使用以下语法-</p>
-<p>for (variable of iterable) {<br>// do stuff<br>}</p>
-<h3 id="for-of-和-Object"><a href="#for-of-和-Object" class="headerlink" title="for..of 和 Object"></a>for..of 和 Object</h3><p><code>for..of</code>循环不适用于对象，因为他们不是“迭代”，因此不具有<code>[Symbol.iterator]</code>属性。</p>
-<h3 id="for-of-和-Array-String"><a href="#for-of-和-Array-String" class="headerlink" title="for..of 和 Array/String"></a>for..of 和 Array/String</h3><p><code>for..of</code>循环使用数组和字符串的效果很好，因为它们是可迭代。此这种方法是一种更可靠的循环遍历数组的方法。</p>
-<p>const array = [‘a’, ‘b’, ‘c’, ‘d’];<br>for (const item of array) {<br>console.log(item)<br>}<br>// Result: a, b, c, d</p>
-<p>const string = ‘Ire Aderinokun’;<br>for (const character of string) {<br>console.log(character)<br>}<br>// Result: I, r, e, , A, d, e, r, i, n, o, k, u, n</p>
-<h3 id="for-of-和-NodeLists"><a href="#for-of-和-NodeLists" class="headerlink" title="for..of 和 NodeLists"></a>for..of 和 NodeLists</h3><p>最后，另一个非常有用的案例<code>for..of</code>是迭代<code>NodeLists</code>。当我们在文档中查询一组元素时，返回的是<code>NodeList</code>，而不是<code>Array</code>。这意味着我们不能使用<code>forEach</code>等数组方法对列表进行迭代。 为了解决这个问题，我们可以使用<code>Array.from()</code>或者使用<code>for..of</code>循环将其转换为数组，这不仅仅适用于数组。</p>
-<p>const elements = document.querySelectorAll(‘.foo’);</p>
-<p>for (const element of elements) {<br>    element.addEventListener(‘click’, doSomething);<br>}</p>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p><code>for..in</code></p>
-<p><code>for..of</code></p>
-<p>适用于</p>
-<p>可枚举属性</p>
-<p>无法检索的集合</p>
-<p>与Object一起使用?</p>
-<p>Yes</p>
-<p>No</p>
-<p>与Array一起使用?</p>
-<p>Yes, 不建议</p>
-<p>Yes</p>
-<p>与String一起使用?</p>
-<p>Yes, 不建议</p>
-<p>Yes</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1864,7 +1888,7 @@ wait(dtd);</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1873,7 +1897,7 @@ wait(dtd);</code></pre>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">337</span>
+        <span class="site-state-item-count">339</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
