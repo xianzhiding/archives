@@ -750,8 +750,11 @@ console.log(getCode()); &#x2F;&#x2F; &quot;0]Eal(eh&amp;2&quot;</code></pre>
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>思路：</p>
-<p>1、当页面第一次加载先判断本地储存中有没有旧数据  //储存数据格式{time:Date.now(), data}<br>2、没有旧数据直接发送请求，并将数据储存本地<br>3、有旧数据并且数据没有过期，就使用本地储存的旧数据</p>
+          <h2 id="思路：加载列表数据切数据不进行额外操作，做数据优化"><a href="#思路：加载列表数据切数据不进行额外操作，做数据优化" class="headerlink" title="思路：加载列表数据切数据不进行额外操作，做数据优化"></a>思路：加载列表数据切数据不进行额外操作，做数据优化</h2><ul>
+<li>当页面第一次加载先判断本地储存中有没有旧数据  //储存数据格式{time:Date.now(), data}</li>
+<li>没有旧数据直接发送请求，并将数据储存本地</li>
+<li>有旧数据并且数据没有过期，就使用本地储存的旧数据</li>
+</ul>
 <pre class="language-none"><code class="language-none">init()&#123;
     &lt;!-- 1,获取本地数据 --&gt;
     const getData &#x3D; sessionStorage.getItem(&#39;key&#39;);
