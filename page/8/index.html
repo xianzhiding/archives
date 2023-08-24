@@ -178,6 +178,288 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/09/CSS%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E5%BE%88%E7%AE%80%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/09/CSS%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E5%BE%88%E7%AE%80%E5%8D%95/" class="post-title-link" itemprop="url">CSS 垂直居中方法很简单</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-09 07:00:00" itemprop="dateCreated datePublished" datetime="2018-12-09T07:00:00+08:00">2018-12-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在 CSS 中对元素进行水平居中是非常简单的：如果它是一个行内元素，就对它的父元素应用 text-align: center；如果它是一个块级元素，就对它自身应用 margin: auto。然而如果要对一个元素进行垂直居中，可能光是想想就令人头皮发麻了。 多年以来，垂直居中已经成为了 CSS 领域的圣杯，它同样也是前端开发圈内广为流传的笑话。原因在于它同时具备以下几条特征。</p>
+<ul>
+<li>  它是极其常见的需求。</li>
+<li>  从理论上来看，它似乎极其简单。</li>
+<li>  在实践中，它往往难如登天，当涉及尺寸不固定的元素时尤其如此。</li>
+</ul>
+<p>长久以来，为了解决这一绝世难题，前端开发者们殚精竭虑，琢磨出了各种解决方法，大多数并不实用。在本篇攻略中，我们将探索现代 CSS 的强大威力，以全新的思路去攻克各种场景下的垂直居中难题。请注意，有几种技巧十分流行，但在这里并不会深入探讨，原因如下。</p>
+<ul>
+<li>  表格布局法（利用表格的显示模式）需要用到一些冗余的 HTML 元素，因此这里不多介绍。</li>
+<li>  行内块法也不作讨论，因为在我看来这种方法 hack 的味道很浓。</li>
+</ul>
+<p>如果你有兴趣，可以去看看 Chris Coyier 写的“不为人知的居中方法”（<a target="_blank" rel="noopener" href="http://css-tricks.com/centering-in-the-unknown%EF%BC%89%E3%80%82%E8%BF%99%E7%AF%87%E5%87%BA%E8%89%B2%E7%9A%84%E6%96%87%E7%AB%A0%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%BF%B0%E4%BA%86%E8%BF%99%E4%B8%A4%E7%A7%8D%E6%8A%80%E5%B7%A7%E3%80%82">http://css-tricks.com/centering-in-the-unknown）。这篇出色的文章详细讲述了这两种技巧。</a> 除非特别注明，我们将一直使用如下所示的结构代码，并直接插入<body> 元素中（但实际上我们将要探索的这些技巧是与容器无关的）：</p>
+<main>
+<h1>我居中了吗?</h1>
+</main>
+
+<p>然后再用一些基本的 CSS 来设置背景、内边距等样式，运行一下就可以看到效果了。我们将以此作为起点。  </p>
+<h2 id="基于绝对定位的解决方案"><a href="#基于绝对定位的解决方案" class="headerlink" title="基于绝对定位的解决方案"></a>基于绝对定位的解决方案</h2><p>我们先来看一个早期的垂直居中方法，它要求元素具有固定的宽度和高度：</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -3em; &#x2F;* 6&#x2F;2 &#x3D; 3 *&#x2F;
+  margin-left: -9em; &#x2F;* 18&#x2F;2 &#x3D; 9 *&#x2F;
+  width: 18em;
+  height: 6em;
+&#125;</code></pre>
+
+<p>这段代码在本质上做了这样几件事情：先把这个元素的左上角放置在视口（或最近的、具有定位属性的祖先元素）的正中心，然后再利用负外边距把它向左、向上移动（移动距离相当于它自身宽高的一半），从而把元素的正中心放置在视口的正中心。借助强大的 calc() 函数，这段代码还可以省掉两行声明：</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  position: absolute;
+  top: calc(50% - 3em);
+  left: calc(50% - 9em);
+  width: 18em;
+  height: 6em;
+&#125;</code></pre>
+
+<p>显然，这个方法最大的局限在于它要求元素的宽高是固定的。在通常情况下，对那些需要居中的元素来说，其尺寸往往是由其内容来决定的。如果能找到一个属性的百分比值以元素自身的宽高作为解析基准，那我们的难题就迎刃而解了！遗憾的是，对于绝大多数 CSS 属性（包括 margin）来说，百分比都是以其父元素的尺寸为基准进行解析的。 CSS 领域有一个很常见的现象，真正的解决方案往往来自于我们最意想不到的地方。在这个例子中，答案来自于 CSS 变形属性。当我们在translate() 变形函数中使用百分比值时，是以这个元素自身的宽度和高度为基准进行换算和移动的，而这正是我们所需要的。接下来，只要换用基于百分比的 CSS 变形来对元素进行偏移，就不需要在偏移量中把元素的尺寸写死了。这样我们就可以彻底解除对固定尺寸的依赖：</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+&#125;</code></pre>
+
+<p>你可以在下面demo中看到结果：这个容器已经完美居中了，完全满足我们的期望。 当然，没有任何技巧是十全十美的，上面这个方法也有一些需要注意的地方。</p>
+<ul>
+<li>  我们有时不能选用绝对定位，因为它对整个布局的影响太过强烈。</li>
+<li>  如果需要居中的元素已经在高度上超过了视口，那它的顶部会被视口裁切掉。有一些办法可以绕过这个问题，但 hack味道过浓。</li>
+<li>  在某些浏览器中，这个方法可能会导致元素的显示有一些模糊，因为元素可能被放置在半个像素上。这个问题可以用 transformstyle:preserve-3d 来修复，不过这个修复手段也可以认为是一个hack，而且很难保证它在未来不会出问题。</li>
+</ul>
+<iframe id="cp_embed_QJXewK" src="//codepen.io/xianzhiding/embed/QJXewK?height=300&theme-id=dark&slug-hash=QJXewK&default-tab=[css,result&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
+<blockquote>
+<p>实践证明，想要找到最先提出这个实用技巧的人确实不容易，不过所能挖掘到的最早起源似乎是 Stack Overflow（<a target="_blank" rel="noopener" href="http://stackoverflow.com)的用户“charlie”(http//stackoverflow.com/users/479836/charlie%EF%BC%89%EF%BC%8C%E4%BB%96%E5%9C%A82013%E5%B9%B44%E6%9C%8816%E6%97%A5%E5%9B%9E%E7%AD%94%E4%BA%86%E2%80%9C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8">http://stackoverflow.com）的用户“Charlie”（http://stackoverflow.com/users/479836/charlie），他在2013年4月16日回答了“如何使用</a> CSS3 实现垂直对齐”（<a target="_blank" rel="noopener" href="http://stackoverflow.com/a/16026893/90826%EF%BC%89%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82">http://stackoverflow.com/a/16026893/90826）这个问题。</a></p>
+</blockquote>
+<h2 id="基于视口单位的解决方案"><a href="#基于视口单位的解决方案" class="headerlink" title="基于视口单位的解决方案"></a>基于视口单位的解决方案</h2><p>假设我们不想使用绝对定位，仍然可以采用 translate() 技巧来把这个元素以其自身宽高的一半为距离进行移动；但是在缺少 left 和 top 的情况下，如何把这个元素的左上角放置在容器的正中心呢？ 我们的第一反应很可能是用 margin 属性的百分比值来实现，就像这样：</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  width: 18em;
+  padding: 1em 1.5em;
+  margin: 50% auto 0;
+  transform: translateY(-50%);
+&#125;</code></pre>
+
+<p>不过，这段代码会产生十分离谱的结果。原因在于margin 的百分比值是以父元素的宽度作为解析基准的。没错，即使对于margin-top 和 margin-bottom 来说也是这样！ 不过幸运的是，如果只是想把元素相对于视口进行居中，仍然是有希望 的。CSS 值 与 单 位（ 第 三 版 ）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-values-3/#viewportrelative-lengths%EF%BC%89%E5%AE%9A%E4%B9%89%E4%BA%86%E4%B8%80%E5%A5%97%E6%96%B0%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E7%A7%B0%E4%B8%BA%E8%A7%86%E5%8F%A3%E7%9B%B8%E5%85%B3%E7%9A%84%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D%E3%80%82">http://w3.org/TR/css-values-3/#viewportrelative-lengths）定义了一套新的单位，称为视口相关的长度单位。</a></p>
+<ul>
+<li>  vw 是与视口宽度相关的。与常人的直觉不符的是，1vw 实际上表示视口宽度的 1%，而不是 100%。</li>
+<li>  与 vw 类似，1vh 表示视口高度的 1%。</li>
+<li>  当视口宽度小于高度时，1vmin 等于 1vw，否则等于 1vh。</li>
+<li>  当视口宽度大于高度时，1vmax 等于 1vw，否则等于 1vh。</li>
+</ul>
+<p>在我们的这个例子中，适用于外边距的是 vh 单位：</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  width: 18em;
+  padding: 1em 1.5em;
+  margin: 50vh auto 0;
+  transform: translateY(-50%);
+&#125;</code></pre>
+
+<blockquote>
+<p>“使用视口相关的长度单位，我们还可以生成一个正好铺满视口的区块，无需脚本的辅助。更多细节请参阅“用一行 CSS 实现全屏区块”（<a target="_blank" rel="noopener" href="https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd%EF%BC%89%E3%80%82%E2%80%9D">https://medium.com/@ckor/make-full-screensections-with-1-line-of-css-b82227c75cbd）。”</a></p>
+</blockquote>
+<p>在下面DEMO中可以看到，其效果堪称完美。当然，这个技巧的实用性是相当有限的，因为它只适用于在视口中居中的场景。</p>
+<iframe id="cp_embed_BGgEYQ" src="//codepen.io/xianzhiding/embed/BGgEYQ?height=300&theme-id=dark&slug-hash=BGgEYQ&default-tab=[css,result&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<h2 id="基于-Flexbox-的解决方案"><a href="#基于-Flexbox-的解决方案" class="headerlink" title="基于 Flexbox 的解决方案"></a>基于 Flexbox 的解决方案</h2><p>这是毋庸置疑的最佳解决方案，因为 Flexbox（伸缩盒）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox%EF%BC%89%E6%98%AF%E4%B8%93%E9%97%A8%E9%92%88%E5%AF%B9%E8%BF%99%E7%B1%BB%E9%9C%80%E6%B1%82%E6%89%80%E8%AE%BE%E8%AE%A1%E7%9A%84%E3%80%82%E6%88%91%E4%BB%AC%E4%B9%8B%E6%89%80%E4%BB%A5%E8%A6%81%E8%AE%A8%E8%AE%BA%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88%EF%BC%8C%E4%BB%85%E4%BB%85%E6%98%AF%E5%9B%A0%E4%B8%BA%E9%82%A3%E4%BA%9B%E6%96%B9%E6%A1%88%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%94%AF%E6%8C%81%E7%A8%8B%E5%BA%A6%E4%B8%8A%E7%A8%8D%E5%BE%AE%E5%A5%BD%E4%B8%80%E4%BA%9B%E8%80%8C%E5%B7%B2%E3%80%82%E5%85%B6%E5%AE%9E%E7%9B%AE%E5%89%8D%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9">http://w3.org/TR/css-flexbox）是专门针对这类需求所设计的。我们之所以要讨论其他方案，仅仅是因为那些方案在浏览器的支持程度上稍微好一些而已。其实目前现代浏览器对</a> Flexbox 的支持度已经相当不错了。 我们只需写两行声明即可：先给这个待居中元素的父元素设置 display:flex（在这个例子中是 <body> 元素），再给这个元素自身设置我们再熟悉不过的 margin: auto（在这个例子中是 <main> 元素）：</p>
+<pre class="language-none"><code class="language-none">body &#123;
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+&#125;
+main &#123;
+  margin: auto;
+&#125;</code></pre>
+
+<p>请注意，当我们使用 Flexbox 时，margin: auto 不仅在水平方向上将元素居中，垂直方向上也是如此。还有一点，我们甚至不需要指定任何宽度（当然，如果需要的话，也是可以指定的）：这个居中元素分配到的宽度等于 maxcontent。（还记得“自适应内部元素”中提到的那些内部尺寸关键字吗？） 如果浏览器不支持 Flexbox，页面渲染结果看起来就跟我们的开篇代码是一样的了（如果设置了宽度的话）。虽然没有垂直居中效果，但也是完全可以接受的。 Flexbox 的另一个好处在于，它还可以将匿名容器（即没有被标签包裹的文本节点）垂直居中。举个例子，假设我们的结构代码是：</p>
+<main>我居中了吗?</main>
+
+<p>我们先给这个 main 元素指定一个固定的尺寸，然后借助 Flexbox 规范所引入的 align-items 和 justify-content 属性，我们可以让它内部的文本也实现居中（参见图 7-22）：</p>
+<pre class="language-none"><code class="language-none">main &#123;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18em;
+  height: 10em;
+&#125;</code></pre>
+
+<iframe id="cp_embed_RqzOZN" src="//codepen.io/xianzhiding/embed/RqzOZN?height=300&theme-id=dark&slug-hash=RqzOZN&default-tab=[css,result&editable=true" scrolling="no" frameborder="no" height="300" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
+<blockquote>
+<p>根据盒对齐模型（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css-align-3%EF%BC%89%E7%9A%84%E8%AE%A1%E5%88%92%EF%BC%8C%E5%9C%A8%E6%9C%AA%E6%9D%A5%EF%BC%8C%E5%AF%B9%E4%BA%8E%E7%AE%80%E5%8D%95%E7%9A%84%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%9C%80%E6%B1%82%EF%BC%8C%E6%88%91%E4%BB%AC%E5%AE%8C%E5%85%A8%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8A%A8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%9A%84%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F%E4%BA%86%E3%80%82%E5%9B%A0%E4%B8%BA%E5%8F%AA%E9%9C%80%E8%A6%81%E4%B8%8B%E9%9D%A2%E8%BF%99%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%90%9E%E5%AE%9A%EF%BC%9A">http://w3.org/TR/css-align-3）的计划，在未来，对于简单的垂直居中需求，我们完全不需要动用特殊的布局模式了。因为只需要下面这行代码就可以搞定：</a> align-self: center; 不管这个元素上还应用了其他什么属性，这样写就够了。这听起来可能如美梦一般令人难以置信，但或许你手边的浏览器很快就会让它成为现实！</p>
+</blockquote>
+<p>相关规范</p>
+<ul>
+<li>  CSS 变形 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-transforms">http://w3.org/TR/css-transforms</a></li>
+<li>  CSS 值与单位 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-values">http://w3.org/TR/css-values</a></li>
+<li>  CSS 伸缩盒布局模型 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-flexbox">http://w3.org/TR/css-flexbox</a></li>
+<li>  CSS 盒对齐模型 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-align">http://w3.org/TR/css-align</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/08/javascript%E4%B8%ADarray%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">JavaScript中Array方法的正确打开方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-08 07:00:26" itemprop="dateCreated datePublished" datetime="2018-12-08T07:00:26+08:00">2018-12-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>在过去的几个月，我发现我的拉取请求中存在四个完全相同的 JavaScript 错误。于是我写了这篇文章，总结了如何在 JavaScript 中正确使用地使用 Array 的方法！</p>
+</blockquote>
+<h3 id="用-Array-includes-代替-Array-indexOf"><a href="#用-Array-includes-代替-Array-indexOf" class="headerlink" title="用 Array.includes 代替 Array.indexOf"></a>用 <code>Array.includes</code> 代替 <code>Array.indexOf</code></h3><p>“如果你要在数组中查找元素，请使用 Array.indexOf”。我记得在学习 JavaScript 的时候，在教材中读到这样的一句话。毫无疑问，这句话是真的！ MDN 文档写道，<code>Array.indexOf</code> 将“返回第一次出现给定元素的索引”。因此，如果我们稍后要在代码中使用这个返回的索引，那么使用 <code>Array.indexOf</code> 找到索引就对了。 但是，如果我们只想知道数组是否包含某个值，该怎么办？这似乎是一个是与否的问题，或者说是一个布尔值问题。对于这种情况，我建议使用返回布尔值的 <code>Array.includes</code>。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>‘ironman’,<br>‘black_widow’,<br>‘hulk’,<br>‘captain_america’,<br>‘hulk’,<br>‘thor’,<br>];</p>
+<p>console.log(characters.indexOf(‘hulk’));<br>// 2<br>console.log(characters.indexOf(‘batman’));<br>// -1</p>
+<p>console.log(characters.includes(‘hulk’));<br>// true<br>console.log(characters.includes(‘batman’));<br>// false</p>
+<h3 id="使用-Array-find-而不是-Array-filter"><a href="#使用-Array-find-而不是-Array-filter" class="headerlink" title="使用 Array.find 而不是 Array.filter"></a>使用 <code>Array.find</code> 而不是 <code>Array.filter</code></h3><p><code>Array.filter</code> 是一个非常有用的方法。它接受一个回调函数作为参数，基于一个包含所有元素的数组创建出一个新的数组。正如它的名字一样，我们使用这个方法来过滤元素，获得更短的数组。 但是，如果回调函数只能返回一个元素，那么我就不推荐使用这个方法，例如使用回调函数来过滤唯一 ID。在这种情况下，<code>Array.includes</code> 将返回一个只包含一个元素的新数组。我们的意图可能是通过查找特定的 ID 找到数组中包含的唯一值。 我们来看看这个方法的性能。要返回与回调函数匹配的所有元素，<code>Array.filter</code> 必须遍历整个数组。此外，我们假设有数百个元素可以满足回调参数，那么过滤后的数组会非常大。 为了避免这种情况，我建议使用 <code>Array.find</code>。它需要一个像 <code>Array.filter</code> 一样的回调函数作为参数，并返回满足回调函数的第一个元素的值。此外，只要找到第一个满足回调函数的元素，<code>Array.find</code> 就会停止，无需遍历整个数组。通过 <code>Array.find</code> 来查找元素，我们可以更好地理解我们的意图。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ id: 1, name: ‘ironman’ },<br>{ id: 2, name: ‘black_widow’ },<br>{ id: 3, name: ‘captain_america’ },<br>{ id: 4, name: ‘captain_america’ },<br>];</p>
+<p>function getCharacter(name) {<br>return character =&gt; character.name === name;<br>}</p>
+<p>console.log(characters.filter(getCharacter(‘captain_america’)));<br>// [<br>// { id: 3, name: ‘captain_america’ },<br>// { id: 4, name: ‘captain_america’ },<br>// ]</p>
+<p>console.log(characters.find(getCharacter(‘captain_america’)));<br>// { id: 3, name: ‘captain_america’ }</p>
+<h3 id="用-Array-some-代替-Array-find"><a href="#用-Array-some-代替-Array-find" class="headerlink" title="用 Array.some 代替 Array.find"></a>用 <code>Array.some</code> 代替 <code>Array.find</code></h3><p>我承认这个错误我犯了很多次。然后，一位善良的朋友告诉我，最好可以先参考 MDN 文档。这与上面的 <code>Array.indexOf</code>/<code>Array.includes</code> 非常相似。 在前面的例子中，我们看到 <code>Array.find</code> 需要一个回调函数作为参数，并返回一个元素。如果我们想要知道数组是否包含某个值，<code>Array.find</code> 是最好的解决方案吗？可能不是，因为它返回的是一个元素值，而不是一个布尔值。 对于这种情况，我建议使用 <code>Array.some</code>，它返回所需的布尔值。另外，从语义上看，<code>Array.some</code> 表示我们只想知道某个元素是否存在，而不需要得到这个元素。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ id: 1, name: ‘ironman’, env: ‘marvel’ },<br>{ id: 2, name: ‘black_widow’, env: ‘marvel’ },<br>{ id: 3, name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
+<p>function hasCharacterFrom(env) {<br>return character =&gt; character.env === env;<br>}</p>
+<p>console.log(characters.find(hasCharacterFrom(‘marvel’)));<br>// { id: 1, name: ‘ironman’, env: ‘marvel’ }</p>
+<p>console.log(characters.some(hasCharacterFrom(‘marvel’)));<br>// true</p>
+<h3 id="使用-Array-reduce-而不是链接-Array-filter-和-Array-map"><a href="#使用-Array-reduce-而不是链接-Array-filter-和-Array-map" class="headerlink" title="使用 Array.reduce 而不是链接 Array.filter 和 Array.map"></a>使用 <code>Array.reduce</code> 而不是链接 <code>Array.filter</code> 和 <code>Array.map</code></h3><p>让我们面对现实吧，<code>Array.reduce</code> 不容易理解。事实确实如此！但是，如果我们使用 <code>Array.filter</code> 和 Array.map的组合，感觉缺少了什么，对吧？ 我的意思是，我们遍历了两次数组。第一次过滤数组并创建一个较短的数组，第二次又基于 <code>Array.filter</code> 获得数组创建一个包含新值的数组。为了获得我们想要的新数组，我们使用了两个 Array 方法。每个方法都有自己的回调函数和一个用不到的数组——由 <code>Array.filter</code> 创建的那个数组。 为了避免这种性能损耗，我的建议是使用 <code>Array.reduce</code>。结果是一样的，代码却更简单！ 我们可以使用 <code>Array.reduce</code> 进行过滤，并将目标元素添加到累加器中。累加器可以是递增的数字、要填充的对象、要连接的字符串或数组。 在我们的例子中，因为之前使用了 <code>Array.map</code>，所以我建议使用 <code>Array.reduce</code> 将满足条件的数组元素加入到累加器中。在下面的示例中，根据 env 值的具体情况，我们将它添加到累加器中或保持累加器不变。</p>
+<p>‘use strict’;</p>
+<p>const characters = [<br>{ name: ‘ironman’, env: ‘marvel’ },<br>{ name: ‘black_widow’, env: ‘marvel’ },<br>{ name: ‘wonder_woman’, env: ‘dc_comics’ },<br>];</p>
+<p>console.log(<br>characters<br>.filter(character =&gt; character.env === ‘marvel’)<br>.map(character =&gt; Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))<br>);<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</p>
+<dl><dt>console.log(<br>characters<br>.reduce((acc, character) =&gt; {<br>return character.env === ‘marvel’<br>? acc.concat(Object.assign({}, character, { alsoSeenIn: [‘Avengers’] }))</dt><dd>acc;<br>}, [])<br>)<br>// [<br>// { name: ‘ironman’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] },<br>// { name: ‘black_widow’, env: ‘marvel’, alsoSeenIn: [‘Avengers’] }<br>// ]</dd></dl><p>英文原文 <a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c">https://medium.freecodecamp.org/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/12/08/background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1280,219 +1562,6 @@ h1 &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/" class="post-title-link" itemprop="url">Echarts 改变markPoint标注(气泡)颜色</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-12 11:36:37" itemprop="dateCreated datePublished" datetime="2018-11-12T11:36:37+08:00">2018-11-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>改变markPoint 标注(气泡)颜色的方法很简单，其实还是多翻文档，markPoint属性有很多下面列了几个也不一一介绍了，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint">自己翻文档。</a> <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/11/echartimg.jpg"></p>
-<p>markPoint:{<br>  symbol: ‘pin’, //标记(气泡)的图形<br>  symbolSize: 50, //标记(气泡)的大小<br>  …<br>  itemStyle: {…}, //标注(气泡)的样式<br>}</p>
-<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>标记的图形，默认是个气泡型的，看上图很清晰，</p>
-<h3 id="symbolSize"><a href="#symbolSize" class="headerlink" title="symbolSize"></a>symbolSize</h3><p>标记的大小，设置标记的大小，可根据自己的嗜好设置大小</p>
-<h3 id="itemStyle"><a href="#itemStyle" class="headerlink" title="itemStyle"></a>itemStyle</h3><p>标注(气泡)的样式就是这个属性，其实文档讲的都很清晰，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.itemStyle">只是有的人真的很懒只会问不会找</a></p>
-<p>itemStyle:{<br>  color: ‘#4587E7’,<br>  borderColor: ‘#000’,<br>  borderWidth: 0,<br>  borderType: ‘solid’,<br>  …<br>}</p>
-<h4 id="color-default-自适应"><a href="#color-default-自适应" class="headerlink" title="color [ default: 自适应 ]"></a>color [ default: 自适应 ]</h4><p>图形的颜色。</p>
-<h4 id="borderColor-default-“-000”"><a href="#borderColor-default-“-000”" class="headerlink" title="borderColor [ default: “#000” ]"></a>borderColor [ default: “#000” ]</h4><p>图形的描边颜色。支持的颜色格式同 color，不支持回调函数。</p>
-<h4 id="borderWidth-default-0"><a href="#borderWidth-default-0" class="headerlink" title="borderWidth [ default: 0 ]"></a>borderWidth [ default: 0 ]</h4><p>描边线宽。为 0 时无描边。</p>
-<h4 id="borderType-default-‘solid’"><a href="#borderType-default-‘solid’" class="headerlink" title="borderType [ default: ‘solid’ ]"></a>borderType [ default: ‘solid’ ]</h4><p>柱条的描边类型，默认为实线，支持 ‘solid’, ‘dashed’, ‘dotted’。   在结束之前，提一下如何给每个值都加上标注(气泡)，在文档代码看到的气泡是在最大值或最小值上，那么如何给每个值都加上标注(气泡)呢，其实这些值就是你的坐标轴上data值，如果想在每个值的上面显示标注，就要循环你的data值，但是在那循环呢，还是在markPoint对象里面，看文档API里面markPoint还有个<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.data">data数组对象属性</a>，文档是这样说的；</p>
-<h3 id="series-i-line-markPoint-data-i"><a href="#series-i-line-markPoint-data-i" class="headerlink" title="series[i]-line.markPoint.data[i]"></a>series[i]-line.markPoint.data[i]</h3><p>标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。</p>
-<ul>
-<li>  通过 x, y 属性指定相对容器的屏幕坐标，单位像素，支持百分比。</li>
-<li>  用 coord 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 ‘min’, ‘max’, ‘average’。</li>
-<li>  直接用 type 属性标注系列中的最大值，最小值。这时候可以使用 valueIndex 指定是在哪个维度上的最大值、最小值、平均值。或者可以使用 valueDim 指定在哪个维度上的最大值、最小值、平均值。</li>
-</ul>
-<p>当多个属性同时存在时，优先级按上述的顺序。 那么我们可以把数据组装成多个对象，例如我有一个数组</p>
-<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {…},<br>}</p>
-<p>那么我要在markPoint里面应该是这样组装的</p>
-<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {<br>    …<br>    data: [<br>      {value: 820, xAxis: 0, yAxis: 820},<br>      {value: 932, xAxis: 1, yAxis: 932},<br>      {value: 901, xAxis: 2, yAxis: 901},<br>      {value: 934, xAxis: 3, yAxis: 934},<br>      {value: 129, xAxis: 4, yAxis: 129},<br>      {value: 670, xAxis: 5, yAxis: 670}<br>    ]<br>  }<br>  …<br>}</p>
-<p>这样就如上图一样效果就出来了 来个?，假设一组数组，大于50显示红色，小于则显示绿色</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/gVwvqQ/">echarts markPoint 气泡</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">JavaScript Class 类的私有和公共属性</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-08 17:18:23" itemprop="dateCreated datePublished" datetime="2018-11-08T17:18:23+08:00">2018-11-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本文为<a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>续篇。</p>
-</blockquote>
-<p>我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。” 在 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">上一篇文章</a> 中，我们学习了如何在 ES5 和 ES6 中创建 JavaScript 类。 我们还讨论了如何通过构造函数向这些类的实例添加 state(状态) ，以及如何通过类的原型在实例之间共享方法。 这是一个简单的 Player 类，它包含了我们讨论的有关 ES6 类的所有内容。</p>
-<p>class Player {<br>  constructor() {<br>    this.points = 0<br>    this.assists = 0<br>    this.rebounds = 0<br>    this.steals = 0<br>  }<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
-<p>我们看看这段代码，我们能不能让它更直观一点呢？方法很好理解，都很自然。那么构造函数呢？什么是 constructor ？为什么我们必须在这里定义实例值？现在，这些问题已经有了答案，但是为什么我们不能向实例中添加 state(状态) ，就像方法那样？比如：</p>
-<p>class Player {<br>  points = 0<br>  assists = 0<br>  rebounds = 0<br>  steals = 0<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
-<p>事实上，这是 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-class-fields">Class Fields Declaration</a> 提案的基础，该提案目前处于 TC-39 流程的 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/ecmascript/">第3阶段</a> 。 此提议允许您直接将实例属性添加为类的属性，而无需使用构造方法。 非常漂亮，但是如果我们看一些 React 代码，这个提案真的很棒。 这是一个典型的 React 组件。 它具有本地 state(状态) ，一些方法以及一些静态属性被添加到类中。</p>
-<p>class PlayerInput extends Component {<br>  constructor(props) {<br>    super(props)<br>    this.state = {<br>      username: ‘’<br>    }</p>
-<pre><code>this.handleChange = this.handleChange.bind(this)
-</code></pre>
-<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
-<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
-<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
-<p>让我们看看新的 Class Fields 提议如何改进上面的代码首先，我们可以将 state(状态) 变量从构造函数中取出，并将其直接定义为类的属性（或“字段”）。</p>
-<p>class PlayerInput extends Component {<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
-<pre><code>this.handleChange = this.handleChange.bind(this)
-</code></pre>
-<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
-<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
-<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
-<p>很酷，但没什么好兴奋的。 我们继续吧。 在上一篇文章中，我们讨论了如何使用 static 关键字向类本身添加静态方法。 但是，根据 ES6 类规范，这只对方法有效，对于值则无效。 这就是为什么在上面的代码中，我们必须在我们定义完 PlayerInput 之后，再在 class 外面将 propTypes 和 defaultProps 添加到 PlayerInput ，而不是在 class 体内定义他们的原因。 再说一遍，它们不能像静态方法那样直接放入 class 体内呢? 好消息是，这也包含在 Class Fields 提案中。 所以现在不仅可以在类体中定义静态方法，还可以定义静态值。 这对我们的代码意味着我们可以将 propTypes 和 defaultProps 移动到 class 体内定义。</p>
-<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
-<pre><code>this.handleChange = this.handleChange.bind(this)
-</code></pre>
-<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
-<p>这样代码看上去好多了，但我们仍然有丑陋的 constructor 方法和 super 调用。 同样，我们现在需要构造函数的原因是为了将 handleChange 方法绑定到恰当的上下文中。 如果我们能找到另一种方法来确保始终在恰当的上下文中调用 handleChange ，那么我们可以摆脱掉 constructor 。 如果您以前使用过箭头函数，就会知道它们没有自己的 this 关键字。相反，this 关键字是按 lexically(词法) 绑定的。这是一种奇特的说法，当你在箭头函数中使用 this 关键字时，事情会按照你所期望的方式运行。利用这些知识并将其与 “Class Fields” 提案相结合起来，如果我们将 handleChange 方法替换为箭头函数呢？这看起来有点奇怪，但是通过这样做，我们可以解决绑定问题，因为，箭头函数是通过 lexically(词法) 绑定 this 的。</p>
-<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  handleChange = (event) =&gt; {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
-<p>你看上面的代码，这比我们开始的原始类要好得多，这都要感谢 “Class Fields” 提案，它将很快成为 EcmaScript 规范的一部分。 从开发者体验的角度来看，Class Fields 提案优势很明显。 然而，他们有一些缺点，很少被谈论。 在上一篇文章中，我们讨论了 ES6 类实际上只是 Pseudoclassical Instantiation(伪类实例化) 模式的语法糖。也就是说，当你向类添加方法时，这就像在函数原型中添加方法一样。</p>
-<p>class Animal {<br>  eat() {}<br>}</p>
-<p>// 等价于</p>
-<p>function Animal () {}<br>Animal.prototype.eat = function () {}</p>
-<p>这是高效的，因为 eat 定义一次并在类的所有实例之间共享。 这与 Class Fields 有什么关系？ 好吧，正如我们上面所看到的， Class Fields 被添加到实例中。 这意味着对于我们创建的每个实例，我们将创建一个新的 eat 方法。</p>
-<p>class Animal {<br>  eat() {}<br>  sleep = () =&gt; {}<br>}</p>
-<p>// 等价于</p>
-<p>function Animal () {<br>  this.sleep = function () {}<br>}</p>
-<p>Animal.prototype.eat = function () {}</p>
-<p>请注意 sleep 如何放在实例上，而不是放在 Animal.prototype 上。这是件坏事吗？嗯，有可能。在不进行度量的情况下对性能进行宽泛的描述通常不是一个好主意。您需要在应用程序中回答的问题是，您从 Class Fields 中获得的开发人员体验是否超过了潜在的性能损失。</p>
-<blockquote>
-<p>如果你想在你的应用程序中使用我们之前谈到的任何内容，你需要使用 <a target="_blank" rel="noopener" href="https://babeljs.io/docs/en/babel-plugin-proposal-class-properties">babel-plugin-transform-class-properties</a> 插件。</p>
-</blockquote>
-<h2 id="Private-私有-属性"><a href="#Private-私有-属性" class="headerlink" title="Private(私有) 属性"></a>Private(私有) 属性</h2><p>Class Fields 提案的另一个内容时是 “private fields (私有属性)” 。 有时，当您构建一个类时，您希望拥有不暴露给外界的私有值。 从历史上看， JavaScript 缺乏真正私有值 的能力，所以我们通过约定，用下划线标记它们。</p>
-<p>class Car {<br>  _milesDriven = 0<br>  drive(distance) {<br>    this._milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this._milesDriven<br>  }<br>}</p>
-<p>在上面的示例中，我们依靠 Car class（类）的实例通过调用 getMilesDriven 方法来获取汽车的里程数。但是，因为没有什么能使 _milesDriven成为私有的，所以任何实例都可以访问它。</p>
-<p>const tesla = new Car()<br>tesla.drive(10)<br>console.log(tesla._milesDriven)</p>
-<p>有个奇特的（hacky）方法，就是使用 WeakMaps 可以解决这个问题，但如果存在更简单的解决方案，那将会很好。 同样，Class Fields 提案正在拯救我们。 根据提议，您可以使用 ＃ 创建私有字段。 是的，你没有看错， ＃ 。 我们来看看它对我们的代码有什么影响，</p>
-<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    this.#milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this.#milesDriven<br>  }<br>}</p>
-<p>我们可以用速记语法更进一步简化</p>
-<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    #milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return #milesDriven<br>  }<br>}</p>
-<p>const tesla = new Car()<br>tesla.drive(10)<br>tesla.getMilesDriven() // 10<br>tesla.#milesDriven // Invalid</p>
-<p>如果您对私有属性背后的更多细节/决策感兴趣，那么这里有一篇 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-private-fields/blob/master/FAQ.md">很好的文章</a>。</p>
-<blockquote>
-<p>目前 <a target="_blank" rel="noopener" href="https://github.com/babel/proposals/issues/12">有一个 PR</a> 将私有属性添加到 Babel ，以便您可以在应用中使用它们。</p>
-</blockquote>
-<p>文章来源：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/javascript-private-and-public-class-fields/">https://tylermcginnis.com</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1562,7 +1631,7 @@ h1 &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

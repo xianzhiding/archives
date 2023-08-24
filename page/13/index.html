@@ -178,6 +178,192 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/06/02/css%E5%A4%9A%E9%87%8D%E8%BE%B9%E6%A1%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/02/css%E5%A4%9A%E9%87%8D%E8%BE%B9%E6%A1%86/" class="post-title-link" itemprop="url">css多重边框</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-02 14:24:14" itemprop="dateCreated datePublished" datetime="2018-06-02T14:24:14+08:00">2018-06-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>回首往事，当背景与边框（第三版）（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-background%EF%BC%89%E8%BF%98%E5%9C%A8%E8%8D%89%E6%A1%88%E9%98%B6%E6%AE%B5%E6%97%B6%EF%BC%8CCSS">http://w3.org/TR/css3-background）还在草案阶段时，CSS</a> 工作组内部有过很多讨论，关于是否应该允许多重边框，就像多重背景那样。不幸的是，当时一致认为这个特性并没有足够多的使用场景，而且网页开发者还可以使用 border-image 来达到相同的效果。然而工作组忽略了一点：我们通常希望在 CSS 代码层面以更灵活的方式来调整边框样式。因此，网页开发者们最终不得不折腾出各种丑陋的 hack，比如使用多个元素来模拟多重边框。不过，我们还有更好的办法来解决这个难题，并不需要添加无用的额外元素来污染我们的结构。</p>
+<h2 id="box-shadow-方案"><a href="#box-shadow-方案" class="headerlink" title="box-shadow 方案"></a>box-shadow 方案</h2><p>目前为止，我们大多数人可能已经用过（或滥用过）box-shadow 来生成投影。不太为人所知的是，它还接受第四个参数（称作“扩张半径”），通过指定正值或负值，可以让投影面积加大或者减小。一个正值的扩张半径加上两个为零的偏移量以及为零的模糊值，得到的“投影”其实就像一道实线边框。如图 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901141127.jpg"></p>
+<p>用 box-shadow 来模拟外框</p>
+<p>background: yellowgreen;<br>box-shadow: 0 0 0 10px #655;</p>
+<p>这并没有什么了不起的，因为你完全可以用 border 属性来生成完全一样的边框效果。不过 box-shadow 的好处在于，它支持逗号分隔语法，我们可以创建任意数量的投影。因此，我们可以非常轻松地在上面的示例中再加上一道 deeppink 颜色的“边框”：</p>
+<p>background: yellowgreen;<br>box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink;</p>
+<p>唯一需要注意的是，box-shadow 是层层叠加的，第一层投影位于最顶层，依次类推。因此，你需要按此规律调整扩张半径。比如说，在前面的代码中，我们想在外圈再加一道 5px 的外框，那就需要指定扩张半径的值为15px（10px+5px）。如果你愿意，甚至还可以在这些“边框”的底下再加一层常规的投影：</p>
+<p>background: yellowgreen;<br>box-shadow: 0 0 0 10px #655,0 0 0 15px deeppink,0 2px 5px 15px rgba(0,0,0,.6)</p>
+<p>多重投影解决方案在绝大多数场合都可以很好地工作，但有一些注意事项。</p>
+<ul>
+<li>  投影的行为跟边框不完全一致，因为它不会影响布局，而且也不会受到 box-sizing 属性的影响。不过，你还是可以通过内边距或外边距（这取决于投影是内嵌和还是外扩的）来额外模拟出边框所需要占据的空间。</li>
+<li>  上述方法所创建出的假“边框”出现在元素的外圈。它们并不会响应鼠标事件，比如悬停或点击。如果这一点非常重要，你可以给box-shadow 属性加上 inset 关键字，来使投影绘制在元素的内圈。请注意，此时你需要增加额外的内边距来腾出足够的空隙。</li>
+</ul>
+<h2 id="outline-方案"><a href="#outline-方案" class="headerlink" title="outline 方案"></a>outline 方案</h2><p>在某些情况下，你可能只需要两层边框，那就可以先设置一层常规边框，再加上 outline（描边）属性来产生外层的边框。这种方法的一大优点在于边框样式十分灵活，不像上面的 box-shadow 方案只能模拟实线边框（假设我们需要产生虚线边框效果，box-shadow 就没辙了）。如果要得到下图的效果，代码可以这样写： <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901141716.jpg"></p>
+<p>使用 box-shadow 来模拟双层外框</p>
+<p>background: yellowgreen;<br>border: 10px solid #655;<br>outline: 5px solid deeppink;</p>
+<p>描边的另一个好处在于，你可以通过 outline-offset 属性来控制它跟元素边缘之间的间距，这个属性甚至可以接受负值。这对于某些效果来说非常有用。举个例子，下图就实现了简单的缝边效果。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901141906.jpg"></p>
+<p>对一层 dashed（虚线）描边使用负 的 outline-offset 后， 可 以得到简单的缝边效果</p>
+<p>这个方案同样也有一些需要注意的地方。</p>
+<ul>
+<li>  如上所述，它只适用于双层“边框”的场景，因为 outline 并不能接受用逗号分隔的多个值。如果我们需要获得更多层的边框，前一种方案就是我们唯一的选择了。</li>
+<li>  边框不一定会贴合 border-radius 属性产生的圆角，因此如果元素是圆角的，它的描边可能还是直角的（参见下图）。请注意，这种行为被 CSS 工作组认为是一个 bug，因此未来可能会改为贴合 border-radius 圆角。</li>
+</ul>
+<p><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901142225.jpg"> 通 过 outline 属 性 实 现 的“ 边框”不会贴合元素的圆角，不过这一行为在未来可能会发生变化</p>
+<ul>
+<li>  根据 CSS 基本 UI 特性（第三版）规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/css3-ui%EF%BC%89%E6%89%80%E8%BF%B0%EF%BC%8C%E2%80%9C%E6%8F%8F%E8%BE%B9%E5%8F%AF%E4%BB%A5%E4%B8%8D%E6%98%AF%E7%9F%A9%E5%BD%A2%E2%80%9D%E3%80%82%E5%B0%BD%E7%AE%A1%E5%9C%A8%E7%BB%9D%E5%A4%A7%E5%A4%9A%E6%95%B0%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%8F%8F%E8%BE%B9%E9%83%BD%E6%98%AF%E7%9F%A9%E5%BD%A2%E7%9A%84%EF%BC%8C%E4%BD%86%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%83%B3%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%8C%E8%AF%B7%E5%88%87%E8%AE%B0%EF%BC%9A%E6%9C%80%E5%A5%BD%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%AE%8C%E6%95%B4%E5%9C%B0%E6%B5%8B%E8%AF%95%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%E3%80%82">http://w3.org/TR/css3-ui）所述，“描边可以不是矩形”。尽管在绝大多数情况下，描边都是矩形的，但如果你想使用这个方法，请切记：最好在不同浏览器中完整地测试最终效果。</a></li>
+</ul>
+<h4 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h4><p>CSS 背景与边框： <a target="_blank" rel="noopener" href="http://w3.org/TR/css-backgrounds">http://w3.org/TR/css-backgrounds</a> CSS 基本 UI 特性： <a target="_blank" rel="noopener" href="http://w3.org/TR/css3-ui">http://w3.org/TR/css3-ui</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/06/01/css%E8%BE%B9%E6%A1%86%E5%86%85%E5%9C%86%E8%A7%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/01/css%E8%BE%B9%E6%A1%86%E5%86%85%E5%9C%86%E8%A7%92/" class="post-title-link" itemprop="url">CSS边框内圆角</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-01 15:40:58" itemprop="dateCreated datePublished" datetime="2018-06-01T15:40:58+08:00">2018-06-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有时我们需要一个容器，只在内侧有圆角，而边框或描边的四个角在外部仍然保持直角的形状，如图(1)。这是一个有趣的效果，目前还没有被滥用。用两个元素可以实现这个效果，这并没有什么特别的：</p>
+<p>这是一个实例 (图1)</p>
+<p>容器外围有一道边框，但只在内侧有圆角</p>
+<div class="demo"><div>这是一个实例</div></div>
+.demo {
+background: #655;
+padding: .8em;
+}
+.demo > div {
+background: tan;
+border-radius: .8em;
+padding: 1em;
+}
+
+<p>这个方法很好，但要求我们使用两个元素，而我们只需要一个元素。有没有办法可以只用一个元素达成同样的效果呢？</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>其实上述方案要更加灵活一些，因为它允许我们充分运用背景的能力。举个例子，如果我们希望这一圈“边框”不只是纯色的，而是要加一层淡淡的纹理，它也可以很容易地做到。不过，如果只需要达成简单的实色效果，那我们就还有另一条路可走，只需用到一个元素（但这个办法有一些 hack的味道）。我们来看看以下 CSS 代码：</p>
+<p>background: tan;<br>border-radius: .8em;<br>padding: 1em;<br>box-shadow: 0 0 0 .6em #655;<br>outline: .6em solid #655;</p>
+<p>你能猜到视觉效果是怎样的吗？它产生的效果正如上图所示。我们基本上受益于两个事实：描边并不会跟着元素的圆角走（因而显示出直角，参见图 2），但 box-shadow 却是会的（参见图 3）。因此，如果我 把这两者叠加到一起，box-shadow 会刚好填补描边和容器圆角之间的空隙，这两者的组合达成了我们想要的效果。图4 把投影和描边显示为不同的颜色，从而在视觉上提供了更清晰的解释。</p>
+<p>这是一个实例 (图2)</p>
+<p>对一个有圆角的元素使用 outli-ne 属性</p>
+<p>这是一个实例 (图3)</p>
+<p>对一个有圆角的元素使用没有偏移量、没有模糊效果的 box-shadow 属性</p>
+<p>这是一个实例 (图4)</p>
+<p>为了事情的真相看起来更清楚，我们把描边显示为黑色，把投影显示为品红色；请注意描边是绘制在上层的</p>
+<p>请注意，我们为 box-shadow 属性指定的扩张值并不一定等于描边的宽度，我们只需要指定一个足够填补“空隙”的扩张值就可以了。事实上，指定一个等于描边宽度的扩张值在某些浏览器中可能会得到渲染异常，因此我推荐一个稍小些的值。这又引出了另一个问题：到底多大的投影扩张值可以填补这些空隙呢？ 为了解答这个问题，我们需要回忆起中学时学过的勾股定理，用来计算直角三角形各边的长度。勾股定理表明，如果直角边分别是 a 和 b，则斜边（正对着直角的最长边）等于 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153413.jpg">。当两条直角边的长度相等时，这 算式会演化为<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153429.jpg">。 你可能还很纳闷，中学几何到底是怎么跟我们的内圆角效果扯上关系的？关于怎样用它来计算我们需要的最小扩张值，请看下图中图形化的解释。在我们的例子中，border-radius 是 .8em，那么最小的扩张值就是 0.8 (<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">-1 ) ≈ 0.331 370 85 em 。我们要做的就是把稍微向上取个整， 把 .34em 设置为投影的扩张半径。为了避免每次都要计算，你可以直接使用圆角半径的一半，因为 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg">—1 &lt; 0.5 。 <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901150033-300x190.jpg"> 请注意，该计算过程揭示了这个方法的另一个限制：为了让这个效果得以达成，扩张半径需要比描边的宽度值小，但它同时又要比 (<img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 大（这里的 r 表示 border-radius）。这意味着，如果描边的宽度比 ( <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/09/20180901153522.jpg"> −1)r 小，那我们是不可能用这个方法达成该效果的。</p>
+<h4 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h4><p>CSS 背景与边框 <a target="_blank" rel="noopener" href="http://w3.org/TR/css-backgrounds">http://w3.org/TR/css-backgrounds</a> CSS 基本 UI 特性 <a target="_blank" rel="noopener" href="http://w3.org/TR/css3-ui">http://w3.org/TR/css3-ui</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/06/01/css%E7%81%B5%E6%B4%BB%E7%9A%84%E8%83%8C%E6%99%AF%E5%AE%9A%E4%BD%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -527,7 +713,7 @@ deploy:
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

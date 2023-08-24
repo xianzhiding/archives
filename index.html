@@ -178,6 +178,143 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2023/06/21/vue%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/06/21/vue%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%80%BC/" class="post-title-link" itemprop="url">关于Vue组件之间的传值</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-06-21 00:00:00" itemprop="dateCreated datePublished" datetime="2023-06-21T00:00:00+08:00">2023-06-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="组件传值-通信-式"><a href="#组件传值-通信-式" class="headerlink" title="组件传值(通信)式"></a>组件传值(通信)式</h2><p><strong>父传后代（后代拿到了父的数据）</strong></p>
+<ul>
+<li>父组件引入子组件，绑定数据，<br>  优点：子组件通过props来接收父组件绑定的数据。这种方式父传子很方便，但是父传给孙子辈分的组件就很麻烦 (父-&gt;子-&gt;孙)<br>  缺点：子组件无法直接修改父组件数据，属单向绑定</li>
+<li>子组件直接使用父组件的数据，<br>  优点：子组件通过this.$parent.xxx使用父组件的数据<br>  缺点：子组件可直接修改父组件数据</li>
+<li>依赖注入 provide / inject<br>  优点：这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在其上下游关系成立的时间里始终生效。<br>  缺点：不容易定位祖先组件注入位置</li>
+</ul>
+<p><strong>后代向父组件传值</strong></p>
+<ul>
+<li>子组件通过触发事件向父组件传值 $.emit()</li>
+<li>使用ref属性</li>
+<li>使用slot插槽方式</li>
+</ul>
+<p><strong>兄弟之间组件传值</strong></p>
+<ul>
+<li>eventBus</li>
+</ul>
+<h2 id="父组件直接修改子组件的值，子组件直接修改父组件的值"><a href="#父组件直接修改子组件的值，子组件直接修改父组件的值" class="headerlink" title="父组件直接修改子组件的值，子组件直接修改父组件的值"></a>父组件直接修改子组件的值，子组件直接修改父组件的值</h2><ul>
+<li>父组件修改子组值 <pre class="language-none"><code class="language-none">&lt;Child ref&#x3D;&quot;setChild&quot;&gt;&lt;&#x2F;Child&gt;
+this.$refs.setChild.xxx &#x3D; &#39;修改值&#39;</code></pre></li>
+<li>子组件直接修改父组件的值<pre class="language-none"><code class="language-none">this.$parent.xxx &#x3D; &#39;修改值&#39;</code></pre></li>
+</ul>
+<h2 id="eventBus示例"><a href="#eventBus示例" class="headerlink" title="eventBus示例"></a>eventBus示例</h2><p><strong>初始化时全局定义</strong></p>
+<pre><code>// eventBus.js 中
+import Vue from &#39;vue&#39;
+// 第一种定义方式
+Vue.prototype.$eventBus = new Vue() 
+// 第二种定义方式
+window.eventBus = new Vue();
+// 第三种定义方式
+export const eventBus = new Vue()
+</code></pre>
+<p><strong>触发事件</strong></p>
+<pre><code>//使用方式一定义时
+// params 多个参数
+this.$eventBus.$emit(&#39;eventName&#39;, param1,param2,...)
+
+//使用方式二定义时
+eventBus.$emit(&#39;eventName&#39;, param1,param2,...)
+</code></pre>
+<p><strong>监听事件</strong></p>
+<pre><code>//使用方式一定义时
+this.$eventBus.$on(&#39;eventName&#39;, (param1,param2,...)=&gt;&#123;
+    //需要执行 逻辑代码
+    // params 多个参数
+&#125;)
+
+//使用方式二定义时
+eventBus.$on(&#39;eventName&#39;, (param1,param2,...)=&gt;&#123;
+    //需要执行 逻辑代码
+&#125;)
+</code></pre>
+<p><strong>移除事件</strong></p>
+<p>在开发的过程中，我们要及时移除不使用的 eventBus ，原因：</p>
+<ul>
+<li>为了避免在监听时，事件被反复触发</li>
+<li>由于热更新，事件可能会被多次绑定监听，这时也需要移除事件监听</li>
+<li> 未及时移除的 eventBus 会导致内存泄漏</li>
+</ul>
+<pre class="language-//使用方式一定义时" data-language="//使用方式一定义时"><code class="language-//使用方式一定义时">this.$eventBus.$off(&#39;eventName&#39;);
+
+&#x2F;&#x2F;使用方式二定义时
+eventBus.$off(&#39;eventName&#39;);
+
+&#x2F;&#x2F;使用方式三定义时
+eventBus.$off.$on(&#39;eventName&#39;);</code></pre>
+<h2 id="vue踩坑之eventBus-on多次触发的问题"><a href="#vue踩坑之eventBus-on多次触发的问题" class="headerlink" title="vue踩坑之eventBus.$on多次触发的问题"></a>vue踩坑之eventBus.$on多次触发的问题</h2><p><code>this.root.Bus.on</code>实际是向Bus容器中添加一个事件监听器，当页面跳转时，原来的vue组件被注销，但是原来vue组件向Bus容器中添加的事件监听器并不会被移除。因此，当下次进入这个vue组件对应的页面时，执行到<code>this.root.Bus.on</code>时，又会向Bus容器中添加一个重复的事件监听器，以此类推，导致Bus容器中有很多个一模一样的事件监听器，从而导致事件只被触发一次，但是回调函数被执行多次的现象。</p>
+<p>解决方法：</p>
+<p>方法1：在每次on之前调用off卸载掉事件</p>
+<pre><code>created()&#123;
+    eventBus.$off.$on(&quot;fetchList&quot;,()=&gt;&#123;
+        this.getListData()
+    &#125;)
+&#125;
+</code></pre>
+<p>方法2：在生命周期<code>beforeDestroy</code> <code>destroyed</code>里面调用$off卸载掉事件</p>
+<pre><code>beforeDestroy()&#123;
+    eventBus.$off(&quot;fetchList&quot;)
+&#125;
+</code></pre>
+<p>如果这变得重复，你可以写一个mixin来自动化。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2023/06/19/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -311,10 +448,119 @@
 <td align="center">可以获取</td>
 </tr>
 </tbody></table>
+<h2 id="created和mounted的区别"><a href="#created和mounted的区别" class="headerlink" title="created和mounted的区别"></a>created和mounted的区别</h2><p><code>created()</code> 和 <code>mounted()</code> 之间的根本区别在于访问DOM，在 <code>created()</code> 中返回 null，在 <code>mounted()</code> 中返回 DOM 元素。因此，任何 DOM 操作，甚至使用诸如 querySelector 之类的方法获取 DOM 元素结构将无法在 <code>created()</code> 中使用。因此根据这点区别 <code>created()</code> 非常适合调用 API，而 <code>mounted()</code> 非常适合在 DOM 元素完全加载后执行任何操作。</p>
 <h2 id="加入keep-alive会执行哪些生命周期？"><a href="#加入keep-alive会执行哪些生命周期？" class="headerlink" title="加入keep-alive会执行哪些生命周期？"></a>加入keep-alive会执行哪些生命周期？</h2><p>如果使用了keep-alive组件会额外增加2个生命周期<code>activated</code> <code>deactivated</code><br>如果当前组件加入了keep-alive第一次进入这个组件会执行5个生命周期 <code>beforeCreated</code> <code>created</code> <code>beforMounted</code> <code>mounted</code> <code>activated</code></p>
 <h2 id="第二次或者第N次进去组件会执行哪些生命周期？"><a href="#第二次或者第N次进去组件会执行哪些生命周期？" class="headerlink" title="第二次或者第N次进去组件会执行哪些生命周期？"></a>第二次或者第N次进去组件会执行哪些生命周期？</h2><p>如果当前组件加入了keep-alive，只会执行一个<code>activated</code>生命周期</p>
 <p>如果没有加入keep-alive就会执行<code>beforeCreated</code> <code>created</code> <code>beforMounted</code> <code>mounted</code>前四个生命周期</p>
 <h2 id="你在什么情况下用过哪些生命周期？说一说生命周期使用场景"><a href="#你在什么情况下用过哪些生命周期？说一说生命周期使用场景" class="headerlink" title="你在什么情况下用过哪些生命周期？说一说生命周期使用场景"></a>你在什么情况下用过哪些生命周期？说一说生命周期使用场景</h2><p>created    ===&gt; 单组件请求<br>mounted    ===&gt; 同步可以获取dom，如果先子组件请求后父组件请求<br>activated  ===&gt; 用于缓存同页面使用，判断id是否相等，如果不相同发起请求<br>destroyed  ===&gt; 关闭页面记录浏览位置，初始化的时候从上一次的历史开始浏览</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2023/06/10/vue%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/06/10/vue%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Vue的基础原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-06-10 00:00:00" itemprop="dateCreated datePublished" datetime="2023-06-10T00:00:00+08:00">2023-06-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="vue的设计原理"><a href="#vue的设计原理" class="headerlink" title="vue的设计原理"></a>vue的设计原理</h2><ul>
+<li>渐进式的JavaScript框架：vue的核心只关注视图层，容易上手，还便于与第三方库或既有项目整合</li>
+<li>易用性：vue提供数据响应式、声明式模板语法和基于配置的组件系统等核心特性。这些使我们只需关注应用的核心业务即可。</li>
+<li>灵活性：渐进式框架最大优点就是灵活性，如果应用足够小，我们可能仅需要vue核心特性即可完成功能；随着应用规模的不断扩大，我们才可能逐渐引入路由、状态管理、vue-cli等库和工具，不管是应用体积还是学习难度都是一个逐渐增加的平和曲线。</li>
+<li>高效性：超快的虚拟DOM和diff算法使我们的应用拥有最佳的性能表现。追求高效的过程还在继续，vue3中引入Proxy对数据响应式改进以及编译器中对于静态内容编译的改进都会让vue更加高效。</li>
+</ul>
+<h2 id="vue的常见性能优化"><a href="#vue的常见性能优化" class="headerlink" title="vue的常见性能优化"></a>vue的常见性能优化</h2><ul>
+<li>路由懒加载</li>
+<li>keep-alive缓存页面</li>
+<li>使用v-show复用DOM</li>
+<li>v-for遍历时避免同时使用v-if</li>
+<li>长列表性能优化，<br>  如果列表是纯粹的数据展示，不作任何改变，就不需要做响应化，<br>  如果是大数据列表，可采用虚拟滚动，只渲染可见区域内容</li>
+<li>事件的销毁，解绑全部指令及事件监听器</li>
+<li>图片懒加载</li>
+<li>第三方插件按需引入</li>
+</ul>
+<h2 id="v-model的实现原理"><a href="#v-model的实现原理" class="headerlink" title="v-model的实现原理"></a>v-model的实现原理</h2><p>绑定响应数据，触发input事件并传递数据</p>
+<h2 id="修改computed计算属性的结果值"><a href="#修改computed计算属性的结果值" class="headerlink" title="修改computed计算属性的结果值"></a>修改computed计算属性的结果值</h2><ul>
+<li>需要通过get/set写法</li>
+<li>当前组件v-model绑定的值是computed来的，需要通过get/set写法</li>
+</ul>
+<h2 id="computed和watch的区别"><a href="#computed和watch的区别" class="headerlink" title="computed和watch的区别"></a>computed和watch的区别</h2><p><strong>对于computed</strong></p>
+<ul>
+<li>计算属性的结果会被缓存，只有依赖的数据发生变化才会重新计算</li>
+<li>不支持异步，computed中有异步操作时，无法监听数据的变化</li>
+<li>computed的值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data声明过，或者父组件传递过来的props中的数据进行计算的。</li>
+<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他的属性，一般会使用computed</li>
+<li>如果computed属性的属性值是函数，那么默认使用get方法，函数的返回值就是属性的属性值；在computed中，属性有一个get方法和一个set方法，当数据发生变化时，会调用set方法。</li>
+</ul>
+<p><strong>对于watch</strong></p>
+<ul>
+<li>它支持缓存，只要数据变化时，就会触发响应的操作</li>
+<li>支持异步监听</li>
+<li>监听的函数接收两个参数，第一个参数是最新的值，第二个是变化之前的值</li>
+<li>当一个属性发生变化时，就需要执行相应的操作</li>
+<li>监听数据必须是data中声明的或者父组件传递过来的props中的数据，当发生变化时，会触发其他操作，函数有两个的参数：<ul>
+<li>immediate：组件加载立即触发回调函数</li>
+<li>deep：深度监听，发现数据内部的变化，在复杂数据类型中使用，例如数组中的对象发生变化。需要注意的是，deep无法监听到数组和对象内部的变化。</li>
+</ul>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<ul>
+<li>computed计算属性：computed的值有缓存，依赖其他属性值，只有它依赖的属性值发生变化，下一次获取computed的值时才会重新计算computed的值。</li>
+<li>watch监听器：更多的是观察作用，无缓存，类似于某些数据的监听回调，每当监听的数据发生变化时，都会执行回调进行后续操作。</li>
+</ul>
+<p><strong>运用场景</strong></p>
+<ul>
+<li>当需要进行数据计算，并且依赖于其他数据时，应使用computed，因为可以利用computed的缓存特性，避免每次获取值时都要重新计算。</li>
+<li>当需要在数据变化时执行异步或开销较大的操作时，应该使用watch，使用watch选项允许执行异步操作，限制执行该操作的频率，并在得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</li>
+</ul>
 
       
     </div>
@@ -1094,181 +1340,6 @@ window.addEventListener(&#39;resize&#39;, throttle(sayHi));
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2020/07/20/get%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E9%95%BF%E5%BA%A6%E7%9A%84%E8%AF%AF%E5%8C%BA%E3%80%81get%E5%92%8Cpost%E8%AF%B7%E6%B1%82%E5%9C%A8%E7%BC%93%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/20/get%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E9%95%BF%E5%BA%A6%E7%9A%84%E8%AF%AF%E5%8C%BA%E3%80%81get%E5%92%8Cpost%E8%AF%B7%E6%B1%82%E5%9C%A8%E7%BC%93%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">http和https的区别, get和post的区别, cookie、sessionStorage、localStorage的区别</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-20 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-20T00:00:00+08:00">2020-07-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1，http和https的区别"><a href="#1，http和https的区别" class="headerlink" title="1，http和https的区别"></a>1，http和https的区别</h2><p>http传输的数据都是未加密的，也就是明文的，网景公司设置了SSL协议来对http协议传输的数据进行加密处理，简单来说https协议是由http和ssl协议构建的可进行加密传输和身份认证的网络协议，比http协议的安全性更高。主要的区别如下：</p>
-<ul>
-<li>Https协议需要ca证书，费用较高。</li>
-<li>http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。</li>
-<li>使用不同的链接方式，端口也不同，一般而言，http协议的端口为80，https的端口为443</li>
-<li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</li>
-</ul>
-<h2 id="2，get请求传参长度的误区、get和post请求在缓存方面的区别"><a href="#2，get请求传参长度的误区、get和post请求在缓存方面的区别" class="headerlink" title="2，get请求传参长度的误区、get和post请求在缓存方面的区别"></a>2，get请求传参长度的误区、get和post请求在缓存方面的区别</h2><p>误区：我们经常说get请求参数的大小存在限制，而post请求的参数大小是无限制的。</p>
-<p>实际上HTTP 协议从未规定 GET/POST 的请求长度限制是多少。对get请求参数的限制是来源与浏览器或web服务器，浏览器或web服务器限制了url的长度。为了明确这个概念，我们必须再次强调下面几点:</p>
-<ul>
-<li>HTTP 协议 未规定 GET 和POST的长度限制</li>
-<li>GET的最大长度显示是因为 浏览器和 web服务器限制了 URI的长度</li>
-<li>不同的浏览器和WEB服务器，限制的最大长度不一样</li>
-<li>要支持IE，则最大长度为2083byte，若只支持Chrome，则最大长度 8182byte</li>
-</ul>
-<h4 id="补充补充一个get和post在缓存方面的区别："><a href="#补充补充一个get和post在缓存方面的区别：" class="headerlink" title="补充补充一个get和post在缓存方面的区别："></a>补充补充一个get和post在缓存方面的区别：</h4><ul>
-<li>get请求类似于查找的过程，用户获取数据，可以不用每次都与数据库连接，所以可以使用缓存。</li>
-<li>post不同，post做的一般是修改和删除的工作，所以必须与数据库交互，所以不能使用缓存。因此get请求适合于请求缓存。</li>
-</ul>
-<h2 id="3-cookie、sessionStorage、localStorage的区别"><a href="#3-cookie、sessionStorage、localStorage的区别" class="headerlink" title="3,cookie、sessionStorage、localStorage的区别"></a>3,cookie、sessionStorage、localStorage的区别</h2><p>共同点：都是保存在浏览器端，并且是同源的</p>
-<ul>
-<li>Cookie：cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下,存储的大小很小只有4K左右。（key：可以在浏览器和服务器端来回传递，存储容量小，只有大约4K左右）</li>
-<li>sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持，localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。（key：本身就是一个回话过程，关闭浏览器后消失，session为一个回话，当页面不同即使是同一页面打开两次，也被视为同一次回话）</li>
-<li>localStorage：localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。（key：同源窗口都会共享，并且不会失效，不管窗口或者浏览器关闭与否都会始终生效）</li>
-</ul>
-<h4 id="补充说明一下cookie的作用："><a href="#补充说明一下cookie的作用：" class="headerlink" title="补充说明一下cookie的作用："></a>补充说明一下cookie的作用：</h4><p>保存用户登录状态。例如将用户id存储于一个cookie内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都提供这样的功能。cookie还可以设置过期时间，当超过时间期限后，cookie就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项有一个月、三个 月、一年等。</p>
-<p>跟踪用户行为。例如一个天气预报网站，能够根据用户选择的地区显示当地的天气情况。如果每次都需要选择所在地是烦琐的，当利用了 cookie后就会显得很人性化了，系统能够记住上一次访问的地区，当下次再打开该页面时，它就会自动显示上次用户所在地区的天气情况。因为一切都是在后 台完成，所以这样的页面就像为某个用户所定制的一样，使用起来非常方便</p>
-<p>定制页面。如果网站提供了换肤或更换布局的功能，那么可以使用cookie来记录用户的选项，例如：背景色、分辨率等。当用户下次访问时，仍然可以保存上一次访问的界面风格。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2020/04/21/%E4%BD%BF%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AESCSS%E7%BC%96%E8%AF%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/21/%E4%BD%BF%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AESCSS%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">使用微信开发工具配置SCSS编译</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2020-04-21T00:00:00+08:00">2020-04-21</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>使用微信开发工具手写css真的每次都很浪费时间；现在终于可以用scss在微信开发者工具上自编译出wxss了</p>
-<h3 id="主要配置流程如下"><a href="#主要配置流程如下" class="headerlink" title="主要配置流程如下"></a>主要配置流程如下</h3><p>1，下载EasySass插件复制到微信开发者工具，可以在vscode扩展里面找，然后安装，安装后可以在C盘 <code>用户目录/.vscode/extensions</code> 找到下载的扩展包</p>
-<p>2，打开微信开发工具 找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 拓展 &gt; 编辑器自定义扩展 </code>打开扩展文件夹， 将vscode安装的扩展包复制到这里，然后重启微信开发工具，然后找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 拓展 &gt; 编辑器自定义扩展</code> 就能看到扩展文件，点击开启</p>
-<img data-src="https://file.w3cbest.com/file/images/20210421105100.png">
-
-<img data-src="https://file.w3cbest.com/file/images/20210421105148.png">
-
-<p>3，配置编辑器，找到菜单栏 <code>设置 &gt; 扩展设置 &gt; 编辑器 &gt; 更多及工作区设置</code> 进入设置页面，点击扩展 找到 <code>EasySass configuration</code> 看到 <code>formats</code> 在 <code>setting.json</code> 中编辑进入后就会看到生成的配置信息，将.css改为.wxss,如果不想要压缩版可删除</p>
-<img data-src="https://file.w3cbest.com/file/images/20210421105431.png">
-
-<img data-src="https://file.w3cbest.com/file/images/20210421105501.png">
-
-<img data-src="https://file.w3cbest.com/file/images/20210421105528.png">
-
-<pre class="language-none"><code class="language-none">&quot;easysass.formats&quot;: [
-    &#123;
-    &quot;format&quot;: &quot;expanded&quot;,
-    &quot;extension&quot;: &quot;.css&quot;
-    &#125;,
-    &#123;
-    &quot;format&quot;: &quot;compressed&quot;,
-    &quot;extension&quot;: &quot;.min.css&quot;
-    &#125;
-]</code></pre>
-<p>改为</p>
-<pre class="language-none"><code class="language-none">&quot;easysass.formats&quot;: [
-    &#123;
-    &quot;format&quot;: &quot;expanded&quot;,
-    &quot;extension&quot;: &quot;.wxss&quot;
-    &#125;
-]</code></pre>
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1338,7 +1409,7 @@ window.addEventListener(&#39;resize&#39;, throttle(sayHi));
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

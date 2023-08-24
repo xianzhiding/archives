@@ -178,6 +178,336 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/26/art-template%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%B9%8B%E5%81%B6%E6%95%B0%E5%A5%87%E6%95%B0%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/26/art-template%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%B9%8B%E5%81%B6%E6%95%B0%E5%A5%87%E6%95%B0%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">artTemplate模板引擎之偶数奇数解析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-26 13:57:18" itemprop="dateCreated datePublished" datetime="2018-09-26T13:57:18+08:00">2018-09-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>如果有一个数组，我们只取其中的偶数或奇数该如何取值呢，下面一组数据是我们通过接口拿到的，其实我们只要奇数的一部分，1，3，5，7…等，如图：</p>
+<pre class="language-none"><code class="language-none">\[&quot;1701班&quot;,11,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;,7,&quot;63.64%&quot;,2,&quot;18.18%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;\]
+
+!\[](http:&#x2F;&#x2F;www.w3cbest.com&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;09&#x2F;20180926133157.jpg) 我们只要一个if条件判断就可以了，操作如下： js
+
+res &#x3D; &#123;&quot;data&quot;:&#123;
+  &quot;head&quot;:\[&quot;人数&quot;,&quot;比例&quot;\],
+  &quot;datas&quot;:\[
+  &#123;&quot;data&quot;:\[&quot;1701班&quot;,11,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;,7,&quot;63.64%&quot;,2,&quot;18.18%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;\]&#125;,
+  &#123;&quot;data&quot;:\[&quot;班级平均&quot;,21,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;3&quot;,&quot;28.57%&quot;,&quot;5&quot;,&quot;47.62%&quot;,&quot;1.5&quot;,&quot;14.29%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0.5&quot;,&quot;4.76%&quot;,&quot;0.5&quot;,&quot;4.76%&quot;\]&#125;,
+  &#123;&quot;data&quot;:\[&quot;全年级&quot;,21,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,6,&quot;28.57%&quot;,10,&quot;47.62%&quot;,3,&quot;14.29%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;4.76%&quot;,1,&quot;4.76%&quot;\]&#125;
+  \],
+  &quot;title&quot;:\[&quot;90以下&quot;,&quot;90 ~ 97&quot;,&quot;97 ~ 104&quot;,&quot;104 ~ 111&quot;,&quot;111 ~ 118&quot;,&quot;118 ~ 125&quot;,&quot;125 ~ 132&quot;,&quot;132 ~ 139&quot;,&quot;139 ~ 146&quot;,&quot;146以上&quot;\]
+  &#125;
+&#125;
+document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, res);</code></pre>
+<p>template</p>
+<pre class="language-none"><code class="language-none">&lt;script id&#x3D;&quot;tpl&quot; type&#x3D;&quot;text&#x2F;html&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;班级&lt;&#x2F;th&gt;
+      &#123;&#123;each title value i&#125;&#125;
+      &lt;th&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;th&gt;
+      &#123;&#123;&#x2F;each&#125;&#125;
+    &lt;&#x2F;tr&gt;
+&lt;&#x2F;thead&gt;
+&lt;tbody&gt;
+  &#123;&#123;each datas item&#125;&#125;
+  &lt;tr&gt;
+    &#123;&#123;each item.data value i&#125;&#125;
+    &#123;&#123;if (i % 2 &#x3D;&#x3D; 0)&#125;&#125;
+    &lt;td&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;td&gt;
+    &#123;&#123;&#x2F;if&#125;&#125;
+    &#123;&#123;&#x2F;each&#125;&#125;
+  &lt;&#x2F;tr&gt;
+  &#123;&#123;&#x2F;each&#125;&#125;
+&lt;&#x2F;tbody&gt;
+&lt;&#x2F;script&gt;</code></pre>
+<p>其实很简单，就跟跟平时普通的if判断一样，都是取模，但是要注意在这里面要有始有终，有<code>&#123;&#123;if&#125;&#125;</code>就得有对应的<code>&#123;&#123;/if&#125;&#125;</code>，有<code>&#123;&#123;each&#125;&#125;</code>就得有对应的<code>&#123;&#123;/each&#125;&#125;</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/25/css-%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E8%83%BD%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/25/css-%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E8%83%BD%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">CSS 选择器技能使用指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-25 09:07:13" itemprop="dateCreated datePublished" datetime="2018-09-25T09:07:13+08:00">2018-09-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我已经使用CSS多年了，但直到最近我还没有深入研究过关于 CSS 选择器的主题。 为什么我需要学习 CSS 选择器呢？ 我们现在知道了所有的内部选择器了吗？ 问题是(至少对我来说是这样)随着时间的推移，很容易习惯在每个项目上使用相同的习惯的选择器集合来完成你要做的事情。 因此，我自己对 CSS 选择器知识进行了深入的审查，并发现了一些有趣的内容，这些内容对我来说是新的，或者是以前我从来没有想过这些使用方式。 我还发现了一些很酷的新选择器，将来可用，但还没有广泛使用。 我们一起来深入研究一下各种类型的 CSS 选择器吧。 您在日常工作中已经使用了，或者本文没涉及到的 CSS 选择器技能欢迎留言告诉我。 准备好提升你的 CSS 选择器技能了吗？我们一起 GO！</p>
+<h2 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h2><p>让我们从熟悉的选择器开始。组合选择器用于选择子元素和兄弟元素，并且相信大家已经使用了很长一段时间了吧。</p>
+<ul>
+<li>  一般子元素选择器（空格）。例如A B。</li>
+<li>  直接子元素选择器。例如 A &gt; B 。</li>
+<li>  相邻兄弟元素选择器。例如 A + B。</li>
+<li>  一般兄弟元素选择器。例如 A ~ B。</li>
+</ul>
+<p>您应该熟悉相邻兄弟元素选择器 A + B ，他会选择紧跟 A 的 B 元素。但是一般兄弟元素选择器 A~B 呢？ 他将选择跟随 A 的所有兄弟 B 元素： 以下是实例：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/RyvYXd/">Combinator Selectors</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>第二行 New York 行被选中是因为它紧跟在第一行之后 table tbody tr:first-child + tr，并且最后两个城市被高亮显示，因为他们被一般兄弟选择器 table tbody tr:nth-child(4) ~ tr 匹配，也就是第四行之后的所有行。</p>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>我非常喜欢属性选择器。当您需要将包含某个属性的元素与特定值匹配时，它们可以非常灵活。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGLZEK/">Attribute Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>此示例演示如何选择所有复选框元素并将样式应用于其匹配标签，以使其变为粗体和蓝色。 然后，我们覆盖具有特定名称的 chk2 复选框的样式，并将其匹配的标签着色为红色。 请注意其他表单元素标签如何不受影响且未应用标签样式。 属性选择器不仅适用于表单元素，它们还可以定位任何元素的属性。 您可以匹配任何属性，而不仅仅是官方支持的属性。 此外，您可以检查属性是否存在，如下所示：</p>
+<p>button[icon]</p>
+<p>这匹配包含 icon 属性的 <button> 元素。它将匹配 icon 属性，无论 icon 属性是空值还是设置为特定值。 更多例子：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/pVGGye/">Attribute Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>第一个链接没有 target 属性，因此不匹配。 接下来的两个链接是匹配的，因为它们的 target 属性具有空值或特定值的属性。 最后，最后一个链接设置为粉红色，因为它 fluffy 属性匹配。 它的值无关紧要，只需要与 a[fluffy] 选择器相匹配即可。 一个实际的例子可能是突出显示没有alt属性的图像。 此属性对于网页的可访问性来说是所必需的，因此对于SEO而言，确保所有图像元素都包含此属性非常重要。 我们可以使用以下规则来实现此目的：</p>
+<p>img:not([alt]) {<br>border: 2px red dashed;<br>}</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/OZdqLp/">Attribute Selectors #3</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>如果要匹配属性值的特定部分，则可以使用一些非常有用的选择器。</p>
+<ul>
+<li>  A[attr^=val] – 属性值以 val 开头。</li>
+<li>  A[attr=val] – 属性值以 val 开头，或者以 val- 开头。</li>
+<li>  A[attr$=val] – 属性值以 val 结尾。</li>
+<li>  A[attr*=val] – 属性值中包含 val 。</li>
+<li>  A[attr~=val] – 匹配用空格分隔的属性值列表，并且列表中包含 val 。</li>
+</ul>
+<p>以下是每个例子：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGLdvE/">Attribute Selectors #4</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>前两个示例非常相似，不同之处是 A[attr=val] 匹配后跟一个 - 字符串的值。 这对于匹配语言属性 lang 很有用。 例如 <p lang ="en-us">。 使用 A[attr$=”val”] 可以轻松匹配文件扩展名，并且与 ::after 相结合你可以轻松显示匹配文件。 注意使用 attr() 方法和 content 属性将它与静态字符串连接起来。 A[attr*=val] 显示了无论使用何种协议或子域，您都可以匹配特定域 mysite.com。 最后，A[attr<del>=val]，它非常适合匹配由空格分隔的值列表组成的属性中的值。 这只匹配整个单词而不是单词片段，而 *= 匹配单词片段，因此单词复数形式将不匹配。这个有点不好理解：例如某 div 元素的 categories 属性为 <div categories="table wooden maple">，其 categories 属性用空格分隔。那么 div[categories</del>=”table”] 将匹配各元素，还有一个特别要注意的是， <div categories="wooden maple table"> 也将被匹配。而 <div categories="wooden maple tables"> 或者 <div categories="wooden tableee maple"> 都不会被 div[categories~=”table”] 匹配。 以上所有属性选择器示例都区分大小写。 但是我们有一个技巧。 如果我们在结束方括号之前插入一个 i ，我们可以启用区分大小写的匹配，这有点类似于 JavaScript 中的正则表达式匹配。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/LmaYzp/">Attribute Selectors #5</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>除 Internet Explorer 和 Microsoft Edge 外，大多数主流浏览器都支持不区分大小写的匹配。</p>
+<h2 id="用户交互选择器"><a href="#用户交互选择器" class="headerlink" title="用户交互选择器"></a>用户交互选择器</h2><p>如果您处理过表单样式，那么您之前无疑会遇到这些类型的伪类选择器：</p>
+<ul>
+<li>  :enabled</li>
+<li>  :disabled</li>
+<li>  :checked</li>
+</ul>
+<p>例如，我们可以使用 :checked 来设置一个简单的待办事项列表。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/BxbjoO/">User Interface Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>这是非常标准的，但我们可以使用其他一些有趣的伪类。 :default 匹配一个或多个元素，这些元素是一组相关元素中的默认元素。这也可以与复位按钮类型组合使用。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/ELMoNK/">User Interface Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>我们可以使用伪类选择器来匹配输入值是否与 CSS 直接有效，以及在提交表单之前检查是否需要任何元素。</p>
+<ul>
+<li>  :valid</li>
+<li>  :invalid</li>
+<li>  :required</li>
+<li>  :optional (即不必须)</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/qYvpMP/">User Interface Selectors #3</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>如果您开始输入个人 email 输入字段，则必须检查有效性。 但是，工作 email 地址始终是必需的，并且需要有效检查有效性，因此不能留空。 还要注意我们可以链接伪类选择器（例如 :required:invalid ）来实现我们所需要的。 接下来，如果表单元素（支持 min 和 max 属性）在范围内，我们有两个可以匹配的伪类。</p>
+<ul>
+<li>  :in-range</li>
+<li>  :out-of-range</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/Jvzpgz/">User Interface Selectors #4</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>同样，我们可以使用重置按钮类型来重置数字输入元素的默认值。 为了完善本节，我们来看看 :read-only ，:read-write 和 :placeholder-shown 的伪类。</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/ZoPREB/">User Interface Selectors #5</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>使用这些可以轻松匹配只读或可写（可编辑）的元素。 匹配元素不必是表单输入字段，如示例中所示。 最后，:placeholder-shown 将匹配尚未与之交互的元素，并仍显示默认占位符文本。 应谨慎使用此特定选择器，因为它尚未得到广泛支持。</p>
+<h2 id="结构选择器"><a href="#结构选择器" class="headerlink" title="结构选择器"></a>结构选择器</h2><p>结构选择器非常强大，基于它们在DOM中的位置匹配元素。 它们使您可以灵活地将元素与CSS完全匹配，否则需要 JavaScript 执行相同的操作。 这种类型的选择器与显示的选择器不同，因为其中一些选择器允许您传入参数来修改选择器的工作方式。 例如：nth-child() 接收一个值，该值将匹配特定子元素相对于其父容器的值。 因此，如果我们有一个项目列表，则以下选择器将匹配第三个项目：</p>
+<p>ul:nth-child(3)</p>
+<p>但是，参数不是必须是简单的数字，它可以是一个简单的表达式，而使伪类更强大。 有效表达式有：</p>
+<ul>
+<li>  ul:nth-child(2) – 匹配第 2 个子元素</li>
+<li>  ul:nth-child(4n) – 匹配每 4th 个子元素（4,8,12，…）</li>
+<li>  ul:nth-child(2n + 1) – 匹配每 2n + 1 个子元素偏移一个（1,3,5，…）</li>
+<li>  ul:nth-child(3n - 1) – 匹配每 3n – 1 个子元素偏移负数1（2,5,8，…）</li>
+<li>  ul:nth-child(odd) – 匹配奇数元素（1,3,5，…）</li>
+<li>  ul:nth-child(even) – 匹配偶数元素（2,4,6，…）</li>
+</ul>
+<p>表达式变量 n 总是从零开始，因此确切地计算出哪些元素将匹配，n 从 0 开始，然后 n 为 1 ，依此类推以编译元素列表。 这里还有 1 个简单而实用的小技巧，我们把n当做负数来用，会发生什么呢？</p>
+<ul>
+<li>  ul li:nth-child(-n+3) – 匹配第 1 到 第 3 个 li 子元素 （1,2,3）</li>
+<li>  ul li:nth-child(-2n+6) – 匹配每 2th 个子元素，最多不超过第 8 个 li 子元素 （2,4,6，8）</li>
+<li>  ul li:nth-child(n + 10):nth-child(-n + 12) – 匹配第 10 到 第 12 个 li 子元素 （10,11,12）</li>
+</ul>
+<p>例如：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/mveKRe/">把`n` 当做负数来用</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>您可以将简单表达式与以下结构选择器一起使用：</p>
+<ul>
+<li>  :nth-child()</li>
+<li>  :nth-last-child()</li>
+<li>  :nth-of-type()</li>
+<li>  :nth-last-of-type()</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGxzEq/">Structural Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>:nth-last-child() 和 :nth-last-of-type() 非常类似于 :nth-child() 和 nth-of-type() ，唯一区别是 :nth-last-child() 和 :nth-last-of-type() 是从最后一个元素开始匹配，而不是第一个元素开始匹配。 通过玩各种组合，您可以通过选择器获得相当多的创意。 例如，之前的示例包含选择器：</p>
+<p>ul:last-of-type li:nth-last-of-type(2)::after {<br>content: “(2nd from end)”;<br>/* Other styles… */<br>}</p>
+<p>这匹配第 2 个无序列表中最后一个列表项之后的伪元素。 如果你一直在努力解码一个复杂的选择器，那么最好从右到左阅读它，这样它就可以在逻辑上解构。 下一组选择器是专用的结构选择器，因为它们只匹配特定的子元素。 您无法将表达式传递给它们以修改其行为。</p>
+<ul>
+<li>  :first-child</li>
+<li>  :last-child</li>
+<li>  :only-child</li>
+<li>  :first-of-type</li>
+<li>  :last-of-type</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/JvzwJE/">Structural Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>乍一看，这里有很多事情，你在使用这些类型的选择器时需要小心，因为你可能得到你没想到的结果。 例如，您可能想知道为什么在 <section> 标记内的等等……文本是蓝色的。 实际上所有部分内容都是蓝色的，因为它是主 div 容器的最后一个子节点。 其他部分元素通过其他选择器覆盖自己的颜色，使单个段落变为蓝色。 如果你觉得这些结构选择器还不够，或者你觉得记不住，使用起来很麻烦，那么你可以使用 Family.scss – 轻松搞定这些 :nth-child 伪类 :nth-child</p>
+<h2 id="否定、排除选择器"><a href="#否定、排除选择器" class="headerlink" title="否定、排除选择器"></a>否定、排除选择器</h2><p>CSS 否定伪类选择器 :not(X)，是以一个简单的以选择器 X 为参数的功能性标记函数，将从匹配的元素集合中排除选择器 X 所匹配的元素。选择器 X 中不能包含另外一个 :not 选择器。</p>
+<ul>
+<li>  :not() 伪类的优先级即为它参数选择器的优先级。 可以利用这个伪类提高规则的优先级。例如， #foo:not(#bar) 和 #foo 会匹配相同的元素。 但是前者的优先级更高。但是 :not() 伪类不像其它伪类，它不会增加选择器的优先级。</li>
+<li>  :not() 伪类可以将一个或多个以逗号分隔的选择器作为其参数。但是以多个以逗号分隔的选择器作为参数是实验性的，尚未广泛支持。</li>
+</ul>
+<p>:not() 伪类时我们得选择器组合更加灵活，我们来看一些简单应用：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/JxYZWz/">:not() 伪类</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>上例中，.content :not(.notice) em 匹配了 .content 中所有的 em 元素，但是排除了 .content .notice 中 em 元素。 我们再来看看 :not() 和其他伪类选择器结合的例子：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/feiwen8772/pen/kkELxa/">:not伪类</a> by feiwen8772 (<a target="_blank" rel="noopener" href="https://codepen.io/feiwen8772">@feiwen8772</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>在做一个有间隔线的列表时，我们通常会去除最后一个 li 下的横线。li:not(:last-child) 表示除了最后一个 li 元素之外的所有其他 li 元素。</p>
+<h2 id="内容选择器"><a href="#内容选择器" class="headerlink" title="内容选择器"></a>内容选择器</h2><p>这些属于用于匹配内容的一组专用选择器。我们可以立即使用的是：</p>
+<ul>
+<li>  ::first-line</li>
+<li>  ::first-letter</li>
+<li>  ::selection</li>
+</ul>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/xjBBqN/">Content Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>::first-line 和 ::first-letter 仅在应用于块级元素时才起作用。另外要小心只在特定元素上使用 ::first-letter ，否则每个段落都可能会应用。 目前还没有一些令人兴奋的内容选择器，但是当它们得到支持时，它们将开启各种可能性。 以下是需要注意的内容选择器列表：</p>
+<ul>
+<li>  ::inactive-selection?—?非活动窗口内的选定内容</li>
+<li>  ::spelling-error?—?检查可编辑元素的拼写和语法</li>
+<li>  ::grammar-error?—?匹配语法错误</li>
+<li>  ::marker?—?匹配列表项标记</li>
+<li>  ::placeholder?—?匹配表单元素的 placeholder 文本样式；</li>
+</ul>
+<h2 id="其他选择器"><a href="#其他选择器" class="headerlink" title="其他选择器"></a>其他选择器</h2><p>我们接下来提到其他几个选择器不适合不适合归类到上面任何类别。 别担心我们差不多完成了！ 不幸的是，其中大部分是实验性的，所以你必须等待一段时间才能在生产中使用它们。 :target 选择器的目标是一个 id 与当前 URL 的一部分匹配的元素。 比如下面 URL 匹配该URL页面中 id 为 part1 的元素：</p>
+<p><a target="_blank" rel="noopener" href="https://www.w3cbest.com/#part1">https://www.w3cbest.com#part1</a></p>
+<p>我们可以将该元素应用以下样式：</p>
+<p>:target { border: 1px red solid; }</p>
+<p>其实 :target 选择器目前可以用于一些特殊的用例，欢迎查看： :target 伪类使用技巧 如果你有一个很大的选择器，那么 :matches() 可以帮助简化它。例如，如果您有以下选择器：</p>
+<p>nav p.content,<br>header p.content,<br>main p.content,<br>sidebar p.content,<br>footer p.content {<br>margin: 15px;<br>padding: 10px;<br>}</p>
+<p>然后可以通过 :matches() 简化，相当于： 太好了！这将有助于使样式表更具可读性。 接下来我们还有一个 :any-link 选择器，这个选择器是:link 和 :visited 组合的简写。 所以下面这两个选择器实际上是相同的：</p>
+<p>:any-link {<br>color: red;<br>}</p>
+<p>:link, :visited {<br>color: red;<br>}</p>
+<p>本文中最后两个选择器：</p>
+<ul>
+<li>  :dir()</li>
+<li>  :lang()</li>
+</ul>
+<p>这些都与您网站的语言有关。 :dir() 接受参数 ltr 或 rtl ，具体取决于您要匹配的文本的方向，目前仅 Firefox 支持。 所以：:dir(rtl) 会匹配所有具有 RTL 方向内容的元素。 HTML文档中的每个元素都可以使用 lang 属性设置自己的单独语言。</p>
+<div lang="en">The language of this element is set to English.</div>
+<div lang="el">Η γλ?σσα αυτο? του στοιχε?ου ?χει οριστε? στα ελληνικ?.</div>
+<div lang="is">Tungumál ?essa ?áttar er sett á íslensku.</div>
+
+<p>将相同的基本文本输入到三个 <div> 标记中，但将特定国家/地区添加到内容的末尾。此外，lang 属性中使用的国家代码代表相应的国家/地区。</p>
+<ul>
+<li>  :lang(en) { color: red; }</li>
+<li>  :lang(el) { color: green; }</li>
+<li>  :lang(is) { color: blue; }</li>
+</ul>
+<p>演示：</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/xjBoNG/">Misc Selectors</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+<p>好消息是所有主流浏览器都支持 :lang() 选择器。</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>如果你试图查找一个选择器，或者需要深入研究CSS规范，那么你可能需要查看一些有用的资源：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/">MDN Web Docs</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/Style/CSS/specs.en.html">CSS Specifications</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://caniuse.com/">Can I Use</a></li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我希望你会发现这篇文章很有用。 可以帮助刷新你的CSS选择器技能，并尝试各种可能性。 使用纯 CSS 可以做很多很酷的事情，这在几年前是不可能实现的。 对于能够在纯 CSS 中进行一些非常高级的样式和动画的设计师来说，这是令人兴奋的，并且所有人都看不到一行 JavaScript 。 文章来源 <a target="_blank" rel="noopener" href="https://blog.logrocket.com/level-up-your-css-selector-skills-5d7bb45ddd37">https://blog.logrocket.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/22/css-grid-%E5%B8%83%E5%B1%80%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1608,242 +1938,6 @@ $(&#39;#btnSet&#39;).bind(&#39;click&#39;, function (event) &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/10/art-template-js%E5%85%B3%E4%BA%8Echeckbox%E3%80%81radio%E9%80%89%E4%B8%AD%E5%90%8E%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/10/art-template-js%E5%85%B3%E4%BA%8Echeckbox%E3%80%81radio%E9%80%89%E4%B8%AD%E5%90%8E%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93/" class="post-title-link" itemprop="url">art-template.js关于checkbox、radio选中后返回数据如何渲染</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-10 15:44:58" itemprop="dateCreated datePublished" datetime="2018-09-10T15:44:58+08:00">2018-09-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>假如我们有一个多选和单选列表, 图片 我们从后端拿到数据后想在初始化的时候按照数据的值进行渲染，是选中的就显示选中状态，没有选中的就显示默认状态, 假如这是我们拿到的数据（理想中的数据应该是这样的）,如下：</p>
-<pre class="language-none"><code class="language-none">[
-    &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot;, &quot;checked&quot;: false &#125;,
-    &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot;, &quot;checked&quot;: true &#125;,
-    &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot;, &quot;checked&quot;: true &#125;,
-    &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot;, &quot;checked&quot;: false &#125;
-]</code></pre>
-
-<p>那么就很简单的了，就可以直接进行数据渲染，如下： html</p>
-<pre class="language-none"><code class="language-none">&lt;div class&#x3D;&quot;form-check&quot; id&#x3D;&quot;formCheckBox&quot;&gt;&lt;&#x2F;div&gt;</code></pre>
-
-<p>js</p>
-<pre class="language-none"><code class="language-none">res &#x3D; [
-    &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot;, &quot;checked&quot;: false &#125;,
-    &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot;, &quot;checked&quot;: true &#125;,
-    &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot;, &quot;checked&quot;: true &#125;,
-    &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot;, &quot;checked&quot;: false &#125;
-]
-document.getElementById(&#39;formCheckBox&#39;).innerHTML &#x3D; template(&#39;checkboxTemp&#39;, &#123; data: res &#125;);</code></pre>
-
-<p>template</p>
-<pre class="language-none"><code class="language-none">&lt;script type&#x3D;&quot;text&#x2F;html&quot; id&#x3D;&quot;checkboxTemp&quot;&gt;
-&#123;&#123;each data item&#125;&#125;
-&lt;label for&#x3D;&quot;checkbox&#123;&#123;item.code&#125;&#125;&quot;&gt;
-    &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;checkbox&#123;&#123;item.code&#125;&#125;&quot; value&#x3D;&quot;&#123;&#123;item.content&#125;&#125;&quot; &#123;&#123;if item.checked &#x3D;&#x3D; true&#125;&#125;checked&#123;&#123;&#x2F;if&#125;&#125;&gt; &#123;&#123;item.name&#125;&#125;
-&lt;&#x2F;label&gt;
-&#123;&#123;&#x2F;each&#125;&#125;
-&lt;&#x2F;script&gt;</code></pre>
-
-<p>如果拿到的数据是乱七八糟的后端给出来的怎么办，那我就需要处理一下数据，如下：</p>
-<pre class="language-none"><code class="language-none">&#123;&quot;data&quot;: [
-    &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot; &#125;,
-    &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot; &#125;,
-    &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot; &#125;,
-    &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot; &#125;
-    ],
-&quot;select&quot;: [1, 4]
-&#125;</code></pre>
-<p>如果是这种的话我们就先渲染，然后再用JQ的each循环改变选中状态，如下： html</p>
-<pre class="language-none"><code class="language-none">&lt;div class&#x3D;&quot;form-check&quot; id&#x3D;&quot;formCheckBox&quot;&gt;&lt;&#x2F;div&gt;</code></pre>
-
-<p>js</p>
-<pre class="language-none"><code class="language-none">res &#x3D; &#123;
-    &quot;data&quot;: [
-        &#123; &quot;code&quot;: &quot;1&quot;, &quot;name&quot;: &quot;语文&quot;, &quot;content&quot;: &quot;1&quot; &#125;,
-        &#123; &quot;code&quot;: &quot;2&quot;, &quot;name&quot;: &quot;数学&quot;, &quot;content&quot;: &quot;2&quot; &#125;,
-        &#123; &quot;code&quot;: &quot;3&quot;, &quot;name&quot;: &quot;英语&quot;, &quot;content&quot;: &quot;3&quot; &#125;,
-        &#123; &quot;code&quot;: &quot;4&quot;, &quot;name&quot;: &quot;物理&quot;, &quot;content&quot;: &quot;4&quot; &#125;
-    ],
-    &quot;select&quot;: [1, 4]
-&#125;;
-document.getElementById(&#39;formCheckBox&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, &#123; data: res.data &#125;);
-$(&#39;#formCheckBox label&#39;).each(function() &#123;
-    var cont &#x3D; $(this).find(&#39;input&#39;).val();
-    for (var i &#x3D; 0; i &lt; check.value.length; i++) &#123;
-        if (check.select[i] &#x3D;&#x3D; val) &#123;
-            $(this).find(&#39;input&#39;).prop(&#39;checked&#39;, true)
-        &#125;
-    &#125;
-&#125;)</code></pre>
-
-<p>template</p>
-<pre class="language-none"><code class="language-none">&lt;script type&#x3D;&quot;text&#x2F;html&quot; id&#x3D;&quot;tpl&quot;&gt;
-    &#123;&#123;each data&#125;&#125;
-    &lt;label for&#x3D;&quot;checkbox&#123;&#123;$value.code&#125;&#125;&quot;&gt;
-    &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;checkbox&#123;&#123;$value.code&#125;&#125;&quot; value&#x3D;&quot;&#123;&#123;$value.content&#125;&#125;&quot;&gt; &#123;&#123;$value.name&#125;&#125;&lt;&#x2F;label&gt;
-    &#123;&#123;&#x2F;each&#125;&#125;
-&lt;&#x2F;script&gt;</code></pre>
-
-<p>后记：其实拿到的数据基本上如果可以直接用的话就不必处理，但是有的数据是需要重新处理重新组合成我们用的那种结果，比如上面最后一个例子提到的，他有两个checkbox被选中，但是我们渲染的时候会用data数据渲染，那么你可以把select的两标记组合到data里面，如:</p>
-<pre class="language-none"><code class="language-none">res &#x3D; &#123; 
-    &quot;data&quot;: [
-        &#123; 
-            &quot;code&quot;: &quot;1&quot;, 
-            &quot;name&quot;: &quot;语文&quot;, 
-            &quot;content&quot;: &quot;1&quot;, 
-            &quot;select&quot;: true&#x2F;&#x2F; 这个就是标记被选中
-        &#125;,
-        ....
-    ]
-&#125;</code></pre>
-
-<p>这样就可以直接渲染数据了，方法有很多种，就看你怎么理解，想怎么用</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/06/%E7%94%A8display-flex%E6%96%B0%E5%B1%9E%E6%80%A7%E5%81%9A%E4%B8%AA%E5%AF%BC%E8%88%AA%E6%8E%92%E5%88%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/06/%E7%94%A8display-flex%E6%96%B0%E5%B1%9E%E6%80%A7%E5%81%9A%E4%B8%AA%E5%AF%BC%E8%88%AA%E6%8E%92%E5%88%97/" class="post-title-link" itemprop="url">用display:flex新属性做个导航排列</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-06 13:30:29" itemprop="dateCreated datePublished" datetime="2018-09-06T13:30:29+08:00">2018-09-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>现在你得导航还在用float来设置水平排列吗？ 随着css的强大新的属性的增加，浏览器的内核升级，让我们的代码越写越简单，以前我们在写代码设置某一块水平排列用的最多的应该是float了吧，80后的程序员最有感受，深受低版本浏览器的残害(IE6)，乃至现在还会随手敲一个float出来(包括我)。不过现在好了，随着浏览器的内核升级，很多企业也已抛弃低版本浏览器，css的很多新属性就可以用到了，我们今天就用这个新属性flex做个导航水平排列,如下：</p>
-<ul>
-<li>  首页</li>
-<li>  关于我们</li>
-<li>  产品展示</li>
-<li>  客户支持</li>
-<li>  联系我们</li>
-</ul>
-<p>html</p>
-<ul class="navbar">
-  <li><a href="/">首页</a></li>
-  <li><a href="/">关于我们</a></li>
-  <li><a href="/">产品展示</a></li>
-  <li><a href="/">客户支持</a></li>
-  <li><a href="/">联系我们</a></li>
-</ul>
-
-<p>css</p>
-<p>.navbar{<br>  display: flex;<br>  flex-direction: row;<br>  flex-wrap: nowrap;<br>  justify-content: flex-start;<br>  align-items: stretch;<br>  align-content: stretch;<br>}</p>
-<p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。 我们来测试一下他的兼容性</p>
-<p>复制代码</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1913,7 +2007,7 @@ $(&#39;#formCheckBox label&#39;).each(function() &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

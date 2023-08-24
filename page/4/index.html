@@ -178,6 +178,215 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">javascript数据类型 —— String 类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-07 08:00:43" itemprop="dateCreated datePublished" datetime="2019-05-07T08:00:43+08:00">2019-05-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>String 类型用于表示由零或多个16位 Unicode 字符组成的字符序列，即字符串 。</p>
+<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>由于计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。在计算机中，1个字节（byte）由 8个比特（bit）组成，所以 1 个字节能表示的最大整数就是 255，如果想表示更大整数，就必须用更多的字节，比如 2 个字节可以表示的最大整数为 65535 。最早，只有127个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母A的编码是65，小写字母z的编码是122。 但如果要表示中文字符，显然一个字节是不够的，至少需要两个字节。所以，中国制定了GB2312编码，用来表示中文字符。基于同样的原因，各个国家都制定了自己的编码规则。这样就会出现一个问题，即在多语言混合的文本中，不同的编码会出现冲突，导致乱码出现。 为了解决这个问题，Unicode 编码应运而生，它把所有的语言都统一到一套编码中，采用2个字节表示一个字符，即最多可以表示65535个字符，这样基本上可以覆盖世界上常用的文字，如果要表示更多的文字，也可以采用4个字节进行编码，这是一种通用的编码规范。 因此，JavaScript中的字符也采用Unicode来编码，也就是说，JavaScript中的英文字符和中文字符都会占用2个字节的空间大小，这种多字节字符，通常被称为宽字符。</p>
+<h2 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h2><p>在JavaScript中，字符串是基本数据类型，本身不存任何操作方法。为了方便的对字符串进行操作，ECMAScript提供了一个基本包装类型：<code>String()</code>对象。它是一种特殊的引用类型，JS引擎每当读取一个字符串的时候，就会在内部创建一个对应的<code>String()</code>对象，该对象提供了很多操作字符的方法，这就是为什么能对字符串调用方法的原因。</p>
+<p>var name = ‘JavaScript’;<br>var value = name.substr(2,1);</p>
+<p>当第二行代码访问变量str时，访问过程处于一种读取模式，也就是要从内存中读取这个字符串的值。而在读取模式中访问字符串时，引擎内部会自动完成下列处理：</p>
+<ol>
+<li> 创建String类型的一个实例</li>
+<li> 在实例上调用指定的方法</li>
+<li> 销毁这个实例</li>
+</ol>
+<p>用伪代码形象的模拟以上三个步骤：</p>
+<p>var obj = new String(‘JavaScript’);<br>var value = obj.substr(2,1);<br>name = null;</p>
+<p>可以看出，基本包装类型是一种特殊的引用类型。它和普通引用类型有一个很重要的区别，就是对象的生存期不同。使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。在JavaScript中，类似的基本包装类型还有<code>Number</code>、<code>Boolean</code>对象 。</p>
+<h2 id="常用操作方法"><a href="#常用操作方法" class="headerlink" title="常用操作方法"></a>常用操作方法</h2><p>作为字符串的基本包装类型，String()对象提供了以下几类方法，用以操作字符串：</p>
+<ul>
+<li>  字符操作：<code>charAt()</code>、<code>charCodeAt()</code>、<code>fromCharCode()</code></li>
+<li>  字符串提取：<code>substr()</code>、<code>substring()</code>、<code>slice()</code></li>
+<li>  位置索引：<code>indexOf()</code>、<code>lastIndexOf()</code></li>
+<li>  大小写转换：<code>toLowerCase()</code>、<code>toUpperCase()</code></li>
+<li>  模式匹配：<code>match()</code>、<code>search()</code>、<code>replace()</code>、<code>split()</code></li>
+<li>  其他操作：<code>concat()</code>、<code>trim()</code>、<code>localeCompare()</code></li>
+</ul>
+<p><code>charCodeAt()</code>方法的作用是获取字符的Unicode编码，俗称“Unicode码点”。<code>fromCharCode()</code>是<code>String()</code>对象上的静态方法，作用是根据Unicode编码返回对应的字符。</p>
+<p>var a = ‘a’;<br>// 获取Unicode编码<br>var code = a.charCodeAt(0); // 97<br>// 根据Unicode编码获取字符<br>String.fromCharCode(code); // a</p>
+<p>通过<code>charCodeAt()</code>方法获取字符的Unicode编码，然后再把这个编码转化成二进制，就可以得到该字符的二进制表示。</p>
+<p>var a = ‘a’;<br>var code = a.charCodeAt(0); // 97<br>code.toString(2); // 1100001</p>
+<p>对于字符串的提取操作，有三个相类似的方法，分别如下：</p>
+<p>substr(start [, length])<br>substring(start [, end])<br>slice(start [, end])</p>
+<p>从定义上看，<code>substring()</code>和<code>slice()</code>是同类的，参数都是字符串的某个start位置到某个end位置（但end位置的字符不包括在结果中）；而<code>substr()</code>则是字符串的某个start位置起，数length个长度的字符才结束。二者的共性是：从start开始，如果没有第2个参数，都是直到字符串末尾。 <code>substring()</code>和<code>slice()</code>的区别则是：<code>slice()</code>可以接受“负数”，表示从字符串尾部开始计数；而<code>substring()</code>则把负数或其它无效的数当作0。</p>
+<p>‘hello world!’.slice(-6, -1) // ‘world’<br>‘hello world!’.substring(“abc”, 5) // ‘hello’</p>
+<p><code>substr()</code>的start也可接受负数，也表示从字符串尾部计数，这点和<code>slice()</code>相同；但<code>substr()</code>的length则不能小于1，否则返回空字符串。</p>
+<p>‘hello world!’.substr(-6, 5) // ‘world’<br>‘hello world!’.substr(0, -1) // ‘’</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/04/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/04/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">常用正则表达式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-04 10:49:09" itemprop="dateCreated datePublished" datetime="2019-05-04T10:49:09+08:00">2019-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>说明：正则表达式通常用于两种任务：1.验证，2.搜索/替换。用于验证时，通常需要在前后分别加上<code>^</code>和<code>$</code>，以匹配整个待验证字符串；搜索/替换时是否加上此限定则根据搜索的要求而定，此外，也有可能要在前后加上<code>\b</code>而不是<code>^</code>和<code>$</code>。此表所列的常用正则表达式，除个别外均未在前后加上任何限定，请根据需要，自行处理。</p>
+<p>说明</p>
+<p>正则表达式</p>
+<p>网址（URL）</p>
+<p><code>[a-zA-z]+://[^\s]*</code></p>
+<p>IP地址(IP Address)</p>
+<p><code>((2[0-4]\d25[0-5][01]?\d\d?)\.)&#123;3&#125;(2[0-4]\d25[0-5][01]?\d\d?)</code></p>
+<p>电子邮件(Email)</p>
+<p><code>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</code></p>
+<p>QQ号码</p>
+<p><code>[1-9]\d&#123;4,&#125;</code></p>
+<p>HTML标记(包含内容或自闭合)</p>
+<p><code>&lt;(.*)(.*)&gt;.*&lt;\/\1&gt;&lt;(.*) \/&gt;</code></p>
+<p>密码(由数字/大写字母/小写字母/标点符号组成，四种都必有，8位以上)</p>
+<p><code>(?=^.&#123;8,&#125;$)(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z])(?!.*\n).*$</code></p>
+<p>日期(年-月-日)</p>
+<p><code>(\d&#123;4&#125;\d&#123;2&#125;)-((1[0-2])(0?[1-9]))-(([12][0-9])(3[01])(0?[1-9]))</code></p>
+<p>日期(月/日/年)</p>
+<p><code>((1[0-2])(0?[1-9]))/(([12][0-9])(3[01])(0?[1-9]))/(\d&#123;4&#125;\d&#123;2&#125;)</code></p>
+<p>时间(小时:分钟, 24小时制)</p>
+<p><code>((10?)[0-9]2[0-3]):([0-5][0-9])</code></p>
+<p>汉字(字符)</p>
+<p><code>[\u4e00-\u9fa5]</code></p>
+<p>中文及全角标点符号(字符)</p>
+<p><code>[\u3000-\u301e\ufe10-\ufe19\ufe30-\ufe44\ufe50-\ufe6b\uff01-\uffee]</code></p>
+<p>中国大陆固定电话号码</p>
+<p><code>(\d&#123;4&#125;-\d&#123;3&#125;-)?(\d&#123;8&#125;\d&#123;7&#125;)</code></p>
+<p>中国大陆手机号码</p>
+<p><code>1\d&#123;10&#125;</code></p>
+<p>中国大陆邮政编码</p>
+<p><code>[1-9]\d&#123;5&#125;</code></p>
+<p>中国大陆身份证号(15位或18位)</p>
+<p><code>\d&#123;15&#125;(\d\d[0-9xX])?</code></p>
+<p>非负整数(正整数或零)</p>
+<p><code>\d+</code></p>
+<p>正整数</p>
+<p><code>[0-9]*[1-9][0-9]*</code></p>
+<p>负整数</p>
+<p><code>-[0-9]*[1-9][0-9]*</code></p>
+<p>整数</p>
+<p><code>-?\d+</code></p>
+<p>小数</p>
+<p><code>(-?\d+)(\.\d+)?</code></p>
+<p>不包含abc的单词</p>
+<p><code>\b((?!abc)\w)+\b</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/02/for-in%E4%B8%8Efor-of%E5%BE%AA%E7%8E%AF%E5%AF%B9%E6%AF%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1494,186 +1703,6 @@ console.log(isAllRed); // false
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/20/notyf-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84-javascript-%E9%80%9A%E7%9F%A5%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/20/notyf-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84-javascript-%E9%80%9A%E7%9F%A5%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">Notyf – 响应式的 JavaScript 通知插件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-20 13:31:01" itemprop="dateCreated datePublished" datetime="2019-04-20T13:31:01+08:00">2019-04-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简要教程"><a href="#简要教程" class="headerlink" title="简要教程"></a>简要教程</h2><p>notyf.js是一款超级简单的响应式纯js消息通知插件。它使用纯javascript来制作，没有任何外部依赖，通过简单的设置，即可生成漂亮的消息通知效果。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可以通过npm来安装notyf.js消息通知插件。</p>
-<pre class="language-none"><code class="language-none">npm i notyf</code></pre>
-
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>在页面中引入notyf.min.css和notyf.min.js文件。</p>
-<pre class="language-none"><code class="language-none">&lt;html&gt;
-&lt;head&gt;
-    ...
-    &lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;path&#x2F;to&#x2F;notyf.min.css&quot;&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    ...
-    &lt;script src&#x3D;&quot;&#x2F;path&#x2F;to&#x2F;notyf.min.js&quot; type&#x3D;&quot;text&#x2F;javascript&quot;&gt;&lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;</code></pre>
-
-<h2 id="初始化插件"><a href="#初始化插件" class="headerlink" title="初始化插件"></a>初始化插件</h2><p>notyf.js消息通知插件的使用方法如下：</p>
-<pre class="language-none"><code class="language-none">&#x2F;&#x2F;创建一个Notyf实例对象
-var notyf &#x3D; new Notyf();
-&#x2F;&#x2F;显示一条警告消息
-notyf.error(&#39;You must fill out the form before moving forward&#39;);
-&#x2F;&#x2F;显示一条成功消息
-notyf.success(&#39;Your changes have been successfully saved!&#39;);</code></pre>
-
-<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><p>notyf.js消息通知插件的可用配置参数如下：</p>
-<hr>
-<h2 id="参数-类型-默认值-描述"><a href="#参数-类型-默认值-描述" class="headerlink" title="|参数       |类型    |默认值   |描述                           |"></a>|参数       |类型    |默认值   |描述                           |</h2><h2 id="delay-Number-2000-消息通知显示的延迟时间，单位毫秒"><a href="#delay-Number-2000-消息通知显示的延迟时间，单位毫秒" class="headerlink" title="|delay      |Number |2000     |消息通知显示的延迟时间，单位毫秒 |"></a>|delay      |Number |2000     |消息通知显示的延迟时间，单位毫秒 |</h2><h2 id="alertIcon-String-预定义图标-警告消息显示的图标的class类"><a href="#alertIcon-String-预定义图标-警告消息显示的图标的class类" class="headerlink" title="|alertIcon  |String |预定义图标|警告消息显示的图标的class类     |"></a>|alertIcon  |String |预定义图标|警告消息显示的图标的class类     |</h2><h2 id="confirmIcon-String-预定义图标-成功消息显示的图标的class类"><a href="#confirmIcon-String-预定义图标-成功消息显示的图标的class类" class="headerlink" title="|confirmIcon|String    |预定义图标|成功消息显示的图标的class类     |"></a>|confirmIcon|String    |预定义图标|成功消息显示的图标的class类     |</h2><p>下面的例子是消息在用户点击按钮后1秒钟显示，并使用FontAwesome字体图标作为警告框和成功消息框的图标。</p>
-<pre class="language-none"><code class="language-none">var notyf &#x3D; new Notyf(&#123;
-    delay: 1000,
-    alertIcon: &#39;icon icon-exclamation-circle&#39;,
-    confirmIcon: &#39;icon icon-check-circle&#39;
-&#125;)</code></pre>
-
-<p>演示地址：<a target="_blank" rel="noopener" href="https://carlosroso.com/notyf/">https://carlosroso.com/notyf/</a><br>github地址：<a target="_blank" rel="noopener" href="https://github.com/caroso1222/notyf">https://github.com/caroso1222/notyf</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/04/16/%E5%A4%A7%E9%83%A8%E5%88%86%E6%95%99%E7%A8%8B%E4%B8%8D%E4%BC%9A%E5%91%8A%E8%AF%89%E4%BD%A0%E7%9A%8412%E4%B8%AAJS%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/16/%E5%A4%A7%E9%83%A8%E5%88%86%E6%95%99%E7%A8%8B%E4%B8%8D%E4%BC%9A%E5%91%8A%E8%AF%89%E4%BD%A0%E7%9A%8412%E4%B8%AAJS%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">大部分教程不会告诉你的12个JS技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-16 09:25:30" itemprop="dateCreated datePublished" datetime="2019-04-16T09:25:30+08:00">2019-04-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-过滤唯一值"><a href="#1-过滤唯一值" class="headerlink" title="1. 过滤唯一值"></a>1. 过滤唯一值</h2><p>ES6 引入了 Set 对象和延展（spread）语法…，我们可以用它们来创建一个只包含唯一值的数组。</p>
-<p>const array = [1, 1, 2, 3, 5, 5, 1]<br>const uniqueArray = […new Set(array)];<br>console.log(uniqueArray); // Result: [1, 2, 3, 5]</p>
-<p>在 ES6 之前，获得同样的数组需要更多的代码！ 这个技巧可以支持包含原始类型的数组：<code>undefined</code>、<code>null</code>、<code>boolean</code>、<code>string</code> 和 number</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/04/16/%E5%A4%A7%E9%83%A8%E5%88%86%E6%95%99%E7%A8%8B%E4%B8%8D%E4%BC%9A%E5%91%8A%E8%AF%89%E4%BD%A0%E7%9A%8412%E4%B8%AAJS%E6%8A%80%E5%B7%A7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1743,7 +1772,7 @@ notyf.success(&#39;Your changes have been successfully saved!&#39;);</code></pre
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

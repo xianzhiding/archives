@@ -178,6 +178,219 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/12/echarts-%E6%94%B9%E5%8F%98markpoint%E6%A0%87%E6%B3%A8%E6%B0%94%E6%B3%A1%E9%A2%9C%E8%89%B2/" class="post-title-link" itemprop="url">Echarts 改变markPoint标注(气泡)颜色</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-12 11:36:37" itemprop="dateCreated datePublished" datetime="2018-11-12T11:36:37+08:00">2018-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECharts/" itemprop="url" rel="index"><span itemprop="name">ECharts</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>改变markPoint 标注(气泡)颜色的方法很简单，其实还是多翻文档，markPoint属性有很多下面列了几个也不一一介绍了，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint">自己翻文档。</a> <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/11/echartimg.jpg"></p>
+<p>markPoint:{<br>  symbol: ‘pin’, //标记(气泡)的图形<br>  symbolSize: 50, //标记(气泡)的大小<br>  …<br>  itemStyle: {…}, //标注(气泡)的样式<br>}</p>
+<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>标记的图形，默认是个气泡型的，看上图很清晰，</p>
+<h3 id="symbolSize"><a href="#symbolSize" class="headerlink" title="symbolSize"></a>symbolSize</h3><p>标记的大小，设置标记的大小，可根据自己的嗜好设置大小</p>
+<h3 id="itemStyle"><a href="#itemStyle" class="headerlink" title="itemStyle"></a>itemStyle</h3><p>标注(气泡)的样式就是这个属性，其实文档讲的都很清晰，<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.itemStyle">只是有的人真的很懒只会问不会找</a></p>
+<p>itemStyle:{<br>  color: ‘#4587E7’,<br>  borderColor: ‘#000’,<br>  borderWidth: 0,<br>  borderType: ‘solid’,<br>  …<br>}</p>
+<h4 id="color-default-自适应"><a href="#color-default-自适应" class="headerlink" title="color [ default: 自适应 ]"></a>color [ default: 自适应 ]</h4><p>图形的颜色。</p>
+<h4 id="borderColor-default-“-000”"><a href="#borderColor-default-“-000”" class="headerlink" title="borderColor [ default: “#000” ]"></a>borderColor [ default: “#000” ]</h4><p>图形的描边颜色。支持的颜色格式同 color，不支持回调函数。</p>
+<h4 id="borderWidth-default-0"><a href="#borderWidth-default-0" class="headerlink" title="borderWidth [ default: 0 ]"></a>borderWidth [ default: 0 ]</h4><p>描边线宽。为 0 时无描边。</p>
+<h4 id="borderType-default-‘solid’"><a href="#borderType-default-‘solid’" class="headerlink" title="borderType [ default: ‘solid’ ]"></a>borderType [ default: ‘solid’ ]</h4><p>柱条的描边类型，默认为实线，支持 ‘solid’, ‘dashed’, ‘dotted’。   在结束之前，提一下如何给每个值都加上标注(气泡)，在文档代码看到的气泡是在最大值或最小值上，那么如何给每个值都加上标注(气泡)呢，其实这些值就是你的坐标轴上data值，如果想在每个值的上面显示标注，就要循环你的data值，但是在那循环呢，还是在markPoint对象里面，看文档API里面markPoint还有个<a target="_blank" rel="noopener" href="http://echarts.baidu.com/option.html#series-line.markPoint.data">data数组对象属性</a>，文档是这样说的；</p>
+<h3 id="series-i-line-markPoint-data-i"><a href="#series-i-line-markPoint-data-i" class="headerlink" title="series[i]-line.markPoint.data[i]"></a>series[i]-line.markPoint.data[i]</h3><p>标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。</p>
+<ul>
+<li>  通过 x, y 属性指定相对容器的屏幕坐标，单位像素，支持百分比。</li>
+<li>  用 coord 属性指定数据在相应坐标系上的坐标位置，单个维度支持设置 ‘min’, ‘max’, ‘average’。</li>
+<li>  直接用 type 属性标注系列中的最大值，最小值。这时候可以使用 valueIndex 指定是在哪个维度上的最大值、最小值、平均值。或者可以使用 valueDim 指定在哪个维度上的最大值、最小值、平均值。</li>
+</ul>
+<p>当多个属性同时存在时，优先级按上述的顺序。 那么我们可以把数据组装成多个对象，例如我有一个数组</p>
+<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {…},<br>}</p>
+<p>那么我要在markPoint里面应该是这样组装的</p>
+<p>series: {<br>  data: [820, 932, 901, 934, 129, 670],<br>  …<br>  markPoint: {<br>    …<br>    data: [<br>      {value: 820, xAxis: 0, yAxis: 820},<br>      {value: 932, xAxis: 1, yAxis: 932},<br>      {value: 901, xAxis: 2, yAxis: 901},<br>      {value: 934, xAxis: 3, yAxis: 934},<br>      {value: 129, xAxis: 4, yAxis: 129},<br>      {value: 670, xAxis: 5, yAxis: 670}<br>    ]<br>  }<br>  …<br>}</p>
+<p>这样就如上图一样效果就出来了 来个?，假设一组数组，大于50显示红色，小于则显示绿色</p>
+<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/gVwvqQ/">echarts markPoint 气泡</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/08/javascript-class-%E7%B1%BB%E7%9A%84%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%AC%E5%85%B1%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">JavaScript Class 类的私有和公共属性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-08 17:18:23" itemprop="dateCreated datePublished" datetime="2018-11-08T17:18:23+08:00">2018-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文为<a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>续篇。</p>
+</blockquote>
+<p>我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。” 在 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">上一篇文章</a> 中，我们学习了如何在 ES5 和 ES6 中创建 JavaScript 类。 我们还讨论了如何通过构造函数向这些类的实例添加 state(状态) ，以及如何通过类的原型在实例之间共享方法。 这是一个简单的 Player 类，它包含了我们讨论的有关 ES6 类的所有内容。</p>
+<p>class Player {<br>  constructor() {<br>    this.points = 0<br>    this.assists = 0<br>    this.rebounds = 0<br>    this.steals = 0<br>  }<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
+<p>我们看看这段代码，我们能不能让它更直观一点呢？方法很好理解，都很自然。那么构造函数呢？什么是 constructor ？为什么我们必须在这里定义实例值？现在，这些问题已经有了答案，但是为什么我们不能向实例中添加 state(状态) ，就像方法那样？比如：</p>
+<p>class Player {<br>  points = 0<br>  assists = 0<br>  rebounds = 0<br>  steals = 0<br>  addPoints(amount) {<br>    this.points += amount<br>  }<br>  addAssist() {<br>    this.assists++<br>  }<br>  addRebound() {<br>    this.rebounds++<br>  }<br>  addSteal() {<br>    this.steals++<br>  }<br>}</p>
+<p>事实上，这是 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-class-fields">Class Fields Declaration</a> 提案的基础，该提案目前处于 TC-39 流程的 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/ecmascript/">第3阶段</a> 。 此提议允许您直接将实例属性添加为类的属性，而无需使用构造方法。 非常漂亮，但是如果我们看一些 React 代码，这个提案真的很棒。 这是一个典型的 React 组件。 它具有本地 state(状态) ，一些方法以及一些静态属性被添加到类中。</p>
+<p>class PlayerInput extends Component {<br>  constructor(props) {<br>    super(props)<br>    this.state = {<br>      username: ‘’<br>    }</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
+<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
+<p>让我们看看新的 Class Fields 提议如何改进上面的代码首先，我们可以将 state(状态) 变量从构造函数中取出，并将其直接定义为类的属性（或“字段”）。</p>
+<p>class PlayerInput extends Component {<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>PlayerInput.propTypes = {<br>  id: PropTypes.string.isRequired,<br>  label: PropTypes.string.isRequired,<br>  onSubmit: PropTypes.func.isRequired,<br>}</p>
+<p>PlayerInput.defaultProps = {<br>  label: ‘Username’,<br>}</p>
+<p>很酷，但没什么好兴奋的。 我们继续吧。 在上一篇文章中，我们讨论了如何使用 static 关键字向类本身添加静态方法。 但是，根据 ES6 类规范，这只对方法有效，对于值则无效。 这就是为什么在上面的代码中，我们必须在我们定义完 PlayerInput 之后，再在 class 外面将 propTypes 和 defaultProps 添加到 PlayerInput ，而不是在 class 体内定义他们的原因。 再说一遍，它们不能像静态方法那样直接放入 class 体内呢? 好消息是，这也包含在 Class Fields 提案中。 所以现在不仅可以在类体中定义静态方法，还可以定义静态值。 这对我们的代码意味着我们可以将 propTypes 和 defaultProps 移动到 class 体内定义。</p>
+<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  constructor(props) {<br>    super(props)</p>
+<pre><code>this.handleChange = this.handleChange.bind(this)
+</code></pre>
+<p>  }<br>  handleChange(event) {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>这样代码看上去好多了，但我们仍然有丑陋的 constructor 方法和 super 调用。 同样，我们现在需要构造函数的原因是为了将 handleChange 方法绑定到恰当的上下文中。 如果我们能找到另一种方法来确保始终在恰当的上下文中调用 handleChange ，那么我们可以摆脱掉 constructor 。 如果您以前使用过箭头函数，就会知道它们没有自己的 this 关键字。相反，this 关键字是按 lexically(词法) 绑定的。这是一种奇特的说法，当你在箭头函数中使用 this 关键字时，事情会按照你所期望的方式运行。利用这些知识并将其与 “Class Fields” 提案相结合起来，如果我们将 handleChange 方法替换为箭头函数呢？这看起来有点奇怪，但是通过这样做，我们可以解决绑定问题，因为，箭头函数是通过 lexically(词法) 绑定 this 的。</p>
+<p>class PlayerInput extends Component {<br>  static propTypes = {<br>    id: PropTypes.string.isRequired,<br>    label: PropTypes.string.isRequired,<br>    onSubmit: PropTypes.func.isRequired,<br>  }<br>  static defaultProps = {<br>    label: ‘Username’<br>  }<br>  state = {<br>    username: ‘’<br>  }<br>  handleChange = (event) =&gt; {<br>    this.setState({<br>      username: event.target.value<br>    })<br>  }<br>  render() {<br>    …<br>  }<br>}</p>
+<p>你看上面的代码，这比我们开始的原始类要好得多，这都要感谢 “Class Fields” 提案，它将很快成为 EcmaScript 规范的一部分。 从开发者体验的角度来看，Class Fields 提案优势很明显。 然而，他们有一些缺点，很少被谈论。 在上一篇文章中，我们讨论了 ES6 类实际上只是 Pseudoclassical Instantiation(伪类实例化) 模式的语法糖。也就是说，当你向类添加方法时，这就像在函数原型中添加方法一样。</p>
+<p>class Animal {<br>  eat() {}<br>}</p>
+<p>// 等价于</p>
+<p>function Animal () {}<br>Animal.prototype.eat = function () {}</p>
+<p>这是高效的，因为 eat 定义一次并在类的所有实例之间共享。 这与 Class Fields 有什么关系？ 好吧，正如我们上面所看到的， Class Fields 被添加到实例中。 这意味着对于我们创建的每个实例，我们将创建一个新的 eat 方法。</p>
+<p>class Animal {<br>  eat() {}<br>  sleep = () =&gt; {}<br>}</p>
+<p>// 等价于</p>
+<p>function Animal () {<br>  this.sleep = function () {}<br>}</p>
+<p>Animal.prototype.eat = function () {}</p>
+<p>请注意 sleep 如何放在实例上，而不是放在 Animal.prototype 上。这是件坏事吗？嗯，有可能。在不进行度量的情况下对性能进行宽泛的描述通常不是一个好主意。您需要在应用程序中回答的问题是，您从 Class Fields 中获得的开发人员体验是否超过了潜在的性能损失。</p>
+<blockquote>
+<p>如果你想在你的应用程序中使用我们之前谈到的任何内容，你需要使用 <a target="_blank" rel="noopener" href="https://babeljs.io/docs/en/babel-plugin-proposal-class-properties">babel-plugin-transform-class-properties</a> 插件。</p>
+</blockquote>
+<h2 id="Private-私有-属性"><a href="#Private-私有-属性" class="headerlink" title="Private(私有) 属性"></a>Private(私有) 属性</h2><p>Class Fields 提案的另一个内容时是 “private fields (私有属性)” 。 有时，当您构建一个类时，您希望拥有不暴露给外界的私有值。 从历史上看， JavaScript 缺乏真正私有值 的能力，所以我们通过约定，用下划线标记它们。</p>
+<p>class Car {<br>  _milesDriven = 0<br>  drive(distance) {<br>    this._milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this._milesDriven<br>  }<br>}</p>
+<p>在上面的示例中，我们依靠 Car class（类）的实例通过调用 getMilesDriven 方法来获取汽车的里程数。但是，因为没有什么能使 _milesDriven成为私有的，所以任何实例都可以访问它。</p>
+<p>const tesla = new Car()<br>tesla.drive(10)<br>console.log(tesla._milesDriven)</p>
+<p>有个奇特的（hacky）方法，就是使用 WeakMaps 可以解决这个问题，但如果存在更简单的解决方案，那将会很好。 同样，Class Fields 提案正在拯救我们。 根据提议，您可以使用 ＃ 创建私有字段。 是的，你没有看错， ＃ 。 我们来看看它对我们的代码有什么影响，</p>
+<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    this.#milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return this.#milesDriven<br>  }<br>}</p>
+<p>我们可以用速记语法更进一步简化</p>
+<p>class Car {<br>  #milesDriven = 0<br>  drive(distance) {<br>    #milesDriven += distance<br>  }<br>  getMilesDriven() {<br>    return #milesDriven<br>  }<br>}</p>
+<p>const tesla = new Car()<br>tesla.drive(10)<br>tesla.getMilesDriven() // 10<br>tesla.#milesDriven // Invalid</p>
+<p>如果您对私有属性背后的更多细节/决策感兴趣，那么这里有一篇 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-private-fields/blob/master/FAQ.md">很好的文章</a>。</p>
+<blockquote>
+<p>目前 <a target="_blank" rel="noopener" href="https://github.com/babel/proposals/issues/12">有一个 PR</a> 将私有属性添加到 Babel ，以便您可以在应用中使用它们。</p>
+</blockquote>
+<p>文章来源：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/javascript-private-and-public-class-fields/">https://tylermcginnis.com</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/11/08/%E4%BD%BF%E7%94%A8css%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8B%BC%E6%8E%A5html/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1100,383 +1313,6 @@ main &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/" class="post-title-link" itemprop="url">box-shadow和drop-shadow实现不规则投影</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-09 13:32:25" itemprop="dateCreated datePublished" datetime="2018-10-09T13:32:25+08:00">2018-10-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>当我们想给一个矩形或其他能用 border-radius 生成的形状（在“自适应的椭圆”一节中可以看到一些示例）加投影时，box-shadow 的表现都堪称完美。但是，当元素添加了一些伪元素或半透明的装饰之后，它就有些力不从心了，因为 border-radius 会无耻地忽视透明部分。这类情况包括：</p>
-<ul>
-<li>  半透明图像、背景图像、或者 border-image（比如老式的金质像框）；</li>
-<li>  元素设置了点状、虚线或半透明的边框，但没有背景（或者当background-clip 不是 border-box 时）；</li>
-<li>  对话气泡，它的小尾巴通常是用伪元素生成的；</li>
-</ul>
-<p>如果我们打算对这类元素直接应用 box-shadow，那只能得到不完全投影的结果。难道我们只能完全放弃投影效果吗？有没有办法可以解决这个难题？ <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131023.png"> 滤镜效果规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/filter-effects%EF%BC%89%E4%B8%BA%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%82%E5%AE%83%E5%BC%95%E5%85%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E5%8F%AB%E4%BD%9C">http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。它引入了一个叫作</a> filter 的新属性，这个属性也是从 SVG 那里借鉴过来的。尽管 CSS 滤镜基本上就是 SVG 滤镜，但我们并不需要掌握任何SVG 知识。相反，只需要一些函数就可以很方便地指定滤镜效果了，比如blur()、grayscale() 以及我们需要的 drop-shadow() ！如果你喜欢，甚至可以把多个滤镜串连起来，只要用空格把它们分隔开就可以了，比如：</p>
-<p>filter: blur() grayscale() drop-shadow();</p>
-<p>drop-shadow() 滤镜可接受的参数基本上跟 box-shadow 属性是一样的，但不包括扩张半径，不包括 inset 关键字，也不支持逗号分割的多层投影语法。举个例子，上面的投影：</p>
-<p>box-shadow: 2px 2px 10px rgba(0,0,0,.5);</p>
-<p>可以这样来写：</p>
-<p>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
-<p><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131101.png"> CSS 滤镜最大的好处在于，它们可以平稳退化：当浏览器不支持时，不会出现问题，只不过没有任何效果而已。如果你确实需要这个效果在尽可能多的浏览器中显示出来，可以同时附上一个 SVG 滤镜，这样可以得到稍微好一些的浏览器支持度。你可以在滤镜效果规范（<a target="_blank" rel="noopener" href="http://www.w3.org/TR/filter-effects/%EF%BC%89%E4%B8%AD%E4%B8%BA%E6%AF%8F%E4%B8%AA%E6%BB%A4%E9%95%9C%E5%87%BD%E6%95%B0%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84">http://www.w3.org/TR/filter-effects/）中为每个滤镜函数找到对应的</a> SVG 滤镜版本。你可以把 SVG滤镜和简化的 CSS 滤镜放在一起使用，让层叠机制来决定哪一行最终生效：</p>
-<p>filter: url(drop-shadow.svg#drop-shadow);<br>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
-<p>不幸的是，如果 SVG 滤镜是存放在一个独立文件里的，那它就无法像一个简洁易用的函数那样在 CSS 代码中进行随意配置；如果它是内联的，则又会搅乱你的代码。参数需要写死在文件内部，因此每当我们新加一种哪怕是大同小异的投影效果时，都需要多准备一个文件，这显然是难以接受的。当然，我们还可以使用 data URI（它也会省掉额外的 HTTP 请求），但这个方法仍然会带来文件体积的增长。总的来说，这个方法只是一种回退方案，因此只要我们把SVG 滤镜控制在一定数量以内，哪怕它们的效果大同小异，也是说得过去的。 另外一件需要牢记的事情就是，任何非透明的部分都会被一视同仁地打上投影，包括文本（如果背景是透明的），正如我们刚刚看到的那样。你可能会想，是不是可以通过 text-shadow: none; 来取消掉文本上的投影呢？其实 text-shadow 跟它是完全不相干的两码事，因此这样做并不能取消文本上的 drop-shadow() 效果。此外，如果你已经用 textshadow在文本上加了投影效果，文本投影还会被 drop-shadow() 滤镜再加上投影，这本质上是给投影打了投影！看看下面这段示例代码（请原谅它惨不忍睹的效果，这样只是为了凸显这个怪异的问题）：</p>
-<p>color: deeppink;<br>border: 2px solid;<br>text-shadow: .1em .2em yellow;<br>filter: drop-shadow(.05em .05em .1em gray);</p>
-<p>你可以看到它的渲染效果，图中的文字被同时打上了 textshadow和 drop-shadow()。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-08 08:56:49" itemprop="dateCreated datePublished" datetime="2018-10-08T08:56:49+08:00">2018-10-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>常用的 class、id、属性 选择器都可以使用 <code>document.querySelector</code> 或 <code>document.querySelectorAll</code> 替代。区别是</p>
-<ul>
-<li>  <code>document.querySelector</code> 返回第一个匹配的 <code>Element</code></li>
-<li>  <code>document.querySelectorAll</code> 返回所有匹配的 <code>Element</code> 组成的 <code>NodeList</code>。它可以通过 <code>[].slice.call()</code> 把它转成 <code>Array</code></li>
-<li>  如果匹配不到任何 <code>Element，jQuery</code> 返回空数组 <code>[]</code>，但 <code>document.querySelector</code> 返回 null，注意空指针异常。当找不到时，也可以使用 设置默认的值，如 document.querySelectorAll(selector) []</li>
-</ul>
-<blockquote>
-<p>注意：<code>document.querySelector</code> 和 <code>document.querySelectorAll</code> 性能很<strong>差</strong>。如果想提高性能，尽量使用 <code>document.getElementById</code>、<code>document.getElementsByClassName</code> 或 <code>document.getElementsByTagName</code>。</p>
-</blockquote>
-<p>探讨一下如果不需要支持过于陈旧的浏览器版本，如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</p>
-<h3 id="选取元素"><a href="#选取元素" class="headerlink" title="选取元素"></a>选取元素</h3><h4 id="选择器查询"><a href="#选择器查询" class="headerlink" title="选择器查询"></a>选择器查询</h4><p>常用的 class、id、属性 选择器都可以使用 document.querySelector 或 document.querySelectorAll 替代。</p>
-<ul>
-<li>  document.querySelector 返回第一个匹配的 Element</li>
-<li>  document.querySelectorAll 返回所有匹配的 Element 组成的 NodeList。</li>
-</ul>
-<p>jQuery：</p>
-<p>var $ele = $(“selector”);</p>
-<p>Native:</p>
-<p>let ele = document.querySelectorAll(“selector”);</p>
-<h4 id="选择器模式"><a href="#选择器模式" class="headerlink" title="选择器模式"></a>选择器模式</h4><p>选择器</p>
-<p>示例</p>
-<p>示例说明</p>
-<p>.class</p>
-<p>.intro</p>
-<p>选择所有class=”intro”的元素</p>
-<p>#id</p>
-<p>#firstname</p>
-<p>选择所有id=”firstname”的元素</p>
-<p>*</p>
-<p>*</p>
-<p>选择所有元素</p>
-<p>element</p>
-<p>p</p>
-<p>选择所有<p>元素</p>
-<p>element,element</p>
-<p>div,p</p>
-<p>选择所有<div>元素和<p>元素</p>
-<p>element element</p>
-<p>div p</p>
-<p>选择<div>元素内的所有<p>元素</p>
-<p>element&gt;element</p>
-<p>div&gt;p</p>
-<p>选择所有父级是<div>元素的 <p>元素</p>
-<p>element+element</p>
-<p>div+p</p>
-<p>选择所有紧接着<div>元素之后的<p>元素</p>
-<p>[attribute=value]</p>
-<p>a[target=_blank]</p>
-<p>选择所有使用target=”_blank”的<a>元素</p>
-<p>[attribute^=value]</p>
-<p>a[src^=”http”]</p>
-<p>选择每一个src属性的值以”http”开头的<a>元素</p>
-<p>[attribute$=value]</p>
-<p>a[src$=”.jpg”]</p>
-<p>选择每一个src属性的值以”.jpg”结尾的<a>元素</p>
-<p>:first-child</p>
-<p>ul li:first-child</p>
-<p>选择<ul>元素下的首个<li>元素</p>
-<p>:nth-child(n)</p>
-<p>ul li:nth-child(3)</p>
-<p>选择<ul>元素下的第三个<li>元素</p>
-<p>:last-child</p>
-<p>ul li:last-child</p>
-<p>选择<ul>元素下的最后一个<li>元素</p>
-<p> </p>
-<h4 id="DOM-树查询"><a href="#DOM-树查询" class="headerlink" title="DOM 树查询"></a>DOM 树查询</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$ele.parent()</code></p>
-<p><code>ele.parentNode</code></p>
-<p>元素的直接父元素</p>
-<p><code>$ele.children()</code></p>
-<p><code>ele.childNodes</code></p>
-<p>元素的所有直接子元素</p>
-<p><code>$ele.find(&quot;a&quot;)</code></p>
-<p><code>ele.querySelectorAll(&quot;a&quot;)</code></p>
-<p>元素的后代元素</p>
-<p><code>$ele.prev()</code></p>
-<p><code>ele.previousElementSibling</code></p>
-<p>元素的上一个同胞元素</p>
-<p><code>$ele.next()</code></p>
-<p><code>ele.nextElementSibling</code></p>
-<p>元素的下一个同胞元素</p>
-<h3 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h3><p>DOM本身就具有很丰富的操作方法，可以取代jQuery提供的操作方法。</p>
-<h4 id="内容和属性"><a href="#内容和属性" class="headerlink" title="内容和属性"></a>内容和属性</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>var text = $ele.text()</code></p>
-<p><code>let text = ele.innerText</code></p>
-<p>获取所选元素的文本内容</p>
-<p><code>$ele.text(&quot;text&quot;)</code></p>
-<p><code>ele.innerText = &quot;text&quot;</code></p>
-<p>设置所选元素的文本内容</p>
-<p><code>var html = $ele.html()</code></p>
-<p><code>let html = ele.innerHTML</code></p>
-<p>获取所选元素的HTML内容</p>
-<p><code>$ele.html(&quot;&lt;div&gt;html&lt;/div&gt;&quot;)</code></p>
-<p><code>ele.innerHTML = &quot;&lt;div&gt;html&lt;/div&gt;&quot;</code></p>
-<p>设置所选元素的HTML内容</p>
-<p><code>var input = $ele.val()</code></p>
-<p><code>let input = ele.value</code></p>
-<p>获取表单字段的值</p>
-<p><code>$ele.val(&quot;input&quot;)</code></p>
-<p><code>ele.value = &quot;input&quot;</code></p>
-<p>设置表单字段的值</p>
-<p><code>var href = $ele.attr(&quot;href&quot;)</code></p>
-<p><code>let href = ele.getAttribute(&quot;href&quot;)</code></p>
-<p>获取元素的属性值</p>
-<p><code>$ele.attr(&quot;href&quot;, &quot;/&quot;)</code></p>
-<p><code>ele.setAttribute(&quot;href&quot;, &quot;/&quot;)</code></p>
-<p>设置元素的属性值</p>
-<h4 id="修改-DOM-树"><a href="#修改-DOM-树" class="headerlink" title="修改 DOM 树"></a>修改 DOM 树</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$parent.append($ele)</code></p>
-<p><code>parent.appendChild(ele)</code></p>
-<p>在被选元素的结尾插入内容</p>
-<p><code>$parent.prepend($ele)</code></p>
-<p><code>parent.insertBefore(ele, parent.firstChild)</code></p>
-<p>在被选元素的开头插入内容</p>
-<p><code>$ele.after(html)</code></p>
-<p><code>ele.insertAdjacentHTML(&quot;afterend&quot;, html)</code></p>
-<p>在被选元素之后插入内容</p>
-<p><code>$ele.before(html)</code></p>
-<p><code>ele.insertAdjacentHTML(&quot;beforebegin&quot;, html)</code></p>
-<p>在被选元素之前插入内容</p>
-<p><code>$ele.remove()</code></p>
-<p><code>ele.parentNode.removeChild(ele)</code></p>
-<p>删除被选元素及其子元素</p>
-<p><code>$ele.empty()</code></p>
-<p><code>ele.innerHTML = null</code></p>
-<p>从被选元素中删除子元素</p>
-<p><code>$ele.clone()</code></p>
-<p><code>ele.cloneNode(true)</code></p>
-<p>拷贝被选元素</p>
-<p><code>$ele.replaceWith(html)</code></p>
-<p><code>ele.outerHTML = html</code></p>
-<p>指定HTML替换被选元素</p>
-<h3 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h3><p> </p>
-<h4 id="设置-Style"><a href="#设置-Style" class="headerlink" title="设置 Style"></a>设置 Style</h4><p>HTML DOM 允许 JavaScript 改变 HTML 元素的样式，Native API 提供了如下几种方式：</p>
-<ul>
-<li>  ele.setAttribute 直接修改 DOM style 属性改变样式</li>
-<li>  ele.style.cssText 通过 cssText 修改 Style 属性</li>
-<li>  ele.style.property 通过 style 对象读写行内 CSS 样式</li>
-</ul>
-<p>jQuery：</p>
-<p>var size = $ele.css(“font-size”); // 返回第一个匹配元素的 CSS 属性值<br>$ele.css(“font-size”, “2rem”); // 为所有元素设置指定的 CSS 属性值</p>
-<p>Native:</p>
-<p>let size = getComputedStyle(ele)[“font-size”]; // 获取当前元素计算后的 CSS 属性值<br>ele.style.setProperty(“font-size”, “2rem”); // 设置当前元素的某个内联样式<br>ele.style.removeProperty(“font-size”); // 移除当前元素的某个内联样式</p>
-<h4 id="设置-Class"><a href="#设置-Class" class="headerlink" title="设置 Class"></a>设置 Class</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$ele.hasClass(className)</code></p>
-<p><code>ele.classList.contains(className)</code></p>
-<p>检查元素是否包含指定的类名</p>
-<p><code>$ele.addClass(className)</code></p>
-<p><code>ele.classList.add(className)</code></p>
-<p>向元素增加一个或多个类名</p>
-<p><code>$ele.removeClass(className)</code></p>
-<p><code>ele.classList.remove(className)</code></p>
-<p>从元素中移除一个或多个类</p>
-<p><code>$ele.toggleClass(className)</code></p>
-<p><code>ele.classList.toggle(className)</code></p>
-<p>对元素的一个或多个类进行切换</p>
-<h3 id="事件方法"><a href="#事件方法" class="headerlink" title="事件方法"></a>事件方法</h3><h4 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h4><p>jQuery：</p>
-<p>$ele.on(“click”, function (evt) {<br>console.log(evt.target);<br>});</p>
-<p>Native:</p>
-<p>ele.addEventListener(“click”, evt =&gt; {<br>console.log(evt.target);<br>});</p>
-<p>解除绑定 jQuery：</p>
-<p>$ele.off(“click”);</p>
-<p>Native:</p>
-<p>ele.removeEventListener(“click”, func);</p>
-<p>如果要移除事件，addEventListener 必须使用外部函数，绑定匿名函数的事件是无法移除的。</p>
-<h4 id="模拟触发"><a href="#模拟触发" class="headerlink" title="模拟触发"></a>模拟触发</h4><p>jQuery：</p>
-<p>$ele.trigger(“click”);</p>
-<p>Native:</p>
-<p>let event = document.createEvent(“MouseEvents”);<br>event.initMouseEvent(“click”);<br>ele.dispatchEvent(event);</p>
-<p>模拟事件：</p>
-<ul>
-<li>  首先通过 document.createEvent 方法创建 Event 对象。</li>
-<li>  然后利用 Event 对象的 init 方法对其进行初始化。</li>
-<li>  最后使用 dispatchEvent 方法触发 Event 对象。</li>
-</ul>
-<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$.isArray(array)</code></p>
-<p><code>Array.isArray(array)</code></p>
-<p>判断参数是否为一个数组</p>
-<p><code>$.inArray(item, array)</code></p>
-<p><code>array.includes(item)</code></p>
-<p>判断值是否在指定数组中</p>
-<p><code>$.makeArray(objlist)</code></p>
-<p><code>Array.from(objlist)</code></p>
-<p>将类数组对象转换为数组</p>
-<p><code>$.merge(array1, array2)</code></p>
-<p><code>array1.concat(array2)</code></p>
-<p>合并两个数组（有区别）</p>
-<p><code>$.each(array, function (i, item) &#123;&#125;</code></p>
-<p><code>array.forEach((item, i) =&gt; &#123;&#125;)</code></p>
-<p>遍历指定的对象和数组</p>
-<p>合并数组时，merge 会改变原数组的内容，而 concat 不会修改原数组，只会返回合并后的数组</p>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p>jQuery</p>
-<p>Native</p>
-<p>方法说明</p>
-<p><code>$.now()</code></p>
-<p><code>Date.now()</code></p>
-<p>返回当前时间戳</p>
-<p><code>$.trim(string)</code></p>
-<p><code>string.trim();</code></p>
-<p>移除字符串头尾空白</p>
-<p><code>$.type(obj);</code></p>
-<p><code>Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, &#39;$1&#39;).toLowerCase();</code></p>
-<p>检测参数的内部类型</p>
-<p><code>$.parseJSON(string)</code></p>
-<p><code>JSON.parse(string)</code></p>
-<p>将JSON转换为JS对象</p>
-<p><code>$ele.data(&quot;key&quot;, &quot;value&quot;)</code></p>
-<p><code>ele.dataset.key = &quot;value&quot;</code></p>
-<p>在指定的元素上存储数据</p>
-<p><code>$.map(array, function(value, index)&#123; &#125;);</code></p>
-<p><code>array.map(function(value, index)&#123; &#125;);</code></p>
-<p>将数组转化为处理后的新数组</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://github.com/nefe/You-Dont-Need-jQuery/blob/master/README.zh-CN.md">https://github.com/nefe/You-Dont-Need-jQuery</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1546,7 +1382,7 @@ main &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

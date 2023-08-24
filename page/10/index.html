@@ -178,6 +178,383 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/09/box-shadow%E5%92%8Cdrop-shadow%E5%AE%9E%E7%8E%B0%E4%B8%8D%E8%A7%84%E5%88%99%E6%8A%95%E5%BD%B1/" class="post-title-link" itemprop="url">box-shadow和drop-shadow实现不规则投影</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-09 13:32:25" itemprop="dateCreated datePublished" datetime="2018-10-09T13:32:25+08:00">2018-10-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当我们想给一个矩形或其他能用 border-radius 生成的形状（在“自适应的椭圆”一节中可以看到一些示例）加投影时，box-shadow 的表现都堪称完美。但是，当元素添加了一些伪元素或半透明的装饰之后，它就有些力不从心了，因为 border-radius 会无耻地忽视透明部分。这类情况包括：</p>
+<ul>
+<li>  半透明图像、背景图像、或者 border-image（比如老式的金质像框）；</li>
+<li>  元素设置了点状、虚线或半透明的边框，但没有背景（或者当background-clip 不是 border-box 时）；</li>
+<li>  对话气泡，它的小尾巴通常是用伪元素生成的；</li>
+</ul>
+<p>如果我们打算对这类元素直接应用 box-shadow，那只能得到不完全投影的结果。难道我们只能完全放弃投影效果吗？有没有办法可以解决这个难题？ <img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131023.png"> 滤镜效果规范（<a target="_blank" rel="noopener" href="http://w3.org/TR/filter-effects%EF%BC%89%E4%B8%BA%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E4%B8%AA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%82%E5%AE%83%E5%BC%95%E5%85%A5%E4%BA%86%E4%B8%80%E4%B8%AA%E5%8F%AB%E4%BD%9C">http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。它引入了一个叫作</a> filter 的新属性，这个属性也是从 SVG 那里借鉴过来的。尽管 CSS 滤镜基本上就是 SVG 滤镜，但我们并不需要掌握任何SVG 知识。相反，只需要一些函数就可以很方便地指定滤镜效果了，比如blur()、grayscale() 以及我们需要的 drop-shadow() ！如果你喜欢，甚至可以把多个滤镜串连起来，只要用空格把它们分隔开就可以了，比如：</p>
+<p>filter: blur() grayscale() drop-shadow();</p>
+<p>drop-shadow() 滤镜可接受的参数基本上跟 box-shadow 属性是一样的，但不包括扩张半径，不包括 inset 关键字，也不支持逗号分割的多层投影语法。举个例子，上面的投影：</p>
+<p>box-shadow: 2px 2px 10px rgba(0,0,0,.5);</p>
+<p>可以这样来写：</p>
+<p>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
+<p><img data-src="http://www.w3cbest.com/wp-content/uploads/2018/10/20181009131101.png"> CSS 滤镜最大的好处在于，它们可以平稳退化：当浏览器不支持时，不会出现问题，只不过没有任何效果而已。如果你确实需要这个效果在尽可能多的浏览器中显示出来，可以同时附上一个 SVG 滤镜，这样可以得到稍微好一些的浏览器支持度。你可以在滤镜效果规范（<a target="_blank" rel="noopener" href="http://www.w3.org/TR/filter-effects/%EF%BC%89%E4%B8%AD%E4%B8%BA%E6%AF%8F%E4%B8%AA%E6%BB%A4%E9%95%9C%E5%87%BD%E6%95%B0%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84">http://www.w3.org/TR/filter-effects/）中为每个滤镜函数找到对应的</a> SVG 滤镜版本。你可以把 SVG滤镜和简化的 CSS 滤镜放在一起使用，让层叠机制来决定哪一行最终生效：</p>
+<p>filter: url(drop-shadow.svg#drop-shadow);<br>filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));</p>
+<p>不幸的是，如果 SVG 滤镜是存放在一个独立文件里的，那它就无法像一个简洁易用的函数那样在 CSS 代码中进行随意配置；如果它是内联的，则又会搅乱你的代码。参数需要写死在文件内部，因此每当我们新加一种哪怕是大同小异的投影效果时，都需要多准备一个文件，这显然是难以接受的。当然，我们还可以使用 data URI（它也会省掉额外的 HTTP 请求），但这个方法仍然会带来文件体积的增长。总的来说，这个方法只是一种回退方案，因此只要我们把SVG 滤镜控制在一定数量以内，哪怕它们的效果大同小异，也是说得过去的。 另外一件需要牢记的事情就是，任何非透明的部分都会被一视同仁地打上投影，包括文本（如果背景是透明的），正如我们刚刚看到的那样。你可能会想，是不是可以通过 text-shadow: none; 来取消掉文本上的投影呢？其实 text-shadow 跟它是完全不相干的两码事，因此这样做并不能取消文本上的 drop-shadow() 效果。此外，如果你已经用 textshadow在文本上加了投影效果，文本投影还会被 drop-shadow() 滤镜再加上投影，这本质上是给投影打了投影！看看下面这段示例代码（请原谅它惨不忍睹的效果，这样只是为了凸显这个怪异的问题）：</p>
+<p>color: deeppink;<br>border: 2px solid;<br>text-shadow: .1em .2em yellow;<br>filter: drop-shadow(.05em .05em .1em gray);</p>
+<p>你可以看到它的渲染效果，图中的文字被同时打上了 textshadow和 drop-shadow()。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/08/%E5%A6%82%E4%BD%95%E7%94%A8javascript%EF%BC%88es6%EF%BC%89%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%EF%BC%8C%E5%8F%96%E4%BB%A3jquery%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-08 08:56:49" itemprop="dateCreated datePublished" datetime="2018-10-08T08:56:49+08:00">2018-10-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>常用的 class、id、属性 选择器都可以使用 <code>document.querySelector</code> 或 <code>document.querySelectorAll</code> 替代。区别是</p>
+<ul>
+<li>  <code>document.querySelector</code> 返回第一个匹配的 <code>Element</code></li>
+<li>  <code>document.querySelectorAll</code> 返回所有匹配的 <code>Element</code> 组成的 <code>NodeList</code>。它可以通过 <code>[].slice.call()</code> 把它转成 <code>Array</code></li>
+<li>  如果匹配不到任何 <code>Element，jQuery</code> 返回空数组 <code>[]</code>，但 <code>document.querySelector</code> 返回 null，注意空指针异常。当找不到时，也可以使用 设置默认的值，如 document.querySelectorAll(selector) []</li>
+</ul>
+<blockquote>
+<p>注意：<code>document.querySelector</code> 和 <code>document.querySelectorAll</code> 性能很<strong>差</strong>。如果想提高性能，尽量使用 <code>document.getElementById</code>、<code>document.getElementsByClassName</code> 或 <code>document.getElementsByTagName</code>。</p>
+</blockquote>
+<p>探讨一下如果不需要支持过于陈旧的浏览器版本，如何用JavaScript（ES6）标准语法，取代jQuery的一些主要功能</p>
+<h3 id="选取元素"><a href="#选取元素" class="headerlink" title="选取元素"></a>选取元素</h3><h4 id="选择器查询"><a href="#选择器查询" class="headerlink" title="选择器查询"></a>选择器查询</h4><p>常用的 class、id、属性 选择器都可以使用 document.querySelector 或 document.querySelectorAll 替代。</p>
+<ul>
+<li>  document.querySelector 返回第一个匹配的 Element</li>
+<li>  document.querySelectorAll 返回所有匹配的 Element 组成的 NodeList。</li>
+</ul>
+<p>jQuery：</p>
+<p>var $ele = $(“selector”);</p>
+<p>Native:</p>
+<p>let ele = document.querySelectorAll(“selector”);</p>
+<h4 id="选择器模式"><a href="#选择器模式" class="headerlink" title="选择器模式"></a>选择器模式</h4><p>选择器</p>
+<p>示例</p>
+<p>示例说明</p>
+<p>.class</p>
+<p>.intro</p>
+<p>选择所有class=”intro”的元素</p>
+<p>#id</p>
+<p>#firstname</p>
+<p>选择所有id=”firstname”的元素</p>
+<p>*</p>
+<p>*</p>
+<p>选择所有元素</p>
+<p>element</p>
+<p>p</p>
+<p>选择所有<p>元素</p>
+<p>element,element</p>
+<p>div,p</p>
+<p>选择所有<div>元素和<p>元素</p>
+<p>element element</p>
+<p>div p</p>
+<p>选择<div>元素内的所有<p>元素</p>
+<p>element&gt;element</p>
+<p>div&gt;p</p>
+<p>选择所有父级是<div>元素的 <p>元素</p>
+<p>element+element</p>
+<p>div+p</p>
+<p>选择所有紧接着<div>元素之后的<p>元素</p>
+<p>[attribute=value]</p>
+<p>a[target=_blank]</p>
+<p>选择所有使用target=”_blank”的<a>元素</p>
+<p>[attribute^=value]</p>
+<p>a[src^=”http”]</p>
+<p>选择每一个src属性的值以”http”开头的<a>元素</p>
+<p>[attribute$=value]</p>
+<p>a[src$=”.jpg”]</p>
+<p>选择每一个src属性的值以”.jpg”结尾的<a>元素</p>
+<p>:first-child</p>
+<p>ul li:first-child</p>
+<p>选择<ul>元素下的首个<li>元素</p>
+<p>:nth-child(n)</p>
+<p>ul li:nth-child(3)</p>
+<p>选择<ul>元素下的第三个<li>元素</p>
+<p>:last-child</p>
+<p>ul li:last-child</p>
+<p>选择<ul>元素下的最后一个<li>元素</p>
+<p> </p>
+<h4 id="DOM-树查询"><a href="#DOM-树查询" class="headerlink" title="DOM 树查询"></a>DOM 树查询</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$ele.parent()</code></p>
+<p><code>ele.parentNode</code></p>
+<p>元素的直接父元素</p>
+<p><code>$ele.children()</code></p>
+<p><code>ele.childNodes</code></p>
+<p>元素的所有直接子元素</p>
+<p><code>$ele.find(&quot;a&quot;)</code></p>
+<p><code>ele.querySelectorAll(&quot;a&quot;)</code></p>
+<p>元素的后代元素</p>
+<p><code>$ele.prev()</code></p>
+<p><code>ele.previousElementSibling</code></p>
+<p>元素的上一个同胞元素</p>
+<p><code>$ele.next()</code></p>
+<p><code>ele.nextElementSibling</code></p>
+<p>元素的下一个同胞元素</p>
+<h3 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h3><p>DOM本身就具有很丰富的操作方法，可以取代jQuery提供的操作方法。</p>
+<h4 id="内容和属性"><a href="#内容和属性" class="headerlink" title="内容和属性"></a>内容和属性</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>var text = $ele.text()</code></p>
+<p><code>let text = ele.innerText</code></p>
+<p>获取所选元素的文本内容</p>
+<p><code>$ele.text(&quot;text&quot;)</code></p>
+<p><code>ele.innerText = &quot;text&quot;</code></p>
+<p>设置所选元素的文本内容</p>
+<p><code>var html = $ele.html()</code></p>
+<p><code>let html = ele.innerHTML</code></p>
+<p>获取所选元素的HTML内容</p>
+<p><code>$ele.html(&quot;&lt;div&gt;html&lt;/div&gt;&quot;)</code></p>
+<p><code>ele.innerHTML = &quot;&lt;div&gt;html&lt;/div&gt;&quot;</code></p>
+<p>设置所选元素的HTML内容</p>
+<p><code>var input = $ele.val()</code></p>
+<p><code>let input = ele.value</code></p>
+<p>获取表单字段的值</p>
+<p><code>$ele.val(&quot;input&quot;)</code></p>
+<p><code>ele.value = &quot;input&quot;</code></p>
+<p>设置表单字段的值</p>
+<p><code>var href = $ele.attr(&quot;href&quot;)</code></p>
+<p><code>let href = ele.getAttribute(&quot;href&quot;)</code></p>
+<p>获取元素的属性值</p>
+<p><code>$ele.attr(&quot;href&quot;, &quot;/&quot;)</code></p>
+<p><code>ele.setAttribute(&quot;href&quot;, &quot;/&quot;)</code></p>
+<p>设置元素的属性值</p>
+<h4 id="修改-DOM-树"><a href="#修改-DOM-树" class="headerlink" title="修改 DOM 树"></a>修改 DOM 树</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$parent.append($ele)</code></p>
+<p><code>parent.appendChild(ele)</code></p>
+<p>在被选元素的结尾插入内容</p>
+<p><code>$parent.prepend($ele)</code></p>
+<p><code>parent.insertBefore(ele, parent.firstChild)</code></p>
+<p>在被选元素的开头插入内容</p>
+<p><code>$ele.after(html)</code></p>
+<p><code>ele.insertAdjacentHTML(&quot;afterend&quot;, html)</code></p>
+<p>在被选元素之后插入内容</p>
+<p><code>$ele.before(html)</code></p>
+<p><code>ele.insertAdjacentHTML(&quot;beforebegin&quot;, html)</code></p>
+<p>在被选元素之前插入内容</p>
+<p><code>$ele.remove()</code></p>
+<p><code>ele.parentNode.removeChild(ele)</code></p>
+<p>删除被选元素及其子元素</p>
+<p><code>$ele.empty()</code></p>
+<p><code>ele.innerHTML = null</code></p>
+<p>从被选元素中删除子元素</p>
+<p><code>$ele.clone()</code></p>
+<p><code>ele.cloneNode(true)</code></p>
+<p>拷贝被选元素</p>
+<p><code>$ele.replaceWith(html)</code></p>
+<p><code>ele.outerHTML = html</code></p>
+<p>指定HTML替换被选元素</p>
+<h3 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h3><p> </p>
+<h4 id="设置-Style"><a href="#设置-Style" class="headerlink" title="设置 Style"></a>设置 Style</h4><p>HTML DOM 允许 JavaScript 改变 HTML 元素的样式，Native API 提供了如下几种方式：</p>
+<ul>
+<li>  ele.setAttribute 直接修改 DOM style 属性改变样式</li>
+<li>  ele.style.cssText 通过 cssText 修改 Style 属性</li>
+<li>  ele.style.property 通过 style 对象读写行内 CSS 样式</li>
+</ul>
+<p>jQuery：</p>
+<p>var size = $ele.css(“font-size”); // 返回第一个匹配元素的 CSS 属性值<br>$ele.css(“font-size”, “2rem”); // 为所有元素设置指定的 CSS 属性值</p>
+<p>Native:</p>
+<p>let size = getComputedStyle(ele)[“font-size”]; // 获取当前元素计算后的 CSS 属性值<br>ele.style.setProperty(“font-size”, “2rem”); // 设置当前元素的某个内联样式<br>ele.style.removeProperty(“font-size”); // 移除当前元素的某个内联样式</p>
+<h4 id="设置-Class"><a href="#设置-Class" class="headerlink" title="设置 Class"></a>设置 Class</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$ele.hasClass(className)</code></p>
+<p><code>ele.classList.contains(className)</code></p>
+<p>检查元素是否包含指定的类名</p>
+<p><code>$ele.addClass(className)</code></p>
+<p><code>ele.classList.add(className)</code></p>
+<p>向元素增加一个或多个类名</p>
+<p><code>$ele.removeClass(className)</code></p>
+<p><code>ele.classList.remove(className)</code></p>
+<p>从元素中移除一个或多个类</p>
+<p><code>$ele.toggleClass(className)</code></p>
+<p><code>ele.classList.toggle(className)</code></p>
+<p>对元素的一个或多个类进行切换</p>
+<h3 id="事件方法"><a href="#事件方法" class="headerlink" title="事件方法"></a>事件方法</h3><h4 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h4><p>jQuery：</p>
+<p>$ele.on(“click”, function (evt) {<br>console.log(evt.target);<br>});</p>
+<p>Native:</p>
+<p>ele.addEventListener(“click”, evt =&gt; {<br>console.log(evt.target);<br>});</p>
+<p>解除绑定 jQuery：</p>
+<p>$ele.off(“click”);</p>
+<p>Native:</p>
+<p>ele.removeEventListener(“click”, func);</p>
+<p>如果要移除事件，addEventListener 必须使用外部函数，绑定匿名函数的事件是无法移除的。</p>
+<h4 id="模拟触发"><a href="#模拟触发" class="headerlink" title="模拟触发"></a>模拟触发</h4><p>jQuery：</p>
+<p>$ele.trigger(“click”);</p>
+<p>Native:</p>
+<p>let event = document.createEvent(“MouseEvents”);<br>event.initMouseEvent(“click”);<br>ele.dispatchEvent(event);</p>
+<p>模拟事件：</p>
+<ul>
+<li>  首先通过 document.createEvent 方法创建 Event 对象。</li>
+<li>  然后利用 Event 对象的 init 方法对其进行初始化。</li>
+<li>  最后使用 dispatchEvent 方法触发 Event 对象。</li>
+</ul>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$.isArray(array)</code></p>
+<p><code>Array.isArray(array)</code></p>
+<p>判断参数是否为一个数组</p>
+<p><code>$.inArray(item, array)</code></p>
+<p><code>array.includes(item)</code></p>
+<p>判断值是否在指定数组中</p>
+<p><code>$.makeArray(objlist)</code></p>
+<p><code>Array.from(objlist)</code></p>
+<p>将类数组对象转换为数组</p>
+<p><code>$.merge(array1, array2)</code></p>
+<p><code>array1.concat(array2)</code></p>
+<p>合并两个数组（有区别）</p>
+<p><code>$.each(array, function (i, item) &#123;&#125;</code></p>
+<p><code>array.forEach((item, i) =&gt; &#123;&#125;)</code></p>
+<p>遍历指定的对象和数组</p>
+<p>合并数组时，merge 会改变原数组的内容，而 concat 不会修改原数组，只会返回合并后的数组</p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p>jQuery</p>
+<p>Native</p>
+<p>方法说明</p>
+<p><code>$.now()</code></p>
+<p><code>Date.now()</code></p>
+<p>返回当前时间戳</p>
+<p><code>$.trim(string)</code></p>
+<p><code>string.trim();</code></p>
+<p>移除字符串头尾空白</p>
+<p><code>$.type(obj);</code></p>
+<p><code>Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, &#39;$1&#39;).toLowerCase();</code></p>
+<p>检测参数的内部类型</p>
+<p><code>$.parseJSON(string)</code></p>
+<p><code>JSON.parse(string)</code></p>
+<p>将JSON转换为JS对象</p>
+<p><code>$ele.data(&quot;key&quot;, &quot;value&quot;)</code></p>
+<p><code>ele.dataset.key = &quot;value&quot;</code></p>
+<p>在指定的元素上存储数据</p>
+<p><code>$.map(array, function(value, index)&#123; &#125;);</code></p>
+<p><code>array.map(function(value, index)&#123; &#125;);</code></p>
+<p>将数组转化为处理后的新数组</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/nefe/You-Dont-Need-jQuery/blob/master/README.zh-CN.md">https://github.com/nefe/You-Dont-Need-jQuery</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/10/07/%E5%A6%82%E4%BD%95%E7%BB%99echarts%E6%9F%B1%E7%8A%B6%E5%9B%BE%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%AB%98%E4%BA%AE%E8%89%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1103,336 +1480,6 @@ this.energy = energy
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/26/art-template%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%B9%8B%E5%81%B6%E6%95%B0%E5%A5%87%E6%95%B0%E8%A7%A3%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/26/art-template%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%B9%8B%E5%81%B6%E6%95%B0%E5%A5%87%E6%95%B0%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">artTemplate模板引擎之偶数奇数解析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-26 13:57:18" itemprop="dateCreated datePublished" datetime="2018-09-26T13:57:18+08:00">2018-09-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>如果有一个数组，我们只取其中的偶数或奇数该如何取值呢，下面一组数据是我们通过接口拿到的，其实我们只要奇数的一部分，1，3，5，7…等，如图：</p>
-<pre class="language-none"><code class="language-none">\[&quot;1701班&quot;,11,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;,7,&quot;63.64%&quot;,2,&quot;18.18%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;\]
-
-!\[](http:&#x2F;&#x2F;www.w3cbest.com&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;09&#x2F;20180926133157.jpg) 我们只要一个if条件判断就可以了，操作如下： js
-
-res &#x3D; &#123;&quot;data&quot;:&#123;
-  &quot;head&quot;:\[&quot;人数&quot;,&quot;比例&quot;\],
-  &quot;datas&quot;:\[
-  &#123;&quot;data&quot;:\[&quot;1701班&quot;,11,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;,7,&quot;63.64%&quot;,2,&quot;18.18%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;9.09%&quot;\]&#125;,
-  &#123;&quot;data&quot;:\[&quot;班级平均&quot;,21,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;3&quot;,&quot;28.57%&quot;,&quot;5&quot;,&quot;47.62%&quot;,&quot;1.5&quot;,&quot;14.29%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0&quot;,&quot;0%&quot;,&quot;0.5&quot;,&quot;4.76%&quot;,&quot;0.5&quot;,&quot;4.76%&quot;\]&#125;,
-  &#123;&quot;data&quot;:\[&quot;全年级&quot;,21,0,&quot;0%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,6,&quot;28.57%&quot;,10,&quot;47.62%&quot;,3,&quot;14.29%&quot;,0,&quot;0%&quot;,0,&quot;0%&quot;,1,&quot;4.76%&quot;,1,&quot;4.76%&quot;\]&#125;
-  \],
-  &quot;title&quot;:\[&quot;90以下&quot;,&quot;90 ~ 97&quot;,&quot;97 ~ 104&quot;,&quot;104 ~ 111&quot;,&quot;111 ~ 118&quot;,&quot;118 ~ 125&quot;,&quot;125 ~ 132&quot;,&quot;132 ~ 139&quot;,&quot;139 ~ 146&quot;,&quot;146以上&quot;\]
-  &#125;
-&#125;
-document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, res);</code></pre>
-<p>template</p>
-<pre class="language-none"><code class="language-none">&lt;script id&#x3D;&quot;tpl&quot; type&#x3D;&quot;text&#x2F;html&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;班级&lt;&#x2F;th&gt;
-      &#123;&#123;each title value i&#125;&#125;
-      &lt;th&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;th&gt;
-      &#123;&#123;&#x2F;each&#125;&#125;
-    &lt;&#x2F;tr&gt;
-&lt;&#x2F;thead&gt;
-&lt;tbody&gt;
-  &#123;&#123;each datas item&#125;&#125;
-  &lt;tr&gt;
-    &#123;&#123;each item.data value i&#125;&#125;
-    &#123;&#123;if (i % 2 &#x3D;&#x3D; 0)&#125;&#125;
-    &lt;td&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;td&gt;
-    &#123;&#123;&#x2F;if&#125;&#125;
-    &#123;&#123;&#x2F;each&#125;&#125;
-  &lt;&#x2F;tr&gt;
-  &#123;&#123;&#x2F;each&#125;&#125;
-&lt;&#x2F;tbody&gt;
-&lt;&#x2F;script&gt;</code></pre>
-<p>其实很简单，就跟跟平时普通的if判断一样，都是取模，但是要注意在这里面要有始有终，有<code>&#123;&#123;if&#125;&#125;</code>就得有对应的<code>&#123;&#123;/if&#125;&#125;</code>，有<code>&#123;&#123;each&#125;&#125;</code>就得有对应的<code>&#123;&#123;/each&#125;&#125;</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2018/09/25/css-%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E8%83%BD%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/25/css-%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E8%83%BD%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">CSS 选择器技能使用指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-25 09:07:13" itemprop="dateCreated datePublished" datetime="2018-09-25T09:07:13+08:00">2018-09-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我已经使用CSS多年了，但直到最近我还没有深入研究过关于 CSS 选择器的主题。 为什么我需要学习 CSS 选择器呢？ 我们现在知道了所有的内部选择器了吗？ 问题是(至少对我来说是这样)随着时间的推移，很容易习惯在每个项目上使用相同的习惯的选择器集合来完成你要做的事情。 因此，我自己对 CSS 选择器知识进行了深入的审查，并发现了一些有趣的内容，这些内容对我来说是新的，或者是以前我从来没有想过这些使用方式。 我还发现了一些很酷的新选择器，将来可用，但还没有广泛使用。 我们一起来深入研究一下各种类型的 CSS 选择器吧。 您在日常工作中已经使用了，或者本文没涉及到的 CSS 选择器技能欢迎留言告诉我。 准备好提升你的 CSS 选择器技能了吗？我们一起 GO！</p>
-<h2 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h2><p>让我们从熟悉的选择器开始。组合选择器用于选择子元素和兄弟元素，并且相信大家已经使用了很长一段时间了吧。</p>
-<ul>
-<li>  一般子元素选择器（空格）。例如A B。</li>
-<li>  直接子元素选择器。例如 A &gt; B 。</li>
-<li>  相邻兄弟元素选择器。例如 A + B。</li>
-<li>  一般兄弟元素选择器。例如 A ~ B。</li>
-</ul>
-<p>您应该熟悉相邻兄弟元素选择器 A + B ，他会选择紧跟 A 的 B 元素。但是一般兄弟元素选择器 A~B 呢？ 他将选择跟随 A 的所有兄弟 B 元素： 以下是实例：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/RyvYXd/">Combinator Selectors</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>第二行 New York 行被选中是因为它紧跟在第一行之后 table tbody tr:first-child + tr，并且最后两个城市被高亮显示，因为他们被一般兄弟选择器 table tbody tr:nth-child(4) ~ tr 匹配，也就是第四行之后的所有行。</p>
-<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>我非常喜欢属性选择器。当您需要将包含某个属性的元素与特定值匹配时，它们可以非常灵活。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGLZEK/">Attribute Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>此示例演示如何选择所有复选框元素并将样式应用于其匹配标签，以使其变为粗体和蓝色。 然后，我们覆盖具有特定名称的 chk2 复选框的样式，并将其匹配的标签着色为红色。 请注意其他表单元素标签如何不受影响且未应用标签样式。 属性选择器不仅适用于表单元素，它们还可以定位任何元素的属性。 您可以匹配任何属性，而不仅仅是官方支持的属性。 此外，您可以检查属性是否存在，如下所示：</p>
-<p>button[icon]</p>
-<p>这匹配包含 icon 属性的 <button> 元素。它将匹配 icon 属性，无论 icon 属性是空值还是设置为特定值。 更多例子：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/pVGGye/">Attribute Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>第一个链接没有 target 属性，因此不匹配。 接下来的两个链接是匹配的，因为它们的 target 属性具有空值或特定值的属性。 最后，最后一个链接设置为粉红色，因为它 fluffy 属性匹配。 它的值无关紧要，只需要与 a[fluffy] 选择器相匹配即可。 一个实际的例子可能是突出显示没有alt属性的图像。 此属性对于网页的可访问性来说是所必需的，因此对于SEO而言，确保所有图像元素都包含此属性非常重要。 我们可以使用以下规则来实现此目的：</p>
-<p>img:not([alt]) {<br>border: 2px red dashed;<br>}</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/OZdqLp/">Attribute Selectors #3</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>如果要匹配属性值的特定部分，则可以使用一些非常有用的选择器。</p>
-<ul>
-<li>  A[attr^=val] – 属性值以 val 开头。</li>
-<li>  A[attr=val] – 属性值以 val 开头，或者以 val- 开头。</li>
-<li>  A[attr$=val] – 属性值以 val 结尾。</li>
-<li>  A[attr*=val] – 属性值中包含 val 。</li>
-<li>  A[attr~=val] – 匹配用空格分隔的属性值列表，并且列表中包含 val 。</li>
-</ul>
-<p>以下是每个例子：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGLdvE/">Attribute Selectors #4</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>前两个示例非常相似，不同之处是 A[attr=val] 匹配后跟一个 - 字符串的值。 这对于匹配语言属性 lang 很有用。 例如 <p lang ="en-us">。 使用 A[attr$=”val”] 可以轻松匹配文件扩展名，并且与 ::after 相结合你可以轻松显示匹配文件。 注意使用 attr() 方法和 content 属性将它与静态字符串连接起来。 A[attr*=val] 显示了无论使用何种协议或子域，您都可以匹配特定域 mysite.com。 最后，A[attr<del>=val]，它非常适合匹配由空格分隔的值列表组成的属性中的值。 这只匹配整个单词而不是单词片段，而 *= 匹配单词片段，因此单词复数形式将不匹配。这个有点不好理解：例如某 div 元素的 categories 属性为 <div categories="table wooden maple">，其 categories 属性用空格分隔。那么 div[categories</del>=”table”] 将匹配各元素，还有一个特别要注意的是， <div categories="wooden maple table"> 也将被匹配。而 <div categories="wooden maple tables"> 或者 <div categories="wooden tableee maple"> 都不会被 div[categories~=”table”] 匹配。 以上所有属性选择器示例都区分大小写。 但是我们有一个技巧。 如果我们在结束方括号之前插入一个 i ，我们可以启用区分大小写的匹配，这有点类似于 JavaScript 中的正则表达式匹配。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/LmaYzp/">Attribute Selectors #5</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>除 Internet Explorer 和 Microsoft Edge 外，大多数主流浏览器都支持不区分大小写的匹配。</p>
-<h2 id="用户交互选择器"><a href="#用户交互选择器" class="headerlink" title="用户交互选择器"></a>用户交互选择器</h2><p>如果您处理过表单样式，那么您之前无疑会遇到这些类型的伪类选择器：</p>
-<ul>
-<li>  :enabled</li>
-<li>  :disabled</li>
-<li>  :checked</li>
-</ul>
-<p>例如，我们可以使用 :checked 来设置一个简单的待办事项列表。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/BxbjoO/">User Interface Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>这是非常标准的，但我们可以使用其他一些有趣的伪类。 :default 匹配一个或多个元素，这些元素是一组相关元素中的默认元素。这也可以与复位按钮类型组合使用。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/ELMoNK/">User Interface Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>我们可以使用伪类选择器来匹配输入值是否与 CSS 直接有效，以及在提交表单之前检查是否需要任何元素。</p>
-<ul>
-<li>  :valid</li>
-<li>  :invalid</li>
-<li>  :required</li>
-<li>  :optional (即不必须)</li>
-</ul>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/qYvpMP/">User Interface Selectors #3</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>如果您开始输入个人 email 输入字段，则必须检查有效性。 但是，工作 email 地址始终是必需的，并且需要有效检查有效性，因此不能留空。 还要注意我们可以链接伪类选择器（例如 :required:invalid ）来实现我们所需要的。 接下来，如果表单元素（支持 min 和 max 属性）在范围内，我们有两个可以匹配的伪类。</p>
-<ul>
-<li>  :in-range</li>
-<li>  :out-of-range</li>
-</ul>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/Jvzpgz/">User Interface Selectors #4</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>同样，我们可以使用重置按钮类型来重置数字输入元素的默认值。 为了完善本节，我们来看看 :read-only ，:read-write 和 :placeholder-shown 的伪类。</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/ZoPREB/">User Interface Selectors #5</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>使用这些可以轻松匹配只读或可写（可编辑）的元素。 匹配元素不必是表单输入字段，如示例中所示。 最后，:placeholder-shown 将匹配尚未与之交互的元素，并仍显示默认占位符文本。 应谨慎使用此特定选择器，因为它尚未得到广泛支持。</p>
-<h2 id="结构选择器"><a href="#结构选择器" class="headerlink" title="结构选择器"></a>结构选择器</h2><p>结构选择器非常强大，基于它们在DOM中的位置匹配元素。 它们使您可以灵活地将元素与CSS完全匹配，否则需要 JavaScript 执行相同的操作。 这种类型的选择器与显示的选择器不同，因为其中一些选择器允许您传入参数来修改选择器的工作方式。 例如：nth-child() 接收一个值，该值将匹配特定子元素相对于其父容器的值。 因此，如果我们有一个项目列表，则以下选择器将匹配第三个项目：</p>
-<p>ul:nth-child(3)</p>
-<p>但是，参数不是必须是简单的数字，它可以是一个简单的表达式，而使伪类更强大。 有效表达式有：</p>
-<ul>
-<li>  ul:nth-child(2) – 匹配第 2 个子元素</li>
-<li>  ul:nth-child(4n) – 匹配每 4th 个子元素（4,8,12，…）</li>
-<li>  ul:nth-child(2n + 1) – 匹配每 2n + 1 个子元素偏移一个（1,3,5，…）</li>
-<li>  ul:nth-child(3n - 1) – 匹配每 3n – 1 个子元素偏移负数1（2,5,8，…）</li>
-<li>  ul:nth-child(odd) – 匹配奇数元素（1,3,5，…）</li>
-<li>  ul:nth-child(even) – 匹配偶数元素（2,4,6，…）</li>
-</ul>
-<p>表达式变量 n 总是从零开始，因此确切地计算出哪些元素将匹配，n 从 0 开始，然后 n 为 1 ，依此类推以编译元素列表。 这里还有 1 个简单而实用的小技巧，我们把n当做负数来用，会发生什么呢？</p>
-<ul>
-<li>  ul li:nth-child(-n+3) – 匹配第 1 到 第 3 个 li 子元素 （1,2,3）</li>
-<li>  ul li:nth-child(-2n+6) – 匹配每 2th 个子元素，最多不超过第 8 个 li 子元素 （2,4,6，8）</li>
-<li>  ul li:nth-child(n + 10):nth-child(-n + 12) – 匹配第 10 到 第 12 个 li 子元素 （10,11,12）</li>
-</ul>
-<p>例如：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/mveKRe/">把`n` 当做负数来用</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>您可以将简单表达式与以下结构选择器一起使用：</p>
-<ul>
-<li>  :nth-child()</li>
-<li>  :nth-last-child()</li>
-<li>  :nth-of-type()</li>
-<li>  :nth-last-of-type()</li>
-</ul>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/MGxzEq/">Structural Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>:nth-last-child() 和 :nth-last-of-type() 非常类似于 :nth-child() 和 nth-of-type() ，唯一区别是 :nth-last-child() 和 :nth-last-of-type() 是从最后一个元素开始匹配，而不是第一个元素开始匹配。 通过玩各种组合，您可以通过选择器获得相当多的创意。 例如，之前的示例包含选择器：</p>
-<p>ul:last-of-type li:nth-last-of-type(2)::after {<br>content: “(2nd from end)”;<br>/* Other styles… */<br>}</p>
-<p>这匹配第 2 个无序列表中最后一个列表项之后的伪元素。 如果你一直在努力解码一个复杂的选择器，那么最好从右到左阅读它，这样它就可以在逻辑上解构。 下一组选择器是专用的结构选择器，因为它们只匹配特定的子元素。 您无法将表达式传递给它们以修改其行为。</p>
-<ul>
-<li>  :first-child</li>
-<li>  :last-child</li>
-<li>  :only-child</li>
-<li>  :first-of-type</li>
-<li>  :last-of-type</li>
-</ul>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/JvzwJE/">Structural Selectors #2</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>乍一看，这里有很多事情，你在使用这些类型的选择器时需要小心，因为你可能得到你没想到的结果。 例如，您可能想知道为什么在 <section> 标记内的等等……文本是蓝色的。 实际上所有部分内容都是蓝色的，因为它是主 div 容器的最后一个子节点。 其他部分元素通过其他选择器覆盖自己的颜色，使单个段落变为蓝色。 如果你觉得这些结构选择器还不够，或者你觉得记不住，使用起来很麻烦，那么你可以使用 Family.scss – 轻松搞定这些 :nth-child 伪类 :nth-child</p>
-<h2 id="否定、排除选择器"><a href="#否定、排除选择器" class="headerlink" title="否定、排除选择器"></a>否定、排除选择器</h2><p>CSS 否定伪类选择器 :not(X)，是以一个简单的以选择器 X 为参数的功能性标记函数，将从匹配的元素集合中排除选择器 X 所匹配的元素。选择器 X 中不能包含另外一个 :not 选择器。</p>
-<ul>
-<li>  :not() 伪类的优先级即为它参数选择器的优先级。 可以利用这个伪类提高规则的优先级。例如， #foo:not(#bar) 和 #foo 会匹配相同的元素。 但是前者的优先级更高。但是 :not() 伪类不像其它伪类，它不会增加选择器的优先级。</li>
-<li>  :not() 伪类可以将一个或多个以逗号分隔的选择器作为其参数。但是以多个以逗号分隔的选择器作为参数是实验性的，尚未广泛支持。</li>
-</ul>
-<p>:not() 伪类时我们得选择器组合更加灵活，我们来看一些简单应用：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/w3cbest/pen/JxYZWz/">:not() 伪类</a> by w3cbest.com (<a target="_blank" rel="noopener" href="https://codepen.io/w3cbest">@w3cbest</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>上例中，.content :not(.notice) em 匹配了 .content 中所有的 em 元素，但是排除了 .content .notice 中 em 元素。 我们再来看看 :not() 和其他伪类选择器结合的例子：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/feiwen8772/pen/kkELxa/">:not伪类</a> by feiwen8772 (<a target="_blank" rel="noopener" href="https://codepen.io/feiwen8772">@feiwen8772</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>在做一个有间隔线的列表时，我们通常会去除最后一个 li 下的横线。li:not(:last-child) 表示除了最后一个 li 元素之外的所有其他 li 元素。</p>
-<h2 id="内容选择器"><a href="#内容选择器" class="headerlink" title="内容选择器"></a>内容选择器</h2><p>这些属于用于匹配内容的一组专用选择器。我们可以立即使用的是：</p>
-<ul>
-<li>  ::first-line</li>
-<li>  ::first-letter</li>
-<li>  ::selection</li>
-</ul>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/xjBBqN/">Content Selectors #1</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>::first-line 和 ::first-letter 仅在应用于块级元素时才起作用。另外要小心只在特定元素上使用 ::first-letter ，否则每个段落都可能会应用。 目前还没有一些令人兴奋的内容选择器，但是当它们得到支持时，它们将开启各种可能性。 以下是需要注意的内容选择器列表：</p>
-<ul>
-<li>  ::inactive-selection?—?非活动窗口内的选定内容</li>
-<li>  ::spelling-error?—?检查可编辑元素的拼写和语法</li>
-<li>  ::grammar-error?—?匹配语法错误</li>
-<li>  ::marker?—?匹配列表项标记</li>
-<li>  ::placeholder?—?匹配表单元素的 placeholder 文本样式；</li>
-</ul>
-<h2 id="其他选择器"><a href="#其他选择器" class="headerlink" title="其他选择器"></a>其他选择器</h2><p>我们接下来提到其他几个选择器不适合不适合归类到上面任何类别。 别担心我们差不多完成了！ 不幸的是，其中大部分是实验性的，所以你必须等待一段时间才能在生产中使用它们。 :target 选择器的目标是一个 id 与当前 URL 的一部分匹配的元素。 比如下面 URL 匹配该URL页面中 id 为 part1 的元素：</p>
-<p><a target="_blank" rel="noopener" href="https://www.w3cbest.com/#part1">https://www.w3cbest.com#part1</a></p>
-<p>我们可以将该元素应用以下样式：</p>
-<p>:target { border: 1px red solid; }</p>
-<p>其实 :target 选择器目前可以用于一些特殊的用例，欢迎查看： :target 伪类使用技巧 如果你有一个很大的选择器，那么 :matches() 可以帮助简化它。例如，如果您有以下选择器：</p>
-<p>nav p.content,<br>header p.content,<br>main p.content,<br>sidebar p.content,<br>footer p.content {<br>margin: 15px;<br>padding: 10px;<br>}</p>
-<p>然后可以通过 :matches() 简化，相当于： 太好了！这将有助于使样式表更具可读性。 接下来我们还有一个 :any-link 选择器，这个选择器是:link 和 :visited 组合的简写。 所以下面这两个选择器实际上是相同的：</p>
-<p>:any-link {<br>color: red;<br>}</p>
-<p>:link, :visited {<br>color: red;<br>}</p>
-<p>本文中最后两个选择器：</p>
-<ul>
-<li>  :dir()</li>
-<li>  :lang()</li>
-</ul>
-<p>这些都与您网站的语言有关。 :dir() 接受参数 ltr 或 rtl ，具体取决于您要匹配的文本的方向，目前仅 Firefox 支持。 所以：:dir(rtl) 会匹配所有具有 RTL 方向内容的元素。 HTML文档中的每个元素都可以使用 lang 属性设置自己的单独语言。</p>
-<div lang="en">The language of this element is set to English.</div>
-<div lang="el">Η γλ?σσα αυτο? του στοιχε?ου ?χει οριστε? στα ελληνικ?.</div>
-<div lang="is">Tungumál ?essa ?áttar er sett á íslensku.</div>
-
-<p>将相同的基本文本输入到三个 <div> 标记中，但将特定国家/地区添加到内容的末尾。此外，lang 属性中使用的国家代码代表相应的国家/地区。</p>
-<ul>
-<li>  :lang(en) { color: red; }</li>
-<li>  :lang(el) { color: green; }</li>
-<li>  :lang(is) { color: blue; }</li>
-</ul>
-<p>演示：</p>
-<p>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/dgwyer/pen/xjBoNG/">Misc Selectors</a> by David Gwyer (<a target="_blank" rel="noopener" href="https://codepen.io/dgwyer">@dgwyer</a>) on <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a>.</p>
-<p>好消息是所有主流浏览器都支持 :lang() 选择器。</p>
-<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>如果你试图查找一个选择器，或者需要深入研究CSS规范，那么你可能需要查看一些有用的资源：</p>
-<ul>
-<li>  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/">MDN Web Docs</a></li>
-<li>  <a target="_blank" rel="noopener" href="https://www.w3.org/Style/CSS/specs.en.html">CSS Specifications</a></li>
-<li>  <a target="_blank" rel="noopener" href="https://caniuse.com/">Can I Use</a></li>
-</ul>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我希望你会发现这篇文章很有用。 可以帮助刷新你的CSS选择器技能，并尝试各种可能性。 使用纯 CSS 可以做很多很酷的事情，这在几年前是不可能实现的。 对于能够在纯 CSS 中进行一些非常高级的样式和动画的设计师来说，这是令人兴奋的，并且所有人都看不到一行 JavaScript 。 文章来源 <a target="_blank" rel="noopener" href="https://blog.logrocket.com/level-up-your-css-selector-skills-5d7bb45ddd37">https://blog.logrocket.com</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1502,7 +1549,7 @@ document.getElementById(&#39;id&#39;).innerHTML &#x3D; template(&#39;tpl&#39;, r
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

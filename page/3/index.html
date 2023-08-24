@@ -178,6 +178,211 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/19/css3%E5%BE%84%E5%90%91%E6%B8%90%E5%8F%98%EF%BC%88radial-gradients%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/19/css3%E5%BE%84%E5%90%91%E6%B8%90%E5%8F%98%EF%BC%88radial-gradients%EF%BC%89/" class="post-title-link" itemprop="url">CSS3 径向渐变（Radial Gradients）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-19 14:50:35" itemprop="dateCreated datePublished" datetime="2019-07-19T14:50:35+08:00">2019-07-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>径向渐变由它的中心定义。 为了创建一个径向渐变，你也必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。 <strong>语法</strong></p>
+<pre class="language-none"><code class="language-none">background: radial-gradient(center, shape size, start-color, ..., last-color);</code></pre>
+
+
+<p>径向渐变 - 颜色结点均匀分布</p>
+<pre class="language-none"><code class="language-none">background: radial-gradient(red, green, blue); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<p>径向渐变 - 颜色结点不均匀分布</p>
+<pre class="language-none"><code class="language-none">background: radial-gradient(red 5%, green 15%, blue 60%); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<h2 id="设置形状"><a href="#设置形状" class="headerlink" title="设置形状"></a>设置形状</h2><p>shape 参数定义了形状。它可以是值 circle 或 ellipse。其中，circle 表示圆形，ellipse 表示椭圆形。默认值是 ellipse。</p>
+<pre class="language-none"><code class="language-none">background: radial-gradient(circle, red, yellow, green); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<h3 id="不同尺寸大小关键字的使用"><a href="#不同尺寸大小关键字的使用" class="headerlink" title="不同尺寸大小关键字的使用"></a>不同尺寸大小关键字的使用</h3><p>size 参数定义了渐变的大小。它可以是以下四个值：</p>
+<ul>
+<li>  closest-side</li>
+<li>  farthest-side</li>
+<li>  closest-corner</li>
+<li>  farthest-corner</li>
+</ul>
+<p>带有不同尺寸大小关键字的径向渐变</p>
+<pre class="language-none"><code class="language-none">background: radial-gradient(60% 55%, closest-side,blue,green,yellow,black);
+
+background: radial-gradient(60% 55%, farthest-side,blue,green,yellow,black);</code></pre>
+
+
+<h2 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h2><p>repeating-radial-gradient() 函数用于重复径向渐变</p>
+<pre class="language-none"><code class="language-none">background: repeating-radial-gradient(red, yellow 10%, green 15%);</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/18/css3%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tom">
+      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/18/css3%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98%EF%BC%88linear-gradients%EF%BC%89/" class="post-title-link" itemprop="url">CSS3线性渐变（Linear Gradients）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-18 14:42:27" itemprop="dateCreated datePublished" datetime="2019-07-18T14:42:27+08:00">2019-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML/CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>CSS3 渐变（gradients）可以让你在两个或多个指定的颜色之间显示平稳的过渡。 以前，你必须使用图像来实现这些效果。但是，通过使用 CSS3 渐变（gradients），你可以减少下载的时间和宽带的使用。此外，渐变效果的元素在放大时看起来效果更好，因为渐变（gradient）是由浏览器生成的。 CSS3 定义了两种类型的渐变（gradients）：</p>
+<ul>
+<li>  线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向</li>
+<li>  径向渐变（Radial Gradients）- 由它们的中心定义</li>
+</ul>
+<h2 id="CSS3-线性渐变"><a href="#CSS3-线性渐变" class="headerlink" title="CSS3 线性渐变"></a>CSS3 线性渐变</h2><p>为了创建一个线性渐变，你必须至少定义两种颜色结点。颜色结点即你想要呈现平稳过渡的颜色。同时，你也可以设置一个起点和一个方向（或一个角度）。 <strong>语法</strong></p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(direction, color-stop1, color-stop2, ...);</code></pre>
+
+
+<p><strong>线性渐变 - 从上到下（默认情况下）</strong></p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(red, blue); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<p><strong>线性渐变 - 从左到右</strong></p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(to right, red , blue); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<p><strong>线性渐变 - 对角</strong></p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(to bottom right, red , blue); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<h3 id="使用角度"><a href="#使用角度" class="headerlink" title="使用角度"></a>使用角度</h3><p>如果你想要在渐变的方向上做更多的控制，你可以定义一个角度，而不用预定义方向（to bottom、to top、to right、to left、to bottom right，等等）。 <strong>语法</strong></p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(angle, color-stop1, color-stop2);</code></pre>
+
+
+<p>角度是指水平线和渐变线之间的角度，逆时针方向计算。换句话说，0deg 将创建一个从下到上的渐变，90deg 将创建一个从左到右的渐变。 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/wp-content/uploads/2019/07/7B0CC41A-86DC-4E1B-8A69-A410E6764B91.jpg">http://www.w3cbest.com/wp-content/uploads/2019/07/7B0CC41A-86DC-4E1B-8A69-A410E6764B91.jpg</a> 但是，请注意很多浏览器(Chrome,Safari,fiefox等)的使用了旧的标准，即 0deg 将创建一个从左到右的渐变，90deg 将创建一个从下到上的渐变。换算公式 90 - x = y 其中 x 为标准角度，y为非标准角度。 <strong>带有指定的角度的线性渐变</strong></p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(180deg, red, blue); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<p><strong>使用多个颜色结点</strong> 带有多个颜色结点的从上到下的线性渐变</p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(red, green, blue); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<p>带有多个颜色结点的从左到右的线性渐变</p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);</code></pre>
+
+
+<h2 id="使用透明度（transparent）"><a href="#使用透明度（transparent）" class="headerlink" title="使用透明度（transparent）"></a>使用透明度（transparent）</h2><p>CSS3 渐变也支持透明度（transparent），可用于创建减弱变淡的效果。 为了添加透明度，我们使用 rgba() 函数来定义颜色结点。rgba() 函数中的最后一个参数可以是从 0 到 1 的值，它定义了颜色的透明度：0 表示完全透明，1 表示完全不透明。</p>
+<pre class="language-none"><code class="language-none">background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); &#x2F;* 标准的语法 *&#x2F;</code></pre>
+
+
+<h2 id="重复的线性渐变"><a href="#重复的线性渐变" class="headerlink" title="重复的线性渐变"></a>重复的线性渐变</h2><p>repeating-linear-gradient() 函数用于重复线性渐变：</p>
+<pre class="language-none"><code class="language-none">background: repeating-linear-gradient(red, yellow 10%, green 20%);</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/07/04/echarts-%E4%B8%BA%E9%9B%B7%E8%BE%BE%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%9E%81%E5%9D%90%E6%A0%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1610,215 +1815,6 @@ wait(dtd);</code></pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/07/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-string-%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">javascript数据类型 —— String 类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-07 08:00:43" itemprop="dateCreated datePublished" datetime="2019-05-07T08:00:43+08:00">2019-05-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>String 类型用于表示由零或多个16位 Unicode 字符组成的字符序列，即字符串 。</p>
-<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>由于计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。在计算机中，1个字节（byte）由 8个比特（bit）组成，所以 1 个字节能表示的最大整数就是 255，如果想表示更大整数，就必须用更多的字节，比如 2 个字节可以表示的最大整数为 65535 。最早，只有127个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母A的编码是65，小写字母z的编码是122。 但如果要表示中文字符，显然一个字节是不够的，至少需要两个字节。所以，中国制定了GB2312编码，用来表示中文字符。基于同样的原因，各个国家都制定了自己的编码规则。这样就会出现一个问题，即在多语言混合的文本中，不同的编码会出现冲突，导致乱码出现。 为了解决这个问题，Unicode 编码应运而生，它把所有的语言都统一到一套编码中，采用2个字节表示一个字符，即最多可以表示65535个字符，这样基本上可以覆盖世界上常用的文字，如果要表示更多的文字，也可以采用4个字节进行编码，这是一种通用的编码规范。 因此，JavaScript中的字符也采用Unicode来编码，也就是说，JavaScript中的英文字符和中文字符都会占用2个字节的空间大小，这种多字节字符，通常被称为宽字符。</p>
-<h2 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h2><p>在JavaScript中，字符串是基本数据类型，本身不存任何操作方法。为了方便的对字符串进行操作，ECMAScript提供了一个基本包装类型：<code>String()</code>对象。它是一种特殊的引用类型，JS引擎每当读取一个字符串的时候，就会在内部创建一个对应的<code>String()</code>对象，该对象提供了很多操作字符的方法，这就是为什么能对字符串调用方法的原因。</p>
-<p>var name = ‘JavaScript’;<br>var value = name.substr(2,1);</p>
-<p>当第二行代码访问变量str时，访问过程处于一种读取模式，也就是要从内存中读取这个字符串的值。而在读取模式中访问字符串时，引擎内部会自动完成下列处理：</p>
-<ol>
-<li> 创建String类型的一个实例</li>
-<li> 在实例上调用指定的方法</li>
-<li> 销毁这个实例</li>
-</ol>
-<p>用伪代码形象的模拟以上三个步骤：</p>
-<p>var obj = new String(‘JavaScript’);<br>var value = obj.substr(2,1);<br>name = null;</p>
-<p>可以看出，基本包装类型是一种特殊的引用类型。它和普通引用类型有一个很重要的区别，就是对象的生存期不同。使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。在JavaScript中，类似的基本包装类型还有<code>Number</code>、<code>Boolean</code>对象 。</p>
-<h2 id="常用操作方法"><a href="#常用操作方法" class="headerlink" title="常用操作方法"></a>常用操作方法</h2><p>作为字符串的基本包装类型，String()对象提供了以下几类方法，用以操作字符串：</p>
-<ul>
-<li>  字符操作：<code>charAt()</code>、<code>charCodeAt()</code>、<code>fromCharCode()</code></li>
-<li>  字符串提取：<code>substr()</code>、<code>substring()</code>、<code>slice()</code></li>
-<li>  位置索引：<code>indexOf()</code>、<code>lastIndexOf()</code></li>
-<li>  大小写转换：<code>toLowerCase()</code>、<code>toUpperCase()</code></li>
-<li>  模式匹配：<code>match()</code>、<code>search()</code>、<code>replace()</code>、<code>split()</code></li>
-<li>  其他操作：<code>concat()</code>、<code>trim()</code>、<code>localeCompare()</code></li>
-</ul>
-<p><code>charCodeAt()</code>方法的作用是获取字符的Unicode编码，俗称“Unicode码点”。<code>fromCharCode()</code>是<code>String()</code>对象上的静态方法，作用是根据Unicode编码返回对应的字符。</p>
-<p>var a = ‘a’;<br>// 获取Unicode编码<br>var code = a.charCodeAt(0); // 97<br>// 根据Unicode编码获取字符<br>String.fromCharCode(code); // a</p>
-<p>通过<code>charCodeAt()</code>方法获取字符的Unicode编码，然后再把这个编码转化成二进制，就可以得到该字符的二进制表示。</p>
-<p>var a = ‘a’;<br>var code = a.charCodeAt(0); // 97<br>code.toString(2); // 1100001</p>
-<p>对于字符串的提取操作，有三个相类似的方法，分别如下：</p>
-<p>substr(start [, length])<br>substring(start [, end])<br>slice(start [, end])</p>
-<p>从定义上看，<code>substring()</code>和<code>slice()</code>是同类的，参数都是字符串的某个start位置到某个end位置（但end位置的字符不包括在结果中）；而<code>substr()</code>则是字符串的某个start位置起，数length个长度的字符才结束。二者的共性是：从start开始，如果没有第2个参数，都是直到字符串末尾。 <code>substring()</code>和<code>slice()</code>的区别则是：<code>slice()</code>可以接受“负数”，表示从字符串尾部开始计数；而<code>substring()</code>则把负数或其它无效的数当作0。</p>
-<p>‘hello world!’.slice(-6, -1) // ‘world’<br>‘hello world!’.substring(“abc”, 5) // ‘hello’</p>
-<p><code>substr()</code>的start也可接受负数，也表示从字符串尾部计数，这点和<code>slice()</code>相同；但<code>substr()</code>的length则不能小于1，否则返回空字符串。</p>
-<p>‘hello world!’.substr(-6, 5) // ‘world’<br>‘hello world!’.substr(0, -1) // ‘’</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xianzhiding.github.io/2019/05/04/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tom">
-      <meta itemprop="description" content="w3cbest是一个专注前端开发、用户体验设计,提供大量最新前端前沿技术文章及资源。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发 大前端 W3Cbest">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/04/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">常用正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-04 10:49:09" itemprop="dateCreated datePublished" datetime="2019-05-04T10:49:09+08:00">2019-05-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>说明：正则表达式通常用于两种任务：1.验证，2.搜索/替换。用于验证时，通常需要在前后分别加上<code>^</code>和<code>$</code>，以匹配整个待验证字符串；搜索/替换时是否加上此限定则根据搜索的要求而定，此外，也有可能要在前后加上<code>\b</code>而不是<code>^</code>和<code>$</code>。此表所列的常用正则表达式，除个别外均未在前后加上任何限定，请根据需要，自行处理。</p>
-<p>说明</p>
-<p>正则表达式</p>
-<p>网址（URL）</p>
-<p><code>[a-zA-z]+://[^\s]*</code></p>
-<p>IP地址(IP Address)</p>
-<p><code>((2[0-4]\d25[0-5][01]?\d\d?)\.)&#123;3&#125;(2[0-4]\d25[0-5][01]?\d\d?)</code></p>
-<p>电子邮件(Email)</p>
-<p><code>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</code></p>
-<p>QQ号码</p>
-<p><code>[1-9]\d&#123;4,&#125;</code></p>
-<p>HTML标记(包含内容或自闭合)</p>
-<p><code>&lt;(.*)(.*)&gt;.*&lt;\/\1&gt;&lt;(.*) \/&gt;</code></p>
-<p>密码(由数字/大写字母/小写字母/标点符号组成，四种都必有，8位以上)</p>
-<p><code>(?=^.&#123;8,&#125;$)(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z])(?!.*\n).*$</code></p>
-<p>日期(年-月-日)</p>
-<p><code>(\d&#123;4&#125;\d&#123;2&#125;)-((1[0-2])(0?[1-9]))-(([12][0-9])(3[01])(0?[1-9]))</code></p>
-<p>日期(月/日/年)</p>
-<p><code>((1[0-2])(0?[1-9]))/(([12][0-9])(3[01])(0?[1-9]))/(\d&#123;4&#125;\d&#123;2&#125;)</code></p>
-<p>时间(小时:分钟, 24小时制)</p>
-<p><code>((10?)[0-9]2[0-3]):([0-5][0-9])</code></p>
-<p>汉字(字符)</p>
-<p><code>[\u4e00-\u9fa5]</code></p>
-<p>中文及全角标点符号(字符)</p>
-<p><code>[\u3000-\u301e\ufe10-\ufe19\ufe30-\ufe44\ufe50-\ufe6b\uff01-\uffee]</code></p>
-<p>中国大陆固定电话号码</p>
-<p><code>(\d&#123;4&#125;-\d&#123;3&#125;-)?(\d&#123;8&#125;\d&#123;7&#125;)</code></p>
-<p>中国大陆手机号码</p>
-<p><code>1\d&#123;10&#125;</code></p>
-<p>中国大陆邮政编码</p>
-<p><code>[1-9]\d&#123;5&#125;</code></p>
-<p>中国大陆身份证号(15位或18位)</p>
-<p><code>\d&#123;15&#125;(\d\d[0-9xX])?</code></p>
-<p>非负整数(正整数或零)</p>
-<p><code>\d+</code></p>
-<p>正整数</p>
-<p><code>[0-9]*[1-9][0-9]*</code></p>
-<p>负整数</p>
-<p><code>-[0-9]*[1-9][0-9]*</code></p>
-<p>整数</p>
-<p><code>-?\d+</code></p>
-<p>小数</p>
-<p><code>(-?\d+)(\.\d+)?</code></p>
-<p>不包含abc的单词</p>
-<p><code>\b((?!abc)\w)+\b</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1888,7 +1884,7 @@ wait(dtd);</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
