@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="如果不处理对象，您就无法在 JavaScript 方面取得很大进展。它们几乎是 JavaScript 编程语言的所有方面的基础。事实上，学习如何创建对象可能是你刚开始学习的第一件事。话虽如此，为了最有效地学习 JavaScript 中的原型，我们将从基础开始。 首先，对象是键&#x2F;值对。创建对象的最常用方法是使用花括号{}，并使用点表示法向对象添加属性和方法。 let animal &#x3D; {}anima">
+  <meta name="description" content="如果不处理对象，您就无法在 JavaScript 方面取得很大进展。它们几乎是 JavaScript 编程语言的所有方面的基础。事实上，学习如何创建对象可能是你刚开始学习的第一件事。话虽如此，为了最有效地学习 JavaScript 中的原型，我们将从基础开始。 首先，对象是键&#x2F;值对。创建对象的最常用方法是使用花括号{}，并使用点表示法向对象添加属性和方法。 let animal &#x3D; &amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript Prototype(原型) 初学者指南">
 <meta property="og:url" content="https://xianzhiding.github.io/2018/10/05/javascript-prototype%E5%8E%9F%E5%9E%8B-%E5%88%9D%E5%AD%A6%E8%80%85%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
-<meta property="og:description" content="如果不处理对象，您就无法在 JavaScript 方面取得很大进展。它们几乎是 JavaScript 编程语言的所有方面的基础。事实上，学习如何创建对象可能是你刚开始学习的第一件事。话虽如此，为了最有效地学习 JavaScript 中的原型，我们将从基础开始。 首先，对象是键&#x2F;值对。创建对象的最常用方法是使用花括号{}，并使用点表示法向对象添加属性和方法。 let animal &#x3D; {}anima">
+<meta property="og:description" content="如果不处理对象，您就无法在 JavaScript 方面取得很大进展。它们几乎是 JavaScript 编程语言的所有方面的基础。事实上，学习如何创建对象可能是你刚开始学习的第一件事。话虽如此，为了最有效地学习 JavaScript 中的原型，我们将从基础开始。 首先，对象是键&#x2F;值对。创建对象的最常用方法是使用花括号{}，并使用点表示法向对象添加属性和方法。 let animal &#x3D; &amp;#">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-10-05T00:00:48.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:26.916Z">
+<meta property="article:modified_time" content="2023-08-28T08:09:20.683Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="class">
 <meta property="article:tag" content="constructor">
@@ -237,63 +237,155 @@
 
       
         <p>如果不处理对象，您就无法在 JavaScript 方面取得很大进展。它们几乎是 JavaScript 编程语言的所有方面的基础。事实上，学习如何创建对象可能是你刚开始学习的第一件事。话虽如此，为了最有效地学习 JavaScript 中的原型，我们将从基础开始。 首先，对象是键/值对。创建对象的最常用方法是使用花括号{}，并使用点表示法向对象添加属性和方法。</p>
-<p>let animal = {}<br>animal.name = ‘Leo’<br>animal.energy = 10</p>
-<p>animal.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>animal.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>animal.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<pre class="language-none"><code class="language-none">let animal &#x3D; &#123;&#125;
+animal.name &#x3D; &#39;Leo&#39;
+animal.energy &#x3D; 10
+
+animal.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+animal.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+animal.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;</code></pre>
 <p>这个很简单。现在，我们在应用程序中我们需要创建多个动物。很自然地，下一步就是将逻辑封装到一个函数中，以便我们在需要创建新动物时调用这个函数。我们将调用这个模式 <code>Functional Instantiation</code>(函数实例化)，并将函数本身称为 <code>constructor function</code>(构造函数) ，因为它负责“构造”一个新对象。</p>
-<h2 id="Functional-Instantiation-函数实例化"><a href="#Functional-Instantiation-函数实例化" class="headerlink" title="Functional Instantiation (函数实例化)"></a>Functional Instantiation (函数实例化)</h2><p>function Animal(name, energy) {<br>    let animal = {}<br>    animal.name = name<br>    animal.energy = energy</p>
-<pre><code>animal.eat = function(amount) &#123;
-    console.log(\`$&#123;this.name&#125; is eating.\`)
-    this.energy += amount
+<h2 id="Functional-Instantiation-函数实例化"><a href="#Functional-Instantiation-函数实例化" class="headerlink" title="Functional Instantiation (函数实例化)"></a>Functional Instantiation (函数实例化)</h2><pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    let animal &#x3D; &#123;&#125;
+    animal.name &#x3D; name
+    animal.energy &#x3D; energy
+
+    animal.eat &#x3D; function(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;
+
+    animal.sleep &#x3D; function(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;
+
+    animal.play &#x3D; function(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
+
+    return animal
 &#125;
 
-animal.sleep = function(length) &#123;
-    console.log(\`$&#123;this.name&#125; is sleeping.\`)
-    this.energy += length
-&#125;
-
-animal.play = function(length) &#123;
-    console.log(\`$&#123;this.name&#125; is playing.\`)
-    this.energy -= length
-&#125;
-
-return animal
-</code></pre>
-<p>}</p>
-<p>const leo = Animal(‘Leo’, 7)<br>const snoop = Animal(‘Snoop’, 10)</p>
+const leo &#x3D; Animal(&#39;Leo&#39;, 7)
+const snoop &#x3D; Animal(&#39;Snoop&#39;, 10)</code></pre>
 <p>现在，每当我们想要创建一种新动物（或者更广泛地说是一种新的“实例”）时，我们所要做的就是调用我们的 <code>Animal</code> 函数，将动物的 <code>name</code> 和<code>energy</code> 传递给这个函数。这非常有效，而且非常简单。但是，你有发现这种模式的不足之处吗？我们要尝试解决的最大的问题与三种方法有关 – <code>eat</code>，<code>sleep</code> 和 <code>play</code>。这些方法中的每一种都不仅是动态的，而且它们也是完全通用的。这意味着没有理由重新创建这些方法，正如我们在创建新动物时所做的那样。我们只是在浪费内存，让每个动物物体都比它需要的更大。你能想到一个解决方案吗？ 如果我们每次创建一个新动物时不需要重新创建这些方法，而是将它们移动到它们自己的对象上，那么我们就可以让每个动物引用那个对象了?我们可以把这种模式称为 <code>Functional Instantiation with Shared Methods</code>(共享方法的函数实例化) 。描述起来有点啰嗦。</p>
-<h3 id="Functional-Instantiation-with-Shared-Methods-共享方法的函数实例化"><a href="#Functional-Instantiation-with-Shared-Methods-共享方法的函数实例化" class="headerlink" title="Functional Instantiation with Shared Methods (共享方法的函数实例化)"></a>Functional Instantiation with Shared Methods (共享方法的函数实例化)</h3><p>const animalMethods = {<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    },<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    },<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}</p>
-<p>function Animal(name, energy) {<br>    let animal = {}<br>    animal.name = name<br>    animal.energy = energy<br>    animal.eat = animalMethods.eat<br>    animal.sleep = animalMethods.sleep<br>    animal.play = animalMethods.play</p>
-<pre><code>return animal
-</code></pre>
-<p>}</p>
-<p>const leo = Animal(‘Leo’, 7)<br>const snoop = Animal(‘Snoop’, 10)</p>
+<h3 id="Functional-Instantiation-with-Shared-Methods-共享方法的函数实例化"><a href="#Functional-Instantiation-with-Shared-Methods-共享方法的函数实例化" class="headerlink" title="Functional Instantiation with Shared Methods (共享方法的函数实例化)"></a>Functional Instantiation with Shared Methods (共享方法的函数实例化)</h3><pre class="language-none"><code class="language-none">const animalMethods &#x3D; &#123;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;,
+    sleep(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;,
+    play(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
+&#125;
+
+function Animal(name, energy) &#123;
+    let animal &#x3D; &#123;&#125;
+    animal.name &#x3D; name
+    animal.energy &#x3D; energy
+    animal.eat &#x3D; animalMethods.eat
+    animal.sleep &#x3D; animalMethods.sleep
+    animal.play &#x3D; animalMethods.play
+
+    return animal
+&#125;
+
+const leo &#x3D; Animal(&#39;Leo&#39;, 7)
+const snoop &#x3D; Animal(&#39;Snoop&#39;, 10)</code></pre>
 <p>通过将共享方法移动到它们自己的对象并在 <code>Animal</code> 函数中引用该对象，我们现在已经解决了内存浪费和动物对象过大的问题。</p>
 <h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h2><p>让我们使用 <code>Object.create</code> 再次改进我们的例子。 简而言之，<code>Object.create</code> 允许您创建一个对象，该对象将在查找失败时委托给另一个对象。 换句话说，<code>Object.create</code> 允许您创建一个对象，只要该对象上的属性查找失败，它就可以查询另一个对象，以查看另一个对象中是否具有该属性。 说清楚需要很多文字， 我们来看一些代码。</p>
-<p>const parent = {<br>    name: ‘Stacey’,<br>    age: 35,<br>    heritage: ‘Irish’<br>}</p>
-<p>const child = Object.create(parent),<br>child.name = ‘Ryan’,<br>child.age = 7;</p>
-<p>console.log(child.name); // Ryan<br>console.log(child.age); // 7<br>console.log(child.heritage); // Irish</p>
+<pre class="language-none"><code class="language-none">const parent &#x3D; &#123;
+    name: &#39;Stacey&#39;,
+    age: 35,
+    heritage: &#39;Irish&#39;
+&#125;
+
+const child &#x3D; Object.create(parent),
+child.name &#x3D; &#39;Ryan&#39;,
+child.age &#x3D; 7;
+
+console.log(child.name); &#x2F;&#x2F; Ryan
+console.log(child.age); &#x2F;&#x2F; 7
+console.log(child.heritage); &#x2F;&#x2F; Irish</code></pre>
 <p>在上面的示例中，因为 <code>child</code> 是通过 <code>Object.create(parent)</code> 创建的，所以每当在 <code>child</code> 中查找属性失败时，JavaScript 就会将该查找委托给 <code>parent</code> 对象。这意味着即使 <code>child</code> 没有 <code>heritage</code> 属性，当你查找 <code>child.heritage</code> 时你会得到 <code>parent</code> 的<code>heritage</code> 属性，即 <code>Irish</code>。 现在，通过使用 <code>Object.create</code> ，我们该如何使用它来简化之前的 <code>Animal</code> 代码呢？好吧，我们可以使用 <code>Object.create</code> 委托给<code>animalMethods</code> 对象，而不是像我们之前一样逐个将所有共享方法添加到 <code>Animal</code> 中。 为了听起来很智能，让我们称之为 <code>Functional Instantiation with Shared Methods and Object.create</code>(使用共享方法和Object.create进行函数实例化)。</p>
-<h2 id="Functional-Instantiation-with-Shared-Methods-and-Object-create-使用共享方法和Object-create进行函数实例化"><a href="#Functional-Instantiation-with-Shared-Methods-and-Object-create-使用共享方法和Object-create进行函数实例化" class="headerlink" title="Functional Instantiation with Shared Methods and Object.create (使用共享方法和Object.create进行函数实例化)"></a>Functional Instantiation with Shared Methods and Object.create (使用共享方法和Object.create进行函数实例化)</h2><p>const animalMethods = {<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`);<br>        this.energy += amount;<br>    },<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`);<br>        this.energy += length;<br>    },<br>    play(length) {<br>        console.log(`${this.name} is playing.`);<br>        this.energy -= length;<br>    }<br>}</p>
-<p>function Animal(name, energy) {<br>    let animal = Object.create(animalMethods);<br>    animal.name = name;<br>    animal.energy = energy;</p>
-<pre><code>return animal;
-</code></pre>
-<p>}</p>
-<p>const leo = Animal(‘Leo’, 7);<br>const snoop = Animal(‘Snoop’, 10);</p>
-<p>leo.eat(10);<br>snoop.play(5);</p>
+<h2 id="Functional-Instantiation-with-Shared-Methods-and-Object-create-使用共享方法和Object-create进行函数实例化"><a href="#Functional-Instantiation-with-Shared-Methods-and-Object-create-使用共享方法和Object-create进行函数实例化" class="headerlink" title="Functional Instantiation with Shared Methods and Object.create (使用共享方法和Object.create进行函数实例化)"></a>Functional Instantiation with Shared Methods and Object.create (使用共享方法和Object.create进行函数实例化)</h2><pre class="language-none"><code class="language-none">const animalMethods &#x3D; &#123;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;);
+        this.energy +&#x3D; amount;
+    &#125;,
+    sleep(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;);
+        this.energy +&#x3D; length;
+    &#125;,
+    play(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;);
+        this.energy -&#x3D; length;
+    &#125;
+&#125;
+
+function Animal(name, energy) &#123;
+    let animal &#x3D; Object.create(animalMethods);
+    animal.name &#x3D; name;
+    animal.energy &#x3D; energy;
+
+    return animal;
+&#125;
+
+const leo &#x3D; Animal(&#39;Leo&#39;, 7);
+const snoop &#x3D; Animal(&#39;Snoop&#39;, 10);
+
+leo.eat(10);
+snoop.play(5);</code></pre>
 <p>所以现在当我们调用 <code>leo.eat</code> 时，JavaScript 会在 <code>leo</code> 对象上查找 <code>eat</code> 方法。 这个查找将失败，因为使用了 <code>Object.create</code>，它将委托给 <code>animalMethods</code> 对象，然后在这里将找到 <code>eat</code> 方法。 到现在为止还挺好的。 尽管如此，我们仍然可以做出一些改进。 为了跨实例共享方法，必须管理一个单独的对象（<code>animalMethods</code>）似乎有点“hacky”。 这似乎是您希望在语言本身中实现的常见功能。 事实证明，这就是你看这篇文章的原因 – prototype(原型) 。 那么究竟什么是 JavaScript 的 prototype（原型）呢？ 简单地说，JavaScript 中的每个函数都有一个引用对象的 prototype 属性。 我们来亲自测试一下。</p>
-<p>function doThing () {};<br>console.log(doThing.prototype); // {}</p>
+<pre class="language-none"><code class="language-none">function doThing () &#123;&#125;;
+console.log(doThing.prototype); &#x2F;&#x2F; &#123;&#125;</code></pre>
 <p>如果不是创建一个单独的对象（比如我们正在使用的 <code>animalMethods</code> ）来管理我们的方法，也就是我们只是将每个方法放在 <code>Animal</code> 函数的 prototype(原型) 对象上，该怎么办呢？我们所要做的就是不使用 <code>Object.create</code> 委托给 <code>animalMethods</code>，我们可以用使用来委托<code>Animal.prototype</code>。 我们将这种模式称为 <code>Prototypal Instantiation</code>(原型实例化)。</p>
-<h2 id="Prototypal-Instantiation-原型实例化"><a href="#Prototypal-Instantiation-原型实例化" class="headerlink" title="Prototypal Instantiation (原型实例化)"></a>Prototypal Instantiation (原型实例化)</h2><p>function Animal(name, energy) {<br>    let animal = Object.create(Animal.prototype);<br>    animal.name = name;<br>    animal.energy = energy;</p>
-<pre><code>return animal;
-</code></pre>
-<p>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`);<br>    this.energy += amount;<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`);<br>    this.energy += length;<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`);<br>    this.energy -= length;<br>}</p>
-<p>const leo = Animal(‘Leo’, 7);<br>const snoop = Animal(‘Snoop’, 10);</p>
-<p>leo.eat(10);<br>snoop.play(5);</p>
+<h2 id="Prototypal-Instantiation-原型实例化"><a href="#Prototypal-Instantiation-原型实例化" class="headerlink" title="Prototypal Instantiation (原型实例化)"></a>Prototypal Instantiation (原型实例化)</h2><pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    let animal &#x3D; Object.create(Animal.prototype);
+    animal.name &#x3D; name;
+    animal.energy &#x3D; energy;
+
+    return animal;
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;);
+    this.energy +&#x3D; amount;
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;);
+    this.energy +&#x3D; length;
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;);
+    this.energy -&#x3D; length;
+&#125;
+
+const leo &#x3D; Animal(&#39;Leo&#39;, 7);
+const snoop &#x3D; Animal(&#39;Snoop&#39;, 10);
+
+leo.eat(10);
+snoop.play(5);</code></pre>
 <p>这里你可以为自己鼓掌鼓励一下了。 同样，原型只是 JavaScript 中每个函数都具有的属性，并且如上所述，它允许我们在函数的所有实例之间共享方法。 我们所有的功能仍然相同，但现在我们不必为所有方法管理一个单独的对象，我们可以使用另一个内置于 <code>Animal</code> 函数本身的对象<code>Animal.prototype</code>。</p>
 <h2 id="更深的，走起！"><a href="#更深的，走起！" class="headerlink" title="更深的，走起！"></a>更深的，走起！</h2><p>首先，我们需要知道三件事：</p>
 <ol>
@@ -302,112 +394,380 @@ return animal
 <li> 如何使用 <code>Object.create</code> 将失败的查找委托给函数的原型。</li>
 </ol>
 <p>这三个任务似乎是任何编程语言的基础。 JavaScript 是否真的那么糟糕，没有更简单，“内置”的方式来完成同样的事情？ 正如你可能已经猜测的那样，它是通过使用 <code>new</code> 关键字。 我们采用的这种缓慢而有条理的方法的好处是，您现在可以深入了解 JavaScript 中的 <code>new</code> 关键字在幕后的作用。 回顾一下我们的 <code>Animal</code> 构造函数，最重要的两个部分是创建对象并返回它。 如果不使用 <code>Object.create</code>创建对象，我们将无法在查找失败时委托给函数的原型。 如果没有 <code>return</code> 语句，我们将永远不会返回创建的对象。</p>
-<p>function Animal(name, energy) {<br>    let animal = Object.create(Animal.prototype);<br>    animal.name = name;<br>    animal.energy = energy;<br>    return animal;<br>}</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    let animal &#x3D; Object.create(Animal.prototype);
+    animal.name &#x3D; name;
+    animal.energy &#x3D; energy;
+    return animal;
+&#125;</code></pre>
 <p><code>new</code> 有一个很酷的地方——当您使用 <code>new</code> 关键字调用函数时，注释掉的这两行代码是隐式(引擎)完成的，创建的对象称为 <code>this</code>。 使用注释来显示在幕后发生的事情并假设使用 <code>new</code> 关键字调用 <code>Animal</code> 构造函数，可以将其重写为这样：</p>
-<p>function Animal(name, energy) {<br>    // const this = Object.create(Animal.prototype)<br>    this.name = name<br>    this.energy = energy<br>    // return this<br>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    &#x2F;&#x2F; const this &#x3D; Object.create(Animal.prototype)
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+    &#x2F;&#x2F; return this
+&#125;
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+const snoop &#x3D; new Animal(&#39;Snoop&#39;, 10)</code></pre>
 <p>去掉注释后：</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}<br>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}<br>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}<br>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+const snoop &#x3D; new Animal(&#39;Snoop&#39;, 10)</code></pre>
 <p>同样，这样做以及为我们创建 <code>this</code> 对象的原因是，我们使用 <code>new</code> 关键字调用构造函数。如果在调用函数时不使用 <code>new</code> ，则该对象永远不会创建，也不会隐式返回。我们可以在下面的例子中看到这个问题。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}<br>const leo = Animal(‘Leo’, 7)<br>console.log(leo) // undefined</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+const leo &#x3D; Animal(&#39;Leo&#39;, 7)
+console.log(leo) &#x2F;&#x2F; undefined</code></pre>
 <p>此模式的名称是 <code>Pseudoclassical Instantiation</code>(伪类实例化) 。 如果 JavaScript 不是您的第一种编程语言，您可能会有点不安。</p>
 <blockquote>
 <p>“WTF这个家伙只是重新创造了一个更糟糕的版本” – 你</p>
 </blockquote>
 <p>对于那些不熟悉的人，Class(类) 允许您为对象创建模板。然后，无论何时创建该类的实例，都会获得一个具有模板中定义的属性和方法的对象。 听起来有点熟悉？这基本上就是我们对上面的 <code>Animal</code> 构造函数所做的事情。但是对于 <code>Animal</code> 构造函数，我们只使用常规的旧 JavaScript 函数来重新创建相同的功能，而不是使用 <code>class</code> 关键字。当然，它需要一些额外的工作以及一些关于 JavaScript “引擎” 所处理的事情的相关知识，但结果是一样的。 这是个好消息。 JavaScript 不是一种 “死” 语言。它不断得到改进，并由 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/videos/ecmascript/">TC-39委员会</a> 不断的制定标准。这意味着即使 JavaScript 的初始版本不支持类，也不影响后续将它们添加到官方规范中。事实上，这正是TC-39委员会所做的事情。 2015年，发布了 EcmaScript（官方JavaScript规范）6 ，支持 Classes(类) 和 <code>class</code> 关键字。让我们看看上面的 <code>Animal</code> 构造函数如何使用新的 class(类) 语法。</p>
-<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
+<pre class="language-none"><code class="language-none">class Animal &#123;
+    constructor(name, energy) &#123;
+        this.name &#x3D; name
+        this.energy &#x3D; energy
+    &#125;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;
+    sleep(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;
+    play(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
+&#125;
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+const snoop &#x3D; new Animal(&#39;Snoop&#39;, 10)</code></pre>
 <p>很干净是吧？ 因此，如果这是创建类的新方法，为什么我们前面花了这么多时间来讨论旧的方式呢？ 原因是新的方式（使用 <code>class</code> 关键字）只是经典伪类模式的 “语法糖”。 为了完全理解 ES6 类的便捷语法，首先必须理解经典的伪类模式。 我们已经介绍了 JavaScript 原型的基础知识。 本文的其余部分将致力于加深理解相关知识的主题。 在另一篇文章中，我们将看看如何利用这些基础知识并使用它们来理解 JavaScript 中继承的工作原理。</p>
 <h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><p>我们在上面深入讨论了如何在类的实例之间共享方法，您应该将这些方法放在类（或函数）原型上。 如果我们查看 <code>Array</code> 类，我们可以看到相同的模式。 从历史上看，您可能已经创建了这样的数组：</p>
-<p>const friends = []</p>
+<pre class="language-none"><code class="language-none">const friends &#x3D; []</code></pre>
 <p>事实证明，这只是创建一个新的 <code>Array</code> 类实例的语法糖。</p>
-<p>const friendsWithSugar = []<br>const friendsWithoutSugar = new Array()</p>
+<pre class="language-none"><code class="language-none">const friendsWithSugar &#x3D; []
+const friendsWithoutSugar &#x3D; new Array()</code></pre>
 <p>您可能从未想过：数组的每个实例是如何具有所有内置方法的（<code>splice</code> , <code>slice</code>, <code>pop</code> 等）？ 正如您现在所知，这是因为这些方法存在于 <code>Array.prototype</code> 上，当您创建一个新的 <code>Array</code> 实例时，您使用 <code>new</code> 关键字在查找失败时将该委托设置为 <code>Array.prototype</code> 。 我们可以通过简单地 <code>console.log(Array.prototype)</code> 来查看所有数组的方法。</p>
-<p>console.log(Array.prototype)<br>/*<br>  concat: ?n concat()<br>  constructor: ?n Array()<br>  copyWithin: ?n copyWithin()<br>  entries: ?n entries()<br>  every: ?n every()<br>  fill: ?n fill()<br>  filter: ?n filter()<br>  find: ?n find()<br>  findIndex: ?n findIndex()<br>  forEach: ?n forEach()<br>  includes: ?n includes()<br>  indexOf: ?n indexOf()<br>  join: ?n join()<br>  keys: ?n keys()<br>  lastIndexOf: ?n lastIndexOf()<br>  length: 0n<br>  map: ?n map()<br>  pop: ?n pop()<br>  push: ?n push()<br>  reduce: ?n reduce()<br>  reduceRight: ?n reduceRight()<br>  reverse: ?n reverse()<br>  shift: ?n shift()<br>  slice: ?n slice()<br>  some: ?n some()<br>  sort: ?n sort()<br>  splice: ?n splice()<br>  toLocaleString: ?n toLocaleString()<br>  toString: ?n toString()<br>  unshift: ?n unshift()<br>  values: ?n values()<br>*/</p>
+<pre class="language-none"><code class="language-none">console.log(Array.prototype)
+&#x2F;*
+  concat: ?n concat()
+  constructor: ?n Array()
+  copyWithin: ?n copyWithin()
+  entries: ?n entries()
+  every: ?n every()
+  fill: ?n fill()
+  filter: ?n filter()
+  find: ?n find()
+  findIndex: ?n findIndex()
+  forEach: ?n forEach()
+  includes: ?n includes()
+  indexOf: ?n indexOf()
+  join: ?n join()
+  keys: ?n keys()
+  lastIndexOf: ?n lastIndexOf()
+  length: 0n
+  map: ?n map()
+  pop: ?n pop()
+  push: ?n push()
+  reduce: ?n reduce()
+  reduceRight: ?n reduceRight()
+  reverse: ?n reverse()
+  shift: ?n shift()
+  slice: ?n slice()
+  some: ?n some()
+  sort: ?n sort()
+  splice: ?n splice()
+  toLocaleString: ?n toLocaleString()
+  toString: ?n toString()
+  unshift: ?n unshift()
+  values: ?n values()
+*&#x2F;</code></pre>
 <p>Objects(对象) 也是完全相同的逻辑。 所有对象将在查找失败时委托给 <code>Object.prototype</code> ，这就是所有对象都有 <code>toString</code> 和<code>hasOwnProperty</code> 等方法的原因。</p>
 <h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>到目前为止，我们已经介绍了为什么，以及如何在类的实例之间共享方法。 但是，如果我们有一个对 Class 很重要但不需要又跨实例共享的方法，该怎么办呢？ 例如，如果我们有一个函数，它接收一系列 <code>Animal</code> 实例并决定下一个需要喂食的对象，会怎样? 我们将其称为 <code>nextToEat</code>。</p>
-<p>function nextToEat(animals) {<br>    const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>        return a.energy - b.energy<br>    })<br>    return sortedByLeastEnergy[0].name<br>}</p>
+<pre class="language-none"><code class="language-none">function nextToEat(animals) &#123;
+    const sortedByLeastEnergy &#x3D; animals.sort((a, b) &#x3D;&gt; &#123;
+        return a.energy - b.energy
+    &#125;)
+    return sortedByLeastEnergy[0].name
+&#125;</code></pre>
 <p>我们不希望在所有实例之间共享它，所以在 <code>Animal.prototype</code> 上使用 <code>nextToEat</code> 是没有意义的。 相反，我们可以将其视为辅助方法。 所以如果 <code>nextToEat</code> 不应该存在于 <code>Animal.prototype</code> 中，我们应该把它放在哪里呢？ 那么显而易见的答案是我们可以将 <code>nextToEat</code> 放在与 <code>Animal</code> 类相同的作用域中，然后像我们平常那样，在需要时引用它。</p>
-<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}<br>function nextToEat(animals) {<br>    const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>        return a.energy - b.energy<br>    })</p>
-<pre><code>return sortedByLeastEnergy\[0\].name
-</code></pre>
-<p>}<br>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)<br>console.log(nextToEat([leo, snoop])) // Leo</p>
-<p>现在这可行，但有更好的方法。 只要有一个特定于类本身的方法，但不需要在该类的实例之间共享，就可以将其添加为类的 <code>static</code>(静态) 属性。</p>
-<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep(length) {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play(length) {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>    static nextToEat(animals) {<br>        const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>            return a.energy - b.energy<br>        })</p>
-<pre><code>    return sortedByLeastEnergy\[0\].name
+<pre class="language-none"><code class="language-none">class Animal &#123;
+    constructor(name, energy) &#123;
+        this.name &#x3D; name
+        this.energy &#x3D; energy
+    &#125;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;
+    sleep(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;
+    play(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
 &#125;
-</code></pre>
-<p>}</p>
+function nextToEat(animals) &#123;
+    const sortedByLeastEnergy &#x3D; animals.sort((a, b) &#x3D;&gt; &#123;
+        return a.energy - b.energy
+    &#125;)
+
+    return sortedByLeastEnergy[0].name
+&#125;
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+const snoop &#x3D; new Animal(&#39;Snoop&#39;, 10)
+console.log(nextToEat([leo, snoop])) &#x2F;&#x2F; Leo</code></pre>
+<p>现在这可行，但有更好的方法。 只要有一个特定于类本身的方法，但不需要在该类的实例之间共享，就可以将其添加为类的 <code>static</code>(静态) 属性。</p>
+<pre class="language-none"><code class="language-none">class Animal &#123;
+    constructor(name, energy) &#123;
+        this.name &#x3D; name
+        this.energy &#x3D; energy
+    &#125;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;
+    sleep(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;
+    play(length) &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
+    static nextToEat(animals) &#123;
+        const sortedByLeastEnergy &#x3D; animals.sort((a, b) &#x3D;&gt; &#123;
+            return a.energy - b.energy
+        &#125;)
+
+        return sortedByLeastEnergy[0].name
+    &#125;
+&#125;</code></pre>
 <p>现在，因为我们在类上添加了 <code>nextToEat</code> 作为 <code>static</code>(静态) 属性，所以它存在于 <code>Animal</code> 类本身（而不是它的原型）中，并且可以使用 <code>Animal.nextToEat</code> 进行访问。</p>
-<p>const leo = new Animal(‘Leo’, 7) const snoop = new Animal(‘Snoop’, 10) console.log(Animal.nextToEat([leo, snoop])) // Leo</p>
+<pre class="language-none"><code class="language-none">const leo &#x3D; new Animal(&#39;Leo&#39;, 7) 
+const snoop &#x3D; new Animal(&#39;Snoop&#39;, 10) 
+console.log(Animal.nextToEat([leo, snoop])) &#x2F;&#x2F; Leo</code></pre>
 <p>因为我们在这篇文章中都遵循了类似的模式，让我们来看看如何使用 ES5 完成同样的事情。 在上面的例子中，我们看到了如何使用 <code>static</code> 关键字将方法直接放在类本身上。 使用ES5，同样的模式就像手动将方法添加到函数对象一样简单。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>Animal.nextToEat = function(nextToEat) {<br>    const sortedByLeastEnergy = animals.sort((a, b) =&gt; {<br>        return a.energy - b.energy<br>    })</p>
-<pre><code>return sortedByLeastEnergy\[0\].name
-</code></pre>
-<p>}</p>
-<p>const leo = new Animal(‘Leo’, 7)<br>const snoop = new Animal(‘Snoop’, 10)</p>
-<p>console.log(Animal.nextToEat([leo, snoop])) // Leo</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+Animal.nextToEat &#x3D; function(nextToEat) &#123;
+    const sortedByLeastEnergy &#x3D; animals.sort((a, b) &#x3D;&gt; &#123;
+        return a.energy - b.energy
+    &#125;)
+
+    return sortedByLeastEnergy[0].name
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+const snoop &#x3D; new Animal(&#39;Snoop&#39;, 10)
+
+console.log(Animal.nextToEat([leo, snoop])) &#x2F;&#x2F; Leo</code></pre>
 <h2 id="获取对象的原型"><a href="#获取对象的原型" class="headerlink" title="获取对象的原型"></a>获取对象的原型</h2><p>无论您使用哪种模式创建对象，都可以使用 <code>Object.getPrototypeOf</code> 方法完成获取该对象的原型。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)<br>const prototype = Object.getPrototypeOf(leo)</p>
-<p>console.log(prototype)<br>// {constructor: ?, eat: ?, sleep: ?, play: ?}</p>
-<p>prototype === Animal.prototype // true</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+const prototype &#x3D; Object.getPrototypeOf(leo)
+
+console.log(prototype)
+&#x2F;&#x2F; &#123;constructor: ?, eat: ?, sleep: ?, play: ?&#125;
+
+prototype &#x3D;&#x3D;&#x3D; Animal.prototype &#x2F;&#x2F; true</code></pre>
 <p>上面的代码有两个要点。 首先，你会注意到 <code>proto</code> 是一个对象，有4种方法，<code>constructor</code>，<code>eat</code>，<code>sleep</code>，和<code>play</code>。那讲得通。我们将实例传递给<code>getPrototypeOf</code>，<code>leo</code> 获取了实例的原型，这里是所有的方法。这提示我们，关于原型的另外一件事我们还没有讨论过。默认情况下，原型对象将具有 <code>constructor</code> 属性，该属性指向原始函数或创建实例的类。这也意味着 JavaScript 默认在原型上放置 <code>constructor</code> 属性，所以任何实例都可以通过 <code>instance.constructor</code> 访问它们的构造函数。 上面的第二个要点是 <code>Object.getPrototypeOf(leo) === Animal.prototype</code> 。这也是有道理的。 <code>Animal</code> 构造函数有一个 prototype(原型) 属性，我们可以在所有实例之间共享方法，<code>getPrototypeOf</code> 允许我们查看实例本身的原型。</p>
-<p>function Animal(name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)<br>console.log(leo.constructor) // Logs the constructor function</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+this.name &#x3D; name
+this.energy &#x3D; energy
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+console.log(leo.constructor) &#x2F;&#x2F; Logs the constructor function</code></pre>
 <p>为了配合我们之前使用 <code>Object.create</code> 所讨论的内容，其工作原因是因为任何 <code>Animal</code> 实例都会在查找失败时委托给 <code>Animal.prototype</code>。 因此，当您尝试访问 <code>leo.prototype</code> 时， <code>leo</code> 没有 <code>prototype</code> 属性，因此它会将该查找委托给<code>Animal.prototype</code>，它确实具有 <code>constructor</code> 属性。 如果这段没有看懂，请回过头来阅读上面的 <code>Object.create</code> 。 您可能以前看到过使用 <code>__proto__</code> 获取实例的原型。 这是过去的遗物。 现在，如上所述使用 <code>Object.getPrototypeOf(instance)</code> 获取实例的原型。</p>
 <h2 id="确定属性是否存在于原型上"><a href="#确定属性是否存在于原型上" class="headerlink" title="确定属性是否存在于原型上"></a>确定属性是否存在于原型上</h2><p>在某些情况下，您需要知道属性是否存在于实例本身上，还是存在于对象委托的原型上。 我们可以通过循环我们创建的 <code>leo</code> 对象来知道这一点。假设目标是循环 <code>leo</code> 并记录其所有键和值。使用 <code>for in</code> 循环，可能看起来像这样。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
-<p>for (let key in leo) {<br>    console.log(`Key: ${key}. Value: ${leo[key]}`)<br>}</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+
+for (let key in leo) &#123;
+    console.log(&#96;Key: $&#123;key&#125;. Value: $&#123;leo[key]&#125;&#96;)
+&#125;</code></pre>
 <p>你期望看到什么？最有可能的是，它是这样的 –</p>
-<p>Key: name. Value: Leo<br>Key: energy. Value: 7</p>
+<pre class="language-none"><code class="language-none">Key: name. Value: Leo
+Key: energy. Value: 7</code></pre>
 <p>但是，如果你运行代码，你看到的是这样的 –</p>
-<p>Key: name.Value: Leo<br>Key: energy.Value: 7<br>Key: eat.Value: function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}<br>Key: sleep.Value: function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}<br>Key: play.Value: function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
+<pre class="language-none"><code class="language-none">Key: name.Value: Leo
+Key: energy.Value: 7
+Key: eat.Value: function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+Key: sleep.Value: function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+Key: play.Value: function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;</code></pre>
 <p>这是为什么？ <code>for in</code> 循环将循环遍历对象本身以及它所委托的原型的所有 <strong>可枚举属性</strong> 。 因为默认情况下，您添加到函数原型的任何属性都是可枚举的，我们不仅会看到<code>name</code> 和 <code>energy</code> ，还会看到原型上的所有方法 – <code>eat</code>，<code>sleep</code> 和 <code>play</code> 。 要解决这个问题，我们需要指定所有原型方法都是不可枚举的，或者如果属性在 <code>leo</code> 对象本身上而不是 <code>leo</code> 查找失败时委托给的原型上。 <code>hasOwnProperty</code> 可以帮助我们实现这个需求。 <code>hasOwnProperty</code> 是每个对象上的一个属性，它返回一个布尔值，指示对象是否具有指定的属性作为其自身的属性，而不是对象委托给的原型。 这正是我们所需要的。 现在有了这些新知识，我们可以修改我们的代码，以便利用 <code>for in</code> 循环中的 <code>hasOwnProperty</code> 。</p>
-<p>…</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
-<p>for (let key in leo) {<br>    if (leo.hasOwnProperty(key)) {<br>        console.log(`Key: ${key}. Value: ${leo[key]}`)<br>    }<br>}</p>
+<pre class="language-none"><code class="language-none">const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+
+for (let key in leo) &#123;
+    if (leo.hasOwnProperty(key)) &#123;
+        console.log(&#96;Key: $&#123;key&#125;. Value: $&#123;leo[key]&#125;&#96;)
+    &#125;
+&#125;</code></pre>
 <p>而现在我们看到的只是 <code>leo</code> 对象本身的属性，而不是 <code>leo</code> 原型中的方法。</p>
-<p>Key: name. Value: Leo<br>Key: energy. Value: 7</p>
+<pre class="language-none"><code class="language-none">Key: name. Value: Leo
+Key: energy. Value: 7</code></pre>
 <p>如果你仍然对 <code>hasOwnProperty</code> 感到困惑，这里有一些代码可以帮你消除困惑。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
-<p>leo.hasOwnProperty(‘name’) // true<br>leo.hasOwnProperty(‘energy’) // true<br>leo.hasOwnProperty(‘eat’) // false<br>leo.hasOwnProperty(‘sleep’) // false<br>leo.hasOwnProperty(‘play’) // false</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+
+leo.hasOwnProperty(&#39;name&#39;) &#x2F;&#x2F; true
+leo.hasOwnProperty(&#39;energy&#39;) &#x2F;&#x2F; true
+leo.hasOwnProperty(&#39;eat&#39;) &#x2F;&#x2F; false
+leo.hasOwnProperty(&#39;sleep&#39;) &#x2F;&#x2F; false
+leo.hasOwnProperty(&#39;play&#39;) &#x2F;&#x2F; false</code></pre>
 <h2 id="检查对象是否是类的实例"><a href="#检查对象是否是类的实例" class="headerlink" title="检查对象是否是类的实例"></a>检查对象是否是类的实例</h2><p>有时您想知道对象是否是指定类的实例。 为此，您可以使用 <code>instanceof</code> 运算符。 用例非常简单，但如果您以前从未见过它，实际的语法有点奇怪。 它的工作原理如下</p>
-<p>object instanceof Class</p>
+<pre class="language-none"><code class="language-none">object instanceof Class</code></pre>
 <p>如果 <code>object</code> 是 <code>Class</code> 的实例，则上面的语句将返回 <code>true</code> ，否则返回 <code>false</code> 。回到我们的 <code>Animal</code> 示例，我们会有类似的东西。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>function User() {}</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
-<p>leo instanceof Animal // true<br>leo instanceof User // false</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+function User() &#123;&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+
+leo instanceof Animal &#x2F;&#x2F; true
+leo instanceof User &#x2F;&#x2F; false</code></pre>
 <p><code>instanceof</code> 的工作方式是检查对象原型链中是否存在 <code>constructor.prototype</code> 。 在上面的例子中，<code>leo instanceof Animal</code> 为 <code>true</code> ，因为<code>Object.getPrototypeOf(leo) === Animal.prototype</code>。 另外，<code>leo instanceof User</code> 为 <code>false</code> ，因为 <code>Object.getPrototypeOf(leo) !== User.prototype</code>。</p>
 <h2 id="创建新的不可知构造函数"><a href="#创建新的不可知构造函数" class="headerlink" title="创建新的不可知构造函数"></a>创建新的不可知构造函数</h2><p>你能发现下面代码中的错误吗？</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>const leo = Animal(‘Leo’, 7)</p>
-<p>即使是经验丰富的 JavaScript 开发人员有时也会因为上面的例子而被绊倒。 因为我们正在使用之前学过的 <code>pseudoclassical pattern</code>(经典伪类模式)，所以当调用 <code>Animal</code> 构造函数时，我们需要确保使用 <code>new</code> 关键字调用它。 如果我们不这样做，则不会创建 <code>this</code> 关键字，也不会隐式返回。 作为复习，注释掉的行是在函数上使用 <code>new</code> 关键字时幕后所做的事情。</p>
-<p>function Animal(name, energy) {<br>    // const this = Object.create(Animal.prototype)</p>
-<pre><code>this.name = name
-this.energy = energy
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
 
-// return this
-</code></pre>
-<p>}</p>
+const leo &#x3D; Animal(&#39;Leo&#39;, 7)</code></pre>
+<p>即使是经验丰富的 JavaScript 开发人员有时也会因为上面的例子而被绊倒。 因为我们正在使用之前学过的 <code>pseudoclassical pattern</code>(经典伪类模式)，所以当调用 <code>Animal</code> 构造函数时，我们需要确保使用 <code>new</code> 关键字调用它。 如果我们不这样做，则不会创建 <code>this</code> 关键字，也不会隐式返回。 作为复习，注释掉的行是在函数上使用 <code>new</code> 关键字时幕后所做的事情。</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    &#x2F;&#x2F; const this &#x3D; Object.create(Animal.prototype)
+
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+
+    &#x2F;&#x2F; return this
+&#125;</code></pre>
 <p>这似乎是一个非常重要的细节，让其他开发人员记住。 假设我们正在与其他开发人员合作，有没有办法确保我们的 <code>Animal</code> 构造函数始终使用 <code>new</code> 关键字调用呢？ 事实证明，它是通过使用我们之前学到的 <code>instanceof</code> 运算符来实现的。 如果使用 <code>new</code> 关键字调用构造函数，那么构造函数体的内部将是构造函数本身的实例。 那是很多文字才能说清楚的。 这是一些代码。</p>
-<p>function Animal(name, energy) {<br>    if (this instanceof Animal === false) {<br>        console.warn(‘Forgot to call Animal with the new keyword’)<br>    }<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    if (this instanceof Animal &#x3D;&#x3D;&#x3D; false) &#123;
+        console.warn(&#39;Forgot to call Animal with the new keyword&#39;)
+    &#125;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;</code></pre>
 <p>现在，如果我们使用 <code>new</code> 关键字重新调用函数，而不是只向函数的使用者打印警告，会发生什么呢？</p>
-<p>function Animal(name, energy) {<br>    if (this instanceof Animal === false) {<br>        return new Animal(name, energy)<br>    }<br>    this.name = name<br>    this.energy = energy<br>}</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    if (this instanceof Animal &#x3D;&#x3D;&#x3D; false) &#123;
+        return new Animal(name, energy)
+    &#125;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;</code></pre>
 <p>现在无论是否使用 <code>new</code> 关键字调用 <code>Animal</code>，它都可以正常工作。</p>
 <h2 id="重新创建-Object-create"><a href="#重新创建-Object-create" class="headerlink" title="重新创建 Object.create"></a>重新创建 Object.create</h2><p>在这篇文章中，我们非常依赖于 <code>Object.create</code> 来创建委托给构造函数原型的对象。 此时，您应该知道如何在代码中使用 <code>Object.create</code> ，但您可能没有想到的一件事是<code>Object.create</code> 实际上是如何工作的。 为了让您真正了解 <code>Object.create</code> 的工作原理，我们将重新创建它。 首先，我们对 <code>Object.create</code> 的工作原理了解多少？</p>
 <ol>
@@ -416,15 +776,21 @@ this.energy = energy
 <li> 它返回新创建的对象。</li>
 </ol>
 <p>让我们从第1点开始吧。</p>
-<p>Object.create = function (objToDelegateTo) {}</p>
+<pre class="language-none"><code class="language-none">Object.create &#x3D; function (objToDelegateTo) &#123;&#125;</code></pre>
 <p>很简单。 现在第2点 – 我们需要创建一个对象，该对象将在查找失败时委托给参数对象。 这个有点棘手。 为此，我们将使用我们对 <code>new</code> 关键字和原型如何在 JavaScript 中工作的知识。首先，在 <code>Object.create</code> 实现的主体中，我们将创建一个空函数。 然后，我们将该空函数的原型设置为参数对象。然后，为了创建一个新对象，我们将使用 <code>new</code> 关键字调用空函数。如果我们返回新创建的对象，也会完成第3点。</p>
-<p>Object.create = function(objToDelegateTo) {<br>    function Fn() {}<br>    Fn.prototype = objToDelegateTo<br>    return new Fn()<br>}</p>
+<pre class="language-none"><code class="language-none">Object.create &#x3D; function(objToDelegateTo) &#123;
+    function Fn() &#123;&#125;
+    Fn.prototype &#x3D; objToDelegateTo
+    return new Fn()
+&#125;</code></pre>
 <p>有点野蛮是吧？让我们来看看吧。 当我们在上面的代码中创建一个新函数 <code>Fn</code> 时，它带有一个 <code>prototype</code> 属性。 当我们使用 <code>new</code> 关键字调用它时，我们知道我们将得到的是一个对象，该对象将在查找失败时委托给函数的原型。 如果我们覆盖函数的原型，那么我们可以决定在查找失败时委托给哪个对象。 所以在我们上面的例子中，我们用调用 <code>Object.create</code> 时传入的对象覆盖 <code>Fn</code>的原型，我们称之为 <code>objToDelegateTo</code>。 请注意，我们只支持 <code>Object.create</code> 的单个参数。官方实现还支持第二个可选参数，该参数允许您向创建的对象添加更多属性。</p>
 <h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>箭头函数没有自己的 <code>this</code> 关键字。因此，箭头函数不能用于构造函数，如果您尝试使用 <code>new</code> 关键字调用箭头函数，它将抛出错误。</p>
-<p>const Animal = () =&gt; {}<br>const leo = new Animal() // Error: Animal is not a constructor</p>
+<pre class="language-none"><code class="language-none">const Animal &#x3D; () &#x3D;&gt; &#123;&#125;
+const leo &#x3D; new Animal() &#x2F;&#x2F; Error: Animal is not a constructor</code></pre>
 <p>另外，因为我们在上面证明了 <code>pseudoclassical pattern</code>(经典伪类模式) 不能与箭头函数一起使用，所以箭头函数也没有 <code>prototype</code>(原型) 属性。</p>
-<p>const Animal = () =&gt; {}<br>console.log(Animal.prototype) // undefined</p>
-<p>  原文地址：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/beginners-guide-to-javascript-prototype/">https://tylermcginnis.com/</a></p>
+<pre class="language-none"><code class="language-none">const Animal &#x3D; () &#x3D;&gt; &#123;&#125;
+console.log(Animal.prototype) &#x2F;&#x2F; undefined</code></pre>
+<p> 原文地址：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/beginners-guide-to-javascript-prototype/">https://tylermcginnis.com/</a></p>
 
     </div>
 

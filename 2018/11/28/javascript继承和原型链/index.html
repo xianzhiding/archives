@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"xianzhiding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="本文为 JavaScript Class 类的私有和公共属性 续篇  之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。 function Animal(name, energy) {    this.name &#x3D; name    this.energy &#x3D; energy}">
+  <meta name="description" content="本文为 JavaScript Class 类的私有和公共属性 续篇  之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。 function Animal(name, energy) &amp;#123;     this.name &#x3D; name     this.energ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript继承和原型链">
 <meta property="og:url" content="https://xianzhiding.github.io/2018/11/28/javascript%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
 <meta property="og:site_name" content="前端开发 大前端 W3Cbest">
-<meta property="og:description" content="本文为 JavaScript Class 类的私有和公共属性 续篇  之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。 function Animal(name, energy) {    this.name &#x3D; name    this.energy &#x3D; energy}">
+<meta property="og:description" content="本文为 JavaScript Class 类的私有和公共属性 续篇  之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。 function Animal(name, energy) &amp;#123;     this.name &#x3D; name     this.energ">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-11-28T00:00:07.000Z">
-<meta property="article:modified_time" content="2021-08-30T02:43:26.986Z">
+<meta property="article:modified_time" content="2023-08-28T07:36:45.372Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="$.extend()">
 <meta property="article:tag" content="ES5">
@@ -235,174 +235,475 @@
 
       
         <blockquote>
-<p>本文为 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/529.html">JavaScript Class 类的私有和公共属性</a> 续篇</p>
+<p>本文为 <a href="https://xianzhiding.github.io/2018/10/05/javascript-prototype%E5%8E%9F%E5%9E%8B-%E5%88%9D%E5%AD%A6%E8%80%85%E6%8C%87%E5%8D%97/">JavaScript Class 类的私有和公共属性</a> 续篇</p>
 </blockquote>
 <p>之前我们学习了如何在 ES5 和 ES6 中创建 <code>Animal</code> 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
-<p>class Animal {<br>constructor(name, energy) {<br>this.name = name<br>this.energy = energy<br>}<br>eat(amount) {<br>console.log(`${this.name} is eating.`)<br>this.energy += amount<br>}<br>sleep() {<br>console.log(`${this.name} is sleeping.`)<br>this.energy += length<br>}<br>play() {<br>console.log(`${this.name} is playing.`)<br>this.energy -= length<br>}<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+
+class Animal &#123;
+constructor(name, energy) &#123;
+this.name &#x3D; name
+this.energy &#x3D; energy
+&#125;
+eat(amount) &#123;
+console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+this.energy +&#x3D; amount
+&#125;
+sleep() &#123;
+console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+this.energy +&#x3D; length
+&#125;
+play() &#123;
+console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+this.energy -&#x3D; length
+&#125;
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)</code></pre>
 <p>现在我们想为特定动物建一个别 class(类) 。 例如，如果我们想要开始制作一堆狗实例，该怎么办？ 这些狗有哪些属性和方法？ 嗯，类似于我们的 <code>Animal</code> 类，我们可以给每只狗一个 <code>name</code> ，一个 <code>energy</code> 等级，以及 <code>eat</code> ，<code>sleep</code> 和 <code>play</code> 的能力。 我们的 <code>Dog</code> 类是独一无二的，我们也可以给<code>Dog</code> 类一些独一无二的的属性，比如一个 <code>breed</code>(品种) 属性以及 <code>bark</code>(吠叫) 的能力。 在 ES5 中，我们的 <code>Dog</code> 类可能看起来像这样:</p>
-<p>function Dog(name, energy, breed) {<br>    this.name = name<br>    this.energy = energy<br>    this.breed = breed<br>}</p>
-<p>Dog.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Dog.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Dog.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof-Woof!’)<br>    this.energy -= .1<br>}</p>
-<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Dog.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Dog.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+Dog.prototype.bark &#x3D; function() &#123;
+    console.log(&#39;Woof-Woof!&#39;)
+    this.energy -&#x3D; .1
+&#125;
+
+const charlie &#x3D; new Dog(&#39;Charlie&#39;, 10, &#39;Goldendoodle&#39;)</code></pre>
 <p>你应该看出来了，我们刚刚重新创建了 <code>Animal</code> 类并为它添加了一些新属性。 如果我们想创建另一个动物，比如说 <code>Cat</code> ，那么我们必须再次创建一个 <code>Cat</code> 类，将 <code>Animal</code> 类中的所有常用逻辑复制到 <code>Cat</code> ，然后像 <code>Dog</code> 类一样添加 <code>Cat</code> 特定属性。 就是说，我们必须对我们创造的每一种不同类型的动物都这样做。</p>
-<p>function Dog (name, energy, breed) {}</p>
-<p>function Cat (name, energy, declawed) {}</p>
-<p>function Giraffe (name, energy, height) {}</p>
-<p>function Monkey (name, energy, domesticated) {}</p>
+<pre class="language-none"><code class="language-none">function Dog (name, energy, breed) &#123;&#125;
+
+function Cat (name, energy, declawed) &#123;&#125;
+
+function Giraffe (name, energy, height) &#123;&#125;
+
+function Monkey (name, energy, domesticated) &#123;&#125;</code></pre>
 <p>这项工作似乎很浪费。 <code>Animal</code> 类是完美的基类。 这意味着它具有我们每只动物的共同特征。 无论我们是创造 狗，猫，长颈鹿还是猴子，它们都会有一个<code>name</code> ，<code>energy</code> 等级，以及 <code>eat</code> ，<code>sleep</code> 和 <code>play</code> 的能力。 那么每当我们为每个不同的动物创建单独的类时，我们是否可以利用 <code>Animal</code>类？ 我们来试试吧。 我将在下面再次粘贴 <code>Animal</code> 类以便于参考。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>function Dog(name, energy, breed) {</p>
-<p>}</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+function Dog(name, energy, breed) &#123;
+
+&#125;</code></pre>
 <p>我们对上面的 <code>Dog</code> 构造函数你了解多少？ 首先，我们知道它需要3个参数，<code>name</code>, <code>energy</code> 和 <code>breed</code>。 其次，我们知道它将使用 <code>new</code> 关键字调用，因此我们将拥有一个 <code>this</code> 对象。 第三，我们知道我们需要利用 <code>Animal</code> 函数，这样任何狗的实例都会有一个<code>name</code> ，<code>energy</code> 等级，以及 <code>eat</code> ，<code>sleep</code> 和 <code>play</code> 的能力。 第三点是有点棘手的问题。 你“利用”一个函数的方式就是调用它。 所以我们知道在 <code>Dog</code> 里面，我们想要调用 <code>Animal</code> 。 我们需要弄清楚的是我们如何在<code>Dog</code> 的上下文中调用 <code>Animal</code>。 这意味着我们想用 <code>Dog</code> 中的 <code>this</code> 关键字调用 <code>Animal</code>。 如果我们正确地做到了，那么 <code>Dog</code> 函数内部将具有 <code>Animal</code> 的所有属性（<code>name</code> ，<code>energy</code>）。 如果你记得 <a target="_blank" rel="noopener" href="https://tylermcginnis.com/this-keyword-call-apply-bind-javascript/">上一节我们所讨论的内容</a>，JavaScript 中的每个函数都有一个 <code>.call</code> 方法。</p>
 <blockquote>
 <p><code>.call()</code> 是函数的一个方法，它允许你调用函数时，指定该函数的上下文。</p>
 </blockquote>
 <p>听起来正是我们所需要的。我们想在 <code>Dog</code> 上下文中调用 <code>Animal</code> 。</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
-<p>charlie.name // Charlie<br>charlie.energy // 10<br>charlie.breed // Goldendoodle</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+const charlie &#x3D; new Dog(&#39;Charlie&#39;, 10, &#39;Goldendoodle&#39;)
+
+charlie.name &#x2F;&#x2F; Charlie
+charlie.energy &#x2F;&#x2F; 10
+charlie.breed &#x2F;&#x2F; Goldendoodle</code></pre>
 <p>知道这个，我们就已经成功一半了。你将在上面的代码中注意到，因为这一行是 <code>Animal.call(this, name, energy)</code>， <code>Dog</code> 的每个实例都将有一个 <code>name</code> 和 <code>energy</code> 属性。同样，这样做的原因是，就好像我们使用从 <code>Dog</code> 生成的 <code>this</code> 关键字运行 <code>Animal</code> 函数一样。在我们添加了一个<code>name</code> 和 <code>energy</code> 属性之后，我们又像往常一样添加了一个 <code>breed</code> 属性。 请记住，这里的目标是让 <code>Dog</code> 的每个实例不仅具有 <code>Animal</code> 的所有属性，而且还具有所有方法。如果你运行上面的代码，你会注意到如果你尝试运行 <code>charlie.eat(10)</code> ，你将收到一个错误。目前 <code>Dog</code> 的每个实例都具有 <code>Animal</code>（<code>name</code> 和 <code>energy</code>）的属性，但我们没有做任何事情来确保他们也有方法（<code>eat</code> ，<code>sleep</code> 和 <code>play</code>）。 让我们考虑如何解决这个问题。我们知道所有 <code>Animal</code> 的方法都位于 <code>Animal.prototype</code> 上。这意味着我们想要确保 <code>Dog</code> 的所有实例都可以访问<code>Animal.prototype</code> 上的方法。如果我们在这里使用我们的好朋友 <code>Object.create</code> 怎么办？如果你还记得，<code>Object.create</code> 允许你创建一个对象，该对象将在失败的查找中委托给另一个对象。所以在我们的例子中，我们想要创建的对象将是 <code>Dog</code> 的原型，而我们想要在失败的查找中委托的对象是<code>Animal.prototype</code>。</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype &#x3D; Object.create(Animal.prototype)</code></pre>
 <p>现在，只要在 <code>Dog</code> 实例上查找失败，JavaScript 就会将该查找委托给 <code>Animal.prototype</code> 。 如果这仍然有点模糊，请重新阅读 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>，其中我们讨论了 <code>Object.create</code> 和 JavaScript 的 原型(prototype) 。 让我们一起看完整个代码，然后我们将了解发生的事情。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype &#x3D; Object.create(Animal.prototype)</code></pre>
 <p>现在我们已经创建了我们的基类（ <code>Animal</code> ）以及我们的子类（ <code>Dog</code> ），让我们在创建 <code>Dog</code> 实例时看看它的样子。</p>
-<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
-<p>charlie.name // Charlie<br>charlie.energy // 10<br>charlie.breed // Goldendoodle</p>
+<pre class="language-none"><code class="language-none">const charlie &#x3D; new Dog(&#39;Charlie&#39;, 10, &#39;Goldendoodle&#39;)
+
+charlie.name &#x2F;&#x2F; Charlie
+charlie.energy &#x2F;&#x2F; 10
+charlie.breed &#x2F;&#x2F; Goldendoodle</code></pre>
 <p>到目前为止没有任何花哨的东西，但让我们来看看当我们调用位于 <code>Animal</code> 上的方法时会发生什么。</p>
-<p>charlie.eat(10)</p>
-<p>/*</p>
-<ol>
-<li>JavaScript checks if charlie has an eat property - it doesn’t.</li>
-<li>JavaScript then checks if Dog.prototype has an eat property</li>
-</ol>
-<ul>
-<li>it doesn’t.</li>
-</ul>
-<ol start="3">
-<li>JavaScript then checks if Animal.prototype has an eat property</li>
-</ol>
-<ul>
-<li>it does so it calls it.<br>*/</li>
-</ul>
+<pre class="language-none"><code class="language-none">charlie.eat(10)
+
+&#x2F;*
+1) JavaScript checks if charlie has an eat property - it doesn&#39;t.
+2) JavaScript then checks if Dog.prototype has an eat property
+- it doesn&#39;t.
+3) JavaScript then checks if Animal.prototype has an eat property
+- it does so it calls it.
+*&#x2F;</code></pre>
 <p><code>Dog.prototype</code> 被检查的原因是因为当我们创建一个新的 <code>Dog</code> 实例时，我们使用了 <code>new</code> 关键字。在引擎中，为我们创建的 <code>this</code> 对象委托给<code>Dog.prototype</code>（见下面的注释）。</p>
-<p>function Dog(name, energy, breed) {<br>    // this = Object.create(Dog.prototype)<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-// return this
-</code></pre>
-<p>}</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    &#x2F;&#x2F; this &#x3D; Object.create(Dog.prototype)
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+    &#x2F;&#x2F; return this
+&#125;</code></pre>
 <p>之所以检查 <code>Animal.prototype</code> 是因为我们用这一行覆盖了 <code>Dog.prototype</code> 以委托给失败的查找的 <code>Animal.prototype</code></p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<pre class="language-none"><code class="language-none">Dog.prototype &#x3D; Object.create(Animal.prototype)</code></pre>
 <p>现在我们还没有谈到的一件事是，如果 <code>Dog</code> 有自己的方法呢？ 嗯，这是一个简单的解决方案。 就像 <code>Animal</code> 一样，如果我们想在该类的所有实例之间共享一个方法，我们将它添加到函数的原型中。</p>
-<p>…</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
-<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype &#x3D; Object.create(Animal.prototype)
+
+Dog.prototype.bark &#x3D; function() &#123;
+    console.log(&#39;Woof Woof!&#39;)
+    this.energy -&#x3D; .1
+&#125;</code></pre>
 <p>非常好。我们需要做一个小小的补充。如果你不记得了请回到 <a target="_blank" rel="noopener" href="http://www.w3cbest.com/720.html">JavaScript Prototype(原型) 初学者指南</a>了解详情，我们可以通过使用 <code>instance.constructor</code> 来访问实例的构造函数。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)<br>console.log(leo.constructor) // Logs the constructor function</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+console.log(leo.constructor) &#x2F;&#x2F; Logs the constructor function</code></pre>
 <p>正如前一篇文章中所解释的那样，“其工作原因是因为任何 <code>Animal</code> 实例都会在失败的查找中委托给 <code>Animal.prototype</code> 。 因此，当你尝试访问<code>leo.prototype</code> 时，<code>leo</code> 没有 <code>prototype</code> 属性，因此它会将该查找委托给 <code>Animal.prototype</code> ，它确实具有 <code>constructor</code> 属性。“ 我提出这个问题的原因是因为在我们的实现中，我们用一个委托给 <code>Animal.prototype</code> 的对象覆盖了 <code>Dog.prototype</code> 。</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
-<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype &#x3D; Object.create(Animal.prototype)
+
+Dog.prototype.bark &#x3D; function() &#123;
+    console.log(&#39;Woof Woof!&#39;)
+    this.energy -&#x3D; .1
+&#125;</code></pre>
 <p>这意味着现在，任何打印 <code>Dog</code> 的实例 <code>instance.constructor</code> 都将获得 <code>Animal</code> 构造函数而不是 <code>Dog</code> 构造函数。你可以通过运行此代码自行查看</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
-<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
-<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)<br>console.log(charlie.constructor)</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype &#x3D; Object.create(Animal.prototype)
+
+Dog.prototype.bark &#x3D; function() &#123;
+    console.log(&#39;Woof Woof!&#39;)
+    this.energy -&#x3D; .1
+&#125;
+
+const charlie &#x3D; new Dog(&#39;Charlie&#39;, 10, &#39;Goldendoodle&#39;)
+console.log(charlie.constructor)</code></pre>
 <p>请注意，即使 <code>charlie</code> 是 <code>Dog</code> 的直接实例，它也会为你提供 <code>Animal</code> 构造函数。同样，我们可以像上面一样了解这里发生的事情。</p>
-<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)<br>console.log(charlie.constructor)<br>/* </p>
-<ol>
-<li>JavaScript checks if charlie has a constructor property - it doesn’t. </li>
-<li>JavaScript then checks if Dog.prototype has a constructor property - it doesn’t because it was deleted when we overwrote Dog.prototype. </li>
-<li>JavaScript then checks if Animal.prototype has a constructor property - it does so it logs that.<br>*/</li>
-</ol>
+<pre class="language-none"><code class="language-none">const charlie &#x3D; new Dog(&#39;Charlie&#39;, 10, &#39;Goldendoodle&#39;) 
+console.log(charlie.constructor)  
+&#x2F;* 
+1) JavaScript checks if charlie has a constructor property - it doesn&#39;t. 
+2) JavaScript then checks if Dog.prototype has a constructor property - it doesn&#39;t because it was deleted when we overwrote Dog.prototype. 
+3) JavaScript then checks if Animal.prototype has a constructor property - it does so it logs that. 
+*&#x2F;</code></pre>
 <p>我们该如何解决这个问题？嗯，这很简单。一旦我们覆盖它，我们就可以向 <code>Dog.prototype</code> 添加正确的 <code>constructor</code> 属性。</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
-<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
-<p>Dog.prototype.constructor = Dog</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype &#x3D; Object.create(Animal.prototype)
+
+Dog.prototype.bark &#x3D; function() &#123;
+    console.log(&#39;Woof Woof!&#39;)
+    this.energy -&#x3D; .1
+&#125;
+
+Dog.prototype.constructor &#x3D; Dog</code></pre>
 <p>此时如果我们想要创建另一个子类，比如 <code>Cat</code> ，我们将遵循相同的模式。</p>
-<p>function Cat(name, energy, declawed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.declawed = declawed
-</code></pre>
-<p>}</p>
-<p>Cat.prototype = Object.create(Animal.prototype)<br>Cat.prototype.constructor = Cat</p>
-<p>Cat.prototype.meow = function() {<br>    console.log(‘Meow!’)<br>    this.energy -= .1<br>}</p>
+<pre class="language-none"><code class="language-none">function Cat(name, energy, declawed) &#123;
+    Animal.call(this, name, energy)
+
+    this.declawed &#x3D; declawed
+&#125;
+
+Cat.prototype &#x3D; Object.create(Animal.prototype)
+Cat.prototype.constructor &#x3D; Cat
+
+Cat.prototype.meow &#x3D; function() &#123;
+    console.log(&#39;Meow!&#39;)
+    this.energy -&#x3D; .1
+&#125;</code></pre>
 <p>这种具有委托给它的子类的基类的概念称为继承，它是面向对象编程（OOP）的主要部分。 如果你来自不同的编程语言，你可能已经熟悉OOP和继承了。 在 ES6 classes 之前，在 JavaScript 中，继承是一项非常艰巨的任务，正如你在上面所看到的。你现在只需要了解什么时候使用继承，以及 <code>.call</code> 和 <code>Object.create</code>， <code>this</code> ，和 <code>FN.prototype</code> 的良好组合。- 这些都是高级 JS 主题。让我们看看如何使用 ES6 类来完成同样的事情。 首先，让我们回顾一下使用我们的 <code>Animal</code> 类从 ES5 “类” 到 ES6 类的样子。</p>
-<p>function Animal(name, energy) {<br>    this.name = name<br>    this.energy = energy<br>}</p>
-<p>Animal.prototype.eat = function(amount) {<br>    console.log(`${this.name} is eating.`)<br>    this.energy += amount<br>}</p>
-<p>Animal.prototype.sleep = function(length) {<br>    console.log(`${this.name} is sleeping.`)<br>    this.energy += length<br>}</p>
-<p>Animal.prototype.play = function(length) {<br>    console.log(`${this.name} is playing.`)<br>    this.energy -= length<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
-<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep() {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play() {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}</p>
-<p>const leo = new Animal(‘Leo’, 7)</p>
+<pre class="language-none"><code class="language-none">function Animal(name, energy) &#123;
+    this.name &#x3D; name
+    this.energy &#x3D; energy
+&#125;
+
+Animal.prototype.eat &#x3D; function(amount) &#123;
+    console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+    this.energy +&#x3D; amount
+&#125;
+
+Animal.prototype.sleep &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+    this.energy +&#x3D; length
+&#125;
+
+Animal.prototype.play &#x3D; function(length) &#123;
+    console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+    this.energy -&#x3D; length
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)
+
+class Animal &#123;
+    constructor(name, energy) &#123;
+        this.name &#x3D; name
+        this.energy &#x3D; energy
+    &#125;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;
+    sleep() &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;
+    play() &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
+&#125;
+
+const leo &#x3D; new Animal(&#39;Leo&#39;, 7)</code></pre>
 <p>现在我们已经将我们的 <code>Animal</code> 构造函数重构为 ES6 类，接下来我们需要做的是弄清楚如何重构我们的基类（ <code>Dog</code> ）。好消息是它更加直观。作为参考，在ES5 中，这是我们所拥有的。</p>
-<p>function Dog(name, energy, breed) {<br>    Animal.call(this, name, energy)</p>
-<pre><code>this.breed = breed
-</code></pre>
-<p>}</p>
-<p>Dog.prototype = Object.create(Animal.prototype)</p>
-<p>Dog.prototype.bark = function() {<br>    console.log(‘Woof Woof!’)<br>    this.energy -= .1<br>}</p>
-<p>Dog.prototype.constructor = Dog</p>
+<pre class="language-none"><code class="language-none">function Dog(name, energy, breed) &#123;
+    Animal.call(this, name, energy)
+
+    this.breed &#x3D; breed
+&#125;
+
+Dog.prototype &#x3D; Object.create(Animal.prototype)
+
+Dog.prototype.bark &#x3D; function() &#123;
+    console.log(&#39;Woof Woof!&#39;)
+    this.energy -&#x3D; .1
+&#125;
+
+Dog.prototype.constructor &#x3D; Dog</code></pre>
 <p>在我们进入继承之前，让我们使用 ES6 类来重构 <code>Dog</code> ，就像我们在之前的帖子中学到的那样。</p>
-<p>class Dog {<br>    constructor(name, energy, breed) {<br>        this.breed = breed<br>    }<br>    bark() {<br>        console.log(‘Woof Woof!’)<br>        this.energy -= .1<br>    }<br>}</p>
+<pre class="language-none"><code class="language-none">class Dog &#123;
+    constructor(name, energy, breed) &#123;
+        this.breed &#x3D; breed
+    &#125;
+    bark() &#123;
+        console.log(&#39;Woof Woof!&#39;)
+        this.energy -&#x3D; .1
+    &#125;
+&#125;</code></pre>
 <p>看起来很棒。现在，让我们弄清楚如何确保 <code>Dog</code> 继承自 <code>Animal</code> 。我们需要做的第一步是非常直接的。使用 ES6 类，你可以使用此语法 <code>extend</code> 基类</p>
-<p>class Subclass extends Baseclass {}</p>
+<pre class="language-none"><code class="language-none">class Subclass extends Baseclass &#123;&#125;</code></pre>
 <p>翻译成我们的例子，这将使我们的 <code>Dog</code> 类看起来像这样：</p>
-<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep() {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play() {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}</p>
-<p>class Dog extends Animal {<br>    constructor(name, energy, breed) {<br>        this.breed = breed<br>    }<br>    bark() {<br>        console.log(‘Woof Woof!’)<br>        this.energy -= .1<br>    }<br>}</p>
+<pre class="language-none"><code class="language-none">class Animal &#123;
+    constructor(name, energy) &#123;
+        this.name &#x3D; name
+        this.energy &#x3D; energy
+    &#125;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;
+    sleep() &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;
+    play() &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
+&#125;
+
+class Dog extends Animal &#123;
+    constructor(name, energy, breed) &#123;
+        this.breed &#x3D; breed
+    &#125;
+    bark() &#123;
+        console.log(&#39;Woof Woof!&#39;)
+        this.energy -&#x3D; .1
+    &#125;
+&#125;</code></pre>
 <p>在ES5中，为了确保 <code>Dog</code> 的每个实例都具有<code>name</code> 和 <code>energy</code> 属性，我们使用 <code>.call</code> 以在 <code>Dog</code> 实例的上下文中调用 <code>Animal</code> 构造函数。 幸运的是，在 ES6 中，它更直接。 每当你扩展一个基类并且你需要调用那个基类的构造函数时，你调用 <code>super</code> 传递它需要的任何参数即可。 所以在我们的例子中，我们的 <code>Dog</code> 构造函数被重构为这样:</p>
-<p>class Animal {<br>    constructor(name, energy) {<br>        this.name = name<br>        this.energy = energy<br>    }<br>    eat(amount) {<br>        console.log(`${this.name} is eating.`)<br>        this.energy += amount<br>    }<br>    sleep() {<br>        console.log(`${this.name} is sleeping.`)<br>        this.energy += length<br>    }<br>    play() {<br>        console.log(`${this.name} is playing.`)<br>        this.energy -= length<br>    }<br>}<br>class Dog extends Animal {<br>    constructor(name, energy, breed) {<br>        super(name, energy) // calls Animal’s constructor<br>        this.breed = breed<br>    }<br>    bark() {<br>        console.log(‘Woof Woof!’)<br>        this.energy -= .1<br>    }<br>}</p>
+<pre class="language-none"><code class="language-none">class Animal &#123;
+    constructor(name, energy) &#123;
+        this.name &#x3D; name
+        this.energy &#x3D; energy
+    &#125;
+    eat(amount) &#123;
+        console.log(&#96;$&#123;this.name&#125; is eating.&#96;)
+        this.energy +&#x3D; amount
+    &#125;
+    sleep() &#123;
+        console.log(&#96;$&#123;this.name&#125; is sleeping.&#96;)
+        this.energy +&#x3D; length
+    &#125;
+    play() &#123;
+        console.log(&#96;$&#123;this.name&#125; is playing.&#96;)
+        this.energy -&#x3D; length
+    &#125;
+&#125;
+class Dog extends Animal &#123;
+    constructor(name, energy, breed) &#123;
+        super(name, energy) &#x2F;&#x2F; calls Animal&#39;s constructor
+        this.breed &#x3D; breed
+    &#125;
+    bark() &#123;
+        console.log(&#39;Woof Woof!&#39;)
+        this.energy -&#x3D; .1
+    &#125;
+&#125;</code></pre>
 <p>就是这样。不使用 <code>.call</code> ，不使用 <code>Object.create</code> ，不用担心重置原型上的构造函数 – 只需 <code>extends</code> 基类并确保调用 <code>super</code> 即可。 JavaScript 的有趣之处在于你学到的相同模式，最后几篇文章直接融入语言本身。 以前你了解到 <code>Array</code> 的所有实例都可以访问 <code>pop</code> ，<code>slice</code> ，<code>filter</code> 等数组方法的原因是因为所有这些方法都存在于 <code>Array.prototype</code> 中。</p>
-<p>console.log(Array.prototype)<br>/*<br>concat: ?n concat()<br>constructor: ?n Array()<br>copyWithin: ?n copyWithin()<br>entries: ?n entries()<br>every: ?n every()<br>fill: ?n fill()<br>filter: ?n filter()<br>find: ?n find()<br>findIndex: ?n findIndex()<br>forEach: ?n forEach()<br>includes: ?n includes()<br>indexOf: ?n indexOf()<br>join: ?n join()<br>keys: ?n keys()<br>lastIndexOf: ?n lastIndexOf()<br>length: 0n<br>map: ?n map()<br>pop: ?n pop()<br>push: ?n push()<br>reduce: ?n reduce()<br>reduceRight: ?n reduceRight()<br>reverse: ?n reverse()<br>shift: ?n shift()<br>slice: ?n slice()<br>some: ?n some()<br>sort: ?n sort()<br>splice: ?n splice()<br>toLocaleString: ?n toLocaleString()<br>toString: ?n toString()<br>unshift: ?n unshift()<br>values: ?n values()<br>*/</p>
+<pre class="language-none"><code class="language-none">console.log(Array.prototype)
+&#x2F;*
+concat: ?n concat()
+constructor: ?n Array()
+copyWithin: ?n copyWithin()
+entries: ?n entries()
+every: ?n every()
+fill: ?n fill()
+filter: ?n filter()
+find: ?n find()
+findIndex: ?n findIndex()
+forEach: ?n forEach()
+includes: ?n includes()
+indexOf: ?n indexOf()
+join: ?n join()
+keys: ?n keys()
+lastIndexOf: ?n lastIndexOf()
+length: 0n
+map: ?n map()
+pop: ?n pop()
+push: ?n push()
+reduce: ?n reduce()
+reduceRight: ?n reduceRight()
+reverse: ?n reverse()
+shift: ?n shift()
+slice: ?n slice()
+some: ?n some()
+sort: ?n sort()
+splice: ?n splice()
+toLocaleString: ?n toLocaleString()
+toString: ?n toString()
+unshift: ?n unshift()
+values: ?n values()
+*&#x2F;</code></pre>
 <p>你知道，所有 <code>Object</code> 实例都可以访问 <code>hasOwnProperty</code> 和 <code>toString</code> 等方法的原因是因为这些方法存在于 <code>Object.prototype</code> 上。</p>
-<p>console.log(Object.prototype)<br>/*<br>constructor: ?n Object()<br>hasOwnProperty: ?n hasOwnProperty()<br>isPrototypeOf: ?n isPrototypeOf()<br>propertyIsEnumerable: ?n propertyIsEnumerable()<br>toLocaleString: ?n toLocaleString()<br>toString: ?n toString()<br>valueOf: ?n valueOf()<br>*/</p>
+<pre class="language-none"><code class="language-none">console.log(Object.prototype)
+&#x2F;*
+constructor: ?n Object()
+hasOwnProperty: ?n hasOwnProperty()
+isPrototypeOf: ?n isPrototypeOf()
+propertyIsEnumerable: ?n propertyIsEnumerable()
+toLocaleString: ?n toLocaleString()
+toString: ?n toString()
+valueOf: ?n valueOf()
+*&#x2F;</code></pre>
 <p>这对你来说是一个挑战。使用上面的 Array 方法和 Object 方法列表，为什么下面的代码有效？</p>
-<p>const friends = [‘Mikenzi’, ‘Jake’, ‘Ean’]<br>friends.hasOwnProperty(‘push’) // false</p>
+<pre class="language-none"><code class="language-none">const friends &#x3D; [&#39;Mikenzi&#39;, &#39;Jake&#39;, &#39;Ean&#39;]
+friends.hasOwnProperty(&#39;push&#39;) &#x2F;&#x2F; false</code></pre>
 <p>如果查看 <code>Array.prototype</code> ，则没有 <code>hasOwnProperty</code> 方法。 好吧，如果 <code>Array.prototype</code> 上没有 <code>hasOwnProperty</code> 方法，上面示例中的 <code>friends</code> 数组如何访问 <code>hasOwnProperty</code>？ 原因是因为 <code>Array</code> 类扩展了 <code>Object</code> 类。 因此，在上面的示例中，当 JavaScript 看到<code>friends</code> 没有 <code>hasOwnProperty</code> 属性时，它会检查 <code>Array.prototype</code> 是否具有该方法。 当 <code>Array.prototype</code> 没有时，它会检查 <code>Object.prototype</code> 是否有该方法，然后再调用它。 这是我们在这篇博客文章中看到的相同过程。 JavaScript 有两种类型 – 原始类型 和 引用类型 。 原始类型是 <code>boolean</code> ， <code>number</code>， <code>string</code>，<code>null</code> 和 <code>undefined</code> 并且是不可变的。 其他所有内容都是引用类型，它们都扩展了 <code>Object.prototype</code> 。 这就是为什么你可以为函数和数组添加属性，这就是为什么函数和数组都可以访问 <code>Object.prototype</code> 上的方法。</p>
-<p>function speak(){} speak.woahFunctionsAreLikeObjects = true console.log(speak.woahFunctionsAreLikeObjects) // true const friends = [‘Mikenzi’, ‘Jake’, ‘Ean’] friends.woahArraysAreLikeObjectsToo = true console.log(friends.woahArraysAreLikeObjectsToo) // true</p>
+<pre class="language-none"><code class="language-none">function speak()&#123;&#125; speak.woahFunctionsAreLikeObjects &#x3D; true console.log(speak.woahFunctionsAreLikeObjects) &#x2F;&#x2F; true const friends &#x3D; [&#39;Mikenzi&#39;, &#39;Jake&#39;, &#39;Ean&#39;] friends.woahArraysAreLikeObjectsToo &#x3D; true console.log(friends.woahArraysAreLikeObjectsToo) &#x2F;&#x2F; true</code></pre>
 <p>原文地址：<a target="_blank" rel="noopener" href="https://tylermcginnis.com/javascript-inheritance-and-the-prototype-chain/">https://tylermcginnis.com/javascript-inheritance-and-the-prototype-chain/</a></p>
 
     </div>
